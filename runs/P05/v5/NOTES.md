@@ -84,9 +84,14 @@ direct computation agree exactly.
 | all connected n = 10 | 11,716,571 | 0 | 1 |
 | all connected n = 11, ≤ 20 edges | 28,908,939 | 0 | 1 |
 | all connected n = 12, ≤ 18 edges | 22,028,571 | 0 | 1 |
+| all connected n = 13, ≤ 16 edges | 2,778,205 | 0 | 1 |
+| all connected n = 14, ≤ 16 edges | 2,142,867 | 0 | 1 |
 | subcubic (Δ≤3) n = 12, 13, 14 | 19,430 + 69,322 + 262,044 | 0 | 1 |
+| subcubic n = 15, 16 | 1,016,740 + 4,101,318 | 0 | 1 |
+| cubic n = 18 | 41,301 | 0 | 1 |
+| cubic n = 20 | 510,489 | 0 | 1 |
 
-Every one of ~63M cores has, for every triple (a,b,c) and every choice of per-pair maximum
+Every one of ~72M cores has, for every triple (a,b,c) and every choice of per-pair maximum
 paths avoiding the third vertex, a common vertex — and the minimum triple intersection is
 exactly 1 in the extremal cases, at every size. This is strong evidence for a clean lemma:
 "any per-pair-maximum a–b, b–c, a–c paths have a common vertex", which (if true) would kill
@@ -105,11 +110,14 @@ brute-force verifies.
 | Core class | candidate structures | z3-feasible | counterexamples |
 |---|---|---|---|
 | all connected n = 7 | 31,039 | 0 | 0 |
-| all connected n = 8 | (running) | | |
+| all connected n = 8 | 521,717 | 0 | 0 |
+| all connected n = 9 | (running) | | |
 
-Interpretation of stage-2 n=7: tens of thousands of core-path triples with empty
-intersection exist, but the arm-length feasibility system is always infeasible — some other
-tip pair always beats the required common length S. The obstruction moves but never vanishes.
+Stage-2 finding so far: over half a million candidate structures where the three core paths
+DO have empty intersection, yet the arm-length system is infeasible **every single time** —
+whenever three per-pair-maximum paths avoid a common vertex, some other tip-pair distance is
+forced long enough to beat the required common length S. This smells like a min-max/duality
+theorem about the "max path-length metric" M on the attachment set.
 
 ### Stage 3: targeted cores (literature-guided seeds)
 
