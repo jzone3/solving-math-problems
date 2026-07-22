@@ -58,3 +58,16 @@ Variant: V1 = direct SAT encoding, per problems/P12-tuscan-2-squares.md.
   kissat t13, kissat t9, plus loop over n ∈ {4,6,7,8,10,12} (2h timeout each).
 
 ## STATUS: (running)
+
+## Checkpoint 2026-07-22 ~23:20 UTC (t+3h)
+- smalls loop: n=4 SAT (s), n=6 SAT (s), n=7 UNSAT (~6 min) — matches
+  Kapralov's table (0 T2(7)) — n=8 SAT after ~65 min (square verified PASS,
+  saved as runs/P12/v1/sq8.txt); n=10 still running.
+- kissat t9 (known-UNSAT calibration), kissat+cadical t11, kissat t13:
+  all still running at 3h wall each, no verdicts.
+- cube pilot: 66 depth-2 cubes on row 1 (prefix 1,a,b with availability
+  pruning), 3-wide kissat; zero cubes finished after ~2h each. Depth-2
+  cubes are still too hard; per-cube difficulty comparable to full problem.
+- Observation: even the SAT dev instance n=8 needs ~1h — this encoding /
+  solver combo finds the T2 landscape genuinely hard; n=11 raw CDCL verdict
+  within one session unlikely; treating run as frontier-push + calibration.
