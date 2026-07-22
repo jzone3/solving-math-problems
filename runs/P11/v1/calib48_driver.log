@@ -1,0 +1,5 @@
+[calib48d6] 72 folded branches (running 0..71), tl=60s
+[calib48d6] branch 0 cs=[-4, 2, 2, 2, 2, 2] -> TIMEOUT (60.0s)
+[calib48d6] branch 1 cs=[-3, 0, 3, 3, 0, 3] -> TIMEOUT (60.0s)
+[calib48d6] branch 2 cs=[-3, 1, 0, 1, 3, 4] -> TIMEOUT (60.0s)
+[calib48d6] branch 3 cs=[-3, 3, 0, 3, 3, 0] -> TIMEOUT (60.0s)
