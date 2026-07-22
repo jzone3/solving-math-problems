@@ -1,1 +1,8 @@
 N=1297296000 (1280 divisors, 1265 usable >= 16, budget 1.668)
+restart 0: 1265 classes, uncovered 1373288, 951.9s
+restart 1: 1265 classes, uncovered 747441, 945.5s
+restart 2: 1265 classes, uncovered 3964422, 927.2s
+restart 3: 1265 classes, uncovered 3600885, 948.2s
+restart 4: 1265 classes, uncovered 665636, 969.5s
+restart 5: 1265 classes, uncovered 3877560, 954.2s
+FAILED: 665636 residues uncovered (density 5.131e-04)

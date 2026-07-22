@@ -7,3 +7,11 @@ restart 4: 945 classes, uncovered 1355935, 133.5s
 restart 5: 945 classes, uncovered 1221585, 132.7s
 restart 6: 945 classes, uncovered 1469991, 133.6s
 restart 7: 945 classes, uncovered 1059455, 131.4s
+restart 8: 945 classes, uncovered 1361135, 130.6s
+restart 9: 945 classes, uncovered 883061, 130.7s
+restart 10: 945 classes, uncovered 494667, 136.5s
+restart 11: 945 classes, uncovered 533688, 135.4s
+restart 12: 945 classes, uncovered 757236, 133.1s
+restart 13: 945 classes, uncovered 307204, 133.0s
+restart 14: 945 classes, uncovered 412735, 137.6s
+FAILED: 307204 residues uncovered (density 1.184e-03)

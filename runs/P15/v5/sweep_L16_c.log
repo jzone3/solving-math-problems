@@ -2,3 +2,5 @@ N=518918400 (1080 divisors, 1065 usable >= 16, budget 1.646)
 restart 0: 1065 classes, uncovered 854438, 308.5s
 restart 1: 1065 classes, uncovered 798421, 309.2s
 restart 2: 1065 classes, uncovered 670300, 313.5s
+restart 3: 1065 classes, uncovered 1530090, 305.5s
+restart 4: 1065 classes, uncovered 2112899, 308.8s

@@ -137,3 +137,23 @@ Deeper 2-adic tail matters enormously (as the literature's 64↑ suggests):
 - Same profile with 3^5 (N=389M): restart 0 uncovered 90206 — worse than 2^7 bump.
 
 L=15/16 sweeps running (2^7 and 2^8 profiles).
+
+## 9. Escalation: L=15 success, L=16 near-miss
+
+- **L=15**: 2^7·3^4·5^2·7·11·13 universe, restart 4 → **COVER, 743 congruences**
+  (`witness_L15_N259459200.json`); PASS on both independent verifiers.
+  Artifacts copied to `solutions/P15/` (with README-v5.md explicitly stating this is an
+  automated-search frontier datapoint, NOT a claim on the >= 43 problem).
+- **L=16**: three exponent profiles tried:
+  - 2^7·3^4·5^2·7·11·13 (N=2.6e8): best 307,204 uncovered over 15 restarts (1.2e-3)
+  - 2^7·3^4·5^3·7·11·13 (N=1.3e9): best 665,636 over 6 restarts (5.1e-4)
+  - 2^7·3^4·5^2·7^2·11·13 (N=1.8e9): best **11,605 uncovered (6.4e-6)** — near-miss;
+    high restart variance (next restarts 1.8e6, 1.3e5). More seeds running.
+  The 7^2 profile (moduli 21, 28, 49, 63, ... available) is clearly the right direction
+  for L=16, mirroring Owens's use of 7^2 in his prime-7 section.
+- One earlier parallel batch of five 1.8 GB runs was OOM-killed (dmesg confirms);
+  re-ran at 3-way parallelism.
+
+Compute spent (approx): ~3.5 h of single-core numpy greedy sweeps across
+N up to 1.8e9, plus ~20 min local-search repair experiments, plus Engine B/C
+backtracking runs (~15 min). All exact, no sampling.
