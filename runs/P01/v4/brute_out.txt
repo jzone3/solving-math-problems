@@ -1,0 +1,3 @@
+n=8: chord-2-factors=2072, min HC=29, uniquely_ham=0
+n=9: chord-2-factors=24692, min HC=36, uniquely_ham=0
+n=10: chord-2-factors=322360, min HC=36, uniquely_ham=0

@@ -1,0 +1,2 @@
+DONE n=19 girth>=5 mod=1 res=0 nodes=93376 hc_calls=0 leaves=417
+MINHC n=19 girth>=5 min=2688 over 417 labeled leaves
