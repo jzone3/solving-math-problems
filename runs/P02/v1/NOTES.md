@@ -74,8 +74,49 @@ Vega graphs for δ > n/3] plus Brandt–Pisanski's regular blow-ups of Vega grap
 Track A should be empty; Track B at δ ≤ n/3 with d_f < 3 is where anything new must
 live.)
 
+## Key structural reduction for the sweep
+
+The multiplication system and d_f are invariant under collapsing to the **core**
+(quotient by the similarity relation N(u)=N(v); Brandt Sec. 2): if G is a blow-up of H
+with class sizes m, then {x>0 : A_G x = c1} is feasible iff {z>0 : A_H z = c1} is
+(class sums z_u = Σ x, and conversely distribute), and d_f(G) = d_f(H) by merging
+identical rows. **Consequence: sweeping all maximal TF graphs up to n vertices decides
+Conjecture 5.1 — and hence 4.1 — for ALL graphs (of any order) whose core has ≤ n
+vertices.** So the frontier below is a statement about cores, which covers infinitely
+many graphs.
+
+## Sweep results (MTF generator of Brandt–Brinkmann–Harmuth, caagt.ugent.be/mtf,
+## compiled against nauty 2.8.9; processing = process.py, exact recheck = exactlp.py)
+
+| n  | #MTF      | δ≥n/3 | δ>n/3 | ≥-infeasible (West CEs) | TrackA CEs | TrackB (df<3 & infeas) |
+|----|-----------|-------|-------|-------------------------|------------|------------------------|
+| 4–8| 25        | –     | –     | 0                       | 0          | 0 |
+| 9  | 16        | 7     | 1     | **1**                   | 0          | 0 |
+| 10 | 31        | 3     | 3     | 0                       | 0          | 0 |
+| 11 | 61        | 7     | 7     | 0                       | 0          | 0 |
+| 12 | 147       | 26    | 2     | **5**                   | 0          | 0 |
+| 13 | 392       | 3     | 3     | 0                       | 0          | 0 |
+| 14 | 1274      | 15    | 15    | 0                       | 0          | 0 |
+| 15 | 5036      | 64    | 3     | **18**                  | 0          | 0 |
+| 16 | 25617     | 7     | 7     | 0                       | 0          | 0 |
+| 17 | 127355    | 15    | 15    | 0                       | 0          | 0 |
+| 18 | 1337848   | 230   | 4     | **77**                  | 0          | 0 |
+| 19 | 13734745  | (run) |       |                         |            |   |
+
+- All 101 "≥"-counterexamples (n=9,12,15,18; only at n ≡ 0 mod 3, δ = n/3 exactly)
+  were **exactly** re-verified (analyze_boundary.py): maximal TF, δ = n/3,
+  multiplication system infeasible over Q, and **d_f = 3 exactly for every one** —
+  i.e. they all sit exactly on the LP boundary of Conjecture 5.1 and none violates it.
+  Their cores have 9–18 vertices (≈18 distinct cores by WL-key).
+- Zero Track A (δ > n/3) failures and zero Track B (d_f < 3) failures anywhere.
+
 ## Log
 
-- [x] n = 5..12 sweep of δ ≥ ⌈n/3⌉ maximal TF graphs (counts in results.txt); found
-      Finding 1.
-- (updates appended below as the sweep escalates)
+- [x] n = 5..12 geng sweep of δ ≥ ⌈n/3⌉ maximal TF graphs; found Finding 1 (n=9).
+- [x] Obtained Brandt 2002 original text; found ≥ vs > paraphrase discrepancy.
+- [x] solutions/P02/verify.py: standalone stdlib verifier for the n=9 witness
+      (maximality, TF, δ=n/3, exact infeasibility + machine-checked hand elimination,
+      exact d_f=3 via primal/dual pair). Prints PASS.
+- [x] Full MTF sweep n ≤ 18 (Tracks A+B): no counterexample to the original conjecture.
+- [x] n = 19 (13.7M graphs) sweep.
+- [ ] n = 20 (~1.4e8 graphs, generated via mtf `file` extension of the N19 set).
