@@ -62,8 +62,23 @@ rounding proportional to fractional x1/x2. 8 starts generated per instance
 
 ## 5. Search log
 
-- Round 1 (started 20:5x UTC): 8 cores ≈ 2 workers/instance × 3600 s
-  (one LP-rounded start + one random-restart worker per instance), engine v3.
-  → results to be appended below.
+- Round 1 (20:57–21:57 UTC): 2 workers/instance × 3600 s (one LP-rounded start + one
+  random-restart worker per instance), engine v3. Best L1 violation reached
+  (L1 = Σ|colsum−K| + Σ|P_ik−Λ|; 0 = solved):
+  | instance | LP-start worker | random worker |
+  |---|---|---|
+  | (14,18;7,1,9;7,4)  | 12 | 10 |
+  | (12,15;6,2,10;8,6) | 4  | 4  |
+  | (12,20;4,3,10;6,4) | 6  | 6  |
+  | (14,28;8,3,14;7,6) | 10 | 10 |
+  Near-miss matrices saved in `round1/best_*.txt`. No solves.
+- `anneal4.c` (WalkSAT-style targeted moves at violated constraints): validated WORSE on the
+  known sibling (L1 16–18 in 120 s where v3 solves); the O(V²) violated-constraint scan per
+  move kills throughput and targeting hurts diversification. Dead end; kept for the record.
+- Basin hopping (`hop.sh` + `perturb.py`): keep best matrix, kick with 8 random in-row swaps,
+  re-anneal 300 s legs. Smoke test on sibling (12,16;4,4,12;9,8) from its L1=14 near-miss:
+  SOLVED in the first leg. Promising escape mechanism from the plateau.
+- Round 2 (22:0x UTC, 3 h): 8 basin-hopping workers, 2 per instance, seeded from round-1
+  near-misses, 300 s legs.
 
 ## STATUS: running
