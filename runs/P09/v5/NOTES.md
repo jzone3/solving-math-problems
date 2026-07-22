@@ -78,4 +78,46 @@ branch-and-bound max-clique, `core.py`) and dense `eigvalsh`. Conjecture ⇔ sco
 - `anneal.py` round 1: n ∈ {20,24,25,28,30,33,35,36,40,45,48}, inits random/turan-union/
   cliques, ~200 restarts × 20–60k flip steps, exact ω every step: global best over
   non-equality graphs ≈ −0.4 (n=20); turan-union inits sit on the score-0 equality
-  plateau and never cross it.
+  plateau and never cross it. A random-init run at n=20 also annealed INTO the equality
+  plateau (best exactly 0) without ever exceeding it.
+
+### Round 2 — fixed-ω anneal in the designed open region (`anneal2.py`)
+
+Literature-designed search: fix ω ∈ {3,4,5} (flips changing ω rejected), seeds =
+connected roughened Turán-unions (irregular, triangle-rich). n ∈ {24,26,30,32,34,36,38,
+40,42,50}, 30–50k steps, ~60 restarts. **All negative**; best −0.32 (n=26, ω=4).
+
+### Round 3 — ELW generalization (`elw.py`)
+
+Also attacked the Elphick–Linz–Wocjan generalization (arXiv:2101.05229 Conj. 2):
+Σ_{i≤ω, λᵢ>0} λᵢ² ≤ 2m(1−1/ω). Found its equality plateau is much larger: ANY union of
+≤ ω balanced Turán graphs T(kᵢr, r) is exactly tight (verified to 1e-12 for r=3..6, up
+to 6 components — includes t·K_w unions). Annealing from these seeds, n ∈ {20,28,36,44},
+~45 restarts × 40k steps: reaches 0 on the plateau, never exceeds it. Negative.
+
+### Round 4 — final escalation
+
+anneal2 ω=4 up to n=60 and ω=3/6 variants, 80k steps (~70 restarts), plus ELW anneal
+n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
+
+## 4. Near-misses & dead ends
+
+- Best genuinely non-tight score found anywhere: ≈ **−0.105** (T(9,3)-blobs overlapping
+  in a 2-set, family A), then −0.2..−0.6 band for pendant-clique / 1-flip perturbations.
+- The equality plateau (unions of same-r balanced Turán graphs; for ELW, unions of up to
+  ω of them) acts as a strong attractor for annealing; every crossing attempt loses at
+  least ~0.1 immediately. Consistent with the §2 first-order-margin argument.
+- Dead end: disjoint-union constructions — provably cannot violate (reduces to
+  Nikiforov's theorem, §2).
+- Total compute: ~2.5 h wall on 8 cores, ~400 annealing restarts (~2×10⁷ scored flips),
+  exact ω at every evaluation; structured scans of 6 parametric families.
+
+## 5. Conclusion
+
+No violation of Bollobás–Nikiforov (nor of the ELW generalization) found anywhere in the
+literature-mapped open region up to n = 60. The perturbative structure around the (large,
+newly catalogued) equality family strongly suggests any counterexample, if one exists,
+is not a local perturbation of extremal graphs and likely requires n beyond this range
+or a fundamentally different global structure.
+
+STATUS: negative
