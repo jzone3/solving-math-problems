@@ -106,3 +106,27 @@ Bernhard Schmidt's page):
   element (16 | v). Hence DB-Open cells (288,81), (384,81), (576,81), (768,81), (864,81)
   [k=81 ∉ {4,9,36}] and (648,36) [16 ∤ 648] are all NONEXISTENT (proper). DB corrections.
 
+### CW(132,81): AGZ Prop 4.2 mechanically re-confirmed
+
+All three arXiv versions (v1 lacks it; v2, v3 = published Crypt. Commun. 2021 contain it) prove
+no CW(132,81). runs/P11/v3/icw132.py independently redoes the computation: ⟨3⟩-orbits of Z_44
+(9 orbits, sizes [1,10,5,5,10,5,2,5,1]); 94736 orbit assignments with Σc²|o| = 81; ZERO have
+flat autocorrelation → no ⟨3⟩-fixed ICW_3(44,81) → (via McFarland/AGZ Thm 4.1 multiplier t=3)
+no CW(132,81) exists. DB "Open" for CW(132,9) appears to be a stale entry — cell is settled NO
+in the published literature. STATUS for this cell: resolved (nonexistence, published + re-verified).
+
+### ICW-lift + orbit CP-SAT attacks on the four truly-open cells
+
+Contraction ICWs enumerated (runs/P11/v3/icw_enum.py), matching AGZ Table 9:
+- (105,36): ICW_3(35,36), mult 4: exactly 1 up to equivalence — 3·(padded CW(7,4)) shape,
+  values {0,±3}, support {0,15,25,30}. Strong structure: any CW(105,36) has mod-35 fiber sums
+  0/±3 with the ±3-fibers a padded CW(7,4)!
+- (117,36): ICW_9(13,36), mult 3: 18 fixed solutions (values {0,±2,±6}).
+- (112,36): ICW_16(7,36), mult 2: 6 fixed solutions (values {±3,±6}).
+- (120,49): k=49=7², gcd(120,49)=1 → AGZ Thm 2.4: 7 is a DIRECT multiplier of the full CW;
+  ⟨7⟩ has order 4 mod 120, 39 orbits. A complete {0,±1}-orbit-assignment search DECIDES the
+  cell. AGZ couldn't exhaust it by hand ("very small multiplier group") — we hand it to CP-SAT
+  (runs/P11/v3/orbit120_sat.py). UNSAT would be a NEW nonexistence theorem for Strassler's table.
+Lift searches (runs/P11/v3/lift_sat.py, CP-SAT, fiber-sum + PACF constraints) launched for
+105/112/117 per contraction class; logs lift105/112/117.log, orbit120.log.
+
