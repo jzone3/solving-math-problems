@@ -40,29 +40,45 @@ def hill_climb(F_adj, types, k, restarts=6, iters=400):
     return best
 
 
+KMIN = int(sys.argv[3]) if len(sys.argv) > 3 else 2
+RESTARTS = int(sys.argv[4]) if len(sys.argv) > 4 else 6
+ITERS = int(sys.argv[5]) if len(sys.argv) > 5 else 400
+
+
+def work(job):
+    F, types, k, edges = job
+    best = hill_climb(F, list(types), k, restarts=RESTARTS, iters=ITERS)
+    if best is None:
+        return None
+    (s, l1, l2, m, w), wts = best
+    return (s, k, edges, types, wts, l1, l2, m, w)
+
+
 def main():
+    import multiprocessing as mp
     atlas = nx.graph_atlas_g()
-    results = []
-    count = 0
+    jobs = []
     for G in atlas:
         k = G.number_of_nodes()
-        if k < 2 or k > KMAX:
+        if k < KMIN or k > KMAX:
             continue
-        if not nx.is_connected(G) and k > 2:
-            pass  # keep disconnected patterns too (unions matter, e.g. K_a u K_a)
         F = [[0] * k for _ in range(k)]
         for u, v in G.edges():
             F[u][v] = F[v][u] = 1
         for types in itertools.product('KI', repeat=k):
-            # all-I blowup of complete pattern = complete multipartite (proved, equality)
-            best = hill_climb(F, list(types), k)
-            if best is None:
+            jobs.append((F, types, k, tuple(G.edges())))
+    results = []
+    count = 0
+    with mp.Pool(8) as pool:
+        for res in pool.imap_unordered(work, jobs, chunksize=16):
+            if res is None:
                 continue
-            (s, l1, l2, m, w), wts = best
-            results.append((s, k, G.edges(), types, wts, l1, l2, m, w))
+            results.append(res)
             count += 1
-            if s > 1e-9:
-                print("VIOLATION?", s, k, list(G.edges()), types, wts, flush=True)
+            if count % 2000 == 0:
+                print(f"...{count}/{len(jobs)} done", flush=True)
+            if res[0] > 1e-9:
+                print("VIOLATION?", res, flush=True)
     results.sort(key=lambda t: -t[0])
     print(f"\nswept {count} (pattern,type) combos, MAX_N={MAX_N}")
     print("top 20 scores:")

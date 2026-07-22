@@ -62,4 +62,32 @@ tiny dense eigenproblems:
   perturb around.
 - **Blow-up sweep k ≤ 6**: running.
 
+## Results (checkpoint 2)
+
+- **Blow-up sweep k ≤ 6** (`blowup_k6.log`): 11,283 (pattern,type) combos, integer
+  weights hill-climbed (6 restarts × 400 iters) up to n = 240. ZERO violations.
+  Max score exactly 0, attained by a rich equality manifold: complete split
+  graphs / any blow-up with λ₂ = 0 and λ₁² = 2m(1−1/ω) (Nikiforov-extremal),
+  balanced multipartite, unions of two Nikiforov-extremal graphs with equal λ₁.
+- **Blow-up sweep k = 7** (`blowup_k7.log`): 133,631 combos (all 1044 atlas
+  patterns × 128 type maps), n ≤ 300, 4×300 hill-climb. ZERO violations; top
+  scores again exactly 0 (same equality classes).
+- **Double Turán unions** (`doubleturan.log`): T(n,ω) ⊔ T(n′,ω) is exactly
+  extremal for ALL part sizes (even unbalanced pairs) — every cross edge
+  strictly decreases the score. 315 graphs, no violation.
+- **Continuous weight relaxation** (`opt_continuous.py`, cont_k5b.log): reported
+  "positives" (up to +2.33) all sit at FRACTIONAL weights in [1,2.5] near K_n;
+  the spectra-floor clamps (λ₂ ≥ −1/0) are invalid at fractional weights.
+  Spot-checks of every such point rounded to integers give strictly negative
+  scores (e.g. triangle-pattern (2,2,2) IKI → −0.383). Artifact, not a lead.
+- **Structural observation** (why unions can't win): by Nikiforov's spectral
+  Turán theorem λ₁(H)² ≤ 2m(H)(1−1/ω(H)) for every H. For a disjoint union
+  G = G₁ ⊔ G₂, {λ₁(G),λ₂(G)} ⊆ {λ₁(G₁),λ₁(G₂),λ₂(G₁),λ₂(G₂)} and the best case
+  λ₁(G₁),λ₁(G₂) gives score(G) ≤ 0 with equality iff both components are
+  Nikiforov-extremal with ω(G₁)=ω(G₂). So any counterexample must be CONNECTED,
+  and our bridging experiments show sparse connections strictly destroy λ₂
+  faster than they credit m. The open window for V2-type constructions is
+  therefore dense connected two-cluster graphs — exactly the blow-up class we
+  swept exhaustively for k ≤ 7.
+
 ## STATUS: (interim) negative — see final line at end of file.
