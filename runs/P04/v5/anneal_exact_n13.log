@@ -1,0 +1,9 @@
+[n=13 it=400 t=31s] cur=5 best=6 m=44 cache=303
+[n=13 it=600 t=43s] cur=4 best=6 m=44 cache=438
+[n=13 it=1000 t=77s] cur=5 best=6 m=47 cache=731
+[n=13 it=1200 t=93s] cur=5 best=6 m=50 cache=873
+[n=13 it=1400 t=106s] cur=5 best=6 m=48 cache=1020
+[n=13 it=1600 t=120s] cur=5 best=6 m=47 cache=1167
+[n=13 it=2000 t=154s] cur=5 best=6 m=51 cache=1440
+[n=13 it=2200 t=170s] cur=5 best=6 m=46 cache=1581
+[n=13 it=2400 t=182s] cur=5 best=6 m=52 cache=1715

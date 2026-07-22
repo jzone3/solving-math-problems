@@ -93,3 +93,22 @@ connected even circulants of degree 4... — trivially fine), n ≤ 12 (HNS exha
 ## 5. Log
 
 (chronological; appended as the run proceeds)
+
+- 20:18 UTC — CP-SAT checker (hajos.py) sanity-verified: K7→3, K9→4, K13→6 cycles
+  (= bound, correct: Hamilton decompositions); K5 infeasible at k=1. Sub-second at n=13.
+- 20:19 — Probe 3a (circulants.py): ALL even connected circulants, n=13..20, degree≥6:
+  1640 graphs, all satisfy Hajós. 14 were heuristic-hard (RLC failed 300 tries — always
+  the near-complete ones), CP-SAT decomposed all. Negative.
+- 20:20–20:35 — Probe 3b (anneal.py): heuristic-hardness annealing, n=13,14,15,16,
+  2h each, δ≥6 Eulerian, triangle-XOR moves. Thousands of escalations to CP-SAT
+  (dense graphs where greedy RLC fails); every single one decomposes within the bound.
+  Observation: RLC-hardness is a poor proxy — it tracks density, not true obstruction.
+- 20:30 — Probe 3c (families.py): Eulerian complete multipartite (all partitions
+  n=13..20 with even degrees, 5 parts max), cycle blowups C_m[E_r] (n=12..21),
+  K13/K15/K17 minus random unions of 1–3 edge-disjoint 2-factors (450 samples each).
+  37 heuristic-hard graphs, all CP-SAT-decomposable within bound. Negative.
+  Note: K13 minus a 2-factor decomposes into FIVE cycles (5×13=65 edges) — even one
+  below the bound; density alone is nowhere near obstructing.
+- 20:40 — Probe 3d (anneal_exact.py): annealing on the EXACT min-decomposition size
+  (CP-SAT downward search, ~0.1–1s/graph at n=13–14, score cached). n=13 and n=14,
+  2.5h each. Quickly finds tight graphs (min-decomp = bound = 6); hunting for bound+1.

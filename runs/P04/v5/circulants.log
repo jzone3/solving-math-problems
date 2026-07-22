@@ -1,0 +1,21 @@
+n=13: 42 circulants checked, all OK
+HARD-FOR-HEURISTIC n=14 S=(1, 2, 3, 4, 5, 6) cpSAT=True
+n=14: 41 circulants checked, all OK
+HARD-FOR-HEURISTIC n=15 S=(1, 2, 3, 4, 5, 6, 7) cpSAT=True
+n=15: 99 circulants checked, all OK
+HARD-FOR-HEURISTIC n=16 S=(1, 2, 3, 4, 5, 6, 7) cpSAT=True
+n=16: 98 circulants checked, all OK
+HARD-FOR-HEURISTIC n=17 S=(1, 2, 3, 4, 5, 6, 7, 8) cpSAT=True
+n=17: 219 circulants checked, all OK
+HARD-FOR-HEURISTIC n=18 S=(1, 2, 3, 4, 5, 6, 8) cpSAT=True
+HARD-FOR-HEURISTIC n=18 S=(1, 2, 3, 4, 5, 6, 7, 8) cpSAT=True
+n=18: 214 circulants checked, all OK
+HARD-FOR-HEURISTIC n=19 S=(1, 2, 3, 4, 6, 7, 8, 9) cpSAT=True
+HARD-FOR-HEURISTIC n=19 S=(1, 2, 3, 4, 5, 6, 7, 8, 9) cpSAT=True
+n=19: 466 circulants checked, all OK
+HARD-FOR-HEURISTIC n=20 S=(1, 2, 3, 4, 5, 6, 8, 9) cpSAT=True
+HARD-FOR-HEURISTIC n=20 S=(1, 2, 3, 4, 6, 7, 8, 9) cpSAT=True
+HARD-FOR-HEURISTIC n=20 S=(1, 3, 4, 5, 6, 7, 8, 9) cpSAT=True
+HARD-FOR-HEURISTIC n=20 S=(2, 3, 4, 5, 6, 7, 8, 9) cpSAT=True
+HARD-FOR-HEURISTIC n=20 S=(1, 2, 3, 4, 5, 6, 7, 8, 9) cpSAT=True
+n=20: 461 circulants checked, all OK
