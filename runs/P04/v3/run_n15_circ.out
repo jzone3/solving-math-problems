@@ -1,0 +1,5 @@
+n=15: 123 Eulerian circulants
+[25/123] {'OK': 25, 'TIGHT': 0, 'CE': 0} 3s
+[50/123] {'OK': 50, 'TIGHT': 0, 'CE': 0} 6s
+[75/123] {'OK': 75, 'TIGHT': 0, 'CE': 0} 9s
+[100/123] {'OK': 100, 'TIGHT': 0, 'CE': 0} 13s

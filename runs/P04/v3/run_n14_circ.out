@@ -1,0 +1,4 @@
+n=14: 56 Eulerian circulants
+[25/56] {'OK': 25, 'TIGHT': 0, 'CE': 0} 1s
+[50/56] {'OK': 50, 'TIGHT': 0, 'CE': 0} 4s
+DONE n=14 mode=circulant {'OK': 55, 'TIGHT': 1, 'CE': 0} total=5s

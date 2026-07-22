@@ -1,0 +1,4 @@
+n=13: 63 Eulerian circulants
+[25/63] {'OK': 25, 'TIGHT': 0, 'CE': 0} 1s
+[50/63] {'OK': 50, 'TIGHT': 0, 'CE': 0} 3s
+DONE n=13 mode=circulant {'OK': 62, 'TIGHT': 1, 'CE': 0} total=4s
