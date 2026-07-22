@@ -64,4 +64,16 @@ instance) — running in background.
 1482 s, double-lex sound). Confirmations launched: solve_cpsat_alt.py (running) and
 kissat on encode_sat.py CNF (134238 vars / 278728 clauses, running).
 
+### Pass-2 completion + confirmations (running log)
+- (12,20;4,3,10;6,4): kissat UNSAT proof **DRAT-VERIFIED by drat-trim** ("s VERIFIED",
+  872 s check, 881 MB proof). Nonexistence now triple-confirmed (2 CP-SAT models + certified SAT).
+- (14,18;7,1,9;7,4): kissat also reports **s UNSATISFIABLE**; drat-trim verifying.
+  solve_cpsat_alt confirmation still running.
+- **(12,15;6,2,10;8,6): INFEASIBLE (solve_cpsat.py, 2007 s)** — third nonexistence result!
+  Confirmations launched: solve_cpsat_alt + kissat CNF (115794 vars / 237980 clauses).
+- (14,28;8,3,14;7,6): pass-2 3600 s run in progress.
+
+Note: DRAT proofs are ~1 GB each — not committed; regenerate deterministically via
+`python3 encode_sat.py V B p1 p2 R K L f.cnf && kissat -q f.cnf f.proof && drat-trim f.cnf f.proof`.
+
 (log continues)
