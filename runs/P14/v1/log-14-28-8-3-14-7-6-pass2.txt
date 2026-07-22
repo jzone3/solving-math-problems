@@ -182,3 +182,4 @@ Starting search at 0.88s with 4 workers.
 #Model  14.91s var:9485/9567 constraints:24572/24693
 #Model  48.12s var:9469/9567 constraints:24554/24693
 #Model 116.12s var:9468/9567 constraints:24552/24693
+#Model 567.80s var:9467/9567 constraints:24552/24693

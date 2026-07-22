@@ -76,4 +76,17 @@ kissat on encode_sat.py CNF (134238 vars / 278728 clauses, running).
 Note: DRAT proofs are ~1 GB each — not committed; regenerate deterministically via
 `python3 encode_sat.py V B p1 p2 R K L f.cnf && kissat -q f.cnf f.proof && drat-trim f.cnf f.proof`.
 
+### DRAT certification complete for all three CPro1 survivors
+| instance | CP-SAT model 1 | CP-SAT model 2 (alt) | kissat | drat-trim |
+|---|---|---|---|---|
+| (12,20;4,3,10;6,4)  | INFEASIBLE 684 s  | INFEASIBLE 575 s | UNSAT | **s VERIFIED** (872 s) |
+| (14,18;7,1,9;7,4)   | INFEASIBLE 1482 s | running          | UNSAT | **s VERIFIED** (1520 s) |
+| (12,15;6,2,10;8,6)  | INFEASIBLE 2007 s | running          | UNSAT | **s VERIFIED** (1317 s) |
+
+All three have machine-checked DRAT UNSAT certificates (kissat + drat-trim) on an
+independently written CNF encoding, in addition to CP-SAT INFEASIBLE. Soundness of the only
+solution-removing device (double-lex) rests on Flener et al. CP 2002 (every {0,1,2}-matrix
+class under row/col permutation contains a doubly-lex-sorted representative), implemented
+independently in each of the three encodings.
+
 (log continues)
