@@ -99,6 +99,16 @@ star K_{1,n−1} and clique+iso G_{(n+2)/2}, geometric cooling 0.05 → 1e−6.
   restarts × 2 seeds each. Result: best found at each even n=2q−2 is exactly
   G_q with f = 0 (float 0 up to 1e−12); at other n, strictly negative optima.
   No f > 0 ever observed. [anneal_run1.log]
+- Run 2 (odd n, where the equality family does not exist): n ∈ {15,19,25,31,41,
+  55,71,91,121,161,201,251,349,499}, 2M iters × 3 restarts × 2 seeds. Optima are
+  K_q + (q±1−2)K_1 with strictly negative f ≈ −1/(16·q²)-ish (e.g. −0.000251 at
+  n = 499). [anneal_run2.log]
+- Run 3 (high budget + random G(n,0.3) seeds to remove seed bias): n ∈ {30,44,
+  58,86,118,158}, 8M iters × 3 restarts × 3 seeds (star / clique+iso / random).
+  Every run converged to G_q with f = 0 at even n = 2q−2; never positive.
+  [anneal_run3.log]
+
+Total annealing compute: ~3.5 h single-core, ~2×10^8 proposed flips, n up to 499.
 
 ## 7. Wide parameterized family scans
 
@@ -138,9 +148,10 @@ Summary: re-verified the exact WoW-129 definition from refutationGBR source;
 discovered dev² is a pure degree-sequence invariant (trace(L²) identity),
 found the exact equality family K_q ∪ (q−2)K_1 (dev = R = q/2 for all q), proved
 129 for regular graphs and clique unions, re-exhausted n ≤ 10 (equality graphs
-are exactly this family), exhausted all ≤3-flip perturbations of the family up
-to symmetry (all strictly negative, deficit Θ(1/q)), and ran long incremental
-annealing at n up to 498 from star and clique seeds — global optimum always
+are exactly this family), exhausted all ≤3-flip (and ≤4-flip for q ≤ 10) perturbations of the family up
+to symmetry (all strictly negative, deficit Θ(1/q); exact-sign checked to
+q = 10^6), and ran ~3.5 h of incremental
+annealing at n up to 499 from star, clique and random seeds — global optimum always
 f = 0 on the equality family, never positive. Strong evidence 129 is TRUE and
 sharp; recommended follow-up: prove 129 via the degree-sequence reformulation
 (§1) with the envelope + slack analysis of §3.
