@@ -73,17 +73,26 @@ Machine: 8 cores, 31 GB RAM. Timings single-core unless noted.
 |---|---|---|
 | full n=8..17 | leaves=0 | ≤ ~90 s each |
 | full n=18 | leaves=0 (nodes 1.74e8, hc_calls 8.5e8) | ~25 min |
-| full n=19 | (running) | |
+| full n=19 | preempted ~2.6 h in (validation-only; n≤21 already GMZ-verified) | |
 | g5 n=19,21,23 | leaves=0 | 0.009 s / 0.44 s / 51 s |
 | g5 n=24 | leaves=0 (nodes 9.0e7) | ~10 min |
 | g5 n=25 | **leaves=0** (nodes 8.4e8, hc_calls 2.9e9, 16/16 residues) | ~35 min on 8 cores |
-| g5 n=26 | (running, 32-way mod split) | |
-| g5 n=27 | (queued in driver, 64-way mod split) | |
+| g5 n=26 | preempted at 4/32 residues, leaves=0 so far (already covered by GMZ ≤26) | |
+| g5 n=27 | **main push**, 256-way mod split on 8 cores (running) | est. ~2–3 days |
 | g5 count n=19 | min=2688 over 417 labeled leaves — matches GMZ Table 3 ✔ | 4 min |
 
-Growth ≈ ×7–11 per vertex. Projections: full n=22 ≈ 2+ days on 8 cores (partial coverage
-planned via mod-split); g5 n=26 ≈ 2–3 h on 8 cores (re-confirms GMZ), g5 n=27 ≈ ~1 day on
-8 cores (**new frontier target**), g5 n=28 out of reach this session.
+Growth ≈ ×7–11 per vertex. Revised projections from measured nodes: full n=22 ≈ 10–20 days
+on 8 cores — out of reach; g5 n=26 ≈ 50 h core (published already; deprioritised); g5 n=27
+≈ 530 h core ≈ 2–3 days on 8 cores. **Strategy pivot (22:15 UTC): all 8 cores on g5 n=27**,
+the cheapest genuinely-new frontier order, since GMZ already covers all-girth ≤21 and g5 ≤26.
+A failed optimization attempt (connected-component prune inside the HC DFS) was ~3× slower
+than the availability-degree pruning alone and was reverted.
+
+Dead ends / notes:
+- Full-girth n=22 exhaustion infeasible on this box (×~10 growth per vertex from n=18's
+  25 min); would need ~100× more compute or a fundamentally better canonical-generation
+  scheme (GMZ-style orderly generation with full isomorphism rejection).
+- Connectivity pruning in the HC test: negative, reverted (kept in git history).
 
 ## 4. Status
 
