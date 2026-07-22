@@ -45,6 +45,34 @@ to ~0: the heuristic then sits exactly on the k plateau.
 
 (checkpointed below as they complete)
 
+### Batch 1 (2026-07-22, ~3.5 h wall each, 8 processes in parallel)
+
+Annealed gap search, 12 600 s per n, quick=12 restarts/iter, deep=400, δ ≥ 6:
+
+| n | k | anneal iterations | best quick-min heuristic | candidates surviving deep restarts | counterexamples |
+|---|---|---|---|---|---|
+| 13 | 6 | 2 427 710 | 6 (= k) | 0 | 0 |
+| 14 | 6 | 1 937 648 | 7 | 0 | 0 |
+| 15 | 7 | 1 583 478 | 8 | 0 | 0 |
+| 16 | 7 | 1 342 051 | 8 | 0 | 0 |
+| 17 | 8 | 1 147 829 | 8 (= k) | 0 | 0 |
+| 18 | 8 | 1 030 358 | 9 | 0 | 0 |
+
+(quick-min occasionally reaches k+1 on 12 restarts, but 400 deep restarts always found a
+≤ k decomposition — zero candidates ever reached the exact oracle in batch 1.)
+
+Direct random sampling with **exact CP-SAT check on every sample** (p ∈ [0.55, 0.95],
+δ ≥ 6, connected Eulerian), 12 600 s each:
+
+- n=13 (k=6): **88 957 graphs tested, all FEASIBLE at ≤ 6 cycles.**
+- n=14 (k=6): **71 077 graphs tested, all FEASIBLE at ≤ 6 cycles.**
+
+### Batch 2 (escalation, 2026-07-22/23, 12 600 s each)
+
+- Anneal n = 19, 20, 21, 22 (seeds 319/320/321/322).
+- sample_exact n = 15, 16 (seeds 415/416).
+(results below when complete)
+
 ### Pilot runs (2026-07-22)
 - n=13, 60 s, weak heuristic: ~340 candidates, **all exact-checked FEASIBLE at k=6** —
   i.e. hundreds of distinct dense δ≥6 Eulerian 13-vertex graphs each decompose into ≤ 6
