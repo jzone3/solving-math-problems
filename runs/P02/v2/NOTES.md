@@ -146,6 +146,15 @@ is MTF), δ(W[t]) = 3t = n/3, and any regular multiplication of W[t] folds (sum 
 over twin classes) to a solution of A_W x = d·1 with x ≥ t ≥ 1, contradicting the
 certificate forcing x_8 = 0. So the boundary statement fails for infinitely many n.
 
+Stronger family: W with weights w = (1,k,k,1,1,1,1,1,k) — i.e. multiply vertices 1, 2, 8
+by k — gives a counterexample of order n = 6+3k for EVERY n ≡ 0 (mod 3), n ≥ 9.
+Degree check (symbolic): every vertex class except 8 has blowup degree exactly
+k+2 = n/3 (tight); class 8 has 2k+2 ≥ n/3. MTF preserved (blowup of MTF, nonempty
+classes); infeasibility inherited via twin-folding to W's system (x ≥ 1 forced,
+x₈ = 0 forced — contradiction). Machine-verified exactly for k = 1..7 (n = 9..27):
+MTF ✓, δ = n/3 ✓, exact_feasible=False ✓ (blowup_family check in this session; found
+via small ILP over blowup weights of all 19 known cores — W itself covers every n).
+
 ## Compute spent
 
 - geng enumeration: ~3.1M triangle-free graphs generated across n = 6..18 (n=18 dominated:
