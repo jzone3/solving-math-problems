@@ -64,6 +64,27 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
         base_clauses.extend(cnf.clauses)
     blocking = []  # all learned blocking clauses, for solver rebuilds
 
+    # Rotation/reflection symmetry breaking: some dihedral image maps a
+    # minimum-distance chord to (0, d) with d = global min chord distance.
+    # Constraint: OR_d z_d, with z_d -> x_{(0,d)} and z_d -> (no chord of
+    # distance < d exists). Sound: every candidate has a dihedral image
+    # satisfying it; completeness preserved because blocking clauses are
+    # added for all dihedral images anyway.
+    def dist(e):
+        return min((e[1] - e[0]) % n, (e[0] - e[1]) % n)
+
+    for d in range(min_dist, n // 2 + 1):
+        e0 = (0, d)
+        if e0 not in var:
+            continue
+        z = pool.id(("z", d))
+        base_clauses.append([-z, var[e0]])
+        for e in chords:
+            if dist(e) < d:
+                base_clauses.append([-z, -var[e]])
+    base_clauses.append([pool.id(("z", d)) for d in range(min_dist, n // 2 + 1)
+                         if (0, d) in var])
+
     def fresh_solver():
         s = Cadical153(bootstrap_with=base_clauses)
         for cl in blocking:
