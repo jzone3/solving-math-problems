@@ -1,0 +1,9 @@
+COUNTEREXAMPLE n=12 g6=K`dlD@OS?N`] farkas=[Fraction(1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(1, 1)]
+COUNTEREXAMPLE n=12 g6=K`dkd@OW?N`] farkas=[Fraction(1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(-1, 1)]
+COUNTEREXAMPLE n=12 g6=KRQME?iI_jam farkas=[Fraction(1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(1, 1)]
+COUNTEREXAMPLE n=12 g6=K@h[bF?o?rcu farkas=[Fraction(-1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(1, 1)]
+COUNTEREXAMPLE n=12 g6=K`edA`OW?^`} farkas=[Fraction(-1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(-1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(-1, 1), Fraction(1, 1)]
+...5000 labelled models, 25 classes
+...10000 labelled models, 25 classes
+...15000 labelled models, 25 classes
+...20000 labelled models, 26 classes
