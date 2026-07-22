@@ -175,7 +175,8 @@ def search(n, t, time_budget=600, report=None):
 if __name__ == "__main__":
     n = int(sys.argv[1]) if len(sys.argv) > 1 else 11
     budget = float(sys.argv[2]) if len(sys.argv) > 2 else 600
-    for t in range(1, n + 1, 2):
+    ts = [int(sys.argv[3])] if len(sys.argv) > 3 else range(1, n + 1, 2)
+    for t in ts:
         if t == n:
             continue  # sigma = id => pure reversal => rows pair up, n odd dead
         st = time.time()

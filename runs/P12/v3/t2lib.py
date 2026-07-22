@@ -39,7 +39,7 @@ def compatible_partial(rows, n):
     return True
 
 
-def dfs_t2(n, fixed_rows=None, time_budget=None, count_all=False, rng=None):
+def dfs_t2(n, fixed_rows=None, time_budget=None, count_all=False, rng=None, stats=None):
     """Row-by-row + cell-by-cell DFS for a T2(n) extending fixed_rows.
 
     Returns a full solution (list of rows) or None. Row 1 defaults to identity
@@ -87,6 +87,9 @@ def dfs_t2(n, fixed_rows=None, time_budget=None, count_all=False, rng=None):
             raise TimeoutError
         if len(cur) == n:
             place_row(list(cur))
+            if stats is not None and len(rows) > stats.get("best", 0):
+                stats["best"] = len(rows)
+                stats["rows"] = [list(r) for r in rows]
             if len(rows) == n:
                 count[0] += 1
                 sol[0] = [list(r) for r in rows]

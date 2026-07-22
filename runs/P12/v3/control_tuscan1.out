@@ -1,0 +1,9 @@
+Tuscan-1 twisted-symmetric n=5 t=1: found=False best=4/5 time=0.0s
+Tuscan-1 twisted-symmetric n=5 t=3: found=False best=4/5 time=0.0s
+Tuscan-1 twisted-symmetric n=7 t=1: found=False best=6/7 time=11.9s
+Tuscan-1 twisted-symmetric n=7 t=3: found=False best=6/7 time=7.2s
+Tuscan-1 twisted-symmetric n=7 t=5: found=False best=6/7 time=14.0s
+Tuscan-1 twisted-symmetric n=9 t=1: found=False best=7/9 time=120.0s
+Tuscan-1 twisted-symmetric n=9 t=3: found=False best=6/9 time=120.0s
+Tuscan-1 twisted-symmetric n=9 t=5: found=False best=8/9 time=120.0s
+Tuscan-1 twisted-symmetric n=9 t=7: found=False best=8/9 time=120.0s

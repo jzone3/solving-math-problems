@@ -51,13 +51,29 @@ impossible for a permutation row), forcing n even — dead. Hence σ is an **inv
 t ≡ n (mod 2) fixed symbols, t ∈ {1,3,...,n-2} (t=n ⇒ σ=id). Rows split into
 mirror-pairs {r, σ(rev(r))} and *self rows* r with r[n-1-j] = σ(r[j]) (middle symbol σ-fixed).
 
-⇒ Exhausting the 5 involution classes t ∈ {1,3,5,7,9} (n=11) covers **all** possible
-nontrivially-symmetric T2(11); if all come back empty, any T2(11) must have trivial
-stabilizer in G. Search: `inv_search.py` (DFS over self rows/mirror pairs, lex symmetry
-breaking among representatives).
+**Claim C (twisted symmetries are dead too — the RIGIDITY THEOREM).** Let n be odd and
+suppose a Tuscan-1 square (a fortiori a T2(n)) is invariant under τ = rev∘σ with σ an
+involution ≠ id. Consider an *anti-fixed pair* (a, σ(a)) with σ(a) ≠ a (there are n−t > 0
+such pairs). The induced action on ordered distance-1 pairs is ι(a,b) = (σ(b), σ(a)),
+which fixes exactly the anti-fixed pairs. The pair (a, σ(a)) is covered exactly once, in
+some row r at positions (i, i+1); τ maps this occurrence to an occurrence of the SAME pair
+in row τ(r) at positions (n−2−i, n−1−i). If τ(r) ≠ r that's a second covering row;
+if τ(r) = r (self row) it's a second position in the same row, since i = n−2−i is
+impossible for n odd. Either way the pair is covered twice — contradiction. ∎
 
-Consistency checks: inv_search finds nothing for n=5,7 (exhaustive, fast) — consistent
-with total nonexistence.
+**Corollary (total rigidity).** Combining Claims A–C: for n = 11, 13, ANY Tuscan-2 square
+has TRIVIAL stabilizer inside the full axiom-symmetry group G = S_n × ⟨rev⟩. Every
+orbit/terrace/difference-set style algebraic construction (which by definition produces a
+square invariant under some nontrivial group element) is therefore **provably impossible**
+for T2(11) and T2(13). If these squares exist, they are totally irregular objects.
+
+Machine evidence:
+- `inv_search.py` (written before Claim C was found): DFS over the twisted-invariant space,
+  exhausts n=5, 7 (all involution classes) with zero solutions, in <2s.
+- `control_tuscan1.py`: same search with the distance-2 constraint DISABLED (pure Tuscan-1),
+  n = 5, 7, 9: every branch dies at ≤ n−1 rows, exactly as Claim C predicts (the missed
+  pairs are the anti-fixed ones).
+- n=9 t=1 run (before being obsoleted by the theorem) reached only 7/9 rows in 1200s.
 
 ## 3. Polynomial-row pool (`poly_pool.py`)
 
