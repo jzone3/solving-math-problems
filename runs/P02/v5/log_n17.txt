@@ -1,0 +1,1 @@
+n=17 mindeg=6: geng_output=14143 maximal_tf=31 infeasible=0

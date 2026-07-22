@@ -64,7 +64,7 @@ Results (boundary cases δ = n/3):
 | 9  | 3 | 23         | 7         | **1** (`H?q``qjo`)           |
 | 12 | 4 | 292        | 26        | **5**                        |
 | 15 | 5 | 5962       | 64        | **18**                       |
-| 18 | 6 | (running)  |           | ≥ 6 found while running      |
+| 18 | 6 | 2438356    | 230       | **77**                       |
 
 Consistency checks (strict δ > n/3 — must all be feasible by Brandt–Thomassé + §2):
 
@@ -135,8 +135,9 @@ multiplications of an induced subgraph").
   simply TRUE via Brandt–Thomassé (§2) and the West page should be updated; either way the
   problem as listed is resolved.
 - Compute spent: minutes for n ≤ 16 (exact rational LP per graph is fast; MTF graphs with
-  δ ≥ n/3 are very rare); n = 17/18 runs continue in background — n=18 geng enumeration is
-  the bottleneck (hours). Results appended below when finished.
+  δ ≥ n/3 are very rare); n = 18 took ~3.5 h wall-clock (geng enumeration of 2,438,356
+  candidates is the bottleneck). Boundary counterexample counts grow: 1/7 (n=9), 5/26 (n=12),
+  18/64 (n=15), 77/230 (n=18) — failure at the boundary is the norm, not an accident.
 
 ## STATUS: SOLVED (counterexample to the conjecture as stated on West's open-problems page;
 smallest witness n=9, machine-verified with exact Farkas certificate; caveat: Brandt's
