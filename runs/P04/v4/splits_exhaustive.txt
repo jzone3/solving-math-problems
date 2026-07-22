@@ -1,0 +1,11 @@
+K13 split a=2: n=14 K=6 feas@K=True 0.2s
+K13 split a=4: n=14 K=6 feas@K=True 0.1s
+K13 split a=6: n=14 K=6 feas@K=True 0.1s
+K13 split a=8: n=14 K=6 feas@K=True 0.1s
+K13 split a=10: n=14 K=6 feas@K=True 0.1s
+K15 split a=2: n=16 K=7 feas@K=True 0.3s
+K15 split a=4: n=16 K=7 feas@K=True 0.3s
+K15 split a=6: n=16 K=7 feas@K=True 0.3s
+K15 split a=8: n=16 K=7 feas@K=True 0.2s
+K15 split a=10: n=16 K=7 feas@K=True 0.2s
+K15 split a=12: n=16 K=7 feas@K=True 0.2s

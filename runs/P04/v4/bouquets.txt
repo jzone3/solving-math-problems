@@ -1,0 +1,9 @@
+(7, 7) n= 13 K= 6 feas@K: True feas@K-1: False 0.2s
+(5, 5, 5) n= 13 K= 6 feas@K: True feas@K-1: False 0.1s
+(9, 5) n= 13 K= 6 feas@K: True feas@K-1: False 0.2s
+(7, 5, 3) n= 13 K= 6 feas@K: True feas@K-1: False 0.1s
+(9, 7) n= 15 K= 7 feas@K: True feas@K-1: False 0.7s
+(7, 7, 3) n= 15 K= 7 feas@K: True feas@K-1: False 0.2s
+(5, 5, 5, 3) n= 15 K= 7 feas@K: True feas@K-1: False 0.1s
+(11, 5) n= 15 K= 7 feas@K: True feas@K-1: False 0.5s
+(13, 3) n= 15 K= 7 feas@K: True feas@K-1: False 0.3s
