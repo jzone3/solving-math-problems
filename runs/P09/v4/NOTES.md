@@ -66,14 +66,32 @@ Let G be a disconnected 12-vertex graph; every component has ≤ 11 vertices. Tw
 
 Hence sweeping connected graphs (`geng -c`) is complete at n = 12.
 
+### Circulants: ALL C_n(S), 4 ≤ n ≤ 50 — ZERO violations (COMPLETE)
+
+Every connection set S ⊆ {1..⌊n/2⌋} (complete graph excluded) for every n ≤ 50:
+2³ + … + 2²⁵ ≈ 1.34×10⁸ circulant graphs total (with multiplicity in S, not up to
+iso — redundant but exhaustive). Zero violations. All best_gap = 0 cases are
+equality at complete-multipartite circulants (e.g. n=50, S giving C_50(…) ≅
+K_{5×10}-type Turán graphs); all non-equality maxima are clearly negative
+(gap ≤ −Ω(m/ω)). Near-boundary floats (~1e-13) again only at exact-equality
+families. Compute: ~40 CPU-min. This covers vertex-transitive territory up to
+n = 50 within the circulant subclass called for by the V4 spec.
+
 ### In progress
 
-- n = 12 connected sweep (`geng -c`, 141,100,986,679 graphs*, 120 res/mod slices,
-  checker2, 6 workers). *count = A001349(12).
-- Circulants n = 21…46 exhaustive over connection sets (n ≤ 20 done above: zero
-  violations, equalities at complete-multipartite circulants only).
+- n = 12 connected sweep (`geng -c`, 141,100,986,679 graphs = A001349(12),
+  120 res/mod slices, checker2). Slices 0–11 local (6 workers); slices 12–119
+  delegated to 12 child worker sessions (9 slices each, branches
+  `runs/P09-v4-n12-<k>`), to be folded back here.
+
+### Independent verifier
+
+`solutions/P09/verify.py`: pure-Python, dependency-free, independently coded
+(Householder+QL eigensolver, Bron–Kerbosch max clique; trace and trace(A²)
+sanity asserts). Verifies any graph6/edge-list witness; `--demo` self-test
+passes (C5, Petersen, K_{3,3} equality).
 
 ## STATUS (checkpoint, to be finalized)
 
 STATUS: negative (so far) — conjecture verified for ALL graphs on ≤ 11 vertices and
-all circulants n ≤ 20; larger sweeps in progress.
+all circulants n ≤ 50; n = 12 connected sweep in progress.
