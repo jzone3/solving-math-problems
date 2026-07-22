@@ -69,6 +69,8 @@ These give a very strong filter; the search below only SAT-checks digraphs meeti
 | smoke random | n 6–10, 2 min | 2 min | 2 | 0 |
 | smoke anneal | n 6–10, 2 min | 2 min | 1 | 0 |
 | smoke search2 | n 8–12, 3 min | 3 min | 3260 | 0 |
+| search2 ×7 seeds 11–17 | n ranges 6–9 … 12–16, 150 min each (parallel) | 17.5 core-h | 409,679 | 0 |
+| search3 (min-#colorings anneal) seed 21 | n 8–13, 150 min | 2.5 core-h | 339,194 | 0 (min colorings never dropped below cap 600) |
 
 (long runs appended below)
 
@@ -94,10 +96,15 @@ random sample (agreement within sampling error).
 
 Combined with ACZ (ρ≥4 ⟹ n≥6), the n≤6 exhaustion means: **any τ=3 counterexample has
 n ≥ 7; no counterexample exists among all simple digraphs with n ≤ 6, nor among all
-2-cycle-free simple digraphs with n = 7.** (n=7 with 2-cycles ≈ 882M instances — out of Python
-reach; noted as open slice.)
+2-cycle-free simple digraphs with n = 7.** (n=7 with 2-cycles is being closed by the
+τ=3-targeted full scan below.)
 
-n = 8, oriented, non-planar underlying (515,858,293 digraphs, τ=3-targeted): running in
-8 chunks (see log_exh3_n8_c*.txt), results appended below.
+n = 8, oriented, non-planar underlying, τ=3-targeted (exhaustive3.py, 8 chunks): **DONE, 0
+counterexamples.** TOTAL = 515,858,293 digraphs; ρ≥4 pass = 64,939,394; τ=3∧ρ≥4 =
+3,483,663; additionally not-ss-connected = **14**; all 14 SAT-checked packable.
+(Per-chunk totals in log_exh3_n8_c*.txt; chunk sums verified = 515,858,293.)
+
+n = 7, ALL simple digraphs incl. 2-cycles (≈882M), τ=3-targeted: running in 8 chunks
+(log_exh3_n7full_c*.txt) — closes the n=7 gap for simple digraphs; results below.
 
 ## STATUS: (running)
