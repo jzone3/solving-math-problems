@@ -28,7 +28,7 @@ def toggle_even_set(n, edges, rng, max_len=6):
     """Toggle a closed (even) set of vertex pairs: random closed walk on vertex
     pairs => pick a cycle v0 v1 ... vL v0 in K_n and flip each pair (vi, vi+1)."""
     E = set(canon(edges))
-    L = rng.choice([3, 4, 5, 6][: max_len - 2])
+    L = rng.choice(list(range(3, max_len + 1)))
     vs = rng.sample(range(n), L)
     T = [(min(a, b), max(a, b)) for a, b in zip(vs, vs[1:] + vs[:1])]
     if len(set(T)) != L:
@@ -90,10 +90,9 @@ def main():
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--iters", type=int, default=200)
     ap.add_argument("--time-limit", type=float, default=120.0)
-    ap.add_argument("--start",
-                    choices=["k13", "k13split", "k15", "k11", "k14mpm", "k16mpm",
-                             "k15split"],
-                    default="k13")
+    ap.add_argument("--start", default="k13",
+                    help="k13|k13split|k15|k11|k14mpm|k16mpm|k15split|"
+                         "bouquet:7,7|cliquetree:5,5,5 (path-glued cliques)")
     ap.add_argument("--log", default="search_log.txt")
     args = ap.parse_args()
     rng = random.Random(args.seed)
@@ -104,7 +103,23 @@ def main():
         lf.write(msg + "\n")
         lf.flush()
 
-    if args.start in ("k14mpm", "k16mpm"):
+    if args.start.startswith("bouquet:") or args.start.startswith("cliquetree:"):
+        sizes = [int(x) for x in args.start.split(":")[1].split(",")]
+        E0 = []
+        if args.start.startswith("bouquet:"):
+            n0, nxt = 1 + sum(s - 1 for s in sizes), 1
+            for s in sizes:
+                vs = [0] + list(range(nxt, nxt + s - 1))
+                nxt += s - 1
+                E0 += [(vs[i], vs[j]) for i in range(s) for j in range(i + 1, s)]
+        else:  # cliquetree: path of cliques, consecutive cliques share one vertex
+            n0 = sum(s for s in sizes) - (len(sizes) - 1)
+            start = 0
+            for s in sizes:
+                vs = list(range(start, start + s))
+                E0 += [(vs[i], vs[j]) for i in range(s) for j in range(i + 1, s)]
+                start += s - 1
+    elif args.start in ("k14mpm", "k16mpm"):
         n0 = 14 if args.start == "k14mpm" else 16
         E0 = [(i, j) for i in range(n0) for j in range(i + 1, n0)
               if not (j == i + 1 and i % 2 == 0)]
@@ -127,10 +142,15 @@ def main():
         weights = [len(e) ** 2 for _, e in pool]
         n, E = rng.choices(pool, weights=weights)[0]
         move = rng.random()
-        if move < 0.3 and n % 2 == 1:
+        if move < 0.25 and n % 2 == 1:
             r = vertex_split(n, E, rng)
+        elif move < 0.5:
+            # double toggle: two independent closed-set flips
+            r1 = toggle_even_set(n, E, rng, max_len=8)
+            r = toggle_even_set(n, r1, rng, max_len=8) if r1 else None
+            r = (n, r) if r else None
         else:
-            r = toggle_even_set(n, E, rng)
+            r = toggle_even_set(n, E, rng, max_len=8)
             r = (n, r) if r else None
         if r is None or not valid(*r):
             stats["invalid"] += 1
