@@ -1,0 +1,31 @@
+instances evaluated: 1305  (max n = 200)
+proof-chain violations: 0
+
+top 15 by score = dev - min(n+,n-):
+    -0.2194  broom(h=2,b=2)                           n=   4 dev=   0.781 n+=   1 n-=   1 diam=   2
+    -0.2194  spider(k=3,L=1)                          n=   4 dev=   0.781 n+=   1 n-=   1 diam=   2
+    -0.2244  broom(h=2,b=3)                           n=   5 dev=   0.776 n+=   1 n-=   1 diam=   2
+    -0.2244  spider(k=4,L=1)                          n=   5 dev=   0.776 n+=   1 n-=   1 diam=   2
+    -0.2444  spider(k=5,L=1)                          n=   6 dev=   0.756 n+=   1 n-=   1 diam=   2
+    -0.2630  broom(h=2,b=1)                           n=   3 dev=   0.737 n+=   1 n-=   1 diam=   2
+    -0.2687  broom(h=2,b=5)                           n=   7 dev=   0.731 n+=   1 n-=   1 diam=   2
+    -0.2929  Kmulti(2x2)+tail0                        n=   4 dev=   0.707 n+=   1 n-=   1 diam=   2
+    -0.3128  Kmulti(2x3)+tail0                        n=   6 dev=   0.687 n+=   1 n-=   1 diam=   2
+    -0.3175  spider(k=8,L=1)                          n=   9 dev=   0.682 n+=   1 n-=   1 diam=   2
+    -0.3597  Kmulti(2x5)+tail0                        n=  10 dev=   0.640 n+=   1 n-=   1 diam=   2
+    -0.3803  broom(h=2,b=10)                          n=  12 dev=   0.620 n+=   1 n-=   1 diam=   2
+    -0.3982  spider(k=12,L=1)                         n=  13 dev=   0.602 n+=   1 n-=   1 diam=   2
+    -0.4169  Kmulti(2x10)+tail0                       n=  20 dev=   0.583 n+=   1 n-=   1 diam=   2
+    -0.4226  Kmulti(3x2)+tail0                        n=   6 dev=   0.577 n+=   1 n-=   2 diam=   2
+
+top 10 by ratio dev/min(n+,n-):
+  r=0.7806  broom(h=2,b=2)                           n=   4 dev=   0.781 n+=   1 n-=   1 diam=   2
+  r=0.7806  spider(k=3,L=1)                          n=   4 dev=   0.781 n+=   1 n-=   1 diam=   2
+  r=0.7756  broom(h=2,b=3)                           n=   5 dev=   0.776 n+=   1 n-=   1 diam=   2
+  r=0.7756  spider(k=4,L=1)                          n=   5 dev=   0.776 n+=   1 n-=   1 diam=   2
+  r=0.7556  spider(k=5,L=1)                          n=   6 dev=   0.756 n+=   1 n-=   1 diam=   2
+  r=0.7370  broom(h=2,b=1)                           n=   3 dev=   0.737 n+=   1 n-=   1 diam=   2
+  r=0.7363  dbroom(h=26,30,30)                       n=  86 dev=  10.308 n+=  14 n-=  14 diam=  27
+  r=0.7313  broom(h=2,b=5)                           n=   7 dev=   0.731 n+=   1 n-=   1 diam=   2
+  r=0.7300  dbroom(h=14,30,30)                       n=  74 dev=   5.840 n+=   8 n-=   8 diam=  15
+  r=0.7157  dbroom(h=38,30,30)                       n=  98 dev=  14.314 n+=  20 n-=  20 diam=  39

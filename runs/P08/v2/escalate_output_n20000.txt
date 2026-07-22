@@ -1,0 +1,47 @@
+dbroom(h=10,b=10)                             n=    30 diam=   11 dev=    3.8273 mu=n+=n-=    6 gap=  +2.1727 ratio=0.63788
+dbroom(h=10,b=20)                             n=    50 diam=   11 dev=    4.0836 mu=n+=n-=    6 gap=  +1.9164 ratio=0.68060
+dbroom(h=10,b=50)                             n=   110 diam=   11 dev=    4.3051 mu=n+=n-=    6 gap=  +1.6949 ratio=0.71752
+dbroom(h=10,b=100)                            n=   210 diam=   11 dev=    4.3967 mu=n+=n-=    6 gap=  +1.6033 ratio=0.73278
+dbroom(h=10,b=500)                            n=  1010 diam=   11 dev=    4.4783 mu=n+=n-=    6 gap=  +1.5217 ratio=0.74638
+dbroom(h=20,b=20)                             n=    60 diam=   21 dev=    7.7381 mu=n+=n-=   11 gap=  +3.2619 ratio=0.70346
+dbroom(h=20,b=40)                             n=   100 diam=   21 dev=    8.4028 mu=n+=n-=   11 gap=  +2.5972 ratio=0.76389
+dbroom(h=20,b=100)                            n=   220 diam=   21 dev=    8.9863 mu=n+=n-=   11 gap=  +2.0137 ratio=0.81694
+dbroom(h=20,b=200)                            n=   420 diam=   21 dev=    9.2279 mu=n+=n-=   11 gap=  +1.7721 ratio=0.83890
+dbroom(h=20,b=1000)                           n=  2020 diam=   21 dev=    9.4429 mu=n+=n-=   11 gap=  +1.5571 ratio=0.85844
+dbroom(h=50,b=50)                             n=   150 diam=   51 dev=   19.5968 mu=n+=n-=   26 gap=  +6.4032 ratio=0.75372
+dbroom(h=50,b=100)                            n=   250 diam=   51 dev=   21.4560 mu=n+=n-=   26 gap=  +4.5440 ratio=0.82523
+dbroom(h=50,b=250)                            n=   550 diam=   51 dev=   23.0806 mu=n+=n-=   26 gap=  +2.9194 ratio=0.88772
+dbroom(h=50,b=500)                            n=  1050 diam=   51 dev=   23.7495 mu=n+=n-=   26 gap=  +2.2505 ratio=0.91344
+dbroom(h=50,b=2500)                           n=  5050 diam=   51 dev=   24.3427 mu=n+=n-=   26 gap=  +1.6573 ratio=0.93626
+dbroom(h=100,b=100)                           n=   300 diam=  101 dev=   39.4025 mu=n+=n-=   51 gap= +11.5975 ratio=0.77260
+dbroom(h=100,b=200)                           n=   500 diam=  101 dev=   43.2408 mu=n+=n-=   51 gap=  +7.7592 ratio=0.84786
+dbroom(h=100,b=500)                           n=  1100 diam=  101 dev=   46.5863 mu=n+=n-=   51 gap=  +4.4137 ratio=0.91346
+dbroom(h=100,b=1000)                          n=  2100 diam=  101 dev=   47.9604 mu=n+=n-=   51 gap=  +3.0396 ratio=0.94040
+dbroom(h=100,b=5000)                          n= 10100 diam=  101 dev=   49.1776 mu=n+=n-=   51 gap=  +1.8224 ratio=0.96427
+dbroom(h=200,b=200)                           n=   600 diam=  201 dev=   79.0288 mu=n+=n-=  101 gap= +21.9712 ratio=0.78246
+dbroom(h=200,b=400)                           n=  1000 diam=  201 dev=   86.8213 mu=n+=n-=  101 gap= +14.1787 ratio=0.85962
+dbroom(h=200,b=1000)                          n=  2200 diam=  201 dev=   93.6029 mu=n+=n-=  101 gap=  +7.3971 ratio=0.92676
+dbroom(h=200,b=2000)                          n=  4200 diam=  201 dev=   96.3852 mu=n+=n-=  101 gap=  +4.6148 ratio=0.95431
+dbroom(h=400,b=400)                           n=  1200 diam=  401 dev=  158.2891 mu=n+=n-=  201 gap= +42.7109 ratio=0.78751
+dbroom(h=400,b=800)                           n=  2000 diam=  401 dev=  173.9873 mu=n+=n-=  201 gap= +27.0127 ratio=0.86561
+dbroom(h=400,b=2000)                          n=  4400 diam=  401 dev=  187.6387 mu=n+=n-=  201 gap= +13.3613 ratio=0.93353
+dbroom(h=400,b=4000)                          n=  8400 diam=  401 dev=  193.2361 mu=n+=n-=  201 gap=  +7.7639 ratio=0.96137
+dbroom(h=800,b=800)                           n=  2400 diam=  801 dev=  316.8133 mu=n+=n-=  401 gap= +84.1867 ratio=0.79006
+dbroom(h=800,b=1600)                          n=  4000 diam=  801 dev=  348.3220 mu=n+=n-=  401 gap= +52.6780 ratio=0.86863
+dbroom(h=800,b=4000)                          n=  8800 diam=  801 dev=  375.7116 mu=n+=n-=  401 gap= +25.2884 ratio=0.93694
+dbroom(h=800,b=8000)                          n= 16800 diam=  801 dev=  386.9386 mu=n+=n-=  401 gap= +14.0614 ratio=0.96493
+cat(s=200,1leg,p1)                            n=   400 diam=  201 dev=   47.1499 mu=n+=n-=  200 gap=+152.8501 ratio=0.23575
+cat(s=500,1leg,p1)                            n=  1000 diam=  501 dev=  117.8549 mu=n+=n-=  500 gap=+382.1451 ratio=0.23571
+cat(s=1000,1leg,p1)                           n=  2000 diam= 1001 dev=  235.7041 mu=n+=n-= 1000 gap=+764.2959 ratio=0.23570
+cat(s=2000,1leg,p1)                           n=  4000 diam= 2001 dev=  471.4055 mu=n+=n-= 2000 gap=+1528.5945 ratio=0.23570
+cat(s=5000,1leg,p1)                           n= 10000 diam= 5001 dev= 1178.5117 mu=n+=n-= 5000 gap=+3821.4883 ratio=0.23570
+spider(k=3,L=100)                             n=   301 diam=  200 dev=   48.0540 mu=n+=n-=  150 gap=+101.9460 ratio=0.32036
+spider(k=3,L=500)                             n=  1501 diam= 1000 dev=  239.2162 mu=n+=n-=  750 gap=+510.7838 ratio=0.31895
+spider(k=3,L=2000)                            n=  6001 diam= 4000 dev=  956.0766 mu=n+=n-= 3000 gap=+2043.9234 ratio=0.31869
+spider(k=10,L=100)                            n=  1001 diam=  200 dev=   44.3745 mu=n+=n-=  500 gap=+455.6255 ratio=0.08875
+spider(k=10,L=500)                            n=  5001 diam= 1000 dev=  221.2611 mu=n+=n-= 2500 gap=+2278.7389 ratio=0.08850
+spider(k=50,L=100)                            n=  5001 diam=  200 dev=   41.6490 mu=n+=n-= 2500 gap=+2458.3510 ratio=0.01666
+
+minimum gap  min(n+,n-)-dev : +1.5217  at dbroom(h=10,b=500)
+maximum ratio dev/min(n+,n-): 0.96493  at dbroom(h=800,b=8000)
+no counterexample; consistent with proof dev < ceil(diam/2) <= mu
