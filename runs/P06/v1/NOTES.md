@@ -80,9 +80,13 @@ Then dev(d) ≤ R_lb(d) for all graphical d of length n ⟹ conj 129 holds for a
 n vertices. Exhausting ALL graphical degree sequences (Erdős–Gallai) with float scoring +
 60-digit mpmath re-check of near-zeros + sympy-exact settlement of ties:
 
-- n ≤ 17: max of dev − R_lb is EXACTLY 0, attained only by the all-zero sequence and
+- n ≤ 21: max of dev − R_lb is EXACTLY 0, attained only by the all-zero sequence and
   (for n = 2(q−1)) the equality sequence (q−1)^q 0^(q−2).  ⟹ **conjecture 129 holds for
-  every graph on ≤ 17 vertices** (new exhaustive frontier; previous exhaustive was n ≤ 10).
+  every graph on ≤ 21 vertices** (new exhaustive frontier; previous exhaustive was n ≤ 10).
+  Enumeration: Python (`frontier.py`) to n = 15, then C (`frontier.c`, ~200×, outputs
+  cross-checked to match Python's graphical-sequence counts and near-zero lists exactly
+  for n ≤ 15) to n = 21 (2.6e9 graphical sequences at n=21); every sequence with float
+  score > −1e−6 was re-verified exactly (sympy): all are the equality family, diff = 0.
 - randomized hillclimb over graphical sequences at n = 16…400: max 0, always the equality
   sequence.
 - 114k random graphical sequences scored (blocks, power-law, uniform, equality-
@@ -91,9 +95,10 @@ n vertices. Exhausting ALL graphical degree sequences (Erdős–Gallai) with flo
 
 ## 7. Compute spent
 
-~2.5 h total: family closed-form sweeps (seconds), threshold anneal (~15 min),
+~4 h total: family closed-form sweeps (seconds), threshold anneal (~15 min),
 mpmath perturbation sweep + local search (~45 min), geng exhaust n≤10 (~8 min),
-degree-sequence exhaust n≤17 (~1.5 h), random degseq search (~10 min).
+degree-sequence exhaust n≤21 (Python ~30 min to n=15, C ~2 h to n=21),
+random degseq search (~10 min).
 
 ## Dead ends / lessons
 
@@ -110,7 +115,7 @@ degree-sequence exhaust n≤17 (~1.5 h), random degseq search (~10 min).
 (1) exact equality family G_q = K_q ∪ (q−2)K₁ with dev = R = q/2 (verified exactly;
 `solutions/P06/verify.py` prints PASS with two independent checks);
 (2) conj 129 reduced to a pure degree-sequence inequality dev(d) ≤ R_lb(d);
-(3) that inequality — hence conj 129 — verified exhaustively for ALL graphs with n ≤ 17
+(3) that inequality — hence conj 129 — verified exhaustively for ALL graphs with n ≤ 21
 (up from the previous exhaustive frontier n ≤ 10). Everything points to 129 being TRUE
 and tight exactly on {∅, K₂, K_q ∪ (q−2)K₁}; recommend V5 attempt a proof via the
 degree-sequence reduction.
