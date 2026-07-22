@@ -135,7 +135,7 @@ def encode2(n, k, fixzero=(), fixpos=(), fixneg=(), classsum=None, proper=True,
         d, bs = liftsum
         assert n % d == 0 and len(bs) == d
         c = n // d
-        assert c <= 3, "blocking-clause lift encoding only for class size <= 3"
+        assert c <= 5, "blocking-clause lift encoding only for class size <= 5"
         import itertools
         for j in range(d):
             idxs = [j + t * d for t in range(c)]

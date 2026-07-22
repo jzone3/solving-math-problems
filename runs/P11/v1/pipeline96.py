@@ -68,10 +68,11 @@ def sat_enum(d, subfold, budget, tag):
     return out, "budget"
 
 
-def lift(b, tag):
+def lift(b, tag, d=None):
+    d = d or LIFT_D
     cnf_path = f"/tmp/lift{N}_{tag}.cnf"
     out_path = f"/tmp/lift{N}_{tag}.out"
-    spec = f"--liftsum={LIFT_D}:" + ",".join(map(str, b))
+    spec = f"--liftsum={d}:" + ",".join(map(str, b))
     subprocess.run([sys.executable, os.path.join(HERE, "cw_cnf.py"), "encode",
                     str(N), str(K), cnf_path, spec, "--nofix0"],
                    check=True, capture_output=True)
@@ -94,15 +95,21 @@ STATS = {"lift": {"SAT": 0, "UNSAT": 0, "TIMEOUT": 0}, "enum_branches": 0}
 
 
 def dfs(level, parent_fold, tag):
-    if level == len(LEVELS):
-        res, row = lift(parent_fold[1], tag)
+    pd, pb = parent_fold
+    if N // pd <= 5:
+        # early lift attempt at this level: SAT wins, UNSAT prunes subtree,
+        # TIMEOUT falls through to deeper enumeration
+        res, row = lift(pb, tag, pd)
         STATS["lift"][res] += 1
-        print(f"  LIFT[{tag}] b48={parent_fold[1]} -> {res}", flush=True)
+        print(f"  LIFT[{tag}] d={pd} b={pb} -> {res}", flush=True)
         if row:
             wpath = os.path.join(HERE, f"witness_{N}_{K}.json")
             json.dump({"n": N, "k": K, "row": row}, open(wpath, "w"))
             print(f"WITNESS WRITTEN {wpath}", flush=True)
             raise SystemExit(0)
+        if res == "UNSAT" or level == len(LEVELS):
+            return
+    if level == len(LEVELS):
         return
     d = LEVELS[level]
     bs, status = sat_enum(d, parent_fold, ENUM_TL, tag)

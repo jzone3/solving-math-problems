@@ -29,3 +29,7 @@ mod6: 72 raw -> 8 classes
 [c0.25] d=24 parent=12 -> 0 folds (exhausted)
 [c0.26] d=24 parent=12 -> 0 folds (exhausted)
 [c0.27] d=24 parent=12 -> 0 folds (exhausted)
+[c0.28] d=24 parent=12 -> 0 folds (exhausted)
+[c0.29] d=24 parent=12 -> 91 folds (budget)
+[c0.29.0] d=48 parent=24 -> 0 folds (budget)
+[c0.29.1] d=48 parent=24 -> 0 folds (budget)
