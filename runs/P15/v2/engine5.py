@@ -36,9 +36,7 @@ def sample_sweeps(N, divs, sample, gates, vmax_sample, verbose=True):
                 continue
             if S.size == 0:
                 break
-            bc = np.bincount((S % v).astype(np.int64), minlength=v)
-            a = int(bc.argmax())
-            c = int(bc[a])
+            a, c = best_class(S, v)
             if c == 0:
                 continue
             exp_full = total / v  # sample points per class if class untouched
@@ -77,6 +75,20 @@ def materialize_holes(N, placements, seg=1 << 24, cap=1_200_000_000,
     return np.concatenate(holes) if holes else np.zeros(0, dtype=np.int64)
 
 
+def best_class(holes, v):
+    """argmax residue class of v on the hole list, memory O(|holes|)."""
+    if holes.size == 0:
+        return 0, 0
+    r = holes % v
+    if v <= 4 * holes.size:
+        bc = np.bincount(r.astype(np.int64), minlength=v)
+        a = int(bc.argmax())
+        return a, int(bc[a])
+    vals, counts = np.unique(r, return_counts=True)
+    j = int(counts.argmax())
+    return int(vals[j]), int(counts[j])
+
+
 def place_on_holes(holes, divs, used, verbose=True):
     t0 = time.time()
     placed = 0
@@ -85,9 +97,8 @@ def place_on_holes(holes, divs, used, verbose=True):
             continue
         if holes.size == 0:
             break
-        bc = np.bincount((holes % v).astype(np.int64), minlength=v)
-        a = int(bc.argmax())
-        if bc[a] == 0:
+        a, c = best_class(holes, v)
+        if c == 0:
             continue
         used[v] = a
         holes = holes[holes % v != a]
@@ -131,14 +142,14 @@ def one_opt_stream(N, used, holes, t_budget=3600, seed=0, verbose=True):
     rng = np.random.default_rng(seed)
     t0 = time.time()
     npasses = 0
+    best_used, best_holes = dict(used), holes
     while holes.size and time.time() - t0 < t_budget:
         npasses += 1
+        p_bad = max(0.02, 0.25 * 0.8 ** npasses)
         sizes, _ = stream_excl(N, used)
         cand = []
         for v, a in used.items():
-            bc = np.bincount((holes % v).astype(np.int64), minlength=v)
-            a2 = int(bc.argmax())
-            gain = int(bc[a2])
+            a2, gain = best_class(holes, v)
             if gain == 0:
                 continue
             if gain > sizes[v] or (gain == sizes[v] and rng.random() < 0.15):
@@ -154,11 +165,9 @@ def one_opt_stream(N, used, holes, t_budget=3600, seed=0, verbose=True):
         for v in sorted(cand, reverse=True):
             if holes.size == 0:
                 break
-            bc = np.bincount((holes % v).astype(np.int64), minlength=v)
-            a2 = int(bc.argmax())
-            gain = int(bc[a2])
+            a2, gain = best_class(holes, v)
             ep = excl_pts[v]
-            if gain < ep.size and not (npasses > 1 and rng.random() < 0.2):
+            if gain < ep.size and not (npasses > 1 and rng.random() < p_bad):
                 continue
             used[v] = a2
             holes = holes[holes % v != a2]
@@ -166,11 +175,21 @@ def one_opt_stream(N, used, holes, t_budget=3600, seed=0, verbose=True):
                 keep = ep[ep % v != a2]
                 holes = np.unique(np.concatenate([holes, keep]))
             moved += 1
+        # incremental hole tracking is only a heuristic within the pass
+        # (exclusive-point snapshots go stale as moves are applied); recompute
+        # holes exactly before deciding anything further.
+        holes = materialize_holes(N, used, verbose=False)
+        if holes.size < best_holes.size:
+            best_used, best_holes = dict(used), holes
+        elif holes.size > 2 * best_holes.size:
+            used, holes = dict(best_used), best_holes  # elitist restore
         if verbose:
             print(f"  one_opt pass {npasses}: moved={moved} holes={holes.size} "
-                  f"t={time.time()-t0:.0f}s", flush=True)
+                  f"best={best_holes.size} t={time.time()-t0:.0f}s", flush=True)
         if moved == 0:
             break
+    if best_holes.size < holes.size:
+        used, holes = best_used, best_holes
     return holes, used
 
 

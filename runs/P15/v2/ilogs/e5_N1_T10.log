@@ -1,2 +1,21 @@
 N=2205403200 (2^6,3^4,5^2,7,11,13,17) T=10: 1671 divisor values, recip=2.397
- sample sweep 0 (gate=0.98): placed=417 sample_uncov=4049147/19909757 t=47s
+ sample sweep 0 (gate=0.98): placed=417 sample_uncov=4049147/19909757 t=45s
+ sample sweep 1 (gate=0.9): placed=15 sample_uncov=4041241/19909757 t=57s
+ sample sweep 2 (gate=0.7): placed=89 sample_uncov=3713734/19909757 t=69s
+ sample sweep 3 (gate=0.4): placed=155 sample_uncov=2457010/19909757 t=78s
+ sample sweep 4 (gate=0.15): placed=118 sample_uncov=661481/19909757 t=79s
+ sample sweep 5 (gate=0.0): placed=178 sample_uncov=62827/19909757 t=79s
+ sample sweep 6 (gate=0.0): placed=0 sample_uncov=62827/19909757 t=79s
+phase1 done: 972 placements
+  materialize 0%: holes so far 55139 t=0s
+phase2: exact holes = 7244285 (density 3.28e-03)
+ hole placement: 699 values, holes left 6031628 t=75s
+  one_opt pass 1: moved=628 holes=554716 best=554716 t=207s
+  one_opt pass 2: moved=860 holes=61054 best=61054 t=295s
+  one_opt pass 3: moved=578 holes=15086 best=15086 t=370s
+  one_opt pass 4: moved=343 holes=1799 best=1799 t=444s
+  one_opt pass 5: moved=200 holes=693 best=693 t=517s
+  one_opt pass 6: moved=109 holes=106 best=106 t=591s
+  one_opt pass 7: moved=38 holes=0 best=0 t=668s
+T=10 N=2205403200: SUCCESS congs=1671 holes=0
+wrote 1671 -> covers/e5_T10_2.2e9.txt

@@ -83,3 +83,7 @@ Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap 
         99       0        40   0.01%   0               inf                  inf       11      3    459     1456k  1620.2s
        101      16        41   0.01%   0               inf                  inf       11      3    461     1476k  1635.5s
        101      15        41   0.01%   0               inf                  inf       11      3    461     1476k  1649.9s
+       109      15        42   0.01%   0               inf                  inf      776      4    473     1575k  1817.1s
+       111      15        43   0.02%   0               inf                  inf      777      4    483     1611k  1844.3s
+       113      15        44   0.02%   0               inf                  inf      778      4    487     1628k  1856.7s
+       115      15        45   0.02%   0               inf                  inf      779      4    489     1650k  1873.1s

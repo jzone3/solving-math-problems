@@ -1,0 +1,11 @@
+N=2205403200 (2^6,3^4,5^2,7,11,13,17) T=11: 1670 divisor values, recip=2.297
+ sample sweep 0 (gate=0.98): placed=402 sample_uncov=11290743/19909757 t=123s
+ sample sweep 1 (gate=0.9): placed=57 sample_uncov=11268713/19909757 t=176s
+ sample sweep 2 (gate=0.7): placed=226 sample_uncov=9292596/19909757 t=230s
+ sample sweep 3 (gate=0.4): placed=93 sample_uncov=2236224/19909757 t=236s
+ sample sweep 4 (gate=0.15): placed=93 sample_uncov=704643/19909757 t=237s
+ sample sweep 5 (gate=0.0): placed=100 sample_uncov=171281/19909757 t=237s
+ sample sweep 6 (gate=0.0): placed=0 sample_uncov=171281/19909757 t=237s
+phase1 done: 971 placements
+  materialize 0%: holes so far 147568 t=0s
+phase2: exact holes = 19390867 (density 8.79e-03)
