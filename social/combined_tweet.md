@@ -9,7 +9,7 @@ three tweets max, lowercase, no hashtags. attach all three graphics to tweet 1
 
 we pointed a swarm of devin sessions at obscure open math problems. three are now settled — and machine-checked in lean 4:
 
-- graffiti conjecture 154 (open since ~1988): FALSE
+- graffiti conjecture 154 (published 1988): FALSE
 - graffiti conjectures 39 & 40: TRUE, with a 4-line proof
 - brandt's regular supergraph problem (as stated on west's list): FALSE at n=9
 
@@ -31,6 +31,7 @@ everything — statements, witnesses, proofs — verified in lean 4 + mathlib, a
 ---
 
 notes:
+- tweet 1 is ~330 chars — needs a premium/long-post account, or trim the closing line ("no sorry. no trust-me. details below" → "no sorry. details below") to fit 280.
 - tweet 1 carries all three graphics; 2 and 3 are text replies.
 - keep the geng–wu–wang 2020 credit in tweet 3 (do not claim the spectral lemma as new).
 - "as stated on west's list" hedge in tweet 1 is load-bearing: brandt's original strict version is a theorem (brandt–thomassé); what fails is the ≥ n/3 boundary version west records.
