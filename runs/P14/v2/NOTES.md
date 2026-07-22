@@ -49,4 +49,19 @@ multiplicity counts, column sums, all pairwise inner products = L; prints PASS/F
 
 (updated below as results come in)
 
+- ~21:30–22:00 UTC: kissat (sym encodings) reports **s UNSATISFIABLE** for
+  i12-15 (12,15;6,2,10;8,6), i12-20 (12,20;4,3,10;6,4), i14-18 (14,18;7,1,9;7,4)
+  within ~1–1.5h each. i14-28 still running; nosym runs still running.
+  CAUTION: UNSAT under symmetry breaking — before claiming nonexistence we must
+  (a) confirm nosym runs also UNSAT, and/or (b) validate the sym encoding does not
+  wrongly exclude solutions. Validation in flight:
+  - sanity/: sym encoding on 4 CPro1-SOLVED instances (14,21;6,3,12;8,6),
+    (16,22;9,1,11;8,5), (12,16;4,4,12;9,8), (12,21;4,5,14;8,8) — must come back SAT.
+  - cpsat.py: independent OR-Tools CP-SAT model (integer vars, multiplication
+    equalities; only row-0 fixing as symmetry) cross-checking (12,15) — running.
+  Soundness argument for sym: fixing row 0 is WLOG (all rows share the same value
+  multiset, columns freely permutable); remaining group = row perms of rows 1..V-1 ×
+  column perms within row-0 segments; double-lex (Flener et al. 2002) has a
+  representative in every orbit of such a product group.
+
 ## STATUS: running
