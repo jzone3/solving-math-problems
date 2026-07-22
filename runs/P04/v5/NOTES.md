@@ -140,3 +140,13 @@ assume every cycle passes through the max-degree vertex.)
   independently validated edge-by-edge; escalation to CP-SAT never needed — the RLC
   greedy found a ≤6-cycle decomposition for every single graph within 120 restarts).
   Frontier statement: no 6-regular counterexample on 13 vertices exists. t≈80s total.
+- 21:50 — Probe 3f escalated: **EXHAUSTIVE sweep of ALL 21,609,300 connected 6-regular
+  graphs on n=14** (geng 6-way split, ~20 min wall on 6 cores): 0 escalations, every
+  graph greedily decomposed into ≤ 6 cycles (validated). No 6-regular counterexample
+  on ≤ 14 vertices.
+- 22:20 — n=15 6-regular spot-sweep: geng slices 0–3 of 400 (16,411,085 graphs, ≈1% of
+  an estimated ~1.6·10^9 space): 0 escalations. (Full n=15 6-regular exhaustion would
+  need ~60 core-hours — feasible for a dedicated V2-style run.)
+- 22:25 — Probe 3g (sampler.py): mixed-degree layer, degrees ∈ {6,8} (full space
+  ~10^10+, not exhaustible; geng cannot pre-filter parity). Random triangle-XOR walk
+  sampling, n=13,14,15,16, 1.5h × 4 cores, ~4–5k distinct graphs/s per core.
