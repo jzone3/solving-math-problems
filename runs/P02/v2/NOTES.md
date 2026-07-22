@@ -108,6 +108,8 @@ residual interpretation question; the problem file explicitly targets the bounda
 | 16 | 584              | 7              | 0 |
 | 17 | 14143            | 31             | 0 |
 | 18 | 2438356          | 230            | **77** |
+| 19 | 42815            | 9              | 0 |
+| 20 | (8-way parallel, see scan20_*.log) | — | — |
 
 (n=18 run 8-way parallel via geng res/mod classes; ~25 min wall. Also, ALL 171 MTF
 graphs with δ≥n/3 for n=6..17 were re-checked with the exact rational pipeline, not just
