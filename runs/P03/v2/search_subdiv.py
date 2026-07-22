@@ -50,11 +50,37 @@ def transform(n, arcs, w, null_choice, solid_choice=None, solid_mult=None):
         c = 1 if solid_mult is None else solid_mult[j]
         add_path(arcs[i][0], arcs[i][1], k, c)
     for j, i in enumerate(nulls):
+        if null_choice[j] == 0:
+            continue  # delete the null arc (0 parallel copies)
         add_path(arcs[i][0], arcs[i][1], null_choice[j])
     return nn, out
 
 
+def weakly_connected(n, arcs):
+    adj = [[] for _ in range(n)]
+    for (u, v) in arcs:
+        adj[u].append(v)
+        adj[v].append(u)
+    seen = {0}
+    st = [0]
+    while st:
+        x = st.pop()
+        for y in adj[x]:
+            if y not in seen:
+                seen.add(y)
+                st.append(y)
+    return len(seen) == n
+
+
 def test_instance(nn, na, ilp_budget, stats, hits, always_ilp=False):
+    used = sorted({x for a in na for x in a})
+    relab = {x: i for i, x in enumerate(used)}
+    nn = len(used)
+    na = [(relab[u], relab[v]) for (u, v) in na]
+    if not weakly_connected(nn, na):
+        stats.setdefault("disconnected", 0)
+        stats["disconnected"] += 1
+        return
     t, _ = core.tau(nn, na)
     if t is None or t == 0:
         stats["tau0"] += 1

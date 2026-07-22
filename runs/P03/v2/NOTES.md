@@ -82,4 +82,32 @@ restores Woodall. Every instance so far packs. ρ-filter rarely fires (these
 instances have many imbalanced vertices), so results are essentially fully
 ILP-certified.
 
+## 4. Domination lemma (kills the literal subdivision family)
+
+**Lemma.** If D' is obtained from D by subdividing an arc a into u→x→v, then
+τ(D') = τ(D) and ν(D') ≥ ν(D).
+*Proof.* Lower sets of D' correspond to lower sets of D (x goes with u or with
+v), so dicuts of D' are exactly the dicuts of D with a replaced by exactly one
+of its two halves; hence τ is preserved. Given τ pairwise disjoint dijoins of
+D, replace a (in the unique dijoin containing it, if any) by both halves: each
+lifted set hits every dicut of D', and they stay disjoint. ∎
+
+Similarly, adding an arc never decreases ν (every remaining dicut of D+e
+restricted to old arcs is a dicut of D). Machine-checked on 83 random
+digraphs (`test_lemma.py` PASS: τ preserved by subdivision, ν monotone under
+subdivision and arc addition).
+
+**Consequence.** In the literal V2 transform family "each weight-0 arc → a
+directed path of k ≥ 1 unit arcs", every instance is dominated by the
+all-plain (k=1 everywhere) instance: if that one packs — and it does, for D1
+(τ=4), D2 (τ=3), ring(5) (τ=4), and the middle-multiplied τ≥3 extensions
+(τ=5, τ=6) — every subdivision of it packs too. The thousands of ILP-verified
+subdivision instances (Section 3) confirm this empirically: zero failures.
+The searches that remain meaningful are those NOT dominated:
+  (a) gadgets with ≥2 parallel paths per null arc (τ can grow),
+  (b) DELETING null arcs (choice k=0; creates new dicuts, can lower τ),
+  (c) annealing with arc deletions/reroutes.
+Deletion searches launched: D1/D2 exhaustive over {delete, keep}^nulls and
+random over {0,1,2}.
+
 STATUS: running (checkpoint; final status at bottom when done)
