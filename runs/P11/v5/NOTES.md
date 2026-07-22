@@ -11,6 +11,12 @@ theorems, self-conjugacy/Lander, field descent) over all open cells n<=200.
 - Current dataset has **28** cells with status "Open" in Strassler's range
   (n<=200, k=s^2<=100), not 22 as the problem file says. The 6 cells named in
   the problem file are all "Open" in the current dataset.
+- Reconciliation vs AGZ 2021 Table 10 (22 open): dataset additionally lists
+  as Open the 5 regression cells below, plus CW(132,81) and CW(182,64)
+  (AGZ Props 4.2/5.1 claim these are dead but the dataset has never credited
+  those two propositions -- see Finding B); conversely dataset marks
+  CW(116,49) No (AGZ) though it appears in the paper's open table.
+  22 + 7 - 1 = 28: consistent.
 
 ### Finding A (data regression in the source repository — witnesses recovered)
 
@@ -87,9 +93,9 @@ CW(57,49) (72 fixed solutions) and CW(63,16) (8 fixed solutions).
 | CW(195,36)  | 65 | 3  | 16 | 8 (fold 5:0) | survives |
 | CW(140,64)  | 35 | 4  | 2  | 4  | survives |
 | CW(180,64)  | 45 | 4  | 2  | 2  | survives |
-| CW(182,64)  | 91 | 2  | 2  | **0** | killed, conditional on Thm 4.1 (= AGZ Prop 5.1) |
+| CW(182,64)  | 91 | 2  | 2  | **0** | killed, conditional on Thm 4.1 (= AGZ Prop 5.1); independently re-verified by icw_recheck.py (FFT-based, 0 sols) |
 | CW(196,64)  | 49 | 4  | 2  | 4  | survives |
-| CW(132,81)  | 44 | 3  | 3  | **0** | killed, conditional on Thm 4.1 (= AGZ Prop 4.2) |
+| CW(132,81)  | 44 | 3  | 3  | **0** | killed, conditional on Thm 4.1 (= AGZ Prop 4.2); independently re-verified by icw_recheck.py (FFT-based, 0 sols) |
 | CW(156,81)  | 52 | 3  | 3  | 264 | survives |
 | CW(195,81)  | 65 | 3  | 3  | 8 (fold 5:0) | survives |
 | CW(198,81)  | 22 | 9  | 3  | 18 | survives |
@@ -104,6 +110,9 @@ CW(57,49) (72 fixed solutions) and CW(63,16) (8 fixed solutions).
 Notes: counts are raw fixed-by-t solutions with B(1)=+s (no dedup by
 decimation/translation), hence larger than AGZ's equivalence-class counts.
 Fold 5:0 justifications: see section on fold normalization below.
+Cross-implementation controls: icw_recheck.py (independent Python DFS +
+FFT flat-power check) reproduces 9 sols for ICW9(13,36), 2 for ICW3(35,36),
+8 for CW(63,16), and 0/0 for the two killed cells.
 
 ### 3b. CW(120,49): UNCONDITIONAL NONEXISTENCE (new result, pending
 independent confirmation)
