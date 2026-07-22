@@ -64,17 +64,33 @@ extension, ACZ Fig. 1 discussion citing [25]).
 
 ## 3. Results so far (all machine-checked; running log)
 
-| search | space | unique instances | τ distribution | packing failures |
+| search | space | unique instances tested | τ distribution | packing failures |
 |---|---|---|---|---|
 | D1 exhaustive, null→{1,2} | 2^12 | 1376 | all τ=4 | 0 |
-| D1 exhaustive, null→{1,3} | 2^12 | (running) | τ=4 | 0 so far |
-| D1 exhaustive, null→{2,3} | 2^12 | (running) | | |
-| D2 exhaustive, null→{1,2} | 2^14 | (running) | all τ=3 so far | 0 so far |
-| D1+mult2 middles, null→{1,2} | 2^12 | (running) | τ=5 | 0 so far |
-| D1+mult3 middles, null→{1,2} | 2^12 | (running) | | |
-| D1 random, null→{1,2,3} | sample 40k | (running) | | |
-| D2 random, null→{1,2,3} | sample 40k | (running) | | |
-| D1+mult2+solid-subdiv random | sample 40k | (running) | | |
+| D1 exhaustive, null→{1,3} | 2^12 | 1376 | all τ=4 | 0 |
+| D2 exhaustive, null→{1,2} | 2^14 | 13000+ (killed as dominated, see §4) | all τ=3 | 0 |
+| D1+mult2 middles (τ≥3 ext), null→{1,2} | 2^12 | 1376 | all τ=5 | 0 |
+| D1+mult3 middles, null→{1,2} | 2^12 | 1376 | all τ=6 | 0 |
+| **D1 FULL exhaustive, null→{0,1,2}** (delete/arc/path2) | 3^12 | ~400k (9 shards) | τ1 62%, τ2 30%, τ3 ~5.5k/shard, τ4 <1% | **0** |
+| D1 exhaustive, null→{0,1} | 2^12 | 1360 | τ≤4 | 0 |
+| D2 exhaustive, null→{0,1} | 2^14 | 16230 | τ≤3 | 0 |
+| D2 random, null→{0,1,2} | 40k sample | 39849 | τ≤3 (2293 τ=3) | 0 |
+| D1+mult2, null→{0,1} & random {0,1,2} | 2^12 + 30k | 28772 | τ≤5 | 0 |
+| D1+mult3, null→{0,1} | 2^12 | 1360 | τ≤6 | 0 |
+| ring(5) random, null→{0,1,2} | 20k sample | 4200+ | τ≤4 | 0 |
+| ring(7) random, null→{0,1} | 20k sample | 800+ | τ≤2 | 0 |
+| gadget search D1/D2 (parallel paths, copies≤3, len≤3, deletions, solid subdiv) | random | ~5000 (slower/bigger) | τ up to 6 | 0 |
+| anneal x4 workers (reroute/add/delete/subdivide/smooth, τ≥3 kept, ρ maximized) | ~150k+ steps | ~100k evals | τ 3–5, ρ up to 12 | 0 |
+
+Also: all-ones (nulls→plain arcs) base instances individually checked:
+D1 (τ=4), D2 (τ=3), ring(5) (τ=4, ρ=5), ring(7) (τ=4, ρ=7),
+D1+mult2 (τ=5), D1+mult3 (τ=6) — ALL pack.
+
+Scope note: Cornuéjols–Guenin's second counterexample D3 (Fig. 10) was not
+reconstructed — its figure is a multi-cluster drawing that resisted reliable
+automated extraction, and it is qualitatively the same class as D2 (τ=2,
+ν=1, DAG). Dead end logged; a future run could reconstruct it from CG 2002
+directly.
 
 Observation: making the null arcs unit arcs *raises* τ (D1 all-ones: τ=4;
 D2: τ=3) — the former null arcs now provide exactly the extra capacity that
