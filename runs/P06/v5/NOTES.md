@@ -79,35 +79,46 @@ bipartite). Machine checks: exhaustive all graphs n ≤ 9 (E* = λ1²+R²−2m �
 min 0 at complete bipartite) and the final inequality on n ≤ 10 / annealing to
 n = 80 — no violation, equality exactly as characterized.
 
-## 4. Conjecture 129: reduction chain (proof program, partially complete)
+## 4. Conjecture 129: reduction program (sharp lemmas isolated; proof gap remains)
 
-With R ≥ m/λ1 (steps 1–2 above), 129 follows from
-**G\*: λ1 · dev_L ≤ m**, and with Hong's bound λ1² ≤ 2m − n′ + 1
-(n′ = # non-isolated vertices; isolated vertices change neither λ1, m nor R),
-G\* follows from the pure degree-sequence inequality
-**H\*: (2m − n′ + 1) · (Var(d) + d̄) ≤ m²**.
+With R ≥ m/λ1 (steps 1–2 of the 698 proof) and R ≥ m²/S (Cauchy–Schwarz),
+129 follows from ANY of:
 
-Status of the chain (all machine-verified):
-- G\*, H\* hold for ALL graphs n ≤ 9 (exhaustive), tight exactly at
-  K_k ∪ (k−2)K_1 (both) — and G\* asymptotically tight at stars.
-- Useful bound: maximizing dev_L² over the number of isolated vertices gives
-  dev_L ≤ (M1 + 2m)/(4m) with equality iff n = 8m²/(M1+2m); the crude
-  n-free composite fails for stars (n ≥ 11), so n must be kept in H\*.
-- Since dev_L² is increasing in M1 = Σd², the extremal graphs for H\* at fixed
-  (m, n′, n) maximize M1 ⇒ Ahlswede–Katona: quasi-star or quasi-complete
-  degree sequences. Symbolic verification on those 2–3-parameter families is
-  the remaining gap for a full proof of 129 (see test_families output below).
-- Independent supporting reduction (also verified n ≤ 9, tight at the same
-  family): C\*: m³ ≥ M2 · dev_L², M2 = Σ_{uv∈E} d_u d_v, which implies 129 via
-  R² ≥ m³/M2 (Cauchy–Schwarz/Jensen). [A weaker AM–GM chain via M1 (D\*) is
-  FALSE — refuted at stars; logged as dead end.]
+- **G\*: λ1 · dev_L ≤ m** (λ1 adjacency spectral radius);
+- **I\*: s⁺ · dev_L ≤ m** (stronger: s⁺ ≥ λ1);
+- **M\*: S · dev_L ≤ m²**, S = Σ_{uv∈E} √(d_u d_v) — eigenvalue-free!
+
+All three verified with NO violation: exhaustive n ≤ 9 (G\*, I\*), n ≤ 8/9
+(M\*), annealing to n = 120 (G\*, I\*) / n = 60 (M\*) always saturating at
+exactly 0, tight precisely at K_k ∪ (k−2)K_1 and asymptotically at stars.
+Since √(xy) is supermodular, S is maximized among realizations of a degree
+sequence by switch-stable (threshold-like) graphs, and dev_L is degree-only,
+so threshold graphs are the natural extremal candidates for M\*: exhaustive
+over ALL 2^(n−1) threshold creation sequences for n ≤ 21 (`threshold_scan.py`)
+— max exactly 0 at the same family. Proving M\* for threshold graphs (a
+2-parameter-per-block analysis) is the isolated remaining gap for 129.
+
+Refuted intermediate routes (dead ends, all machine-refuted):
+- **H\*** (Hong composite): (2m − n′ + 1)·dev_L² ≤ m² is FALSE as a pure
+  degree-sequence statement — annealing over graphical sequences
+  (`hstar_search.py`) finds e.g. d = (12,11,2×10,1) with adversarial isolated
+  padding, gap +10.96. Hong's bound is too lossy for hub-plus-many-low-degree
+  sequences (their λ1 is far below √(2m−n′+1)).
+- **C\***: M2 · dev_L² ≤ m³ (M2 = Σ_E d_u d_v): holds n ≤ 9 but FALSE at
+  n = 20/30 (annealed violations, `reduction_anneal.py`).
+- **J\***: (max_u Σ_{v~u} d_v) · dev_L² ≤ m²: FALSE (n = 16 annealed).
+- **K\***: (max_{uv∈E} m_u m_v) · dev_L² ≤ m² (m_u = avg neighbor degree):
+  FALSE already at n = 7 exhaustive.
+- **D\*** (AM–GM via M1): FALSE at stars.
 
 ## 5. Searches (all negative = conjectures supported)
 
 - Exhaustive (nauty-geng, incl. disconnected): all graphs n ≤ 9 for 129 (std
-  and MAD readings) and 698A; n = 10 run for both scores. Max score 0,
-  attained only by the equality families. Reproduces + extends the
-  Brewster–Dinneen–Faber n ≤ 10 frontier for the corrected 698 reading.
+  and MAD readings) and 698A; n = 10 COMPLETE (all 12,005,168 graphs): max
+  score 0 for both, attained only by the equality families
+  (129: K_6 ∪ 4K_1; 698A: complete bipartite + isolated).
+- Exhaustive over all threshold graphs n ≤ 21 (2^20 creation sequences) for
+  the M\* reduction: max exactly 0 at K_k ∪ (k−2)K_1.
 - Parameterized families: stars, stars+matchings/cliques, double stars,
   complete split, K_{a,b} ± edges/matchings, complete multipartite, up to
   n = 400. All ≤ 0; K_{a,b} exactly 0 for 698A.
@@ -117,9 +128,10 @@ Status of the chain (all machine-verified):
 
 ## 6. Compute spent
 
-~10 min exhaustive n ≤ 9 (both conjectures, three readings) ×2, n = 10 scan
-(~12.0M graphs) in background (~1–2 h), annealing ~40 core-min, family scans
-~2 min. All on a single VM, numpy eigensolves.
+~10 min exhaustive n ≤ 9 (both conjectures, three readings) ×2, n = 10 full
+scan (12.0M graphs, ~25 min), threshold scan n ≤ 21 (~2 min, vectorized),
+annealing ~3 core-h total (conjectures + 6 reduction scores, n up to 120),
+degree-sequence annealing for H\*, family scans ~2 min. Single VM, numpy.
 
 ## 7. Files
 
@@ -128,7 +140,12 @@ Status of the chain (all machine-verified):
 - `family_scan.py` — closed-form family scans.
 - `local_search.py` — annealed edge-flip search.
 - `test_reduction.py`, `test_reduction2.py`, `test_reduction698.py`,
-  `test_reduction129.py` — machine checks of the reduction chains.
+  `test_reduction129.py`, `test_reduction129b.py` — machine checks of the
+  reduction chains (E*/F*/G*/H*/I*/J*, C*/D*).
+- `hstar_search.py` — degree-sequence annealing refuting H\*.
+- `reduction_anneal.py` — graph annealing refuting C\*, supporting G\*/I\*.
+- `mstar_anneal.py`, `threshold_scan.py` — the eigenvalue-free M\* reduction.
+- `../../solutions/P06/PROOF-698.md` — full proof writeup for 698.
 - `../../solutions/P06/verify.py` — independent verifier (exact arithmetic)
   for the claimed results: the 698A proof-chain inequalities, the equality
   families, and the refutationGBR-698 vacuity claim. Prints PASS.
@@ -136,8 +153,11 @@ Status of the chain (all machine-verified):
 ## STATUS
 
 **STATUS: frontier-pushed / partially SOLVED — WoW conjecture 698 (correct
-adjacency reading) PROVED TRUE (elementary proof via λ1R ≥ m, machine-checked
-exhaustively to n = 10); its refutationGBR encoding shown vacuous (definitional
-bug). Conjecture 129 NOT refuted: reduced to a finite-looking degree-sequence
-inequality H\* (verified n ≤ 9, tight family characterized); all searches
-(exhaustive n ≤ 10, annealing to n = 80, families to n = 400) negative.**
+adjacency reading) PROVED TRUE (elementary proof via λ1R ≥ m ⇒ λ1²+R² ≥ 2m ⇒
+s⁻ ≤ R; equality iff complete bipartite + isolated; machine-checked, verify.py
+PASS, exhaustive to n = 10); its refutationGBR encoding shown vacuous
+(definitional bug: Laplacian has no negative eigenvalues). Conjecture 129 NOT
+refuted: exhaustive n ≤ 10 (12M graphs), threshold graphs n ≤ 21, annealing to
+n = 120, families to n = 400 all negative; 129 reduced to the sharp
+eigenvalue-free inequality M\*: S·dev_L ≤ m² (tight at K_k ∪ (k−2)K_1 and
+stars), with Hong/M2/neighbor-sum composites machine-refuted as dead ends.**
