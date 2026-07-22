@@ -181,9 +181,12 @@ feasibility): n ≤ 12 complete, n = 13 in progress at this checkpoint.
 | 10 | 31 | 26 | 0 |
 | 11 | 61 | 43 | 0 |
 | 12 | 147 | 78 | 0 |
+| 13 | 392 | 144 | 0 |
 
-Conjecture 5.1 verified for all maximal triangle-free graphs with n ≤ 12 (frontier
-pushed; zero prior compute recorded in the literature).
+Conjecture 5.1 verified for all maximal triangle-free graphs with n ≤ 13
+(19.4M connected TF graphs streamed at n = 13; MTF count 392 matches the known
+sequence). n = 14 sweep (~250M TF graphs, 8-way) in progress. Frontier pushed;
+no prior computation on Conjecture 5.1 recorded in the literature.
 
 ## Final STATUS line
 
