@@ -73,7 +73,7 @@ least as fast as dev. Exhaustive nauty-geng sweeps (`exhaustive_geng.py`):
 | 7 | 853 | −0.2687 |
 | 8 | 11 117 | −0.2936 |
 | 9 | 261 080 | −0.3162 |
-| 10 | (running, see geng10.log) | |
+| 10 | 11 716 571 | −0.3295 |
 
 Worst margins get MORE negative with n — the conjectures are not tight
 anywhere except at tiny complete-multipartite-like graphs.
@@ -104,14 +104,18 @@ those only shrink the range/bound or are absorbed by the strict slack.
   graphs (n ≤ 6), 49 spectral-design graphs to n = 1000, and 152 random
   graphs/trees to n = 500. **Prints PASS** (~8 s).
 - `exhaustive_geng.py` re-checks conjectures + chain over all connected
-  graphs n ≤ 9 (272k graphs) with an independent BFS/g6 code path; n = 10
-  (11.7M) running.
+  graphs n ≤ 10 (11.99M graphs total) with an independent BFS/g6 code path —
+  zero violations of the conjectures or of any proof step.
+- `exact_crosscheck.py`: exact rational dev² vs exact root counts of the
+  integer characteristic polynomial (sympy real-root isolation) on the
+  worst-margin graphs and samples — agrees with the float pipeline, so no
+  tolerance artifacts.
 - Per methodology, SOLVED status still wants a second independently written
   verifier from another session.
 
 ## 5. Compute spent
 
-~15 min harness sweeps + ~5 min geng n≤9 + background geng n=10 (hours).
+~15 min harness sweeps + ~5 min geng n≤9 + ~2.5 h geng n=10 (11.7M graphs).
 No SAT/annealing needed — the analytic bound closed the problem.
 
 ## 6. Dead ends / near-misses
