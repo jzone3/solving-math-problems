@@ -70,4 +70,6 @@ See results.log (machine-written, one RESULT line per completed (n,L)). Checkpoi
   n=13 completes in < 3 min total. This already extends the literature's exhaustive frontier
   (n <= 12), and does so for ALL graphs (via the R1/R2 minimality reductions), not just via
   isomorph-free generation.
-- n = 14+: running, see below.
+- n = 14, L = 4..8 (full feasible range): **UNSAT**. Total ~29 min, hardest cell L=8
+  (949s, 95960 blocking clauses). No counterexample on <= 14 vertices.
+- n = 15+: running, see below.

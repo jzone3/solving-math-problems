@@ -30,3 +30,15 @@ RESULT n=13 L=6 status=UNSAT iters=165 blockclauses=15592 time=31.4s
 === n=13 L=7 (time limit 10800.0s) ===
 RESULT n=13 L=7 status=UNSAT iters=154 blockclauses=33177 time=101.9s
 === n=14 L=4 (time limit 10800.0s) ===
+RESULT n=14 L=4 status=UNSAT iters=127 blockclauses=0 time=178.4s
+=== n=14 L=5 (time limit 10800.0s) ===
+RESULT n=14 L=5 status=UNSAT iters=435 blockclauses=9678 time=98.7s
+=== n=14 L=6 (time limit 10800.0s) ===
+RESULT n=14 L=6 status=UNSAT iters=640 blockclauses=29793 time=50.1s
+=== n=14 L=7 (time limit 10800.0s) ===
+RESULT n=14 L=7 status=UNSAT iters=377 blockclauses=58247 time=438.2s
+=== n=14 L=8 (time limit 10800.0s) ===
+RESULT n=14 L=8 status=UNSAT iters=208 blockclauses=95960 time=948.8s
+=== n=15 L=4 (time limit 10800.0s) ===
+RESULT n=15 L=4 status=UNSAT iters=1 blockclauses=0 time=38.3s
+=== n=15 L=5 (time limit 10800.0s) ===

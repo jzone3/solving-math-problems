@@ -14,3 +14,9 @@ RESULT n=13 L=4 status=UNSAT iters=418 blockclauses=3169 time=9.7s
 RESULT n=13 L=5 status=UNSAT iters=226 blockclauses=7080 time=11.4s
 RESULT n=13 L=6 status=UNSAT iters=165 blockclauses=15592 time=31.4s
 RESULT n=13 L=7 status=UNSAT iters=154 blockclauses=33177 time=101.9s
+RESULT n=14 L=4 status=UNSAT iters=127 blockclauses=0 time=178.4s
+RESULT n=14 L=5 status=UNSAT iters=435 blockclauses=9678 time=98.7s
+RESULT n=14 L=6 status=UNSAT iters=640 blockclauses=29793 time=50.1s
+RESULT n=14 L=7 status=UNSAT iters=377 blockclauses=58247 time=438.2s
+RESULT n=14 L=8 status=UNSAT iters=208 blockclauses=95960 time=948.8s
+RESULT n=15 L=4 status=UNSAT iters=1 blockclauses=0 time=38.3s
