@@ -38,3 +38,20 @@ A problem is only marked SOLVED when:
 
 `runs/INDEX.md` tracks the matrix: problem × variant × session link × status
 (queued / running / negative / near-miss / SOLVED).
+
+## Formalization gate (mandatory for every Lean formalization and every claimed solution)
+
+Before any result is presented as settled, all three checks must be completed and documented:
+
+1. **Statement fidelity** — the Lean statement (and the operational encoding used in search/verifiers)
+   must be checked word-by-word against the ORIGINAL problem source (not a paraphrase, not the
+   catalog file). Document every convention choice (matrix entries used, population vs sample
+   statistics, multiplicity, strict vs non-strict inequalities, connectivity assumptions) and why it
+   matches the source. Independent confirmation by a second session is required.
+2. **Priority check** — a dedicated literature search that nobody has already resolved the problem
+   (and that key lemmas are credited if previously published). Record the searches performed, what
+   was found, and any unread/paywalled sources as explicit residual risks.
+3. **Survey of efforts (bonus but expected)** — a short survey of prior attacks on the specific
+   problem: exhaustive-search frontiers, partial results, related theorems, who worked on it.
+
+Deliverable: a PRIORITY.md / fidelity section in the corresponding solutions/<Pxx>/ folder.
