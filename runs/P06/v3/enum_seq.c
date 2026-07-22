@@ -8,7 +8,8 @@
  * Enumerates nonincreasing sequences (n-1 >= d1 >= ... >= dn >= 0), even sum,
  * Erdos-Gallai at leaves. Reports any sequence with g > EPS, tracks max g
  * (excluding exact-equality clique+padding cases up to fp noise).
- * usage: ./enum_seq n
+ * usage: ./enum_seq n [d1_lo d1_hi]   (optional: restrict first degree value
+ *        to [d1_lo, d1_hi] for parallel partitioning; results are additive)
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -73,8 +74,10 @@ static void rec(int i, int hi, long long sum) {
 
 int main(int argc, char **argv) {
     n = atoi(argv[1]);
+    int lo = argc > 3 ? atoi(argv[2]) : 0;
+    int hi = argc > 3 ? atoi(argv[3]) : n - 1;
     for (int x = 0; x < 64; x++) lg[x] = x ? x * log((double)x) : 0.0;
-    rec(0, n - 1, 0);
+    for (int v = hi; v >= lo; v--) { d[0] = v; rec(1, v, v); }
     printf("n=%d graphical sequences=%lld max g=%.12g seq:", n, cnt_graphical, maxg);
     for (int i = 0; i < n; i++) printf(" %d", maxseq[i]);
     printf("\n");

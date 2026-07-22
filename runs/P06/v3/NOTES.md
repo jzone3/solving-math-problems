@@ -106,8 +106,9 @@ Evidence for (★):
   attained only at K_t ∪ (t−2)K_1 sequences.
 - Exhaustive over ALL graphical degree sequences (`enum_seq.c`):
   n = 8 (1,212 seqs), 10 (16,015), 12 (222,116), 14 (3,166,851),
-  n = 16 (45,967,478), n = 18 (675,759,563): max g = 0 (±2e-15),
-  argmax = K_t ∪ (t−2)K_1 sequence every time. n = 20 running.
+  n = 16 (45,967,478), n = 18 (675,759,563), n = 20 (10,029,832,753): max g = 0
+  (±2e-15), argmax = K_t ∪ (t−2)K_1 sequence every time. n = 22 running
+  (8-way partition by d₁).
 - Closed form on the equality family: for K_t ∪ zeros, (★) reduces to
   (t−1)(n−t+1) ≤ n²/4 — plain AM–GM, equality iff t−1 = n/2, i.e. exactly
   the K_t ∪ (t−2)K_1 padding. So (★) is sharp precisely at the equality family.
@@ -143,9 +144,9 @@ edge-weight-regular graphs).
    exhausted n below n₀ yields a fully verified frontier).
 
 **Corollary of the (★) exhaust (steps 1 + enum): WoW conjecture 129 is TRUE for
-every graph on n ≤ 18 vertices** — pushes the exhaustive frontier from n = 10
-(Brewster–Dinneen–Faber 1995) to n = 18 without enumerating graphs (only degree
-sequences), on top of the direct geng exhaust n ≤ 12.
+every graph on n ≤ 20 vertices** — pushes the exhaustive frontier from n = 10
+(Brewster–Dinneen–Faber 1995) to n = 20 without enumerating graphs (only degree
+sequences), on top of the direct geng exhaust n ≤ 12. (n = 22 in progress.)
 
 ## 7. Status: (updated as runs finish)
 
