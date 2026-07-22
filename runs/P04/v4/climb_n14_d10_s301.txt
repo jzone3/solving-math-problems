@@ -1,0 +1,44 @@
+=== climb n=14 dmax=10 K=6 start mincyc=5 m=66 ===
+it=0 cur=5 best=5 m=63
+it=200 cur=5 best=5 m=44
+it=400 cur=5 best=5 m=46
+it=600 cur=5 best=5 m=43
+it=800 cur=5 best=5 m=48
+it=1000 cur=5 best=5 m=52
+it=1200 cur=5 best=5 m=43
+it=1400 cur=5 best=5 m=52
+it=1600 cur=5 best=5 m=44
+it=1800 cur=5 best=5 m=44
+it=2000 cur=5 best=5 m=42
+it=2200 cur=5 best=5 m=38
+it=2400 cur=5 best=5 m=59
+it=2600 cur=5 best=5 m=50
+it=2800 cur=5 best=5 m=51
+it=3000 cur=5 best=5 m=46
+it=3200 cur=5 best=5 m=47
+it=3345 restart (stalled at 5)
+it=3400 cur=5 best=5 m=46
+it=3600 cur=5 best=5 m=46
+it=3800 cur=5 best=5 m=47
+it=4000 cur=5 best=5 m=45
+it=4200 cur=5 best=5 m=48
+it=4400 cur=5 best=5 m=46
+it=4600 cur=5 best=5 m=47
+it=4800 cur=5 best=5 m=42
+it=5000 cur=5 best=5 m=56
+it=5200 cur=5 best=5 m=45
+it=5400 cur=5 best=5 m=57
+it=5600 cur=5 best=5 m=48
+it=5800 cur=5 best=5 m=51
+it=6000 cur=5 best=5 m=51
+it=6200 cur=5 best=5 m=47
+it=6400 cur=5 best=5 m=45
+it=6401 restart (stalled at 5)
+it=6600 cur=5 best=5 m=49
+it=6800 cur=5 best=5 m=49
+it=7000 cur=5 best=5 m=38
+it=7200 cur=5 best=5 m=49
+it=7400 cur=5 best=5 m=46
+it=7600 cur=5 best=5 m=50
+it=7800 cur=5 best=5 m=45
+=== done: best=5 K=6 ===

@@ -171,6 +171,8 @@ def main():
             log("WITNESS SAVED -- stopping")
             break
         if res in ("TIGHT", "TIGHT?"):
+            if max(deg) < 2 * ((nn - 1) // 2):
+                log(f"STRUCTURAL-TIGHT n={nn} m={len(EE)} edges={canon(EE)}")
             pool.append((nn, EE))
             if len(pool) > 40:
                 pool.pop(1)

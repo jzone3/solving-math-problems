@@ -1,0 +1,36 @@
+=== climb n=18 dmax=10 K=8 start mincyc=8 m=136 ===
+it=0 cur=8 best=8 m=131
+it=200 cur=8 best=8 m=80
+it=400 cur=8 best=8 m=73
+it=600 cur=8 best=8 m=73
+it=800 cur=8 best=8 m=89
+it=1000 cur=8 best=8 m=79
+it=1200 cur=8 best=8 m=81
+it=1366 restart (stalled at 8)
+it=1400 cur=8 best=8 m=101
+it=1600 cur=8 best=8 m=88
+it=1800 cur=8 best=8 m=78
+it=2000 cur=8 best=8 m=86
+it=2200 cur=8 best=8 m=87
+it=2400 cur=8 best=8 m=94
+it=2600 cur=8 best=8 m=87
+it=2731 restart (stalled at 8)
+it=2800 cur=8 best=8 m=79
+it=3000 cur=8 best=8 m=94
+it=3200 cur=8 best=8 m=86
+it=3400 cur=8 best=8 m=87
+it=3600 cur=8 best=8 m=92
+it=3800 cur=8 best=8 m=88
+it=4000 cur=8 best=8 m=87
+it=4151 restart (stalled at 8)
+it=4200 cur=8 best=8 m=97
+it=4400 cur=8 best=8 m=74
+it=4600 cur=8 best=8 m=77
+it=4800 cur=8 best=8 m=82
+it=5000 cur=8 best=8 m=78
+it=5200 cur=8 best=8 m=83
+it=5400 cur=8 best=8 m=83
+it=5497 restart (stalled at 8)
+it=5600 cur=8 best=8 m=89
+it=5800 cur=8 best=8 m=86
+=== done: best=8 K=8 ===

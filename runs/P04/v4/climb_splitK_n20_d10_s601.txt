@@ -1,0 +1,24 @@
+=== climb n=20 dmax=10 K=9 start mincyc=9 m=171 ===
+it=0 cur=9 best=9 m=168
+it=200 cur=9 best=9 m=92
+it=400 cur=9 best=9 m=110
+it=600 cur=9 best=9 m=93
+it=800 cur=9 best=9 m=117
+it=1000 cur=9 best=9 m=106
+it=1200 cur=9 best=9 m=112
+it=1400 cur=9 best=9 m=111
+it=1447 restart (stalled at 9)
+it=1600 cur=9 best=9 m=107
+it=1800 cur=9 best=9 m=104
+it=2000 cur=9 best=9 m=95
+it=2200 cur=9 best=9 m=99
+it=2400 cur=9 best=9 m=101
+it=2600 cur=9 best=9 m=117
+it=2800 cur=9 best=9 m=99
+it=2969 restart (stalled at 9)
+it=3000 cur=9 best=9 m=111
+it=3200 cur=9 best=9 m=104
+it=3400 cur=9 best=9 m=102
+it=3600 cur=9 best=9 m=108
+it=3800 cur=9 best=9 m=84
+=== done: best=9 K=9 ===

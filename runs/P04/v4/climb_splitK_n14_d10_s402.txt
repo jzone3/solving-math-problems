@@ -1,0 +1,48 @@
+=== climb n=14 dmax=10 K=6 start mincyc=6 m=78 ===
+it=0 cur=6 best=6 m=75
+it=200 cur=6 best=6 m=52
+it=400 cur=6 best=6 m=52
+it=600 cur=6 best=6 m=43
+it=800 cur=6 best=6 m=43
+it=1000 cur=6 best=6 m=52
+it=1200 cur=6 best=6 m=45
+it=1205 restart (stalled at 6)
+it=1400 cur=6 best=6 m=56
+it=1600 cur=6 best=6 m=50
+it=1800 cur=6 best=6 m=52
+it=2000 cur=6 best=6 m=49
+it=2200 cur=6 best=6 m=57
+it=2247 restart (stalled at 6)
+it=2400 cur=6 best=6 m=45
+it=2600 cur=6 best=6 m=53
+it=2800 cur=6 best=6 m=53
+it=3000 cur=6 best=6 m=42
+it=3200 cur=6 best=6 m=54
+it=3400 cur=6 best=6 m=46
+it=3418 restart (stalled at 6)
+it=3600 cur=6 best=6 m=45
+it=3800 cur=6 best=6 m=50
+it=4000 cur=6 best=6 m=49
+it=4200 cur=6 best=6 m=48
+it=4400 cur=6 best=6 m=44
+it=4600 cur=6 best=6 m=42
+it=4636 restart (stalled at 6)
+it=4800 cur=6 best=6 m=50
+it=5000 cur=6 best=6 m=54
+it=5200 cur=6 best=6 m=56
+it=5400 cur=6 best=6 m=45
+it=5600 cur=6 best=6 m=57
+it=5769 restart (stalled at 6)
+it=5800 cur=6 best=6 m=54
+it=6000 cur=6 best=6 m=48
+it=6200 cur=6 best=6 m=53
+it=6400 cur=6 best=6 m=48
+it=6600 cur=6 best=6 m=54
+it=6800 cur=6 best=6 m=52
+it=6885 restart (stalled at 6)
+it=7000 cur=6 best=6 m=51
+it=7200 cur=6 best=6 m=55
+it=7400 cur=6 best=6 m=52
+it=7600 cur=6 best=6 m=47
+it=7800 cur=6 best=6 m=54
+=== done: best=6 K=6 ===

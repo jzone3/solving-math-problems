@@ -1,0 +1,48 @@
+=== climb n=16 dmax=10 K=7 start mincyc=7 m=105 ===
+it=0 cur=7 best=7 m=106
+it=200 cur=7 best=7 m=60
+it=400 cur=7 best=7 m=69
+it=600 cur=7 best=7 m=69
+it=800 cur=7 best=7 m=65
+it=1000 cur=7 best=7 m=56
+it=1200 cur=7 best=7 m=60
+it=1352 restart (stalled at 7)
+it=1400 cur=7 best=7 m=60
+it=1600 cur=7 best=7 m=67
+it=1800 cur=7 best=7 m=66
+it=2000 cur=7 best=7 m=71
+it=2200 cur=7 best=7 m=67
+it=2400 cur=7 best=7 m=65
+it=2560 restart (stalled at 7)
+it=2600 cur=7 best=7 m=58
+it=2800 cur=7 best=7 m=66
+it=3000 cur=7 best=7 m=63
+it=3200 cur=7 best=7 m=64
+it=3400 cur=7 best=7 m=70
+it=3600 cur=7 best=7 m=63
+it=3800 cur=7 best=7 m=72
+it=3895 restart (stalled at 7)
+it=4000 cur=7 best=7 m=64
+it=4200 cur=7 best=7 m=72
+it=4400 cur=7 best=7 m=65
+it=4600 cur=7 best=7 m=66
+it=4800 cur=7 best=7 m=79
+it=5000 cur=7 best=7 m=73
+it=5200 cur=7 best=7 m=64
+it=5223 restart (stalled at 7)
+it=5400 cur=7 best=7 m=66
+it=5600 cur=7 best=7 m=70
+it=5800 cur=7 best=7 m=72
+it=6000 cur=7 best=7 m=72
+it=6200 cur=7 best=7 m=62
+it=6400 cur=7 best=7 m=70
+it=6449 restart (stalled at 7)
+it=6600 cur=7 best=7 m=72
+it=6800 cur=7 best=7 m=72
+it=7000 cur=7 best=7 m=65
+it=7200 cur=7 best=7 m=71
+it=7400 cur=7 best=7 m=65
+it=7600 cur=7 best=7 m=77
+it=7800 cur=7 best=7 m=67
+it=7822 restart (stalled at 7)
+=== done: best=7 K=7 ===
