@@ -1,0 +1,5 @@
+m=   6 (n=  10) best perturbed f = -0.132283011 at flips ((0, 1),)
+m=  10 (n=  18) best perturbed f = -0.087679853 at flips ((0, 3),)
+m=  20 (n=  38) best perturbed f = -0.046908942 at flips ((2, 3),)
+m=  50 (n=  98) best perturbed f = -0.019502656 at flips ((0, 1),)
+m= 120 (n= 238) best perturbed f = -0.008246734 at flips ((2, 3),)
