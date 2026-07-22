@@ -7,9 +7,21 @@ import random
 import sys
 import time
 from hajos import hajos_ok, is_eulerian, rlc_decompose
-from anneal import toggle, valid
+from anneal import toggle
 
 CACHE = {}
+
+def valid(n, edges_set, maxdeg):
+    """Eulerian, 6 <= deg <= maxdeg (Lov\u00e1sz path thm: a dominating vertex (deg n-1,
+    n odd) forces a decomposition into (n-1)/2 cycles through it, so counterexamples
+    have Delta <= n-3; we impose it as a search constraint)."""
+    deg = [0] * n
+    for u, v in edges_set:
+        deg[u] += 1
+        deg[v] += 1
+    if any(d < 6 or d > maxdeg or d % 2 for d in deg):
+        return False
+    return is_eulerian(n, tuple(edges_set))
 
 def exact_min(n, edges, tl=45):
     if edges in CACHE:
@@ -28,10 +40,14 @@ def exact_min(n, edges, tl=45):
 def run(n, seconds, seed):
     rng = random.Random(seed)
     bound = (n - 1) // 2
-    edges_set = set((u, v) for u in range(n) for v in range(u + 1, n))
-    if (n - 1) % 2:
-        for v in range(0, n, 2):
-            edges_set.discard((v, v + 1))
+    maxdeg = n - 3 - ((n - 3) % 2)  # largest even degree <= n-3
+    # start: circulant S={1,2,3,4}, degree 8
+    edges_set = set()
+    for d in (1, 2, 3, 4):
+        for v in range(n):
+            u, w = v, (v + d) % n
+            edges_set.add((min(u, w), max(u, w)))
+    assert valid(n, edges_set, maxdeg), "bad start"
     cur = exact_min(n, tuple(sorted(edges_set)))
     best = cur
     t0 = time.time()
@@ -41,7 +57,7 @@ def run(n, seconds, seed):
         temp = max(0.15, 1.5 * (1 - (time.time() - t0) / seconds))
         tri = rng.sample(range(n), 3)
         toggle(edges_set, tri)
-        if not valid(n, edges_set):
+        if not valid(n, edges_set, maxdeg):
             toggle(edges_set, tri)
             continue
         edges = tuple(sorted(edges_set))

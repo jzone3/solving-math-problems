@@ -112,3 +112,31 @@ connected even circulants of degree 4... — trivially fine), n ≤ 12 (HNS exha
 - 20:40 — Probe 3d (anneal_exact.py): annealing on the EXACT min-decomposition size
   (CP-SAT downward search, ~0.1–1s/graph at n=13–14, score cached). n=13 and n=14,
   2.5h each. Quickly finds tight graphs (min-decomp = bound = 6); hunting for bound+1.
+
+### Reasoning result (V5): dominating vertices are safe — restrict to Δ ≤ n−3
+
+Lovász ("On covering of graphs", 1968 — the very paper the conjecture appears in) proved
+that a graph in which every vertex has odd degree decomposes into exactly n/2 paths.
+Consequence: if G is Eulerian on odd n with a dominating vertex v (deg v = n−1), then
+H = G−v has all degrees odd (each deg_G(u) even, minus the edge to v), so H decomposes
+into (n−1)/2 paths; each vertex of H is a path-endpoint exactly once (endpoint parity),
+so closing each path x…y into the cycle v-x-…-y-v uses each edge at v exactly once and
+yields a decomposition of G into (n−1)/2 = ⌊(n−1)/2⌋ cycles. Hence NO counterexample has
+a dominating vertex; searches restricted to Δ ≤ n−3 (largest even value). This also
+explains why all dense probes (multipartite, K_n minus 2-factors) pass comfortably.
+(Likely known folklore — consistent with HNS's remark that for Δ ∈ {n−2, n−1} one may
+assume every cycle passes through the max-degree vertex.)
+
+- 21:05 — Probes 3b killed (poor proxy); exact annealers restarted with the Δ ≤ n−3
+  constraint, n=13 (2 seeds), 14, 15, 3.3h each. Plateau: best min-decomp found is
+  bound−1 (n=13: 5 with Δ≤10) or bound (n=15) — no graph at bound+1 so far; the
+  landscape sits 1–2 BELOW the Hajós bound almost everywhere in this regime.
+- 21:10 — Probe 3e (linegraphs.py): all line graphs of connected 4-regular graphs on
+  7–10 vertices (83 graphs, 6-regular, n_L=14–20) and of connected even {2,4}-degree
+  graphs on 7–11 vertices (7341 graphs, n_L=13–20 filtered): ALL pass, none even
+  heuristic-hard. Negative.
+- 21:20 — Probe 3f (sweep_regular.py): **EXHAUSTIVE sweep of ALL 367,860 connected
+  6-regular graphs on n=13** (nauty-geng, 2-way split, greedy decompositions
+  independently validated edge-by-edge; escalation to CP-SAT never needed — the RLC
+  greedy found a ≤6-cycle decomposition for every single graph within 120 restarts).
+  Frontier statement: no 6-regular counterexample on 13 vertices exists. t≈80s total.

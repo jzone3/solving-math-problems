@@ -1,0 +1,11 @@
+>A nauty-geng -cX0x100d6D6 n=13 e=39 class=1/2
+[20000] t=4s hard-so-far=0
+[40000] t=7s hard-so-far=0
+[60000] t=12s hard-so-far=0
+[80000] t=15s hard-so-far=0
+[100000] t=19s hard-so-far=0
+[120000] t=22s hard-so-far=0
+[140000] t=26s hard-so-far=0
+[160000] t=30s hard-so-far=0
+>Z 176667 graphs generated in 28.95 sec
+DONE n=13 resmod=['1', '2']: 176667 graphs, 0 escalated, t=34s
