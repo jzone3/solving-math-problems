@@ -85,9 +85,41 @@ flips of T(9,3)∪T(9,3) (9,180 ω-preserving flip sets), T(12,3)∪T(12,3)
 stays exactly 1.000000000000; NO flip set exceeds the base. The equality
 family is a strict local maximum of the ratio under ≤2 edge flips.
 
-### Phase 4 (running): ω 3–8 × {random, turan2} inits, n ∈ [20,90],
-150 restarts × 40000 iters each (12 parallel procs, ~hours).
-Interim after ~10 min: all best ratios ≤ 1.0 (equality reattained in several
-runs, never exceeded).
+### Phase 4 (done, ~1h wall, 12 procs): ω 3–8 × {random, turan2} inits,
+n ∈ [20,90], 150 restarts × 40000 iters each (72M proposed flips total).
+Every ω reached best ratio exactly 1.0 (float 1 ± 1e-15) or 0.998–0.999;
+NOTHING above 1 + 1e-8. Best graphs at 1.0 are again the equality families
+(Turán graphs / unions of two balanced Turán graphs).
 
-## STATUS: (pending)
+### Phase 5 (done): λ₂ ≥ 2.5 penalized runs for all ω ∈ {3..8}, n ∈ [15,60],
+60 restarts × 25000 iters. Best pure ratios: 0.9970 (ω=3), 0.9969 (ω=4),
+0.9920 (ω=5), 0.9891 (ω=6), 0.9868 (ω=7), 0.9865 (ω=8). The forced-λ₂
+stratum stays strictly below the bound, with slack growing in ω.
+
+More exhaustive perturbation scans (depth 2, all ω-preserving 1- and 2-edge
+flips): T(15,3)² (70,500 flip sets), T(16,4)² (100,576), T(12,6)² (34,980),
+T(14,7)² (66,430) — max ratio exactly 1.0, never exceeded. Combined with
+phase-3 scans: ~360k exhaustively-checked perturbations of the λ₂>0
+equality family, all ≤ 1.
+
+## 3. Summary
+
+- Total compute: ≈ 110M annealing proposals (each accepted move = one dense
+  eigvalsh) + ~360k exhaustive perturbation checks, ~2.5 h on 8 cores.
+- No counterexample candidate ever appeared (threshold 1 + 1e-8).
+- The ratio (λ₁²+λ₂²)/(2m(1−1/ω)) appears to have global maximum exactly 1,
+  attained on (unions of ≤2) balanced Turán graphs; both the λ₂=0 stratum
+  (single Turán) and the λ₂>0 stratum (double Turán) are strict local maxima
+  under ≤2 edge flips (machine-verified exhaustively for 8 base graphs).
+- Near-misses: forced-λ₂ runs cap around 0.997–0.998 (ω=3,4), suggesting the
+  open ω≥4 λ₂>0 region has real slack away from the disconnected equality
+  family.
+- Dead ends: naive annealing always slides onto the equality surface and
+  stalls; early-exit float-threshold bug (fixed) caused phase-1 false
+  "COUNTEREXAMPLE FOUND" prints — those were exact-equality graphs.
+- No solutions/P09/verify.py: nothing to claim (per methodology, verifier is
+  only required for a claimed witness).
+
+## STATUS: negative — no counterexample found for ω ∈ {3..8}, n ≤ 90;
+conjecture held (ratio ≤ 1) at every one of ~110M sampled ω-fixed graphs,
+with the known equality families recovered as the only maxima.
