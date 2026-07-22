@@ -115,6 +115,23 @@ def exact_max_t(n, adj):
     return val
 
 
+def exact_df(n, adj):
+    """Exact fractional total domination number d_f = min{1'x : Ax>=1, x>=0}."""
+    nv = 2 * n  # x, surplus s: Ax - s = 1
+    A, b = [], []
+    for v in range(n):
+        row = [F(0)] * nv
+        for u2 in range(n):
+            if adj[v] >> u2 & 1:
+                row[u2] = F(1)
+        row[n + v] = F(-1)
+        A.append(row); b.append(F(1))
+    c = [F(-1)] * n + [F(0)] * n
+    st, val = simplex_max(c, A, b)
+    assert st == 'opt', st
+    return -val
+
+
 if __name__ == '__main__':
     # self-test: C5 (Andrasfai graph), already regular -> t = 1
     n = 5

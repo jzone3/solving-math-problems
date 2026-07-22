@@ -1,0 +1,2 @@
+BOUNDARY-INFEAS n=9 HQY]@_J df=3.000000
+SUMMARY n=9 total=16 ge=7 gt=1 ge_infeas=1 gt_infeas=0 df3=1 trackB_cand=0 singular=1 time=0.0s

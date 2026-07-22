@@ -1,0 +1,1 @@
+SUMMARY n=17 total=127355 ge=15 gt=15 ge_infeas=0 gt_infeas=0 df3=117955 trackB_cand=0 singular=32070 time=20.4s
