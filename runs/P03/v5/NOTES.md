@@ -87,4 +87,28 @@ This focuses the targeted deep runs (`runA_min.log`, `runB_min.log`).
   17135 generated / tau distribution 0:84, 1:1256, 2:8745, 3:7050 / 7050 SAT-checked /
   290 in full target region / **0 non-packing**.
 
+- 2026-07-22 20:22–22:22 UTC main wave (7 parallel 2h runs, shape-constrained DAGs
+  n<=16):
+  - phase A random screening, seeds 11–14: 8.2M DAGs generated, 3.376M with tau=3
+    SAT-checked (every one), 147,791 of them in the full target region — 0 non-packing.
+  - phase A targeted minimal shapes (2,2,8),(2,2,10),(3,2,9),(2,3,9): 969k generated,
+    390k tau=3 checked, 30,706 in-region — 0 non-packing.
+  - phase B annealing to region, seeds 21–23: 3,679 region hits SAT-checked — 0
+    non-packing.
+- 2026-07-22 20:2x UTC exhaustive n=7: ALL simple DAGs on <=7 labeled vertices
+  (fixed topological order covers every iso class): 2,097,152 arc-subsets, 283,267
+  with tau=3, every one packs 3 dijoins. Woodall verified exhaustively for simple
+  digraphs with <=7 vertices (71 s).
+- crosscheck.py: SAT packing checker vs. an independently written brute-force
+  checker (Schrijver's J-dijoin criterion via strong connectivity of (V, A u J^-1)):
+  40/40 random tau=3 instances agree.
+- 2026-07-22 ~20:30 UTC started exhaustive n=8 with vectorized literature pruning
+  (degree conditions + ACZ rho bounds in both directions, streams for tau=3 and
+  tau in 4..7): chunks 0–42/64 done single-threaded: 2,490,488 pruned survivors fully
+  checked (tau + SAT) — 0 non-packing. Remaining chunks 42–64 relaunched in 6
+  parallel workers ~22:30 UTC.
+- 2026-07-22 22:30 UTC launched phase C near-miss mining (anneal within region to
+  minimize the number of valid 3-dijoin partitions, symmetry-broken model counting):
+  2 x 3h runs (one on minimal shapes n=12–14, one broad n<=16).
+
 (further checkpoints appended below)

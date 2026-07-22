@@ -1,0 +1,10 @@
+{
+ "generated": 969289,
+ "tau3_checked": 389826,
+ "tau3_in_region": 30706,
+ "tau=0": 1042,
+ "tau=1": 52535,
+ "tau=2": 525886,
+ "tau=3": 389826,
+ "wall_seconds": 7200
+}
