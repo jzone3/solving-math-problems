@@ -89,4 +89,16 @@ periodic autocorrelations; DFT/fold pruning; polish near-solutions).
   escalating time slices. Launched on all six open cells (6 cores) alongside
   2 continuing plain-RRR runs (96, 105).
 
+### Phase 4 — CW(96,36) witness (with caveat)
+- sym_driver on n=96 round 1, multiplier t=41 (m=40 orbits):
+  **SOLUTION found, verify.py PASS** —
+  `00-0+0+0+00000+0+0+0-0+0-00000-0+0+0+0+0+0-000-000+0-0+0+00000-0+0+0+0-0-00000-0+0-0-0-0+0-000+0`
+  (copied to solutions/P11/cw96_36.txt).
+- Caveat: support lies on even residues; the 2-decimation verifies as a
+  CW(48,36). Since the dataset has CW(48,6)="Yes" but CW(96,6)="Open", the cell
+  follows from the classical padding implication CW(n,k) => CW(mn,k). So this
+  closes the repository cell but is a propagation, not a new existence theorem.
+  The other five cells have no divisor shortcut (CW(39,6)/CW(56,6)/CW(60,7) are
+  "No"; k > n excludes the rest) — they remain the real targets.
+
 ## STATUS: running

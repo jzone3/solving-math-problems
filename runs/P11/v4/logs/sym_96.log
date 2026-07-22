@@ -1,1 +1,9 @@
 n=96 s=6: 15 distinct multiplier subgroups, m range 25..72
+round=1 t=11 m=25 slice=45s -> DONE n=96 s=6 t=11 m=25 bestE=86 it=327293 restarts=699
+round=1 t=5 m=26 slice=45s -> DONE n=96 s=6 t=5 m=26 bestE=93 it=325666 restarts=607
+round=1 t=19 m=27 slice=45s -> DONE n=96 s=6 t=19 m=27 bestE=86 it=327163 restarts=701
+round=1 t=13 m=30 slice=45s -> DONE n=96 s=6 t=13 m=30 bestE=184 it=329864 restarts=686
+round=1 t=23 m=37 slice=45s -> DONE n=96 s=6 t=23 m=37 bestE=46 it=326877 restarts=446
+round=1 t=7 m=39 slice=45s -> DONE n=96 s=6 t=7 m=39 bestE=20 it=315502 restarts=420
+round=1 t=41 m=40 slice=45s -> SOLUTION n=96 k=36 t=41 vec=00-0+0+0+00000+0+0+0-0+0-00000-0+0+0+0+0+0-000-000+0-0+0+00000-0+0+0+0-0-00000-0+0-0-0-0+0-000+0
+SOLUTION n=96 k=36 t=41 vec=00-0+0+0+00000+0+0+0-0+0-00000-0+0+0+0+0+0-000-000+0-0+0+00000-0+0+0+0-0-00000-0+0-0-0-0+0-000+0

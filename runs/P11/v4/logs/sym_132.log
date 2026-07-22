@@ -1,1 +1,15 @@
 n=132 s=9: 13 distinct multiplier subgroups, m range 19..77
+round=1 t=35 m=19 slice=45s -> DONE n=132 s=9 t=35 m=19 bestE=899 it=240997 restarts=512
+round=1 t=17 m=20 slice=45s -> DONE n=132 s=9 t=17 m=20 bestE=1349 it=239050 restarts=512
+round=1 t=7 m=21 slice=45s -> DONE n=132 s=9 t=7 m=21 bestE=1788 it=246859 restarts=442
+round=1 t=47 m=21 slice=45s -> DONE n=132 s=9 t=47 m=21 bestE=471 it=242190 restarts=424
+round=1 t=5 m=24 slice=45s -> DONE n=132 s=9 t=5 m=24 bestE=197 it=246680 restarts=493
+round=1 t=13 m=24 slice=45s -> DONE n=132 s=9 t=13 m=24 bestE=4043 it=242610 restarts=352
+round=1 t=31 m=27 slice=45s -> DONE n=132 s=9 t=31 m=27 bestE=252 it=274484 restarts=481
+round=1 t=25 m=36 slice=45s -> DONE n=132 s=9 t=25 m=36 bestE=34 it=269021 restarts=386
+round=1 t=131 m=67 slice=45s -> DONE n=132 s=9 t=131 m=67 bestE=1309 it=264000 restarts=359
+round=1 t=65 m=68 slice=45s -> DONE n=132 s=9 t=65 m=68 bestE=612 it=264953 restarts=350
+round=1 t=43 m=69 slice=45s -> DONE n=132 s=9 t=43 m=69 bestE=520 it=261806 restarts=348
+round=1 t=109 m=72 slice=45s -> DONE n=132 s=9 t=109 m=72 bestE=304 it=240055 restarts=318
+round=1 t=23 m=77 slice=45s -> DONE n=132 s=9 t=23 m=77 bestE=266 it=246175 restarts=330
+round=2 t=35 m=19 slice=72s -> DONE n=132 s=9 t=35 m=19 bestE=899 it=465494 restarts=977
