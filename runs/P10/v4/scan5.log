@@ -1,0 +1,16 @@
+20000 graphs 14s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+40000 graphs 29s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+60000 graphs 43s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+80000 graphs 57s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+100000 graphs 72s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+120000 graphs 86s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+140000 graphs 100s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+160000 graphs 115s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+180000 graphs 129s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+200000 graphs 143s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+220000 graphs 157s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+240000 graphs 172s worst=(np.float64(-1.4210854715202004e-14), 'H??Fv~~vK3')
+260000 graphs 186s worst=(np.float64(-2.842170943040401e-14), 'HEv]}~~vK2')
+DONE 261080 graphs x 80 joins, 187s
+WORST deficit (np.float64(-2.842170943040401e-14), 'HEv]}~~vK2')
+suspects: 0
