@@ -18,7 +18,7 @@ so the refutation is convention-robust.
 ## The witnesses
 
 - **154**: lollipop L(K₅₀, P₇₀) — a 50-clique with a 70-edge path attached; n = 120, m = 1295,
-  ordered distance sum S = 186060. Violation is a pure integer inequality: 2·m·S² > n³·(n²)².
+  distance sum S = 372120 over all n² ordered entries (186060 unordered). Violation is a pure integer inequality: 2·m·S² > n³·(n²)² with S = 372120.
   Edge list: `witness_edges.txt`.
 - **143**: dumbbell(20, 13, 7) — cliques K₂₀ and K₇ joined by a 13-edge path; n = 39, m = 224.
   Note n = 39 ≤ 50: this sits INSIDE the range searched by the 2025 paper's eight algorithms.
@@ -29,6 +29,18 @@ so the refutation is convention-robust.
 - `python3 verify143.py` — conjecture 143; needs sympy/mpmath; isolates eigenvalues to rational
   intervals for an exact variance comparison. Expect PASS.
 - Search logs and family analysis: `RUN-NOTES-BOTH.md` (V1 run: both conjectures, incl. the 143 dumbbell analysis), `RUN-NOTES-154-V4.md` (V4 run: 154).
+
+## Lean formalization
+
+`lean/` — conjecture 154's refutation is machine-checked end-to-end in Lean 4 + mathlib: the
+witness graph is defined concretely, its distance sum (S = 372120) and edge count (m = 1295)
+are PROVEN inside Lean (BFS-parent certificates + kernel `decide`; no `native_decide`), and the
+conjecture's real-number form is refuted in both μ conventions, plus the original
+spectral wording via dev(eigenvalues) = √(2m/n). No `sorry`, no added axioms
+(`#print axioms` = [propext, Classical.choice, Quot.sound]). Conjecture 143's witness is
+defined with proven structure and a reduction lemma, but the final eigenvalue-variance
+computation (irrational algebraic numbers) is deliberately NOT claimed in Lean — the exact-
+arithmetic `verify143.py` remains the verification for 143. Build: `cd lean && lake exe cache get && lake build`.
 
 ## Notes
 

@@ -31,6 +31,15 @@ n = 12 witness, a 4-chromatic n = 15 witness, and the infinite family n = 9t (bl
   triangle-free graphs with δ ≥ n/3 for n < 9 admit regular multiplication supergraphs):
   `RUN-NOTES.md`.
 
+## Lean formalization
+
+`lean/` — the refutation is machine-checked in Lean 4 + mathlib
+(`P02.west_statement_false`): W's maximal triangle-freeness and δ = 3 = 9/3 by kernel
+`decide`; vertex multiplication defined honestly (blow-up graph on `Σ v, Fin (x v)`) with a
+proven regularity ⇔ linear-system equivalence; infeasibility via an explicit integer Farkas
+certificate. No `sorry`, no `native_decide`, no added axioms (`#print axioms` =
+[propext, Classical.choice, Quot.sound]). Build: `cd lean && lake exe cache get && lake build`.
+
 ## Important nuance (statement provenance)
 
 Brandt's original paper (`brandt2002.pdf`, Discrete Math. 251 (2002) 33–46, Conjecture 4.1)
