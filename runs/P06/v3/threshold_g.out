@@ -24,3 +24,5 @@ n=24: best dev-R 0.000000000 (code 4095) | best phi 0.000000000 (code 8388607) |
 n=25: best dev-R -0.005202082 (code 4095) | best phi 0.000000000 (code 16777215) | best g -0.001601281 (code 4095)
 n=26: best dev-R 0.000000000 (code 8191) | best phi 0.000000000 (code 33554431) | best g -0.000000000 (code 8191)
 n=27: best dev-R -0.004802745 (code 8191) | best phi 0.000000000 (code 33554431) | best g -0.001372684 (code 8191)
+n=28: best dev-R 0.000000000 (code 16383) | best phi 0.000000000 (code 33554431) | best g -0.000000000 (code 16383)
+OVERALL: best dev-R 0.000000000 | best phi 0.000000000 | best g 0.000000000

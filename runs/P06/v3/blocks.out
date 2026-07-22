@@ -1,2 +1,8 @@
 n=1000: max phi = 0 types=(0, 1) sizes=[  1 999]
         max g   = 0.00091971145 types=(0, 1) sizes=[992   8]
+n=10000: max phi = 0 types=(0, 1) sizes=[   1 9999]
+        max g   = 0.00312115608 types=(0, 1) sizes=[9932   68]
+n=100000: max phi = 4.76837158e-07 types=(1, 0) sizes=[94650  5350]
+        max g   = 0.00334409421 types=(0, 1) sizes=[99327   673]
+n=1000000: max phi = 0 types=(0, 1) sizes=[     1 999999]
+        max g   = 0.0033664222 types=(0, 1) sizes=[993284   6716]

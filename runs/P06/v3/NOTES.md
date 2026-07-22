@@ -117,15 +117,30 @@ Evidence for (★):
   dense case 4mR ≥ A sharp at cliques; continuous relaxation w/o graphicality fails
   (degrees (n−1,...,n−1,0,...) — non-graphical), with Erdős–Gallai it saturates at 0.
 
-### Proof skeleton for 129 (gap = step 4)
+### IMPORTANT CORRECTION: (★) is FALSE for large n — GM route has finite range
+
+Block-threshold asymptotics (`blocks.py`) found integer counterexamples to (★)
+among complete split graphs CS(n,s) = K_s ∨ \bar K_{n−s}: the smallest in that
+family is **CS(723, 6)** (g ≈ +6.8e-07; g grows to ≈ +0.0034 as n → ∞ at
+s ≈ 0.007n). So the AM–GM lower bound on R is asymptotically insufficient:
+(★) is a valid *finite verification tool* (its exhaust below n = 19 is what
+gives the frontier) but NOT a proof route for all n. The true objective
+Φ (using exact R) remains ≤ 0 on all these graphs — CS graphs satisfy 129
+comfortably; it is only the GM relaxation that crosses zero. Any full proof
+needs an R lower bound tight for split-like graphs (GM is tight only for
+edge-weight-regular graphs).
+
+### Proof skeleton for 129 (gap = step 4; steps 2–3 limited by the correction)
 1. R ≥ m·exp(−(1/2m) Σ d ln d)  (AM–GM). ✓
 2. For fixed (n, m), g = ln(n²dev²) + (1/m)Σ d ln d is Schur-convex in the degree
    vector (variance and Σ d ln d are Schur-convex; increasing transform + sum). ✓
 3. Maximal graphical sequences in the dominance order (fixed sum) are threshold
    sequences (Ruch–Gutman); so it suffices to prove (★) for threshold sequences. ✓(lit)
-4. (★) for threshold sequences — OPEN; machine-verified: g ≤ 0 for all 2^(n−1)
-   threshold creation sequences n ≤ 28 (`threshold.c`, `threshold_g.out`) and
-   asymptotic block-threshold families (§7).
+4. (★) for threshold sequences — machine-verified g ≤ 0 for all 2^(n−1) threshold
+   creation sequences n ≤ 28 (`threshold.c`, `threshold_g.out`), but FALSE for
+   n ≥ 723 (CS(723,6) is a threshold sequence) — so this skeleton proves 129 only
+   up to the first (★)-violating sequence (somewhere in 19 ≤ n₀ ≤ 723; every
+   exhausted n below n₀ yields a fully verified frontier).
 
 **Corollary of the (★) exhaust (steps 1 + enum): WoW conjecture 129 is TRUE for
 every graph on n ≤ 18 vertices** — pushes the exhaustive frontier from n = 10
@@ -135,6 +150,24 @@ sequences), on top of the direct geng exhaust n ≤ 12.
 ## 7. Status: (updated as runs finish)
 
 - geng n=12 exhaustive (direct + Φ): IN PROGRESS
-- enum_seq n=16,18 ((★) frontier): IN PROGRESS
-- block-threshold asymptotics of (★): planned
+- enum_seq n=20 ((★) frontier): IN PROGRESS
+- block-threshold asymptotics: DONE — Φ ≤ 0 everywhere (max 0 at equality family);
+  (★) fails for CS(n≥723, s≈0.007n) (see correction above)
+- `find_n0.py`: over all ≤4-block integer threshold configs, the FIRST (★)
+  violation is exactly n = 723, CS(723,6) (searched every n on a grid 20..725 +
+  exact step-back); so the GM/Schur verification method is sound for n ≤ 722
+  within this class, and 19 ≤ n₀ ≤ 723 overall
+- padded hill-climb n = 100, 150, 200 (120k annealed edge flips × 4 restarts):
+  DONE — max Φ = 0, reached only from clique seeds (equality family); random
+  seeds stay far below (Φ ≈ −60..−80)
 - STATUS (preliminary): negative / frontier-pushed
+
+## 8. Conjecture 698 (definitional investigation + test of intended reading)
+
+As coded in refutationGBR, 698 is vacuous (negative Laplacian eigenvalues don't
+exist). Under the plausible intended reading — sqrt(Σ λᵢ² over negative
+*adjacency* eigenvalues) ≤ R — (`conj698.py`): geng exhaust n ≤ 8 and annealing
+n = 10..36 from star seeds give max(lhs − R) = 0 exactly, with a large equality
+family: every complete bipartite K_{a,b} (+isolated vertices) has
+negative-eigenvalue norm √(ab) = R. No violation found; 698-adjacency looks
+tight-but-true as well.
