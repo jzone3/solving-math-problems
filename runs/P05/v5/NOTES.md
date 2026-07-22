@@ -84,7 +84,8 @@ direct computation agree exactly.
 | all connected n = 10 | 11,716,571 | 0 | 1 |
 | all connected n = 11, ≤ 20 edges | 28,908,939 | 0 | 1 |
 | all connected n = 12, ≤ 18 edges | 22,028,571 | 0 | 1 |
-| all connected n = 13, ≤ 16 edges | 2,778,205 | 0 | 1 |
+| all connected n = 12, 19–20 edges | 125,759,756 | 0 | 1 |
+| all connected n = 13, ≤ 17 edges | 2,778,205 + 8,610,789 | 0 | 1 |
 | all connected n = 14, ≤ 16 edges | 2,142,867 | 0 | 1 |
 | subcubic (Δ≤3) n = 12, 13, 14 | 19,430 + 69,322 + 262,044 | 0 | 1 |
 | subcubic n = 15, 16 | 1,016,740 + 4,101,318 | 0 | 1 |
@@ -112,8 +113,14 @@ brute-force verifies.
 | Core class | candidate structures | z3-feasible | counterexamples |
 |---|---|---|---|
 | all connected n = 7 | 31,039 | 0 | 0 |
-| all connected n = 8 | 521,717 | 0 | 0 |
-| all connected n = 9 | (running) | | |
+| all connected n = 8 | 521,717 (103,241 unique systems) | 0 | 0 |
+| all connected n = 9, ≤ 20 edges | 10,080,459 (~1.07M unique systems) | 0 | 0 |
+| all connected n = 10, ≤ 17 edges | (running) | | |
+
+Note: full-range stage-2 at n = 9 was started and aborted — dense graphs (K9 alone > 2 min)
+make full n = 9 stage-2 impractical, and dense cores are the least plausible (their maximum
+paths are near-Hamiltonian, and dense Gallai classes like 2K2-free are already settled).
+Edge bound 20 = 2·n covers the sparse residual class identified in the literature digest.
 
 Stage-2 finding so far: over half a million candidate structures where the three core paths
 DO have empty intersection, yet the arm-length system is infeasible **every single time** —
