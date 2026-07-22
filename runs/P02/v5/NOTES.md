@@ -75,9 +75,12 @@ Consistency checks (strict δ > n/3 — must all be feasible by Brandt–Thomass
 | 13 | 5 | 3         | 0 ✓ |
 | 14 | 5 | 15        | 0 ✓ |
 | 16 | 6 | 7         | 0 ✓ |
-| 17 | 6 | (running) |     |
+| 17 | 6 | 31        | 0 ✓ |
 
 The strict-case zeros are a strong end-to-end falsification test of the whole pipeline.
+
+Full small sweep n = 3..8 with δ ≥ ⌈n/3⌉ (12 maximal TF graphs total): all feasible —
+so **n = 9 is the smallest counterexample**, and G0 is the unique one at n = 9.
 
 ## 5. The counterexample (smallest possible)
 
