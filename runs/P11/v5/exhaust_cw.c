@@ -38,6 +38,8 @@ static int fcap[MAXF][MAXN];       /* capacity from remaining orbits */
 static int fcnt[MAXORB][MAXF][MAXN];
 
 static long long nodes = 0, leaves = 0, found = 0;
+static int split_k = 1, split_r = 0, split_depth = 4;
+static long long split_ctr = 0;
 
 static int a[MAXN];
 
@@ -77,6 +79,13 @@ static int check_full(void) {
 
 static void rec(int i, int rsum, int rsq, int remcap) {
     nodes++;
+    if ((nodes & ((1LL<<31)-1)) == 0) {
+        fprintf(stderr, "progress: nodes=%lld leaves=%lld found=%lld\n",
+                nodes, leaves, found);
+    }
+    if (i == split_depth && split_k > 1) {
+        if ((split_ctr++ % split_k) != split_r) return;
+    }
     if (rsq > k) return;
     int need = s - rsum;
     if (need > remcap || -need > remcap) return;
@@ -124,6 +133,12 @@ int main(int argc, char **argv) {
     dmax = atoi(argv[3]);
     if (dmax > s) dmax = s;
     tmul = atoi(argv[4]);
+    {
+        const char *e;
+        if ((e = getenv("SPLIT_K"))) split_k = atoi(e);
+        if ((e = getenv("SPLIT_R"))) split_r = atoi(e);
+        if ((e = getenv("SPLIT_DEPTH"))) split_depth = atoi(e);
+    }
     build_orbits();
     nf = 0;
     for (int i = 5; i < argc; i++) {

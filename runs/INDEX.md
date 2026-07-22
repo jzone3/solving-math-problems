@@ -14,7 +14,7 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P08 | queued | queued | queued | queued | queued |
 | P09 | queued | queued | queued | queued | queued |
 | P10 | queued | queued | queued | queued | queued |
-| P11 | queued | queued | queued | queued | queued |
+| P11 | queued | queued | queued | queued | running (frontier-pushed: CW(120,49) killed, pending indep. check; 5 witnesses recovered) |
 | P12 | queued | queued | queued | queued | queued |
 | P13 | queued | queued | queued | queued | queued |
 | P14 | queued | queued | queued | queued | queued |
