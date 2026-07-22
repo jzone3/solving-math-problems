@@ -61,7 +61,9 @@ integers; verification is pure integer arithmetic (no floating point, no LP trus
 | 13 | 5 | 21 | 3 | 0 | 1/8 |
 | 14 | 5 | 346 | 15 | 0 | 1/9 |
 | 15 | 5 | 5962 | 64 | **18** | 1/12 |
-| 16–18 | 6 | (running, see below) | | | |
+| 16 | 6 | 584 | 7 | 0 | 1/10 |
+| 17 | 6 | 14143 | 31 | 0 | 1/12 |
+| 18 | 6 | (very large; run left partial after ~3 h) | | **39+ (partial)** | |
 
 n ≤ 11: none ⇒ **n = 12 is the minimum order** of a counterexample (δ must equal ⌈n/3⌉ = 4 = n/3,
 so counterexamples require 3 | n at the boundary… n=13,14 have δ > n/3 strictly, consistent with
@@ -83,6 +85,23 @@ Minimum order, n = 12, δ = 4 = n/3 (all 3-chromatic; K?AFE_]JVoN_ is **twin-fre
 n = 15, δ = 5 = n/3, χ = 4, maximal TF, graph6 `N??E@_NMeIfo{GrO^_?`,
 certificate y = [-1,0,-1,0,1,1,-1,-1,2,1,1,-2,0,-2,2]. (Has twins (0,1),(2,3).)
 17 of the 18 n=15 counterexamples are 3-chromatic; this is the unique 4-chromatic one.
+Two of the n=15 counterexamples are twin-free (3-chromatic): `N??CEBoy?^Ay~?NoNo?`,
+`N??ED?ZDp{[cVOyC^_?`.
+
+## LP-duality-guided local search (larger n)
+
+Simulated annealing over maximal-TF graphs (move: delete 1–2 edges, randomized
+re-maximalization; score: float m* + degree-deficiency penalty, optional χ≥4/twin penalties;
+exact-Fraction re-verification of every hit). Found 345 further verified counterexamples:
+96 at n=15, 139 at n=18, 88 at n=21, 22 at n=24 (graph6 lists in `runs/P02/v3/rs*.log`, lines `CEX <g6> twin_free=… chi4=…`),
+including 4-chromatic ones at n = 18 (`N?JW_RpHu_eGq`Aj[W?`, `NAwtaK_ESb@s`KWBwe?`) and
+n = 21 (`QGTCWCalOPyHlQG\`PkMbAsWOkCW`, `QXGeS`Lv@AhGGs_GQDokYDbP[J?`,
+`QoYZ_IG@BbmM_s@gRIGO][?oBoW`), and twin-free (3-chromatic) ones at n = 15, 18.
+Consolidated lists: `all_localsearch_cexs.txt` (345 graphs, flags per line) and
+`n18_sweep_cexs_partial.txt` (39 graphs from the partial exhaustive n=18 run).
+A **twin-free AND 4-chromatic** counterexample was *not* found (n ≤ 15 exhaustively has
+none; annealing + orbit exploration at n = 18–24 found none) — left open; relevant only if
+Brandt's original statement was restricted to good (twin-free, 4-chromatic) graphs.
 
 ## Interpretation
 
@@ -100,10 +119,11 @@ certificate y = [-1,0,-1,0,1,1,-1,-1,2,1,1,-2,0,-2,2]. (Has twins (0,1),(2,3).)
   Chrome; Elsevier text-mining API needs a key. Statement therefore verified against West's
   page only (the source that declares the problem open).
 - First DFS double-check in verify.py was exponential without pruning; rewritten with
-  per-vertex partial-sum interval pruning + neighborhood-closing vertex order (runs in ~1 min
-  for all 6 witnesses at B = 5).
+  interval pruning + unit propagation (all 6 witnesses at B = 8 verify in ~4 s).
 
 ## Compute
 
 geng enumeration n ≤ 15: ~10 s total. Exact-LP screening of all maximal TF graphs n ≤ 15:
-~2 min. n = 16–18 sweeps: see sweep16-18.log (hours-scale, running during session).
+~2 min. n = 16–18 exhaustive sweeps: sweep16-18.log (n=16,17 complete with 0 CEXs — δ > n/3
+there, as expected; n=18 partial after ~3 h, 39 CEXs found, all 3-chromatic, 1 twin-free).
+Annealing: ~6 parallel processes × ~2 h (tens of thousands of LP evaluations each).

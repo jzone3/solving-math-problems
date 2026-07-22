@@ -5,7 +5,7 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | Problem | V1 | V2 | V3 | V4 | V5 |
 |---|---|---|---|---|---|
 | P01 | queued | queued | queued | queued | queued |
-| P02 | queued | queued | queued | queued | queued |
+| P02 | queued | queued | SOLVED (branch runs/P02-v3: counterexamples at n=12,15,18,21, verified) | queued | queued |
 | P03 | queued | queued | queued | queued | queued |
 | P04 | queued | queued | queued | queued | queued |
 | P05 | queued | queued | queued | queued | queued |
