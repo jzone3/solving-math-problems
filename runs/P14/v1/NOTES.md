@@ -44,5 +44,24 @@ independent confirmation with a differently-written model (solve_cpsat_alt.py: I
 encoding + AddMultiplicationEquality + independently implemented lex, sanity-checked on a dev
 instance) — running in background.
 
-### Pass 2 — 3600 s each, 4 workers, remaining three instances (running)
+### Confirmations for (12,20;4,3,10;6,4) nonexistence
+1. solve_cpsat_alt.py (independent 2nd CP-SAT model): **INFEASIBLE in 575 s**. Agrees.
+2. Third, fully independent check: CNF encoding (runs/P14/v1/encode_sat.py — pysat seqcounter
+   cardinalities; weighted sums by literal duplication, exhaustively validated on small cases;
+   AND-aux for pair products; independently implemented double-lex) run through **kissat**:
+   **s UNSATISFIABLE** (exit 20), 881 MB DRAT proof; drat-trim verification in progress.
+   Encoder end-to-end sanity-checked on dev instance BTD(4,8;2,3,8;4,6): kissat found a
+   solution which verify.py PASSed.
+
+### Pass 2 — 3600 s each, 4 workers, model solve_cpsat.py
+| instance | status | wall |
+|---|---|---|
+| (14,18;7,1,9;7,4)  | **INFEASIBLE** | 1482 s |
+| (12,15;6,2,10;8,6) | running |  |
+| (14,28;8,3,14;7,6) | queued |  |
+
+**Second nonexistence result: BTD(14,18;7,1,9;7,4) does not exist** (CP-SAT INFEASIBLE,
+1482 s, double-lex sound). Confirmations launched: solve_cpsat_alt.py (running) and
+kissat on encode_sat.py CNF (134238 vars / 278728 clauses, running).
+
 (log continues)
