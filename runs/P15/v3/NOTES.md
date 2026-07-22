@@ -48,9 +48,29 @@ Necessary feasibility screen: Σ_{n|N, n≥m} 1/n ≥ 1 (each class covers densi
   ladder factors solved jointly and exactly with kissat over the lifted holes. Reproduces
   m=3 (lcm 120, 14 congr) and m=4 (lcm 2520, 45 congr) instantly; both verify PASS.
 
+## BREAKTHROUGH: stochastic local search >> CDCL on these instances
+- YalSAT (Biere) solves m=5/N=1440 (Krukenberg-minimal lcm) in <8 s where kissat 4.0.4
+  made no visible progress in >1.5 h. m=6/N=5040 (proven-minimal lcm) in 302 s.
+  Both witnesses verified by solutions/P15/verify.py (independent CRT-recursive check).
+- ylocal.py: pairwise/sequential AMO encoding, no symmetry-break units, yalsat + decode
+  + strict duplicate-modulus and coverage assertions before writing witness JSON.
+- BreakID found 0 CNF-level symmetry generators (aux vars scramble the syntactic
+  symmetry; translation orbit is there mathematically but not syntactically cheap).
+
+## Witness-scale calibration for m=43 (min_lcm_bound.py)
+Reciprocal necessary condition alone forces, for m=43: lcm N ≥ 183,783,600
+(= 2^4·3^3·5^2·7·11·13·17, recip barely 1.005) and ≥926 congruences. True L(m) exceeds
+the reciprocal bound by growing factors (L(5)=1440 vs 240; L(6)=5040 vs 720;
+L(7)=15120 (conj) vs 1260), so a real m=43 cover likely needs lcm ≫ 10^10 and far more
+congruences — direct full-N encodings are out of reach (CNF alone ≥10^11 literals);
+only hole-layered approaches could ever scale, and their exact final windows blow up.
+
 ## Run log
 - SAT+verified: m=3 N=120 (14 congr), m=4 N=2520 (45 congr, kissat 14s), layered2 m=4.
 - TIMEOUT (≥900s, now known misguided): m=5 N∈{360,720,2520} direct; layered2 m=5
   final at N=2520 (provably requires lcm ≥1440 with different structure).
-- Running: kissat direct on literature-calibrated targets:
-  (m=5,N=1440) (m=6,N=5040) (m=7,N=15120) (m=8,N=30240) (m=9,N=55440) (m=10,N=110880).
+- kissat direct on literature-calibrated targets (m=5,N=1440)...(m=10,N=110880):
+  NO ANSWERS after 1.5–4 h each — CDCL wall. Killed in favor of local search.
+- YalSAT+verified: m=5 N=1440 (32 congr, 8 s), m=6 N=5040 (46 congr, 302 s).
+- Running (yalsat, 4 h budgets): (m=7,15120) (m=8,30240) (m=9,55440) (m=10,110880)
+  (m=12,166320) (m=12,332640).
