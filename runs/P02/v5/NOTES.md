@@ -98,6 +98,15 @@ all x ∈ {1..4}^9; prints PASS.
 All 24 counterexamples found (n ≤ 15) with their integer certificates are in
 `runs/P02/v5/counterexamples.json`; feasible witnesses in `witnesses_n*_d*.jsonl`.
 
+## 5b. Infinite family
+
+G0 is twin-free. Its blow-ups G0(t) (each vertex → t twins) remain maximal triangle-free with
+δ = n/3 (n = 9t), and infeasibility lifts: any solution on G0(t) aggregates (class sums
+X_v ≥ t ≥ 1) to a solution on G0. So {G0(t)}_{t≥1} is an **infinite family of
+counterexamples**, one for each n ≡ 0 (mod 9). Machine-checked for t = 1..4 (n up to 36) in
+`blowup_family.py` (exact rational LP). The same certificate y lifts (assign y_v/t to each
+copy).
+
 ## 6. Interpretation, near-misses, dead ends
 
 - Dead end: obtaining Brandt 2002 full text (ScienceDirect, zbMATH, CORE, OpenAlex, CiteSeerX,
