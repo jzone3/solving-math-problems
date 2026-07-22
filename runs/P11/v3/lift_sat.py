@@ -39,6 +39,31 @@ def solve(n, m, k, w, timeout=600, workers=3):
         model.AddAbsEquality(b, a[i])
         absv.append(b)
     model.Add(sum(absv) == k)
+    # implied: for EVERY proper divisor m2 of n, the mod-m2 contraction is an
+    # ICW_{n/m2}(m2, k): all characters of Z_m2 lift, so |contraction-hat|^2 = k
+    # everywhere (DC included: row sum = ±s), i.e. autocorrelation = k*delta_0.
+    s = int(round(k ** 0.5))
+    rs = model.NewIntVar(-s, s, "rowsum")
+    model.Add(rs == sum(a))
+    model.AddAllowedAssignments([rs], [(-s,), (s,)])
+    for m2 in range(2, n):
+        if n % m2:
+            continue
+        d2 = n // m2
+        c = [model.NewIntVar(-d2, d2, f"c{m2}_{j}") for j in range(m2)]
+        for j in range(m2):
+            model.Add(c[j] == sum(a[i] for i in range(j, n, m2)))
+        cp = {}
+        for t in range(0, m2 // 2 + 1):
+            terms = []
+            for i in range(m2):
+                kk = tuple(sorted((i, (i + t) % m2)))
+                if kk not in cp:
+                    p = model.NewIntVar(-d2 * d2, d2 * d2, f"cp{m2}_{kk}")
+                    model.AddMultiplicationEquality(p, [c[kk[0]], c[kk[1]]])
+                    cp[kk] = p
+                terms.append(cp[kk])
+            model.Add(sum(terms) == (k if t == 0 else 0))
     # products via aux int vars
     prod = {}
     for t in range(1, n // 2 + 1):

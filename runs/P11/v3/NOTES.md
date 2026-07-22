@@ -130,3 +130,36 @@ Contraction ICWs enumerated (runs/P11/v3/icw_enum.py), matching AGZ Table 9:
 Lift searches (runs/P11/v3/lift_sat.py, CP-SAT, fiber-sum + PACF constraints) launched for
 105/112/117 per contraction class; logs lift105/112/117.log, orbit120.log.
 
+**CP-SAT outcomes (all INCONCLUSIVE):**
+- lift_sat initially lacked the weight (PACF(0)=k) constraint — fixed, and strengthened with
+  implied constraints: row sum = ±s, and for EVERY divisor m2|n the mod-m2 contraction is an
+  ICW_{n/m2}(m2,k) with flat autocorrelation (valid since all Z_m2 characters lift and |Â|²=k).
+- (105,36) lift, contraction #0, 40 min × 8 workers: UNKNOWN.
+- (112,36) lift, contractions #0,#1, 20-25 min each: UNKNOWN.
+- (117,36) lift, contraction #0, 30 min: UNKNOWN.
+- (120,49) full multiplier-orbit decision instance (39 orbit vars, quadratic PACF): 2h CP-SAT
+  → UNKNOWN. The instance is a complete decision procedure but CP-SAT cannot crack the
+  quadratic (autocorrelation) constraints in this budget. A dedicated AGZ-style
+  intersection-number box exhaust (their Algorithm 1) is the plausible next step; AGZ
+  explicitly deemed this case out of reach of their methods.
+The four AGZ-open cells (105,36), (112,36), (117,36), (120,49) therefore REMAIN OPEN.
+
+## Final summary
+
+- (96,36): SOLVED YES — proper witness constructed from Schmidt–Smith 2013 (Cor 6.9 family),
+  solutions/P11/CW96_36_proper.json, verified by two independent scripts (exact integer
+  autocorrelation; full W Wᵀ = 36I matrix check). DB "Open" status is stale.
+- (132,81): settled NO in published literature (AGZ 2021 Prop 4.2); mechanically re-verified
+  here (icw132.py: zero ⟨3⟩-fixed ICW_3(44,81) among 94736 norm-correct orbit assignments).
+- Six more DB-Open cells settled NO (proper) via Schmidt–Smith Thm 6.10: (288,81), (384,81),
+  (576,81), (768,81), (864,81), (648,36). See solutions/P11/db_corrections.md.
+- Composition routes (padding closure over the full DB, coprime Kronecker products,
+  non-coprime divisor-embedded products, 4-block CW(24,9) ansatz ~4.5·10⁸ candidates):
+  all NEGATIVE for the remaining open cells.
+- ICW-lift and multiplier-orbit CP-SAT attacks on (105,36)/(112,36)/(117,36)/(120,49):
+  inconclusive (UNKNOWN at 20min–2h budgets).
+
+STATUS: SOLVED (target cell CW(96,36): explicit proper witness, dual-verified) + frontier-pushed
+(7 more DB-open cells settled via literature + mechanical re-verification); remaining 4 cells
+negative/inconclusive (searches documented above).
+
