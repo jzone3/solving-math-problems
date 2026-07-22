@@ -55,14 +55,23 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
     chords = chords_of(n, min_dist)
     pool = IDPool()
     var = {e: pool.id(("x", e)) for e in chords}
-    solver = Cadical153()
 
     # exactly 2 chords per vertex
+    base_clauses = []
     for v in range(n):
         lits = [var[e] for e in chords if v in e]
         cnf = CardEnc.equals(lits=lits, bound=2, vpool=pool, encoding=EncType.seqcounter)
-        for cl in cnf.clauses:
-            solver.add_clause(cl)
+        base_clauses.extend(cnf.clauses)
+    blocking = []  # all learned blocking clauses, for solver rebuilds
+
+    def fresh_solver():
+        s = Cadical153(bootstrap_with=base_clauses)
+        for cl in blocking:
+            s.add_clause(cl)
+        return s
+
+    solver = fresh_solver()
+    restarts = 0
 
     t0 = time.time()
     models = 0
@@ -75,7 +84,21 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
         if time.time() - t0 > max_seconds:
             status = "timeout"
             break
-        if not solver.solve():
+        # budgeted solve; on stall, rebuild solver fresh (re-preprocessing the
+        # accumulated clause DB is often far faster than grinding on)
+        solver.conf_budget(2_000_000)
+        res = solver.solve_limited()
+        if res is None:
+            restarts += 1
+            solver.delete()
+            solver = fresh_solver()
+            msg = f"n={n} solver stall -> rebuild #{restarts} (models={models}, blocking={len(blocking)})"
+            print(msg, flush=True)
+            if notes:
+                with open(notes, "a") as f:
+                    f.write(msg + "\n")
+            res = solver.solve()
+        if not res:
             status = "exhausted-unsat"
             break
         model = set(l for l in solver.get_model() if l > 0)
@@ -137,7 +160,9 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
                     img = tuple(sorted(img))
                     newcl.add(img)
         for cl in newcl:
-            solver.add_clause([-var[e] for e in cl])
+            lits = [-var[e] for e in cl]
+            blocking.append(lits)
+            solver.add_clause(lits)
             clauses_added += 1
 
         if models % log_every == 0 or time.time() - t0 > getattr(run, "_next_log", 0):
