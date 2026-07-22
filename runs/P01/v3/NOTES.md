@@ -60,3 +60,16 @@ UNSAT proof gets hard.
   hard candidates; logging near-miss minima (min #HC over sampled 2-factors).
 
 (checkpoints appended below)
+
+## Checkpoint 2026-07-22 ~21:00 UTC
+
+- Fixed near-miss counting bug (early-cap was corrupting counts; first n17 run's
+  "hc_count=1..32 near-misses" were spurious cap artifacts — disregarded).
+- Rewrote HC search as bitmask DFS with degree pruning (any unvisited vertex
+  needs >= 2 usable neighbors) — hard instances now milliseconds.
+- Diagnosed apparent n=17 "stall": SAT solve times explode in the endgame
+  (~0.1ms early, ~2s by model 350, then minutes+) as learned clause set nears
+  UNSAT. n=16 UNSAT proof took 140s / 195 models; n=17 substantially harder.
+  Logging is per-model so long solves look like stalls.
+- 6 parallel runs live: n=17 (exhaust attempt), n=18 (exhaust attempt),
+  n=22 (6h sampler), n=22 min-chord-dist>=3 subfamily, n=23, n=24 samplers.
