@@ -1,0 +1,10 @@
+C. path inertia lemma checked for k <= 2000
+E1. exhaustive n=2 done (1 cumulative connected labelled graphs)
+E1. exhaustive n=3 done (5 cumulative connected labelled graphs)
+E1. exhaustive n=4 done (43 cumulative connected labelled graphs)
+E1. exhaustive n=5 done (771 cumulative connected labelled graphs)
+E1. exhaustive n=6 done (27475 cumulative connected labelled graphs)
+E1. exhaustive n=7 done (1893731 cumulative connected labelled graphs)
+E2. structured families checked
+E3. random trees / sparse graphs checked
+PASS: all proof steps and both conjectures verified on every graph tested

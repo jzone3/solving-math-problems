@@ -1,0 +1,9 @@
+FINAL n=50 best=-5.170478 dev=8.829522 mu=14 diam=27
+FINAL n=50 best=-5.537653 dev=6.462347 mu=12 diam=20
+FINAL n=50 best=-4.194991 dev=7.805009 mu=12 diam=23
+FINAL n=100 best=-15.671502 dev=6.328498 mu=22 diam=24
+FINAL n=100 best=-13.331426 dev=8.668574 mu=22 diam=30
+FINAL n=100 best=-14.629305 dev=6.370695 mu=21 diam=23
+FINAL n=200 best=-42.559310 dev=5.440690 mu=48 diam=26
+FINAL n=200 best=-44.459005 dev=6.540995 mu=51 diam=29
+FINAL n=200 best=-42.866579 dev=5.133421 mu=48 diam=24
