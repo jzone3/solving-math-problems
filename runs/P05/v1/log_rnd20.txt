@@ -1,0 +1,26 @@
+[rnd20r0] it=0 new best t=12 L=12v n=12 m=18 paths=70
+[rnd20r0] it=2 new best t=11 L=11v n=11 m=17 paths=94
+[rnd20r0] it=23 new best t=10 L=12v n=14 m=22 paths=20
+[rnd20r0] it=29 new best t=9 L=11v n=13 m=21 paths=39
+[rnd20r0] it=53 new best t=8 L=12v n=15 m=21 paths=8
+[rnd20r0] it=54 new best t=7 L=11v n=14 m=20 paths=14
+[rnd20r0] it=178 new best t=5 L=13v n=20 m=28 paths=31
+[rnd20r0] it=349 new best t=4 L=8v n=20 m=19 paths=9
+[rnd20r0] it=369 new best t=1 L=7v n=17 m=17 paths=8
+[rnd20r0] done iters=20000 best t=1 (L=7v, n=17) elapsed=9s
+[rnd20r1] it=0 new best t=10 L=10v n=10 m=14 paths=5
+[rnd20r1] it=1 new best t=9 L=9v n=9 m=13 paths=5
+[rnd20r1] it=9 new best t=8 L=8v n=8 m=12 paths=17
+[rnd20r1] it=32 new best t=7 L=11v n=15 m=19 paths=7
+[rnd20r1] it=35 new best t=6 L=10v n=14 m=18 paths=14
+[rnd20r1] it=45 new best t=5 L=9v n=14 m=16 paths=14
+[rnd20r1] it=51 new best t=4 L=8v n=13 m=14 paths=10
+[rnd20r1] it=160 new best t=3 L=6v n=17 m=16 paths=24
+[rnd20r1] it=365 new best t=1 L=7v n=20 m=20 paths=17
+[rnd20r1] done iters=20000 best t=1 (L=7v, n=20) elapsed=9s
+[rnd20r2] it=2 new best t=9 L=9v n=12 m=12 paths=2
+[rnd20r2] it=10 new best t=8 L=8v n=13 m=12 paths=2
+[rnd20r2] it=12 new best t=7 L=9v n=14 m=14 paths=3
+[rnd20r2] it=13 new best t=6 L=8v n=13 m=13 paths=3
+[rnd20r2] it=16 new best t=5 L=7v n=12 m=12 paths=3
+[rnd20r2] it=38 new best t=1 L=7v n=12 m=12 paths=8

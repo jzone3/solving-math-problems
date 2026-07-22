@@ -1,0 +1,1 @@
+[dbgr0] done iters=50 best t=13 (L=13v, n=13) elapsed=11s

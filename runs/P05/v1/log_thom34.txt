@@ -1,0 +1,7 @@
+[thom34r0] it=2 new best t=29 L=33v n=35 m=51 paths=4230
+[thom34r0] it=19 new best t=28 L=33v n=38 m=49 paths=66
+[thom34r0] it=43 new best t=24 L=32v n=40 m=50 paths=32
+[thom34r0] it=48 new best t=23 L=31v n=39 m=49 paths=35
+[thom34r0] it=67 new best t=21 L=28v n=37 m=48 paths=78
+[thom34r0] it=80 new best t=20 L=27v n=37 m=47 paths=44
+[thom34r0] it=86 new best t=18 L=27v n=38 m=48 paths=58

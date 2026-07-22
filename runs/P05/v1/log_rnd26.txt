@@ -1,0 +1,13 @@
+[rnd26r0] it=0 new best t=9 L=9v n=9 m=10 paths=1
+[rnd26r0] it=1 new best t=8 L=8v n=8 m=9 paths=1
+[rnd26r0] it=3 new best t=6 L=8v n=9 m=11 paths=6
+[rnd26r0] it=24 new best t=5 L=9v n=11 m=12 paths=4
+[rnd26r0] it=27 new best t=3 L=9v n=14 m=15 paths=6
+[rnd26r0] it=329 new best t=1 L=7v n=23 m=22 paths=24
+[rnd26r0] done iters=20000 best t=1 (L=7v, n=23) elapsed=12s
+[rnd26r1] it=1 new best t=9 L=9v n=10 m=12 paths=2
+[rnd26r1] it=13 new best t=8 L=9v n=13 m=13 paths=4
+[rnd26r1] it=14 new best t=6 L=8v n=13 m=12 paths=4
+[rnd26r1] it=26 new best t=5 L=7v n=12 m=12 paths=4
+[rnd26r1] it=27 new best t=3 L=7v n=12 m=13 paths=16
+[rnd26r1] it=45 new best t=1 L=5v n=12 m=11 paths=11
