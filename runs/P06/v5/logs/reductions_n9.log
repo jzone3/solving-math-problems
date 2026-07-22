@@ -1,0 +1,24 @@
+n=9 worst E* (lam1^2+R^2-2m, violation if <0):
+  -0.00000000  H???F~}
+  -0.00000000  H???Fbo
+  -0.00000000  H?qnFDk
+  -0.00000000  HCRUSxY
+  -0.00000000  H???FB_
+n=9 worst F* (R^2-2m+M1/n):
+  -4.86111111  H?ACKMF
+  -4.50609046  H??EEFB
+  -4.40008282  H?BEENF
+  -4.40008282  H?BEMNF
+  -4.33333333  H?BEENE
+n=9 worst G* (m - lam1*dev_L, violation if <0):
+  +0.06192010  H?ACKMF
+  +0.09288015  H?aK[]N
+  +0.34314575  H??CCEB
+  +0.37146064  H????A?
+  +0.50556174  H???CA@
+n=9 worst H* (m^2 - (2m-n'+1)*dev2):
+  +0.60493827  H????A?
+  +1.23456790  H?ACKMF
+  +2.17283951  H????B?
+  +2.77777778  H?aK[]N
+  +2.77777778  H???CA@
