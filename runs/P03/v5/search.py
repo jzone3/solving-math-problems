@@ -199,6 +199,84 @@ def phase_b(sizes, seconds, rng, stats):
                 cur = region_score(n, arcs)
 
 
+def count_packings(n, arcs, cap=40):
+    """Count partitions into 3 dijoins, up to `cap`, modulo the 3! color
+    symmetry (broken by fixing the colors of one size-3 dicut, which must be
+    rainbow in every valid partition). Returns 0 if none."""
+    from harness import minimal_dicuts
+    from pysat.formula import IDPool
+    from pysat.solvers import Glucose4
+    mcuts = minimal_dicuts(n, arcs)
+    if any(len(c) < K for c in mcuts):
+        return 0
+    m = len(arcs)
+    pool = IDPool()
+    var = lambda a, c: pool.id((a, c))
+    solver = Glucose4()
+    for a in range(m):
+        solver.add_clause([var(a, c) for c in range(K)])
+        for c1 in range(K):
+            for c2 in range(c1 + 1, K):
+                solver.add_clause([-var(a, c1), -var(a, c2)])
+    for cut in mcuts:
+        for c in range(K):
+            solver.add_clause([var(a, c) for a in cut])
+    # symmetry breaking: some minimal dicut of size exactly 3 must be rainbow
+    sym = next((c for c in mcuts if len(c) == K), None)
+    if sym is not None:
+        for c, a in enumerate(sorted(sym)):
+            solver.add_clause([var(a, c)])
+    cnt = 0
+    while cnt < cap and solver.solve():
+        cnt += 1
+        model = solver.get_model()
+        blocking = [-l for l in model if l > 0 and l <= m * K]
+        solver.add_clause(blocking)
+    solver.delete()
+    return cnt
+
+
+def phase_c(sizes, seconds, rng, stats):
+    """Anneal within the target region to MINIMIZE the number of valid
+    3-dijoin partitions (near-miss mining). Score = region penalty * 1000 +
+    packing count; 0 packings = counterexample."""
+    t_end = time.time() + seconds
+    best_seen = None
+    while time.time() < t_end:
+        n_src, n_snk, n_int = rng.choice(sizes)
+        g = random_shape_dag(n_src, n_snk, n_int, rng)
+        if g is None:
+            continue
+        n, arcs = g
+        def score(a):
+            rs = region_score(n, a)
+            if rs > 0:
+                return 1000 * rs
+            stats['region_evals'] += 1
+            cnt = count_packings(n, a)
+            if cnt == 0:
+                stats['NONPACKING'] += 1
+                dump_counterexample(n, a, "phaseC", stats)
+            return cnt
+        cur = score(arcs)
+        temp = 30.0
+        for step in range(300):
+            if time.time() > t_end:
+                break
+            cand = rewire_move(n, arcs, rng)
+            if not is_dag(n, cand):
+                continue
+            sc = score(cand)
+            if sc <= cur or rng.random() < pow(2.718, -(sc - cur) / max(temp, 0.5)):
+                arcs, cur = cand, sc
+            temp *= 0.98
+            if cur < 1000 and (best_seen is None or cur < best_seen):
+                best_seen = cur
+                stats['min_packing_count'] = cur
+                print(f"new min packing count {cur} n={n} arcs={arcs}",
+                      flush=True)
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "a"
     seconds = int(sys.argv[2]) if len(sys.argv) > 2 else 600
@@ -221,6 +299,8 @@ if __name__ == "__main__":
     t0 = time.time()
     if mode == "a":
         phase_a(sizes, seconds, rng, stats)
+    elif mode == "c":
+        phase_c(sizes, seconds, rng, stats)
     else:
         phase_b(sizes, seconds, rng, stats)
     stats['wall_seconds'] = int(time.time() - t0)
