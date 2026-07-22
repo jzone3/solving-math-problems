@@ -86,6 +86,26 @@ def anneal(n, w, iters, seed, T0=0.02, T1=0.0003, p_init=None, init="random",
                 adj[i] &= ~(1 << j); adj[j] &= ~(1 << i)
             elif not creates_bigger_clique(adj, i, j, w):
                 adj[i] |= 1 << j; adj[j] |= 1 << i
+    elif init == "turan2":
+        # Two disjoint Turan graphs T(n1,w), T(n-n1,w) (equality family with
+        # lambda2 > 0 when balanced), then random flips.
+        n1 = n // 2 + rng.randint(-2, 2)
+        n1 = max(w, min(n - w, n1))
+        for i in range(n):
+            for j in range(i + 1, n):
+                if (i < n1) == (j < n1) and i % w != j % w:
+                    adj[i] |= 1 << j; adj[j] |= 1 << i
+        # move the planted clique inside part 1: it already is (verts 0..w-1
+        # have distinct residues) as long as n1 >= w.
+        nflip = rng.randint(1, max(2, n * n // 30))
+        for _ in range(nflip):
+            i, j = rng.sample(range(n), 2)
+            if i > j: i, j = j, i
+            if (i, j) in planted: continue
+            if adj[i] >> j & 1:
+                adj[i] &= ~(1 << j); adj[j] &= ~(1 << i)
+            elif not creates_bigger_clique(adj, i, j, w):
+                adj[i] |= 1 << j; adj[j] |= 1 << i
     else:
         p = p_init if p_init is not None else rng.uniform(0.2, 0.8)
         pairs = [(i, j) for i in range(n) for j in range(i + 1, n) if (i, j) not in planted]
@@ -153,7 +173,7 @@ def main():
     ap.add_argument("--iters", type=int, default=4000)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default=None)
-    ap.add_argument("--init", default="random", choices=["random", "turan"])
+    ap.add_argument("--init", default="random", choices=["random", "turan", "turan2"])
     ap.add_argument("--lam2min", type=float, default=0.0)
     args = ap.parse_args()
     w = args.omega
