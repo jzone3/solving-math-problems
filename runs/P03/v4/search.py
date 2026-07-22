@@ -23,7 +23,7 @@ import time
 from collections import Counter
 
 from woodall import (min_dicut, max_packing, canon_key, all_dicuts,
-                     is_strongly_connected, pack)
+                     is_strongly_connected, pack, condense_multi)
 
 RESULTS = os.path.join(os.path.dirname(__file__), "results.jsonl")
 
@@ -141,6 +141,11 @@ def run(seconds=3600, seed=0, tau_lo=3, tau_hi=6, nmax=12, mmax=30,
         n, arcs = cand
         if not weakly_connected(n, arcs) or is_strongly_connected(n, arcs):
             continue
+        # WLOG normalize to the multi-DAG condensation (tau and nu invariant)
+        n, arcs = condense_multi(n, arcs)
+        cand = (n, arcs)
+        if not weakly_connected(n, arcs):
+            continue
         key = canon_key(n, arcs)
         if key in score_cache:
             stats["dupe"] += 1
@@ -172,8 +177,8 @@ def run(seconds=3600, seed=0, tau_lo=3, tau_hi=6, nmax=12, mmax=30,
                    "tau": tau, "nu": nu}
             log_result(rec)
             print("!!! GAP >= 1 FOUND:", rec, flush=True)
-        if cur_score is None or score >= cur_score:
-            cur, cur_score = cand, score
+        if cur_score is None or score >= cur_score or rng.random() < 0.05:
+            cur, cur_score = cand, score  # 5%: accept downhill (escape traps)
         if score > best_score:
             best_score = score
             log_result({"event": "best", "n": n, "arcs": list(arcs),
