@@ -1,0 +1,33 @@
+=== lp n=11 ===
+n=11: 59347 graphical degree sequences checked
+worst margin (bound - dev) = 3.604225512e-04 at ([10, 3, 3, 3, 3, 3, 3, 2, 2, 1, 1], 'cheap')
+hard/tight cases: 0
+CERTIFIED: conjecture 129 holds for ALL graphs on 11 vertices
+elapsed 14s
+=== lp n=12 ===
+TIGHT/VIOL [6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0] dev=3.500000000 lp=3.500000000 margin=0.000e+00
+n=12: 222116 graphical degree sequences checked
+worst margin (bound - dev) = 0.000000000e+00 at ([6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0], 'lp')
+hard/tight cases: 1
+   ([6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0], 'margin=0.000e+00 dev=3.500000000 lp=3.500000000')
+elapsed 40s
+=== lp n=13 ===
+n=13: 836314 graphical degree sequences checked
+worst margin (bound - dev) = 9.475797880e-07 at ([12, 11, 10, 8, 4, 4, 4, 4, 3, 3, 3, 3, 1], 'cheap')
+hard/tight cases: 0
+CERTIFIED: conjecture 129 holds for ALL graphs on 13 vertices
+elapsed 150s
+=== lp n=14 ===
+TIGHT/VIOL [7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0] dev=4.000000000 lp=4.000000000 margin=0.000e+00
+n=14: 3166851 graphical degree sequences checked
+worst margin (bound - dev) = 0.000000000e+00 at ([7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0], 'lp')
+hard/tight cases: 1
+   ([7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0], 'margin=0.000e+00 dev=4.000000000 lp=4.000000000')
+elapsed 561s
+=== lp n=15 ===
+n=15: 12042619 graphical degree sequences checked
+worst margin (bound - dev) = 9.884171215e-07 at ([14, 9, 7, 7, 6, 6, 5, 5, 3, 3, 2, 2, 1, 1, 1], 'cheap')
+hard/tight cases: 0
+CERTIFIED: conjecture 129 holds for ALL graphs on 15 vertices
+elapsed 2302s
+=== lp n=16 ===
