@@ -1,0 +1,808 @@
+Brigham Young University
+
+BYU ScholarsArchive
+Theses and Dissertations
+2014-12-01
+
+A Covering System with Minimum Modulus 42
+Tyler Owens
+Brigham Young University - Provo
+
+Follow this and additional works at: https://scholarsarchive.byu.edu/etd
+Part of the Mathematics Commons
+
+BYU ScholarsArchive Citation
+Owens, Tyler, "A Covering System with Minimum Modulus 42" (2014). Theses and Dissertations. 4329.
+https://scholarsarchive.byu.edu/etd/4329
+
+This Thesis is brought to you for free and open access by BYU ScholarsArchive. It has been accepted for inclusion
+in Theses and Dissertations by an authorized administrator of BYU ScholarsArchive. For more information, please
+contact scholarsarchive@byu.edu, ellen_amatangelo@byu.edu.
+
+A Covering System with Minimum Modulus 42
+
+Tyler Owens
+
+A thesis submitted to the faculty of
+Brigham Young University
+in partial fulfillment of the requirements for the degree of
+Master of Science
+
+Pace Nielsen, Chair
+Paul Jenkins
+Darrin Doud
+
+Department of Mathematics
+Brigham Young University
+December 2014
+
+Copyright c 2014 Tyler Owens
+All Rights Reserved
+
+abstract
+A Covering System with Minimum Modulus 42
+Tyler Owens
+Department of Mathematics, BYU
+Master of Science
+We construct a covering system whose minimum modulus is 42. This improves the
+previous record of 40 by P. Nielsen.
+
+Keywords: Covering system, minimum modulus, up-arrow notation
+
+Acknowledgments
+I would like to thank my adviser, Pace Nielsen, for introducing me to the problem and the
+notation, as well as giving me helpful suggestions, especially in connection with the prime
+19 which reduced the number of primes needed to complete the covering system.
+
+Contents
+
+Contents
+
+iv
+
+1 Introduction
+
+1
+
+2 A Covering Principle and Notation
+
+1
+
+3 The Covering System
+
+2
+
+3.1
+
+The Prime 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+4
+
+3.2
+
+The Prime 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+5
+
+3.3
+
+The Prime 5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+5
+
+3.4
+
+The Prime 7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+8
+
+3.5
+
+The Prime 11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+10
+
+3.6
+
+The Prime 13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+10
+
+3.7
+
+The Prime 17 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+10
+
+3.8
+
+The Prime 19 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+11
+
+3.9
+
+The Prime 23 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+11
+
+3.10 The Prime 29 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+12
+
+3.11 The Prime 31 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+13
+
+3.12 The Prime 37 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+13
+
+3.13 The Prime 41 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+14
+
+3.14 The Prime 43 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+14
+
+3.15 The Prime 47 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+15
+
+3.16 The Prime 53 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+15
+
+3.17 The Prime 59 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+16
+
+3.18 The Primes 61, 67, and 89 . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+16
+
+3.19 The Primes 71 and 73 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+17
+
+3.20 The Primes 79 and 83 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+17
+
+iv
+
+4 Conclusion
+
+18
+
+Bibliography
+
+20
+
+v
+
+Chapter 1. Introduction
+Covering systems were first introduced by Paul Erdős in his 1950 paper on integers of the
+form 2k + p [1]. A covering system is a finite set of congruence classes with distinct moduli
+greater than 1 such that every integer belongs to at least one of the classes. In that same
+paper, Erdős wrote “It seems likely that for every c there exists such a system all the moduli
+of which are > c.” This statement became known as the minimum modulus problem, and
+it took over sixty years before the problem was resolved in the negative by Bob Hough [2],
+who obtained the upper bound of 1016 on the smallest modulus.
+While it is now known that the minimum modulus of a covering system cannot be arbitrarily large, the question of how large the minimum modulus can be remains. The best
+result to date is that of Pace Nielsen [3], who constructed a covering system with minimum
+modulus 40. Building on his ideas and methods, in this paper we construct a covering system
+with minimum modulus 42.
+
+Chapter 2. A Covering Principle and Notation
+In this work, it will be useful to use a different notation for congruence classes mod m than is
+standard. Understanding this paper requires readers to be familiar with the notations used in
+Nielsen’s paper [3], but for clarity we briefly review the main terminology here. Given a prime
+p, there are exactly p distinct congruence classes modulo p. We denote those p classes as a
+p-tuple, and we put a 1 in the ith position to signify that i (mod p) is in our covering system,
+and an empty spot in the jth position to denote that the congruence class j (mod p) is not
+in our covering system. We write p at the start of the p-tuple to make the modulus explicit.
+For example, 3(1, , 1) represents the classes 1 (mod 3) and 3 (mod 3) but not 2 (mod 3).
+(Note that this couldn’t be part of a covering system because the modulus 3 is repeated.)
+We will often use the word ‘input’ to signify positions in p-tuples (informally thinking of such
+p-tuples as functions with arguments/inputs to be filled). We will also nest tuples to signify
+
+1
+
+higher powers of primes and composite moduli. For example, A = 3( , 1, 2(1, )) denotes
+a partial cover containing two congruence classes, namely 2 (mod 3) and 3 (mod 3) ∩ 1
+(mod 2) = 3 (mod 6). In this notation, we will also use x to represent a congruence class
+that is included in the covering by a previously constructed congruence. For example, if we
+have already constructed A as above, the x’s in 5( , , 3(1, x, 2(x, 1)), , ) denote that some
+classes are already covered by A. One further bit of notation is the use of the addition symbol
+when putting multiple congruence classes in the same input. For example, we will write
+5( , , 2(1, ) + 3( , 2(x, 1), ), , ) to denote the fact that both 2(1, ) and 3( , 2(x, 1), )
+are in the third input of a 5 (which is also why we can put an x in the second set).
+Recall that p↑ (c1 , c2 , . . . , cp−1 ) is recursively defined by the formula
+p(c1 , c2 , . . . , cp−1 , p↑ (c1 , c2 , . . . , cp−1 )).
+Thus 3↑ ( , 1) represents one class modulo 3n for each n ≥ 1. While this notation technically
+creates an infinite cover, there is a standard procedure to finitize the process, as described
+in Morikawa [4], Gibson [5], and Nielsen [3]. This finitization is performed in §4.
+Finally, it should be noted that we will occasionally leave out inputs in p↑ when context
+tells us what those inputs would be. For example, we will often write 2↑ instead of 2↑ (1). As
+another example, if we are restricted to the congruence classes 1 (mod 3) and 2 (mod 2),
+then we may write 9↑ (1, 2) to mean 3(3↑ (1, 2( , 1)), , ). As a final example, if we know
+from context that we are restricted to the classes 1 (mod 2), 1 (mod 3), and 2 (mod 5), we
+may write 5 · 3 · 2 to represent 5( , 3(2(1, ), , ), , , ).
+
+Chapter 3. The Covering System
+We will now construct a covering system with minimum modulus 42. We will work prime
+by prime, encouraging the reader to verify at each step that the sets we construct do in fact
+cover the congruence classes in which we are working, and also verify that no modulus is
+repeated.
+
+2
+
+The basic principle for constructing the covering system is to start with a covering system
+with small moduli, and remove the moduli which are too small. This leaves behind holes.
+We then fill in these holes with moduli involving larger primes. For example, if we wanted
+a covering system with minimum modulus 4, we would start with 2↑ (1). Because 2 < 4 we
+would remove the class 1 (mod 2). We would then move to the prime 3. Since 3 < 4, we
+could use the set 3↑ (2(1, x), 2(2↑ , x)) to fill in the hole left open when removing 1 (mod 2).
+Accompanying some of the congruences in the following sections will be pictorial representations of these holes in the covering system. In the diagrams, white circles will denote
+completely empty holes in the covering system, grey circles will represent partially filled holes,
+and black circles will represent completely covered congruences. The diagrams will branch
+to denote which moduli are being used. For example, 3(1, 2(1, ), ) could be represented
+by the following diagram:
+
+Figure 3.1:
+
+Notice that the center circle is grey because 2(1, ) only covers part of the input. Alternatively, if we wanted to provide more detail, we could draw the following picture:
+
+Figure 3.2:
+
+Finally, it will sometimes be helpful to switch the order in which we branch. For example,
+this same set of congruences could be represented as:
+3
+
+Figure 3.3:
+
+3.1
+
+The Prime 2
+
+For both the prime 2 and the prime 3, we will use exactly the same congruence classes as in
+the covering system of Nielsen [3]. As they form the framework in which we will construct
+the rest of the covering, we give them again here.
+We begin with 2↑ (1). Because we want the minimum modulus of our covering system to
+be 42, we must remove the congruences with moduli 2, 4, 8, 16, and 32. This leaves us with
+a 64↑ , which covers one class modulo 32. At this point it is not important which class mod
+32 we choose, so for concreteness we choose 32 (mod 32).
+
+2
+4
+8
+16
+32
+
+Figure 3.4:
+
+4
+
+64 ↑
+
+3.2
+
+The Prime 3
+
+For the prime 3 we restrict ourselves to the branch 1 (mod 2) and attempt to cover as much
+as possible. We start with the covering 3↑ (2, 4↑ ) and once again remove the congruences with
+moduli less than 42, namely 6, 12, 18, 24, and 36. Specifically, this leaves us with the set
+
+3( , 2(2( , 2( , 2↑ )), ), 3( , 2(2( , 2↑ ), ), 3↑ (2(1, ), 2(2↑ , )))).
+
+We can represent these congruence classes with the following diagram:
+
+6
+12
+
+18
+24
+
+36
+
+Figure 3.5:
+
+We then add the set 81↑ (1, ) in the branch 21 (mod 27), which falls in the hole labeled 18
+in Figure 3.5.
+
+3.3
+
+The Prime 5
+
+The prime 5 marks the first, and most significant, departure from the covering system
+described by Nielsen [3].
+We now turn our attention back to the class 2 (mod 2). On this branch we only have four
+classes to fill, one for each of the moduli 4, 8, 16, and 32 (see Figure 3.4). To simplify notation,
+in this section 4, 8, 16, and 32 will always refer to the classes 2 (mod 4), 4 (mod 8), 8
+(mod 16), and 16 (mod 32) respectively (which are the holes with the corresponding moduli
+5
+
+in Figure 3.4), while 2 refers to 2 (mod 2). We use the prime 5 to fill as much of these classes
+as possible. Because the minimum modulus is 42, the smallest power of 2 that we can use
+in conjunction with the 5 is 16 (since 5 · 8 = 40 < 42). So in the first of the five inputs of
+5( , , , , ) we put 16 + 32. For the next input we insert the set
+
+3( , , 3↑ (4 + 8, ) + 3↑ (16, 32↑ )) + 64↑
+
+Here (and elsewhere in this section) the 32↑ inside of the 3↑ is restricted to the 16 branch
+and the 64↑ is restricted to the 32 branch. For the third input we use the set
+
+3(64↑ , 4 + 8 + 16 + 32, 3↑ (1, 2)).
+
+The order of these inputs might seem arbitrary at this point, but we have chosen the inputs
+in this order for use in later sections. We will remark on this more at the end of the section.
+The fourth input we leave blank. In the fifth input we insert the set
+
+5(2, 4 + 8 + 16 + 32, 3↑ (1, 2), 3↑ (32↑ , 4 + 8 + 16) + 64↑ , 5↑ (1, 2, 3↑ (1, 2), 4↑ )).
+
+Here the 4↑ covers all of 2 (mod 2).
+We note a few things now about our covering so far. First, it will be important later
+(such as in sections 3.5 and 3.6) that the classes 2 (mod 3) and 3 (mod 9) are covered on
+the third input of 5↑ in each of the holes. It will be useful to visualize what we have done so
+far on this branch. We do so as follows:
+
+Hole 4 : 5( , 3( , , 3↑ (x, )), 3( , x, x), , 5(x, x, x, 3↑ ( , x), x))
+Hole 8 : 5( , 3( , , 3↑ (x, )), 3( , x, x), , 5(x, x, x, 3↑ ( , x), x))
+Hole 16 : 5(x, 3( , , x), 3( , x, x), , x)
+Hole 32 : 5(x, x, x, , x)
+
+6
+
+We note that there are still some unused moduli. We almost completely cover the last
+empty input in the 8 hole, with the sets
+
+125↑ (3↑ (4, x), 3↑ (8, x), 3↑ (16↑ , x), 3↑ ( , x))))
+
+leaving just a single 125↑ · 3↑ to fill.
+Pictorially, on both of the branches 2 (mod 4) and 4 (mod 8) we have:
+
+Figure 3.6:
+
+On the branch 8 (mod 16) we have:
+
+Figure 3.7:
+
+Finally, on the branch 16 (mod 32) we have:
+
+Figure 3.8:
+
+7
+
+3.4
+
+The Prime 7
+
+Starting with the prime p = 7 and hereafter, we will be filling the entries of p↑ , so that we
+need only p − 1 inputs, in this case 6. With the prime 7 we will almost completely cover the
+holes in our covering of the 8 and 16 branches from the previous section (pictured in Figures
+3.6 and 3.7). Specifically we will fill all but the first input on the 5 on the 8 hole (which
+is the leftmost white circle in Figure 3.6), and we will completely fill the 16 hole. To this
+end, we fill the first input of the 7↑ with the set 8 + 16. The second input is filled by the set
+3↑ (8, 16↑ ) + 32↑ (of course, 16↑ is used to cover the hole 8 and 32↑ is used to cover the hole
+16). The third input is filled by 3(2, 4, 3↑ (1, 2)) (where here 4 corresponds to 4 (mod 4) so
+that it covers both the 8 and 16 holes).
+Next we consider the fourth, fifth, and sixth inputs. For the moment we will be working
+only with the middle three classes modulo 5 because both the first and the final classes
+modulo 5 are already covered on the 16 hole. We will fill the last class modulo 5 on the
+8 hole later in the section. We thus write 5( , , ) with only three inputs to simplify the
+notation. The fourth set in 7↑ is then 5(3(4, 8 + 16, 3↑ (x, 4)), 3(1, x, x), 2). The fifth set is
+5(8 + 16, 3(3↑ (1, 2), x, x), 5↑ (1, 2, 3↑ (1, 2), 4)). The sixth and final set is more complex. Let
+
+A = 32↑ +3(3↑ (8, ), , 3↑ (x, 16↑ ))+5(8, 16↑ , 3(3↑ (x, 4), 4, x), 3(3↑ (x, 8), 8, x), 3(3↑ (x, 16↑ ), 16↑ , x)).
+
+Here, as usual, 32↑ covers the 16 hole, whereas 16↑ covers the 8 hole. Noting that A fills the
+8 hole, in the second input of 5, we take as our sixth set 5(A, 3(2, x, x), 4).
+We now notice that we have yet to use 125 · 3↑ · 4, 125↑ · 3↑ · 8, or 125↑ · 3↑ · 16↑ . We can
+add these sets to our covering to cover the last input of 5 on the 8 hole in the fourth, fifth,
+and sixth inputs of 7↑ . This leaves just a hole in the first input on 5 in the 8 hole.
+
+8
+
+In summary, we use the following sets:
+
+7↑ (8 + 16,
+3↑ (8, 16↑ ) + 32↑ ,
+3(2, 4, 3↑ (1, 2)),
+5( + x, 3(4, 8 + 16, 3↑ (x, 4)), 3(1, x, x), 2, 125↑ · 3↑ · 4),
+5( + x, 8 + 16, 3(3↑ (1, 2), x, x), 5↑ (1, 2, 3↑ (1, 2), 4), 125↑ · 3↑ · 8),
+5( + x, A, 3(2, x, x), 4, 125↑ · 3↑ · 16↑ ).
+Here we use
+
++ x to signify that we are not covering the first input modulo 5 on the 8 hole,
+
+but that this class is already filled on the 16 hole.
+Our diagram from the previous section is now:
+
+Hole 4 : 5( , 3( , , 3↑ (x, )), 3( , x, x), , 5(x, x, x, 3↑ ( , x), x))
+Hole 8 : 5( , x, x, x, x)
+Hole 16 : 5(x, x, x, x, x)
+Hole 32 : 5(x, x, x, , x)
+
+Pictorially, we have (where we use grey holes only when they are mostly filled):
+
+Figure 3.9:
+
+9
+
+We note at this point that we have yet to use 125↑ · 8↑ or 9↑ · 4. First, restrict to the fifth
+input of the 7↑ , in the fourth input of a 5. Here, on the entirety of the 4 hole we are only
+missing one input in a 7↑ · 25↑ . We use 125↑ · 8↑ to reduce this hole to only missing a single
+input in a 7↑ · 25. We will use this in our work with the primes 61 and 67 in Section 3.18.
+Finally, we use 9 · 4 to fill the third entry of a 7↑ on the intersection 1 (mod 4) ∩ 6 (mod 9);
+this will be used when dealing with the prime 31 in Section 3.11.
+
+3.5
+
+The Prime 11
+
+For the prime 11 we use the same congruences constructed by Nielsen [3], with the exception
+of moving the class modulo 11 · 5 to fall in 4 (mod 5) instead of 1 (mod 5). This simple
+permutation of the inputs does not affect the combinatorial approach we take to constructing
+the sets, as long as we make the same shift in all of the congruences cited from Nielsen’s
+paper. This change will be vital in later sections, beginning with 3.14 .
+
+3.6
+
+The Prime 13
+
+For the prime 13 we use the same congruences constructed by Nielsen [3], again permuting
+the inputs so that the class modulo 13 · 5 falls in 2 (mod 5). This will make work in Section
+3.13 easier.
+We note that the congruence sets of this and the previous section taken together cover
+the holes left over (from our work with the prime 3) when we removed the moduli 6 and 18
+(see Figure 3.5).
+
+3.7
+
+The Prime 17
+
+For the prime 17 we will focus on the hole left when we removed the congruence class with
+modulus 12 during our work with the prime 3 (see Figure 3.5). In his paper, Nielsen used
+the prime 19 to partially fill this hole. Specifically, he constructed seventeen sets to use in
+
+10
+
+filling inputs on a 19↑ . As only one of these sets involved the prime 17, we may use the
+other sixteen sets to completely fill the desired 17↑ , again making the necessary changes to
+accommodate the rearranged inputs.
+
+3.8
+
+The Prime 19
+
+We now return to the branch 2 (mod 4). We will use 19↑ to completely fill the first input in
+the 5 on the 4 hole. (This is the left-most empty hole in Figure 3.9.) Any use of the prime 5
+in this section will be restricted to that branch. Beginning in this section and for the rest of
+our construction, we will suppress the idea of inputs being filled, and instead just construct
+sets which can be used to fill these inputs. This is because the order of the sets used to fill
+each p↑ will not matter to us. So, we begin with the sets 1, 2, 4 and 8↑ (remembering that we
+will need to drop 1 and 2 as inputs in the 19↑ , due to our minimum modulus restriction). We
+can then take these four sets and use them in conjunction with 5 and 25↑ to make five more
+sets. Because the sixth input in 11↑ is already covered on this branch, we can fill a copy of
+11↑ . We now have ten sets, so we can fill five copies of 3↑ (using these sets in sequence). We
+then fill 13↑ , and 17↑ . This gives us seventeen sets. Because 7↑ needs only one input of a 3
+in its third entry on this branch, we can fill three copies of 7↑ (making sure one of the sets is
+7↑ (1, 2, 3(x, 1, x), 4, 8↑ , 3↑ (2, 4))). This gives us a total of twenty sets, which after removing 1
+and 2 gives us the eighteen needed inputs for 19↑ . We note that five of these inputs apply to
+the entire 4 hole, so that on the 4 hole any future 19↑ will need only thirteen inputs filled.
+
+3.9
+
+The Prime 23
+
+We use the same congruences (again up to rearrangement) constructed in Nielsen’s paper to
+completely cover the hole that arose from the removal of the congruence class with modulus
+24 during our work with the prime 3 (see Figure 3.5). In particular, we replace the entry
+5↑ (1, 2, 4, 8) with 5↑ (2, 1, 4, 8) so that on the fourth from the left empty hole in Figure 3.9,
+we only need nineteen inputs in 23↑ . This will be used in Section 3.13.
+11
+
+3.10
+
+The Prime 29
+
+We will now fill two more holes left over from our work with the prime 5. We will restrict
+ourselves to the first input of a 3, and also restrict ourselves to both the second and third
+inputs of a 5, on the 4 hole. (These are the third and fifth from the left empty holes in Figure
+3.9.) We begin with the sets 1, 2, 4, 8↑ , 3 · 1, 3 · 2, 3 · 4, 3 · 8↑ , 9↑ (1, 2), and 9↑ (4, 8↑ ). We then
+have ten sets to use in conjunction with 5, so we can create five more sets (remember that
+we are filling two different inputs in the 5), bringing us up to fifteen sets. The sixteenth set
+is 25↑ (1, 2, 4, 8↑ ) + 25↑ (3 · 1, 3 · 2, 3 · 4, 3 · 8↑ ). We use these sixteen sets to fill a 17↑ . There are
+only two inputs in the 7↑ that we need to fill on the third input of the 5, whereas we need
+five entries filled for the second input of the 5. Thus, if we use congruences which apply to
+both inputs on the 5, we can maximize the effectiveness of the 7. We can thus construct
+four more sets as follows:
+
+7↑ ( , , x, 5 · 1, 5 · 2, 5 · 4) + 7↑ (1, 2, x, x, x, x)
+7↑ ( , , x, 5 · 8↑ , 5 · 3 · 1, 5 · 3 · 2) + 7↑ (4, 8↑ , x, x, x, x)
+7↑ ( , , x, 5 · 3 · 4, 5 · 3 · 8↑ , 25↑ (1, 2, 4, 8↑ )) + 7↑ (3 · 1, 3 · 2, x, x, x, x)
+25↑ (9↑ (1, 2), 9↑ (4, 8↑ ), , )
++ 7↑ ( , , x, 25↑ (x, x, 3 · 1, 3 · 2), 25↑ (x, x, 3 · 4, 3 · 8↑ ), 25↑ (x, x, 9↑ (1, 2), 9↑ (4, 8↑ )))
++ 7↑ (3 · 4, 3 · 8↑ , x, x, x, x)
+We have now constructed 21 sets which we use to fill two copies of 11↑ . We can then fill
+a 23↑ . This gives us 24 sets which we can use to fill two copies of 13↑ . This gives us 26
+sets, which we can use to fill two copies of 19↑ , since five of the inputs from our work in
+Section 3.8 still apply. This brings our total number of sets to twenty-eight; however, we
+cannot use the set 1 because 29 < 42, so we need one more set. We now create the set
+7↑ ( , , x, 5 · 9↑ (1, 2), 5 · (9↑ (4, 8↑ )), B) + 7↑ (9↑ (1, 2), 9↑ (4, 8↑ ), x, x, x, x). Here, B is the set 17↑
+filled with the first sixteen sets.
+
+12
+
+3.11
+
+The Prime 31
+
+We now return to the branch 1 (mod 2). We are going to use 31↑ to fill the hole left open
+when we removed the congruence with modulus 36 in our work with the prime 3. Specifically,
+we are restricted to the branches 1 (mod 4) and 6 (mod 9). We can easily make fourteen
+sets to start off with, namely 1, 2, 4, 8↑ , 3 · 1, 3 · 2, 3 · 4, 3 · 8↑ , 9 · 1, 9 · 2, 9 · 4, 9 · 8↑ , 27↑ (1, 2),
+and 27↑ (4, 8↑ ). Using the first twelve of these fourteen sets we can fill three copies of 5↑ ,
+making sure that one of the sets is 5↑ (2, 4, 8↑ , 1) (which will be used in Section 3.16). We also
+create the set C = 5↑ (27↑ (1, 2), 27↑ (4, 8↑ ), , ) to be used shortly. This gives us seventeen
+complete sets, the first fifteen of which we use to fill three copies of 7↑ (noting, that 7↑ only
+needs five entries filled on this branch). We can then create one more set by using C plus
+7↑ (5↑ (x, x, 3 · 1, 3 · 2), 5↑ (x, x, 3 · 4, 3 · 8↑ ), x, 5↑ (x, x, 9 · 1, 9 · 2), 5↑ (x, x, 9 · 4, 9 · 8↑ ),
+5↑ (x, x, 27↑ (1, 2), 27↑ (4, 8↑ ))).
+This gives us a total of twenty-one sets.
+Because we are working with the branch 2 (mod 4), some of the congruences from or
+work with the prime 11 carries over. In particular, we only need to fill eight entries, one of
+which needs three inputs in a 5↑ and one needs just one input in a 5↑ . Thus, our previous
+sets can easily fill three copies of 11↑ . These twenty-four sets fill two copies of 13↑ . The
+twenty-six constructed sets fill two copies of 17↑ (noting we only needed thirteen entries).
+Finally, we fill one copy each of 19↑ , 23↑ , and 29↑ . This gives us thirty-one sets, which after
+dropping 1, fills our 31↑ .
+
+3.12
+
+The Prime 37
+
+With 1 (mod 2) completely filled, we return now to the branch 2 (mod 2). We work to fill
+in the hole left in the first input of 5 on the 8 hole, which is the second empty hole (from the
+left) in Figure 3.9. We will restrict to the first two inputs of a 3, and fill the third input later
+(in Section 3.16 using the prime 53). Start with the sets 1, 2, 4, 8, and 16↑ . The next four
+13
+
+sets will be 3(1, 2), 3(4, 8), 3(3↑ (1, 2), 3↑ (4, 8)), and 3(16↑ , ) + 5 · 3( , 16↑ ). We can create
+eight more sets by multiplying each of the first eight of these sets by 5. We can also use
+them to fill two copies of 25↑ , giving us 19 sets to work with. From our work in Section 3.4,
+we only need three inputs to fill a 7↑ on this branch, thus giving us six more sets bringing
+our total number of sets to 25. We can use these sets to fill two copies of 13↑ , then two
+copies of 19↑ noting that we need only thirteen inputs because of our work with 19 earlier.
+This gives us twenty-nine sets which we use to fill a 29↑ , then a 31↑ , three copies of 11↑ , two
+copies of 17↑ and finally a 23↑ . This gives us a total of thirty-seven sets, which means we
+can completely fill the thirty-six inputs of the 37↑ , remembering that we cannot use the set
+1 because 37 < 42.
+
+3.13
+
+The Prime 41
+
+Now turn to the fourth open hole (from the left) in Figure 3.9. We use the prime 41 to fill
+this hole, which is the second input in a 3, in the second input of a 5, on the 4 hole. We
+begin with the sets 1, 2, 4, and 8↑ . We use these, in conjunction with 3 and 9↑ to get ten
+sets. Next fill an 11↑ and then a 13↑ (noting that 13↑ only requires eleven inputs on this
+branch). With the twelve sets thus constructed, we create another twelve using the prime 5,
+and another three with 25↑ . These twenty-seven sets fill 19↑ twice over (since we only need
+thirteen inputs), and then we fill a 29↑ . The thirty constructed sets fill six copies of 7↑ . Then
+we sequentially fill a 31↑ , two copies of 17↑ , a 37↑ , and finally two copies of 23↑ (noting that
+on this hole, only nineteen inputs are needed). This results in forty-one sets, which after
+dropping 1 fills the 41↑ .
+
+3.14
+
+The Prime 43
+
+We will use the prime 43 to partially cover the hole in the fourth input of a 5 on the 4 hole.
+(This is the second-to-last empty hole in Figure 3.9.) Specifically we will cover the middle
+
+14
+
+input of a 3 on that branch. We start with the sets 1, 2, 4, and 8↑ . Using 5 and 25↑ we
+fill five more inputs, bringing us to nine sets. Since one input on 11↑ is already covered on
+this branch, we can fill 11↑ bringing us to ten sets. We then use 3 and 9↑ , bringing us to
+twenty-five sets. Because 7↑ needs only five inputs on this branch, we can fill five copies of
+7↑ , bringing us to thirty sets. We then fill 31↑ , 29↑ , and two copies of 17↑ , bringing us to
+thirty-four sets. We then fill 23↑ and 37↑ (noting it is partially filled here) to bring us to
+thirty-six sets. Then fill three copies of 13↑ , bringing us to thirty-nine sets. Finally, since
+19↑ only needs thirteen inputs on this branch, we fill three copies of 19↑ , bringing us to the
+needed 42 sets.
+
+3.15
+
+The Prime 47
+
+We will use the prime 47 to completely fill the first input of a 3 in the fourth input of a 5
+on the 4 hole. We begin with the same twenty-five sets constructed in the section on the
+prime 43 (where here the 3 and 9↑ refer now to the first class modulo 3). Because 7↑ only
+needs four inputs on this branch, one of which only needs a 25, we can use 7↑ to bring us
+to thirty-two sets (the 25↑ breaks into five sets, giving us twenty-nine sets to work with in
+filling the four inputs of the 7↑ , making sure that the 25’s are used in the correct input).
+We then fill two copies of 17↑ , 29↑ , 31↑ , and three copies of 13↑ , bringing us to thirty-nine
+sets. Because 19↑ needs only thirteen inputs on this branch, we can fill three copies of 19↑ ,
+bringing us to forty-two sets. We then fill 41↑ , 43↑ , and two copies of 23↑ , bringing us to the
+forty-six sets we need.
+
+3.16
+
+The Prime 53
+
+We will use the prime 53 to fill the last input of a 5 on the 4 hole. Note that we only need
+to fill one hole mod 25 · 3↑ · 4. We begin with the sets 1, 2, 4, and 8↑ . We then use these in
+conjunction with the prime 3 to bring our total number of sets to eight. We can use these
+
+15
+
+eight sets in conjunction with 5 and 25, along with filling two copies of 125↑ to bring our
+total number of sets to twenty-six. Because 19↑ needs only thirteen inputs, we can fill two
+copies of 19↑ , bringing us to twenty-eight sets. We can now fill a 29↑ . Noting that one of the
+inputs from our work with the prime 31 carries over on this branch, we can fill 31↑ , bringing
+us to thirty sets. Since the third input in 7↑ is already covered on this branch from our
+earlier work, we can use these 30 sets to make six copies of 7↑ , bringing us to thirty-six sets.
+We then sequentially fill three copies of 13↑ , 37↑ , four copies of 11↑ , 41↑ , and 43↑ , giving us
+forty-six sets. We can then fill 47↑ , two copies of 23↑ , and three copies of 17↑ , bringing us to
+the fifty-two sets we need.
+
+3.17
+
+The Prime 59
+
+We will now fill the last input on the 3 in the first input of the 5 on the 8 hole. We begin
+with the sets 1, 2, 4, 8, and 16↑ . We then use these in conjunction with 3 and 9↑ to bring
+our total to twelve sets, with a half-filled 9↑ still at our disposal. We can use these twelve
+sets with 5 to bring our total to twenty-five sets, the last set being 5 · 9↑ (16↑ , ) + 9↑ ( , 16↑ ).
+We can also fill three copies of 25↑ . This gives us a total of twenty-eight sets. We then fill
+29↑ and 23↑ giving us thirty sets. Because we only need three inputs on a 7↑ on this branch,
+we can then fill ten copies of 7↑ , bringing us to forty sets. We then fill 41↑ , four copies of
+11↑ , 43↑ , 47↑ , 37↑ , three copies of 17↑ , four copies of 13↑ , and three copies of 19↑ , bringing us
+to the fifty-eight sets needed to fill 59↑ .
+
+3.18
+
+The Primes 61, 67, and 89
+
+We will use the primes 61, 67, and 89 to fill the third input in the 3 in the fourth input of
+the 5 on the 4 hole, by splitting the input in half as was done for 11 and 13. We begin by
+creating twenty-eight sets, in the same manner as in the previous section. We then fill a 29↑
+and 31↑ (noting the latter needs only twenty-nine inputs). On this branch, we only need to
+
+16
+
+fill 7↑ ( , , x, x, 25(x, x, x, , x), ). Using the previous sets, we can easily do this nine times,
+bringing our total to thirty-nine sets. We then fill 19↑ three times, 37↑ , 41↑ , 43↑ , 23↑ twice,
+47↑ 17↑ three times, 13↑ four times, 53↑ , 11↑ six times (because it only needs nine inputs),
+and 59↑ . This totals in sixty-three sets, easily filling the 61↑ .
+Using the same construction as above (but restricted to a different class modulo 8), we
+get sixty-three sets. We then can use 61↑ to fill two more entries, using the doubling idea
+from Nielsen’s work with the prime 13. This leaves one entry in a 67↑ , which is then easily
+filled using the prime 89.
+
+3.19
+
+The Primes 71 and 73
+
+We will use these two primes to fill the hole remaining in the last input of a 3 in the second
+input of a 5 on the branch 2 (mod 4). We note that we need only fill one input in a 9↑ on
+this branch, and we will split the hole in two as was done with 11 and 13 (and again with
+61 and 67). We begin with the sets 1, 2, 4, 8, and 16↑ . Since 7↑ needs only five inputs we
+get another set, and then in conjunction with 3 and 9↑ we have eighteen sets. Now fill a 17↑ ,
+19↑ , 11↑ twice, and 13↑ twice (since we only need eleven inputs), giving a total of twenty-four
+sets. Using 5 and 25↑ , we then have fifty-four sets. Sequentially fill 53↑ , 47↑ , 43↑ , 41↑ , 59↑ ,
+37↑ , 31↑ twice, 61↑ , 23↑ three times (since it only needs twenty-one inputs), 29↑ three times
+(since it only needs twenty-two inputs), and a 67↑ . This yields the seventy sets to fill a 71↑ .
+Repeat for the other class modulo 8, to get seventy sets. Then 71↑ can be filled twice
+(using the doubling trick) and we thus can completely fill the 73↑ .
+
+3.20
+
+The Primes 79 and 83
+
+We will now fill the final empty hole, which is in the fourth input of a 5 on the 32 hole. (This
+is the right-most empty hole in Figure 3.9.) We will split this hole into two parts, using 79↑
+to fill the first input of a 3↑ and 83↑ to fill the second. We begin with the sets 1, 2, 4, 8,
+
+17
+
+16, 32, and 64↑ . We then use these with 3↑ to bring our total number of sets to fourteen.
+Since 7↑ only needs two inputs on this branch, we can fill seven copies of 7↑ , bringing us to
+twenty-one sets. We can then use 5 and 25↑ to bring us to forty-seven sets. We then fill 47↑ ,
+three copies of 17↑ , five copies of 11↑ , two copies of 29↑ , 59↑ , 53↑ , 61↑ , two copies of 31↑ , five
+copies of 13↑ , 67↑ , three copies of 23↑ , four copies of 19↑ , 71↑ , 73↑ . This gives us enough sets
+to fill a 79↑ .
+Now using 79↑ , 43↑ , and two copies of 41↑ , this gives us a total of eighty-two sets, which
+fills the 83↑ , and finishes the construction.
+
+Chapter 4. Conclusion
+Now that we have an infinite cover, we can utilize any large (unused) prime to finitize the
+covering, giving us the desired covering system with minimum modulus 42. The final covering
+system can be visually represented by Figure 4.1, which shows where the primes are used in
+relation to each other.
+How would one go about improving this result? In Nielsen’s covering system, there were
+no small primes left over to be able to fill the hole created by removing the congruence
+class with the modulus 40. Raising the minimum modulus of the covering system required
+fundamentally changing the approach used in constructing the covering system, most notable
+in the change of placement of the prime 5. In the case of this covering system, there is a
+similar lack of freedom among the placement of small primes. So if we remove the class
+with modulus 42, it would be difficult to fill in the resulting hole. To improve the cover
+further, one would likely need to make a similar dramatic change early on in the process of
+constructing the covering system, perhaps in the sets used with the prime 3, or perhaps by
+choosing a better place to put the extra 81↑ .
+It is worth noting that Nielsen’s covering system with minimum modulus 40 used a scheme
+with all of the primes up to 103. My covering system with minimum modulus 42 only uses a
+
+18
+
+scheme utilizing all of the primes up to 89. A natural question for future research is whether
+one can use fewer primes still. If so, can a covering system with minimum modulus 43 or
+higher be constructed? It is likely that it would require the use of at least the primes used
+in constructing this covering system, and would likely require even more large primes.
+
+*
+
+5
+
+3
+17
+13
+
+11
+
+7
+23
+
+31
+
+37
+
+59
+
+2
+79
+
+83
+
+*
+
+19
+
+29
+
+29
+
+41
+71 73
+
+47
+
+43
+
+53
+61 67
+89
+
+Figure 4.1: The Primes Used in Constructing the Covering System
+
+19
+
+Bibliography
+[1] P. Erdős. On integers of the form 2k + p and some related problems. Summa Brasil.
+Math., 2:113–123, 1950.
+[2] Bob Hough. Solution of the minimum modulus problem for covering systems. Ann. of
+Math. (2), 181(1):361–382, 2015.
+[3] Pace P. Nielsen. A covering system whose smallest modulus is 40. J. Number Theory,
+129(3):640–666, 2009.
+[4] Ryozo Morikawa. On a method to construct covering sets. Bull. Fac. Liberal Arts
+Nagasaki Univ., 22(1):1–11, 1981.
+[5] D.J. Gibson. Covering systems. Ph.D. thesis, University of Illinois at Urbana-Champaign,
+2006.
+
+20
+
+
