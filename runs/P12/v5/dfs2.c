@@ -32,6 +32,7 @@ static long long solutions = 0;
 static unsigned long long nodes_total = 0;
 
 static u128 ID_M1, ID_M2;      /* identity row arc masks */
+static u128 FULL_ARCS;         /* all arcs a!=b */
 
 static inline u128 arcbit(int a, int b) { return (u128)1 << (a * N + b); }
 
@@ -99,10 +100,11 @@ static void search(u128 u1, u128 u2, uint32_t lastmask,
         if ((c->m1 & u1) || (c->m2 & u2) || (lastmask & (1u << c->last))) continue;
         u128 n1 = u1 | c->m1, n2 = u2 | c->m2;
         uint32_t nl = lastmask | (1u << c->last);
-        /* filter remaining classes into scratch */
+        /* filter remaining classes into scratch; track union coverage of dist-1 arcs */
         long ntop = sc->top;
         long *nlists[16]; long nsizes[16];
         int ok = 1;
+        u128 cover = n1;
         for (uint32_t m = nrem; m; m &= m-1) {
             int s = __builtin_ctz(m);
             long *dst = sc->buf + sc->top;
@@ -112,11 +114,13 @@ static void search(u128 u1, u128 u2, uint32_t lastmask,
                 Cand *d = &cands[src[k]];
                 if ((d->m1 & n1) || (d->m2 & n2) || (nl & (1u << d->last))) continue;
                 dst[cnt++] = src[k];
+                cover |= d->m1;
             }
             if (!cnt) { ok = 0; sc->top = ntop; break; }
             nlists[s] = dst; nsizes[s] = cnt;
             sc->top += cnt;
         }
+        if (ok && (cover & FULL_ARCS) != FULL_ARCS) { ok = 0; sc->top = ntop; }
         if (ok) {
             memcpy(chosen[depth], c->perm, N);
             search(n1, n2, nl, nlists, nsizes, nrem, chosen, depth+1, sc);
@@ -130,6 +134,8 @@ int main(int argc, char **argv) {
     N = atoi(argv[1]);
     if (N > 11) { fprintf(stderr, "n<=11 (mask width)\n"); return 1; }
 
+    FULL_ARCS = 0;
+    for (int a = 0; a < N; a++) for (int b = 0; b < N; b++) if (a != b) FULL_ARCS |= arcbit(a, b);
     ID_M1 = ID_M2 = 0;
     for (int j = 0; j+1 < N; j++) ID_M1 |= arcbit(j, j+1);
     for (int j = 0; j+2 < N; j++) ID_M2 |= arcbit(j, j+2);
@@ -167,26 +173,27 @@ int main(int argc, char **argv) {
             /* filter classes 2..N-1 */
             long *lists[16]; long sizes[16]; uint32_t rem = 0;
             long ntop = 0; int ok = 1;
+            u128 cover = u1;
             for (int s = 2; s < N && ok; s++) {
                 long *dst = sc.buf + ntop; long cnt = 0;
                 for (long k = 0; k < ccount[s]; k++) {
                     Cand *d = &cands[cstart[s] + k];
                     if ((d->m1 & u1) || (d->m2 & u2) || (lastmask & (1u << d->last))) continue;
                     dst[cnt++] = cstart[s] + k;
+                    cover |= d->m1;
                 }
                 if (!cnt) { ok = 0; break; }
                 lists[s] = dst; sizes[s] = cnt; rem |= 1u << s; ntop += cnt;
             }
+            if (ok && (cover & FULL_ARCS) != FULL_ARCS) ok = 0;
             if (ok) {
                 sc.top = ntop;
                 memcpy(chosen[0], c->perm, N);
                 search(u1, u2, lastmask, lists, sizes, rem, chosen, 1, &sc);
             }
-            if ((i % 200) == 0) {
-                #pragma omp critical
-                { fprintf(stderr, "top %ld/[%ld,%ld) t=%.0fs sols=%lld\n",
-                          i, lo, hi, omp_get_wtime()-t0, solutions); fflush(stderr); }
-            }
+            #pragma omp critical
+            { fprintf(stderr, "done seed %ld t=%.0fs sols=%lld\n",
+                      i, omp_get_wtime()-t0, solutions); fflush(stderr); }
         }
         #pragma omp atomic
         nodes_total += sc.nodes;
