@@ -36,7 +36,7 @@ def main():
     ap.add_argument("--omega", type=int, required=True)
     ap.add_argument("--n1", type=int, required=True)
     ap.add_argument("--n2", type=int, required=True)
-    ap.add_argument("--depth", type=int, default=2, choices=[1, 2])
+    ap.add_argument("--depth", type=int, default=2, choices=[1, 2, 3])
     args = ap.parse_args()
     w = args.omega
     adj0, n = build(args.n1, args.n2, w)
@@ -46,8 +46,10 @@ def main():
     pairs = [(i, j) for i in range(n) for j in range(i + 1, n)]
     best = (r0, None)
     flip_sets = [(p,) for p in pairs]
-    if args.depth == 2:
+    if args.depth >= 2:
         flip_sets += list(itertools.combinations(pairs, 2))
+    if args.depth >= 3:
+        flip_sets += list(itertools.combinations(pairs, 3))
     checked = 0
     for fs in flip_sets:
         adj = list(adj0)
