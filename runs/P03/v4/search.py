@@ -125,7 +125,7 @@ def run(seconds=3600, seed=0, tau_lo=3, tau_hi=6, nmax=12, mmax=30,
         log_every=200, init=None):
     rng = random.Random(seed)
     t0 = time.time()
-    seen = set()
+    score_cache = {}
     stats = Counter()
     best_score = (-1,)
     cur = init
@@ -142,14 +142,19 @@ def run(seconds=3600, seed=0, tau_lo=3, tau_hi=6, nmax=12, mmax=30,
         if not weakly_connected(n, arcs) or is_strongly_connected(n, arcs):
             continue
         key = canon_key(n, arcs)
-        if key in seen:
+        if key in score_cache:
             stats["dupe"] += 1
+            cached = score_cache[key]
+            # allow plateau movement onto already-seen states (no re-eval)
+            if cached is not None and cur_score is not None \
+                    and cached >= cur_score and rng.random() < 0.25:
+                cur, cur_score = cand, cached
             continue
-        seen.add(key)
         res = evaluate(n, arcs, tau_lo=tau_lo, tau_hi=tau_hi)
         evals += 1
         if res is None:
             stats["tau_out_of_range"] += 1
+            score_cache[key] = None
             # still allow moving there occasionally to escape
             if cur is None:
                 cur = cand
@@ -161,6 +166,7 @@ def run(seconds=3600, seed=0, tau_lo=3, tau_hi=6, nmax=12, mmax=30,
         # hardness surrogate: many minimum dicuts, few arcs per unit tau --
         # tight instances where the packing ILP is most constrained.
         score = (gap, nmin, -len(arcs) / tau)
+        score_cache[key] = score
         if gap >= 1:
             rec = {"event": "COUNTEREXAMPLE?", "n": n, "arcs": list(arcs),
                    "tau": tau, "nu": nu}
