@@ -1,0 +1,22 @@
+n=118 seed score 0.985973
+round 1: toggle (0, 1) -> 0.985991
+round 2: toggle (0, 2) -> 0.986008
+round 3: toggle (0, 3) -> 0.986024
+round 4: toggle (0, 4) -> 0.986039
+round 5: toggle (0, 5) -> 0.986053
+round 6: toggle (0, 6) -> 0.986067
+round 7: toggle (0, 7) -> 0.986079
+round 8: toggle (0, 8) -> 0.986091
+round 9: toggle (0, 9) -> 0.986101
+round 10: toggle (0, 10) -> 0.986111
+round 11: toggle (0, 11) -> 0.986120
+round 12: toggle (0, 12) -> 0.986128
+round 13: toggle (0, 13) -> 0.986135
+round 14: toggle (0, 14) -> 0.986141
+round 15: toggle (0, 15) -> 0.986146
+round 16: toggle (0, 16) -> 0.986150
+round 17: toggle (0, 17) -> 0.986154
+round 18: toggle (0, 18) -> 0.986156
+round 19: toggle (0, 19) -> 0.986158
+round 20: toggle (0, 20) -> 0.986158
+LOCAL OPT n=118 score=0.986158 m=1273 violation=False

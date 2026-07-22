@@ -1,0 +1,16 @@
+n=116 seed score 0.971072
+round 1: toggle (0, 1) -> 0.971085
+round 2: toggle (0, 2) -> 0.971097
+round 3: toggle (0, 3) -> 0.971109
+round 4: toggle (0, 4) -> 0.971119
+round 5: toggle (0, 5) -> 0.971128
+round 6: toggle (0, 6) -> 0.971137
+round 7: toggle (0, 7) -> 0.971144
+round 8: toggle (0, 8) -> 0.971151
+round 9: toggle (0, 9) -> 0.971157
+round 10: toggle (0, 10) -> 0.971161
+round 11: toggle (0, 11) -> 0.971165
+round 12: toggle (0, 12) -> 0.971168
+round 13: toggle (0, 13) -> 0.971169
+round 14: toggle (0, 14) -> 0.971170
+LOCAL OPT n=116 score=0.971170 m=1229 violation=False

@@ -1,0 +1,2 @@
+COUNTEREXAMPLE n=9 g6=H?q`qjo farkas=[Fraction(1, 1), Fraction(-1, 2), Fraction(-1, 2), Fraction(1, 1), Fraction(-1, 2), Fraction(-1, 2), Fraction(-1, 2), Fraction(-1, 2), Fraction(1, 1)]
+n=9 part=0/1 mindeg=3: geng_tf=23 maximalTF=7 infeasible=1

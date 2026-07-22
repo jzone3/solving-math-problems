@@ -1,0 +1,9 @@
+n=30: best a=16 ratio_rc=0.8557 ratio_pair=0.8852 var=20.93 m=134 mu_rc=5.478 p=8
+n=50: best a=24 ratio_rc=1.0249 ratio_pair=1.0458 var=31.65 m=302 mu_rc=9.778 p=14
+n=75: best a=33 ratio_rc=1.1343 ratio_pair=1.1497 var=41.32 m=570 mu_rc=15.649 p=22
+n=100: best a=42 ratio_rc=1.1994 ratio_pair=1.2115 var=51.21 m=919 mu_rc=21.522 p=30
+n=150: best a=58 ratio_rc=1.2747 ratio_pair=1.2833 var=65.03 m=1745 mu_rc=34.203 p=47
+n=200: best a=74 ratio_rc=1.3180 ratio_pair=1.3246 var=79.50 m=2827 mu_rc=46.867 p=64
+n=300: best a=104 ratio_rc=1.3668 ratio_pair=1.3713 var=103.85 m=5552 mu_rc=73.072 p=99
+n=400: best a=132 ratio_rc=1.3940 ratio_pair=1.3975 var=124.11 m=8914 mu_rc=100.124 p=135
+n=600: best a=188 ratio_rc=1.4241 ratio_pair=1.4265 var=166.21 m=17990 mu_rc=154.139 p=207

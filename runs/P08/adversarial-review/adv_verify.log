@@ -1,0 +1,11 @@
+Path inertia n+=n-=floor(k/2): PASS (exact k<=40, float k<=2000)
+  n=1 done, cumulative connected labeled graphs checked: 1
+  n=2 done, cumulative connected labeled graphs checked: 2
+  n=3 done, cumulative connected labeled graphs checked: 6
+  n=4 done, cumulative connected labeled graphs checked: 44
+  n=5 done, cumulative connected labeled graphs checked: 772
+  n=6 done, cumulative connected labeled graphs checked: 27476
+Exhaustive labeled n<=6: PASS, 27476 graphs, min margin min(n+,n-)-dev = 0.0000 at (1, 0)
+geng -c 7: PASS, 853 graphs (exact inertia), min margin = 0.2687
+Random graphs/trees (400 trials, n<= 60): PASS, min margin = 0.2194
+ALL CHECKS PASS
