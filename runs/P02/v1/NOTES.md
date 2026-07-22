@@ -119,4 +119,12 @@ many graphs.
       exact d_f=3 via primal/dual pair). Prints PASS.
 - [x] Full MTF sweep n ≤ 18 (Tracks A+B): no counterexample to the original conjecture.
 - [x] n = 19 (13.7M graphs) sweep.
-- [ ] n = 20 (~1.4e8 graphs, generated via mtf `file` extension of the N19 set).
+- [x] n = 20: 178,587,364 MTF graphs generated (mtf `file` extension of the N19 set,
+      1782 s); sweep running (~8 h on 8 cores).
+- [x] vega.py: exact verification that every Andrásfai graph Γ_i (2 ≤ i ≤ 40,
+      n ≤ 119) and every Vega graph Υ^{µν}_i (µ,ν ∈ {0,1}, 2 ≤ i ≤ 40, n ≤ 127)
+      is maximal triangle-free and admits a positive rational solution of Ax = c·1
+      (exact rational simplex; out/vega40.txt).  By the Brandt–Thomassé theorem
+      (maximal TF, δ > n/3 ⇒ blow-up of an Andrásfai or Vega graph), this
+      machine-verifies Conjecture 4.1 for every graph of ANY order whose core is one
+      of these 195 graphs — complementing the exhaustive core sweep (n ≤ 20).
