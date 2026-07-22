@@ -64,6 +64,23 @@ always vertex-connectivity 2. Extrapolating, the true minimum at n=22 is plausib
 ~130–190, so our annealer hitting 144 at n=22 suggests it reaches (near-)optimal graphs —
 and that the global minimum curve is far above 1, consistent with the conjecture.
 
+### Grow mode & seeded runs
+- Added `grow` mode: insert a new vertex on the pair of disjoint edges minimizing the exact
+  HC count (4-regularity preserved). Growing the annealed 144-HC n=22 graph keeps the count
+  at exactly **144 for every n = 23..32** — a constant-count chain, the same phenomenon
+  Thomassen–Zamfirescu (arXiv:2104.06347) used to refute Haythorpe's Conjecture 4.2.
+- Reproduced Haythorpe's G*_{16,4} (72 HCs, verified with our counter; matching labeling
+  (1,4),(2,5),(3,6)). Greedy growing from it degrades: 96, 120, 144, 180, 240, 288, ... —
+  the tight 72 structure does not survive naive insertions.
+- Seeded anneal at n=22 from grown h22 (288 HCs) reached only 192; fresh basin-hopping
+  reaches 144 (n=22, 23, 24) — 144 appears to be a hard floor for this move set at n≥22.
+
+### Calibration against known exhaustive minima (Haythorpe Table 1)
+- Basin-hopping anneal at n=16/17/18 found **72 / 96 / 108** — exactly the published
+  exhaustive minima. The move set + schedule reaches global minima at sizes where ground
+  truth is known, so the 144 plateau at n=22 is plausibly the true minimum there
+  (= 36·2^(n+2-16... ) i.e. G*_{22,4} count 36·2^2 = 144).
+
 ## Near-misses / observations
 
 - Best counts found cluster on highly divisible values (144, 192, 288) — suggests
