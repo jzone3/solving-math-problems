@@ -75,6 +75,18 @@ def main():
         clauses.append([-v, b])
         clauses.append([v, -a, -b])
 
+    # optional proven fold constraints q:j  (fold mod q equals s*delta_j)
+    for arg in sys.argv[5:]:
+        q, j = map(int, arg.split(":"))
+        for r in range(q):
+            lits = []
+            for i, o in enumerate(orbs):
+                w = sum(1 for x in o if x % q == r)
+                lits += [P[i]] * w + [-N[i]] * w
+            wneg = sum(1 for x in range(n) if x % q == r)
+            # sum P - sum N = target  <=>  P-count + (wneg - N-count) = wneg + target
+            card_eq(lits, wneg + (s if r == j else 0))
+
     # M[o][o'][g] = #{(x,y) in O_o x O_o' : x - y == g mod n}
     # build per shift g the pos/neg weighted literal lists
     idx = [None] * n
@@ -108,6 +120,14 @@ def main():
         card_eq(pos + [-v for v in neg], w_neg)
 
     print(f"n={n} s={s} t={t} orbits={u} clauses={len(clauses)}", flush=True)
+    if len(sys.argv) > 4:                      # dump DIMACS for kissat etc.
+        top = pool.top
+        with open(sys.argv[4], "w") as f:
+            f.write(f"p cnf {top} {len(clauses)}\n")
+            for cl in clauses:
+                f.write(" ".join(map(str, cl)) + " 0\n")
+        print("wrote", sys.argv[4])
+        return
     with Cadical153(bootstrap_with=clauses) as slv:
         sat = slv.solve()
         if not sat:
