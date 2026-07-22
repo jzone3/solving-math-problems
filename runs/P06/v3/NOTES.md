@@ -105,8 +105,12 @@ Evidence for (★):
   n = 8..100, Erdős–Gallai-constrained moves): max g = 0 (up to 1e-15),
   attained only at K_t ∪ (t−2)K_1 sequences.
 - Exhaustive over ALL graphical degree sequences (`enum_seq.c`):
-  n = 8 (1,212 seqs), 10 (16,015), 12 (222,116), 14 (3,166,851): max g = 0,
-  argmax = K_{t} ∪ (t−2)K_1 sequence. n = 16, 18 running.
+  n = 8 (1,212 seqs), 10 (16,015), 12 (222,116), 14 (3,166,851),
+  n = 16 (45,967,478), n = 18 (675,759,563): max g = 0 (±2e-15),
+  argmax = K_t ∪ (t−2)K_1 sequence every time. n = 20 running.
+- Closed form on the equality family: for K_t ∪ zeros, (★) reduces to
+  (t−1)(n−t+1) ≤ n²/4 — plain AM–GM, equality iff t−1 = n/2, i.e. exactly
+  the K_t ∪ (t−2)K_1 padding. So (★) is sharp precisely at the equality family.
   **Each completed n here verifies conjecture 129 for ALL graphs on n vertices**
   (via R ≥ m·GM), independent of geng — a much cheaper exhaustive frontier.
 - Earlier two-case variant (`case_checks.py`, `lemma_opt.py`, `lemma_opt2.py`):
@@ -119,9 +123,14 @@ Evidence for (★):
    vector (variance and Σ d ln d are Schur-convex; increasing transform + sum). ✓
 3. Maximal graphical sequences in the dominance order (fixed sum) are threshold
    sequences (Ruch–Gutman); so it suffices to prove (★) for threshold sequences. ✓(lit)
-4. (★) for threshold sequences — OPEN; machine-verified for all threshold graphs
-   n ≤ 30 (via the stronger dev ≤ R check in `threshold.c`) and asymptotic block
-   families (§7).
+4. (★) for threshold sequences — OPEN; machine-verified: g ≤ 0 for all 2^(n−1)
+   threshold creation sequences n ≤ 28 (`threshold.c`, `threshold_g.out`) and
+   asymptotic block-threshold families (§7).
+
+**Corollary of the (★) exhaust (steps 1 + enum): WoW conjecture 129 is TRUE for
+every graph on n ≤ 18 vertices** — pushes the exhaustive frontier from n = 10
+(Brewster–Dinneen–Faber 1995) to n = 18 without enumerating graphs (only degree
+sequences), on top of the direct geng exhaust n ≤ 12.
 
 ## 7. Status: (updated as runs finish)
 
