@@ -42,3 +42,9 @@ RESULT n=14 L=8 status=UNSAT iters=208 blockclauses=95960 time=948.8s
 === n=15 L=4 (time limit 10800.0s) ===
 RESULT n=15 L=4 status=UNSAT iters=1 blockclauses=0 time=38.3s
 === n=15 L=5 (time limit 10800.0s) ===
+RESULT n=15 L=5 status=UNSAT iters=747 blockclauses=11196 time=493.1s
+=== n=15 L=6 (time limit 10800.0s) ===
+RESULT n=15 L=6 status=UNSAT iters=1219 blockclauses=48526 time=117.1s
+=== n=15 L=7 (time limit 10800.0s) ===
+RESULT n=15 L=7 status=UNSAT iters=726 blockclauses=96339 time=1955.5s
+=== n=15 L=8 (time limit 10800.0s) ===

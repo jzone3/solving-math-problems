@@ -20,3 +20,7 @@ RESULT n=14 L=6 status=UNSAT iters=640 blockclauses=29793 time=50.1s
 RESULT n=14 L=7 status=UNSAT iters=377 blockclauses=58247 time=438.2s
 RESULT n=14 L=8 status=UNSAT iters=208 blockclauses=95960 time=948.8s
 RESULT n=15 L=4 status=UNSAT iters=1 blockclauses=0 time=38.3s
+RESULT n=15 L=5 status=UNSAT iters=747 blockclauses=11196 time=493.1s
+RESULT n=15 L=6 status=UNSAT iters=1219 blockclauses=48526 time=117.1s
+RESULT n=16 L=7 status=UNSAT iters=1677 blockclauses=144980 time=1206.8s
+RESULT n=15 L=7 status=UNSAT iters=726 blockclauses=96339 time=1955.5s
