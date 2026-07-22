@@ -46,11 +46,35 @@ other open cells CW(112,36), CW(117,36), CW(120,49), CW(132,81) secondary.
   **timeout**. → plain/streamlined direct SAT at n≈48–105 is beyond reach for minutes-scale
   budgets; motivated the two-stage fold-and-lift attack (below).
 
-## Compute log (running)
+## Fold-and-lift architecture (main attack)
 
-- kissat full-instance baselines on CW(96,36) and CW(105,36) (propriety clauses included),
-  started 21:21 UTC, one core each — long-shot background runs.
-- stage A fold enumerations: n=96 d=48 (b∈[-2,2]^48) and n=105 d=35 (b∈[-3,3]^35), started
-  ~21:30 UTC.
+Two validated facts drive the design:
+- **Lift with fully pinned fold is easy**: kissat solves CW(48,36) in 3.5 s when the exact
+  pair-sums b_j = a_j + a_{j+24} are fixed (`--liftsum`), vs >900 s otherwise.
+- **Fold enumeration is the bottleneck**: CP-SAT enumeration of folds at d=24..48 produced
+  nothing in ~30 min; incremental cadical likewise; kissat one-shot with a parent-fold
+  streamliner solves d=24 fold instances in ~85 s. Correctness of the fold SAT encoding
+  cross-checked against DFS enumeration (72 = 72 raw solutions at n=48,d=6) and against the
+  known witness's own fold (pinned instance SAT in 0 s).
+
+Pipelines (soundness: canonical-class reduction — rotations × units of Z_d, WLOG row sum +6 —
+is applied at exactly ONE level per pipeline; all deeper levels enumerate RAW and lifts drop
+the x_0=+1 fixing; propriety clauses cover all residue classes):
+- `pipeline105.py`: folds mod 5 (5 raw → **1 class**: [6,0,0,0,0]) × folds mod 7 (21 raw)
+  → SAT-enumerate folds mod 35 (both pinned) → kissat lift to 105 via `--liftsum=35:` (class
+  size 3, blocking-clause exact sums). 4 sharded workers, ENUM_TL=900 s/branch, LIFT_TL=600 s.
+- `pipeline96.py`: canonical folds mod 6 (72 raw → **8 classes**) → DFS: SAT-enumerate mod 12
+  → mod 24 → mod 48 (each conditioned on parent) → kissat lift via `--liftsum=48:` (pair
+  sums). 2 sharded workers.
+
+## Compute log
+
+- kissat full-instance baselines CW(96,36), CW(105,36): ran 21:21–22:30 UTC (~70 min each,
+  one core), no answer — killed in favor of pipelines (baseline futility expected from the
+  CW(48,36) calibration).
+- CP-SAT full-instance calibration on known-SAT CW(48,36): 1800 s, 8 workers — UNKNOWN.
+- 22:20 UTC: pipeline105 4 workers running; first branch [0_0] yielded 1 fold mod 35 in
+  900 s (status: budget-limited, i.e. enumeration incomplete — caveat for completeness
+  claims). 22:30 UTC: pipeline96 2 workers running.
 
 STATUS: (running)

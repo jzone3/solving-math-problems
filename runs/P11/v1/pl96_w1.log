@@ -1,0 +1,4 @@
+mod6: 72 raw -> 8 classes
+=== top-level class 1: [3, 3, 0, 3, -3, 0] ===
+[c1] d=12 parent=6 -> 0 folds (exhausted)
+=== top-level class 3: [4, 2, -2, 2, -2, 2] ===

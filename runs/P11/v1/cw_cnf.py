@@ -94,7 +94,8 @@ def link_offset(cnf, pool, alits, blits, c, tag):
         cnf.append([-oa[len(blits) + c]])
 
 
-def encode2(n, k, fixzero=(), fixpos=(), fixneg=(), classsum=None, proper=True):
+def encode2(n, k, fixzero=(), fixpos=(), fixneg=(), classsum=None, proper=True,
+            liftsum=None, fix0=True):
     s = math.isqrt(k)
     assert s * s == k
     npos, nneg = (k + s) // 2, (k - s) // 2
@@ -104,7 +105,8 @@ def encode2(n, k, fixzero=(), fixpos=(), fixneg=(), classsum=None, proper=True):
     M = [pool.id(("m", i)) for i in range(n)]
     for i in range(n):
         cnf.append([-P[i], -M[i]])
-    cnf.append([P[0]])
+    if fix0:
+        cnf.append([P[0]])
     for i in fixzero:
         cnf.append([-P[i]]); cnf.append([-M[i]])
     for i in fixpos:
@@ -122,11 +124,33 @@ def encode2(n, k, fixzero=(), fixpos=(), fixneg=(), classsum=None, proper=True):
             while nn % f == 0:
                 pr.add(f); nn //= f
         for pnum in sorted(pr):
-            cl = []
-            for i in range(n):
-                if i % pnum != 0:
-                    cl.append(P[i]); cl.append(M[i])
-            cnf.append(cl)
+            residues = [0] if fix0 else range(pnum)
+            for r in residues:
+                cl = []
+                for i in range(n):
+                    if i % pnum != r:
+                        cl.append(P[i]); cl.append(M[i])
+                cnf.append(cl)
+    if liftsum:
+        d, bs = liftsum
+        assert n % d == 0 and len(bs) == d
+        c = n // d
+        assert c <= 3, "blocking-clause lift encoding only for class size <= 3"
+        import itertools
+        for j in range(d):
+            idxs = [j + t * d for t in range(c)]
+            for vals in itertools.product((-1, 0, 1), repeat=c):
+                if sum(vals) == bs[j]:
+                    continue
+                cl = []
+                for pos, v in zip(idxs, vals):
+                    if v == 1:
+                        cl.append(-P[pos])
+                    elif v == -1:
+                        cl.append(-M[pos])
+                    else:
+                        cl.append(P[pos]); cl.append(M[pos])
+                cnf.append(cl)
     if classsum:
         d, cs = classsum
         assert n % d == 0 and len(cs) == d and sum(cs) == s
@@ -171,7 +195,9 @@ def main():
     path = sys.argv[4]
     fixzero = fixpos = fixneg = ()
     classsum = None
+    liftsum = None
     proper = True
+    fix0 = True
     for arg in sys.argv[5:]:
         if arg.startswith("--fixzero="):
             fixzero = tuple(int(v) for v in arg.split("=")[1].split(",") if v)
@@ -183,10 +209,17 @@ def main():
             spec = arg.split("=")[1]
             d, cs = spec.split(":")
             classsum = (int(d), [int(v) for v in cs.split(",")])
+        if arg.startswith("--liftsum="):
+            spec = arg.split("=")[1]
+            d, bs = spec.split(":")
+            liftsum = (int(d), [int(v) for v in bs.split(",")])
         if arg == "--improper-ok":
             proper = False
+        if arg == "--nofix0":
+            fix0 = False
     if cmd == "encode":
-        cnf, pool, P, M = encode2(n, k, fixzero, fixpos, fixneg, classsum, proper)
+        cnf, pool, P, M = encode2(n, k, fixzero, fixpos, fixneg, classsum, proper,
+                                  liftsum, fix0)
         cnf.to_file(path)
         print(f"wrote {path}: {cnf.nv} vars, {len(cnf.clauses)} clauses")
     elif cmd == "decode":
