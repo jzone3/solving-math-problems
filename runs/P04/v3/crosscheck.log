@@ -1,0 +1,34 @@
+K5: brute=2 sat=2 bound=2
+K7: brute=3 sat=3 bound=3
+K9: brute=None sat=4 bound=4
+trial 0: n=6 m=7 brute=2 sat=2 OK
+trial 1: n=7 m=13 brute=2 sat=2 OK
+trial 2: n=9 m=21 brute=4 sat=4 OK
+trial 3: n=7 m=12 brute=2 sat=2 OK
+trial 4: n=8 m=16 brute=3 sat=3 OK
+trial 5: n=8 m=14 brute=3 sat=3 OK
+trial 6: n=9 m=18 brute=3 sat=3 OK
+trial 7: n=5 m=7 brute=2 sat=2 OK
+trial 8: n=5 m=5 brute=1 sat=1 OK
+trial 9: n=5 m=6 brute=2 sat=2 OK
+trial 10: n=8 m=16 brute=3 sat=3 OK
+trial 11: n=6 m=11 brute=2 sat=2 OK
+trial 12: n=8 m=12 brute=2 sat=2 OK
+trial 13: n=8 m=13 brute=3 sat=3 OK
+trial 14: n=8 m=17 brute=3 sat=3 OK
+trial 15: n=6 m=7 brute=2 sat=2 OK
+trial 16: n=7 m=11 brute=2 sat=2 OK
+trial 17: n=8 m=12 brute=2 sat=2 OK
+trial 18: n=8 m=19 brute=3 sat=3 OK
+trial 19: n=8 m=18 brute=3 sat=3 OK
+trial 20: n=7 m=7 brute=1 sat=1 OK
+trial 21: n=6 m=8 brute=2 sat=2 OK
+trial 22: n=9 m=16 brute=3 sat=3 OK
+trial 23: n=6 m=7 brute=2 sat=2 OK
+trial 24: n=7 m=11 brute=2 sat=2 OK
+trial 25: n=6 m=7 brute=2 sat=2 OK
+trial 26: n=8 m=13 brute=2 sat=2 OK
+trial 27: n=8 m=12 brute=2 sat=2 OK
+trial 28: n=6 m=8 brute=2 sat=2 OK
+trial 29: n=6 m=7 brute=2 sat=2 OK
+ALL CROSSCHECKS PASS

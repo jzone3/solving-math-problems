@@ -1,0 +1,3 @@
+TIGHT n=13 m=69 tag=rand g6=L~^~n^n~Z~^~~f t=0.2s
+TIGHT n=13 m=67 tag=rand g6=L~znn^|~~]~\~j t=0.1s
+SUMMARY n=13 mode=random {'OK': 18, 'TIGHT': 2, 'CE': 0} time=2s
