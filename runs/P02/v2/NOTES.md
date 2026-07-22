@@ -71,6 +71,11 @@ triangle-free, χ(W) = 3 (n < 11 so triangle-free ⇒ χ ≤ 3; non-bipartite: c
 Adjacency (vertex: neighbors):
 0: 4 5 8 | 1: 4 7 8 | 2: 5 6 8 | 3: 6 7 8 | 4: 0 1 6 | 5: 0 2 7 | 6: 2 3 4 | 7: 1 3 5 | 8: 0 1 2 3
 
+Clean description (machine-checked): take an 8-cycle v0v1…v7, add the two antipodal
+chords v1v5 and v3v7, and add a hub adjacent to the four even-position vertices
+v0, v2, v4, v6. (Hub = vertex 8; even positions = {0,1,3,2}; odd positions {4,7,6,5}
+carry the chords 4–6, 7–5.)
+
 Exact linear algebra over Q: the solution space of A x = d·1 is 2-dimensional and every
 solution has x_8 = 0. Certificate y = (0,1,1,0,−1,−1,−1,−1,2)/2 satisfies yᵀA = e_8ᵀ and
 yᵀ1 = 0, so x_8 = yᵀ(Ax) = d·(yᵀ1) = 0 for any solution. Hence no x ≥ 1 exists: W has NO
