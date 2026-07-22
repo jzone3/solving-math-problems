@@ -57,8 +57,42 @@ Exact double-counting consequences turned into integer feasibility problems
   (Feasible solutions do not respect the published I1 restriction n_{d>=2}=0,
   confirming these relaxations are strictly weaker than known case analysis.)
 
-## Next (in progress)
-Grand unified ILP: L1+L2+L3 together + spectral second-moment identities
-(trace((N^T N)^2) = (V-1)theta^2 + tau^2, Frobenius identities for S,D,A
-matrices coupling W-, P-, Y-variables) + forbidden configurations from L<8
-(n22<=1 always; m12,m21<=1 when L=4).
+## 4. Grand unified ILP (grand_ilp.py) — two-point closure
+L1+L2+L3 + ALL two-point trace identities: T1 trace((N^TN)^2)=(V-1)theta^2+tau^2;
+T2..T4 trace((AA^T)^2),((SS^T)^2),((DD^T)^2); T5 trace(SD^T DS^T); T6
+trace(SS^T DD^T); T8 trace((SD^T)^2); T10 trace(AA^T NN^T); T11 trace(SS^T NN^T);
+T12 trace(DD^T NN^T); forbidden n22>=2 (two blocks sharing 2 common doubles
+force a pair with coverage >= 8 > L).
+
+IMPORTANT incident: the first version had a wrongly derived T10
+(assumed trace(AA^T NN^T) decomposes as sum y*z; correct block-side entry is
+(A^T N)_{bb'} = n11+m12+2(m21+n22)). The buggy model returned INFEASIBLE for
+I1, I2, I4 — a false "nonexistence proof". Caught by mandatory validation:
+validate_model.py recomputes every identity on explicit known BTDs
+(BTD(4,9;3,3,9;4,7) and BTD(4,8;2,3,8;4,6) from Kunkle–Sarvate, plus a fresh
+CP-SAT-found BTD(8,20;8,1,10;4,4) with r2=1). After the fix all three test
+designs PASS all identities, and the grand ILP is FEASIBLE for ALL FOUR
+instances. Also: forcing n_2+n_3>=1 for I1 stays feasible, so the two-point
+relaxation cannot even re-derive the published b2=14 restriction for I1 —
+counting at the 2-point level is definitively too weak to kill any cell.
+CONCLUSION of the pure-counting program: negative (documented; no
+Fisher/divisibility/rational-congruence/mod-p/2-point-counting obstruction
+exists for any of the 4 instances).
+
+## 5. Reduced algebraic formulation for I1 (reduced_i1.py)
+r2=1 and (published, Kunkle–Sarvate table) b2=14 force: 14 blocks
+{x_i,x_i} u S_i (bijection i<->x_i, |S_i|=5) + 4 pure 7-subsets. With T (14x14
+0/1, zero diag, row sums 5), Q (4x14, row sums 7):
+    N = [2I + T^T | Q^T],  N N^T = 7I+4J  <=>  T^T T + 2(T+T^T) + Q^T Q = 3I+4J.
+Diagonal gives indeg_T(v) + colsum_Q(v) = 7. Eigenvalue corollary: on 1^perp,
+2(T+T^T) = 3I - T^T T - Q^T Q <= 3I, so lambda_2(T+T^T) <= 3/2 — a directed-SRG-like
+rigidity. CP-SAT decides this sector completely; the complementary sector
+(some block with >= 2 doubles) is the 'force_multidouble' branch of the full model.
+
+## 6. Complete CP-SAT decision runs (cpsat_btd.py) — V5 counting exhausted,
+borrowing complete search (UNSAT = nonexistence proof)
+Model: s/d indicator booleans, product ANDs for the 91/66 pair equations,
+row/col lex symmetry breaking (sound: only removes isomorphic copies).
+Sanity: finds known BTD(8,20;8,1,10;4,4) in 0.4 s (witness re-verified by
+validate_model.py identities).
+Runs (4h budget each, in progress): I1 full, I2 full, I1-reduced (b2=14 sector).
