@@ -80,5 +80,22 @@ CP-SAT hit UNKNOWN at 250 s — CP-SAT is much weaker than kissat on the UNSAT s
 | 9 | kissat | full | UNSAT + DRAT VERIFIED | 7.3 s solve + 27 s check |
 | 13 | CP-SAT | full | UNKNOWN (SAT-side hard) | 180 s limit |
 | 10 | CP-SAT | full, no first-occ | UNKNOWN | 250 s limit |
+| 12 | CP-SAT | full, no first-occ | UNKNOWN (no design, no refutation) | 7200 s limit |
 
 (Additional rows appended below as longer runs finish.)
+
+## 5. Incidents / operational notes
+
+- First long kissat runs on v=9-weak and v=10 (with DRAT emission) died silently after
+  ~65 min: /tmp is a 16 GB tmpfs and the two proofs grew to 12.9 GB + 3.8 GB and filled
+  it. Relaunched both WITHOUT proof output (the DRAT-verified refutation of v=9 with
+  full symmetry breaking is already archived; the weak run is a soundness cross-check
+  where only the s-line verdict matters).
+- Verified v=9 artifacts archived: `pmd9.cnf` + `pmd9.drat` (drat-trim `s VERIFIED`),
+  gzipped copies committed under `solutions/P13/`.
+
+## 6. LNS phase (v = 12, 15, 16, 18)
+
+`pmd_lns.py`: phase 1 solves the packing relaxation (each (ordered pair, distance)
+covered at most once, maximize covered slots; perfect packing = PMD), phase 2 hints the
+exact model with the best packing. Runs logged below.
