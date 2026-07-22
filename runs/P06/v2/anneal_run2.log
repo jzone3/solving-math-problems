@@ -1,0 +1,8 @@
+n=  15 best f=-0.008899 (recheck -0.008899) m=28 maxdeg=7 t=49.7s
+n=  19 best f=-0.006930 (recheck -0.006930) m=45 maxdeg=9 t=58.3s
+n=  25 best f=-0.005202 (recheck -0.005202) m=78 maxdeg=12 t=44.4s
+n=  31 best f=-0.004163 (recheck -0.004163) m=120 maxdeg=15 t=53.9s
+n=  41 best f=-0.003124 (recheck -0.003124) m=210 maxdeg=20 t=60.5s
+n=  55 best f=-0.002314 (recheck -0.002314) m=378 maxdeg=27 t=75.3s
+n=  71 best f=-0.001785 (recheck -0.001785) m=630 maxdeg=35 t=96.3s
+n=  91 best f=-0.001389 (recheck -0.001389) m=1035 maxdeg=45 t=119.9s

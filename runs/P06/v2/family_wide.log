@@ -1,0 +1,2 @@
+complete split wide: (0.0, ('split', 1, 1, 0))
+star-with-clique-center wide: (2.220446049250313e-16, ('star+clique', 4, 0, 2))

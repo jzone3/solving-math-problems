@@ -107,7 +107,30 @@ padding, thousands of parameter combos): max f = 0, attained only at
 degenerate reductions to K_q + (q−2)K_1; all genuine deformations negative.
 `family_scan_wide.py`: complete split graphs K_q ∨ sK_1 + kK_1 with q ≤ 200,
 s ≤ 4000, optimal padding k ≈ n*−(q+s); star-with-clique-center q ≤ 120,
-s ≤ 800. [family_wide.log]
+s ≤ 800. Result: max f = 0, attained only at degenerate family members
+(K_2 = split(1,1,0); star+clique(4,0,2) = G_4). [family_wide.log]
+
+## 8. Large-q asymptotic sign check of 1-flip perturbations
+
+`perturb_asymptotics.py` (60-digit Decimal + exact Fractions for dev²):
+closed-form f for the three 1-flip types (delete clique edge / add iso–iso
+edge / add clique–iso edge) and off-optimal paddings k = q±1−2, evaluated at
+q up to 10^6. All strictly negative at every scale; deficits shrink like
+Θ(1/q) (type A), Θ(1) (type B), Θ(q^{-1/2})→(type C ~1/√q), Θ(1/q²)
+(off-padding) — monotone approach to 0 with no crossing. Prints PASS.
+
+## 9. Verifier
+
+`solutions/P06/verify.py` (stdlib + numpy): checks (1) the trace identity vs
+real eigensolves, (2) exact equality dev = R = q/2 on G_q for q ≤ 300 in
+rational arithmetic, (3) the regular-graph theorem, (4) brute force over ALL
+2^21 labeled graphs on ≤7 vertices (max f = 0; equality only at K_2, K_3+K_1,
+K_4+2K_1 labelings). Prints PASS. Run: `python3 solutions/P06/verify.py`.
+
+Caveat on logs: `search.py` prints "POSITIVE CANDIDATE" when best > 0 in
+floats; the hits in anneal logs are the equality graphs at float ~+2e-16 (i.e.
+exactly 0; equality verified rationally in verify.py). No genuine positive was
+ever found.
 
 ## STATUS: negative (no counterexample; conjecture tight on K_q ∪ (q−2)K_1)
 
