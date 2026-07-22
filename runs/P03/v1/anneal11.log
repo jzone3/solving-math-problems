@@ -1,0 +1,14 @@
+[anneal seed=11] step=2 new best hardness=25 tau=5 m=24 t=0s
+[anneal seed=11] step=6 new best hardness=30 tau=6 m=27 t=0s
+[anneal seed=11] step=8 new best hardness=35 tau=7 m=28 t=0s
+[anneal seed=11] step=15 new best hardness=40 tau=8 m=30 t=0s
+[anneal seed=11] step=24 new best hardness=45 tau=9 m=29 t=0s
+[anneal seed=11] step=29 new best hardness=50 tau=10 m=30 t=0s
+[anneal seed=11] step=44 new best hardness=55 tau=11 m=32 t=0s
+[anneal seed=11] step=45 new best hardness=60 tau=12 m=33 t=0s
+[anneal seed=11] step=67 new best hardness=65 tau=13 m=38 t=0s
+[anneal seed=11] step=87 new best hardness=70 tau=14 m=37 t=0s
+[anneal seed=11] step=116 new best hardness=75 tau=15 m=30 t=0s
+[anneal seed=11] step=140 new best hardness=80 tau=16 m=31 t=0s
+[anneal seed=11] step=232 new best hardness=10218 tau=15 m=47 t=0s
+[anneal seed=11] step=235 new best hardness=10228 tau=14 m=46 t=1s
