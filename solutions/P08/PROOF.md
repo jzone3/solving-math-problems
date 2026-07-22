@@ -26,12 +26,9 @@ Every entry of $D$ lies in $[0,d]$. Popoviciu's inequality states that for any
 finite list of reals contained in $[m,M]$, the population variance is at most
 $(M-m)^2/4$, with equality iff half the values equal $m$ and half equal $M$.
 Hence $\mathrm{dev}(D) \le d/2$.
-(Elementary proof: for values $x_i\in[m,M]$ with mean $\mu$, the variance
-$\frac1N\sum (x_i-\mu)^2 \le \frac1N\sum (x_i-m)(M-x_i) + \text{(shift)}$;
-concretely $\mathrm{Var}(X) = E[X^2]-E[X]^2 \le E[(m+M)X - mM] - E[X]^2 =
--(E[X]-m)(E[X]-M) - \big(E[X^2]\text{ correction}\big)$ — the standard one-line
-form: $0 \le \frac1N\sum (M-x_i)(x_i-m) = -mM +(m+M)\mu - E[X^2]$, so
-$\mathrm{Var} = E[X^2]-\mu^2 \le (M-\mu)(\mu-m) \le (M-m)^2/4$.)
+(Elementary proof: for values $x_i\in[m,M]$ with mean $\mu$,
+$$0 \;\le\; \frac1N\sum_i (M-x_i)(x_i-m) \;=\; -mM + (m+M)\mu - E[X^2],$$
+so $\mathrm{Var} = E[X^2]-\mu^2 \le (M-\mu)(\mu-m) \le (M-m)^2/4$.)
 
 **Step 2 (geodesics are induced paths).** Choose $u,v$ with
 $d_G(u,v) = d$ and a shortest path $u=x_0,x_1,\dots,x_d=v$. For $|i-j|\ge 2$,
