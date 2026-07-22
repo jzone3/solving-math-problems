@@ -7,7 +7,7 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P01 | queued | queued | queued | queued | queued |
 | P02 | queued | queued | queued | queued | queued |
 | P03 | queued | queued | queued | queued | queued |
-| P04 | queued | queued | queued | queued | queued |
+| P04 | queued | running | queued | queued | queued |
 | P05 | queued | queued | queued | queued | queued |
 | P06 | queued | queued | queued | queued | queued |
 | P07 | queued | queued | queued | queued | queued |
