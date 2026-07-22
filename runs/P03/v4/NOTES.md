@@ -91,14 +91,43 @@ All simple digraphs (no parallel arcs; 2-cycles allowed) up to isomorphism,
 weakly connected, not strongly connected, tau >= 3:
 
 - n = 4: 217 iso classes scanned, 19 with tau >= 3: **all gap 0**.
-- n = 5: running (2^20 arc-sets, exact canon dedup).
+- n = 5: 9607 iso classes, 1389 with tau >= 3: **all gap 0** (147s).
 
-## 6. Results log
+## 6. Structural reduction: WLOG multi-DAGs
+
+tau and nu are invariant under condensation-with-parallel-arcs (arcs inside a
+strong component lie in no dicut; dijoin packings restrict/lift bijectively in
+the count). So any counterexample may be assumed to be a weakly connected
+multi-DAG, vertices topologically ordered. Implemented as
+`condense_multi` and (a) used to normalize every annealer state, (b) made the
+basis of a second exhaustive scan over multi-DAGs (`multidag_exhaustive.py`):
+support ⊆ upper-triangular pairs, multiplicities >= 1, exact isomorphism dedup
+(min over vertex permutations).
+
+Exhaustive multi-DAG results (tau in [3,6], all instances machine-checked):
+- k=3 vertices, m <= 14 arcs: 202 tau>=3 classes — all gap 0.
+- k=4, m <= 14: 13,515 tau>=3 classes — all gap 0.
+- k=5, m <= 12: 61,808 tau>=3 classes — all gap 0.
+- k=5, m <= 14 and k=6, m <= 12: running.
+
+## 7. Exhaustive simple-digraph results (cross-validated two ways)
+
+- n=4: 19 tau>=3 iso classes — gap 0.
+- n=5: 1389 tau>=3 classes — gap 0. Independently cross-checked: my
+  hand-rolled enumerator (2^20 masks + exact perm canon) and nauty
+  (geng -c 5 | directg) agree exactly on the count (1389) and on gap 0.
+- n=6 (nauty, 1,530,843 digraph classes): 243,129 with tau>=3 — **all gap 0**.
+  => Woodall verified exhaustively for ALL simple digraphs on <= 6 vertices.
+
+## 8. Results log
 
 (checkpointed as runs proceed; see `results.jsonl`)
 
-- [t0] annealer seeds 11/22/33 (tau 3-6), 44 (tau=3 only), 55 (tau 3-4),
-  66 (seeded at unweighted Schrijver digraph, tau 3-5); 4h each.
-- exhaustive n=5 scan running.
+- annealers: seeds 11 (tau 3-6), 44 (tau=3 only), 55 (tau 3-4), 66 (seeded at
+  unweighted Schrijver digraph, tau 3-5), with DAG normalization; no gap so
+  far after ~1.5M evaluated instances across runs. Two lessons learned and
+  fixed mid-run: (a) coarse degree-based dedup over-blocked the walk near
+  structured seeds -> exact keys; (b) pure plateau walk got trapped at
+  high-nmin local optima -> 5% downhill acceptance.
 
 ## STATUS: (pending — run in progress)
