@@ -1,0 +1,51 @@
+n=10: L(7,3) ratio_rc=0.43007 ratio_pair=0.47785
+n=11: L(8,3) ratio_rc=0.45966 ratio_pair=0.50563
+n=12: L(9,3) ratio_rc=0.48097 ratio_pair=0.52470
+n=13: L(9,4) ratio_rc=0.51356 ratio_pair=0.55636
+n=14: L(9,5) ratio_rc=0.54276 ratio_pair=0.58451
+n=15: L(9,6) ratio_rc=0.57201 ratio_pair=0.61287
+n=16: L(10,6) ratio_rc=0.60527 ratio_pair=0.64563
+n=17: L(11,6) ratio_rc=0.62990 ratio_pair=0.66926
+n=18: L(12,6) ratio_rc=0.64786 ratio_pair=0.68596
+n=19: L(11,8) ratio_rc=0.67536 ratio_pair=0.71288
+n=20: L(12,8) ratio_rc=0.69902 ratio_pair=0.73581
+n=21: L(13,8) ratio_rc=0.71650 ratio_pair=0.75232
+n=22: D(3,6,13) ratio_rc=0.73459 ratio_pair=0.76957
+n=23: L(13,10) ratio_rc=0.75456 ratio_pair=0.78886
+n=24: L(14,10) ratio_rc=0.77145 ratio_pair=0.80499
+n=25: D(14,8,3) ratio_rc=0.79316 ratio_pair=0.82621
+n=26: D(3,8,15) ratio_rc=0.81066 ratio_pair=0.84308
+n=27: D(15,8,4) ratio_rc=0.82538 ratio_pair=0.85712
+n=28: D(16,8,4) ratio_rc=0.84271 ratio_pair=0.87392
+n=29: D(16,10,3) ratio_rc=0.85669 ratio_pair=0.88729
+n=30: D(16,10,4) ratio_rc=0.87445 ratio_pair=0.90460
+n=31: D(17,10,4) ratio_rc=0.89041 ratio_pair=0.92009
+n=32: D(17,10,5) ratio_rc=0.90534 ratio_pair=0.93454
+n=33: D(18,10,5) ratio_rc=0.92049 ratio_pair=0.94926
+n=34: D(6,10,18) ratio_rc=0.93363 ratio_pair=0.96193
+n=35: D(6,10,19) ratio_rc=0.94777 ratio_pair=0.97565
+n=36: D(19,12,5) ratio_rc=0.96009 ratio_pair=0.98752
+n=37: D(6,12,19) ratio_rc=0.97536 ratio_pair=1.00245
+n=38: D(6,12,20) ratio_rc=0.98833 ratio_pair=1.01504
+n=39: D(7,12,20) ratio_rc=1.00235 ratio_pair=1.02873 *** VIOLATION ***
+n=40: D(8,12,20) ratio_rc=1.01431 ratio_pair=1.04031 *** VIOLATION ***
+n=41: D(8,12,21) ratio_rc=1.02730 ratio_pair=1.05298 *** VIOLATION ***
+n=42: D(9,12,21) ratio_rc=1.03867 ratio_pair=1.06400 *** VIOLATION ***
+n=43: D(9,12,22) ratio_rc=1.05037 ratio_pair=1.07538 *** VIOLATION ***
+n=44: D(9,14,21) ratio_rc=1.06193 ratio_pair=1.08663 *** VIOLATION ***
+n=45: D(22,14,9) ratio_rc=1.07462 ratio_pair=1.09904 *** VIOLATION ***
+n=46: D(10,14,22) ratio_rc=1.08617 ratio_pair=1.11030 *** VIOLATION ***
+n=47: D(10,14,23) ratio_rc=1.09751 ratio_pair=1.12137 *** VIOLATION ***
+n=48: D(11,14,23) ratio_rc=1.10860 ratio_pair=1.13219 *** VIOLATION ***
+n=49: D(12,14,23) ratio_rc=1.11900 ratio_pair=1.14231 *** VIOLATION ***
+n=50: D(24,14,12) ratio_rc=1.12938 ratio_pair=1.15243 *** VIOLATION ***
+n=51: D(13,14,24) ratio_rc=1.13936 ratio_pair=1.16215 *** VIOLATION ***
+n=52: D(12,16,24) ratio_rc=1.14981 ratio_pair=1.17236 *** VIOLATION ***
+n=53: D(13,16,24) ratio_rc=1.16038 ratio_pair=1.18270 *** VIOLATION ***
+n=54: D(14,16,24) ratio_rc=1.17053 ratio_pair=1.19262 *** VIOLATION ***
+n=55: D(25,16,14) ratio_rc=1.18039 ratio_pair=1.20225 *** VIOLATION ***
+n=56: D(25,16,15) ratio_rc=1.19012 ratio_pair=1.21176 *** VIOLATION ***
+n=57: D(16,16,25) ratio_rc=1.19951 ratio_pair=1.22093 *** VIOLATION ***
+n=58: D(25,16,17) ratio_rc=1.20860 ratio_pair=1.22981 *** VIOLATION ***
+n=59: D(18,16,25) ratio_rc=1.21744 ratio_pair=1.23843 *** VIOLATION ***
+n=60: D(25,18,17) ratio_rc=1.22627 ratio_pair=1.24706 *** VIOLATION ***
