@@ -14,7 +14,7 @@
  *  - reachability: all of U must be reachable from y in the dist-1
  *    availability digraph restricted to U (necessary for a Ham path).
  *
- * Usage: ./t2dfs3 n [split_mod split_res] [-r seed]
+ * Usage: ./t2dfs4 n [split_mod split_res] [-r seed]
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,6 +34,7 @@ static uint64_t rng = 0;
 static int randomize = 0;
 static unsigned long long node_limit = 0; /* 0 = no limit */
 static int stop_after_first = 0;
+static uint32_t rowsdone; /* bitmask of row-start symbols already filled */
 
 static uint64_t xrand(void) { /* xorshift64 */
     rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng << 17; return rng;
@@ -48,14 +49,27 @@ static void print_solution(void) {
 
 static void search_row(int r, int pos, uint32_t inrow);
 
-static void next_row(int r) {
-    if (r == n) {
+/* dynamic row ordering (fail-first): among unfilled rows, pick the start
+ * symbol with the fewest candidates for its second cell. rowsdone always
+ * contains bit 0 (row 0 = identity). Completeness is unaffected by
+ * variable ordering. `depth` counts filled rows. */
+static void next_row(int depth) {
+    if (depth == n) {
         sols++; print_solution();
         if (stop_after_first) exit(0);
         return;
     }
+    int best = -1, bestc = 99;
+    for (int s = 1; s < n; s++) {
+        if (rowsdone & (1u << s)) continue;
+        int c = __builtin_popcount(fullmask & ~(1u << s) & ~used1[s]);
+        if (c < bestc) { bestc = c; best = s; }
+    }
+    int r = best;
+    rowsdone |= 1u << r;
     rows[r][0] = r;
     search_row(r, 1, 1u << r);
+    rowsdone &= ~(1u << r);
 }
 
 static int feasible(int y, uint32_t U) {
@@ -116,10 +130,11 @@ static void search_row(int r, int pos, uint32_t inrow) {
         if (pos >= 2) { z = rows[r][pos-2]; used2[z] |= 1u << x; }
         if (pos == n-1) {
             lastmask |= 1u << x;
-            if (r == 1) {
+            int depth = __builtin_popcount(rowsdone) + 1; /* +1 for row 0 */
+            if (depth == 2) {
                 row1count++;
-                if (row1count % split_mod == split_res) next_row(r+1);
-            } else next_row(r+1);
+                if (row1count % split_mod == split_res) next_row(depth);
+            } else next_row(depth);
             lastmask &= ~(1u << x);
         } else {
             uint32_t U = fullmask & ~(inrow | (1u << x));
@@ -147,6 +162,7 @@ int main(int argc, char **argv) {
     for (int c = 0; c < n-1; c++) { used1[c] = 1u << (c+1); avail_in[c+1] &= ~(1u << c); }
     for (int c = 0; c < n-2; c++) used2[c] = 1u << (c+2);
     lastmask = 1u << (n-1);
+    rowsdone = 0;
     next_row(1);
     fprintf(stderr, "n=%d split=%d/%d solutions=%llu nodes=%llu row1count=%lld maxrow=%d maxpos=%d\n",
             n, split_res, split_mod, sols, nodes, row1count+1, maxrow, maxpos);
