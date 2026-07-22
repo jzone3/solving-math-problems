@@ -1,0 +1,239 @@
+#!/usr/bin/env python3
+"""P15 V4: randomized greedy + local repair covering-system builder.
+
+Strategy (CRT-layered, Nielsen/Owens style, machine-driven):
+  Process prime powers p^e one level at a time. State = set of "holes":
+  residues mod M (M = product of processed prime powers) not yet covered.
+  At the level for p^e, each hole splits into q = p^e branches. Available
+  moduli are d*p^j (d | M, 1 <= j <= e, d*p^j >= T, unused) plus plain
+  divisors d | M (d >= T, unused) that kill whole holes. Each modulus is
+  usable for exactly ONE congruence (distinct moduli). A congruence
+  (a mod d, b mod p^j) covers, in every hole r with r = a (mod d), the
+  branches t = b (mod p^j).
+
+  Greedy = lazy submodular maximization over (d, j) candidates with
+  randomized tie-breaking; multiple restarts; optional end-of-level
+  reassignment repair.
+
+Outputs a JSON witness {"congruences": [[a, n], ...]} on success.
+"""
+import argparse
+import heapq
+import json
+import random
+import sys
+from math import gcd
+
+import numpy as np
+
+
+def crt(a, m, b, n):
+    """x = a mod m, x = b mod n, gcd(m,n)=1 -> x mod m*n."""
+    inv = pow(m % n, -1, n)
+    return (a + m * ((b - a) * inv % n)) % (m * n)
+
+
+def divisors_of(factored):
+    """factored: list of (p, e). Yields all divisors."""
+    divs = [1]
+    for p, e in factored:
+        divs = [d * p**k for d in divs for k in range(e + 1)]
+    return sorted(divs)
+
+
+class Builder:
+    def __init__(self, levels, T, seed=0, hole_cap=2_000_000, verbose=True,
+                 key="gain", survivor=False):
+        self.key = key
+        self.survivor = survivor
+        # levels: list of (p, e) in processing order
+        self.levels = levels
+        self.T = T
+        self.rng = random.Random(seed)
+        self.hole_cap = hole_cap
+        self.verbose = verbose
+        self.used = set()        # numeric moduli already used
+        self.congs = []          # list of (a, n)
+        self.M = 1
+        self.Mfact = []          # factored M
+        self.holes = np.zeros(1, dtype=np.int64)  # residues mod M
+
+    def log(self, *a):
+        if self.verbose:
+            print(*a, flush=True)
+
+    def run(self):
+        for (p, e) in self.levels:
+            ok = self.do_level(p, e)
+            if not ok:
+                return False
+            if len(self.holes) == 0:
+                return True
+        return len(self.holes) == 0
+
+    def candidate_moduli(self, p, e):
+        """All (d, j) with d | M, modulus d*p^j >= T, unused. j=0 means plain d."""
+        cands = []
+        for d in divisors_of(self.Mfact):
+            for j in range(0, e + 1):
+                m = d * p**j
+                if m >= self.T and m not in self.used and m > 1:
+                    if j == 0 and d == 1:
+                        continue
+                    cands.append((d, j))
+        return cands
+
+    def do_level(self, p, e):
+        q = p**e
+        H = len(self.holes)
+        if H == 0:
+            return True
+        T = self.T
+        self.log(f"LEVEL p^e={p}^{e} q={q}  M={self.M}  holes={H}")
+        if H * q > 200_000_000:
+            self.log("  abort: level too large")
+            return False
+        # uncovered branches: H x q boolean
+        uncov = np.ones((H, q), dtype=bool)
+        holes = self.holes
+        cands = self.candidate_moduli(p, e)
+        self.rng.shuffle(cands)
+
+        # Precompute holes % d lazily
+        mod_cache = {}
+
+        def hole_res(d):
+            if d not in mod_cache:
+                mod_cache[d] = (holes % d).astype(np.int64)
+            return mod_cache[d]
+
+        MQ = float(self.M) * q
+        # survivor alignment: cells t = s0 (mod p) are covered only in phase 2
+        s0 = self.rng.randrange(p)
+        colw = np.ones(q, dtype=bool)
+        if self.survivor:
+            colw[s0::p] = False  # phase-1 active columns = non-survivor
+
+        def best_assignment(d, j):
+            """Return (eff, gain, a, b) best congruence for modulus d*p^j.
+            eff = gain * m / (M*q): fraction of the congruence's density
+            that lands on uncovered hole-cells (1.0 = zero waste)."""
+            r = hole_res(d)
+            pj = p**j if j > 0 else 1
+            m = d * pj
+            best = (-1.0, -1.0, 0, 0)
+            brange = range(pj) if j > 0 else [0]
+            for b in brange:
+                act = uncov & colw[None, :]
+                g = act[:, b::pj].sum(axis=1) if j > 0 else act.sum(axis=1)
+                gains = np.bincount(r, weights=g, minlength=d)
+                a = int(gains.argmax())
+                g = float(gains[a])
+                cand = ((g * m / MQ, g, a, b) if self.key == "eff"
+                        else (g, g * m / MQ, a, b))
+                if cand[:2] > best[:2]:
+                    best = cand
+            return best
+
+        picked = []
+
+        def greedy_pass():
+            heap = []
+            for (d, j) in cands:
+                m = d * p**j
+                if m in self.used:
+                    continue
+                pj = p**j
+                ub = H * (q // pj if j > 0 else q)
+                prim = 1.0 if self.key == "eff" else float(ub)
+                heap.append((-prim, -float(ub), self.rng.random(), d, j))
+            heapq.heapify(heap)
+            while heap:
+                negu, negg, tie, d, j = heapq.heappop(heap)
+                eff, gain, a, b = best_assignment(d, j)
+                if gain <= 0:
+                    continue
+                if heap and (-heap[0][0], -heap[0][1]) > (eff + 1e-12,
+                                                          gain + 1e-9):
+                    heapq.heappush(heap, (-eff, -gain, self.rng.random(), d, j))
+                    continue
+                pj = p**j
+                r = hole_res(d)
+                sel = r == a
+                if j == 0:
+                    uncov[sel, :] = False
+                    m = d
+                    c = a
+                else:
+                    cols = np.arange(b, q, pj)
+                    cols = cols[colw[cols]]
+                    uncov[np.ix_(sel, cols)] = False
+                    m = d * pj
+                    c = crt(a % d, d, b, pj) if d > 1 else b
+                self.used.add(m)
+                self.congs.append((c, m))
+                picked.append((d, j, a, b))
+                if not (uncov & colw[None, :]).any():
+                    break
+
+        greedy_pass()
+        if self.survivor:
+            # phase 2: attack survivor columns (full kills / cleanup)
+            colw[:] = True
+            greedy_pass()
+
+        # form new holes
+        remaining = int(uncov.sum())
+        newM = self.M * q
+        if remaining > self.hole_cap:
+            self.log(f"  fail: {remaining} holes exceeds cap")
+            return False
+        hi, ti = np.nonzero(uncov)
+        inv = pow(self.M % q, -1, q)
+        rs = holes[hi]
+        ts = ti.astype(np.int64)
+        newholes = rs + self.M * (((ts - rs) % q) * inv % q)
+        self.M = newM
+        # update factored M
+        self.Mfact = self.Mfact + [(p, e)]
+        self.holes = newholes.astype(np.int64)
+        self.log(f"  used {len(picked)} moduli, holes now {remaining}")
+        return True
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--T", type=int, required=True)
+    ap.add_argument("--levels", type=str, required=True,
+                    help="comma list like 2^6,3^4,5^2,7,11,13")
+    ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--out", type=str, default=None)
+    ap.add_argument("--cap", type=int, default=2_000_000)
+    ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--key", choices=["gain", "eff"], default="gain")
+    ap.add_argument("--survivor", action="store_true")
+    args = ap.parse_args()
+
+    levels = []
+    for tok in args.levels.split(","):
+        if "^" in tok:
+            p, e = tok.split("^")
+            levels.append((int(p), int(e)))
+        else:
+            levels.append((int(tok), 1))
+
+    b = Builder(levels, args.T, seed=args.seed, hole_cap=args.cap,
+                verbose=not args.quiet, key=args.key, survivor=args.survivor)
+    ok = b.run()
+    print(f"RESULT T={args.T} ok={ok} congs={len(b.congs)} "
+          f"leftover_holes={len(b.holes)} M={b.M}")
+    if ok and args.out:
+        with open(args.out, "w") as f:
+            json.dump({"T": args.T, "levels": args.levels,
+                       "congruences": [[int(a), int(n)] for a, n in b.congs]}, f)
+        print(f"wrote {args.out}")
+    sys.exit(0 if ok else 2)
+
+
+if __name__ == "__main__":
+    main()
