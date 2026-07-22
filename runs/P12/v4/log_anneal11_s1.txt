@@ -45,3 +45,9 @@
 [seed 1 restart 1] cost 14
 [seed 1 restart 1] cost 13
 [seed 1 restart 1] cost 12
+[seed 1 restart 2] cost 11
+[seed 1 restart 2] cost 10
+[seed 1 restart 3] cost 9
+[seed 1 restart 4] cost 8
+[seed 1 restart 30] cost 7
+FINAL n=11 seed=1 best_cost=7 -> best_T2_11_seed1.txt

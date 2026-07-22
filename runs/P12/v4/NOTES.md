@@ -49,5 +49,13 @@ needed; used as hint source rather than standalone solver).
 ## Log
 
 - Started 4×anneal(n=11, 1800 s, seeds 1–4); n=9 exact UNSAT run in background (4 workers).
+- Anneal results n=11 (1800 s each): best costs 7, 8, 8, 8. Plateau around 7–8 violations.
+- cpsat_opt(n=11, hint=cost-7 anneal, 4 workers): default CP-SAT LNS accepted hint (obj 7)
+  but made no improvement in ~25 min → killed; default LNS neighborhoods too generic here.
+- Wrote lns_rows.py: row-neighborhood LNS — free k rows (biased to violating rows), fix
+  rest, CP-SAT re-optimize freed rows with obj ≤ incumbent, plateau random-walk accepts.
+- lns_rows k=3, iter_tl=20 s: 60 iterations, stuck at cost 7 (plateau moves accepted but no
+  descent). Escalated to k=5, iter_tl=60 s.
+- n=9 exact (UNSAT calibration): still running at 1.5 h, no verdict yet.
 
 STATUS: running
