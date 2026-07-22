@@ -36,3 +36,8 @@
 
 # scan started Wed Jul 22 21:52:35 2026, repair budget=600s
 2^6,3^4,5^2,7,11,13 N=129729600 T=9: rem=0 congs=832 recip=2.217 t=286s
+
+# scan started Wed Jul 22 23:18:03 2026, repair budget=600s
+2^6,3^4,5^2,7,11,13 N=129729600 T=10: rem=0 congs=831 recip=2.106 t=280s
+2^6,3^4,5^2,7,11,13 N=129729600 T=11: rem=85718 congs=830 recip=2.006 t=770s
+2^6,3^4,5^2,7,11,13 N=129729600: max T achieved = 10

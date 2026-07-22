@@ -9,3 +9,22 @@ N=2205403200 (2^6,3^4,5^2,7,11,13,17) T=11: 1670 divisor values, recip=2.297
 phase1 done: 971 placements
   materialize 0%: holes so far 147568 t=0s
 phase2: exact holes = 19390867 (density 8.79e-03)
+ hole placement: 699 values, holes left 17732696 t=215s
+  one_opt pass 1: moved=721 holes=3241792 best=3241792 t=543s
+  one_opt pass 2: moved=967 holes=1325190 best=1325190 t=705s
+  one_opt pass 3: moved=801 holes=787391 best=787391 t=823s
+  one_opt pass 4: moved=671 holes=505840 best=505840 t=920s
+  one_opt pass 5: moved=561 holes=374077 best=374077 t=1016s
+  one_opt pass 6: moved=565 holes=255883 best=255883 t=1114s
+  one_opt pass 7: moved=464 holes=160853 best=160853 t=1206s
+  one_opt pass 8: moved=365 holes=91867 best=91867 t=1298s
+  one_opt pass 9: moved=243 holes=64439 best=64439 t=1401s
+  one_opt pass 10: moved=150 holes=56496 best=56496 t=1494s
+  one_opt pass 11: moved=126 holes=48338 best=48338 t=1585s
+  one_opt pass 12: moved=78 holes=44944 best=44944 t=1668s
+  one_opt pass 13: moved=53 holes=43831 best=43831 t=1765s
+  one_opt pass 14: moved=41 holes=43160 best=43160 t=1847s
+  one_opt pass 15: moved=25 holes=43099 best=43099 t=1936s
+  one_opt pass 16: moved=31 holes=42869 best=42869 t=2014s
+  one_opt pass 17: moved=21 holes=42818 best=42818 t=2097s
+  one_opt pass 18: moved=22 holes=42812 best=42812 t=2187s

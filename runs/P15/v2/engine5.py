@@ -201,6 +201,7 @@ def main():
     ap.add_argument("--vmax-sample", type=int, default=100_000)
     ap.add_argument("--gates", default="0.98,0.9,0.7,0.4,0.15,0,0")
     ap.add_argument("--budget", type=int, default=7200)
+    ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("-o", "--out", required=True)
     args = ap.parse_args()
     fac = factorize_spec(args.N)
@@ -211,14 +212,15 @@ def main():
     print(f"N={N} ({args.N}) T={args.T}: {len(divs)} divisor values, "
           f"recip={sum(1/d for d in divs):.3f}", flush=True)
     gates = tuple(float(x) for x in args.gates.split(","))
-    sample = make_sample(N, args.sample)
+    sample = make_sample(N, args.sample, seed=args.seed)
     used = sample_sweeps(N, divs, sample, gates, args.vmax_sample)
     print(f"phase1 done: {len(used)} placements", flush=True)
     holes = materialize_holes(N, used)
     print(f"phase2: exact holes = {holes.size} (density {holes.size/N:.2e})",
           flush=True)
     holes, used = place_on_holes(holes, divs, used)
-    holes, used = one_opt_stream(N, used, holes, t_budget=args.budget)
+    holes, used = one_opt_stream(N, used, holes, t_budget=args.budget,
+                                 seed=args.seed)
     status = "SUCCESS" if holes.size == 0 else "INCOMPLETE"
     print(f"T={args.T} N={N}: {status} congs={len(used)} holes={holes.size}")
     path = args.out if holes.size == 0 else args.out + ".part"

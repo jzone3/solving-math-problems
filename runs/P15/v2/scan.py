@@ -9,9 +9,8 @@ import numpy as np
 from engine4 import factorize_spec, divisors, cover, repair, one_opt
 
 LADDER = [
-    ("2^6,3^4,5^2,7,11,13", 9),
+    ("2^6,3^4,5^2,7,11,13", 10),
     ("2^6,3^4,5^2,7^2,11,13", 9),
-    ("2^7,3^4,5^3,7,11,13", 9),
 ]
 
 os.makedirs("covers", exist_ok=True)
