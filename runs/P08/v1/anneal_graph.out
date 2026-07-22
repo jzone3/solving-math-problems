@@ -1,0 +1,6 @@
+FINAL n=30 best=-7.925014 dev=7.074986 npos=15 nneg=15 diam=29
+FINAL n=30 best=-7.925014 dev=7.074986 npos=15 nneg=15 diam=29
+FINAL n=60 best=-15.774110 dev=13.225890 npos=29 nneg=29 diam=53
+FINAL n=60 best=-15.855901 dev=14.144099 npos=30 nneg=30 diam=59
+FINAL n=100 best=-25.864891 dev=23.135109 npos=49 nneg=49 diam=97
+FINAL n=100 best=-26.093741 dev=22.906259 npos=49 nneg=49 diam=97
