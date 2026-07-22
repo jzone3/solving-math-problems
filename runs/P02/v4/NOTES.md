@@ -2,7 +2,7 @@
 
 Session: Devin ultra-mode V4 solve run, 2026-07-22.
 
-## STATUS: SOLVED (conjecture as stated on West's list is FALSE; verified counterexamples at every n = 9t, minimum n = 9)
+## STATUS: SOLVED (conjecture as stated on West's list / P02 file is FALSE; verified counterexamples at every n = 9t, minimum n = 9). Brandt's original in-paper conjectures are distinct (see §0b) and are NOT refuted: 4.1 is strict (δ > n/3, now the B–T theorem) and 5.1 (d_f < 3, x ≥ 0) is untouched — our witnesses have d_f = 3 exactly.
 
 ## 0. Statement re-verification against original source
 
@@ -18,13 +18,38 @@ Session: Devin ultra-mode V4 solve run, 2026-07-22.
   So the **strict** (δ > n/3) version is a THEOREM (B–T); only West's ≥ version
   (boundary δ = n/3 included) is open. (Could not retrieve Brandt 2002 PDF itself:
   ScienceDirect Cloudflare-blocked; B–T's citation of Conj 3.8 used as proxy for the
-  original wording — caveat recorded below.)
+  original wording — caveat resolved later, see §0b: full PDF eventually retrieved from
+  a CORE mirror via the Wayback Machine.)
 - Łuczak–Polcyn–Reiher, "Strong Brandt–Thomassé Theorems" (arXiv:2406.10745, 2024),
   Section 5.1: the δ ≥ n/3 boundary family "does not consist exclusively of blow-ups
   of Andrásfai and Vega graphs" (their extra examples are all (n/3)-regular); their
   Question 5.4 asks whether δ ≥ n/3 plus one vertex of degree > n/3 forces an
   Andrásfai/Vega blow-up. Nothing in the literature (searched Exa/Crossref/OpenAlex,
   July 2026) resolves West's ≥ statement → confirmed open before this run.
+
+## 0b. Brandt 2002 original retrieved (core.ac.uk id 82651478 via web.archive.org)
+
+Exact statements in the paper (Discrete Math. 251 (2002) 33–46):
+- **Conjecture 4.1**: "Every maximal triangle-free graph G ∈ G has a regular
+  supergraph G′ obtained from G by vertex multiplications", where **G is the class of
+  triangle-free graphs with minimum degree EXCEEDING n/3** (strict, per the paper's
+  first paragraph). The strict version follows from Brandt–Thomassé's regular weight
+  function theorem — no longer open.
+- **Conjecture 5.1**: "If G is a maximal triangle-free graph with d_f(G) < 3 then
+  A(G)x = 1 has a rational solution x ≥ 0" (d_f = fractional total domination number;
+  x may have zero entries; x > 0 forced for cores). This is the LP-form conjecture that
+  B–T do not resolve.
+- (Conjecture 3.8 in the paper is the core-order bound — B–T's "[3, Conjectures 3.8
+  and 5.1]" attribution maps to different numbering than we guessed earlier.)
+
+**Where our counterexamples stand w.r.t. the original paper**: exact computation shows
+all three named witnesses have d_f(G) = 3 exactly (not < 3), and A x = 1 IS solvable
+with x ≥ 0 (zeros allowed) for each — e.g. n9: x = (0,½,½,0,½,½,½,½,0). So Brandt's
+own Conjectures 4.1/5.1 are consistent with our findings; what is refuted is precisely
+the **δ ≥ n/3 paraphrase recorded on West's open-problem page** (and in the P02 file),
+whose boundary case δ = n/3 was flagged there as the open zone. Conclusion: West's
+recorded problem is resolved negatively; the equality case genuinely breaks, and it
+breaks immediately (n = 9).
 
 ## 1. Key reduction (collapses the "for all d" quantifier)
 
@@ -94,6 +119,10 @@ counterexamples exist for every n = 9t → the conjecture fails for infinitely m
 
 ## 5. Notable specimens (see logs/analysis_9_12_15.txt)
 
+- The n = 9 minimal counterexample has a clean description: it is the **Grötzsch graph
+  minus two non-adjacent branch vertices** (networkx mycielski_graph(4) minus {6,7}),
+  i.e. an induced 9-vertex subgraph of the smallest Vega graph. Machine-checked
+  subgraph isomorphism; it is NOT an induced subgraph of any Andrásfai graph Γ4–Γ6.
 - n = 12 twin-free counterexample K?AFE_]JVoN_ (degrees 4^10 5^2, χ = 3).
 - n = 15 **4-chromatic** counterexample N??E@_NMeIfo{GrO^_? (degrees 5^14 6, χ = 4)
   — rules out rescuing the conjecture by restricting to χ ≥ 4 ("good") graphs.
@@ -103,6 +132,11 @@ counterexamples exist for every n = 9t → the conjecture fails for infinitely m
   Vega graph (all of which admit positive regular weight functions, B–T Thm 3),
   yet the n=9 graph is maximal TF, δ ≥ n/3, with a vertex of degree 4 > n/3.
   (The n=9 graph is twin-free and not itself Andrásfai/Vega — wrong order/χ.)
+  **Convention caveat**: this reads Q5.4's "blow-up" with the standard nonempty-class
+  convention (as in B–T Theorem 1.3). If empty classes were allowed, the n9 graph IS
+  an induced subgraph of the Grötzsch graph (a Vega graph), so it would be a
+  degenerate "blow-up"; twin-free + Grötzsch-induced makes this the boundary case of
+  the convention.
 
 ## 6. Verifier
 
