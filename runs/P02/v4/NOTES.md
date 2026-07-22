@@ -182,11 +182,18 @@ feasibility): n ≤ 12 complete, n = 13 in progress at this checkpoint.
 | 11 | 61 | 43 | 0 |
 | 12 | 147 | 78 | 0 |
 | 13 | 392 | 144 | 0 |
+| 14 | 1274 | 302 | 0 |
 
-Conjecture 5.1 verified for all maximal triangle-free graphs with n ≤ 13
-(19.4M connected TF graphs streamed at n = 13; MTF count 392 matches the known
-sequence). n = 14 sweep (~250M TF graphs, 8-way) in progress. Frontier pushed;
-no prior computation on Conjecture 5.1 recorded in the literature.
+Conjecture 5.1 verified for **all maximal triangle-free graphs with n ≤ 14**
+(445.8M connected TF graphs streamed at n = 14, 8-way parallel, ~40 core-min/part;
+MTF counts 392/1274 match the known sequence — independent sanity check on the
+maximality filter). n = 15 (~6B TF graphs) would need ~1-2 core-days — left as the
+next frontier. No prior computation on Conjecture 5.1 recorded in the literature.
+
+Also attempted: nauty-geng count of the n = 21 boundary class (-t -d7 21) — still
+running after hours with no output; the δ ≥ ⌈n/3⌉ TF class explodes past n = 18,
+so n = 21 exhaustive boundary sweep is out of reach for this run (n = 9t
+counterexamples for all t are already certified via the blowup family).
 
 ## Final STATUS line
 
@@ -195,4 +202,4 @@ counterexample n = 9 (g6 H?q`qjo, = Grötzsch minus two branch vertices) + infin
 family n = 9t; 1/5/18/77 counterexamples at n = 9/12/15/18; independent Farkas
 certificates; verify.py PASS; also refutes LPR (2024) Question 5.4 (nonempty-class
 blow-up convention). Brandt's in-paper Conjectures 4.1 (strict, = B–T theorem) and
-5.1 (d_f < 3 form) untouched; 5.1 machine-verified for all maximal TF graphs n ≤ 12+.
+5.1 (d_f < 3 form) untouched; 5.1 machine-verified for all maximal TF graphs n ≤ 14.
