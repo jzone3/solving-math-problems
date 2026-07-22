@@ -67,13 +67,27 @@ all t by complement duality + proven cases). Wall time ≈ 14 min on 8 cores.
   vertices (OEIS A000088(11)), confirming no shard loss.
 - Eigensolved: 1,016,946,219 (GMB prune caught only ~0.2%). Near-misses (|margin| < 1e−6): 0.
   Violations: **0**.
-- Max float margin over all graphs and t ∈ {3,4,5}: **−0.6734** (shard maxima: −0.673423487,
+- Max float margin over all *eigensolved* (non-GMB-pruned) graphs and t ∈ {3,4,5}: **−0.6734** (shard maxima: −0.673423487,
   −0.686017055, −0.702929456, −0.713784513, −0.726927137, −0.730608748, −0.817042866 ×2).
   Nothing remotely close to a violation; the closest-approach margin creeps up very slowly
   with n (−0.727 @ n=8 → −0.686 @ n=10 → −0.673 @ n=11).
+  NB: exact equality S_t = m + t(t+1)/2 IS attained (split graphs, known); those graphs are
+  GMB-pruned in the C pipeline (for them GMB = Brouwer bound exactly), so they never show
+  up as float near-misses — maxmargin above is over the pruned-out remainder only.
 
 ⇒ **Brouwer's conjecture verified exhaustively for all graphs on 11 vertices** — extends
 Brouwer's published exhaustive range (n ≤ 10).
+
+### Independent second verifier (verify2.py)
+
+Per methodology, a differently-written checker (Python/numpy, different graph6 parser,
+numpy eigvalsh, NO pruning, NO t-range reduction — checks every t ∈ 1..n):
+
+- n=8 full (12,346): viol=0, worst margin 0.000000000 (equality at t=7, g6 `G~~~~{`).
+- n=9 full (274,668): viol=0, worst margin 0 (equality at t=6, `HEv]}~~`).
+- n=10 full (12,005,168, 8-way): viol=0, worst margin 0 — equality graphs at t=4..7
+  (e.g. `I??CFf~~w` at t=4). Confirms the C pipeline's prune/t-reduction is sound and
+  that all equality cases are split-type graphs caught by the GMB prune or dual-proven t.
 
 Sanity checks: (a) n=9 rerun with full t-range 3..7 (no complement-duality reduction)
 gives identical results (0 viol, same global margin), validating the t-restriction;
@@ -83,9 +97,23 @@ Margin-vs-density profile (n=10, t∈{3,4}): worst margins at m ≈ 16–18 of 4
 but variation is mild (−0.69 to −0.94), so no edge-slice of n=12 can be safely skipped —
 exhaustive sharding is required.
 
-## 4. n = 12 push
+## 4. n = 12 push — FULL exhaustive run via 12 child sessions
 
-(planned: per-edge-count slices prioritized by the n=11 margin-vs-m profile; results below)
+Margins are too diffuse across densities to safely skip edge-slices, so we sharded the
+FULL n=12 space (165,091,172,592 graphs, A000088(12)) across 12 parallel child Devin
+sessions × 8 cores each = 96 geng subshards (`geng -q 12 s/96 | brouwer_lapack 12 3 5`,
+t ∈ {3,4,5} covers all t by complement duality since t' = 11−t maps {3,4,5}→{8,7,6} and
+t ∈ {1,2,9,10,11,12} are proven/trivial). Estimated ~3 h per child.
+
+Child sessions (each pushes summaries to runs/P10-v3-n12-r<r>):
+7272f2ac80a74ca187dae7e449d2c7d1, e27fba857c5c42b8a3fa5d11ae590b2a,
+a9d51e48dbee4aad92d3a4d39efd5d00, 70df3f75f44c4b549983ed3a5b04bf95,
+4f2d15aa7f6643b48c9277d080e4ae9a, 538c709dd42d417e98bb9f7631ec8b47,
+89f71dbf5c6f4e16862542252b4ac1b0, c4e4312e29014af1ab88f252efc41948,
+9d99c86f4d194acfb7a6a075bad07b10, f1c86115ebbc4a7d854008b1b63f6ede,
+5416463bf875462a9e98271f06f2982d, b7d094c030f946ab939ef3d44de1f614
+
+(results appended below when shards report)
 
 ## STATUS
 
