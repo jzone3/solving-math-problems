@@ -50,7 +50,7 @@ def dihedral_images(n, edge):
             yield (min(a, b), max(a, b))
 
 
-def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None):
+def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True):
     chords = chords_of(n)
     pool = IDPool()
     var = {e: pool.id(("x", e)) for e in chords}
@@ -99,8 +99,12 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None):
             second = find_second_hc(n, adj, limit=hc_per_model * 4)
             assert second, "inconsistent HC search"
 
-        # near-miss tracking: count HCs with early cutoff at current best
-        cnt, capped = count_hcs(n, adj, cap=best[0])
+        # near-miss tracking: count HCs with early cutoff at current best.
+        # Only bother when the second-HC search did NOT saturate its limit
+        # (i.e. the graph plausibly has few HCs) to avoid full-tree DFS cost.
+        cnt, capped = (None, True)
+        if nearmiss and len(second) < hc_per_model:
+            cnt, capped = count_hcs(n, adj, cap=best[0])
         if not capped and cnt < best[0]:
             best = (cnt, list(X))
             msg = f"n={n} NEAR-MISS hc_count={cnt} chords={X} (model {models})"
@@ -135,7 +139,8 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None):
             solver.add_clause([-var[e] for e in cl])
             clauses_added += 1
 
-        if models % log_every == 0:
+        if models % log_every == 0 or time.time() - t0 > getattr(run, "_next_log", 0):
+            run._next_log = time.time() - t0 + 120
             msg = (f"n={n} models={models} clauses={clauses_added} "
                    f"t={time.time()-t0:.0f}s best_hc_count={best[0] if best[1] else 'NA'}")
             print(msg, flush=True)
@@ -163,6 +168,7 @@ if __name__ == "__main__":
     ap.add_argument("--n", type=int, required=True)
     ap.add_argument("--seconds", type=float, default=3600)
     ap.add_argument("--notes", type=str, default=None)
+    ap.add_argument("--no-nearmiss", action="store_true")
     a = ap.parse_args()
-    r = run(a.n, a.seconds, notes=a.notes)
+    r = run(a.n, a.seconds, notes=a.notes, nearmiss=not a.no_nearmiss)
     sys.exit(0 if r["status"] in ("exhausted-unsat", "FOUND") else 2)
