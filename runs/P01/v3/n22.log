@@ -1,0 +1,3 @@
+n=22 models=500 clauses=86625 t=5s best_hc_count=NA
+n=22 models=1000 clauses=174053 t=12s best_hc_count=NA
+n=22 models=1500 clauses=261580 t=20s best_hc_count=NA

@@ -52,7 +52,13 @@ def find_second_hc(n, adj, limit=1):
 
 
 def count_hcs(n, adj, cap=None):
-    """Count Hamiltonian cycles (up to direction), optional early cap."""
+    """Count Hamiltonian cycles (up to direction).
+
+    Returns (count, capped). `cap` is in undirected cycles; the search stops
+    early once 2*cap directed cycles are seen, and capped=True means the true
+    count is >= cap (returned count is then exactly cap).
+    """
+    dcap = None if cap is None else 2 * cap
     count = 0
     visited = [False] * n
     visited[0] = True
@@ -60,7 +66,7 @@ def count_hcs(n, adj, cap=None):
 
     def dfs(v):
         nonlocal count
-        if cap is not None and count >= cap:
+        if dcap is not None and count >= dcap:
             return
         if len(path) == n:
             if 0 in adj[v]:
@@ -78,5 +84,7 @@ def count_hcs(n, adj, cap=None):
     # enumerate neighbors of 0 in increasing order and only start with the
     # smaller endpoint; simplest correct approach: count directed and halve.
     dfs(0)
+    if dcap is not None and count >= dcap:
+        return cap, True
     assert count % 2 == 0
-    return count // 2
+    return count // 2, False

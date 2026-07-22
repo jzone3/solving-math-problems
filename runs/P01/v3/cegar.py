@@ -90,8 +90,8 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None):
 
         second = find_second_hc(n, adj, limit=hc_per_model)
         if not second:
-            cnt = count_hcs(n, adj, cap=3)
-            if cnt == 1:
+            cnt, capped = count_hcs(n, adj, cap=3)
+            if cnt == 1 and not capped:
                 status = "FOUND"
                 witness = X
                 break
@@ -100,8 +100,8 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None):
             assert second, "inconsistent HC search"
 
         # near-miss tracking: count HCs with early cutoff at current best
-        cnt = count_hcs(n, adj, cap=best[0])
-        if cnt < best[0]:
+        cnt, capped = count_hcs(n, adj, cap=best[0])
+        if not capped and cnt < best[0]:
             best = (cnt, list(X))
             msg = f"n={n} NEAR-MISS hc_count={cnt} chords={X} (model {models})"
             print(msg, flush=True)
