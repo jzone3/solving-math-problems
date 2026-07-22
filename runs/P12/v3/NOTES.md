@@ -67,6 +67,21 @@ orbit/terrace/difference-set style algebraic construction (which by definition p
 square invariant under some nontrivial group element) is therefore **provably impossible**
 for T2(11) and T2(13). If these squares exist, they are totally irregular objects.
 
+**Claim D (orbit-deficiency obstruction).** Suppose a T2(p) consists of k full orbits of
+rows under a subgroup H ≤ Z_p^* of order d > 1 (acting by multiplication) plus r = p − kd
+free rows. The covered distance-1 pair set is H-invariant, hence so is the uncovered set U,
+which the free rows (r Hamiltonian paths on the symbols, each visiting 0) must decompose.
+H fixes 0, and every H-orbit of a pair (a,0) consists of d pairs all INTO 0 (likewise
+(0,b): d pairs out of 0). So indeg_U(0) and outdeg_U(0) are multiples of d. But in r paths,
+0 has indegree ≤ r, outdegree ≤ r, and indeg+outdeg ≥ r ≥ 1. If d > r this forces
+indeg = outdeg = 0 < r — contradiction. Hence **r ≥ d is necessary**: all maximal-orbit
+configurations (r = p mod d, which is < d for every d | p−1, p = 11, 13) are impossible.
+The same argument transfers to any subgroup A ≤ AGL(1,p) of order d ≤ n coprime to p
+(such A has a fixed symbol c; use c in place of 0); subgroups of order divisible by p
+contain the translations and reduce to the (dead) translate square. So *every* full-orbit
+affine construction with fewer than d free rows is dead; only sub-maximal configurations
+(r ≥ d) survive, and those have weak structure (≥ half the rows free).
+
 Machine evidence:
 - `inv_search.py` (written before Claim C was found): DFS over the twisted-invariant space,
   exhausts n=5, 7 (all involution classes) with zero solutions, in <2s.
@@ -100,5 +115,12 @@ k ∈ {4,5,8} for p=13, ~3h each on 8 cores.
   except the star {(x,0): x≠0}, and an 11th row can enter 0 only once ⇒ **provably not
   completable** (deficiency graph must be a Hamiltonian path, a star is not). Any
   (p−1)-row multiplicative partial has this star obstruction.
-- `poly_pool.py` p=13: (running)
-- hybrid runs: (running)
+- `poly_pool.py` p=13 (pool 8736, 600s): best **12/13** — the same circulant family
+  [0,a,2a,...,12a], a=1..12; star obstruction ⇒ not completable.
+- `orbit_search.py` first round (maximal orbits, r=1): p11 d∈{2,5}, p13 d∈{2,3,4,6} all
+  plateaued at exactly k·d rows (10/11, 12/13) — exactly as Claim D predicts (r=1 < d).
+  Killed once the obstruction was proven; relaunched sub-maximal configs with r ≥ d:
+  (p,d,k) = (11,5,1), (11,2,4), (13,6,1), (13,4,2), (13,3,3), (13,2,5), 6h budget each.
+- hybrid runs (k∈{3,4,5,8,10} p=11; {4,5,8} p=13): plateaued at 9/11 and 10/13 within
+  minutes; still running.
+- `dfs11_baseline.out`: plain randomized DFS from identity row, 4h budget: (running)

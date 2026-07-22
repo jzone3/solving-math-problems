@@ -6,9 +6,15 @@ but NOT squares consisting of some full orbits under H <= Z_p^* (acting by
 multiplication) PLUS a few free rows: the whole square is then not invariant,
 so no contradiction applies.
 
-Structure: |H| = d, m = floor(p/d) base rows each expanded to d scaled copies
-{h*b : h in H}, plus r = p - m*d free rows. For p = 11: d=5 (2 orbits + 1
-free), d=2 (5 orbits + 1 free). For p = 13: d=6,4,3,2 similarly.
+Structure: |H| = d, k base rows each expanded to d scaled copies {h*b : h in H},
+plus r = p - k*d free rows.
+
+OBSTRUCTION THEOREM (NOTES.md sec 2c): the uncovered distance-1 pair set U is
+H-invariant, so its in-edges and out-edges at the fixed symbol 0 come in
+multiples of d; the r free rows (Hamiltonian paths, each visiting 0) supply
+between r and 2r edges at 0, at most r in and r out. Hence r >= d is REQUIRED:
+all maximal-orbit configs (r = p mod d < d) are impossible, matching the
+empirical m*d plateaus. Only sub-maximal k (r = p - kd >= d) remain searchable.
 
 DFS places base rows cell-by-cell, committing all d scaled copies of each new
 adjacency simultaneously (d-fold constraint propagation => strong pruning),
@@ -42,9 +48,9 @@ def subgroup(p, d):
     return sorted(H)
 
 
-def search(p, d, time_budget=3600, report_every=60):
+def search(p, d, k=None, time_budget=3600, report_every=60):
     H = subgroup(p, d)
-    m = p // d
+    m = k if k is not None else p // d
     r = p - m * d
     n = p
     t0 = time.time()
@@ -182,14 +188,15 @@ def search(p, d, time_budget=3600, report_every=60):
 if __name__ == "__main__":
     p = int(sys.argv[1])
     d = int(sys.argv[2])
-    tb = float(sys.argv[3]) if len(sys.argv) > 3 else 3600
-    print(f"p={p} d={d} H={subgroup(p,d)} orbits={p//d} free={p - (p//d)*d}", flush=True)
-    status, best = search(p, d, time_budget=tb)
-    print(f"p={p} d={d}: {status}, best {best[0]}/{p}", flush=True)
+    k = int(sys.argv[3])
+    tb = float(sys.argv[4]) if len(sys.argv) > 4 else 3600
+    print(f"p={p} d={d} k={k} H={subgroup(p,d)} free={p - k*d}", flush=True)
+    status, best = search(p, d, k=k, time_budget=tb)
+    print(f"p={p} d={d} k={k}: {status}, best {best[0]}/{p}", flush=True)
     if best[1] and best[0] == p:
         ok = check_t2(best[1], p)
         print("valid:", ok)
         if ok:
-            with open(f"found_orbit_p{p}_d{d}.txt", "w") as f:
+            with open(f"found_orbit_p{p}_d{d}_k{k}.txt", "w") as f:
                 for row in best[1]:
                     f.write(" ".join(map(str, row)) + "\n")
