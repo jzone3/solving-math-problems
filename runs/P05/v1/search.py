@@ -165,7 +165,10 @@ def is_biconnected(adj):
     return True
 
 
-def evaluate(adj, path_cap=30000, node_budget=3_000_000, biconn=False):
+def evaluate(adj, path_cap=8000, node_budget=400_000, biconn=False, max_avg_deg=3.6):
+    n = len(adj)
+    if max_avg_deg and sum(len(x) for x in adj) > max_avg_deg * n:
+        return None
     if biconn and not is_biconnected(adj):
         return None
     r = core.longest_paths(adj, cap=path_cap, node_budget=node_budget)
