@@ -72,9 +72,14 @@ Machine: 8 cores, 31 GB RAM. Timings single-core unless noted.
 | run | result | time |
 |---|---|---|
 | full n=8..17 | leaves=0 | ≤ ~90 s each |
+| full n=18 | leaves=0 (nodes 1.74e8, hc_calls 8.5e8) | ~25 min |
+| full n=19 | (running) | |
 | g5 n=19,21,23 | leaves=0 | 0.009 s / 0.44 s / 51 s |
-| g5 n=24 | (running) | |
-| g5 count n=19 | (running, expect min=2688) | |
+| g5 n=24 | leaves=0 (nodes 9.0e7) | ~10 min |
+| g5 n=25 | **leaves=0** (nodes 8.4e8, hc_calls 2.9e9, 16/16 residues) | ~35 min on 8 cores |
+| g5 n=26 | (running, 32-way mod split) | |
+| g5 n=27 | (queued in driver, 64-way mod split) | |
+| g5 count n=19 | min=2688 over 417 labeled leaves — matches GMZ Table 3 ✔ | 4 min |
 
 Growth ≈ ×7–11 per vertex. Projections: full n=22 ≈ 2+ days on 8 cores (partial coverage
 planned via mod-split); g5 n=26 ≈ 2–3 h on 8 cores (re-confirms GMZ), g5 n=27 ≈ ~1 day on
