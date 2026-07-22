@@ -88,6 +88,8 @@ direct computation agree exactly.
 | all connected n = 14, ≤ 16 edges | 2,142,867 | 0 | 1 |
 | subcubic (Δ≤3) n = 12, 13, 14 | 19,430 + 69,322 + 262,044 | 0 | 1 |
 | subcubic n = 15, 16 | 1,016,740 + 4,101,318 | 0 | 1 |
+| subcubic n = 17 | 16,996,157 | 0 | 1 |
+| random sparse n = 15–22, m = n..n+5 (genrang) | tens of millions (ongoing) | 0 | 1 |
 | cubic n = 18 | 41,301 | 0 | 1 |
 | cubic n = 20 | 510,489 | 0 | 1 |
 
