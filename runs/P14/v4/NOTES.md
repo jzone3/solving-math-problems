@@ -78,7 +78,27 @@ rounding proportional to fractional x1/x2. 8 starts generated per instance
 - Basin hopping (`hop.sh` + `perturb.py`): keep best matrix, kick with 8 random in-row swaps,
   re-anneal 300 s legs. Smoke test on sibling (12,16;4,4,12;9,8) from its L1=14 near-miss:
   SOLVED in the first leg. Promising escape mechanism from the plateau.
-- Round 2 (22:0x UTC, 3 h): 8 basin-hopping workers, 2 per instance, seeded from round-1
-  near-misses, 300 s legs.
+- Round 2 (22:1x UTC, 3 h): basin-hopping workers, 2 per instance, seeded from round-1
+  near-misses, 300 s legs (i1a worker lost to a stray pkill; replaced by a fresh 2 h
+  random-restart worker `r2_i1c`).
+
+## 6. Near-miss structure + exhaustive shallow escape search (`polish.c`)
+
+Defect analysis of round-1 near-misses (all have exact column sums, all pair deviations ±1):
+- i2 (12,15): defects form a 2×2 alternating rectangle on rows {4,6}(resp {1,5}) ×
+  pair-partners {7,10}(resp {6,10}) — a rank-1 ±1 4-cycle. Classic stubborn defect.
+- i3 (12,20): 6 defects forming a ±1 6-cycle on rows {1,6,7,8,10,11}.
+- i1 (14,18): 10 defects (5×+1, 5×−1) concentrated on rows {0,1,6,9,10,13}.
+- i4 (14,28): 10 defects similar cyclic structure.
+
+`polish.c`: exhaustive DFS over compound trades (preserve rows AND columns; only pair
+products change), depth ≤ D, pruning prefixes with E > E0 + slack.
+- Root move statistics at i2's L1=4 near-miss: 1073 valid trades; dE distribution has a GAP:
+  2 moves with dE=0, none with 0<dE<8. The plateau is energetically isolated (barrier ≥ 8/2·? —
+  any escape must climb ≥ +8 in one trade).
+- No solution reachable within: depth 6 @ slack 8 (4.8M nodes), depth 4 @ slack 12 (2.3M) from
+  i2 near-misses (both a and b); depth 4–5 @ slack 8–12 from i3 (5.5M), i1 (53M), i4 (99M).
+⇒ These near-misses sit in deep, wide-barrier local minima; they are ≥5 compound trades away
+from any solution even allowing +12 uphill. Consistent with CPro1's 48 h heuristic failure.
 
 ## STATUS: running
