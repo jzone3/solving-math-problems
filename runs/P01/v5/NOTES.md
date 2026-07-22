@@ -195,22 +195,36 @@ Next escalation of this axis would be 4-edge-cut (essentially-4-edge-connected) 
 where h crosses 2 or 4 times and the gadget condition becomes a small system of path-count
 constraints — noted as future work.
 
-## 6. Byproduct: explicit 4-regular graphs with 144 hamiltonian cycles for every n ≥ 16
+## 6. Byproduct: explicit 4-regular graphs matching/extending the known #HC minima
 
-Ring formula #HC = Π t_i machine-verified (anneal count mode): ring of two/three copies of
-the w=11, t=12 minimizer gives exactly 144 (n=22) and 1728 (n=33) HCs — and 144 at n=22
-matches/extends GMZ's minima (144 at n=19,20,21; their Table 3 stops at "?" for n≥22).
-Since t=12 gadgets exist for every w ∈ {8,...,14} (§4 table; t=12 min for w=8..11), rings
-of two such windows give explicit 4-regular hamiltonian graphs with EXACTLY 144 HCs for
-every n = w1+w2 ∈ {16,...,28}, and adding more windows covers all larger n (e.g. 12·12=144
-needs exactly two windows; for n ≥ 24 use windows of the right sizes; k=3 windows give
-1728 — so for constant 144 use two windows with w1,w2 ≤ 15 → n ≤ 30... for n > 30 the
-two-window sizes >15 are unverified-minimal but 144 remains an upper bound only for
-n ≤ 30 with current gadget inventory).
-Correction for the record: two-window rings with w ∈ {8..15} cover n = 16..30 at exactly
-144 HCs; this HALVES the previous best published upper bounds for the minimum #HC of
-4-regular hamiltonian graphs for n = 25..30 (Haythorpe/GMZ Obs. 3.10: 36·2^{⌊n/5⌋−2} = 288
-at n=25, 576 at n=30) and beats the Thomassen–Zamfirescu bounded family (216, 4-connected
-setting). It also suggests GMZ's "?" rows n=22..26 girth-3 minima are ≤ 144.
-Annealer full-space best at n=22 was 360 after ~40 min — the structured construction beats
-generic annealing, vindicating the V5 literature-first framing.
+Ring formula #HC = Π t_i machine-verified two ways (C counter + independent python
+verifier): ring of two copies of the w=11 t=12 minimizer has EXACTLY 144 HCs at n=22;
+three copies 1728 at n=33.
+
+Two-window rings from the §4 min-t inventory (t=12 exists for w = 8..11 ONLY; w=12: 16,
+w=13: 18, w=14: 30) give explicit 4-regular hamiltonian graphs, all independently
+verified with verify_candidate.py:
+
+| n | windows | #HC |
+|---|---|---|
+| 16 | 8+8 | 144 |
+| 17 | 8+9 | 144 |
+| 18 | 9+9 | 144 |
+| 19 | 8+11 | 144 |
+| 20 | 10+10 | 144 |
+| 21 | 10+11 | 144 |
+| 22 | 11+11 | **144** |
+| 23 | 11+12 | **192** |
+| 24 | 11+13 | **216** |
+| 25 | 12+13 | **288** |
+| 26 | 13+13 | **324** |
+
+n = 16..21 reproduce GMZ's known girth-3 minima region (144 at n = 19,20,21; GMZ have 72
+at n = 16..18, so ours are not optimal there). Bold values LAND IN GMZ Table 3's "?" rows
+(n ≥ 22): explicit upper bounds min#HC(n=22) ≤ 144, (23) ≤ 192, (24) ≤ 216, (25) ≤ 288,
+(26) ≤ 324. At n=25 this matches Haythorpe/GMZ Obs. 3.10 (288) with a different graph; at
+n=23,24 Obs. 3.10 gives NO value (its order list skips 23,24,29), so 192/216 appear to be
+the best published-style constructions at those orders. The full-space annealer only
+reached 360 at n=22 in 40 min — the literature-derived construction wins, vindicating V5.
+(Caveat: w=14 min-t=30 was computed within the C4-free subspace; C4 configs have a
+2-switch second path so plausibly not minimizers, but rows using w=14 are avoided above.)
