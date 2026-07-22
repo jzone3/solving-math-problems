@@ -62,3 +62,24 @@ Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap 
         64       0        23   0.00%   0               inf                  inf       10      3    331     1078k  1333.6s
         66       0        24   0.00%   0               inf                  inf       10      3    335     1098k  1348.1s
         68       0        25   0.01%   0               inf                  inf       10      3    365     1118k  1363.2s
+        70       0        26   0.01%   0               inf                  inf       10      3    395     1138k  1378.4s
+        72       0        27   0.01%   0               inf                  inf       10      3    425     1158k  1393.5s
+        74       0        28   0.01%   0               inf                  inf       10      3    427     1178k  1408.3s
+        76       0        29   0.01%   0               inf                  inf       10      3    429     1198k  1423.7s
+        78       0        30   0.01%   0               inf                  inf       10      3    431     1218k  1439.3s
+        81       0        31   0.01%   0               inf                  inf       11      3    435     1276k  1484.4s
+        83       0        32   0.01%   0               inf                  inf       11      3    439     1296k  1499.5s
+        85       0        33   0.01%   0               inf                  inf       11      3    443     1316k  1514.5s
+        87       0        34   0.01%   0               inf                  inf       11      3    447     1336k  1529.6s
+        89       0        35   0.01%   0               inf                  inf       11      3    449     1356k  1544.8s
+        91       0        36   0.01%   0               inf                  inf       11      3    451     1376k  1560.3s
+        93       0        37   0.01%   0               inf                  inf       11      3    453     1396k  1575.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+        95       0        38   0.01%   0               inf                  inf       11      3    455     1416k  1590.1s
+        97       0        39   0.01%   0               inf                  inf       11      3    457     1436k  1604.9s
+        99       0        40   0.01%   0               inf                  inf       11      3    459     1456k  1620.2s
+       101      16        41   0.01%   0               inf                  inf       11      3    461     1476k  1635.5s
+       101      15        41   0.01%   0               inf                  inf       11      3    461     1476k  1649.9s

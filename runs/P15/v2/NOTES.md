@@ -93,3 +93,46 @@ Key structural observations recorded before computing:
   covering Z with moduli dividing N == covering Z_N. Greedy multi-sweep over divisor values
   (argmax residue class, efficiency-gated), then endgame assignment. Then determine empirically
   the maximal achievable T as a function of N, with exact ILP polish for small N.
+
+### 2026-07-22 ~23:00 — engine4 (dense bitmask over Z_N) + local search + exact ILP
+
+- engine4.py: fix factored smooth N; greedy multi-sweep over all divisor values v >= T of N
+  (accept the argmax residue class of v when its uncovered count >= gate * (N/v); descending
+  gates 0.99,0.9,0.7,0.4,0.15,0,0). Then two local-search layers:
+  - repair(): ruin-and-recreate with incremental coverage counts (drop random ~6% of
+    placements, re-place greedily on current uncovered set, accept non-worsening);
+  - one_opt(): exact 1-opt — re-place value v elsewhere when new kills > exclusive coverage
+    (points covered only by v), iterated to fixpoint, with 10% neutral-move shuffling.
+- scan.py ladder results (greedy+repair(+one_opt), all covers verified by verify.py):
+  - N=5040  (2^4·3^2·5·7):        max T reached = 5
+  - N=55440 (2^4·3^2·5·7·11):     max T reached = 6
+  - N=1.66e6 (2^5·3^3·5^2·7·11):  max T reached = 8
+  - N=2.16e7 (2^5·3^3·5^2·7·11·13): max T reached = 8 (T=9 near-miss: 9..514 uncovered of
+    21.6M across runs; all 568 divisor values >= 9 consumed; plateau resists repair+1-opt)
+  - N=1.30e8 (2^6·3^4·5^2·7·11·13): T=9 SUCCESS (T9_2e6_3e4_5e2_7_11_13.txt), scan continuing
+- ilp.py: exact feasibility ILP over Z_N (HiGHS): vars x_{v,a} for every divisor v>=T of N and
+  residue a; sum_a x_{v,a} <= 1 per value; coverage >= 1 per point. Zero objective (pure SAT).
+  - N=5040, T=6: **SAT in seconds** — 55 congruences, verified PASS (ilp5040_6). Greedy stack
+    only reached T=5: measurable integrality/heuristic gap already at N=5040.
+  - N=5040, T=7: undecided after 250s; long run (2h limit) in progress. recip budget 1.388,
+    so UNSAT here would be a genuine scarcity certificate beyond the LP bound.
+  - N=55440, T=7/8 queued behind it.
+- polish.py: targeted-column ILP repair of INCOMPLETE dense covers (liberate the S placements
+  with least exclusive coverage, targets = holes + their exclusive points, columns only
+  (v, t mod v) for targets t). On the T=9/21.6M plateau: infeasible for |S|<=173, ILP too slow
+  by |S|~300 — the plateau needs deep multi-value restructuring, not shallow reassignment.
+
+### 2026-07-22 ~23:40 — engine5 (segmented/sampled, N beyond RAM)
+
+- Motivation: Krukenberg's record-18 cover used only primes <= 19 => lcm ~ 10^10-10^12 scale.
+  Dense bitmask dies at N ~ 2e9; engine5 streams.
+- engine5.py pipeline: (1) sample-guided greedy sweeps (class counts estimated on a uniform
+  sample of Z_N, values <= vmax_sample); (2) exact hole materialization by segment streaming;
+  (3) exact greedy placement of remaining values on the hole list; (4) pass-based batched
+  streaming 1-opt: one full stream computes exclusive-coverage sizes of ALL placements, moves
+  with (new kills > exclusive loss) are selected, a second stream collects exclusive points of
+  just the movers, moves applied with exact hole updates.
+- Pilot N=2.16e7, T=8: SUCCESS, 569 congs, verify.py PASS (matches dense engine4).
+- Launched (bigrun.sh): N1=2.2e9 (2^6·3^4·5^2·7·11·13·17) at T=10,11,12,13 and
+  N2=4.19e10 (…·19) at T=12,14,16,18. Reciprocal budgets at these T are 1.9-2.4 (ample);
+  the binding constraint is placement alignment, not measure.
