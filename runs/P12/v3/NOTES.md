@@ -81,6 +81,24 @@ Pool of algebraically-defined rows over F_p, p = 11, 13: monomial-affine a(x+c)^
 (gcd(k,p-1)=1), permutation binomials a(x^u+dx^v)+b, and geometric column orderings
 j↦a·g^{ej}+b (+0 appended/prepended). DFS for p rows from the pool with exact-cover pruning.
 
-## 4. Run log
+## 4. Hybrid seeded completion (`hybrid_search.py`)
 
-(updated as runs complete)
+Random compatible k-subsets of the polynomial pool as seeds, generic pruned DFS
+completion (20s budget per seed, randomized), k ∈ {3,4,5,8,10} for p=11 and
+k ∈ {4,5,8} for p=13, ~3h each on 8 cores.
+
+## 5. Run log
+
+- `seq_search.py` (exhaustive, seconds): no sequencing/2-sequencing of Z_n for odd n ≤ 13;
+  2-sequencings for n=2,4,6,10,12,14 give instant translate T2(n) (verified) — but none for n=8.
+- `inv_search.py` n=5,7: exhausted, none (fast). n=9 t=1: 7/9 best at 1200s timeout
+  (obsoleted by rigidity theorem).
+- `control_tuscan1.py`: theorem-consistent — all twisted Tuscan-1 branches die ≤ n−1 rows
+  (n=5,7 exhausted; n=9 timed out at 120s/class with best 8/9).
+- `poly_pool.py` p=11 (pool 6380, 600s): best **10/11** — an elegant near-miss: the ten
+  circulant rows [0,a,2a,...,10a], a=1..10. Deceptive: they cover every distance-1 pair
+  except the star {(x,0): x≠0}, and an 11th row can enter 0 only once ⇒ **provably not
+  completable** (deficiency graph must be a Hamiltonian path, a star is not). Any
+  (p−1)-row multiplicative partial has this star obstruction.
+- `poly_pool.py` p=13: (running)
+- hybrid runs: (running)
