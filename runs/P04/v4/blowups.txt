@@ -1,0 +1,24 @@
+C4[E4] n=16 m=64 deg=8..8 K=7 feas=True t=0.2s
+C5[E3] n=15 m=45 deg=6..6 K=7 feas=True t=0.1s
+C5[K3] n=15 m=60 deg=8..8 K=7 feas=True t=0.1s
+C5[E4] n=20 m=80 deg=8..8 K=9 feas=True t=0.2s
+C6[E3] n=18 m=54 deg=6..6 K=8 feas=True t=0.1s
+C6[K3] n=18 m=72 deg=8..8 K=8 feas=True t=0.2s
+C6[E4] n=24 m=96 deg=8..8 K=11 feas=True t=0.4s
+C7[E2] n=14 m=28 deg=4..4 K=6 feas=True t=0.0s
+C7[E3] n=21 m=63 deg=6..6 K=10 feas=True t=0.2s
+C7[K3] n=21 m=84 deg=8..8 K=10 feas=True t=0.3s
+C8[E2] n=16 m=32 deg=4..4 K=7 feas=True t=0.0s
+C8[E3] n=24 m=72 deg=6..6 K=11 feas=True t=0.2s
+C8[K3] n=24 m=96 deg=8..8 K=11 feas=True t=0.5s
+T(6) n=15 m=60 deg=8..8 K=7 feas=True t=0.1s
+T(7) n=21 m=105 deg=10..10 K=10 feas=True t=0.4s
+K(3, 3, 3, 3, 3) n=15 m=90 deg=12..12 K=7 feas=True t=0.2s
+K(5, 5, 5) n=15 m=75 deg=10..10 K=7 feas=True t=0.1s
+K(4, 4, 4, 4) n=16 m=96 deg=12..12 K=7 feas=True t=0.2s
+K(2, 2, 2, 2, 2, 2, 2) n=14 m=84 deg=12..12 K=6 feas=True t=0.1s
+K(2, 2, 2, 2, 2, 2, 2, 2) n=16 m=112 deg=14..14 K=7 feas=True t=0.2s
+K(6, 6, 6) n=18 m=108 deg=12..12 K=8 feas=True t=0.2s
+K(4, 4, 4, 4, 4) n=20 m=160 deg=16..16 K=9 feas=True t=0.6s
+K(7, 7, 7) n=21 m=147 deg=14..14 K=10 feas=True t=0.6s
+=== blowups done ===
