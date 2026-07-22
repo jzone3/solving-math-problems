@@ -172,7 +172,8 @@ int main(int argc, char**argv){
         printf("%d\n", count_hc(1000000));
         return 0;
     }
-    if(argc<6){ fprintf(stderr,"usage: %s n seed iters cap tlimit\n",argv[0]); return 2; }
+    if(argc<6){ fprintf(stderr,"usage: %s n seed iters cap tlimit [hop]\n",argv[0]); return 2; }
+    int hop = (argc>=7) ? atoi(argv[6]) : 0;   /* basin hopping: perturb best instead of random restart */
     n = atoi(argv[1]);
     rngstate = strtoull(argv[2],0,10) * 2654435761ULL + 88172645463325252ULL;
     long long iters = atoll(argv[3]);
@@ -181,9 +182,16 @@ int main(int argc, char**argv){
     time_t t0 = time(0);
 
     int best_ever = 1<<30;
+    static unsigned char best_adj[MAXN][MAXN];
     long long it_total = 0;
     while(time(0)-t0 < tlimit){
-        if(!build_random()) continue;
+        if(hop && best_ever < (1<<30)){
+            memcpy(adj, best_adj, sizeof(adj));
+            rebuild_nbrs();
+            for(int k=0;k<8;k++) try_swap();
+        } else {
+            if(!build_random()) continue;
+        }
         int cur = count_hc(cap);
         if(cur==0) continue;
         double curobj = objective(cur);
@@ -198,6 +206,7 @@ int main(int argc, char**argv){
                 cur = cnt; curobj = obj;
                 if(cnt>0 && cnt < best_ever){
                     best_ever = cnt;
+                    memcpy(best_adj, adj, sizeof(adj));
                     print_graph(cnt==1?"WITNESS":"BEST", cnt);
                     if(cnt==1) return 0;
                 }

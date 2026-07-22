@@ -47,8 +47,27 @@ Date: 2026-07-22
   n ∈ {22,24,24,26,28,28,30,32}, logs in `logs/n*-s*.log`.
 - Results: (checkpointed below as they come in)
 
+### Batch 1 outcome (dead end → fix)
+- iters=200000/restart was far too long a schedule: workers stayed in high-T random-walk
+  phase for hours (n=22 stuck at 1674, n=28 at ~27000). Killed after ~20 min.
+- Basin-hopping mode added (`hop`): restart = copy best graph + 8 random swaps, short
+  schedule iters=30000. Much better: n=22 → 144, n=24 → 144, n=26 → 192 within ~20 min.
+
+### Batch 2 (basin-hopping, in progress)
+- 8 workers `./search2 n seed 30000 100000 13500 1`, n ∈ {22,22,24,24,26,28,30,32}.
+
+## Literature context for near-misses (Haythorpe arXiv:1608.00713)
+
+Exhaustive minima of #HC over 4-regular Hamiltonian graphs: n=12: 60, n=13–16: 72,
+n=17: 96, n=18: 108 (n≥17 restricted to connectivity-2). Minimal graphs are essentially
+always vertex-connectivity 2. Extrapolating, the true minimum at n=22 is plausibly
+~130–190, so our annealer hitting 144 at n=22 suggests it reaches (near-)optimal graphs —
+and that the global minimum curve is far above 1, consistent with the conjecture.
+
 ## Near-misses / observations
 
-(TBD)
+- Best counts found cluster on highly divisible values (144, 192, 288) — suggests
+  convergence to structured (likely low-connectivity, gadget-chain) graphs, same family
+  shape as Haythorpe/Thomassen–Zamfirescu minimal examples.
 
 ## STATUS: running
