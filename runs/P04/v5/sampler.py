@@ -38,6 +38,8 @@ def run(n, seconds, seed):
         edges = tuple(sorted(edges_set))
         if edges in seen:
             continue
+        if len(seen) > 2_000_000:  # cap memory; slight resample chance is fine
+            seen.clear()
         seen.add(edges)
         tested += 1
         h = rlc_decompose(n, edges, tries=120, rng=rng)

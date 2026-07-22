@@ -26,6 +26,8 @@ def valid(n, edges_set, maxdeg):
 def exact_min(n, edges, tl=45):
     if edges in CACHE:
         return CACHE[edges]
+    if len(CACHE) > 500_000:  # cap memory
+        CACHE.clear()
     ub = rlc_decompose(n, edges, tries=300)
     k = len(ub)
     while k > 1:
