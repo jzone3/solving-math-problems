@@ -1,1 +1,3 @@
 (v,k)=(9,6) cands=10080 vars=312480 clauses=906841
+SAT=False time=147s
+UNSAT: no (9,6,1)-PMD

@@ -1,3 +1,5 @@
 nodes=1M depth=3
 nodes=2M depth=4
 nodes=3M depth=5
+nodes=4M depth=4
+nodes=5M depth=4

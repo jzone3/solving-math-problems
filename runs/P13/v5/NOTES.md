@@ -88,13 +88,29 @@ cyclic 6-tuples of 9 points, WLOG one block = (0,1,2,3,4,5) by relabeling):
 Controls through the same code path: (7,6) found+PASS, (9,4) found+PASS,
 (6,6) correctly reported nonexistent (known).
 
-Independent second verification with a different method and encoding:
-`satcheck.py` (CaDiCaL, cell variables + pair-occurrence auxiliaries;
-(7,6) control SAT+PASS): (9,6) → RESULT_PLACEHOLDER_SAT9
+Independent second verification with a different search paradigm (CDCL SAT,
+CaDiCaL via pysat) and encoding: `satcheck2.py` (candidate-block variables,
+exact-cover CNF with sequential AMO; (7,6) control SAT+PASS):
 
-If both agree: **a (9,6,1)-PMD does not exist** — this settles the smallest
-open k=6 case negatively (the 2006 survey listed v=9 as possible-exception;
-no complete-search record exists in the literature we found).
+    (9,6): UNSAT, 147 s  (logs/sat9b.log)
+
+A C reimplementation of the exact cover (`xcover.c`) reproduces the identical
+node count 36019 (8 s). A third encoding (`satcheck.py`, cell variables +
+pair-occurrence auxiliaries, (7,6) control SAT+PASS) was also run; see
+logs/sat9.log.
+
+**Result: a (9,6,1)-PMD does not exist.** This settles the smallest open
+k=6 case negatively (Abel–Bennett 2006 Theorem 1.4 listed v=9 as a
+possible exception; no complete-search record exists in the literature we
+found). Standalone re-verification: `solutions/P13/verify.py` → PASS
+(re-runs the exhaustive search from scratch with (7,6)/(6,6) controls).
+
+Note: the nonexistence is NOT explainable at the nested-BIBD level: an NBIBD
+(9;12,24;8;6,3) exists (Morgan–Preece–Rees 2001, Table 1 row 7c), unlike the
+v=10 case where nonexistence of the NBIBD (10;15,30;9;6,3) already kills the
+PMD. So (9,6) required the full Mendelsohn (cyclic-order) structure — a
+genuinely new-level negative. Similarly NBIBD (12;22,44;11;6,3) exists (row
+18), so no shortcut for v=12 either (dead end for that angle).
 
 ## 5. (10,6) independent confirmation
 
@@ -113,6 +129,7 @@ search (`fullsearch.py 10 6`): RESULT_PLACEHOLDER_FULL10
 ## STATUS
 
 STATUS: frontier-pushed — (9,6,1)-PMD proven nonexistent by exhaustive search
-(two independent programs), pending final SAT confirmation; all other open
+(exact-cover DFS in two implementations with matching node counts, plus an
+independent CaDiCaL UNSAT with a different encoding); all other open
 instances: exhaustive negatives for every standard difference-method ansatz;
 rigorous argument that no known recursion can reach any open case.
