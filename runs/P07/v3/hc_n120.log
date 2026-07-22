@@ -1,0 +1,25 @@
+n=120 seed score 1.000915
+round 1: toggle (1, 50) -> 1.000934
+round 2: toggle (2, 50) -> 1.000952
+round 3: toggle (3, 50) -> 1.000970
+round 4: toggle (4, 50) -> 1.000987
+round 5: toggle (5, 50) -> 1.001003
+round 6: toggle (6, 50) -> 1.001018
+round 7: toggle (7, 50) -> 1.001032
+round 8: toggle (8, 50) -> 1.001045
+round 9: toggle (9, 50) -> 1.001057
+round 10: toggle (10, 50) -> 1.001069
+round 11: toggle (11, 50) -> 1.001079
+round 12: toggle (12, 50) -> 1.001089
+round 13: toggle (13, 50) -> 1.001098
+round 14: toggle (14, 50) -> 1.001106
+round 15: toggle (15, 50) -> 1.001113
+round 16: toggle (16, 50) -> 1.001119
+round 17: toggle (17, 50) -> 1.001124
+round 18: toggle (18, 50) -> 1.001129
+round 19: toggle (19, 50) -> 1.001132
+round 20: toggle (20, 50) -> 1.001135
+round 21: toggle (21, 50) -> 1.001137
+round 22: toggle (22, 50) -> 1.001138
+round 23: toggle (23, 50) -> 1.001138
+LOCAL OPT n=120 score=1.001138 m=1318 violation=True

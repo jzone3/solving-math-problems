@@ -1,0 +1,9 @@
+n=119 seed score 0.993582
+round 1: toggle (1, 50) -> 0.993588
+round 2: toggle (2, 50) -> 0.993593
+round 3: toggle (3, 50) -> 0.993597
+round 4: toggle (4, 50) -> 0.993601
+round 5: toggle (5, 50) -> 0.993603
+round 6: toggle (6, 50) -> 0.993605
+round 7: toggle (7, 50) -> 0.993606
+LOCAL OPT n=119 score=0.993606 m=1301 violation=False
