@@ -1,1 +1,9 @@
 N=259459200 (960 divisors, 945 usable >= 16, budget 1.636)
+restart 0: 945 classes, uncovered 427670, 135.7s
+restart 1: 945 classes, uncovered 520034, 134.3s
+restart 2: 945 classes, uncovered 441130, 134.4s
+restart 3: 945 classes, uncovered 1225534, 133.4s
+restart 4: 945 classes, uncovered 1355935, 133.5s
+restart 5: 945 classes, uncovered 1221585, 132.7s
+restart 6: 945 classes, uncovered 1469991, 133.6s
+restart 7: 945 classes, uncovered 1059455, 131.4s

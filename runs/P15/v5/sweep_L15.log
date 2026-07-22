@@ -1,1 +1,8 @@
 N=259459200 (960 divisors, 946 usable >= 15, budget 1.703)
+restart 0: 946 classes, uncovered 66577, 140.2s
+restart 1: 946 classes, uncovered 32528, 137.0s
+restart 2: 946 classes, uncovered 11632, 142.6s
+restart 3: 946 classes, uncovered 3884, 145.6s
+restart 4: 743 classes, uncovered 0, 111.0s
+SUCCESS: covering of Z_259459200 with min modulus 15 using 743 classes
+wrote witness_L15_N259459200.json
