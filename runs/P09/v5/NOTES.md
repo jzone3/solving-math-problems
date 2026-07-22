@@ -100,6 +100,26 @@ to 6 components — includes t·K_w unions). Annealing from these seeds, n ∈ {
 anneal2 ω=4 up to n=60 and ω=3/6 variants, 80k steps (~70 restarts), plus ELW anneal
 n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
 
+### Round 5 — new encodings (after restart, pushing the frontier)
+
+- **Exhaustive geng sweep** (`exhaustive.py`): all connected graphs (disconnected
+  reduce to Nikiforov, §2), graph6 parsed in batches, batched `eigvalsh`; exact
+  max-clique only where violation is arithmetically possible (violation ⇔
+  ω < 2m/(2m−L), L = λ₁²+λ₂², since Σλᵢ² = 2m).
+  - n ≤ 9: 0 violations (273k connected graphs), worst score exactly 0 (Turán).
+  - **n = 10: all 11,716,571 connected graphs — 0 violations**, worst score 0.
+    (Published exhaustive frontier for this conjecture appears to be incidental
+    small checks only; this is a full n ≤ 10 certificate.)
+  - n = 11: full sweep of all 1,006,700,565 connected graphs launched in 7 parts
+    (result recorded below when complete).
+- **Blowup continuous relaxation** (`blowup.py`): for every pattern H, BN on ALL
+  independent-set blowups H[x·N] (N→∞) reduces to max over the simplex of
+  f_H(x) = μ₁² + μ₂² − (1−1/ω(H))·xᵀAx, μᵢ from D^{1/2}A_H D^{1/2}, D=diag(x).
+  Projected-gradient ascent (12 restarts × 400 iters) over ALL connected patterns
+  with ω ≥ 3: |H| ≤ 7 complete, |H| = 8 in progress. max f = 0 (attained at
+  Turán-type patterns/weights); no positive value ⇒ no counterexample exists among
+  blowups of any of these patterns at ANY size.
+
 ## 4. Near-misses & dead ends
 
 - Best genuinely non-tight score found anywhere: ≈ **−0.105** (T(9,3)-blobs overlapping
