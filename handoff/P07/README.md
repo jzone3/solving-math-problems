@@ -20,7 +20,7 @@ so the refutation is convention-robust.
 - **154**: lollipop L(K₅₀, P₇₀) — a 50-clique with a 70-edge path attached; n = 120, m = 1295,
   ordered distance sum S = 186060. Violation is a pure integer inequality: 2·m·S² > n³·(n²)².
   Edge list: `witness_edges.txt`.
-- **143**: dumbbell(20, 13, 7) — two cliques (K₂₀, K₁₃) joined by a 7-edge path; n = 39, m = 224.
+- **143**: dumbbell(20, 13, 7) — cliques K₂₀ and K₇ joined by a 13-edge path; n = 39, m = 224.
   Note n = 39 ≤ 50: this sits INSIDE the range searched by the 2025 paper's eight algorithms.
 
 ## How to verify
@@ -28,7 +28,7 @@ so the refutation is convention-robust.
 - `python3 verify.py` — conjecture 154; integer-exact; checks both μ conventions. Expect PASS.
 - `python3 verify143.py` — conjecture 143; needs sympy/mpmath; isolates eigenvalues to rational
   intervals for an exact variance comparison. Expect PASS.
-- Search logs and family analysis: `RUN-NOTES-154.md`, `RUN-NOTES-143.md`.
+- Search logs and family analysis: `RUN-NOTES-BOTH.md` (V1 run: both conjectures, incl. the 143 dumbbell analysis), `RUN-NOTES-154-V4.md` (V4 run: 154).
 
 ## Notes
 
