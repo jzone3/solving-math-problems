@@ -110,6 +110,17 @@ counterexamples**, one for each n ≡ 0 (mod 9). Machine-checked for t = 1..4 (n
 `blowup_family.py` (exact rational LP). The same certificate y lifts (assign y_v/t to each
 copy).
 
+## 5c. Structural observation
+
+For every counterexample found, the certificate support (vertices forced to multiplicity 0 in
+any nonnegative solution) consists solely of vertices of degree **strictly above** δ = n/3
+(e.g. the degree-4 vertex of G0). Heuristic picture: at the boundary the regular weighting of
+the underlying Andrásfai/Vega-like frame is so rigid that "extra" high-degree vertices must
+carry weight 0, which a supergraph cannot afford. This suggests the "right" fix of the
+conjecture is either strict inequality (then it is Brandt–Thomassé's theorem) or allowing
+multiplicities x_v ≥ 0 ("G is homomorphic to a regular triangle-free graph obtained by
+multiplications of an induced subgraph").
+
 ## 6. Interpretation, near-misses, dead ends
 
 - Dead end: obtaining Brandt 2002 full text (ScienceDirect, zbMATH, CORE, OpenAlex, CiteSeerX,
