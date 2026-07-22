@@ -72,4 +72,21 @@ periodic autocorrelations; DFT/fold pruning; polish near-solutions).
   6-hour RRR runs on all six open cells launched (8 cores, random beta in
   [0.3,0.9] per restart).
 
+### Phase 3 — RRR scaling wall and multiplier-symmetric RRR
+- Beta sweep on CW(48,36) (rrr_batch, 3 seeds x beta in {0.3,0.5,0.7,0.9,-0.5}):
+  all positive betas solve in <=2 min (11/12); negative beta fails badly.
+  Kept beta ~ U[0.3, 0.9].
+- Batched RRR (64 replicas/process, ~700k replica-iters/s) does NOT solve the
+  *known* cells CW(91,36), CW(104,36) in 15 min (~370M replica-iters each;
+  bestE 64 / 80). Random-start RRR hits a scaling wall by n~90.
+- rrr_sym.py: RRR restricted to the fixed space of a multiplier i -> t*i
+  (variables = orbits of <t> on Z_n; P_A evaluated on full expansion then
+  orbit-averaged; weight forced via DC bin + exact integer check).
+  **Found the known CW(104,36) with t=3 in < 20 s** (verified PASS) after plain
+  RRR failed for 15 min — validating symmetry pruning as the decisive lever.
+- sym_driver.py: per cell, enumerate all distinct cyclic multiplier subgroups
+  <t> of Z_n^* (deduped by orbit partition), round-robin rrr_sym over them with
+  escalating time slices. Launched on all six open cells (6 cores) alongside
+  2 continuing plain-RRR runs (96, 105).
+
 ## STATUS: running

@@ -4,7 +4,7 @@
 Same algorithm as rrr.py but runs R independent replicas per iteration
 (rows of a matrix), each with its own beta; stalled replicas are reseeded.
 
-Usage: rrr_batch.py n s [seconds] [R] [seed]
+Usage: rrr_batch.py n s [seconds] [R] [seed] [beta]  (beta omitted/0 -> random per replica)
 """
 import sys, time
 import numpy as np
@@ -14,11 +14,12 @@ def main():
     secs = float(sys.argv[3]) if len(sys.argv) > 3 else 600.0
     R = int(sys.argv[4]) if len(sys.argv) > 4 else 64
     seed = int(sys.argv[5]) if len(sys.argv) > 5 else 12345
+    beta_fixed = float(sys.argv[6]) if len(sys.argv) > 6 else 0.0
     k = s*s; npos = (k+s)//2; nneg = (k-s)//2
     rng = np.random.default_rng(seed)
 
     X = rng.normal(0, 1, (R, n))
-    betas = rng.uniform(0.3, 0.9, (R, 1))
+    betas = np.full((R, 1), beta_fixed) if beta_fixed else rng.uniform(0.3, 0.9, (R, 1))
     stall = np.zeros(R, dtype=int)
     bestE_rep = np.full(R, 1 << 60, dtype=np.int64)
     bestE = None
@@ -66,7 +67,8 @@ def main():
             nd = int(dead.sum())
             if nd:
                 X[dead] = rng.normal(0, 1, (nd, n))
-                betas[dead] = rng.uniform(0.3, 0.9, (nd, 1))
+                if not beta_fixed:
+                    betas[dead] = rng.uniform(0.3, 0.9, (nd, 1))
                 stall[dead] = 0
                 bestE_rep[dead] = 1 << 60
                 restarts += nd
