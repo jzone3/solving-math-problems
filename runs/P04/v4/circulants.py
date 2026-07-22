@@ -49,6 +49,14 @@ def check_and_log(name, n, E, lf, time_limit=600.0):
 
 def main():
     nmax = int(sys.argv[1]) if len(sys.argv) > 1 else 24
+    done = set()
+    try:
+        with open(f"circulants_n{nmax}.txt") as f:
+            for line in f:
+                if line.startswith("C"):
+                    done.add(line.split(" n=")[0])
+    except FileNotFoundError:
+        pass
     lf = open(f"circulants_n{nmax}.txt", "a")
     count = 0
     for n in range(13, nmax + 1):
@@ -59,8 +67,11 @@ def main():
             for S in itertools.combinations(gens, r):
                 if math.gcd(n, math.gcd(*S) if len(S) > 1 else S[0]) != 1:
                     continue  # disconnected
+                name = f"C{n}{tuple(S)}"
+                if name in done:
+                    continue
                 E = circulant(n, S)
-                res = check_and_log(f"C{n}{tuple(S)}", n, E, lf)
+                res = check_and_log(name, n, E, lf)
                 if res == "WITNESS":
                     return
                 if res != "skip":
