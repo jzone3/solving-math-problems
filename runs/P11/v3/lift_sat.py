@@ -32,6 +32,13 @@ def solve(n, m, k, w, timeout=600, workers=3):
     a = [model.NewIntVar(-1, 1, f"a{i}") for i in range(n)]
     for j in range(m):
         model.Add(sum(a[i] for i in range(j, n, m)) == w[j])
+    # weight constraint: sum |a_i| = k  (PACF(0) = k)
+    absv = []
+    for i in range(n):
+        b = model.NewIntVar(0, 1, f"b{i}")
+        model.AddAbsEquality(b, a[i])
+        absv.append(b)
+    model.Add(sum(absv) == k)
     # products via aux int vars
     prod = {}
     for t in range(1, n // 2 + 1):
