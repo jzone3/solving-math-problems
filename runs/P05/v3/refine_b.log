@@ -1,0 +1,12 @@
+seeds: 18 range 6 12
+seed 6 depth 1 score 12
+seed 6 depth 1 score 6
+seed 6 depth 1 score 5
+seed 6 depth 1 score 1
+seed 6/12 done best=1 elapsed=116s
+seed 7/12 done best=1 elapsed=269s
+seed 8/12 done best=1 elapsed=359s
+seed 9/12 done best=1 elapsed=379s
+seed 10/12 done best=1 elapsed=713s
+seed 11/12 done best=1 elapsed=1077s
+DONE best=1

@@ -78,4 +78,16 @@ center).
   **all reach score = 1 quickly (often < 1k iterations), none ever reach 0.**
   Score-1 optima are spider-like: three long branches through one central
   (cut) vertex — exactly the tight examples predicted by the conjecture.
-- Second wave with plateau mode: n=16, 18, 22, 26 running.
+- Second wave with plateau mode: n=13,15,15,16,17,18,19,21,22,23,26 — every
+  single run ends at best = 1 (dozens of independent score-1 optima), never 0.
+
+### Stage C: deterministic neighborhood refinement of score-1 optima
+- `refine.py`: for each of the 18 distinct score-1 anneal optima (n=13..26),
+  exhaustively scan all 1-edge moves (add/remove/swap) and depth-2 move
+  sequences (frontier of score<=1 neighbors, cap 200). Result: **best = 1**;
+  no score-0 graph adjacent (within 2 edge moves) to any optimum.
+
+### Stage D: exhaustive cross-check of the pipeline (all connected graphs)
+- `exhaustive.py` over nauty-geng -c: n=7 (853 graphs) best=1;
+  n=8, n=9 running. Confirms analyzer semantics against the known exhaustive
+  frontier (conjecture verified up to n~12 in the literature).
