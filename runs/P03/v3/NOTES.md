@@ -72,4 +72,32 @@ These give a very strong filter; the search below only SAT-checks digraphs meeti
 
 (long runs appended below)
 
+## 5. Exhaustive verification (frontier pushes) — exhaustive.py / exhaustive2.py / exhaustive3.py
+
+All generation via nauty (`nauty-geng -c N | nauty-directg [-o]`), i.e. all weakly-connected
+digraphs up to isomorphism; `-o` = orientations only (no 2-cycles); no parallel arcs in any
+nauty slice (digraph6 can't express them — parallel-arc instances are covered by the random
+searches instead).
+
+| slice | #digraphs | result |
+|---|---|---|
+| all simple digraphs, n ≤ 5 (2-cycles allowed) | 9,563 | Woodall holds for **all** τ (0 cex) |
+| all simple digraphs, n = 6 (2-cycles allowed) | 1,530,843 | Woodall holds for **all** τ (0 cex); τ=3 count 143,018 |
+| all oriented digraphs, n = 7 (all connected underlying graphs) | 2,120,098 | Woodall holds for **all** τ (0 cex); τ=3 count 445,394 |
+| oriented, n = 7, non-planar underlying (τ=3-targeted re-scan) | 1,266,232 | ρ≥4 pass: 49,767; τ=3∧ρ≥4: 1,180; also not-ss-connected: **0** → no candidate even reaches SAT |
+
+Independence: the n=6 slice was verified TWICE by differently-written checkers
+(exhaustive.py with randomized greedy + SAT, and exhaustive2.py with deterministic greedy +
+SAT + different dicut enumeration); identical τ-distributions and 0 counterexamples.
+exhaustive3.py's filter fractions were cross-checked against core.py on a 25,371-instance
+random sample (agreement within sampling error).
+
+Combined with ACZ (ρ≥4 ⟹ n≥6), the n≤6 exhaustion means: **any τ=3 counterexample has
+n ≥ 7; no counterexample exists among all simple digraphs with n ≤ 6, nor among all
+2-cycle-free simple digraphs with n = 7.** (n=7 with 2-cycles ≈ 882M instances — out of Python
+reach; noted as open slice.)
+
+n = 8, oriented, non-planar underlying (515,858,293 digraphs, τ=3-targeted): running in
+8 chunks (see log_exh3_n8_c*.txt), results appended below.
+
 ## STATUS: (running)
