@@ -1,0 +1,5 @@
+m=7 s=10 d=10 t=2 orbits=3 folds=0
+SOLUTION: +10*<0>1
+SOLUTION: +5*<3>3 -5*<0>1
+SOLUTION: +5*<1>3 -5*<0>1
+m=7 s=10 d=10 t=2 folds=0 done: solutions=3 nodes=1303 leaves=35

@@ -1,0 +1,4 @@
+m=45 s=8 d=4 t=2 orbits=8 folds=0
+SOLUTION: -2*<3>4 +2*<9>4 +4*<15>2
+SOLUTION: +2*<9>4 -2*<21>4 +4*<15>2
+m=45 s=8 d=4 t=2 folds=0 done: solutions=2 nodes=93583 leaves=4182

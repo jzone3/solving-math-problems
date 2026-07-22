@@ -1,0 +1,6 @@
+m=35 s=8 d=4 t=2 orbits=6 folds=0
+SOLUTION: -2*<5>3 +4*<15>3 +2*<0>1
+SOLUTION: +4*<15>3 -4*<0>1
+SOLUTION: +4*<5>3 -2*<15>3 +2*<0>1
+SOLUTION: +4*<5>3 -4*<0>1
+m=35 s=8 d=4 t=2 folds=0 done: solutions=4 nodes=7210 leaves=364
