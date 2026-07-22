@@ -25,6 +25,22 @@ Branch: `runs/P08-v3` (off `devin/1784749757-context-plan`)
   Quick literature check (Exa search, July 2026) found no later refutation or
   proof; RC's erratum section flags definitional problems for 140/290/322 but
   none for 39/40.
+- **Original wording recovered** by OCR of the "Written on the Wall" July-2004
+  PDF (tesseract at 150 dpi; text layer is CID-mangled). Page ~23:
+  "39. The deviation of the distance matrix is not more than the number of
+  positive eigenvalues. 40. The deviation of the distance matrix is not more
+  than the number of negative eigenvalues." — no proof/refutation comment
+  attached (unlike neighbours 35–37, 41–42), consistent with open status.
+  Excerpt saved to `wow-ocr-conj-24-46-excerpt.txt`.
+- **Definitional robustness of "deviation"**: WoW conj. 38 says "variance"
+  explicitly, so "deviation" (39/40) ≠ variance. Whether deviation means the
+  population/sample standard deviation (RC's operationalization) or the mean
+  absolute deviation (Graffiti's usage elsewhere), all of these are ≤ (max−min)/2
+  = diam/2 for data in [0, diam] (MAD ≤ stddev ≤ d/2 by Popoviciu), so the proof
+  covers every plausible reading. (A variance reading would have been refuted by
+  any path P_n, n ≳ 10, in 1988 — impossible for a conjecture that survived MCTS
+  searches to n = 50.) Full-text FMS 1993 remained inaccessible (ScienceDirect
+  Cloudflare captcha, Wayback only has the challenge page; unpaywall: closed).
 - Problem-file nit: it says "complete multipartite has n⁺ = k−1"; actually
   n⁺ = 1 and n⁻ = k−1 (Smith 1970: exactly one positive adjacency eigenvalue
   ⟺ complete multipartite + isolated vertices). Doesn't change the V3 plan.

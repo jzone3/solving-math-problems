@@ -1,0 +1,141 @@
+program only (though not always, since sometimes examples were very complicated
+or very large) if they were counterexamples to previous conjectures. 5.95.
+
+24. average temperature is not more than the number of negative eigenvalues.
+
+This and the neat conjecture were proved by Shearer.
+
+25. average temperature is not more than the number of negative eigenvalues
+of the distance matrix. (-1.)
+
+see 24.
+
+26. Sum of reciprocals of degrees is not more than the rank of the distance
+matrix. (1.)
+
+This was disproved by Alon, Saks, Seymour, Shearer and Winkler.
+
+27. The standard deviation of the degree sequence < Randic. (3,4.)
+
+James Shearer, IBM Research Center in Yorktown Heights, proved
+that if G has no isolated vertices then the Randic index of G is greater or equal to
+
+we, It is the first proof that Randic index goes to infinity together with n. The
+
+21
+bound is not far off from the best possible since in stars it is equal to \/n. February
+88.
+
+Noga Alon, Tel-Aviv University, proved that if G has no isolated vertices
+then its Randic index is greater or equal to \/n— 8. July 88.
+
+Odile Favaron, Maryvonne Maheo and Jean-Paul Sacle, University
+of Paris-Sud deduced from their solution of conjecture 19, a positive answer to this
+conjecture assuming that G is triangle-free. January 89.
+
+Bela Bollobas, Cambridge University and L. S. U, and Paul Erdos,
+everywhere, proved that if G has no isolated vertices than the Randic index of G
+is greater or equal to the Randic index of a star with that many vertices. They ask
+what is the minimum value of the Randic index for graphs with a given minimum
+degree. November 89.
+
+Bela Bollobas and Paul Erdos proved that if G has m edges then the Randic
+index > 1/4(8m + 1)¥?, [BE]. The paper contains several other bounds for the
+Randic index and their generalization to hypergraphs. May 93.
+
+comp 3, 19, and 28.
+
+[BE] Bela Bollobas and Paul Erdos, Graphs of Extremal Weights, Ars Combi-
+natoria 50 (1998) 225 -233.
+
+28. Randic index is not more than the sum of positive eigenvalues.
+
+This conjecture is false, but working on a countererample I formed a conjecture
+that for trees the value of Randic index is close, and seem to be correlated with the
+sum of the positive eigenvalues. Since eigenvalues of the adjacency matrix of graphs
+of hydrocarbons are approximation of the solutions of their Schrodinger equation, I
+would conjecture that the boiling point of single-bonded, acyclic hydrocarbons depends
+
+only on the sum of positive solutions of the Schrodinger equation. I discussed my
+
+22
+question with Professor Matcha from UH Chemistry Department, who told
+me that it is very sensible and plausible for this class hydrocarbons, while certainly
+not true for arbitrary molecules. November 89. comp 845.
+
+Comments following conj 20, show that the conjecture is true for graphs of
+rank n, since Randic index is always smaller or equal to n/2 and the sum of pos-
+itive eigenvalues is equal to half of sum of absolute values of all eigenvalues. It is
+interesting that the occurance of zero in the spectrum of a graph corresponding to
+alternating (i.e., bipartite) hydrocarbons. indicates a chemical instability, [CDS], p
+232.
+
+comp 3, 19, 20, 21, and 27.
+
+29. The Randic index is not more than the number of negative distance eigen-
+values. Disproved by Alon, Saks, Seymour, Shearer and Winkler. July 88.
+
+30. The number of positive distance eigenvalues is not more than sum of
+temperatures of vertices. A countererample is D6(B6). James. B. Shearer,
+July 88.
+
+31. The negative of the largest negative distance eigenvalue is not more than
+the independence number. A counterexample is D2(B4). James B. Shearer, 7.88.
+
+32. The negative of the largest negative distance eigenvalue is not more than
+the matching number.
+
+33. The negative of the largest negative distance eigenvalue is not more than the
+chromatic number. Disproved by Alon, Saks, Seymour, Shearer and Winkler.
+comp 23.
+
+34. n - rank of the distance matrix is not more than the maximum frequency
+
+of the distance. Disproved by James B. Shearer, comp 23.
+
+23
+35. The diameter of a graph is not more than the negative of the largest negative
+distance eigenvalue.
+
+This and the next conjecture follows from interlacing theorem. James B.
+Shearer, 7.88
+
+36. The diameter of a graph is not more than the number of negative eigen-
+values of the distance matriz. James B. Shearer, see 35.
+
+37. Radius is not more than the sum of positive eigenvalues. Proved in [FA2].
+Also partially proved by Zang Shu, Beijing Institute of Technology.
+
+38. The variance of the distance matrix is not more than the negative of the
+smallest eigenvalue.
+
+39. The deviation of the distance matrix is not more than the number of positive
+eigenvalues.
+
+40. The deviation of the distance matrix is not more than the number of
+negative eigenvalues.
+
+Al. chromatic number + radius is not more than the maximum degree + the
+frequency of maximum degree. Disproved by Shui-Tain Chen, UH 1/1. 87.
+
+42. chromatic number + the average distance is not more than the maximum
+degree +the frequency of maximum degree. Disproved by Shui-Tain Chen, UH,
+
+11. 87.
+
+Conjectures for regular graphs (43:62)
+43. Let s be the smallest eigenvalue of G, and m its matching number. Then
+- sis smaller or equal to m.
+
+Proved by Favaron, Maheo and Sacle, University of Paris-Sud, /FMS2/.
+
+24
+44. The second largest eigenvalue is not more than the independence number.
+Noga Alon found counterexamples of arbitrary high connectivity. Not connected
+counterexamples are easy, because the second eigenvalue may be equal to the largest
+one.
+
+45. The second largest eigenvalue is not more than the matching number.
+Proved by Noga Alon, 5.88.
+
+46. The smallest positive eigenvalue < number of vertices of the center of a
