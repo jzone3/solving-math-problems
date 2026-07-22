@@ -61,5 +61,21 @@ center).
 (checkpointed as the session progresses)
 
 ### Stage A1: blocks n=4–6 (69 blocks), arms ≤6 vertices (lib 30), total n ≤ 18
-- 4,606,160 configurations, random order, pypy3, ~1.5k cfg/s.
-- STATUS: running; results below when finished.
+- 4,606,160 configurations, random order, pypy3, ~1.2k cfg/s.
+- Checkpoint @1.34M configs (~29%): best score = 2, zero graphs with score ≤ 1
+  logged. Single-block + 3-arm graphs appear to always funnel longest paths
+  through ≥2 shared vertices.
+
+### Stage A2: two-block cores (blocks n=4–7 glued at cut vertex) + 3 arms, n ≤ 20
+- `search2.py`, 1.5M random samples of the (≈10^8) config space.
+- Checkpoint @82k: best score = 2, no near-misses logged.
+
+### Stage B: simulated annealing on unconstrained graphs (n = 14–26)
+- `anneal.py`: edge add/remove/swap, objective = min triple intersection of
+  longest paths; once score 1 is reached, switches to plateau random walk
+  among score ≤ 1 graphs hunting a hole to 0.
+- Runs at n=14 (3 seeds, 200k it), n=18 (2×100k), n=20 (2×150k), n=24 (2×80k):
+  **all reach score = 1 quickly (often < 1k iterations), none ever reach 0.**
+  Score-1 optima are spider-like: three long branches through one central
+  (cut) vertex — exactly the tight examples predicted by the conjecture.
+- Second wave with plateau mode: n=16, 18, 22, 26 running.

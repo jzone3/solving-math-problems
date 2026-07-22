@@ -64,7 +64,12 @@ def main():
             new.add(tuple(sorted((u, v))))
             new.discard(rng.choice(sorted(new)))
         sc, res2 = score_graph(n, list(new))
-        if sc <= cur or rng.random() < pow(2.718, -(sc - cur) / T):
+        if cur <= 1:
+            # plateau mode: random-walk among score<=1 graphs hunting a hole to 0
+            accept = sc <= 1
+        else:
+            accept = sc <= cur or rng.random() < pow(2.718, -(sc - cur) / T)
+        if accept:
             edges, cur = new, sc
             if sc < best:
                 best, best_edges = sc, set(new)
