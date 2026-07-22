@@ -65,6 +65,22 @@ annealing on arc rewires toward region-score 0, SAT-checking every region hit.
 Sanity tests: `test_harness.py` — ALL PASS (path, K3,3 orientation tau=3 packs 3 not 4,
 disconnected => tau 0, smoke DAG).
 
+## 3b. Size lower bound for a minimal tau=3 counterexample (derived here)
+
+Combining the safe classes gives a sharper bound than any single source states:
+- Reversal symmetry: reversing all arcs preserves tau and nu, and maps rho to
+  rho-bar. So a counterexample needs BOTH rho(3,D) >= 4 and rho(3,rev D) >= 4.
+- In the reduced shape (Schrijver): internal type (in1,out2) contributes 1 to rho and
+  2 to rho-bar; type (in2,out1) contributes 2 and 1. With a type-A and b type-B
+  internals: a + 2b >= 12 and 2a + b >= 12 => a + b >= 8: at least 8 internal vertices.
+- Stub balance forces a - b = 3(#sinks - #sources).
+- A DAG with a single source is automatically source-sink connected (every vertex is
+  reachable from the unique source), and dually for a single sink. So >= 2 sources and
+  >= 2 sinks are needed to escape the Schrijver/Feofiloff-Younger safe class.
+- Minimum: 2 sources + 2 sinks + 8 internals (a = b = 4), n = 12, 18 arcs.
+  (Next shapes: (2,2,10) n=14 / 21 arcs; (3,2,9)+(2,3,9) n=14; etc.)
+This focuses the targeted deep runs (`runA_min.log`, `runB_min.log`).
+
 ## 4. Run log
 
 - 2026-07-22 ~20:40 UTC calibration: phase A, 60 s, seed 1, sizes up to n=16:
