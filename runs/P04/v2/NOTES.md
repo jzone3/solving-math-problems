@@ -112,3 +112,27 @@ Class size ≈ 1.2 × 10^12 graphs ≈ 850 core-hours → split into 1024 geng s
   runs/P04-v2-child<K>; see CHILD_TASK.md. (5 further children hit the org's
   concurrent-session limit.)
 - residues 704–1023: running locally (run14_local.sh).
+
+### n = 14 child sessions (all 16 spawned; K → shards 64K..64K+63)
+
+| K | session |
+|---|---|
+| 0 | devin-a9ffdf5b378d493c8479ba61f6139810 |
+| 1 | devin-ee2421ae80914810a5959e166103b45a |
+| 2 | devin-b86f587859454da9a5c30b34bec067db |
+| 3 | devin-bda602e797b6425895fd61e8f8e71329 |
+| 4 | devin-8814b637ddf544f988f2d0ff6283095a |
+| 5 | devin-d297bbf88a3542cabbf6ccca4573bbb6 |
+| 6 | devin-b12e39f8f18e44fda9ca4def8ccbb06b |
+| 7 | devin-133d052ad48540f78ec5c98fb4734990 |
+| 8 | devin-847adceec08b4b4b8884760bfd803526 |
+| 9 | devin-b4721c039eee45f08228f53763a8d4c9 |
+| 10 | devin-0d0aea1fe32f41da87e43e1c81908026 |
+| 11 | devin-bec57fb535b240989fe7f0b86244f176 |
+| 12 | devin-ce007eb6293148eb946647a93e7da1ce |
+| 13 | devin-5aedb07075634375a216d9b4600a3168 |
+| 14 | devin-49b5232960534fe6abdae94a0d2a334f |
+| 15 | devin-b652ae58d3ca427cb47a900926de84a0 |
+
+(K=14,15 spawned late after concurrency-limit retries; local run on 896–1023 kept
+running in parallel as redundant cross-validation.)
