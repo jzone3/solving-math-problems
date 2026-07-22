@@ -10,7 +10,11 @@ They claim: the std-dev of a graph's distance matrix is at most its number of po
 
 The whole proof: distance entries live in [0, diam], so their std-dev is ≤ diam/2 (Popoviciu). Any shortest path realizing the diameter is an *induced* path on diam+1 vertices, which has ⌊(diam+1)/2⌋ positive AND negative eigenvalues — and eigenvalue interlacing pushes that count up into the whole graph. Chain the inequalities and both conjectures fall out.
 
-**Thread reply 2:**
+**Thread reply 2 (credit):**
+
+Half the chain (diam ≤ 2·min(n⁺,n⁻)) turns out to be a published 2020 lemma (Geng–Wu–Wang). The new part is noticing it snaps together with a one-line Popoviciu bound to settle two 40-year-old conjectures nobody had connected it to. Adversarially reviewed + machine-verified.
+
+**Thread reply 3:**
 
 Fun part: the proof explains the 40 years of failed searches — the gap dev(D) − min(n⁺,n⁻) is provably ≤ 0 always, and empirically peaks at −0.22 (at the 4-star). Search never had a chance. [repo link]
 
