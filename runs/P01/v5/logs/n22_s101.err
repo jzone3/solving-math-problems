@@ -4,3 +4,6 @@ restart 2 done best=360
 restart 3 done best=420
 restart 4 done best=420
 restart 5 done best=600
+restart 6 done best=600
+restart 7 done best=360
+restart 8 done best=660

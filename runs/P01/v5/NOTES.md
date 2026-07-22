@@ -162,3 +162,35 @@ GMZ observation that girth-3 minimizers are K5/octahedron-block chains.
 GMZ n=21 minimum 144. Continuing with grow-and-polish (driver.py).
 
 Next: split t1search by first-chord partner and exhaust w = 15, 16 (maybe 17) in parallel.
+
+## 5. The exhaustion is a structural THEOREM about all counterexamples
+
+Observation (equivalence). Let G be any 4-regular uniquely hamiltonian graph and {e,f} any
+2-edge-cut with side S (|S| = w), attachment vertices x, y (endpoints of e, f in S). The
+unique HC h crosses the cut exactly twice (it must use BOTH e and f), so h ∩ S is a
+hamiltonian x→y path of G[S], and #HC(G) = t_S · t_{S'} where t_S = #ham x→y paths of G[S].
+Uniqueness forces t_S = 1. Relabelling S's vertices 0..w−1 along the unique ham path shows
+G[S] IS a window gadget: path P_w + chord 2-factor (internal degrees 4 = 2 path + 2 chords;
+x,y degree 3 = 1 path + 2 chords; simplicity forbids chords parallel to path edges). The
+correspondence is exact in both directions.
+
+**Theorem (machine-verified, t1search.c).** No window gadget with t = 1 exists for w ≤ 15
+(w=15 exhausted 2026-07-22, 13 shards, ~2·10^8 search nodes, no leaf ever reached).
+Hence every 4-regular uniquely hamiltonian graph has NO 2-edge-cut with a side of ≤ 15
+vertices. In particular, since both sides then have ≥ 16 vertices, any counterexample to
+Sheehan's conjecture on n ≤ 31 vertices must be 3-edge-connected. (w=16 shards running;
+each +1 on w adds +2 to the n covered by the corollary.)
+
+This complements GMZ's exhaustive n ≤ 21 (their minimizers have connectivity 2, i.e. small
+counts concentrate exactly in the region this theorem closes off for uniqueness) and
+directly extends the spirit of their girth-based frontier push — but along the
+CONNECTIVITY axis, which the literature digest identified as the escape route used by all
+known bounded-HC families (Fleischner multigraphs, TZ 216-family: all are 2-cut chains).
+
+Parity upgrade: in a 4-regular graph every edge cut is EVEN (|cut(S)| ≡ 4|S| mod 2), so
+there are no 3-edge-cuts. Hence "no 2-edge-cut" already means **4-edge-connected**:
+any counterexample on n ≤ 31 vertices is 4-edge-connected, and for ALL n, every
+2-edge-cut side must be a ≥16-vertex t=1 window (none exist up to the verified w).
+Next escalation of this axis would be 4-edge-cut (essentially-4-edge-connected) analysis,
+where h crosses 2 or 4 times and the gadget condition becomes a small system of path-count
+constraints — noted as future work.
