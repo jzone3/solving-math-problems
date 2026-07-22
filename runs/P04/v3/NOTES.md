@@ -63,6 +63,35 @@ dense — Fuchs–Gellert–Heinrich pruning):
 - `perturb-tight`: random walks from K_n and discovered TIGHT graphs by toggling
   edge sets of 3–6-cycles of the ambient K_n (parity-preserving), re-testing each step.
 
-(Results appended below as campaigns finish.)
+- `dense` (`dense_search.py`): the densest Eulerian graphs = K_n minus a sparse "defect"
+  graph H. Odd n: H with all degrees even (disjoint cycle unions; plus geng-enumerated
+  even-degree H with Δ(H)≤4, ≤14 edges). Even n: H with all degrees odd (degrees ∈ {1,3},
+  geng-enumerated, ≤21 edges). These have m/n closest to (n−1)/2, forcing decompositions
+  into near-Hamiltonian cycles — the most constrained instances.
+
+### Interim checkpoint (≈50 min of 8-way parallel compute)
+
+| campaign | graphs tested | TIGHT (min=bound) | counterexamples |
+|---|---|---|---|
+| circulants n=13..21 (exhaustive) | 62+55+122+119+254+237+510+494+1014 | 1 per n (K_n or minus-PM analogue) | 0 |
+| random δ≥6 n=13 | 12900/20000 | 639 (of tight-checked) | 0 |
+| random δ≥6 n=14 | 8200/20000 | 600 | 0 |
+| random δ≥6 n=15 | 4850/10000 | 208 | 0 |
+| random δ≥6 n=16 | 2800/10000 | 182 | 0 |
+| dense n=13 (K13−H, 795 exhaustive) | 795 | 753 | 0 |
+| dense n=14 (K14−odd-H) | 600/4637 | 600 (all so far!) | 0 |
+| dense n=15 | 200/838 | 183 | 0 |
+| perturb-tight walks n=13..16 | 2700+2050+800+700 | ~4200 | 0 |
+
+Observation: the K_n−H dense family is essentially all TIGHT (min decomposition exactly
+⌊(n−1)/2⌋) — a huge plateau of extremal graphs, but nothing exceeds the bound. Tightness
+is preserved under most small parity-preserving perturbations, so the tight region is
+large and flat; no gradient pointing above the bound has been found.
+
+Dead end noted: a "pure" Σ2 SAT formulation (solver picks the graph AND proves all
+decompositions long) needs QBF or CEGAR; the natural CEGAR blocking clause for a found
+decomposition D of candidate G only excludes exactly G (any supergraph breaks D, any
+subgraph changes E(G)), so the abstraction never compresses — hence the graph-outer-loop
++ SAT-inner-decider architecture used here.
 
 ## STATUS: (running)

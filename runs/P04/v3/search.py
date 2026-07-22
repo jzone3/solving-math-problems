@@ -136,7 +136,7 @@ def main():
         for lf in glob.glob(f"search_n{n}_*.log"):
             for line in open(lf):
                 if line.startswith("TIGHT"):
-                    s = line.split("g6=")[1].strip()
+                    s = line.split("g6=")[1].split()[0].strip()
                     seeds.append(nx.from_graph6_bytes(s.encode()))
         print(f"n={n}: {len(seeds)} tight seeds", flush=True)
         i = 0

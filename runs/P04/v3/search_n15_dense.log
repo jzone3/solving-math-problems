@@ -1,0 +1,211 @@
+TIGHT n=15 m=102 tag=Kn-cyc(3,) g6=NF~~~~~~~~~~~~~~~~w t=2.6s
+TIGHT n=15 m=99 tag=Kn-cyc(3, 3) g6=NFzf~~~~~~~~~~~~~~w t=2.6s
+TIGHT n=15 m=96 tag=Kn-cyc(3, 3, 3) g6=NFzf~z{~~~~~~~~~~~w t=2.5s
+TIGHT n=15 m=93 tag=Kn-cyc(3, 3, 3, 3) g6=NFzf~z{~~~^{~~~~~~w t=2.2s
+TIGHT n=15 m=92 tag=Kn-cyc(3, 3, 3, 4) g6=NFzf~z{~~~^}~y~~~~w t=0.3s
+TIGHT n=15 m=91 tag=Kn-cyc(3, 3, 3, 5) g6=NFzf~z{~~~^}~}~z^~w t=1.3s
+TIGHT n=15 m=95 tag=Kn-cyc(3, 3, 4) g6=NFzf~z}~V~~~~~~~~~w t=2.4s
+TIGHT n=15 m=91 tag=Kn-cyc(3, 3, 4, 4) g6=NFzf~z}~V~~}~}~|^~w t=0.8s
+TIGHT n=15 m=94 tag=Kn-cyc(3, 3, 5) g6=NFzf~z}~vz^~~~~~~~w t=0.8s
+TIGHT n=15 m=93 tag=Kn-cyc(3, 3, 6) g6=NFzf~z}~v~^m~~~~~~w t=1.3s
+TIGHT n=15 m=92 tag=Kn-cyc(3, 3, 7) g6=NFzf~z}~v~^}~]~~~~w t=0.9s
+TIGHT n=15 m=91 tag=Kn-cyc(3, 3, 8) g6=NFzf~z}~v~^}~}~^^~w t=0.9s
+TIGHT n=15 m=98 tag=Kn-cyc(3, 4) g6=NFzvV~~~~~~~~~~~~~w t=2.3s
+TIGHT n=15 m=94 tag=Kn-cyc(3, 4, 4) g6=NFzvV~}~v|^~~~~~~~w t=1.1s
+TIGHT n=15 m=93 tag=Kn-cyc(3, 4, 5) g6=NFzvV~}~v~^u~~~~~~w t=0.7s
+TIGHT n=15 m=92 tag=Kn-cyc(3, 4, 6) g6=NFzvV~}~v~^}~m~~~~w t=1.1s
+TIGHT n=15 m=91 tag=Kn-cyc(3, 4, 7) g6=NFzvV~}~v~^}~}~n^~w t=1.8s
+TIGHT n=15 m=97 tag=Kn-cyc(3, 5) g6=NFzvvZ~~~~~~~~~~~~w t=2.6s
+TIGHT n=15 m=92 tag=Kn-cyc(3, 5, 5) g6=NFzvvZ~~v~^}~u~~~~w t=1.6s
+TIGHT n=15 m=91 tag=Kn-cyc(3, 5, 6) g6=NFzvvZ~~v~^}~}~v^~w t=0.7s
+TIGHT n=15 m=96 tag=Kn-cyc(3, 6) g6=NFzvvzm~~~~~~~~~~~w t=1.2s
+TIGHT n=15 m=95 tag=Kn-cyc(3, 7) g6=NFzvvz}zv~~~~~~~~~w t=1.1s
+TIGHT n=15 m=94 tag=Kn-cyc(3, 8) g6=NFzvvz}~v^^~~~~~~~w t=1.4s
+TIGHT n=15 m=93 tag=Kn-cyc(3, 9) g6=NFzvvz}~v~\}~~~~~~w t=1.1s
+TIGHT n=15 m=92 tag=Kn-cyc(3, 10) g6=NFzvvz}~v~^}z}~~~~w t=1.0s
+TIGHT n=15 m=91 tag=Kn-cyc(3, 11) g6=NFzvvz}~v~^}~}z~^~w t=0.9s
+TIGHT n=15 m=101 tag=Kn-cyc(4,) g6=NQ~~~~~~~~~~~~~~~~w t=2.6s
+TIGHT n=15 m=97 tag=Kn-cyc(4, 4) g6=NQ~vvj~~~~~~~~~~~~w t=2.3s
+TIGHT n=15 m=93 tag=Kn-cyc(4, 4, 4) g6=NQ~vvj~~v~^y~~~~~~w t=2.3s
+TIGHT n=15 m=92 tag=Kn-cyc(4, 4, 5) g6=NQ~vvj~~v~^}~u~~~~w t=1.6s
+TIGHT n=15 m=91 tag=Kn-cyc(4, 4, 6) g6=NQ~vvj~~v~^}~}~v^~w t=0.6s
+TIGHT n=15 m=96 tag=Kn-cyc(4, 5) g6=NQ~vvzu~~~~~~~~~~~w t=1.1s
+TIGHT n=15 m=91 tag=Kn-cyc(4, 5, 5) g6=NQ~vvzu~~~^}~}~z^~w t=0.8s
+TIGHT n=15 m=95 tag=Kn-cyc(4, 6) g6=NQ~vvz}|v~~~~~~~~~w t=2.6s
+TIGHT n=15 m=94 tag=Kn-cyc(4, 7) g6=NQ~vvz}~vn^~~~~~~~w t=1.1s
+TIGHT n=15 m=93 tag=Kn-cyc(4, 8) g6=NQ~vvz}~v~]}~~~~~~w t=0.9s
+TIGHT n=15 m=92 tag=Kn-cyc(4, 9) g6=NQ~vvz}~v~^}|}~~~~w t=1.1s
+TIGHT n=15 m=91 tag=Kn-cyc(4, 10) g6=NQ~vvz}~v~^}~}|~^~w t=1.0s
+TIGHT n=15 m=100 tag=Kn-cyc(5,) g6=NUZ~~~~~~~~~~~~~~~w t=2.6s
+TIGHT n=15 m=95 tag=Kn-cyc(5, 5) g6=NUZ~vz}}v~~~~~~~~~w t=2.0s
+TIGHT n=15 m=94 tag=Kn-cyc(5, 6) g6=NUZ~vz}~vv^~~~~~~~w t=2.4s
+TIGHT n=15 m=93 tag=Kn-cyc(5, 7) g6=NUZ~vz}~v~^]~~~~~~w t=2.0s
+TIGHT n=15 m=92 tag=Kn-cyc(5, 8) g6=NUZ~vz}~v~^}}}~~~~w t=0.9s
+TIGHT n=15 m=91 tag=Kn-cyc(5, 9) g6=NUZ~vz}~v~^}~}}~^~w t=1.0s
+TIGHT n=15 m=99 tag=Kn-cyc(6,) g6=NUxv~~~~~~~~~~~~~~w t=0.4s
+TIGHT n=15 m=93 tag=Kn-cyc(6, 6) g6=NUxv~z}~v~^m~~~~~~w t=1.1s
+TIGHT n=15 m=92 tag=Kn-cyc(6, 7) g6=NUxv~z}~v~^}~]~~~~w t=1.0s
+TIGHT n=15 m=91 tag=Kn-cyc(6, 8) g6=NUxv~z}~v~^}~}~^^~w t=0.7s
+TIGHT n=15 m=98 tag=Kn-cyc(7,) g6=NUzrv~~~~~~~~~~~~~w t=2.9s
+TIGHT n=15 m=91 tag=Kn-cyc(7, 7) g6=NUzrv~}~v~^}~}~n^~w t=0.7s
+TIGHT n=15 m=97 tag=Kn-cyc(8,) g6=NUzvrz~~~~~~~~~~~~w t=2.6s
+TIGHT n=15 m=96 tag=Kn-cyc(9,) g6=NUzvvx}~~~~~~~~~~~w t=1.3s
+TIGHT n=15 m=95 tag=Kn-cyc(10,) g6=NUzvvz}^v~~~~~~~~~w t=2.3s
+TIGHT n=15 m=94 tag=Kn-cyc(11,) g6=NUzvvz}~r~^~~~~~~~w t=2.3s
+TIGHT n=15 m=93 tag=Kn-cyc(12,) g6=NUzvvz}~v~N}~~~~~~w t=1.0s
+TIGHT n=15 m=92 tag=Kn-cyc(13,) g6=NUzvvz}~v~^}^}~~~~w t=0.7s
+TIGHT n=15 m=91 tag=Kn-cyc(14,) g6=NUzvvz}~v~^}~}^~^~w t=0.4s
+TIGHT n=15 m=105 tag=Kn-evenH0 g6=N~~~~~~~~~~~~~~~~~w t=2.7s
+TIGHT n=15 m=102 tag=Kn-evenH1 g6=N~~~~~~~~~~~~~^~n~o t=2.6s
+TIGHT n=15 m=101 tag=Kn-evenH2 g6=N~~~~~~~~~~~~~N~f~w t=2.5s
+TIGHT n=15 m=98 tag=Kn-evenH3 g6=N~~~~~~~~~~~~~F~b~o t=5.4s
+TIGHT n=15 m=97 tag=Kn-evenH4 g6=N~~~~~~~~~~~~~B~`~w t=0.4s
+TIGHT n=15 m=99 tag=Kn-evenH5 g6=N~~~~~~~~~~~^~n~f~_ t=3.7s
+TIGHT n=15 m=100 tag=Kn-evenH6 g6=N~~~~~~~~~~~^~N~v~g t=2.5s
+TIGHT n=15 m=98 tag=Kn-evenH7 g6=N~~~~~~~~~~~^~f~b~g t=2.5s
+TIGHT n=15 m=97 tag=Kn-evenH8 g6=N~~~~~~~~~~~^~F~r~_ t=2.6s
+TIGHT n=15 m=96 tag=Kn-evenH9 g6=N~~~~~~~~~~~^~B~p~g t=2.9s
+TIGHT n=15 m=99 tag=Kn-evenH10 g6=N~~~~~~~~~~~N~V~r~w t=2.5s
+TIGHT n=15 m=97 tag=Kn-evenH11 g6=N~~~~~~~~~~~N~r~`~w t=2.6s
+TIGHT n=15 m=96 tag=Kn-evenH12 g6=N~~~~~~~~~~~N~R~p~o t=1.1s
+TIGHT n=15 m=96 tag=Kn-evenH13 g6=N~~~~~~~~~~~N~V~R~_ t=2.6s
+TIGHT n=15 m=95 tag=Kn-evenH14 g6=N~~~~~~~~~~~N~P~o~w t=0.5s
+TIGHT n=15 m=95 tag=Kn-evenH15 g6=N~~~~~~~~~~~F~J~x~_ t=3.3s
+TIGHT n=15 m=94 tag=Kn-evenH16 g6=N~~~~~~~~~~~F~H~w~g t=2.4s
+TIGHT n=15 m=93 tag=Kn-evenH17 g6=N~~~~~~~~~~~B~K~w^w t=2.5s
+TIGHT n=15 m=97 tag=Kn-evenH18 g6=N~~~~~~~~~n~n~V~r~G t=1.3s
+TIGHT n=15 m=99 tag=Kn-evenH19 g6=N~~~~~~~~~n~n~^}v~g t=2.5s
+TIGHT n=15 m=96 tag=Kn-evenH20 g6=N~~~~~~~~~n~n~F~z~? t=2.7s
+TIGHT n=15 m=96 tag=Kn-evenH21 g6=N~~~~~~~~~n~n~V}r~_ t=1.1s
+TIGHT n=15 m=95 tag=Kn-evenH22 g6=N~~~~~~~~~n~n~B~x~G t=2.5s
+TIGHT n=15 m=95 tag=Kn-evenH23 g6=N~~~~~~~~~n~n~R}p~g t=2.8s
+TIGHT n=15 m=98 tag=Kn-evenH24 g6=N~~~~~~~~~n~N~f~z~W t=3.6s
+TIGHT n=15 m=96 tag=Kn-evenH25 g6=N~~~~~~~~~n~N~r~p~W t=2.8s
+TIGHT n=15 m=95 tag=Kn-evenH26 g6=N~~~~~~~~~n~N~b~x~O t=1.3s
+TIGHT n=15 m=95 tag=Kn-evenH27 g6=N~~~~~~~~~n~N~N~N~? t=2.5s
+TIGHT n=15 m=94 tag=Kn-evenH28 g6=N~~~~~~~~~n~N~`~w~W t=1.5s
+TIGHT n=15 m=96 tag=Kn-evenH29 g6=N~~~~~~~~~n~f~j~h~W t=2.4s
+TIGHT n=15 m=95 tag=Kn-evenH30 g6=N~~~~~~~~~n~f~J~x~O t=2.4s
+TIGHT n=15 m=95 tag=Kn-evenH31 g6=N~~~~~~~~~n~f~b~l~O t=2.7s
+TIGHT n=15 m=95 tag=Kn-evenH32 g6=N~~~~~~~~~n~f~N~Z~? t=1.3s
+TIGHT n=15 m=95 tag=Kn-evenH33 g6=N~~~~~~~~~n~f~f~N~? t=1.2s
+TIGHT n=15 m=94 tag=Kn-evenH34 g6=N~~~~~~~~~n~f~H~w~W t=1.1s
+TIGHT n=15 m=94 tag=Kn-evenH35 g6=N~~~~~~~~~n~f~`~k~W t=1.3s
+TIGHT n=15 m=98 tag=Kn-evenH36 g6=N~~~~~~~~~n~^}f~r~w t=3.3s
+TIGHT n=15 m=95 tag=Kn-evenH37 g6=N~~~~~~~~~n~^}b~p~o t=2.4s
+TIGHT n=15 m=95 tag=Kn-evenH38 g6=N~~~~~~~~~n~^}^}N~? t=2.5s
+TIGHT n=15 m=94 tag=Kn-evenH39 g6=N~~~~~~~~~n~^}`~o~w t=2.4s
+TIGHT n=15 m=94 tag=Kn-evenH40 g6=N~~~~~~~~~n~F~F~n~? t=2.4s
+TIGHT n=15 m=94 tag=Kn-evenH41 g6=N~~~~~~~~~n~F~j}x~_ t=1.0s
+TIGHT n=15 m=93 tag=Kn-evenH42 g6=N~~~~~~~~~n~F~`~{~G t=3.4s
+TIGHT n=15 m=94 tag=Kn-evenH43 g6=N~~~~~~~~~n~b~F~|~? t=2.7s
+TIGHT n=15 m=94 tag=Kn-evenH44 g6=N~~~~~~~~~n~b~b~n~? t=2.4s
+TIGHT n=15 m=94 tag=Kn-evenH45 g6=N~~~~~~~~~n~b~N}x~_ t=2.6s
+TIGHT n=15 m=93 tag=Kn-evenH46 g6=N~~~~~~~~~n~b~D~{~G t=1.8s
+TIGHT n=15 m=93 tag=Kn-evenH47 g6=N~~~~~~~~~n~b~`~m~G t=2.4s
+TIGHT n=15 m=93 tag=Kn-evenH48 g6=N~~~~~~~~~n~b~L}w~g t=2.8s
+TIGHT n=15 m=94 tag=Kn-evenH49 g6=N~~~~~~~~~n~N}F~j~_ t=2.4s
+TIGHT n=15 m=94 tag=Kn-evenH50 g6=N~~~~~~~~~n~N}N}n~? t=1.2s
+TIGHT n=15 m=92 tag=Kn-evenH51 g6=N~~~~~~~~~n~`~E~{^W t=2.4s
+TIGHT n=15 m=92 tag=Kn-evenH52 g6=N~~~~~~~~~n~`~a~m^W t=1.1s
+TIGHT n=15 m=97 tag=Kn-evenH53 g6=N~~~~~~~~~f~N~r~x~w t=1.2s
+TIGHT n=15 m=94 tag=Kn-evenH54 g6=N~~~~~~~~~f~N~p~w~o t=2.6s
+TIGHT n=15 m=93 tag=Kn-evenH55 g6=N~~~~~~~~~f~N~B~`~w t=1.1s
+TIGHT n=15 m=93 tag=Kn-evenH56 g6=N~~~~~~~~~f~N~o~w^w t=1.9s
+TIGHT n=15 m=93 tag=Kn-evenH57 g6=N~~~~~~~~~f~N~N}F~G t=2.3s
+TIGHT n=15 m=97 tag=Kn-evenH58 g6=N~~~~~~~~~f~V~j~x~w t=1.3s
+TIGHT n=15 m=95 tag=Kn-evenH59 g6=N~~~~~~~~~f~V~x~o~w t=3.3s
+TIGHT n=15 m=94 tag=Kn-evenH60 g6=N~~~~~~~~~f~V~h~w~o t=0.7s
+TIGHT n=15 m=93 tag=Kn-evenH61 g6=N~~~~~~~~~f~V~g~w^w t=2.6s
+TIGHT n=15 m=93 tag=Kn-evenH62 g6=N~~~~~~~~~f~V~j}X~G t=2.4s
+TIGHT n=15 m=94 tag=Kn-evenH63 g6=N~~~~~~~~~f~r~L~w~o t=1.9s
+TIGHT n=15 m=94 tag=Kn-evenH64 g6=N~~~~~~~~~f~r~T~s~o t=1.2s
+TIGHT n=15 m=94 tag=Kn-evenH65 g6=N~~~~~~~~~f~r~N}x~O t=2.3s
+TIGHT n=15 m=94 tag=Kn-evenH66 g6=N~~~~~~~~~f~r~V}t~O t=1.4s
+TIGHT n=15 m=93 tag=Kn-evenH67 g6=N~~~~~~~~~f~r~K~w^w t=2.4s
+TIGHT n=15 m=93 tag=Kn-evenH68 g6=N~~~~~~~~~f~r~S~s^w t=0.9s
+TIGHT n=15 m=93 tag=Kn-evenH69 g6=N~~~~~~~~~f~r~N}X~G t=3.6s
+TIGHT n=15 m=93 tag=Kn-evenH70 g6=N~~~~~~~~~f~r~V}T~G t=2.0s
+TIGHT n=15 m=93 tag=Kn-evenH71 g6=N~~~~~~~~~f~F~F~f~_ t=2.7s
+TIGHT n=15 m=92 tag=Kn-evenH72 g6=N~~~~~~~~~f~F~B~d~g t=2.5s
+TIGHT n=15 m=92 tag=Kn-evenH73 g6=N~~~~~~~~~f~F~p}{~G t=1.0s
+TIGHT n=15 m=93 tag=Kn-evenH74 g6=N~~~~~~~~~f~R~R~f~_ t=1.5s
+TIGHT n=15 m=93 tag=Kn-evenH75 g6=N~~~~~~~~~f~R~d~{~_ t=0.9s
+TIGHT n=15 m=92 tag=Kn-evenH76 g6=N~~~~~~~~~f~R~o~u^g t=2.6s
+TIGHT n=15 m=92 tag=Kn-evenH77 g6=N~~~~~~~~~f~R~d}{~G t=0.8s
+TIGHT n=15 m=92 tag=Kn-evenH78 g6=N~~~~~~~~~f~R~p}u~G t=6.4s
+TIGHT n=15 m=93 tag=Kn-evenH79 g6=N~~~~~~~~~f~p~F~{~_ t=0.9s
+TIGHT n=15 m=93 tag=Kn-evenH80 g6=N~~~~~~~~~f~p~R~u~_ t=2.4s
+TIGHT n=15 m=93 tag=Kn-evenH81 g6=N~~~~~~~~~f~p~p~f~_ t=1.0s
+TIGHT n=15 m=92 tag=Kn-evenH82 g6=N~~~~~~~~~f~p~E~{^g t=1.6s
+TIGHT n=15 m=92 tag=Kn-evenH83 g6=N~~~~~~~~~f~p~Q~u^g t=1.0s
+TIGHT n=15 m=92 tag=Kn-evenH84 g6=N~~~~~~~~~f~p~o~f^g t=1.2s
+TIGHT n=15 m=92 tag=Kn-evenH85 g6=N~~~~~~~~~f~p~F}{~G t=0.9s
+TIGHT n=15 m=92 tag=Kn-evenH86 g6=N~~~~~~~~~f~p~R}u~G t=3.1s
+TIGHT n=15 m=92 tag=Kn-evenH87 g6=N~~~~~~~~~f~p~p}f~G t=0.7s
+TIGHT n=15 m=93 tag=Kn-evenH88 g6=N~~~~~~~~~f~V}F~n~? t=2.0s
+TIGHT n=15 m=93 tag=Kn-evenH89 g6=N~~~~~~~~~f~V}b~|~? t=2.4s
+TIGHT n=15 m=93 tag=Kn-evenH90 g6=N~~~~~~~~~f~r}F~|~? t=2.0s
+TIGHT n=15 m=92 tag=Kn-evenH91 g6=N~~~~~~~~~f~r}D~{~G t=2.5s
+TIGHT n=15 m=91 tag=Kn-evenH92 g6=N~~~~~~~~~f~o~R^uNw t=2.3s
+TIGHT n=15 m=91 tag=Kn-evenH93 g6=N~~~~~~~~~f~o~p^fNw t=0.6s
+TIGHT n=15 m=92 tag=Kn-evenH94 g6=N~~~~~~~~~b~J~R~n~? t=1.6s
+TIGHT n=15 m=91 tag=Kn-evenH95 g6=N~~~~~~~~~b~J~B~f~G t=0.6s
+TIGHT n=15 m=91 tag=Kn-evenH96 g6=N~~~~~~~~~b~J~o~}^G t=0.7s
+TIGHT n=15 m=92 tag=Kn-evenH97 g6=N~~~~~~~~~b~X~b~}~? t=1.3s
+TIGHT n=15 m=91 tag=Kn-evenH98 g6=N~~~~~~~~~b~X~a~}^G t=0.9s
+TIGHT n=15 m=91 tag=Kn-evenH99 g6=N~~~~~~~~~b~X~i}y^g t=1.7s
+TIGHT n=15 m=91 tag=Kn-evenH100 g6=N~~~~~~~~~b~X~w}r^g t=2.3s
+TIGHT n=15 m=91 tag=Kn-evenH101 g6=N~~~~~~~~~b~w~B~}^G t=0.5s
+TIGHT n=15 m=91 tag=Kn-evenH102 g6=N~~~~~~~~~b~w~H~z^G t=1.9s
+TIGHT n=15 m=91 tag=Kn-evenH103 g6=N~~~~~~~~~b~w~F}{^g t=2.7s
+TIGHT n=15 m=91 tag=Kn-evenH104 g6=N~~~~~~~~~b~w~J}y^g t=1.0s
+TIGHT n=15 m=91 tag=Kn-evenH105 g6=N~~~~~~~~~b~w~X}r^g t=0.9s
+TIGHT n=15 m=91 tag=Kn-evenH106 g6=N~~~~~~~~~b~w~w}b~g t=1.7s
+TIGHT n=15 m=96 tag=Kn-evenH107 g6=N~~~~~~~z~v~v~^|r~G t=5.3s
+TIGHT n=15 m=95 tag=Kn-evenH108 g6=N~~~~~~~z~v~v~F~~}? t=1.8s
+TIGHT n=15 m=95 tag=Kn-evenH109 g6=N~~~~~~~z~v~v~N|z~? t=2.1s
+TIGHT n=15 m=94 tag=Kn-evenH110 g6=N~~~~~~~z~v~v~B~|}G t=0.6s
+TIGHT n=15 m=94 tag=Kn-evenH111 g6=N~~~~~~~z~v~v~J|x~G t=1.1s
+TIGHT n=15 m=95 tag=Kn-evenH112 g6=N~~~~~~~z~v~V~j~x}W t=3.0s
+TIGHT n=15 m=95 tag=Kn-evenH113 g6=N~~~~~~~z~v~V~r~t}W t=2.0s
+TIGHT n=15 m=94 tag=Kn-evenH114 g6=N~~~~~~~z~v~V~b~|}O t=1.4s
+TIGHT n=15 m=94 tag=Kn-evenH115 g6=N~~~~~~~z~v~V~N|j~O t=1.2s
+TIGHT n=15 m=94 tag=Kn-evenH116 g6=N~~~~~~~z~v~V~V|f~O t=2.4s
+TIGHT n=15 m=94 tag=Kn-evenH117 g6=N~~~~~~~z~v~V~r|t~O t=1.0s
+TIGHT n=15 m=93 tag=Kn-evenH118 g6=N~~~~~~~z~v~V~`~{}W t=1.0s
+TIGHT n=15 m=93 tag=Kn-evenH119 g6=N~~~~~~~z~v~V~p|s~W t=1.4s
+TIGHT n=15 m=95 tag=Kn-evenH120 g6=N~~~~~~~z~v~r~r~f}W t=1.5s
+TIGHT n=15 m=94 tag=Kn-evenH121 g6=N~~~~~~~z~v~r~F~|}O t=1.4s
+TIGHT n=15 m=94 tag=Kn-evenH122 g6=N~~~~~~~z~v~r~R~v}O t=1.4s
+TIGHT n=15 m=94 tag=Kn-evenH123 g6=N~~~~~~~z~v~r~V|t~O t=2.0s
+TIGHT n=15 m=93 tag=Kn-evenH124 g6=N~~~~~~~z~v~r~D~{}W t=1.3s
+TIGHT n=15 m=93 tag=Kn-evenH125 g6=N~~~~~~~z~v~r~P~u}W t=1.3s
+TIGHT n=15 m=93 tag=Kn-evenH126 g6=N~~~~~~~z~v~r~T|s~W t=0.9s
+TIGHT n=15 m=97 tag=Kn-evenH127 g6=N~~~~~~~z~v~^|f~z~W t=2.0s
+TIGHT n=15 m=95 tag=Kn-evenH128 g6=N~~~~~~~z~v~^|r~p~W t=1.4s
+TIGHT n=15 m=94 tag=Kn-evenH129 g6=N~~~~~~~z~v~^|b~x~O t=0.7s
+TIGHT n=15 m=94 tag=Kn-evenH130 g6=N~~~~~~~z~v~^|N|n}O t=1.5s
+TIGHT n=15 m=93 tag=Kn-evenH131 g6=N~~~~~~~z~v~^|`~w~W t=1.2s
+TIGHT n=15 m=93 tag=Kn-evenH132 g6=N~~~~~~~z~v~F~f|v~? t=0.8s
+TIGHT n=15 m=93 tag=Kn-evenH133 g6=N~~~~~~~z~v~F~z{x~_ t=1.0s
+TIGHT n=15 m=92 tag=Kn-evenH134 g6=N~~~~~~~z~v~F~F|f~G t=3.5s
+TIGHT n=15 m=92 tag=Kn-evenH135 g6=N~~~~~~~z~v~F~N{b~g t=1.3s
+TIGHT n=15 m=93 tag=Kn-evenH136 g6=N~~~~~~~z~v~R~b~~}? t=0.7s
+TIGHT n=15 m=93 tag=Kn-evenH137 g6=N~~~~~~~z~v~R~f||~? t=1.4s
+TIGHT n=15 m=93 tag=Kn-evenH138 g6=N~~~~~~~z~v~R~r|v~? t=1.6s
+TIGHT n=15 m=93 tag=Kn-evenH139 g6=N~~~~~~~z~v~R~f}|}_ t=0.6s
+TIGHT n=15 m=93 tag=Kn-evenH140 g6=N~~~~~~~z~v~R~n{x~_ t=1.3s
+TIGHT n=15 m=92 tag=Kn-evenH141 g6=N~~~~~~~z~v~R~`~}}G t=1.0s
+TIGHT n=15 m=92 tag=Kn-evenH142 g6=N~~~~~~~z~v~R~d|{~G t=3.0s
+TIGHT n=15 m=92 tag=Kn-evenH143 g6=N~~~~~~~z~v~R~p|u~G t=1.3s
+TIGHT n=15 m=92 tag=Kn-evenH144 g6=N~~~~~~~z~v~R~d}{}g t=2.4s
+TIGHT n=15 m=92 tag=Kn-evenH145 g6=N~~~~~~~z~v~p~B~}}G t=1.4s
+TIGHT n=15 m=92 tag=Kn-evenH146 g6=N~~~~~~~z~v~p~P~v}G t=1.2s
+TIGHT n=15 m=92 tag=Kn-evenH147 g6=N~~~~~~~z~v~p~F|{~G t=1.5s
+TIGHT n=15 m=92 tag=Kn-evenH148 g6=N~~~~~~~z~v~p~R|u~G t=2.0s
+TIGHT n=15 m=92 tag=Kn-evenH149 g6=N~~~~~~~z~v~p~N{w~g t=1.1s
+TIGHT n=15 m=93 tag=Kn-evenH150 g6=N~~~~~~~z~v~N|N}f~_ t=1.5s
+TIGHT n=15 m=93 tag=Kn-evenH151 g6=N~~~~~~~z~v~N|V}j~_ t=0.4s
+TIGHT n=15 m=93 tag=Kn-evenH152 g6=N~~~~~~~z~v~N|^{n}_ t=1.6s
+TIGHT n=15 m=92 tag=Kn-evenH153 g6=N~~~~~~~z~v~N|N{f}g t=0.7s

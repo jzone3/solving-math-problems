@@ -1,0 +1,11 @@
+n=18: 238 Eulerian circulants
+[25/238] {'OK': 25, 'TIGHT': 0, 'CE': 0} 3s
+[50/238] {'OK': 50, 'TIGHT': 0, 'CE': 0} 9s
+[75/238] {'OK': 75, 'TIGHT': 0, 'CE': 0} 14s
+[100/238] {'OK': 100, 'TIGHT': 0, 'CE': 0} 20s
+[125/238] {'OK': 125, 'TIGHT': 0, 'CE': 0} 28s
+[150/238] {'OK': 150, 'TIGHT': 0, 'CE': 0} 37s
+[175/238] {'OK': 175, 'TIGHT': 0, 'CE': 0} 48s
+[200/238] {'OK': 200, 'TIGHT': 0, 'CE': 0} 59s
+[225/238] {'OK': 225, 'TIGHT': 0, 'CE': 0} 72s
+DONE n=18 mode=circulant {'OK': 237, 'TIGHT': 1, 'CE': 0} total=85s

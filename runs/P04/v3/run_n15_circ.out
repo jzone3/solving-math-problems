@@ -3,3 +3,4 @@ n=15: 123 Eulerian circulants
 [50/123] {'OK': 50, 'TIGHT': 0, 'CE': 0} 6s
 [75/123] {'OK': 75, 'TIGHT': 0, 'CE': 0} 9s
 [100/123] {'OK': 100, 'TIGHT': 0, 'CE': 0} 13s
+DONE n=15 mode=circulant {'OK': 122, 'TIGHT': 1, 'CE': 0} total=19s

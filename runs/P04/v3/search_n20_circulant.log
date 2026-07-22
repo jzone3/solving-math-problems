@@ -1,0 +1,2 @@
+TIGHT n=20 m=180 tag=circ(1, 2, 3, 4, 5, 6, 7, 8, 9) g6=S~~~~~~~z~v~v~z~}~~v~~^~}~~}~~~^{ t=41.4s
+SUMMARY n=20 mode=circulant {'OK': 494, 'TIGHT': 1, 'CE': 0} time=326s
