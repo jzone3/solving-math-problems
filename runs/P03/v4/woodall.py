@@ -296,4 +296,7 @@ def canon_key(n, arcs, tries=30, rng=None):
     base = tuple(sorted((indeg[v], outdeg[v]) for v in range(n)))
     ms = sorted(((indeg[u], outdeg[u]), (indeg[v], outdeg[v]))
                 for (u, v) in arcs)
-    return (n, len(arcs), base, tuple(ms))
+    # exact labeled arc multiset appended: dedup only true repeats.  The
+    # coarse degree-based key alone over-blocked the search near structured
+    # seeds (many non-isomorphic graphs share degree data).
+    return (n, len(arcs), base, tuple(ms), tuple(sorted(arcs)))
