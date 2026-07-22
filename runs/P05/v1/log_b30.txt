@@ -1,0 +1,2 @@
+[b30r0] it=1 new best t=24 L=24v n=24 m=37 paths=1
+[b30r0] it=5 new best t=23 L=23v n=23 m=38 paths=1

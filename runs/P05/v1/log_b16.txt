@@ -1,0 +1,3 @@
+[b16r0] it=1 new best t=12 L=12v n=12 m=18 paths=1
+[b16r0] it=11 new best t=11 L=11v n=11 m=16 paths=1
+[b16r0] it=39 new best t=10 L=10v n=10 m=11 paths=1

@@ -5,3 +5,16 @@
 [thom34r0] it=67 new best t=21 L=28v n=37 m=48 paths=78
 [thom34r0] it=80 new best t=20 L=27v n=37 m=47 paths=44
 [thom34r0] it=86 new best t=18 L=27v n=38 m=48 paths=58
+[thom34r0] it=213 new best t=17 L=22v n=39 m=49 paths=59
+[thom34r0] it=236 new best t=16 L=20v n=37 m=45 paths=21
+[thom34r0] it=284 new best t=14 L=20v n=40 m=46 paths=8
+[thom34r0] it=294 new best t=13 L=21v n=40 m=48 paths=15
+[thom34r0] it=302 new best t=12 L=20v n=40 m=47 paths=18
+[thom34r0] it=305 new best t=10 L=20v n=40 m=48 paths=45
+[thom34r0] it=323 new best t=8 L=15v n=40 m=43 paths=24
+[thom34r0] it=336 new best t=7 L=14v n=36 m=38 paths=10
+[thom34r0] it=354 new best t=6 L=13v n=36 m=38 paths=15
+[thom34r0] it=562 new best t=4 L=12v n=40 m=40 paths=14
+[thom34r0] it=589 new best t=3 L=12v n=40 m=41 paths=42
+[thom34r0] it=1174 new best t=1 L=9v n=40 m=39 paths=17
+[thom34r0] done iters=1500 best t=1 (L=9v, n=40) elapsed=123s

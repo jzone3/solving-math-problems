@@ -1,0 +1,3 @@
+[b24r0] seed unevaluable, abort
+[b24r1] it=10 new best t=23 L=23v n=23 m=37 paths=1
+[b24r1] it=18 new best t=22 L=22v n=22 m=38 paths=1

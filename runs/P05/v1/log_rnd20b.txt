@@ -91,3 +91,75 @@
 [rnd20br8] it=22 new best t=6 L=12v n=17 m=19 paths=15
 [rnd20br8] it=98 new best t=4 L=11v n=20 m=22 paths=16
 [rnd20br8] it=117 new best t=1 L=9v n=19 m=20 paths=11
+[rnd20br8] done iters=20000 best t=1 (L=9v, n=19) elapsed=25s
+[rnd20br9] it=3 new best t=11 L=13v n=14 m=20 paths=10
+[rnd20br9] it=10 new best t=10 L=11v n=14 m=19 paths=10
+[rnd20br9] it=12 new best t=7 L=11v n=15 m=21 paths=19
+[rnd20br9] it=37 new best t=6 L=9v n=19 m=19 paths=8
+[rnd20br9] it=44 new best t=5 L=8v n=19 m=19 paths=6
+[rnd20br9] it=46 new best t=3 L=7v n=20 m=19 paths=15
+[rnd20br9] it=142 new best t=2 L=7v n=19 m=19 paths=22
+[rnd20br9] it=319 new best t=1 L=7v n=19 m=20 paths=27
+[rnd20br9] done iters=20000 best t=1 (L=7v, n=19) elapsed=9s
+[rnd20br10] it=0 new best t=17 L=17v n=19 m=20 paths=1
+[rnd20br10] it=1 new best t=13 L=16v n=18 m=19 paths=3
+[rnd20br10] it=5 new best t=12 L=12v n=19 m=19 paths=2
+[rnd20br10] it=8 new best t=11 L=11v n=18 m=17 paths=2
+[rnd20br10] it=10 new best t=6 L=11v n=19 m=18 paths=4
+[rnd20br10] it=23 new best t=4 L=9v n=20 m=19 paths=4
+[rnd20br10] it=145 new best t=3 L=7v n=19 m=18 paths=14
+[rnd20br10] it=166 new best t=1 L=5v n=19 m=18 paths=55
+[rnd20br10] done iters=20000 best t=1 (L=5v, n=19) elapsed=9s
+[rnd20br11] it=1 new best t=13 L=13v n=13 m=15 paths=2
+[rnd20br11] it=4 new best t=12 L=12v n=13 m=13 paths=1
+[rnd20br11] it=5 new best t=10 L=10v n=13 m=13 paths=1
+[rnd20br11] it=8 new best t=7 L=9v n=13 m=13 paths=3
+[rnd20br11] it=9 new best t=5 L=8v n=12 m=12 paths=6
+[rnd20br11] it=36 new best t=3 L=9v n=19 m=20 paths=22
+[rnd20br11] it=137 new best t=2 L=6v n=18 m=17 paths=25
+[rnd20br11] it=267 new best t=1 L=7v n=18 m=18 paths=11
+[rnd20br11] done iters=20000 best t=1 (L=7v, n=18) elapsed=12s
+[rnd20br12] it=1 new best t=12 L=12v n=12 m=14 paths=4
+[rnd20br12] it=9 new best t=11 L=11v n=11 m=16 paths=4
+[rnd20br12] it=10 new best t=10 L=10v n=10 m=15 paths=4
+[rnd20br12] it=21 new best t=8 L=10v n=11 m=14 paths=3
+[rnd20br12] it=23 new best t=6 L=9v n=12 m=14 paths=18
+[rnd20br12] it=29 new best t=5 L=8v n=12 m=14 paths=24
+[rnd20br12] it=65 new best t=1 L=7v n=18 m=18 paths=20
+[rnd20br12] done iters=20000 best t=1 (L=7v, n=18) elapsed=8s
+[rnd20br13] it=2 new best t=16 L=16v n=17 m=19 paths=2
+[rnd20br13] it=4 new best t=14 L=15v n=16 m=18 paths=3
+[rnd20br13] it=5 new best t=13 L=13v n=16 m=18 paths=3
+[rnd20br13] it=6 new best t=12 L=14v n=16 m=19 paths=9
+[rnd20br13] it=8 new best t=11 L=15v n=17 m=21 paths=4
+[rnd20br13] it=10 new best t=10 L=14v n=16 m=20 paths=4
+[rnd20br13] it=11 new best t=8 L=14v n=17 m=21 paths=17
+[rnd20br13] it=13 new best t=7 L=14v n=18 m=22 paths=25
+[rnd20br13] it=14 new best t=6 L=14v n=18 m=23 paths=53
+[rnd20br13] it=115 new best t=5 L=8v n=19 m=18 paths=9
+[rnd20br13] it=118 new best t=4 L=8v n=20 m=19 paths=12
+[rnd20br13] it=180 new best t=3 L=7v n=20 m=19 paths=6
+[rnd20br13] it=205 new best t=1 L=9v n=20 m=21 paths=7
+[rnd20br13] done iters=20000 best t=1 (L=9v, n=20) elapsed=15s
+[rnd20br14] it=2 new best t=18 L=18v n=18 m=25 paths=11
+[rnd20br14] it=8 new best t=17 L=18v n=19 m=26 paths=5
+[rnd20br14] it=11 new best t=16 L=18v n=19 m=27 paths=55
+[rnd20br14] it=39 new best t=15 L=17v n=19 m=29 paths=35
+[rnd20br14] it=72 new best t=14 L=16v n=18 m=27 paths=11
+[rnd20br14] it=81 new best t=13 L=15v n=18 m=26 paths=6
+[rnd20br14] it=110 new best t=12 L=15v n=19 m=26 paths=8
+[rnd20br14] it=114 new best t=11 L=15v n=20 m=27 paths=20
+[rnd20br14] it=122 new best t=9 L=14v n=20 m=26 paths=56
+[rnd20br14] it=144 new best t=8 L=12v n=20 m=23 paths=6
+[rnd20br14] it=201 new best t=5 L=11v n=19 m=24 paths=32
+[rnd20br14] it=279 new best t=1 L=9v n=18 m=17 paths=5
+[rnd20br14] done iters=20000 best t=1 (L=9v, n=18) elapsed=21s
+[rnd20br15] it=0 new best t=13 L=13v n=13 m=20 paths=71
+[rnd20br15] it=17 new best t=10 L=12v n=13 m=20 paths=90
+[rnd20br15] it=44 new best t=9 L=11v n=15 m=19 paths=14
+[rnd20br15] it=45 new best t=8 L=10v n=14 m=18 paths=29
+[rnd20br15] it=132 new best t=7 L=13v n=19 m=23 paths=10
+[rnd20br15] it=154 new best t=5 L=11v n=20 m=21 paths=10
+[rnd20br15] it=155 new best t=4 L=10v n=19 m=20 paths=10
+[rnd20br15] it=273 new best t=3 L=8v n=19 m=19 paths=20
+[rnd20br15] it=611 new best t=1 L=7v n=20 m=19 paths=36

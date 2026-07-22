@@ -1,0 +1,1 @@
+[vczbr0] it=2 new best t=12 L=12v n=12 m=28 paths=1

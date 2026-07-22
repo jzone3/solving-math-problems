@@ -1,0 +1,2 @@
+[b20r0] it=63 new best t=11 L=13v n=14 m=27 paths=5
+[b20r0] it=64 new best t=9 L=13v n=15 m=28 paths=12

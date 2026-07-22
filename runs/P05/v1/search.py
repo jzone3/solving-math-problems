@@ -152,13 +152,29 @@ def triple_score(paths, work_cap=200000):
     return best
 
 
-def evaluate(adj, path_cap=30000, node_budget=3_000_000):
+def is_biconnected(adj):
+    n = len(adj)
+    if n < 3:
+        return False
+    if not core.is_connected(adj):
+        return False
+    for v in range(n):
+        sub = [[u - (u > v) for u in adj[w] if u != v] for w in range(n) if w != v]
+        if not core.is_connected(sub):
+            return False
+    return True
+
+
+def evaluate(adj, path_cap=30000, node_budget=3_000_000, biconn=False):
+    if biconn and not is_biconnected(adj):
+        return None
     r = core.longest_paths(adj, cap=path_cap, node_budget=node_budget)
     if r is None:
         return None
     L, paths = r
     t = triple_score(paths)
-    return (t, L, len(paths))
+    k = len(set(m for _, m in paths))
+    return (t, L, k)
 
 
 def random_connected_graph(n, m):
@@ -180,14 +196,18 @@ def canon_key(adj):
     return tuple(sorted((min(u, v), max(u, v)) for u in range(len(adj)) for v in adj[u] if u < v)), len(adj)
 
 
-def run(seed_adj, iters, nmin, nmax, tag, log):
+def key(ev):
+    return (ev[0], -ev[1], -ev[2])
+
+
+def run(seed_adj, iters, nmin, nmax, tag, log, biconn=False):
     cur = copy_adj(seed_adj)
-    ev = evaluate(cur)
+    ev = evaluate(cur, biconn=biconn)
     tries = 0
-    while ev is None and tries < 50:
+    while ev is None and tries < 200:
         cur2 = mutate(cur, nmin, nmax)
         if cur2 is not None:
-            ev2 = evaluate(cur2)
+            ev2 = evaluate(cur2, biconn=biconn)
             if ev2 is not None:
                 cur, ev = cur2, ev2
                 break
@@ -204,13 +224,13 @@ def run(seed_adj, iters, nmin, nmax, tag, log):
         cand = mutate(cur, nmin, nmax)
         if cand is None:
             continue
-        ev2 = evaluate(cand)
+        ev2 = evaluate(cand, biconn=biconn)
         if ev2 is None:
             continue
-        d = ev2[0] - ev[0]
+        d = (ev2[0] - ev[0]) + 0.02 * (ev[1] - ev2[1]) + 0.001 * (ev[2] - ev2[2])
         if d <= 0 or random.random() < pow(2.718, -d / T):
             cur, ev = cand, ev2
-        if ev[0] < best[0]:
+        if key(ev) < key(best):
             best = ev
             best_adj = copy_adj(cur)
             log(f'[{tag}] it={it} new best t={best[0]} L={best[1]}v n={len(cur)} m={len(edges_of(cur))} paths={best[2]}')
@@ -232,6 +252,7 @@ def main():
     ap.add_argument('--nmax', type=int, default=24)
     ap.add_argument('--restarts', type=int, default=1)
     ap.add_argument('--tag', default='run')
+    ap.add_argument('--biconn', action='store_true')
     args = ap.parse_args()
     seeds = core.load_seeds(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'seeds.jsonl'))
     logf = open(f'log_{args.tag}.txt', 'a')
@@ -245,7 +266,7 @@ def main():
             seed_adj = random_connected_graph(n, m)
         else:
             seed_adj = seeds[args.seed]
-        res = run(seed_adj, args.iters, args.nmin, args.nmax, f'{args.tag}r{r}', log)
+        res = run(seed_adj, args.iters, args.nmin, args.nmax, f'{args.tag}r{r}', log, biconn=args.biconn)
         if res is not None:
             log('COUNTEREXAMPLE CANDIDATE FOUND — verify independently!')
             return
