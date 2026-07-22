@@ -1,0 +1,1 @@
+SUMMARY n=11 t=[3,5] total=119431209 eigensolved=119186627 near=0 viol=0 maxmargin=-0.673423487
