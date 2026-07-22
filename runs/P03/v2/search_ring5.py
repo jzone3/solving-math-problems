@@ -9,9 +9,9 @@ import rings
 from search_subdiv import transform, test_instance
 
 
-def run(max_iters=20000, ilp_budget=120, choices=(1, 2, 3), seed=0):
+def run(max_iters=20000, ilp_budget=120, choices=(1, 2, 3), seed=0, i=5):
     rng = random.Random(seed)
-    n, arcs, w = rings.ring(5)
+    n, arcs, w = rings.ring(i)
     nnull = w.count(0)
     stats = {"tau0": 0, "rho_filtered": 0, "ilp_tested": 0, "ilp_timeout": 0,
              "FAILURES": 0, "filter_sanity_ok": 0, "seen": 0, "dup": 0}
@@ -29,11 +29,15 @@ def run(max_iters=20000, ilp_budget=120, choices=(1, 2, 3), seed=0):
         stats["seen"] += 1
         test_instance(nn, na, ilp_budget, stats, hits)
         if stats["seen"] % 200 == 0:
-            print(f"[ring5 seed={seed}] {stats} t={time.time()-t0:.0f}s",
-                  flush=True)
-    print(f"FINAL [ring5 seed={seed} choices={choices}] {stats} "
+            print(f"[ring{i} seed={seed} ch={choices}] {stats} "
+                  f"t={time.time()-t0:.0f}s", flush=True)
+    print(f"FINAL [ring{i} seed={seed} choices={choices}] {stats} "
           f"t={time.time()-t0:.0f}s", flush=True)
 
 
 if __name__ == "__main__":
-    run(seed=int(sys.argv[1]) if len(sys.argv) > 1 else 0)
+    seed = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+    ch = tuple(int(x) for x in sys.argv[2].split(",")) if len(sys.argv) > 2 \
+        else (1, 2, 3)
+    i = int(sys.argv[3]) if len(sys.argv) > 3 else 5
+    run(seed=seed, choices=ch, i=i)

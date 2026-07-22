@@ -13,7 +13,7 @@ import core
 import seeds
 from search_subdiv import test_instance
 
-GADGETS = [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (3, 1)]
+GADGETS = [(0, 1), (1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (3, 1)]
 
 
 def transform_g(n, arcs, w, null_g, solid_len):
