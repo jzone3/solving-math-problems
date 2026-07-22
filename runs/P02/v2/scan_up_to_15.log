@@ -1,0 +1,25 @@
+n=7 total_read=1 mtf_delta_ok=1 tested=1 infeasible=0
+n=8 total_read=8 mtf_delta_ok=4 tested=4 infeasible=0
+n=10 total_read=8 mtf_delta_ok=3 tested=3 infeasible=0
+n=11 total_read=24 mtf_delta_ok=7 tested=7 infeasible=0
+n=13 total_read=21 mtf_delta_ok=3 tested=3 infeasible=0
+n=14 total_read=346 mtf_delta_ok=15 tested=15 infeasible=0
+INFEASIBLE-CANDIDATE N????Bor?^EY~o~o^w?
+INFEASIBLE-CANDIDATE N????Bob_^MI~o~o^w?
+INFEASIBLE-CANDIDATE N???E?xLULXQNo~_^o?
+INFEASIBLE-CANDIDATE N???E?xHuLZANo~_^o?
+INFEASIBLE-CANDIDATE N???FBO{?}DsB{~_^o?
+INFEASIBLE-CANDIDATE N???FBOBw}Ds~_~_^o?
+INFEASIBLE-CANDIDATE N??CEBoy?^Ay~?NoNo?
+INFEASIBLE-CANDIDATE N??CEBor?^EY~?NoNo?
+INFEASIBLE-CANDIDATE N??CFBO{?}DsB{~?No?
+INFEASIBLE-CANDIDATE N??EDBo{@{Jg~?B{@}?
+INFEASIBLE-CANDIDATE N??EDBo{@{JgFoB{^_?
+INFEASIBLE-CANDIDATE N??ED?ZDp{[cVOyC^_?
+INFEASIBLE-CANDIDATE N??ED?ZFp{[cVO~?^_?
+INFEASIBLE-CANDIDATE N??EFBOFo^Ds~?~?^_?
+INFEASIBLE-CANDIDATE N??E@bo{@{Xg~?B{@}?
+INFEASIBLE-CANDIDATE N??E@_NMeIfo{GrO^_?
+INFEASIBLE-CANDIDATE N?BE@_o{@{FoqWqW@}?
+INFEASIBLE-CANDIDATE N?BE@_o}@{^?qWBw?}_
+n=15 total_read=5962 mtf_delta_ok=64 tested=64 infeasible=18
