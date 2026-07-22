@@ -58,8 +58,9 @@ def layer_solve(holes, mods, per_layer_budget=120):
         wcnf.append([-cv] + hits[h])
         wcnf.append([cv], weight=1)
     t0 = time.time()
-    # anytime linear search: at-most-k holes uncovered, decreasing k; time-limited calls
-    import threading
+    # anytime linear search: at-most-k holes uncovered, decreasing k.
+    # NOTE: wall-clock timers don't work (C solve holds the GIL), so we use
+    # per-call conflict budgets and check the deadline between calls.
     s = Glucose4(bootstrap_with=wcnf.hard)
     best_model, cost = None, len(holes)
     from pysat.card import ITotalizer
@@ -67,25 +68,24 @@ def layer_solve(holes, mods, per_layer_budget=120):
     for cl in it.cnf.clauses:
         s.add_clause(cl)
     deadline = time.time() + per_layer_budget
+    CONF_CHUNK = 100000
     while True:
         rem = deadline - time.time()
         if rem <= 0 and best_model is not None:
             break
-        timer = threading.Timer(rem if rem > 0 else 5, s.interrupt)
-        timer.start()
         assum = [-it.rhs[cost - 1]] if cost > 0 else []
-        res = s.solve_limited(assumptions=assum, expect_interrupt=True)
-        timer.cancel()
-        s.clear_interrupt()
+        s.conf_budget(CONF_CHUNK)
+        res = s.solve_limited(assumptions=assum)
         if res is True:
             best_model = s.get_model()
             cost = sum(1 for v in covvars if best_model[v - 1] < 0)
             if cost == 0:
                 break
             continue
-        break   # UNSAT (optimum reached) or timeout
+        if res is None and best_model is None:
+            continue      # keep trying until we have at least one model
+        break             # UNSAT (optimum reached) or budget exhausted
     if best_model is None:
-        # fall back: no constraint
         s.solve()
         best_model = s.get_model()
         cost = sum(1 for v in covvars if best_model[v - 1] < 0)

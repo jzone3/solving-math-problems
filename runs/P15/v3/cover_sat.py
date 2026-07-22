@@ -63,11 +63,12 @@ def solve(N, m, timeout=None, verbose=True):
     with Glucose4(bootstrap_with=cnf.clauses) as s:
         t0 = time.time()
         if timeout:
-            import threading
-            timer = threading.Timer(timeout, s.interrupt)
-            timer.start()
-            res = s.solve_limited(expect_interrupt=True)
-            timer.cancel()
+            # wall-clock timers don't work (C solve holds the GIL): use
+            # conflict-budget chunks and check the clock between calls
+            res = None
+            while res is None and time.time() - t0 < timeout:
+                s.conf_budget(100000)
+                res = s.solve_limited()
         else:
             res = s.solve()
         dt = time.time() - t0
