@@ -24,11 +24,21 @@ def score_graph(A):
     i = int(np.argmax(vals))
     return float(vals[i]), i + 1
 
-def anneal(n, seconds, rng, T0=0.5, Tmin=1e-4, report=None):
-    # random init at random density
-    p = rng.uniform(0.15, 0.9)
-    A = (rng.random((n, n)) < p).astype(float)
-    A = np.triu(A, 1); A = A + A.T
+def random_threshold(n, rng):
+    """Random threshold graph: sequence of dominating/isolated vertex additions."""
+    A = np.zeros((n, n))
+    for k in range(1, n):
+        if rng.random() < 0.5:
+            A[k, :k] = 1; A[:k, k] = 1
+    return A
+
+def anneal(n, seconds, rng, T0=0.5, Tmin=1e-4, report=None, init="random"):
+    if init == "threshold":
+        A = random_threshold(n, rng)
+    else:
+        p = rng.uniform(0.15, 0.9)
+        A = (rng.random((n, n)) < p).astype(float)
+        A = np.triu(A, 1); A = A + A.T
     cur, cur_t = score_graph(A)
     best, best_t, best_A = cur, cur_t, A.copy()
     start = time.time()
@@ -60,6 +70,7 @@ def edges_of(A):
 def main():
     n_min, n_max, secs, seed = int(sys.argv[1]), int(sys.argv[2]), float(sys.argv[3]), int(sys.argv[4])
     outfile = sys.argv[5] if len(sys.argv) > 5 else None
+    init = sys.argv[6] if len(sys.argv) > 6 else "random"
     rng = np.random.default_rng(seed)
     def report(n, s, t, A):
         rec = {"VIOLATION": True, "n": n, "t": t, "score": s, "edges": edges_of(A)}
@@ -67,7 +78,7 @@ def main():
         if outfile:
             with open(outfile, "a") as f: f.write(json.dumps(rec) + "\n")
     for n in range(n_min, n_max + 1):
-        best, bt, bA, it = anneal(n, secs, rng, report=report)
+        best, bt, bA, it = anneal(n, secs, rng, report=report, init=init)
         m = int(bA.sum() // 2)
         rec = {"n": n, "best_score": best, "t": bt, "m": m, "iters": it, "seed": seed}
         print(json.dumps(rec), flush=True)
