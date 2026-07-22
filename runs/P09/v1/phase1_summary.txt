@@ -1,0 +1,50 @@
+1260 restarts logged
+
+Top 12 overall:
+  ratio=1.00000000 n=15 m=90 w=5 l2=0.0000 mode=l2bias cm=True
+  ratio=1.00000000 n=19 m=135 w=6 l2=0.0000 mode=ratio cm=False
+  ratio=1.00000000 n=16 m=90 w=5 l2=0.0000 mode=ratio cm=False
+  ratio=1.00000000 n=18 m=46 w=2 l2=2.8756 mode=l2bias cm=False
+  ratio=1.00000000 n=18 m=135 w=6 l2=0.0000 mode=ratio cm=True
+  ratio=0.99864125 n=24 m=220 w=6 l2=0.0000 mode=l2bias cm=False
+  ratio=0.99830203 n=19 m=150 w=6 l2=0.0000 mode=ratio cm=True
+  ratio=0.99830203 n=19 m=150 w=6 l2=0.0000 mode=l2bias cm=True
+  ratio=0.99818497 n=19 m=144 w=5 l2=0.0000 mode=ratio cm=True
+  ratio=0.99786889 n=16 m=102 w=5 l2=0.0000 mode=l2bias cm=True
+  ratio=0.99786889 n=17 m=102 w=5 l2=0.0000 mode=l2bias cm=False
+  ratio=0.99786889 n=16 m=102 w=5 l2=0.0000 mode=l2bias cm=True
+
+Best per omega:
+  w=2: ratio=1.00000000 n=18 m=46 l2=2.8756
+  w=3: ratio=0.98349451 n=15 m=42 l2=4.2250
+  w=4: ratio=0.99753032 n=15 m=84 l2=0.0000
+  w=5: ratio=1.00000000 n=15 m=90 l2=0.0000
+  w=6: ratio=1.00000000 n=19 m=135 l2=0.0000
+  w=7: ratio=0.99649099 n=21 m=154 l2=0.0000
+  w=8: ratio=0.99764685 n=17 m=126 l2=0.0000
+  w=9: ratio=0.99678284 n=21 m=177 l2=0.0000
+  w=10: ratio=0.93162960 n=32 m=400 l2=5.0433
+  w=11: ratio=0.92144096 n=27 m=297 l2=2.6819
+  w=12: ratio=0.95179667 n=19 m=153 l2=1.9000
+  w=13: ratio=0.91306549 n=29 m=348 l2=2.4533
+  w=14: ratio=0.93546159 n=32 m=437 l2=2.4653
+  w=15: ratio=0.94161426 n=31 m=416 l2=2.2929
+  w=16: ratio=0.94380387 n=32 m=448 l2=2.0942
+  w=17: ratio=0.93176137 n=37 m=592 l2=2.6030
+  w=18: ratio=0.94824540 n=36 m=574 l2=2.4345
+  w=19: ratio=0.93254354 n=45 m=886 l2=2.6156
+  w=20: ratio=0.93551289 n=46 m=931 l2=3.1510
+  w=21: ratio=0.93432758 n=54 m=1287 l2=3.3583
+  w=22: ratio=0.93812077 n=44 m=858 l2=2.7178
+
+Top 10 non-complete-multipartite:
+  ratio=1.00000000 n=19 m=135 w=6 l2=0.0000 g6=R~vn~{?~f{Vztv^v|Z|}v^vn|^~y~o
+  ratio=1.00000000 n=16 m=90 w=5 l2=0.0000 g6=O}BrlnvlmN}^{}|vmn~m|
+  ratio=1.00000000 n=18 m=46 w=2 l2=2.8756 g6=QcSA_@OajiMgSCagpSQ_bagc???
+  ratio=0.99864125 n=24 m=220 w=6 l2=0.0000 g6=WJLzxln^Y~nlV|]~nlZ]~^~|z}z~~jv|tn^nV|^z~~jn~}m
+  ratio=0.99786889 n=17 m=102 w=5 l2=0.0000 g6=P~\v\~~nnZ~zv~v~^zW??[~w
+  ratio=0.99744230 n=19 m=120 w=6 l2=0.0000 g6=RJ\zj\~VzvnzZnN~_?A~]]|t~ZZj}w
+  ratio=0.99744230 n=18 m=120 w=6 l2=0.0000 g6=Q~~ve|~~}|_?~yz}|~V~R^u}~zw
+  ratio=0.99734628 n=15 m=63 w=4 l2=0.0000 g6=NFz_Fz|?Fx^c~RFZ~hg
+  ratio=0.99711692 n=19 m=129 w=5 l2=0.0000 g6=Rz}|vn~Z~lz~~v??L|u~t~vNuu}~tW
+  ratio=0.99678284 n=21 m=177 w=9 l2=0.0000 g6=TJThz|}^xzn~^~Y~n~z~~^~t~|z~vz~~\~n~
