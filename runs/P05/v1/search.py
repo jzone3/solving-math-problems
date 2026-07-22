@@ -253,18 +253,24 @@ def main():
     ap.add_argument('--restarts', type=int, default=1)
     ap.add_argument('--tag', default='run')
     ap.add_argument('--biconn', action='store_true')
+    ap.add_argument('--seedfile', default=None, help='jsonl file with {"adj":...} entries; cycles through them')
     args = ap.parse_args()
     seeds = core.load_seeds(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'seeds.jsonl'))
     logf = open(f'log_{args.tag}.txt', 'a')
     def log(s):
         print(s, flush=True)
         print(s, file=logf, flush=True)
+    file_seeds = None
+    if args.seedfile:
+        file_seeds = [json.loads(l)['adj'] for l in open(args.seedfile)]
     for r in range(args.restarts):
-        if args.seed == 'random':
+        if file_seeds:
+            seed_adj = file_seeds[r % len(file_seeds)]
+        elif args.seed == 'random':
             n = random.randint(max(10, args.nmin), args.nmax)
             m = n + random.randint(0, n // 2)
             seed_adj = random_connected_graph(n, m)
-        else:
+        elif True:
             seed_adj = seeds[args.seed]
         res = run(seed_adj, args.iters, args.nmin, args.nmax, f'{args.tag}r{r}', log, biconn=args.biconn)
         if res is not None:
