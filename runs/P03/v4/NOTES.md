@@ -61,9 +61,16 @@ arcs per unit τ).
   pipeline end-to-end.
 - Pure random 0/1-weighted DAGs (n ≤ 9, m ≤ 18): 834,840 tries, **no gap** —
   weighted counterexamples are genuinely rare; random sampling insufficient.
-- Targeted reconstruction: fixed the known weight-1 skeleton (three disjoint
-  alternating length-3 paths on 12 vertices), hill-climbed over weight-0 arc
-  sets. See `redisc.log` / result below.
+- Targeted hill-climb over weight-0 arc sets on the known weight-1 skeleton
+  (three disjoint alternating length-3 paths on 12 vertices): ~316k iterations,
+  reached many tau_w = 2 instances but no gap -- flat plateau, abandoned in
+  favor of exact transcription.
+- **Exact transcription** (`schrijver_instance.py`): rendered Figure 6 of
+  Feofiloff's survey to PNG, read off all 12 vertices / 21 arcs / weights.
+  Machine check: 127 dicuts, tau_w = 2, pack(2) INFEASIBLE, pack(1) feasible
+  => nu_w = 1. **Reproduces Schrijver's result exactly; the gap detector is
+  validated end-to-end.** Bonus: the same digraph unweighted has tau = 4,
+  nu = 4 (Woodall holds there).
 
 ## 4. Main search (`search.py`)
 
@@ -78,10 +85,20 @@ arcs per unit τ).
   isomorph-ish repeats.
 - Throughput ≈ 400–600 evaluated instances/s per process (most time in CBC).
 
-## 5. Results log
+## 5. Exhaustive small-instance verification (`exhaustive.py`)
+
+All simple digraphs (no parallel arcs; 2-cycles allowed) up to isomorphism,
+weakly connected, not strongly connected, tau >= 3:
+
+- n = 4: 217 iso classes scanned, 19 with tau >= 3: **all gap 0**.
+- n = 5: running (2^20 arc-sets, exact canon dedup).
+
+## 6. Results log
 
 (checkpointed as runs proceed; see `results.jsonl`)
 
-- [t0] 3 search seeds (11/22/33) launched, 4h each, + Schrijver-rediscovery run.
+- [t0] annealer seeds 11/22/33 (tau 3-6), 44 (tau=3 only), 55 (tau 3-4),
+  66 (seeded at unweighted Schrijver digraph, tau 3-5); 4h each.
+- exhaustive n=5 scan running.
 
 ## STATUS: (pending — run in progress)
