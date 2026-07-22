@@ -89,4 +89,9 @@ solution-removing device (double-lex) rests on Flener et al. CP 2002 (every {0,1
 class under row/col permutation contains a doubly-lex-sorted representative), implemented
 independently in each of the three encodings.
 
+### (14,28;8,3,14;7,6) escalation
+- Pass 2: UNKNOWN at 3600 s (4 workers).
+- Pass 3 launched: CP-SAT 25000 s / 4 workers, and kissat 25000 s on encode_sat.py CNF
+  (301392 vars / 618438 clauses) in parallel. This is the largest instance (14×28).
+
 (log continues)
