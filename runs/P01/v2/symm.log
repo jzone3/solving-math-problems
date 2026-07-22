@@ -1,3 +1,13 @@
 n=22 k=2 orbits=19 result=done best_rem=22 nodes=11 t=1s
 n=24 k=2 orbits=33 result=done best_rem=12 nodes=242 t=21s
 n=24 k=3 orbits=33 result=done best_rem=16 nodes=64 t=8s
+n=24 k=4 orbits=65 result=timeout best_rem=12 nodes=24045 t=900s
+n=24 k=6 orbits=101 result=timeout best_rem=8 nodes=131810 t=900s
+n=26 k=2 orbits=23 result=done best_rem=26 nodes=13 t=1s
+n=28 k=2 orbits=38 result=done best_rem=14 nodes=140 t=7s
+n=28 k=4 orbits=50 result=done best_rem=14 nodes=223 t=1s
+n=30 k=2 orbits=27 result=done best_rem=30 nodes=15 t=0s
+n=30 k=3 orbits=42 result=done best_rem=20 nodes=64 t=0s
+n=30 k=5 orbits=70 result=done best_rem=18 nodes=5896 t=136s
+n=30 k=6 orbits=81 result=done best_rem=20 nodes=19602 t=554s
+n=32 k=2 orbits=45 result=done best_rem=16 nodes=546 t=18s

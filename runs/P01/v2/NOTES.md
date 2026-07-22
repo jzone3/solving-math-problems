@@ -68,13 +68,52 @@ given n, with randomized restarts + per-restart node caps.
   (18/22 chords) within seconds at n=22.
 - Sweep launched: n ∈ {22,24,26,28,30,32,36,40}, 4h each, node cap 3e6/restart.
 
-## 3. Compute log (running)
+### Attack 3 upgrades
+- `dfs.c` v2: monotonicity memo (a hamiltonian u–v path persists under edge additions, so
+  a failed pair is dead for the whole DFS subtree — huge cut in repeated path tests), MRV
+  branching, multigraph mode (doubled chords; a 2nd parallel copy adds no new vertex
+  sequence so only the 1st copy needs the path test), seeded mode, near-miss dumping.
+- ham-path tester re-cross-checked after every change (test_hp.py, 400 instances, PASS).
 
-- 2026-07-22 ~20:40 UTC: 8× dfs (4h), 1× nc-seed gen (n=22), 4× multigraph-seed anneal.
+### Attack 3b — exhaustive runs (complete search, no symmetry breaking beyond fixing the HC)
+- **Multigraph mode: EXHAUSTED n = 5..14 — no 4-regular uniquely hamiltonian multigraph
+  with ≤ 14 vertices exists.** (Fleischner 1994 proved existence; our result bounds the
+  minimum order ≥ 15. Node counts ~7× per vertex: n=14 took 2.05e7 nodes.) n=15,16,17
+  exhaustions running.
+- Simple mode (Sheehan proper, reproduces part of GMZ frontier independently):
+  EXHAUSTED n = 10, 12 (no witness); n = 14, 16, 18 running.
+
+### Attack 4 — rotation-symmetric chord completions (symmetric.py)
+Chord sets invariant under i→i+k map C_n to itself, hence consistent with uniqueness.
+DFS over chord orbits with exact HC-count ≤ 2 checks. Results (all exhausted = "done"):
+n=22 k=2 (best_rem 22), n=24 k=2,3,4(timeout best 12), n=26..32 k∈{2,..}: every completed
+family exhausted with large best_rem. **Empirical: nontrivial rotation symmetry appears
+strongly incompatible with unique hamiltonicity** — orbits add many chords at once and
+immediately create second HCs. Sweep to n=60 running.
+
+### Attack 5 — gadget rings (gadget_ring.py)
+Ring of m copies of a k-vertex gadget with 4 boundary stubs (2 left, 2 right), straight or
+crossed junctions → 4-regular on km vertices. Exhaustive over simple gadgets k ≤ 6 (iso-
+deduped), m = 3..7, exact HC count. k=3: no gadgets; k=4: 1 gadget (K4-based), no hits;
+k=5: 5 gadgets, 50 rings, no count-1; k=6 running.
+
+### Negative structural findings (machine-verified)
+- All nearly cubic 1H seeds tested (n=18: 2, n=22: 9) are **completion-saturated**: not a
+  single extra chord (simple or doubled) can be added without creating a 2nd HC — every
+  deficient pair (u,v) already has a hamiltonian u–v path. Seeded completion dies at the
+  root (nodes=1–3). Nearly cubic 1H graphs are locally maximal; they cannot be grown
+  toward 4-regularity by edge additions alone. Gadget/vertex surgery would be required.
+
+## 3. Compute log
+
+- 2026-07-22 20:40 UTC: 8× dfs sweep v1 (retired), nc-seed gen, multigraph anneal (retired).
+- 2026-07-22 21:1x: dfs3 exhaustions (multi 15/16/17, simple 12..18), symm sweep n=22..60.
+- 2026-07-22 21:4x: dfs4 sweep n=22..32 (12h, nearmiss dumping), gadget rings k=5,6.
 
 ## 4. Results so far
 
-- Seeds found & verified 1H: nearly cubic n=18 (1), n=22 (3+), n=24 (1).
-- No witness. Near-miss metric (Attack 3): best = 8 unfilled chord-stubs at n=22 (early).
+- Seeds found & verified 1H: nearly cubic n=18 (2), n=22 (9), n=24 (1); all saturated.
+- New exhaustive bound: minimum order of a 4-regular 1H multigraph ≥ 15.
+- No witness. Best near-miss (Attack 3): 8 unfilled chord-stubs at n=22.
 
 STATUS: running

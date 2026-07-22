@@ -1,7 +1,10 @@
 """Convert nearly cubic 1H seeds (nc_*.txt) to HC-normal form (C_n + chords)
 and run the seeded completion DFS (dfs4 seed mode) on each.
 
-Usage: python3 seed_driver.py nc_22.txt <budget_per_seed_s> [maxnodes]
+Usage: python3 seed_driver.py nc_22.txt <budget_per_seed_s> [maxnodes] [mode]
+  mode "seed" (default) completes to a simple 4-regular graph;
+  mode "seedmulti" also allows doubled chords (multigraph target, for the
+  gadget-replacement pipeline).
 """
 import subprocess, sys, itertools
 from hcutil import hc_count
@@ -47,12 +50,13 @@ if __name__ == "__main__":
     fname = sys.argv[1]
     budget = sys.argv[2]
     maxnodes = sys.argv[3] if len(sys.argv) > 3 else "999999999999"
+    mode = sys.argv[4] if len(sys.argv) > 4 else "seed"
     for gi, line in enumerate(l for l in open(fname) if l.strip()):
         edges = eval(line)
         n, chords = normalize(edges)
         inp = f"{len(chords)}\n" + "\n".join(f"{u} {v}" for u, v in chords)
         print(f"=== seed {fname} g{gi}: n={n} chords={len(chords)} ===", flush=True)
-        r = subprocess.run(["./dfs4", str(n), str(1000 + gi), budget, maxnodes, "seed"],
+        r = subprocess.run(["./dfs4", str(n), str(1000 + gi), budget, maxnodes, mode],
                            input=inp, capture_output=True, text=True)
         print(r.stdout, flush=True)
         if r.returncode == 42:

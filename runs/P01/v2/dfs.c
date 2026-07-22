@@ -112,7 +112,7 @@ static int dfs(void) {
     if (rem < best_rem) {
         best_rem = rem;
         if (rem <= 6) { printf("rem=%d nodes=%lld\n", rem, nodes); fflush(stdout); }
-        if (rem <= 4) {
+        if (rem <= 8) {
             FILE *f = fopen("nearmiss.txt", "a");
             fprintf(f, "NEAR n=%d multi=%d rem=%d chords:", n, multi, rem);
             for (int i = 0; i < nch; i++) fprintf(f, " (%d,%d)", chords[i][0], chords[i][1]);
@@ -178,8 +178,8 @@ int main(int argc, char **argv) {
     rng_s = strtoull(argv[2], 0, 10) * 2654435761ULL + 12345;
     double budget = atof(argv[3]);
     max_nodes = argc > 4 ? atoll(argv[4]) : (1LL<<62);
-    multi = argc > 5 && strcmp(argv[5], "multi") == 0;
-    int seeded = argc > 5 && strcmp(argv[5], "seed") == 0;
+    multi = argc > 5 && strstr(argv[5], "multi") != 0;
+    int seeded = argc > 5 && strstr(argv[5], "seed") != 0;
     /* seed mode: stdin "c" then c chord pairs (graph = C_n + these chords, must
        already be uniquely hamiltonian with HC = C_n; caller verifies) */
     int nseed = 0; static int seedch[2*MAXN][2];
