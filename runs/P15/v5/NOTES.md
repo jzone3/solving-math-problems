@@ -101,3 +101,39 @@ packed as possible", Nielsen §2 Example 2 remark). Also note the Mirsky–Newma
 a perfectly disjoint (zero-overlap) distinct-moduli cover cannot exist, so the necessary
 overlap has to be placed intelligently — exactly what the q↑ tail-filling trick
 (j mod p ∩ 0 mod q^{K-j}) does. Next: Engine B implements that machinery directly.
+
+## 7. Engine B / Engine C — mechanizing the arrow calculus, and why naive versions fail
+
+**Engine B** (`engine_b.py`): per-cell recursive chains (cover cell a mod M by a q-chain,
+children covered recursively, tail finitized with prime p via
+CRT(j mod p, chain-ancestor), the generalization of Nielsen's Example 1 trick).
+Works at L=3 (25 congruences, verify_tree PASS) with a prime-diversification order,
+but thrashes exponentially from modulus-registry conflicts at L >= 6:
+each child cover is derived independently, so the (q-1)·K children per chain
+each burn a disjoint set of moduli — combinatorial starvation.
+
+**Engine C** (`engine_c.py`): proper arrow semantics — an input recipe R_j is built ONCE
+and reused at every chain level k (moduli s^k·m all distinct along the chain "for free").
+This is the actual mechanism of q↑ notation. Still fails, and the failure is instructive:
+with strictly coprime layering (recipe moduli coprime to all ancestor chain primes),
+the s-1 sibling inputs of a chain need pairwise-disjoint covers of Z, and below the
+first two inputs ("1" and "2↑") the palette of small primes is exhausted — costs explode
+as p·s^{p-1} for ever larger fresh primes.
+
+**Finding:** the power of the Nielsen/Owens calculus is *not* just level-reuse; it is
+essentially the **inherited-coverage mechanism** (the "x" entries in their tables):
+recipes whose moduli are NOT coprime to the ambient branch, sound only because the
+overlapping part is already covered by earlier congruences. Inheritance is not an
+optimization — without it the recursion starves at L as low as 6. Any real mechanization
+(the V1 program) must implement partial-cover-aware recursion; that is exactly where all
+of Owens's hand-bookkeeping ("only thirteen inputs needed on this branch") lives.
+
+## 8. Engine A at scale — automated record so far
+
+Deeper 2-adic tail matters enormously (as the literature's 64↑ suggests):
+- 2^7·3^4·5^2·7·11·13 (N=259,459,200): **L=14 COVER FOUND** (916 congruences,
+  restart 1 of 12; both verifiers PASS: verify_cover.py direct sweep over lcm and
+  verify_tree.py CRT-structured DFS). `witness_L14_N259459200.json`.
+- Same profile with 3^5 (N=389M): restart 0 uncovered 90206 — worse than 2^7 bump.
+
+L=15/16 sweeps running (2^7 and 2^8 profiles).

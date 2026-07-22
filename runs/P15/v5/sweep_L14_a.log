@@ -1,0 +1,5 @@
+N=259459200 (960 divisors, 947 usable >= 14, budget 1.775)
+restart 0: 947 classes, uncovered 5979, 134.6s
+restart 1: 916 classes, uncovered 0, 136.0s
+SUCCESS: covering of Z_259459200 with min modulus 14 using 916 classes
+wrote witness_L14_N259459200.json
