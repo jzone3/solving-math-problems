@@ -83,8 +83,49 @@ WoW 129 is TRUE with equality characterization dev = R iff G = K_t ∪ (t−2)K_
 Cauchy–Schwarz/power-mean bounds checked here are too lossy on stars (which are
 within O(1/n) of tightness in a different direction).
 
-## 5. Status: (updated as runs finish)
+## 5. Threshold-graph exhaust (`threshold.c`)
 
-- n=12 exhaustive: IN PROGRESS
-- threshold-graph exhaust: planned
+All 2^(n−1) threshold creation sequences for every n ≤ 30 (~10^9 graphs): max dev−R = 0
+and max Φ = 0, attained only at K_t ∪ kK_1 codes. Extremal graphs for the padded
+objective among threshold graphs are exactly the equality family.
+
+## 6. Unified GM reduction — main theoretical finding
+
+AM–GM over Randić edge weights (Σ_{uv∈E} ln(d_u d_v) = Σ_v d_v ln d_v) gives the
+standard bound R ≥ m·exp(−(1/2m) Σ_v d_v ln d_v). Hence WoW 129 follows from the
+purely **degree-sequence** inequality
+
+  (★)  n² m² ≥ (nA − 4m²) · exp((1/m) Σ_v d_v ln d_v)    [note nA − 4m² = n²·dev²]
+
+for every *graphical* sequence (graphicality essential: (5,5,5,5,0,0) violates (★)
+but is not graphical; stars satisfy it with relative slack → 0).
+
+Evidence for (★):
+- Annealed adversarial search over graphical sequences (`lemma_opt3.py`,
+  n = 8..100, Erdős–Gallai-constrained moves): max g = 0 (up to 1e-15),
+  attained only at K_t ∪ (t−2)K_1 sequences.
+- Exhaustive over ALL graphical degree sequences (`enum_seq.c`):
+  n = 8 (1,212 seqs), 10 (16,015), 12 (222,116), 14 (3,166,851): max g = 0,
+  argmax = K_{t} ∪ (t−2)K_1 sequence. n = 16, 18 running.
+  **Each completed n here verifies conjecture 129 for ALL graphs on n vertices**
+  (via R ≥ m·GM), independent of geng — a much cheaper exhaustive frontier.
+- Earlier two-case variant (`case_checks.py`, `lemma_opt.py`, `lemma_opt2.py`):
+  dense case 4mR ≥ A sharp at cliques; continuous relaxation w/o graphicality fails
+  (degrees (n−1,...,n−1,0,...) — non-graphical), with Erdős–Gallai it saturates at 0.
+
+### Proof skeleton for 129 (gap = step 4)
+1. R ≥ m·exp(−(1/2m) Σ d ln d)  (AM–GM). ✓
+2. For fixed (n, m), g = ln(n²dev²) + (1/m)Σ d ln d is Schur-convex in the degree
+   vector (variance and Σ d ln d are Schur-convex; increasing transform + sum). ✓
+3. Maximal graphical sequences in the dominance order (fixed sum) are threshold
+   sequences (Ruch–Gutman); so it suffices to prove (★) for threshold sequences. ✓(lit)
+4. (★) for threshold sequences — OPEN; machine-verified for all threshold graphs
+   n ≤ 30 (via the stronger dev ≤ R check in `threshold.c`) and asymptotic block
+   families (§7).
+
+## 7. Status: (updated as runs finish)
+
+- geng n=12 exhaustive (direct + Φ): IN PROGRESS
+- enum_seq n=16,18 ((★) frontier): IN PROGRESS
+- block-threshold asymptotics of (★): planned
 - STATUS (preliminary): negative / frontier-pushed
