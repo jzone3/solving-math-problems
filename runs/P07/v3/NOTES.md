@@ -58,12 +58,37 @@ violates below n=120; at n=120 the best is score 1.000915.
   C-speed BFS all-pairs, float score with exact integer confirmation of any candidate > 1.
 - `hillclimb.py`: steepest-ascent over all C(n,2) single-edge toggles from the best
   lollipop seed.
-- Runs at n = 115–119 (anneal 1800 s each + full hill climbs): RESULTS_PLACEHOLDER
+- Anneal, dumbbell seeds, 1800 s each (~0.5–0.75 M iterations per n):
+  n=115: 0.963533; n=116: 0.971072; n=117: 0.978577; n=118: 0.985973; n=119: 0.993582
+  — no improvement over the lollipop seed, **no violation below n = 120**.
+- Steepest-ascent hill climbs (all C(n,2) toggles per round) from best lollipop seed:
+  n=116 → 0.971170, n=117 → 0.978653, n=118 → 0.986158, n=119 → 0.993606 (all local optima < 1).
+  The improving moves are always “thick neck” edges (extra clique vertices joined to the
+  first path vertex), gaining only ~1e-5 — far short of the ~0.006/vertex gap.
+  n=120 hill climb: 1.000915 → **1.001138** (23 neck edges added, m=1318) — improved
+  violating witness `viol_hc_n120.txt`, verified PASS by `solutions/P07/verify.py`.
+- Anneal with random-tree and path seeds at n=118,119 (1500 s each): stuck far below
+  (0.009–0.94) — confirms dumbbell seeding is essential; no new structures found.
+- Conclusion of the search phase: minimal counterexample found is **n = 120**; n ≤ 119
+  resisted ~3 M annealing iterations + exhaustive single-toggle descent.
 
 ## 5. Large-n scaling (n up to 2000)
 
-SCALING_PLACEHOLDER
+Exact integer scan near the continuum optimum (a ≈ 0.42n, b = 2):
+  n=150: 1.226; n=200: 1.601; n=300: 2.351; n=500: 3.853; n=1000: 7.607; n=2000: 15.117.
+The n=2000 witness dumbbell(843, 1155, 2) (m=356060, W=824193282) was rebuilt from its
+edge list and re-verified by `solutions/P07/verify.py` (BFS + exact integers + numpy
+eigensolve): PASS, score 15.116851. Violations exist for every n ≥ 120 within the family
+(scores strictly increasing ≈ n/120), so the conjecture fails asymptotically as badly as
+possible for this invariant scaling.
 
 ## STATUS
 
-STATUS_PLACEHOLDER
+**STATUS: SOLVED (conjecture refuted).** Canonical witness: dumbbell(50, 68, 2), n=120,
+m=1295, W=186060, 8mW²/n⁷ = 1.000915 > 1 (stdev(eigs) = 4.645787 > n/μ₂ = 4.643663;
+also > n/μ₁ = 4.604966). `solutions/P07/verify.py` prints PASS (stdlib BFS + exact
+integers, optional numpy eigensolve cross-check). Violations verified up to n=2000.
+No counterexample found for n ≤ 119 despite extensive annealed + exhaustive-toggle search;
+n=120 is likely at or near the true minimum order. Note: Graffiti 154 was searched only to
+n=50 in Roucairol–Cazenave — first violation at n=120 explains why it survived.
+Sibling conj. 143 not attacked here (V5's assignment).

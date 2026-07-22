@@ -1,0 +1,15 @@
+n=117 seed score 0.978577
+round 1: toggle (1, 49) -> 0.978588
+round 2: toggle (2, 49) -> 0.978599
+round 3: toggle (3, 49) -> 0.978609
+round 4: toggle (4, 49) -> 0.978617
+round 5: toggle (5, 49) -> 0.978625
+round 6: toggle (6, 49) -> 0.978632
+round 7: toggle (7, 49) -> 0.978637
+round 8: toggle (8, 49) -> 0.978642
+round 9: toggle (9, 49) -> 0.978646
+round 10: toggle (10, 49) -> 0.978649
+round 11: toggle (11, 49) -> 0.978651
+round 12: toggle (12, 49) -> 0.978653
+round 13: toggle (13, 49) -> 0.978653
+LOCAL OPT n=117 score=0.978653 m=1257 violation=False
