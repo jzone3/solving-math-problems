@@ -1,0 +1,18 @@
+rem=6 nodes=15
+rem=4 nodes=57268
+new best rem=4 (restart 1)
+EXHAUSTED n=11 (multi=1): no witness; tree fully explored, nodes=66125
+rem=6 nodes=10
+rem=4 nodes=4968
+new best rem=4 (restart 1)
+EXHAUSTED n=12 (multi=1): no witness; tree fully explored, nodes=423470
+rem=6 nodes=114
+rem=4 nodes=24249
+new best rem=4 (restart 1)
+EXHAUSTED n=13 (multi=1): no witness; tree fully explored, nodes=2835862
+rem=6 nodes=1005
+rem=4 nodes=64082
+new best rem=4 (restart 1)
+EXHAUSTED n=14 (multi=1): no witness; tree fully explored, nodes=20499000
+rem=6 nodes=734
+rem=4 nodes=573979

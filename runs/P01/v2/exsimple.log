@@ -1,0 +1,4 @@
+rem=6 nodes=315
+new best rem=6 (restart 1)
+EXHAUSTED n=12 (multi=0): no witness; tree fully explored, nodes=817236
+rem=6 nodes=10567

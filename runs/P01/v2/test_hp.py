@@ -21,7 +21,7 @@ for trial in range(400):
     if (s, t) in edges or (t, s) in edges:
         continue
     inp = f"{len(edges)} {s} {t}\n" + "\n".join(f"{u} {v}" for u, v in edges)
-    out = subprocess.run(["./dfs", str(n), "0", "0", "hptest"], input=inp,
+    out = subprocess.run(["./dfs3", str(n), "0", "0", "hptest"], input=inp,
                          capture_output=True, text=True)
     a = int(out.stdout.strip())
     b = hp_brute(n, edges, s, t)
