@@ -121,6 +121,30 @@ whenever three per-pair-maximum paths avoid a common vertex, some other tip-pair
 forced long enough to beat the required common length S. This smells like a min-max/duality
 theorem about the "max path-length metric" M on the attachment set.
 
+### Two distinct obstructions (analysis)
+
+The data cleanly separates into two phenomena:
+
+1. **k = 3 attachment vertices (triangle pair structure, stage 1).** An empty triple of
+   per-pair maximum paths *never exists at all*: min over mask choices of |P1∩P2∩P3| = 1 in
+   every extremal core found (~90M cores). For k=3 the arm-length system is always solvable,
+   so this is the only obstruction — and it looks like an unproved but clean lemma:
+   *for any distinct a,b,c and any maximum a–b, b–c, a–c paths, the three share a vertex.*
+   (This lemma is implied by Gallai-3 via the spider construction, so proving it is strictly
+   easier than the conjecture; disproving it disproves Gallai-3.)
+
+2. **k = 4,5,6 attachment vertices (stage 2).** Empty path triples abound (>0.5M structures
+   at n=8 alone), but the arm-length feasibility system was infeasible in all cases. z3
+   unsat-core analysis of 2058 sampled n=8 candidates (k=4: 400, k=5: 1231, k=6: 427):
+   the blocker is 1 inequality in 392 cases, 2 in 1537, 3 in 120, 4 in 9 — i.e. one or two
+   non-chosen tip pairs (u,v) always have max-path length M_uv so large that their tip-to-tip
+   path would beat the required common longest length S. A min-max statement about the
+   "longest-path premetric" M on the attachment set seems to be lurking here.
+
+Independent cross-validation: 327 randomly sampled CAND lines from the n=8 run were
+re-verified with the separate Python implementation (`spider_ref.py` machinery): all
+maximum lengths, path masks, endpoint memberships, and empty intersections confirmed.
+
 ### Stage 3: targeted cores (literature-guided seeds)
 
 - Thomassen's 34-vertex hypotraceable graph (HoG 1353; hypotraceability re-verified by
