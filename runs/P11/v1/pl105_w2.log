@@ -1,1 +1,2 @@
 mod5: 5 raw -> 1 classes; mod7 raw: 21
+[0_2] c5=[6, 0, 0, 0, 0] c7=[0, -3, 3, 3, 0, 3, 0] -> 0 folds (budget)

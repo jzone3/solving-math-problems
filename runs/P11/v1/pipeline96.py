@@ -20,19 +20,22 @@ from stageA_fold import canon
 from stageA_sat import build
 
 KISSAT = os.path.expanduser("~/bin/kissat")
-N, K = 96, 36
+N = int(os.environ.get("CW_N", "96"))
+K = int(os.environ.get("CW_K", "36"))
+TOP_D = int(os.environ.get("TOP_D", "6"))
+LEVELS = [int(v) for v in os.environ.get("LEVELS", "12,24,48").split(",")]
 LIFT_TL = int(os.environ.get("LIFT_TL", "600"))
 ENUM_TL = int(os.environ.get("ENUM_TL", "600"))
 MAX_B = int(os.environ.get("MAX_B", "500"))
 WORKER_ID = int(os.environ.get("WORKER_ID", "0"))
 NUM_WORKERS = int(os.environ.get("NUM_WORKERS", "1"))
-LEVELS = [12, 24, 48]
+LIFT_D = LEVELS[-1]
 
 
 def sat_enum(d, subfold, budget, tag):
     """Enumerate folds mod d conditioned on parent fold (d_par, values)."""
     cnf, U, V, units = build(N, K, d, [subfold])
-    path = f"/tmp/enum96_w{WORKER_ID}_{tag}.cnf"
+    path = f"/tmp/enum{N}_w{WORKER_ID}_{tag}.cnf"
     t0 = time.time()
     out = []
     clauses = cnf.clauses
@@ -66,9 +69,9 @@ def sat_enum(d, subfold, budget, tag):
 
 
 def lift(b, tag):
-    cnf_path = f"/tmp/lift96_{tag}.cnf"
-    out_path = f"/tmp/lift96_{tag}.out"
-    spec = "--liftsum=48:" + ",".join(map(str, b))
+    cnf_path = f"/tmp/lift{N}_{tag}.cnf"
+    out_path = f"/tmp/lift{N}_{tag}.out"
+    spec = f"--liftsum={LIFT_D}:" + ",".join(map(str, b))
     subprocess.run([sys.executable, os.path.join(HERE, "cw_cnf.py"), "encode",
                     str(N), str(K), cnf_path, spec, "--nofix0"],
                    check=True, capture_output=True)
@@ -110,14 +113,14 @@ def dfs(level, parent_fold, tag):
 
 
 def main():
-    f6 = enumerate_folds(N, K, 6)
-    c6s = sorted(set(canon(c, 6) for c in f6))
-    print(f"mod6: {len(f6)} raw -> {len(c6s)} classes", flush=True)
-    for i, c6 in enumerate(c6s):
+    ftop = enumerate_folds(N, K, TOP_D)
+    ctops = sorted(set(canon(c, TOP_D) for c in ftop))
+    print(f"mod{TOP_D}: {len(ftop)} raw -> {len(ctops)} classes", flush=True)
+    for i, ct in enumerate(ctops):
         if i % NUM_WORKERS != WORKER_ID:
             continue
-        print(f"=== top-level class {i}: {list(c6)} ===", flush=True)
-        dfs(0, (6, list(c6)), f"c{i}")
+        print(f"=== top-level class {i}: {list(ct)} ===", flush=True)
+        dfs(0, (TOP_D, list(ct)), f"c{i}")
     print("PIPELINE COMPLETE", STATS, flush=True)
 
 
