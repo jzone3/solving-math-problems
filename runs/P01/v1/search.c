@@ -172,7 +172,43 @@ int main(int argc, char**argv){
         printf("%d\n", count_hc(1000000));
         return 0;
     }
-    if(argc<6){ fprintf(stderr,"usage: %s n seed iters cap tlimit [hop]\n",argv[0]); return 2; }
+    if(argc>=2 && strcmp(argv[1],"grow")==0){
+        /* read graph (n, edge list) from stdin; insert one new vertex on the pair of
+         * disjoint edges minimizing the resulting exact HC count; print new graph */
+        if(scanf("%d",&n)!=1) return 2;
+        memset(adj,0,sizeof(adj));
+        int a,b;
+        while(scanf("%d %d",&a,&b)==2){ adj[a][b]=adj[b][a]=1; }
+        rebuild_nbrs();
+        int E[4*MAXN][2], ne=0;
+        for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(adj[i][j]){ E[ne][0]=i;E[ne][1]=j;ne++; }
+        int bestcnt = 1<<30, bi=-1, bj=-1;
+        int x = n; n = n+1;
+        for(int i=0;i<ne;i++) for(int j=i+1;j<ne;j++){
+            int p=E[i][0],q=E[i][1],r=E[j][0],s=E[j][1];
+            if(p==r||p==s||q==r||q==s) continue;
+            adj[p][q]=adj[q][p]=0; adj[r][s]=adj[s][r]=0;
+            adj[x][p]=adj[p][x]=adj[x][q]=adj[q][x]=1;
+            adj[x][r]=adj[r][x]=adj[x][s]=adj[s][x]=1;
+            rebuild_nbrs();
+            int c = count_hc(bestcnt<(1<<30)?bestcnt:1000000);
+            if(c>0 && c<bestcnt){ bestcnt=c; bi=i; bj=j; }
+            adj[x][p]=adj[p][x]=adj[x][q]=adj[q][x]=0;
+            adj[x][r]=adj[r][x]=adj[x][s]=adj[s][x]=0;
+            adj[p][q]=adj[q][p]=1; adj[r][s]=adj[s][r]=1;
+        }
+        if(bi<0){ fprintf(stderr,"grow failed\n"); return 1; }
+        int p=E[bi][0],q=E[bi][1],r=E[bj][0],s=E[bj][1];
+        adj[p][q]=adj[q][p]=0; adj[r][s]=adj[s][r]=0;
+        adj[x][p]=adj[p][x]=adj[x][q]=adj[q][x]=1;
+        adj[x][r]=adj[r][x]=adj[x][s]=adj[s][x]=1;
+        rebuild_nbrs();
+        fprintf(stderr,"grown to n=%d hc=%d\n", n, bestcnt);
+        printf("%d\n", n);
+        for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) if(adj[i][j]) printf("%d %d\n", i, j);
+        return 0;
+    }
+    if(argc<6){ fprintf(stderr,"usage: %s n seed iters cap tlimit [hop] [seedfile]\n",argv[0]); return 2; }
     int hop = (argc>=7) ? atoi(argv[6]) : 0;   /* basin hopping: perturb best instead of random restart */
     n = atoi(argv[1]);
     rngstate = strtoull(argv[2],0,10) * 2654435761ULL + 88172645463325252ULL;
@@ -183,6 +219,17 @@ int main(int argc, char**argv){
 
     int best_ever = 1<<30;
     static unsigned char best_adj[MAXN][MAXN];
+    if(argc>=8){
+        FILE* f = fopen(argv[7],"r");
+        if(!f){ fprintf(stderr,"no seedfile\n"); return 2; }
+        int nn,a,b; if(fscanf(f,"%d",&nn)!=1 || nn!=n){ fprintf(stderr,"seedfile n mismatch\n"); return 2; }
+        memset(best_adj,0,sizeof(best_adj));
+        while(fscanf(f,"%d %d",&a,&b)==2){ best_adj[a][b]=best_adj[b][a]=1; }
+        fclose(f);
+        memcpy(adj,best_adj,sizeof(adj)); rebuild_nbrs();
+        best_ever = count_hc(1000000);
+        print_graph("SEED", best_ever);
+    }
     long long it_total = 0;
     while(time(0)-t0 < tlimit){
         if(hop && best_ever < (1<<30)){
