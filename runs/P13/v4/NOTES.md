@@ -73,8 +73,9 @@ pair whose x has maximum distance-1 deficiency) for cross-verification per METHO
   on v=7 `-all` (2 solutions whole = 0+2+0 across 3 shards) and v=9 (all shards UNSAT).
 - All 8 shards UNSAT. Total ≈ 655.3 M nodes (77.9–85.8 M per shard), ~9 min wall on
   8 cores. **No (10,6)-PMD exists.**
-- Cross-check: independent lex-first searcher (pmd6_search.c, different branching order)
-  re-run on v=10 — see result appended below.
+- Cross-check: independent lex-first searcher (pmd6_search.c, different branching order,
+  no sharding, single process): UNSAT, 649,639,981 nodes, ~11 min. Two disjoint complete
+  enumerations agree: **no (10,6)-PMD exists.**
 
 ### (12,6)-PMD: escalation
 
