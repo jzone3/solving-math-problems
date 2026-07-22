@@ -133,6 +133,114 @@ def _simplex_feasible(M, b):
     return False, y
 
 
+def _simplex_minimize(M, b, c):
+    """Exact: min c'z s.t. M z = b, z >= 0. Assumes feasible & bounded.
+    Returns (opt_value, z). Phase I via _simplex_feasible-style artificials,
+    then Phase II with Bland's rule."""
+    m = len(M)
+    nv = len(M[0])
+    M = [row[:] for row in M]
+    b = b[:]
+    for i in range(m):
+        if b[i] < 0:
+            M[i] = [-x for x in M[i]]
+            b[i] = -b[i]
+    T = [M[i] + [Fraction(1) if j == i else Fraction(0) for j in range(m)] + [b[i]]
+         for i in range(m)]
+    basis = [nv + i for i in range(m)]
+
+    def run(obj_costs, allowed):
+        # canonical reduced-cost row
+        obj = [Fraction(x) for x in obj_costs] + [Fraction(0)]
+        for i in range(m):
+            if obj_costs[basis[i]] != 0:
+                f = obj[basis[i]]
+                obj[:] = [a - f * cc for a, cc in zip(obj, T[i])]
+        while True:
+            piv_j = -1
+            for j in allowed:
+                if obj[j] < 0:
+                    piv_j = j
+                    break
+            if piv_j == -1:
+                return obj
+            piv_i, best = -1, None
+            for i in range(m):
+                if T[i][piv_j] > 0:
+                    r = T[i][-1] / T[i][piv_j]
+                    if best is None or r < best or (r == best and basis[i] < basis[piv_i]):
+                        best, piv_i = r, i
+            assert piv_i != -1, "unbounded"
+            pv = T[piv_i][piv_j]
+            T[piv_i][:] = [x / pv for x in T[piv_i]]
+            for i in range(m):
+                if i != piv_i and T[i][piv_j] != 0:
+                    f = T[i][piv_j]
+                    T[i][:] = [a - f * cc for a, cc in zip(T[i], T[piv_i])]
+            if obj[piv_j] != 0:
+                f = obj[piv_j]
+                obj[:] = [a - f * cc for a, cc in zip(obj, T[piv_i])]
+            basis[piv_i] = piv_j
+
+    # phase I: minimize sum of artificials
+    p1 = [Fraction(0)] * nv + [Fraction(1)] * m
+    obj = run(p1, range(nv + m))
+    assert -obj[-1] == 0, "infeasible"
+    # drive artificials out of basis if possible (pivot on any nonzero orig col)
+    for i in range(m):
+        if basis[i] >= nv:
+            for j in range(nv):
+                if T[i][j] != 0:
+                    pv = T[i][j]
+                    T[i][:] = [x / pv for x in T[i]]
+                    for k in range(m):
+                        if k != i and T[k][j] != 0:
+                            f = T[k][j]
+                            T[k][:] = [a - f * cc for a, cc in zip(T[k], T[i])]
+                    basis[i] = j
+                    break
+    # phase II on original columns only
+    p2 = [Fraction(x) for x in c] + [Fraction(0)] * m
+    obj = run(p2, range(nv))
+    z = [Fraction(0)] * nv
+    for i, bj in enumerate(basis):
+        if bj < nv:
+            z[bj] = T[i][-1]
+    val = sum(ci * zi for ci, zi in zip(c, z))
+    return val, z
+
+
+def fractional_total_domination(n, edges):
+    """Exact d_f(G) = min 1'x s.t. A x >= 1, x >= 0 (rational)."""
+    N = neighborhoods(n, edges)
+    # vars: x_0..x_{n-1}, slacks s_0..s_{n-1}: Ax - s = 1
+    nv = 2 * n
+    M, b, c = [], [], [Fraction(1)] * n + [Fraction(0)] * n
+    for v in range(n):
+        row = [Fraction(1 if u in N[v] else 0) for u in range(n)]
+        row += [Fraction(-1) if u == v else Fraction(0) for u in range(n)]
+        M.append(row)
+        b.append(Fraction(1))
+    val, z = _simplex_minimize(M, b, c)
+    x = z[:n]
+    for v in range(n):
+        assert sum(x[u] for u in N[v]) >= 1
+    assert sum(x) == val
+    return val, x
+
+
+def ax_eq_1_nonneg_feasible(n, edges):
+    """Feasibility of A x = 1, x >= 0 (Brandt Conjecture 5.1 conclusion)."""
+    N = neighborhoods(n, edges)
+    M = [[Fraction(1 if u in N[v] else 0) for u in range(n)] for v in range(n)]
+    b = [Fraction(1)] * n
+    ok, res = _simplex_feasible(M, b)
+    if ok:
+        for v in range(n):
+            assert sum(res[u] for u in N[v]) == 1
+    return ok, res
+
+
 def lp1_multiplication_feasible(n, edges):
     """Feasibility of {x >= 1, A x = c 1}. Returns (feasible, witness_or_certificate).
 

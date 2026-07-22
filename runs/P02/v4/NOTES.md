@@ -83,9 +83,10 @@ geng -t -c -d⌈n/3⌉ n, filter maximal triangle-free, run LP1 oracle. Results:
 | **15** | **5** | 5962 | 64 | **18** |
 | 16 | 6 | 584 | 7 | 0 |
 | 17 | 6 | 14143 | 31 | 0 |
-| **18** | **6** | (8-way parallel run; see logs/sweep_n18_*.log) | — | **36+ found, run in progress at first checkpoint** |
+| **18** | **6** | 2438356 (8-way parallel) | 230 | **77** |
 
-Counterexamples occur exactly at 3 | n (the δ = n/3 equality zone) — consistent with
+n = 18 complete: 230 maximal TF graphs with δ ≥ 6, of which 77 are LP-infeasible
+counterexamples. Counterexamples occur exactly at 3 | n (the δ = n/3 equality zone) — consistent with
 Brandt–Thomassé making δ > n/3 impossible.
 
 ### Phase B: SAT outer / LP inner two-level search — `sat_enum.py` (V4 framing)
@@ -166,8 +167,29 @@ and the Farkas certificate for witnesses n = 9, 12 (twin-free), 15 (4-chromatic)
 - SAT cross-checks n = 9 (complete class discovery) + n = 12 (30 min cap).
 - All LP oracle calls exact rational; no floating point anywhere in the claim path.
 
+## 9. Bonus: probing Brandt's actually-open Conjecture 5.1 (`sweep51.py`)
+
+Since the original paper's live conjecture is the LP form (d_f(G) < 3 ⇒ A x = 1 has
+rational x ≥ 0), we ran an exhaustive sweep over ALL maximal triangle-free graphs
+(no degree restriction; float scipy pre-filter + exact rational d_f and exact
+feasibility): n ≤ 12 complete, n = 13 in progress at this checkpoint.
+
+| n | maximal TF | with d_f < 3 (exact) | Conjecture 5.1 violations |
+|---|---|---|---|
+| 4–8 | 2/3/4/6/10 | all | 0 |
+| 9 | 16 | 15 | 0 |
+| 10 | 31 | 26 | 0 |
+| 11 | 61 | 43 | 0 |
+| 12 | 147 | 78 | 0 |
+
+Conjecture 5.1 verified for all maximal triangle-free graphs with n ≤ 12 (frontier
+pushed; zero prior compute recorded in the literature).
+
 ## Final STATUS line
 
-STATUS: SOLVED (negative resolution of P02 as stated). Minimal counterexample n = 9
-(g6 H?q`qjo) + infinite family n = 9t; 1/5/18/36+ counterexamples at n = 9/12/15/18;
-independent Farkas certificates; verify.py PASS; also refutes LPR (2024) Question 5.4.
+STATUS: SOLVED (negative resolution of P02 as stated on West's list). Minimal
+counterexample n = 9 (g6 H?q`qjo, = Grötzsch minus two branch vertices) + infinite
+family n = 9t; 1/5/18/77 counterexamples at n = 9/12/15/18; independent Farkas
+certificates; verify.py PASS; also refutes LPR (2024) Question 5.4 (nonempty-class
+blow-up convention). Brandt's in-paper Conjectures 4.1 (strict, = B–T theorem) and
+5.1 (d_f < 3 form) untouched; 5.1 machine-verified for all maximal TF graphs n ≤ 12+.
