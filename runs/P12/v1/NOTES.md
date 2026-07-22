@@ -1,0 +1,60 @@
+# P12 Tuscan-2 squares — V1 (SAT encoding) run notes
+
+Session: https://app.devin.ai/sessions/cd7edb524ca541928b367d2ebc799a7e
+Variant: V1 = direct SAT encoding, per problems/P12-tuscan-2-squares.md.
+
+## Statement verification (done first)
+
+- Re-fetched CPro1 `design_definitions/tuscan-2-square/problem_def.py`
+  (github.com/Constructive-Codes/CPro1): definition matches the problem file
+  exactly — each row a permutation of {0..n-1}; every ordered pair (a,b)
+  directly-adjacent exactly once; two-apart at most once. Open instances there:
+  n = 11, 13. Its verifier `v()` agrees with our `solutions/P12/verify.py`.
+- Original def (Golomb–Taylor 1985, via Kapralov ACCT 2012 restatement):
+  Tuscan-k = at most one row with b m-steps right of a for each m=1..k.
+  For an n×n square (n rows, all permutations) the distance-1 counts are
+  n(n-1) slots vs n(n-1) ordered pairs, so at-most-once <=> exactly-once:
+  the two phrasings are equivalent for squares. No paraphrase drift.
+- Literature check (Exa search, July 2026):
+  - Kapralov, "The non-existence of Tuscan-2 squares of order 9", ACCT 2012
+    (moi.math.bas.bg/moiuser/~ACCT2012/b30.pdf): T2(9) does NOT exist
+    (clique search over row-compatibility graph, Cliquer). His table marks
+    k=2, n=11 and n=13 as "?" (open); T2(8) has exactly 6 standard-form
+    solutions.
+  - CPro1 papers (2025, openreview WlXSZiqcbH): T2(11), T2(13) open, resisted
+    LLM-generated heuristics × 48h.
+  - No trace of any resolution of T2(11)/T2(13) since. Still open.
+
+## Encoding (gen_cnf.py)
+
+- Vars x[r][c][s] (symbol s at row r col c); exactly-one per cell, per
+  row-symbol (row = permutation).
+- Pair indicators y[d][r][c][a][b] with channeling both directions;
+  at-most-one per ordered pair per distance d ∈ {1,2} via pysat seqcounter.
+  (Exactly-once for d=1 follows from counting — see above — so AMO suffices;
+  the row/cell exactly-one constraints force full coverage.)
+- Symmetry breaking, "standard form" (Kapralov): counting shows first and
+  last columns are permutations of the symbols; so w.l.o.g. row 0 = identity
+  AND column 0 = (0..n-1) vertically. Also add last-column alldifferent as an
+  implied constraint.
+  - NB: an earlier draft added "each symbol at most twice in first/last two
+    columns" — that is NOT implied (d=2 has no lower bound); removed.
+  - Remaining unbroken symmetry: full-row reversal composed with relabeling
+    (maps T2 to T2). Not yet broken.
+- Sizes: n=11: 47k vars / 151k clauses (pre-standard-form figures; standard
+  form fixes 21 cells). n=13: 95k vars / 305k clauses.
+
+## Validation
+
+- n=4, 6 (dev instances): SAT within seconds, decoded squares verified PASS
+  by solutions/P12/verify.py (independent stdlib checker matching CPro1 v()).
+- n=9 run doubles as calibration: known UNSAT (Kapralov 2012) — if our
+  encoding returns UNSAT on n=9 it cross-validates both the encoding and
+  Kapralov's computation.
+
+## Compute log
+
+- 2026-07-22 20:30 UTC: launched on 8-core box: kissat t11, cadical t11,
+  kissat t13, kissat t9, plus loop over n ∈ {4,6,7,8,10,12} (2h timeout each).
+
+## STATUS: (running)
