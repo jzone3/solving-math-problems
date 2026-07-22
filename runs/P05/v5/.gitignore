@@ -1,0 +1,8 @@
+spider_search
+spider_search64
+multi_search
+*.out
+*.err
+*.json
+*.tsv
+*.g6
