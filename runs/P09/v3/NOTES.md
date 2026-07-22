@@ -64,4 +64,30 @@ Two attack refinements per the "perturbation near the extremal class" idea:
   n ∈ [15,50], 60 restarts × 20000 iters (searches the λ₂>0 stratum, where
   the conjecture is genuinely untested).
 
+### Phase 2 results
+- Turán-start runs (ω 3–8): again converge to ratio = 1.0 exactly; best
+  graphs are balanced Turán/complete-multipartite (λ₂ = 0 class). No ratio
+  > 1 + 1e-8 anywhere.
+- λ₂ ≥ 1.5 penalized runs (ω 3–5): best pure ratios 0.9984 (ω=3, n=22),
+  0.9978 (ω=4, n=30), 0.9938 (ω=5, n=21) — close but strictly below 1.
+
+### Key structural observation → phase 3
+The disjoint union of two equal balanced Turán graphs T(k,ω) ∪ T(k,ω)
+(ω | k) attains EQUALITY with λ₁ = λ₂ > 0: λ₁²+λ₂² = 2λ² = 2·2m₁(1−1/ω)
+= 2m(1−1/ω). This is the natural place to look for violations (equality
+surface with both eigenvalues active). Added `--init turan2`.
+
+### Phase 3 (turan2 starts, ω 3–8, n up to 60, 80×25000)
+All runs plateau at exactly 1.0 (the union family itself); annealing never
+exceeds it. Perturbation scanner `perturb.py`: exhaustive ALL 1- and 2-edge
+flips of T(9,3)∪T(9,3) (9,180 ω-preserving flip sets), T(12,3)∪T(12,3)
+(28,920), T(12,4)∪T(12,4) (31,878), T(10,5)∪T(10,5) (16,290): max ratio
+stays exactly 1.000000000000; NO flip set exceeds the base. The equality
+family is a strict local maximum of the ratio under ≤2 edge flips.
+
+### Phase 4 (running): ω 3–8 × {random, turan2} inits, n ∈ [20,90],
+150 restarts × 40000 iters each (12 parallel procs, ~hours).
+Interim after ~10 min: all best ratios ≤ 1.0 (equality reattained in several
+runs, never exceeded).
+
 ## STATUS: (pending)

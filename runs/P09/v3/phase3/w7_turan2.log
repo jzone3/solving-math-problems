@@ -67,3 +67,15 @@
 [w=7] restart 66: n=54 m=638 ratio=0.96007 omega_ok=True best=1.00000 t=140s
 [w=7] restart 67: n=36 m=472 ratio=0.92367 omega_ok=True best=1.00000 t=142s
 [w=7] restart 68: n=53 m=601 ratio=0.92266 omega_ok=True best=1.00000 t=147s
+[w=7] restart 69: n=33 m=430 ratio=0.96069 omega_ok=True best=1.00000 t=152s
+[w=7] restart 70: n=50 m=539 ratio=0.98127 omega_ok=True best=1.00000 t=161s
+[w=7] restart 71: n=36 m=524 ratio=0.96219 omega_ok=True best=1.00000 t=166s
+[w=7] restart 72: n=52 m=586 ratio=0.90651 omega_ok=True best=1.00000 t=176s
+[w=7] restart 73: n=39 m=327 ratio=0.93075 omega_ok=True best=1.00000 t=182s
+[w=7] restart 74: n=33 m=412 ratio=0.93994 omega_ok=True best=1.00000 t=187s
+[w=7] restart 75: n=33 m=235 ratio=0.98534 omega_ok=True best=1.00000 t=192s
+[w=7] restart 76: n=16 m=109 ratio=0.99559 omega_ok=True best=1.00000 t=193s
+[w=7] restart 77: n=20 m=168 ratio=0.98551 omega_ok=True best=1.00000 t=196s
+[w=7] restart 78: n=29 m=354 ratio=0.98738 omega_ok=True best=1.00000 t=199s
+[w=7] restart 79: n=60 m=778 ratio=0.96395 omega_ok=True best=1.00000 t=211s
+DONE {"omega": 7, "n": 21, "m": 189, "ratio": 1.0000000000000009}

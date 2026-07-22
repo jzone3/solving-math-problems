@@ -1,0 +1,11 @@
+[w=8] restart 0: n=89 m=2213 ratio=0.67061 omega_ok=True best=0.67061 t=121s
+[w=8] restart 1: n=83 m=2098 ratio=0.71403 omega_ok=True best=0.71403 t=210s
+[w=8] restart 2: n=32 m=435 ratio=0.98030 omega_ok=True best=0.98030 t=217s
+[w=8] restart 3: n=66 m=1345 ratio=0.74140 omega_ok=True best=0.98030 t=284s
+[w=8] restart 4: n=87 m=2257 ratio=0.69862 omega_ok=True best=0.98030 t=378s
+[w=8] restart 5: n=82 m=1959 ratio=0.69591 omega_ok=True best=0.98030 t=472s
+[w=8] restart 6: n=31 m=393 ratio=0.99851 omega_ok=True best=0.99851 t=478s
+[w=8] restart 7: n=67 m=1389 ratio=0.73950 omega_ok=True best=0.99851 t=571s
+[w=8] restart 8: n=61 m=1190 ratio=0.77566 omega_ok=True best=0.99851 t=591s
+[w=8] restart 9: n=41 m=618 ratio=0.92063 omega_ok=True best=0.99851 t=600s
+[w=8] restart 10: n=50 m=835 ratio=0.82913 omega_ok=True best=0.99851 t=614s
