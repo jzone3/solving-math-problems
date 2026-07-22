@@ -1,0 +1,740 @@
+Circulant Weighing Matrices Whose Order
+and Weight are Products of Powers of 2 and 3
+Bernhard Schmidt
+Division of Mathematical Sciences
+School of Physical & Mathematical Sciences
+Nanyang Technological University
+Singapore 637371
+Republic of Singapore
+Ken W. Smith
+Department of Mathematics and Statistics
+Sam Houston State University
+Huntsville, Texas 77341, USA
+August 22, 2012
+Abstract
+We classify all circulant weighing matrices whose order and weight
+are products of powers of 2 and 3. In particular, we show that proper
+CW(v, 36)’s exist for all v≡ 0 (mod 48), all of which are new.
+1
+1 Introduction
+A circulant weighing matrix of order v is a square matrix of the form
+M =
+
+
+a1 a2 ··· av
+av a1 ··· av−1
+··· ··· ··· ···
+a2 a3 ··· a1
+
+
+withai∈{− 1, 0, 1} for alli andMMT =nI wheren is a positive integer and
+I is the identity matrix. The integer n is called the weight of the matrix. A
+circulant weighing matrix of order v and weightn is denoted by CW(v, n).
+Circulant weighing matrices have been studied intensively, see [2] for a
+survey and [11] for more background on weighing matrices in general. There
+are only a few inﬁnite families [3, 8, 13] and sporadic examples [2, 4] of
+circulant weighing matrices known. Circulant weighing matrices of weight
+less than or equal to 16 have been classiﬁed, see [1, 4, 5, 9, 10, 19].
+In the present paper, we classify all circulant weighing matrices whose
+order and weight are products of powers of 2 and 3. In principle, this is
+made possible by the “F-bound” [18] and the results on orthogonal families
+in [14] which together imply that there is a ﬁnite algorithm for this prob-
+lem. However, we need to employ further tools such as cyclotomic integers
+of prescribed absolute value and rational idempotents (the latter concept is
+implicitly used in Section 6) to keep the arguments and computations man-
+ageable. We note that all our results are computer free.
+The complete classiﬁcation of circulant weighing matrices whose order
+and weight are products of powers of 2 and 3 is given in Theorem 6.10 at the
+end of our paper.
+2 Preliminaries
+Let Cv denote the cyclic group of order v. For a divisor u of v we always
+view Cu as a subgroup of Cv.
+2
+To study circulant weighing matrices we use the group ring language.
+The elements of the integral group ring Z[Cv] have the form
+X =
+∑
+h∈Cv
+ahh
+with ah∈ Z. The set
+{h∈Cv :ah̸= 0}
+is called the support of X, and the integers ah are called the coeﬃcients of
+X. We write|X| =∑
+h∈Cvah and
+X (t) =
+∑
+h∈Cv
+ahht
+for t∈ Z. We identify a subset S of Cv with the element ∑
+h∈Sh of Z[Cv].
+A circulant matrix M as deﬁned in Section 1 satisﬁes MMT =nI if and
+only ifDD(−1) =n whereD is the element ofZ[Cv] deﬁned byD =∑v
+i=1aigi.
+Thus a circulant weighing matrix of order v and weightn is equivalent to an
+element D of Z[Cv] with coeﬃcients −1, 0, 1 only and DD(−1) = n. This is
+the formulation we will use in the rest of our paper. Note that the weight of
+a circulant weighing matrix must be a square as |∑ai|2 =n.
+For every multiple w of v, any CW(v,n ) can trivially be embedded in
+Z[Cw] and thus be viewed as a CW( w,n ). One usually ignores these triv-
+ial extensions by concentrating on proper circulant weighing matrices, i.e.
+circulant weighing matrices D∈ Z[Cv] for which there is no g∈ Cv and no
+proper divisor u of v with Dg∈ Z[Cu].
+In this paper, we call two circulant weighing matrices D,E ∈ Z[Cv]
+equivalent if there are t,x∈ Z with (t,v ) = 1 and E =±D(t) +x.
+For an abelian group G, we denote the group of complex characters of G
+byG∗. The following is a standard result [6, Chapter VI, Lemma 3.5].
+Result 2.1 LetG be a ﬁnite abelian group andD =∑
+g∈Gdgg∈ C[G]. Then
+dg = 1
+|G|
+∑
+χ∈G∗
+χ(Dg−1)
+for all g∈G.
+3
+The next result is a well known consequence of Result 2.1.
+Result 2.2 Suppose D∈ Z[Cv] has coeﬃcients ±1, 0 only. Then D is a
+CW(v,n ) if and only if |χ(D)|2 =n for all χ∈C∗
+v.
+We will need the following result on kernels of characters on group rings.
+See [12, Theorem 2.2] for a proof.
+Result 2.3 Letχ be a character of Cv of order v. Then the kernel of χ on
+Z[Cv] is
+{
+r∑
+i=1
+CpiXi :Xi∈ Z[Cv]}
+wherep1,...,p r are the distinct prime divisors of v.
+For a primep and a positive integer t letνp(t) be deﬁned by pνp(t)||t, i.e.
+pνp(t) is the highest power ofp dividingt. ByD(t) we denote the set of prime
+divisors of t. The following deﬁnition is necessary for the application of the
+ﬁeld descent method [17] which we will do in the next section.
+Deﬁnition 2.4 Letv, n be integers greater than 1. For q∈D (n) let
+vq :=
+{ ∏
+p∈D(v)\{q}p if v is odd or q = 2,
+4∏
+p∈D(v)\{2,q}p otherwise.
+Set
+b(2,v,n ) = max
+q∈D(n)\{2}
+{
+ν2(q2− 1) +ν2(ordvq(q))− 1
+}
+and
+b(r,v,n ) = max
+q∈D(n)\{r}
+{
+νr(qr−1− 1) +νr(ordvq(q))
+}
+for primes r >2 with the convention that b(2,v,n ) = 2 ifD(n) ={2} and
+b(r,v,n ) = 1 ifD(n) ={r}. We deﬁne
+F (v,n ) := gcd(v,
+∏
+p∈D(v)
+pb(p,v,n)).
+The following result was proved in [17].
+4
+Result 2.5 Assume XX = n for X ∈ Z[ζm] where n and m are positive
+integers. Then
+Xζj
+m∈ Z[ζF (m,n)]
+for some j.
+The following is [18, Thm. 3.2.3]. By ϕ we denote the Euler totient
+function.
+Result 2.6 (F-bound) LetX∈ Z[ζm] be of the form
+X =
+m−1∑
+i=0
+aiξi
+m
+with 0≤ ai ≤ C for some constant C and assume that n := XX is an
+integer. Then
+n≤ C 2F (m,n )2
+4ϕ(F (m,n )).
+Deﬁnition 2.7 Letp be a prime, let m be a positive integer, and write m =
+pam′ with (p,m′) = 1,a≥ 0. If there is an integerj withpj≡− 1 ( mod m′),
+then p is called self-conjugate modulo m. A composite integer n is called
+self-conjugate modulo m if every prime divisor of n has this property.
+Result 2.8 (Turyn [20]) Assume that A∈ Z[ζm] satisﬁes
+AA≡ 0 mod t2b
+whereb, t are positive integers, and t is self-conjugate modulo m. Then
+A≡ 0 mod tb.
+The following result is due to Ma [15], see also [6, VI, Cor. 13.5] or [16,
+Cor. 1.2.14].
+Result 2.9 (Ma) Letp be a prime and let G be a ﬁnite abelian group with
+a cyclic Sylow p-subgroupS. If Y∈ Z[G] satisﬁes
+χ(Y )≡ 0 mod pa
+5
+for all characters χ of G of order divisible by |S|, then there exist X1,X 2∈
+Z[G] such that
+Y =paX1 +PX 2,
+whereP is the unique subgroup of order p of G.
+The next result is [14, Thm. 4.3].
+Result 2.10 Let v = w∏r
+i=1pai
+i where the ai’s and w are positive integers
+and the pi’s are distinct primes coprime to w. Let g be a generator of Cv.
+Letbi≤ai be positive integers, write k =∏r
+i=1pbi
+i . Suppose that X∈ Z[Cv]
+with the property for every τ∈C∗
+v there is a root of unity η(τ) with
+η(τ)τ(X)∈ Z[ζwk].
+Furthermore, assume that |τ(X)|2≤ n for all τ∈ C∗
+v for some constant n.
+Write k′ =w∏r
+i=1pci
+i where
+ci =
+{
+min{ai,bi + logn/ logpi} if logn/ logpi is an integer and
+min{ai,⌈bi− 1 + logn/ logpi⌉} otherwise.
+Then X =∑v/k′−1
+i=0 Xigi with Xi∈ Z[Ck′], and XiXj = 0 for all i̸=j.
+We will need the following result of Kronecker. See [7, Section 2.3, Thm. 2]
+for a proof.
+Result 2.11 An algebraic integer all of whose conjugates have absolute value
+1 is a root of unity.
+3 Results
+We start with a lemma on cyclotomic integers of prescribed absolute value.
+Lemma 3.1 Write β = 1 + ζ8 +ζ 3
+8. Let v = 2a· 3b for some nonnegative
+integersa, b, and let X∈ Z[ζv] with|X|2 = 9. Then there is a root of unity
+η such that
+Xη∈{ 3, (ζ3−ζ 2
+3)β, (ζ3−ζ 2
+3) ¯β,β 2, ¯β2}. (1)
+Furthermore, if Y ∈ Z[ζv] with|Y|2 = 36, then Y = 2Z for some Z∈ Z[ζv]
+with|Z|2 = 9.
+6
+Proof By [18, Thm. 2.2.2] there is a root of unity ζ such that Xζ ∈ Z[ζ8]
+or X = (ζ3−ζ 2
+3)Y with Y∈ Z[ζ8] and|Y|2 = 3. □
+Case 1: Xζ∈ Z[ζ8]. The prime ideal factorization of (3) over Z[ζ8] is (3) =
+(β)( ¯β) (see e.g. [7] for the background in algebraic number theory). Hence
+(Z) = (3), ( Z) = ( β2), or ( Z) = ( ¯β2). Now Result 2.11 implies Xη ∈
+{3,β 2, ¯β2} for some root of unity η.
+Case 2: X = (ζ3−ζ 2
+3)Y withY∈ Z[ζ8] and|Y|2 = 3. Similarly as in Case 1
+we conclude (Y ) = (β) or (Y ) = ( ¯β) and thus Xη∈{ (ζ3−ζ 2
+3)β, (ζ3−ζ 2
+3) ¯β}
+for some root of unity η. This proves (1).
+The last statement of Lemma 3.1 follows from Result 2.8 since 2 is self-
+conjugate modulo 3b. □
+Lemma 3.2 Suppose both n and v are products of powers of 2 and 3. If a
+CW(v,n ) exists, then n≤ 64.
+Proof Let D be a CW( v,n ), i.e. D ∈ Z[Cv] with coeﬃcients ±1, 0 and
+DD(−1) = n. We use the F-bound to establish an upper bound on n as
+follows. Recall that we assume v andn have no prime divisors diﬀerent from
+2 or 3. Let us ﬁrst assume that v and n are both divisible by 6. Using
+Deﬁnition 2.4, we ﬁnd v2 = 3 and v3 = 4. Hence
+b(2,v,n ) =ν2(32− 1) +ν2(ord4(3))− 1 = 3 + 1− 1 = 3
+and
+b(3,v,n ) =ν3(22− 1) +ν3(ord3(2)) = 1.
+Hence F (v,n ) divides 24 by Deﬁnition 2.4. It is straightforward to check
+that F (v,n ) also divides 24 if v and n are not both divisible by 6. Hence
+F (v,n ) divides 24 in all cases.
+Let χ be a character of Cv of order v. Then |χ(D)|2 = n and χ(D) =∑v−1
+i=0 aiζi
+v with|ai|≤ 1. Since ∑v−1
+i=0 ζi
+v = 0, we have χ(D) =∑v−1
+i=0 (ai + 1)ζi
+v
+with 0≤ 1 +ai≤ 2. Thus the F-bound implies
+n≤ 22· 242
+4ϕ(24) = 72.
+Since n is a square, we conclude n≤ 64. □
+7
+Theorem 3.3 Suppose bothn and v are products of powers of 2 and 3. If a
+CW(v,n ) exists, then n∈{ 4, 9, 36}.
+Proof By Lemma 3.2 it suﬃces to show n̸= 16 and n̸= 64. Thus assume
+n∈{ 16, 64}. Since 2 is self-conjugate modulo v, we have
+χ(D)≡ 0 (mod 4) (2)
+by Result 2.8. If v is odd, then D ≡ 0 (mod 4) by Result 2.1. This is
+impossible since D has coeﬃcients±1, 0 only. Hence v is even. In view of
+(2), Ma’s Lemma implies
+D = 4X +PY
+withX,Y ∈ Z[Cv] whereP is the subgroup of Cv of order 2. But this means
+that the coeﬃcients of D are constant modulo 4 on each coset of P . Since
+D has coeﬃcients ±1, 0 only, this shows that, in fact, that the coeﬃcients
+of D are constant on each coset of P . Thus D = PZ with Z∈ Z[Cv]. But
+then χ(D) = 0 for every character χ of Cv which is nontrivial on P . This
+contradictsDD(−1) =n. Hence n̸∈{ 16, 64}. □
+In the following sections, we treat the cases n = 4, 9, 36 separately.
+4 Weight 4
+All circulant weighing matrices of weight 4 have been classiﬁed in [9]:
+Result 4.1 LetD be a proper CW(v, 4). Then one of the following occurs.
+(i) v >2, v≡ 0 (mod 2) and D is equivalent to (1 +g) + (1−g)h where
+g is an element of Cv of order 2 and h∈Cv\⟨g⟩.
+(ii)v = 7 andD is equivalent to−1 +k3 +k5 +k6 wherek is a generator
+of C7.
+5 Weight 9
+Let D be a proper CW(v, 9) where v is a product of powers of 2 and 3. By
+[1, Thm. 3] (see also [19]), we have v = 24.
+8
+Theorem 5.1 Let α and δ be elements of order 3, respectively 8, in C24.
+Every CW(24, 9) is equivalent to
+−1 + (1−δ4)(δ +δ3) + (α +α2)(1 +δ4).
+Proof Let D be a CW(24, 9), and let χ be a character of C24 of order 24.
+By Lemma 3.1 we can assume
+χ(D)∈{ 3, (ζ3−ζ 2
+3)β, (ζ3−ζ 2
+3) ¯β,β 2, ¯β2}
+where β = 1 + ζ8 +ζ 3
+8. Suppose χ(D)∈{ 3, (ζ3−ζ 2
+3)β, (ζ3−ζ 2
+3) ¯β}. Then
+χ(D)≡ 0 (mod 1 −ζ3), i.e. χ(D) = (1−ζ3)X for some X∈ Z[ζ24]. Let a
+be the element order 3 of C24 with χ(a) = ζ3, and choose A∈ Z[C24] with
+χ(A) = X. By Result 2.3, we have D = (1−a)A +YC 2 +ZC 3 for some
+Y,Z ∈ Z[C24]. Let τ =χ3. Then τ(C2) = 0,τ(C3) = 3, and τ(a) = 1. Hence
+τ(D)≡ 0 (mod 3). This implies ψ(D)≡ 0 (mod 3) for all characters ψ of
+C24 of order 8. Note that 3 is self-conjugate modulo 4. Hence by Result 2.8,
+ψ(D)≡ 0 (mod 3) for all characters of C24 of order dividing 4. In summary,
+we have shown ψ(D)≡ 0 (mod 3) for characters of C24 of order dividing 8.
+In view of Result 2.1, this impliesρ(D)≡ 0 ( mod 3) where ρ :C24→C24/C3
+is the natural epimorphism. But since D has coeﬃcients±1 and 0 only, this
+implies D = (1−a)B +TC 3 for some B,T ∈ Z[C24] with coeﬃents 0 ,±1
+only, where the elements in the support of B are in distinct cosets of C3, and
+T∈ Z[C8]. Since|γ(D)|2 = 9 for all γ∈C∗
+24 , we conclude|γ(T )| = 1 for all
+γ∈C∗
+24 with γ(a) = 1. This implies T =±g for some g∈C8 by Result 2.1.
+As the support ofD contains exactly 9 elements and the supports of (1−a)B
+andTC 3 must be disjoint, this implies that the support ofB contains exactly
+3 elements. As D = (1−a)B +TC 3, we have |γ(B)|2 = 3 for all γ∈ C∗
+24
+which are nontrivial on C3. But this is not possible since the support of B
+contains exactly 3 elements, a contradiction.
+Hence we have shown χ(D)∈{ β2, ¯β2}. Replacing D by D(−1), if neces-
+sary, we can assume
+χ(D) =β2 =−1 + 2ζ8 + 2ζ 3
+8.
+Furthermore, by replacing D by−Dδ4 if necessary, we can assume|D| = 3.
+Moreover, we can choose the elementδ ofC24 of order 8 such that χ(δ) =ζ8.
+9
+Result 2.3 shows that
+D =−1 + 2δ + 2δ3 +XC 2 +YC 3 (3)
+with X,Y ∈ Z[C24]. Let τ =χ3. Then
+τ(D) =−1 + 2ζ8 + 2ζ 3
+8 + 3τ(Y )≡− 1 + 2ζ8 + 2ζ 3
+8 (mod 1−ζ3).
+In view of Lemma 3.1, this impliesτ(D) =−1+2ζ8 +2ζ 3
+8 and thusτ(Y ) = 0.
+Using Result 2.3 we conclude YC 3 = Y′C2C3 for some Y′∈ Z[C24]. Hence
+we can rewrite (3) as
+D =−1 + 2δ + 2δ3 +ZC 2 (4)
+for some Z∈ Z[C24]. Since D has coeﬃcients±1 and 0 only, all elements of
+δC2∪δ3C2 must have coeﬃcient−1 in ZC 2. Hence we can rewrite (4) as
+D =−1 +δ +δ3−δ5−δ7 +Z′C2 (5)
+for some Z′ ∈ Z[C24] such that Z′C2 and δ +δ3−δ5−δ7 have disjoint
+supports. Note that |Z′| = 2 since we assume |D| = 3. Since the support
+of D consists only of 9 elements, this implies that the support of Z′ consists
+of exactly 2 elements. Now let ψ be a character of C24 of order 3, 6, or 12.
+Then ψ(D) =−1 + 2ψ(Z′) by (5). Furthermore, by Lemma 3.1, there is a
+root of unity η(ψ) such that
+ψ(D) =−1 + 2ψ(Z′) = 3η(ψ).
+Hence 1 +η(ψ)≡ 0 (mod 2) which implies η(ψ) =±1. Suppose η(ψ) = 1.
+Then ψ(Z′) = 2. But since the support of Z′ only contains 2 elements, this
+implies that the support of Z′ is contained inC8. But then the support of D
+is contained in C8 which is impossible. Thus η(ψ) =−1 and ψ(Z′) =−1 for
+all characters ψ of C24 of order 3, 6, and 12. It is straightforward to check
+that this implies Z′C2 = (α +α2)C2. Substituting this into (5) completes
+the proof. □
+6 Weight 36
+Lemma 6.1 Assume that v is a product of powers of 2 and 3, and that a
+CW(v, 36) exists. Then v≡ 0 (mod 8) .
+10
+Proof LetD be a CW(v, 36). If v is not divisible by 8, then 3 is self-conjugate
+modulo v. Let Q be the subgroup of Cv of order 3. We have D = 3X +QY
+with X,Y ∈ Z[Cv] by Results 2.8, 2.9. Now the same argument as in the
+proof of Theorem 3.3 leads to a contradiction. □.
+We will use the following notation in the next result. Let S⊂ Cv and
+A =∑
+h∈Cvahh∈ Z[Cv]. We write
+A∩S :=
+∑
+h∈A
+ahh.
+Lemma 6.2 LetD be a CW(v, 36) wherev = 2a·3b anda,b are nonnegative
+integers. Let g be the element of Cv of order 2, and let ρ : Cv→ Cv/⟨g⟩ be
+the natural epimorphism.
+Then a≥ 4, b≥ 1, and there is an h∈Cv such that
+Dh = (1−g)X + (1 +g)Y (6)
+with X,Y ∈ Z[Cv] such that ρ(Y ) is a CW(24, 9). Furthermore, X has
+coeﬃcients±1, 0 only and its support consists of representatives of distinct
+cosets of⟨g⟩ in Cv.
+Proof Note that 2 is self-conjugate modulo v and thus χ(D)≡ 0 (mod 2)
+by Result 2.8. Hence, if a = 0, then D ≡ 0 (mod 2) by Result 2.1, a
+contradiction. We conclude a≥ 1.
+Ma’s Lemma implies
+D = 2A + (1 +g)B
+with A,B ∈ Z[Cv]. We can assume that the support of B consists of repre-
+sentatives of distinct cosets of⟨g⟩ in Cv, and that all coeﬃcients of B are in
+{−1, 0, 1}. This implies that A also has coeﬃcients−1, 0, 1 only.
+Now ﬁx k∈ Cv and suppose that k has coeﬃcient 1 in B. Then A∩
+{k,kg}∈{ 0,−k,−kg,−k−kg}, i.e., D∩{k,gk}∈{ 0, (1 +g)k,±(1−g)k}.
+Similarly, if k has coeﬃcient 0 or −1 in B, then D∩{k,gk}∈{ 0,−(1 +
+g)k,±(1−g)k}, too. Now letY′ be the sum of all terms±(1+g)k which occur
+as D∩{k,gk} when k runs through a complete set of coset representatives
+11
+of⟨g⟩ in Cv, and let X′ be the sum of all terms ±(1−g)k which occur. Set
+X =X′/(1−g) and Y =Y′/(1 +g). Then
+D = (1−g)X + (1 +g)Y, (7)
+X and Y have coeﬃcients±1, 0 only, and the support of X consists of rep-
+resentatives of distinct cosets of⟨g⟩ in Cv.
+It remains to show that we can ﬁnd w ∈ Cv such that ρ(Yw ) is a
+CW(24, 9). Note that ρ(Y ) has coeﬃcients ±1, 0 only since the support of
+Y consists of representatives of distinct cosets of ⟨g⟩. Furthermore, χ(Y ) =
+χ(D)/2 for all characters of Cv which are trivial on ⟨g⟩ by (7). Hence ρ(Y )
+is a CW(v/2, 9) by Result 2.2 (we are identifying Cv/⟨g⟩ with Cv/2 here).
+By [1, Thm. 3] there is a u∈ Cv/2 such that ρ(Y )u is a CW(24, 9). This
+concludes the proof. □
+Lemma 6.3 We use the notation of Lemma 6.2. Write u = 28· 34, and let
+v′ = lcm(u,v ). There are a positive integer k andZ1,...,Z k∈Cu,a1,...,a k∈
+Cv′ such that
+(1−g)X =
+k∑
+i=1
+Ziai (8)
+and ZiZj = 0 for i̸= j. Furthermore, the supports of the elements Ziai,
+i = 1,...,k , are pairwise disjoint.
+Proof Note that we can view D as an element of Z[Cv′]. Since|χ(D)|2 = 36
+for all characters χ of Cv′, we have|χ((1−g)X)|2 = 36 for all characters χ
+ofCv′ withχ(g) =−1 and|χ((1−g)X)|2 = 0 for all charactersχ ofCv′ with
+χ(g) = 1. Furthermore, by Lemma 3.1, we have χ(D)η∈ Z[ζ24] for some
+root of unity η (depending on χ) for all characters χ of Cv′.
+In summary, we have shown|χ((1−g)X)|2≤ 36 andχ((1−g)X)η∈ Z[ζ24]
+for some root of unityη for all charactersχ ofCv′. Hence we can apply Result
+2.10 with w = 1, p1 = 2, p2 = 3, b1 = 3, b2 = 1, k = 24, n = 36, and ﬁnd
+c1 = 8, c2 = 4. Hence
+(1−g)X =
+v′/u−1∑
+i=0
+Xiαi
+12
+with Xi∈ Z[Cu] and XiXj = 0 for i̸=j where α is a generator of Cv. This
+implies (8). □
+Fix i and let Zi be from (8). Note that Zi has coeﬃcients ±1, 0 only
+because (1−g)X has coeﬃcients±1, 0 only. Recall that|χ((1−g)X)|2 = 36
+for all characters χ of Cv′ with χ(g) = −1 and |χ((1−g)X)|2 = 0 for all
+charactersχ of Cv′ with χ(g) = 1. Hence, in summary,
+Zi∈ Z[Cu] and Zi has coeﬃcients±1, 0 only,
+χ(Zi) = 0 for all characters χ of Cu with χ(g) = 1 and
+|χ(Zi)|∈{ 0, 36} for all characters χ of Cu with χ(g) =−1.
+(9)
+Lemma 6.4 Letu = 28· 34 and assume that Zi∈ Z[Cu] satisﬁes (9). Let χ
+be any character of Cu. Then there is a root of unity η such that
+χ(Zi)η∈{ 0, 6, 2(ζ3−ζ 2
+3)β, 2(ζ3−ζ 2
+3) ¯β}
+whereβ = 1 +ζ8 +ζ 3
+8.
+Proof Assume the contrary. Then, by Lemma 3.1 and (9), we have
+χ(Zi)η∈{ 2β2, 2 ¯β2}. (10)
+for some root of unity η. By replacing Zi by Z (a)
+i g for some a∈{− 1, 1},
+g∈Cv, if necessary, we can assume
+χ(Zi) = 2β2. (11)
+Note that the order of χ must be divisible by 2 8 by (9) and (11). Let τ be a
+character of Cu of order 3b, 0≤ b≤ 4. Write Zi =∑
+g∈Cuagg with ag∈ Z.
+Then
+χτ(Zi)−χ(Zi) =
+∑
+g∈Cu
+agχ(g)(τ(g)− 1).
+Note that τ(g)− 1≡ 0 (mod 1 −ζ81) for all g because τ(g) is an 81st root
+of unity. Hence
+χτ(Zi)≡χ(Zi) (mod 1−ζ81). (12)
+13
+We claim that 2β2̸≡ 0 ( mod 1−ζ81). Assume that contrary, i.e.,−2+4ζ8 +
+4ζ 3
+8 = (1−ζ81)T with T ∈ Z[ζ8·81]. Write T =∑3
+i=0ζi
+8Ti with Ti∈ Z[ζ81].
+Then
+−2 + 4ζ8 + 4ζ 3
+8 =
+3∑
+i=0
+ζi
+8Ti(1−ζ81).
+Since{1,ζ 8,ζ 2
+8,ζ 3
+8} is linearly independent over Q(ζ81), we get 2 ≡ 0 (mod
+1−ζ81), a contradiction. Thus
+2β2̸≡ 0 (mod 1−ζ81). (13)
+Similarly, we see that
+2(β2−η ¯β2)̸≡ 0 (mod 1−ζ81) (14)
+for all uth roots of unity η. Recall that |τχ(Zi)|∈{ 0, 36} by (9) and thus
+τχ(Zi)η∈{ 0, 6, 2(ζ3−ζ 2
+3)β, 2(ζ3−ζ 2
+3) ¯β, 2β2, 2 ¯β2} (15)
+for some root of unity η by Lemma 3.1. However, if τχ(Zi)̸= 2β2, then
+τχ(Zi)−χ(Zi)̸≡ 0 (mod 1−ζ81) by (11), (13), (14), and (15). This contra-
+dicts (12). Hence
+τχ(Zi)η = 2β2 (16)
+for some root of unity η.
+Recall that the order ofχ is divisible by 28 and that the above arguments
+works for every character τ of Cu of order dividing 81. Hence, in summary,
+we have shown
+ψτ (Zi)η = 2β2 (17)
+for some root of unity η (depending on ψ andτ) for all characters ψ of order
+28 and all characters τ of order dividing 81. Let τ0 be a character of order
+81, and let ψ be a character of order 2 8. W.l.o.g. assume ψτ0(Zi) = 2β2. By
+Result 2.3, the kernel of ψτ0 on Z[Cu] is
+{AC2 +BC3 :A,B∈ Z[Cu]}.
+Hence
+Zi = 2(−1 + 2x2 + 2x4) +AC2 +BC3 (18)
+14
+with A,B ∈ Z[Cu] where x is the element of Cu of order 8 with ψ(x) =
+ζ8. Applying ψτ 3 to (18), we ﬁnd ψτ 3(Zi) = 2β2 + 3ψτ1(B). Recall that
+ψτ 3(Zi) = 2¯ηβ 2 for some root of unity η by (17). Hence 2 β2(1− η) ≡
+0 (mod 3). This implies η = 1. Hence ψτ 3(Zi) = 2 β2. Let ρ : Cu →
+Cu/C3 be the natural epimorphism. Using the same argument again, with Zi
+replaced byρ(Zi),τ replaced byτ 3, andτ 3 replaced byτ 9, we ﬁndψτ 9(Zi) =
+2β2. Continuing this, we see that ψτ 3a
+(Zi) = 2β2 for a = 0,..., 4. Hence,
+applying Galois automorphisms of Q(ζ81) to these identities, we ﬁnd
+ψτj(Zi) = 2β2 (19)
+for j = 0,..., 80. Now write Zi =∑80
+k=0Aktk with Ak∈ Z[C28] where t is an
+element of Cu of order 81. Then
+80∑
+j=0
+ψτj(Zi) =
+80∑
+j=0
+80∑
+k=0
+ψτj(Ak)ψτj(tk)
+=
+80∑
+k=0
+ψ(Ak)
+80∑
+j=0
+τj(tk)
+= 81 ψ(A0).
+Combining this with (19), we ﬁndψ(A0) = 2β2. Note that A0 has coeﬃcients
+±1, 0 only because Zi has coeﬃcients±1, 0 only. Hence ψ(A0) =∑255
+i=0aiζi
+256
+with|ai|≤ 1. Note that 1,ζ 256,...,ζ 127
+256 are linearly independent over Q and
+2β2 =−2 + 4ζ8 + 4ζ 3
+8 =ψ(A0) =
+127∑
+i=0
+(ai−ai+128)ζi
+256.
+This is a contradiction because |ai−ai+128|≤ 2< 4 for all i. □
+Lemma 6.5 Letu = 28· 34 and assume that Zi∈ Z[Cu] satisﬁes (9). Let χ
+be a character of Cu of order 28t wheret divides 27, and let τ be a character
+of Cu of order 28· 34. Then the following hold.
+(a) There is a root of unity η such that χ(Zi)η∈{ 0, 6}.
+(b) There is a root of unity η such that τ(Zi)η∈{ 0, 2(ζ3−ζ 2
+3)β, 2(ζ3−ζ 2
+3) ¯β}.
+15
+Proof Let σ be a character of Cu of order 2 8t such that χ =σ3. By Lemma
+6.4 we have σ(Zi)≡ 0 (mod 1 −ζ3). Let K ={h∈ Cu : σ(h) = 1} and let
+ρ :Cu→Cu/K be the canonical epimorphism. Note that σ and thus χ can
+be viewed as a character of Cu/K, too. By Result 2.3, the kernel of σ on
+Z[Cu/K] is
+{XU 2 +YU 3 :X,Y ∈ Z[Cu/K]}
+where U2 and U3 are subgroups of order 2, respectively 3, of Cu/K. Hence
+ρ(Zi) = (1−a)A +XU 2 +YU 3 with A,X,Y ∈ Z[Cu/K]} and where a is an
+element of Cu/K with σ(a) = ζ3. Note that χ(a) = σ(a)3 = 1, χ(U2) = 0,
+and χ(U3) = 3. Hence
+χ(Zi) =χ(ρ(Zi)) = 3χ(Y )≡ 0 (mod 3).
+In view of Lemma 6.4, this implies ( a).
+Now assume that (b) does not hold. Then by part (a), (9), and Lemma
+6.4, we have ψ(Zi) ≡ 0 (mod 6) for all characters ψ of Cu. Thus Zi =
+3X +C3Y with X,Y ∈ Z[Cu] by Ma’s Lemma. Since Zi has coeﬃcients
+±1, 0 only, this implies thatZi is a multiple ofC3. But this implies τ(Zi) = 0
+contradicting our assumption. □
+Lemma 6.6 Letu = 28· 34 and assume that Zi∈ Z[Cu] satisﬁes (9). Let α
+and δ be elements of Cu of order 3, respectively 8. Write
+A = (1 + δ +δ3)(α−α2),
+B = (1 −δ−δ3)(α−α2).
+There are c,d∈Cu and x,y∈{− 1, 0, 1} such that
+Zi = (1−δ4)(cxA +dyC3) or Zi = (1−δ4)(xcB +dyC3). (20)
+Proof Forj = 0,..., 4, letχj be a character of Cu of order 28· 3j. By Lemma
+6.5 there are hj∈Cu and ϵj∈{− 1, 0, 1} such that
+χj(Zi) = 6ϵjχj(hj), j = 0,..., 3. (21)
+Let h4 be any element of Z[Cu] with
+χ4(h4) =χ4(Zi)/2. (22)
+16
+We claim that
+27Zi = (1−δ4)[ϵ0h0C81 +ϵ1h1(3C27−C81) +ϵ2h2(9C9− 3C27)
++ϵ3h3(27C3− 9C9) +h4(27− 9C3)]. (23)
+By Result 2.1, to verify (23), we need to show that the character values of
+both sides of (23) are the same for all characters of Cu. But this follows from
+(9), (21), and (22). Thus (23) holds.
+Considering (23) modulo 3 we ﬁnd (1−δ4)(ϵ0h0C81−ϵ1h1C81)≡ 0 (mod
+3). This implies ϵ0h0C81 =ϵ1h1C81. Similarly, we deduce ϵ1h1C27 =ϵ2h2C27
+and ϵ2h2C9 =ϵ3h3C9. Hence we have
+27Zi = (1−δ4)(27ϵ3h3C3 +h4(27− 9C3)). (24)
+If χ4(Zi) = 0, then we can choose h4 = 0. Then Zi = (1−δ4)ϵ3h3C3 and
+thus (20) holds.
+Now assume χ4(Zi)̸= 0. By Lemma 6.5 (b) there is a root of unity η
+such that χ4(Zi)η∈{ 2(ζ3−ζ 2
+3)β, 2(ζ3−ζ 2
+3) ¯β} whereβ = 1 +ζ8 +ζ 3
+8. Hence
+we can choose
+h4 =±c(α−α2)(1 +δ +δ3) or h4 =±c(α−α2)(1−δ−δ3) (25)
+for some c∈ Cu. Note h4C3 = 0. Thus substituting (25) into (24) gives
+Zi = (1−δ4)(ϵ3h3C3±c(α−α2)(1 +δ +δ3)) or Zi = (1−δ4)(ϵ3h3C3±c(α−
+α2)(1−δ−δ3)). Thus (20) holds in all cases. □
+The following two theorems completely classify circulant weighing matri-
+ces CW(v, 36) where v is a product of a power of 2 and a power of 3.
+Theorem 6.7 Let D be a CW(v, 36) where v is a product of a power of 2
+and a power of 3. Let α and γ be elements of Cv of order 3, respectively 16.
+Write
+A1 = (1 + γ2 +γ6)(α−α2),
+A2 = (1 −γ2−γ6)(α−α2),
+B = −1 + (1−γ4)(γ +γ3) + (α +α2)(1 +γ4).
+17
+Then, up to equivalence,
+D = (1 +γ8)B + (1−γ8)(cAi +dC3) (26)
+with i∈{ 1, 2}, c,d∈Cv. Furthermore, the supports of B, (1−γ8)cAi, and
+(1−γ8)dC3 are pairwise disjoint.
+Proof Using the notation of Lemma 6.2, we can assume
+D = (1−γ8)X + (1 +γ8)Y (27)
+with X,Y ∈ Z[Cv] such that ρ(Y ) is a CW(24 , 9). Furthermore, in view
+of Theorem 5.1, we can assume Y = B. So it only remains to show that
+(1−γ8)X can be written in the form
+(1−γ8)X = (1−γ8)(cAi +dC3). (28)
+Writeu = 28· 34 and v′ = lcm(u,v ). Using the notation of Lemma 6.3, we
+have
+(1−γ8)X =
+k∑
+i=1
+Ziai (29)
+with Z1,...,Z k∈ Cu, a1,...,a k∈ Cv′. Furthermore, we can assume Zi̸= 0
+for all i and that the supports of the elements Ziai, i = 1,...,k , are pairwise
+disjoint. Note that, by (27), the support of (1 −γ8)X consists of exactly
+18 elements since the support of D, respectively Y , consists of exactly 36
+respectively 9, elements. Recall that
+Zi = (1−γ8)(cxA +dyC3) or Zi = (1−γ8)(xcB +dyC3).
+by Lemma 6.6 (where c,d,x,y depend on i).
+Using the notation of Lemma 6.6, we divide the Zi into types as follows:
+Type 1: x̸= 0, y = 0
+Type 2: x = 0, y̸= 0
+Type 3: x̸= 0, y̸= 0.
+Suppose Zi is of Type 3. Note that there cannot be any overlap in the
+supports of the terms comprising Zi since otherwise Zi would have a coef-
+ﬁcient±2. Hence the support of Zi consists of exactly 18 elements. This
+implies k = 1, and thus (28) holds.
+18
+Now assume there is no Zi of Type 3. Since the support of (1 −γ8)X
+consists of exactly 18 elements, one of the following must occur.
+Case 1: There are threeZi’s of Type 2 and noZi of Type 1. But then χ(D) =
+0 for all characters ofCv withχ(γ8) =−1 andχ(α) =ζ3 contradicting Result
+2.2. Thus Case 1 cannot occur.
+Case 2: There is exactly one Zi of Type 1 and exactly one Zi of Type 2.
+Then (28) holds.
+We have shown that (28) holds in all cases which concludes the proof. □
+Theorem 6.8 Write
+M1 = {γ,γ 3,γ 5,γ 7},
+M2 = {γ2,γ 6,γ 10,γ 14},
+M3 = {γ,γ 3,γ 4,γ 5,γ 7}.
+If the supports ofB, (1−γ8)cAi, and (1−γ8)dC3 in (26) are pairwise disjoint,
+then D is a CW(v, 36). This occurs if and only if one of the following holds.
+(i) c̸∈C48 and d̸∈C48∪C48c.
+(ii) c̸∈C48 and d∈M2C3.
+(iii) c̸∈C48 and d∈cM3C3∪cγ8M3C3.
+(iv) c∈M1∪M1γ8 and d̸∈C48.
+(v) c∈M1∪M1γ8 and d∈M2C3.
+Proof If the supports of B, (1−γ8)cAi, and (1−γ8)dC3 in (26) are pairwise
+disjoint, then D has coeﬃcients±1, 0 only. Straightforward checking shows
+that|χ(D)|2 = 36 for all characters χ of Cv. Hence D is a CW(v, 36). The
+necessary and suﬃcient condition for the disjointness of supports also follows
+by straightforward checking. □
+Corollary 6.9 There exist proper CW(v, 36) for all v≡ 0 (mod 48) .
+19
+Proof Condition (i) of Theorem 6.8 shows that there are proper CW(48, 36)’s.
+Condition (iv) guarantees the existence of proper CW( v, 36) for all v >48
+divisible by 48. □
+We conclude our paper by a theorem summarizing our results.
+Theorem 6.10 LetD be a proper CW(v,n ) where bothv andn are products
+of powers of 2 and 3. Then n∈{ 4, 9, 36}.
+(a) If n = 4, then one of the following holds.
+(i) v >2, v≡ 0 (mod 2) and D is equivalent to (1 +g) + (1−g)h whereg
+is an element of Cv of order 2 and h∈Cv\⟨g⟩.
+(ii) v = 7 and D is equivalent to−1 +k3 +k5 +k6 wherek is a generator of
+C7.
+(b) If n = 9, then v = 24 and D is equivalent to
+−1 + (1−δ4)(δ +δ3) + (α +α2)(1 +δ4).
+whereα and δ are elements of order 3, respectively 8, in C24.
+(c) If n = 36, then D is equivalent to
+D = (1 +γ8)B + (1−γ8)(cAi +dC3)
+wherei∈{ 1, 2}, α and γ are elements of Cv of order 3, respectively 16,
+A1 = (1 + γ2 +γ6)(α−α2),
+A2 = (1 −γ2−γ6)(α−α2),
+B = −1 + (1−γ4)(γ +γ3) + (α +α2)(1 +γ4),
+and c,d∈Cv, such that one of the following conditions is satisﬁed.
+(i) c̸∈C48 and d̸∈C48∪C48c.
+(ii) c̸∈C48 and d∈M2C3.
+(iii) c̸∈C48 and d∈cM3C3∪cγ8M3C3.
+(iv) c∈M1∪M1γ8 and d̸∈C48.
+20
+(v) c∈M1∪M1γ8 and d∈M2C3.
+Here
+M1 = {γ,γ 3,γ 5,γ 7},
+M2 = {γ2,γ 6,γ 10,γ 14},
+M3 = {γ,γ 3,γ 4,γ 5,γ 7}.
+References
+[1] M.H. Ang, K.T. Arasu, S.L. Ma, Y. Strassler: Study of proper circulant
+weighing matrices with weight 9. Discrete Math. 308 (2008), 2802–
+2809.
+[2] K.T. Arasu, J.F. Dillon: Perfect ternary arrays. In: Diﬀerence sets,
+sequences and their correlation properties, NATO Adv Sci Inst Ser C
+Math Phys Sci 542, Kluwer 1999, 1–15.
+[3] K.T. Arasu, J.F. Dillon, D. Jungnickel, A. Pott: The solution of the
+Waterloo problem. J. Combin. Theory A 71 (1995), 316–331.
+[4] K.T. Arasu, K.H. Leung, S.L. Ma, A. Nabavi, D.K. Ray-Chaudhuri:
+Determination of all possible orders of weight 16 circulant weighing
+matrices. Finite Fields Appl. 12 (2006) 498–538.
+[5] K.T. Arasu, K.H. Leung, S.L. Ma, A. Nabavi, D.K. Ray-Chaudhuri:
+Circulant weighing matrices of weight 22t. Des. Codes Crypt. 41 (2006),
+111–123.
+[6] T. Beth, D. Jungnickel, H. Lenz: Design Theory (2nd edition). Cam-
+bridge University Press 1999.
+[7] Z.I. Borevich, I.R. Shafarevich: Number Theory. Academic Press, New
+York/San Francisco/London 1966.
+[8] P. Eades: Circulant ( v,k,λ )-designs. In: Combinatorial Mathematics
+VII, Lecture Notes in Math. 829, Springer 1980, 83–93.
+21
+[9] P. Eades, R.M. Hain: On Circulant Weighing Matrices. Ars Comb. 2
+(1976), 265–284.
+[10] L. Epstein: The classiﬁcation of circulant weighing matrices of weight
+16 and odd order . M.Sc. Thesis, Bar-Ilan University, 1998.
+[11] C. Koukouvinos, J. Seberry: Weighing matrices and their applications.
+J. Stat. Plann. Inf. 62 (1997), 91–101.
+[12] T.Y. Lam, K.H. Leung: On Vanishing Sums of Roots of Unity. J.
+Algebra 224 (2000), 91–109.
+[13] K.H. Leung, S.L. Ma, B. Schmidt: Constructions of Relative Diﬀerence
+Sets with Classical Parameters and Circulant Weighing Matrices. J.
+Combin. Theory A 99 (2002), 111–127.
+[14] K.H. Leung and B. Schmidt: Finiteness of Circulant Weighing Matrices
+of Fixed Weight. Submitted.
+[15] S.L. Ma: Polynomial addition sets. Ph.D. thesis, University of Hong
+Kong, 1985.
+[16] A. Pott: Finite geometry and character theory. Lecture Notes 1601,
+Springer 1995.
+[17] B. Schmidt: Cyclotomic integers and ﬁnite geometry. J. Am. Math.
+Soc. 12 (1999), 929–952.
+[18] B. Schmidt: Characters and cyclotomic ﬁelds in ﬁnite geometry . Lec-
+ture Notes in Mathematics 1797, Springer 2002.
+[19] Y. Strassler: The classiﬁcation of circulant weighing matrices of weight
+9. Ph.D. Thesis, Bar-Ilan University 1997.
+[20] R.J. Turyn: Character sums and diﬀerence sets. Paciﬁc J. Math. 15
+(1965), 319–346.
+22

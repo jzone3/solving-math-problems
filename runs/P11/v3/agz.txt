@@ -1,0 +1,605 @@
+arXiv:1908.08447v3  [math.CO]  11 May 2021
+Noname manuscript No.
+(will be inserted by the editor)
+New Nonexistence Results on Circulant Weighing Matrices
+K. T. Arasu · Daniel M. Gordon · Yiran Zhang
+November 2, 2020
+Abstract A weighing matrix W = ( wi,j) is a square matrix of order n and entries wi,j in {0, ±1} such
+that W W T = kIn. In his thesis, Strassler gave a table of existence results for circu lant weighing matrices
+with n ≤ 200 and k ≤ 100.
+In the latest version of Strassler’s table given by Tan, there are 34 open cases remaining. In this paper
+we give nonexistence proofs for 12 of these cases, report on pre liminary searches outside Strassler’s table,
+and characterize the known proper circulant weighing matrices.
+Keywords weighing matrices, circulant matrices, multipliers
+Mathematics Subject Classiﬁcation (2010) MSC 05B20 · MSC 05B10
+1 Introduction
+A weighing matrix W = W (n, k ) with weight k is a square matrix of order n with entries wi,j in {-1, 0, +1 }
+such that W W T = kIn where W T is the transpose of W and In is the n × n identity matrix.
+A circulant weighing matrix C = CW (n, k ) is a weighing matrix in which every row except for the ﬁrst
+is a right cyclic shift of the previous row. Let P be the set of locations with a +1 in the ﬁrst row, and N
+be the locations with a −1. Then |P | + |N | = k.
+The following facts are well known:
+i. k = s2 for some positive integer s
+ii. |P | = s2+s
+2
+iii. |N | = s2−s
+2
+|P | and |N | are chosen by convention, since −C is also a circulant weighing matrix. For further infor-
+mation on weighing matrices, we refer the reader to [2], [3], [4].
+In his 1997 thesis [21], Strassler gave a table of known results on suc h matrices with n ≤ 200 and
+k ≤ 100. Over the years, many open cases in his table have been resolve d. In Tan’s 2018 version of the table
+[22], there are 34 open cases remaining. In this paper, we will show th at no CW (n, k ) exists for twelve of
+those cases.
+REU research supported by an NSF grant, and presented at the Y oung Mathematicians’ Conference at OSU August 2015
+K. T. Arasu
+Riverside Research, 2640 Hibiscus W ay, Beavercreek, OH 454 31,
+E-mail: karasu@riversideresearch.org
+Daniel M. Gordon
+Center for Communications Research, 4320 W esterra Court, S an Diego, CA 92121,
+E-mail: gordon@ccrwest.org
+Yiran Zhang
+Loyola University, Chicago, IL 60660,
+E-mail: yzhang45@luc.edu
+2 K. T. Arasu, Daniel M. Gordon, Yiran Zhang
+2 Group Rings and Multipliers
+It is convenient to think of circulant weighing matrices CW (n, k ) as elements of a group ring. Let R
+be a commutative ring with identity iR and G be a ﬁnite multiplicatively written group of order n. Let
+R[G] = {∑
+g∈G agg | ag ∈ R} denote the group ring of G over R.
+Deﬁnition 2.1 For an integer t and A = ∑
+g∈G agg, deﬁne A(t) = ∑
+g∈G aggt.
+In this paper, we will be working with Z[Zn], the group ring of the cyclic group Zn of order n over Z,
+the ring of integers. A CW (n, k ) is an element A of Z[Zn] with all coeﬃcients in {0, ±1} such that
+AA(−1) = k. (1)
+If the coeﬃcients of A are in {0, ±1, ±2, . . . , ±m}, then we will call it an integer circulant weighing matrix ,
+denoted ICW m(n, k ).
+Representing elements of Zn as {1, X, X 2, . . . , X n−1} modulo ( X n − 1), we may think of CW (n, k ) as
+a polynomial in Z[X]/ (X n − 1). For example, a circulant weighing matrix CW (7, 4)
+
+
+
+
+
+
+
+
+
+
+− + + 0 + 0 0
+0 − + + 0 + 0
+0 0 − + + 0 +
++ 0 0 − + + 0
+0 + 0 0 − + +
++ 0 + 0 0 − +
++ + 0 + 0 0 −
+
+
+
+
+
+
+
+
+
+
+is equivalent to
+A(X) = −1 + X + X 2 + X 4.
+The group ring element is given by the ﬁrst row of the matrix, and (1) applies both the the matrix and
+group ring element.
+We will generally leave the mod( X n − 1) implicit. For any integer s, X sA(X) is an equivalent CW, a
+cyclic shift of A. For an integer t, A(t) = A(X t) denotes the image of A under the group homomorphism
+x → xt, extended linearly to all of Z[Zn]. If gcd(t, n ) = 1, then this map is an automorphism. If gcd( t, n ) = d,
+then A(t) is an ICW d(n/d, k ).
+A prime p is called self-conjugate modulo n if there is an integer i with
+pi ≡ −1 mod v(n),
+where v(n) is the largest divisor of n relatively prime to p. The following result of Lander, given in this
+form for group rings in [14], will be used below.
+Theorem 2.2 For an abelian group G of order n, if A ∈ Z[G] satisﬁes
+AA(−1) ≡ 0 mod p2a,
+for a positive integer a and prime p, and p is self-conjugate mod n then,
+A ≡ 0 mod pa.
+Next, we will discuss multipliers.
+Deﬁnition 2.3 Let G be a ﬁnite abelian group of order n and D be a subset of G. Let t be an integer
+relatively prime to n. If D(t) = Dg for some g in G, then t is called a multiplier of D.
+The following theorem is well-known; see, for example, [3]:
+Theorem 2.4 Let A be a CW (n, k ), where k = p2r is a prime power, and gcd(n, k ) = 1 . Then p is a
+multiplier of A. Furthermore, p ﬁxes some translate of A.
+New Nonexistence Results on Circulant W eighing Matrices 3
+We will frequently use this theorem. When a CW (n, k ) has a multiplier p, then some translate of it is
+ﬁxed by the group generated by p mod n, and so P and N must both be unions of orbits of Zn under the
+action of multiplying by p. For example, 2 is a multiplier of CW (7, 4), and the presentation given above is
+ﬁxed by it:
+A(2) = A(X 2) = −1 + X 2 + X 4 + X 8 ≡ A (mod X 7 − 1).
+The orbits of 2 mod 7 are {0}, {1, 2, 4} and {3, 5, 6}, so the only possibilities are N = {0} and P being one
+of the other orbits, both of which give (equivalent) CW (7, 4)s. Needing to exhaust unions of orbits instead
+of arbitrary subsets will often transform an infeasible search into a feasible one, and allow us to handle the
+cases in this paper by hand.
+Let n = dm, with d, m > 1. We may reduce A = ∑ n−1
+i=0 aiX i modulo X m − 1 to get
+B =
+m−1∑
+i=0
+
+
+d−1∑
+j=0
+ai+jm
+
+ X i =
+m−1∑
+i=0
+biX i.
+The bi’s are called the intersection numbers. They have been extensively used for studying the existence
+of diﬀerence sets, circulant weighing matrices ([21] called it folding), and supplementary diﬀerence sets [10].
+Lemma 2.5 For an ICW (n, k ) circulant weighing matrix A as above,
+m−1∑
+i=0
+bi = s, (2)
+m−1∑
+i=0
+b2
+i = s2 = k, (3)
+where |bi| ≤ d.
+Note that if d ≤ s, then for any 0 ≤ i < m , these equations have a trivial solution bi = s and bj = 0 for
+i ̸= j. If Theorem 2.2 applies with pa = s, then the trivial solutions are the only ones.
+B(X) is an ICW d(m, w ). If A(X) is equivalent to B(X d) for any d > 1, then A is called a multiple of
+B(X). If A(X) is not a multiple of any CW , then it is called proper.
+In this paper, we will consider possible circulant weighing matrices in Zn = Zd × Zm, where d and m are
+relatively prime. If p is a multiplier for a CW (n, k ) matrix A, then we may assume that a translate of A is
+ﬁxed by the group ⟨p⟩ (mod n), and so P and N must each be the union of orbits of the multiplier group.
+This applies to the folded versions in Zd and Zm as well, so we may use Lemma 2.5 to get information
+about what orbits are in P and N in the two subgroups, and from that limit the possibilities for orbits in
+the full group.
+For any of the cases in Strassler’s table, Equations (2) and (3) will b e small enough that we can solve
+them either by hand or with a short computer exhaust. The bulk of e ach proof will show that none of those
+pairs of solutions corresponds to a circulant weighing matrix.
+Since this method will be used repeatedly, we will formalize it here. Let σ and τ be projections from Zn
+to Zd and Zm, respectively. Let the orbits of Zn be
+N1, N2, . . . Nw,
+the orbits of Zd be
+D1, D2, . . . Du,
+and the orbits of Zm be
+M1, M2, . . . Mv.
+Bij = {B1
+ij, B2
+ij, . . . , Bl
+ij} will denote the set of orbits N which map to orbits Di and Mj under σ and
+τ. This information may be represented as a matrix shown in Table 1, wh ere the row and column sums
+r = (r1, . . . , r u) and c = (c1, . . . , c v) are the sum of the orders of the orbits in that line in P minus the sums
+of the orders in N . The intersection numbers of Lemma 2.5 are ri/ |Di| and cj/ |M|.
+4 K. T. Arasu, Daniel M. Gordon, Yiran Zhang
+Zm
+Zd M1 M2 . . . Mv
+D1 B1,1 B1,2 B1,v r1
+D2 B2,1 B2,2 B2,v r2
+.
+.
+.
+. . .
+Du Bu,1 Bu,2 Bu,v ru
+c1 c2 cv
+T able 1 Orbit table for CW (n, k)
+Z7
+Z9 ⟨0⟩1 ⟨1⟩3 ⟨3⟩3
+⟨0⟩1 ⟨0⟩1 ⟨9⟩3 ⟨27⟩3
+⟨1⟩6 ⟨7⟩6 ⟨1⟩6 ⟨11⟩6 ⟨23⟩6 ⟨5⟩6 ⟨13⟩6 ⟨31⟩6
+⟨3⟩2 ⟨21⟩2 ⟨15⟩6 ⟨3⟩6
+T able 2 CW (63,42) Orbits
+Z7
+Z9 ⟨0⟩1 ⟨1⟩3 ⟨3⟩3
+⟨0⟩1 ⟨0⟩1 ⟨27⟩3 4
+⟨1⟩6 ⟨11⟩6 ⟨31⟩6 0
+⟨3⟩2 0
+1 3 · (2) 3 · (−1)
+T able 3 Solution representing a CW (63,42)
+To illustrate the method that will be used throughout this paper, co nsider a CW (63, 16). By Theorem 2.4
+2 is a multiplier, and the orbits of Z63 are shown in Table 2, where each orbit is represented by its generat or
+in the appropriate group, and the subscript gives the size of the or bit. A CW (63, 16) is given in Table 2
+where the sets in P are in bold. Note that the intersection numbers (4 , 0, 0) and (1 , 2, −1) satisfy Lemma 2.5.
+Also, by Theorem 2.2 with n = 9 and p = 2 we have the intersection numbers mod 9 must be trivial. There
+is one other inequivalent solution, which has the same intersection nu mbers.
+In the next section we will use this framework to demonstrate that various CW (n, k ) do not exist. For
+small cases this can be done by hand. A computer search dealing with larger cases will be discussed in
+Section 5.
+3 Nonexistence Results
+In this section, we present proofs of nonexistence for several o f the open cases in Strassler’s table. All these
+proofs may be done by hand, without computer assistance. In late r sections, we will look at more diﬃcult
+parameters, where more substantial computation is needed.
+Proposition 3.1 A CW (110, 81) does not exist.
+Proof Suppose a CW (110, 81) exists. Then |P | = 45 , |N | = 36 and 3 is its multiplier. Note that Z110 =
+Z11 × Z10. The Z11 orbits under the multiplier action x → 3x are:
+{0}
+{1, 3, 9, 5, 4}
+{2, 6, 7, 10, 8}
+The Z10 orbits under the multiplier action x → 3x are:
+{0}
+New Nonexistence Results on Circulant W eighing Matrices 5
+Z11
+Z10 ⟨0⟩1 ⟨1⟩5 ⟨2⟩5
+⟨0⟩1 ⟨0⟩1 ⟨20⟩5 ⟨10⟩5 9
+⟨5⟩1 ⟨55⟩1 ⟨5⟩5 ⟨35⟩5 0
+⟨1⟩4 ⟨11⟩4 ⟨3⟩20 ⟨7⟩20 0
+⟨2⟩4 ⟨22⟩4 ⟨4⟩20 ⟨2⟩20 0
+y1 5y2 5y3
+T able 4 Orbit information for CW (110,81)
+{5}
+{1, 3, 9, 7}
+{2, 6, 8, 4}
+Since 3 is self-conjugate mod 10, by Theorem 2.2 the intersection nu mbers mod 10 are trivial. Without
+loss of generality we may take the ﬁrst row sum to be 9, and the othe rs zero (there is no way to get the last
+two rows to sum to zero, and if the second row sum was 9 we can shift each element of P and N by 55).
+The only way for the ﬁrst row to sum to 9 is for ⟨0⟩1 to be in N , and ⟨20⟩5 and ⟨10⟩5 to be in P .
+Applying Lemma 2.5, we get equations
+y1 + 5(y2 + y3) = 9 (4)
+and
+y2
+1 + 5(y2
+2 + y2
+3) = 81 (5)
+for Z11. Since for each row the size of the ﬁrst column orbit is diﬀerent from the other two, the other row
+sums being zero means that their ﬁrst column orbit cannot be in P or N , so we must have y1 = −1. But
+equations (4) and (5) have no integer solutions with y1 = −1.
+Proposition 3.2 Suppose m is an integer for which gcd(33, m ) = 1 , and 3 is self-conjugate modulo m.
+Then no CW (11 · m, 81) exists.
+Proof For any n = 11 · m, we may make a table of orbits similar to Table 4. Since gcd(3 , m ) = 1, 3 is a
+multiplier. The orbits mod 11 will be the same, and since 3 is self-conjug ate mod m,, by Theorem 2.2 the
+intersection numbers mod m must be trivial. As before the ﬁrst row sum must be 9, so that again t he ⟨0⟩1
+orbit must be in N . All the other row sums are 0, and since each row has orbits of size o, 5 o and 5 o, that
+means that the orbit in the ﬁrst column cannot be in P or N . Therefore y1 in equations (4) and (5) would
+need to be −1, and those equations still have no such integer solutions.
+This rules out many such parameters, one of which is in Strassler’s ta ble and was open:
+Corollary 3.3 A CW (154, 81) does not exist.
+The same method, with diﬀerent orbits, may be used for other para meters.
+Proposition 3.4 A CW (130, 81) does not exist.
+Proof The orbit information is given in Table 5. While 3 is self-conjugate modulo 10, the orbit structure is
+diﬀerent, so the argument is not quite as straightforward.
+Without loss of generality, by Theorem 2.2 we take the ﬁrst row sum t o be 9, so three of the four 3-orbits
+must be in P . The other row sums are 0, so the ﬁrst column can never be included , and the other four
+columns for each row must have the same number of orbits in N and P . No orbits can come from the second
+row, since N has order 36 ≡ 0 (mod 1)2, and all the other orbits are 12-orbits.
+6 K. T. Arasu, Daniel M. Gordon, Yiran Zhang
+Z13
+Z10 ⟨0⟩1 ⟨1⟩3 ⟨2⟩3 ⟨4⟩3 ⟨7⟩3
+⟨0⟩1 ⟨0⟩1 ⟨40⟩3 ⟨70⟩3 ⟨10⟩3 ⟨20⟩3 9
+⟨5⟩1 ⟨65⟩1 ⟨35⟩3 ⟨5⟩3 ⟨25⟩3 ⟨85⟩3 0
+⟨1⟩4 ⟨13⟩4 ⟨3⟩12 ⟨19⟩12 ⟨17⟩12 ⟨7⟩12 0
+⟨2⟩4 ⟨26⟩4 ⟨14⟩12 ⟨2⟩12 ⟨4⟩12 ⟨8⟩12 0
+y1 3y2 3y3 3y4 3y5
+T able 5 Orbit information for CW (130,81)
+Z13
+Z11 ⟨0⟩1 ⟨1⟩3 ⟨2⟩3 ⟨4⟩3 ⟨7⟩3
+⟨0⟩1 ⟨0⟩1 ⟨22⟩3 ⟨44⟩3 ⟨77⟩3 ⟨11⟩3 x1
+⟨1⟩5 ⟨26⟩5 ⟨1⟩15 ⟨5⟩15 ⟨4⟩15 ⟨20⟩15 5x2
+⟨2⟩5 ⟨13⟩5 ⟨29⟩15 ⟨2⟩15 ⟨10⟩15 ⟨7⟩15 5x3
+x 3y0 3y1 3y2 3y3
+T able 6 Orbit information for CW (143,81)
+The Z13 equations from Lemma 2.5 are:
+y1 + 3y2 + 3y3 + 3y4 + 3y5 = 9 (6)
+and
+y2
+1 + 3y2
+2 + 3y2
+3 + 3y2
+4 + 3y2
+5 = 81. (7)
+The only solutions with y1 = 0 are permutations of (0 , 3, 3, −3, 0). But there is no way to get a column
+sum of −3 with zero or one 3-orbits from the ﬁrst row in P and some number of 12-orbits in P or N .
+Proposition 3.5 A CW (143, 81) does not exist.
+Proof Suppose a CW (143, 81) exists; |P | = 45, |N | = 36 and 3 is its multiplier. Note that Z143 = Z11 × Z13.
+The Z11 orbits under the multiplier action x → 3x are:
+{0}
+{1, 3, 9, 5, 4}
+{2, 6, 7, 10, 8}
+The Z13 orbits under the multiplier action x → 3x are:
+{0}
+{1, 3, 9}
+{2, 6, 5}
+{4, 12, 10}
+{7, 8, 11}
+Table 6 gives the orbit information.
+Unfortunately, 3 is not self-conjugate modulo 11 or 13, so we need to work a bit harder.
+New Nonexistence Results on Circulant W eighing Matrices 7
+Z13
+Z11 ⟨0⟩1 ⟨1⟩3 ⟨2⟩3 ⟨4⟩3 ⟨7⟩3
+⟨0⟩1 ⟨44⟩3 ⟨77⟩3 −6
+⟨1⟩5 ⟨1⟩15 ⟨5⟩15 ⟨4⟩15 15
+⟨2⟩5 ⟨2⟩15 ⟨10⟩15 0
+0 15 −3 −3 0
+T able 7 A choice of orbits satisfying the equations ( not a CW (143,81)). P orbits are in bold
+Applying Lemma 2.5, we get equations
+y1 + 3(y2 + y3 + y4 + y5) = 9
+y2
+1 + 3(y2
+2 + y2
+3 + y2
+4 + y2
+5) = 81
+for Z13, and
+x1 + 5(x2 + x3) = 9
+x2
+1 + 5(x2
+2 + x2
+3) = 81
+for Z11.
+For Z11 the integer solutions are (9 , 0, 0), (4 , 3, −2), and ( −6, 3, 0) (together with swapping the second
+and third coordinates).
+The ﬁrst one is impossible, since it forces three size-3 orbits in the ﬁr st row to be in P , leaving 36
+remaining elements, but the orbits in the other rows all have size a mu ltiple of 5. Similarly for the second
+solution, the ﬁrst row sum being 4 means that we either have orbits in the ﬁrst row contributing 4 (the
+size-1 and a size-3 orbit in P , and none in N ) or 7 (the size-1 and two size-3 orbits in P , and the remaining
+orbit in N ), but again the number of remaining elements is not a multiple of 5.
+Finally for ( x1, x 2, x 3) = ( −6, 3, 0), the ﬁrst row is forced to have two size-3 orbits in N and none in P ,
+or three in N and one in P . The latter is impossible, since it would leave 42 elements in P and 27 in N
+to be covered by the orbits in the other rows, all of which have size a multiple of 5. The former leaves 45
+elements of P and 30 of N for the other rows, and so one row must have two size-15 orbits in P and one in
+N , while the other has one of each. The size-5 orbits cannot be used, so x must be 0.
+There are three solutions to the Z13 equations with y1 = 0: (0 , 3, 3, 0, −3), (0, 4, 1, 1, −3), and (0, 5, 0, −1, −1),
+as well as permutations of the last four coordinates.
+The ﬁrst two may be quickly eliminated; in both cases we need a column s um equal to −9, and it is not
+possible to achieve this. However, the third solution can be satisﬁed . Table 7 shows a selection satisfying
+all the equations, although the orbits do not form a CW (143, 81).
+To ﬁnish the proof, consider the orbits in Z13. There are six ways to pick two of the four columns with
+column sum −3, and then two ways to pick which of the other columns has sum 15. F or each of these 12
+choices, we can check that (1) is not satisﬁed. For example, the ch oices in Table 7 give
+A(X) ≡ 5X ⟨1⟩ − X ⟨2⟩ − X ⟨4⟩ (mod X 13 − 1),
+where X ⟨a⟩ = ∑
+b∈⟨a⟩ X b for the orbit ⟨a⟩ in Z13, and we ﬁnd
+A(X)A(X −1) ≡ 81 + 18
+(
+X ⟨1⟩ + X ⟨2⟩ − X ⟨4⟩ + X ⟨7⟩
+)
+(mod X 13 − 1) ̸= 81.
+Finally, we have:
+Proposition 3.6 A CW (143, 36) does not exist.
+8 K. T. Arasu, Daniel M. Gordon, Yiran Zhang
+Proof Since k is not a prime power, Theorem 2.4 does not apply. However, a more ge neral multiplier theorem
+([5], Theorem 2.4) shows that 3 is still a multiplier, and so the orbit infor mation is exactly the same as in
+Table 6.
+The table is the same, but the equations are
+y1 + 3(y2 + y3 + y4 + y5) = 6
+y2
+1 + 3(y2
+2 + y2
+3 + y2
+4 + y2
+5) = 36
+for Z13, and
+x1 + 5(x2 + x3) = 6
+x2
+1 + 5(x2
+2 + x2
+3) = 36
+for Z11.
+The solutions to the Z11 equations are (6 , 0, 0), ( −4, 2, 0) and ( −4, 0, 2). The solutions to the Z13 equa-
+tions are (6 , 0, 0, 0, 0) and (0 , 2, 2, −2, 0) and permutations of the last four coordinates.
+But none of the Z11 and Z13 are compatible; (6 , 0, 0) would force two or more of the size-3 orbits in
+the ﬁrst row to be in P . The corresponding columns would then have weight 3 (mod 15), whic h does not
+ﬁt with any of the Z13 solutions. Similarly, ( −4, 2, 0) or ( −4, 0, 2) would force the ⟨0⟩1 orbit to be in N , so
+that the ﬁrst column would have weight 4 (mod 5), which is not compat ible with any of the Z13 solutions.
+4 Contracted Circulant Weighing Matrices
+For most of the remaining open cases in Strassler’s table, we do not h ave any multipliers from Theorem 2.4,
+either because k is composite or not relatively prime to n.
+The following theorem, due to McFarland [18], will sometimes allow us to o btain multipliers in these
+cases:
+Theorem 4.1 Let M be an ICW d(m, k ) with gcd(m, k ) = 1 . Let k have prime factorization pe1
+1 · · · pes
+s . If
+t is an integer for which there are fi for i = 1, 2, . . . , s with
+t ≡ pfi
+i (mod m), (8)
+then t is a multiplier of M .
+Thus for A a putative CW (n, k ), we may apply this theorem to A(d) for d = gcd(n, k ). If such a t exists,
+we will call it a d-multiplier for A if we can ﬁnd a t satisfying (8), and we may apply the methods of the
+previous section.
+Proposition 4.2 A CW (132, 81) does not exist.
+Proof By Theorem 4.1, 3 is a multiplier for an ICW 3(44, 81). Table 8 gives the orbit information. Since this
+is an ICW, any of the orbits may occur with a coeﬃcient up to 3 in absolu te value.
+Since 3 is self-conjugate modulo 4, by Theorem 2.2 the row sums must be (9 , 0, 0). This means that ⟨0⟩1
+has a coeﬃcient of −1, with the other orbits in the ﬁrst row having coeﬃcients (1 , 1), (2 , 0), or (3 , −1) in
+either order.
+The solutions to the Z11 equations are (9 , 0, 0), (4 , 3, −2), ( −6, 0, 3), and permutations of the last two
+columns. But since the second and third row sums are zero, and the other orbits all have order 0 (mod 5),
+the coeﬃcient of the orbits in those rows in the ﬁrst column must be z ero. None of the solutions has ﬁrst
+coeﬃcient −1, so no ICW 3(44, 81) exists, and so no CW (132, 81) exists.
+New Nonexistence Results on Circulant W eighing Matrices 9
+Z11
+Z4 ⟨0⟩1 ⟨1⟩5 ⟨2⟩5
+⟨0⟩1 ⟨0⟩1 ⟨4⟩5 ⟨8⟩5 9
+⟨2⟩1 ⟨22⟩1 ⟨14⟩5 ⟨2⟩5 0
+⟨1⟩2 ⟨11⟩2 ⟨1⟩10 ⟨7⟩10 0
+y1 5y2 5y3
+T able 8 Orbit information for ICW 3(44,81)
+5 Strassler’s T able and Beyond
+There has been a large amount of work on entries in Strassler’s table in the past few years. In particular,
+Tan [22] showed nonexistence for 19 cases, and gave an updated v ersion of the table with 34 open cases
+remaining ( CW (126, 64) and CW (198, 100) were listed as open in Tan’s thesis, although it was already
+known that they could be constructed using Theorem 2.2 of [6]; this w as corrected in the published paper).
+The seven cases resolved above leave 27 open cases.
+Of the remaining cases, while the above methods do not yield hand-ch eckable proofs, when there is
+a suﬃciently large multiplier group a computer exhaust becomes quite feasible. The search begins in the
+upper right corner of Table 1, and scans the boxes right to left, do ing each from from the bottom to the
+top. For each orbit it in turn skips it, adds it to P , and adds it to N , updating the row and column sums
+and recursing. For every possible set of row and column sums ( r, c), we call Exhaust(u, v, |Buv|, ∅, ∅, r, c).
+Algorithm 1: Exhaustive search for CW (n, k )
+Exhaust(i,j,l,P ,N ,r,c)
+if i = j = l = 0 then // finished, test if we succeeded
+if r = c = 0 and {P, N} forms a CW (n, k) then
+report {P, N}
+return
+if l > 0 then // do orbits in this box
+Exhaust(i, j, l− 1, P, N,r,c) // recurse without lth orbit
+Exhaust(i, j, l− 1, P ∪ Bl
+i,j, N,(r1, . . . ri − |B l
+i,j|, . . . , ru),(c1, . . . cj − |B l
+i,j|, . . . , cv)) // lth orbit in P
+Exhaust(i, j, l− 1, P, N∪ Bl
+i,j,(r1, . . . ri + |Bl
+i,j|, . . . , ru),(c1, . . . cj + |Bl
+i,j|, . . . , cv)) // lth orbit in N
+else if i > 0 then
+Exhaust(i − 1, j,|Bi− 1,j|, P, N,r,c) // do next box in row
+else if rj = 0 then // row done, stop if row sum nonzero
+Exhaust(u, j − 1,|Bu,j− 1|, P, N,r,c) // start next row up
+We were able to eliminate CW (144, 49), CW (152, 49), CW (160, 49), CW (104, 81), and CW (160, 81).
+The longest of these, CW (144, 49), had 27 solutions to equations (4) and (5) modulo 9, and 252 solu tions
+modulo 16. The computation took 15 days on a workstation, and req uired testing 2 . 4 billion putative
+circulant weighing matrices.
+As stated, Algorithm 1 will ﬁnd all CW (n, k ), or show that none exist. To ﬁnd ICW m(n, k ), the same
+algorithm works, allowing up to m copies of each orbit to be added to P or N . Table 9 gives open cases
+where we can apply Theorem 4.1 with a reasonably large m. Since there is no ICW 2(91, 81), we have:
+Proposition 5.1 A CW (182, 64) does not exist.
+For the other cases, there are ICW s that could potentially be lifted to the corresponding CW. It is
+likely that further computations could eliminate some of these, similar to how [9] showed that there was no
+lift of an ICW 2(77, 36) to a CW (154, 36), or of an ICW 2(85, 64) to a CW (170, 64).
+The remaining cases either have no known multipliers or a very small mu ltiplier group, so the methods
+of this paper will not work to eliminate them. Hopefully some new ideas w ill soon allow Strassler’s table to
+be fully settled, as Lander’s table of diﬀerence set cases were twen ty years ago [13].
+10 K. T. Arasu, Daniel M. Gordon, Yiran Zhang
+n k m t |M | # ICW d(m, k)
+105 36 35 4 6 1
+112 36 7 2 3 2
+117 36 13 3 3 3
+140 36 35 4 6 1
+195 36 65 16 3 4
+140 64 35 2 12 3
+180 64 45 2 12 1
+182 64 91 2 12 0
+196 64 49 2 21 3
+132 81 44 3 10 0
+156 81 52 3 6 100
+195 81 65 3 12 2
+198 81 22 3 5 13
+156 100 39 5 4 6
+165 100 33 4 5 8
+195 100 39 5 4 6
+T able 9 ICW s for Open Cases
+n k n k n k n k n k
+105 36 116 49 140 64 156 81 112 100
+112 36 120 49 180 64 195 81 120 100
+117 36 192 49 196 64 198 81 155 100
+140 36 156 100
+180 36 165 100
+195 36 182 100
+195 100
+T able 10 Remaining Open Cases with n ≤ 200, k ≤ 100
+As with Lander’s table for diﬀerence sets, the parameters for Str assler’s table, n ≤ 200 and s ≤ 10, were
+a convenient focus on approachable problems, not a hard limit never to be exceeded. The code written for
+the above searches can handle larger numbers, so we have starte d exploring further. The second author has
+set up an online database [12], which contains a current version of t he table, along with known circulant
+weighing matrices for parameters in Strassler’s table. It also has pa rtial results for for n ≤ 1000 and k ≤ 192.
+Out of the 15982 such parameters, 1175 have CW s, 12017 do not, and 2790 remain open.
+6 Proper CW (n, k)
+Recall that a CW (n, k ) is called proper if it is not a multiple of any smaller CW , i.e. its group ring
+representation A(X) is not equal to B(X d) for any n = dm for B(X) a CW (m, k ). For example,
+A = X + X 2 + X 3 + X 6 + X 9 + X 18 − X 4 − X 12 − X 10
+is a proper CW (26, 32) (i.e. no X aA(X b) for b relatively prime to 26 has all its coeﬃcients with a common
+factor), while
+A = X 2 + X 8 + X 10 + X 12 + X 14 + X 20 − 1 − X 4 − X 16
+is a multiple of the proper CW (13, 32)
+A = X + X 4 + X 5 + X 6 + X 7 + X 10 − 1 − X 2 − X 8.
+Clearly it suﬃces to study proper CW s, and restricting our attention to those lets us present the stat e
+of knowledge about circulant weighing matrices in a form far more com pact than Strassler’s table. In this
+section we give the known results, which almost entirely come from tw o constructions.
+Leung and Schmidt [17] showed that when k is an odd prime power there are only a ﬁnite number of
+proper CW (n, k ). For which k can we give a complete list of proper CW (n, k )? This has been solved for
+New Nonexistence Results on Circulant W eighing Matrices 11
+k = 4 [11] and k = 9 [1]. For k = 25 Leung and Ma [16] show that none exist with n ≡ 0 (mod 5), and in a
+2011 preprint [15] deal with the other cases, although this has not appeared in print.
+For k = 16 this question was not completely answered. In [8], it is shown tha t all proper CW (n, 16)
+have either n = 21, 31, 63 or are of “Type II”, meaning that they are constructed using T heorem 2.3 of that
+paper:
+Theorem 6.1 If B is a CW (2n, k ), and C is a CW (n, k ). If the supports of B(X), X nB(X),C(X 2),
+X nC(X 2) are pairwise disjoint, then
+(1 − X n)B(X) + (1 + X n)C(X 2)
+is a CW (2n, 4k).
+With this we can classify the proper CW (n, 16) of even order:
+Theorem 6.2 The proper CW (n, 16) have order 21,31,63, and 14m for all m ≥ 2.
+Proof The odd orders were taken care of in [8]. Let C = −1 + X + X 2 + X 4 denote the CW (7, 4), and
+A = (1 − X 7m)C(X 2m) + (1 + X 7m)XC (X m).
+The coeﬃcients of A are disjoint for m > 1, so by Theorem 6.1 A is a CW (14m, 16). Since the coeﬃcients
+of X 0, X 1, X 2m and X 7m are nonzero, no equivalent diﬀerence set has all terms divisible by 2, 7 or m, so
+it is a proper one.
+The only other way to construct a Type II CW would be to use one of t he CW (2m, 4). Proper ones are
+equivalent to −1 + X + X m + X m+1 and so in Theorem 6.1 the supports would not be disjoint. Improper
+ones are either a multiple of CW (7, 4), or also have nonzero coeﬃcients for X 0 and X m, and so also fail
+the requirements of the theorem.
+For larger k not much is known. Table 11 gives a list of known proper CW (n, k ) for k ≤ 192. Aside from
+small cases, they all come from Theorems 6.3 and 6.6 below.
+The Kronecker product construction of Arasu and Seberry [4] a ccounts for almost all of the proper
+CW (n, s 2) for s not prime, and all the inﬁnite classes except for CW (2m, 22) [11] and CW (48m, 62) [20]:
+Theorem 6.3 If a proper CW (n1, k 1) and proper CW (n2, k 2) exist with gcd(n1, n 2) = 1 , then they may
+be used to construct a proper CW (n1n2, k 1k2)
+For k a prime power, most CW (n, k ) come from relative diﬀerence sets. A ( m, n, k, λ ) cyclic relative
+diﬀerence set (RDS) D is a k-element subset of Zmn such that
+DD−1 = k + λ(Zmn − Zn).
+See [19] for more information on relative diﬀerence sets. It is well kn own (e.g. Theorem 2.1 of [8]):
+Theorem 6.4 If a cyclic (m, 2n, k, λ )-RDS exists, then there is a CW (mn, k ).
+In [7] it is shown:
+Theorem 6.5 For q a prime power, a cyclic
+(
+qd−1
+q−1 , n, q d−1, q d−2(q − 1)/n
+)
+-RDS exists if and only if n is
+a divisor of q − 1 when q is odd or d is even, and if and only if n is a divisor of 2(q − 1) if q is even and d
+is odd.
+Taking d = 3, we have:
+Theorem 6.6 Let q be a prime power. Then a proper CW ((q3 − 1)/n, q 2) exists for all divisors n of (q − 1)
+if q is even, and all divisors n > 1 of (q − 1) if q is odd.
+All the proper CW (n, k ) in Table 11 coming from this theorem are in bold. This theorem shows t hat
+there are proper CW (q3 − 1, q 2) when q is an even prime power. They also exist for q = 3 and 5, and it is
+tempting to conjecture that this is true for all prime powers, but la rger cases are currently out of reach.
+12 K. T. Arasu, Daniel M. Gordon, Yiran Zhang
+k Known Proper CW (n, k)
+22 2m, 7
+32 13, 24 , 26
+42 14m, 21, 31 , 63
+52 31, 33 , 62, 71 , 124 , 142
+62 26m, 48 m, 91, 168
+72 57, 87 , 114, 171
+82 42m, 62 m, 73, 127 , 217, 511
+92 91, 121 , 182, 364
+102 62m, 66 m, 142 m, 217, 231, 497, 994
+112 133, 665
+122 182m, 336 m, 273, 403, 744
+132 183, 366, 549, 732
+142 114m, 174 m, 342 m, 399, 609
+152 403, 429, 744, 806, 923
+162 146m, 254 m, 434 m, 273, 511, 651, 819, 868, 889
+172 307, 614
+182 182m, 242 m, 624 m, 847
+192 381, 762
+T able 11 Known Proper CW (n, k). Numbers in bold come from Theorem 6.6. Underlined entries are sporadic CW s that do
+not come from Theorems 6.3 or 6.6. Entries cm are for all m such that cm ≥ k.
+References
+1. M.H. Ang, K.T. Arasu, S.L. Ma, and Y. Strassler. Study of pr oper circulant weighing matrices with weight 9. Disc. Math. ,
+308:2802–2809, 2008.
+2. K. T. Arasu and J. R. Hollon. Group developed weighing matr ices. Australas. J. Combin. , 55:205–233, 2013.
+3. K. T. Arasu and J. Seberry. Circulant weighing designs. J. Combin. Des. , 4:439–447, 1996.
+4. K. T. Arasu and J. Seberry. On circulant weighing matrices . Australas. J. Combin. , 17:21–37, 1998.
+5. K. T. Arasu and Q. Xiang. Multiplier theorems. J. Combin. Des. , 3:257–268, 1995.
+6. K.T. Arasu and J.F. Dillon. Perfect ternary arrays. In Diﬀerence Sets, Sequences and their Correlation Propertie s, pages
+1–15. Kluwer, 1999.
+7. K.T. Arasu, J.F. Dillon, K.H. Leung, and S.L. Ma. Cyclic re lative diﬀerence sets with classical parameters. JCT A ,
+94:118–126, 2002.
+8. K.T. Arasu, K.H. Leung, S.L. Ma, A. Nabavi, and D.K.Ray-Ch audhuri. Circulant weighing matrices of weight 2 2t. Designs,
+Codes and Cryptography , 41:111–123, 2006.
+9. K.T. Arasu and A. Nabavi. Nonexistence of CW(154,36) and C W(170,64). Disc. Math. , 311:769–779, 2011.
+10. D.Z. Dokovi´ c and I.S. Kotsireas. Compression of period ic complementary sequences and applications. Designs, Codes and
+Cryptography, 74:365–377, 2015.
+11. P. Eades and R.M. Hain. On circulant weighing matrices. Ars Combin. , 2:265–284, 1976.
+12. D. M. Gordon. La Jolla Combinatorics Repository. https://www.dmgordon.org/, 2021.
+13. J. Iiams. Lander’s tables are complete! In Diﬀerence Sets, Sequences and their Correlation Propertie s, pages 239–257.
+Kluwer, 1999.
+14. D. Jungnickel. On Lander’s multiplier theorem for diﬀer ence lists. J. Comb. Info. and Syst. Sci. , 17:123–129, 1992.
+15. K.H. Leung and S.L. Ma. Proper circulant weighing matric es of weight 25. preprint, 2011.
+16. K.H. Leung and S.L. Ma. Proper circulant weighing matric es of weight p2. Designs, Codes and Cryptography , 72:539–550,
+2014.
+17. K.H. Leung and B. Schmidt. Finiteness of circulant weigh ing matrices of ﬁxed weight. JCT A , 118:908–919, 2011.
+18. R.L. McFarland. On multipliers of abelian diﬀerence sets . PhD thesis, The Ohio State University, 1970.
+19. A. Pott. Finite Geometry and Character Theory , volume 1601 of Lecture Notes in Mathematics . Springer, 1995.
+20. B. Schmidt and K.W. Smith. Circulant weighing matrices w hose order and weight are products of powers of 2 and 3. JCT
+A, 120:275–287, 2013.
+21. Y. Strassler. The Classiﬁcation of Circulant Weighing Matrices of Weight 9. PhD thesis, Bar-Ilan University, 1997.
+22. M.M. Tan. Group invariant weighing matrices. Designs, Codes and Cryptography , 86:2677–2702, 2018.

@@ -77,3 +77,32 @@ Conclusion: classical composition routes into all six cells are exhausted-NEGATI
 non-coprime subgroup-product search inside Z_96 (and Z_112 4·9? no CW(d,9) — only Z_96), which
 we run next.
 
+Machine runs:
+- runs/P11/v3/product_search.py: all divisor-embedded products F·G (h·h* = k1k2 identity),
+  every DB witness pair, every embedding: 1472 products for (96,36) via 4·9, ZERO ternary hits;
+  all other five cells have empty factor material. NEGATIVE.
+- runs/P11/v3/block96.py: exhaustive "sum of four weight-9 CWM blocks" ansatz for CW(96,36)
+  (every weight-9 CWM on Z_96 is an embedded CW(24,9); 64 sign/residue patterns passing the
+  mod-4 spectral test × all multipliers/shifts, ~4.5×10⁸ candidates, FFT-flatness filter +
+  exact recheck): ZERO hits. A CW(96,36) is NOT a sum of four weight-9 CWMs. NEGATIVE
+  (structural), see block96.log.
+
+### 2026-07-22 — BREAKTHROUGH on CW(96,36): settled YES by Schmidt–Smith 2013
+
+Literature re-check paid off: Schmidt & Smith, "Circulant weighing matrices whose order and
+weight are products of powers of 2 and 3", JCTA 120 (2013) (runs/P11/v3/ss.txt, fetched from
+Bernhard Schmidt's page):
+- **Corollary 6.9: proper CW(v,36) exist for ALL v ≡ 0 (mod 48)** — in particular v = 96.
+  The DB cell CW(96,6)="Open" is simply an un-applied published result.
+- Implemented Theorem 6.7/6.8 explicitly on Z_96 (runs/P11/v3/ss96.py; γ=6 order 16, α=32
+  order 3): brute-forced all (i,c,d) ∈ {1,2}×Z_96×Z_96; 4992 members of the family are valid
+  CW(96,36), 4800 of them PROPER. Witness saved: solutions/P11/CW96_36_proper.json —
+  verified by BOTH verify.py (PACF + properness) and the independently-written verify2.py
+  (full W·Wᵀ = 36I matrix product + properness). PASS/PASS.
+  (Bug caught on the way: Python Counter.__add__ silently drops negative coefficients —
+  first implementation produced weight-6 "B"; fixed with an explicit add().)
+- **Theorem 6.10 settles SIX more DB-Open cells (all v,k products of 2- and 3-powers):**
+  proper CW(v,k) with v,k both 2^a3^b requires k ∈ {4,9,36}; k=36 requires an order-16
+  element (16 | v). Hence DB-Open cells (288,81), (384,81), (576,81), (768,81), (864,81)
+  [k=81 ∉ {4,9,36}] and (648,36) [16 ∤ 648] are all NONEXISTENT (proper). DB corrections.
+
