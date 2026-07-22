@@ -1,0 +1,8 @@
+[w=7] restart 0: n=32 m=387 ratio=0.91596 omega_ok=True best=0.91596 t=1s
+[w=7] restart 1: n=37 m=475 ratio=0.88392 omega_ok=True best=0.91596 t=1s
+[w=7] restart 2: n=16 m=109 ratio=0.99559 omega_ok=True best=0.99559 t=2s
+[w=7] restart 3: n=35 m=431 ratio=0.90656 omega_ok=True best=0.99559 t=2s
+[w=7] restart 4: n=44 m=637 ratio=0.82866 omega_ok=True best=0.99559 t=4s
+[w=7] restart 5: n=14 m=84 ratio=1.00000 omega_ok=True best=1.00000 t=4s
+COUNTEREXAMPLE FOUND
+DONE {"omega": 7, "n": 14, "m": 84, "ratio": 1.0000000000000009}

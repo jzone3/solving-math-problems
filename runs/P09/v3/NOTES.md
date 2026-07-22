@@ -39,10 +39,29 @@ Checked the statement against the original source and recent literature
 
 ## 2. Runs
 
-### Phase 1 (in progress)
+### Phase 1 (done, ~2 min/ω, 6 parallel procs)
 ω ∈ {3..8}, n ∈ [12,45], 60 restarts × 12000 annealing iters each,
-random initial densities p ∈ [0.2,0.8]. 6 parallel processes.
+random initial densities p ∈ [0.2,0.8].
 
-(Results checkpointed below as they come in.)
+Result: annealer converges onto the EQUALITY surface, ratio = 1.0 exactly
+(float 1.0 + ~1e-15). All ratio-1 graphs found are balanced complete
+multipartite Turán graphs (+ isolated vertices): T(9,3), T(16,4), T(15,5),
+K_{2×6}, K_{2×7}; ω=8 best was 0.99765 (near-balanced multipartite). These
+have λ₂ = 0, so equality is just Nikiforov's spectral Turán theorem — the
+known (proved) equality class, NOT counterexamples. Lesson: the hard tension
+is getting λ₂ > 0 while keeping λ₁² close to 2m(1−1/ω); the annealer's local
+optimum is always λ₂→0.
+
+Bug fixed after phase 1: early-exit threshold was `ratio > 1.0`, which float
+noise (1+1e-15) triggered; now requires ratio > 1 + 1e-8 and any candidate
+would be re-verified exactly.
+
+### Phase 2 (running)
+Two attack refinements per the "perturbation near the extremal class" idea:
+- `--init turan`: start at Turán graph T(n,ω) plus up to n²/20 random flips,
+  ω ∈ {3..8}, n ∈ [15,60], 80 restarts × 20000 iters.
+- `--lam2min 1.5`: penalized objective forcing λ₂ ≥ 1.5, ω ∈ {3,4,5},
+  n ∈ [15,50], 60 restarts × 20000 iters (searches the λ₂>0 stratum, where
+  the conjecture is genuinely untested).
 
 ## STATUS: (pending)

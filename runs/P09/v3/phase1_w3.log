@@ -1,0 +1,12 @@
+[w=3] restart 0: n=27 m=221 ratio=0.99330 omega_ok=True best=0.99330 t=0s
+[w=3] restart 1: n=35 m=323 ratio=0.96820 omega_ok=True best=0.99330 t=1s
+[w=3] restart 2: n=16 m=85 ratio=0.99880 omega_ok=True best=0.99880 t=1s
+[w=3] restart 3: n=42 m=416 ratio=0.92709 omega_ok=True best=0.99880 t=2s
+[w=3] restart 4: n=26 m=208 ratio=0.98990 omega_ok=True best=0.99880 t=2s
+[w=3] restart 5: n=42 m=455 ratio=0.92248 omega_ok=True best=0.99880 t=3s
+[w=3] restart 6: n=37 m=361 ratio=0.96228 omega_ok=True best=0.99880 t=3s
+[w=3] restart 7: n=26 m=165 ratio=0.98364 omega_ok=True best=0.99880 t=4s
+[w=3] restart 8: n=45 m=467 ratio=0.87227 omega_ok=True best=0.99880 t=4s
+[w=3] restart 9: n=12 m=27 ratio=1.00000 omega_ok=True best=1.00000 t=4s
+COUNTEREXAMPLE FOUND
+DONE {"omega": 3, "n": 12, "m": 27, "ratio": 1.0000000000000009}
