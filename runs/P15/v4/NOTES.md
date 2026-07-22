@@ -63,7 +63,13 @@ CRT-layered level framework (`cover.py`):
 | 6 | 2^5,3^3,5^2,7 | 93 | /tmp (gain-greedy) |
 | 8 | 2^6,3^4,5^2,7,11,13 | 625 | /tmp (gain-greedy) |
 | 10 | 2^7,3^4,5^2,7^2,11,13 | 1002 | witness_T10.json (survivor) |
+| 12 | 2^7,3^4,5^3,7^2,11,13,17 | 2064 | witness_T12.json (survivor) |
 
 ## 4. Status
 
-(in progress — escalation to T=12/14/16 running)
+(in progress — escalation to T=14/16/18 running)
+
+Engineering notes:
+- OOM bug fixed: np.bincount(minlength=d) allocated O(d) for divisors up to
+  ~7·10^8; replaced with np.unique grouping (bounded by #holes).
+- Perf: cache active-cell matrix per phase instead of recomputing per score.

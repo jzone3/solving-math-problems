@@ -103,8 +103,10 @@ class Builder:
         mod_cache = {}
 
         def hole_res(d):
+            # returns (unique residues, inverse index) for holes % d
             if d not in mod_cache:
-                mod_cache[d] = (holes % d).astype(np.int64)
+                vals, inv = np.unique(holes % d, return_inverse=True)
+                mod_cache[d] = (vals, inv.astype(np.int64))
             return mod_cache[d]
 
         MQ = float(self.M) * q
@@ -118,17 +120,17 @@ class Builder:
             """Return (eff, gain, a, b) best congruence for modulus d*p^j.
             eff = gain * m / (M*q): fraction of the congruence's density
             that lands on uncovered hole-cells (1.0 = zero waste)."""
-            r = hole_res(d)
+            vals, inv = hole_res(d)
             pj = p**j if j > 0 else 1
             m = d * pj
             best = (-1.0, -1.0, 0, 0)
             brange = range(pj) if j > 0 else [0]
             for b in brange:
-                act = uncov & colw[None, :]
                 g = act[:, b::pj].sum(axis=1) if j > 0 else act.sum(axis=1)
-                gains = np.bincount(r, weights=g, minlength=d)
-                a = int(gains.argmax())
-                g = float(gains[a])
+                gains = np.bincount(inv, weights=g, minlength=len(vals))
+                k = int(gains.argmax())
+                a = int(vals[k])
+                g = float(gains[k])
                 cand = ((g * m / MQ, g, a, b) if self.key == "eff"
                         else (g, g * m / MQ, a, b))
                 if cand[:2] > best[:2]:
@@ -136,6 +138,7 @@ class Builder:
             return best
 
         picked = []
+        act = uncov & colw[None, :]
 
         def greedy_pass():
             heap = []
@@ -158,28 +161,31 @@ class Builder:
                     heapq.heappush(heap, (-eff, -gain, self.rng.random(), d, j))
                     continue
                 pj = p**j
-                r = hole_res(d)
-                sel = r == a
+                vals, inv = hole_res(d)
+                kk = np.searchsorted(vals, a)
+                sel = inv == kk
                 if j == 0:
                     uncov[sel, :] = False
+                    act[sel, :] = False
                     m = d
                     c = a
                 else:
                     cols = np.arange(b, q, pj)
-                    cols = cols[colw[cols]]
                     uncov[np.ix_(sel, cols)] = False
+                    act[np.ix_(sel, cols)] = False
                     m = d * pj
                     c = crt(a % d, d, b, pj) if d > 1 else b
                 self.used.add(m)
                 self.congs.append((c, m))
                 picked.append((d, j, a, b))
-                if not (uncov & colw[None, :]).any():
+                if not act.any():
                     break
 
         greedy_pass()
         if self.survivor:
             # phase 2: attack survivor columns (full kills / cleanup)
             colw[:] = True
+            act = uncov.copy()
             greedy_pass()
 
         # form new holes
