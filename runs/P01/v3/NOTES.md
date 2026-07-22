@@ -73,3 +73,19 @@ UNSAT proof gets hard.
   Logging is per-model so long solves look like stalls.
 - 6 parallel runs live: n=17 (exhaust attempt), n=18 (exhaust attempt),
   n=22 (6h sampler), n=22 min-chord-dist>=3 subfamily, n=23, n=24 samplers.
+
+## Checkpoint ~22:20 UTC — symmetry breaking pays off
+
+- Added min-distance-chord dihedral symmetry breaking to base encoding:
+  OR_d z_d with z_d -> x_{(0,d)} and z_d -> "no chord of distance < d".
+  Sound (every 2-factor has a dihedral image with a min-distance chord at
+  vertex 0); completeness unaffected (blocking clauses already dihedral-closed).
+- Added budgeted solves (2M conflicts) + fresh-solver rebuild on stall:
+  re-preprocessing the accumulated clause DB beats grinding a stale solver.
+- Effect: n=17 exhaustion 1450s -> 71s (~20x). n=18 exhausted UNSAT in 1244s
+  (709 models, 100k learned clauses).
+- **Independent re-verification of known results so far: no 4-regular uniquely
+  hamiltonian graph exists for n <= 18** (via this SAT encoding — an
+  independent method from Goedgebeur et al.'s generation approach).
+- In flight: n=19 (endgame, likely exhaustible), n=20 (12h budget), samplers
+  n=22, n=22 (chord-dist>=3), n=23, n=24, n=26, n=28.
