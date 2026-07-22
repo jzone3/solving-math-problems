@@ -19,3 +19,7 @@ Half the chain (diam ≤ 2·min(n⁺,n⁻)) turns out to be a published 2020 lem
 Fun part: the proof explains the 40 years of failed searches — the gap dev(D) − min(n⁺,n⁻) is provably ≤ 0 always, and empirically peaks at −0.22 (at the 4-star). Search never had a chance. [repo link]
 
 **Graphic:** p08_graffiti3940.png
+
+**Thread reply (Lean update):**
+
+update: the proof is now formalized in Lean 4 + mathlib. no sorry, no extra axioms — #print axioms shows only the standard three. a 1986 computer-generated conjecture, resolved and machine-checked end-to-end by AI in one day. [repo link to formalization/P08]
