@@ -30,11 +30,19 @@ def dist_sum(adj):
         S += sum(d)
     return S  # ordered sum
 
+def dist_sum_closed(a, ell):
+    # clique pairs (all at distance 1) + clique-to-path + path-internal, ordered (x2)
+    cross = sum((a - 1) * (k + 1) + k for k in range(1, ell + 1))
+    path = (ell - 1) * ell * (ell + 1) // 6  # sum_{i<j<=ell} (j-i) over path vertices 1..ell
+    return 2 * (a * (a - 1) // 2 + cross + path)
+
+for _a, _l in [(4, 3), (7, 5), (10, 11)]:
+    assert dist_sum_closed(_a, _l) == dist_sum(lollipop(_a, _l)), (_a, _l)
+
 def ratio(a, ell):
-    adj = lollipop(a, ell)
-    n = len(adj)
+    n = a + ell
     m = a * (a - 1) // 2 + ell
-    S = dist_sum(adj)
+    S = dist_sum_closed(a, ell)
     mu = S / (n * n)  # full-matrix convention
     return 2 * m * mu * mu / n ** 3
 
@@ -67,14 +75,17 @@ ax.set_title("the counterexample: lollipop $L(K_{50}, P_{70})$,  $n=120$",
 ax2 = fig.add_axes([0.56, 0.14, 0.40, 0.66])
 ax2.set_facecolor("#0d1117")
 ns, rs = [], []
-for ntot in range(20, 301, 4):
-    best = max(ratio(a, ntot - a) for a in range(3, ntot - 1, 3))
+for ntot in range(20, 301):
+    best = max(ratio(a, ntot - a) for a in range(3, ntot - 1))
     ns.append(ntot); rs.append(best)
+first_violation = next(n for n, r in zip(ns, rs) if r > 1)
+assert first_violation == 120, first_violation  # matches exhaustive scan in runs/P07
 ax2.plot(ns, rs, color="#f78166", lw=2.2)
 ax2.axhline(1, color="white", lw=1, ls="--", alpha=0.7)
-ax2.axvline(120, color="#3fb950", lw=1, ls=":", alpha=0.9)
+ax2.axvline(first_violation, color="#3fb950", lw=1, ls=":", alpha=0.9)
 ax2.annotate("conjecture bound", (295, 1.03), color="white", fontsize=10, ha="right")
-ax2.annotate("first violation\n$n=120$", (124, 0.42), color="#3fb950", fontsize=10)
+ax2.annotate(f"first violation\n$n={first_violation}$", (first_violation + 4, 0.42),
+             color="#3fb950", fontsize=10)
 ax2.set_xlabel("graph size $n$", color="white")
 ax2.set_ylabel(r"$2m\mu^2 / n^3$  (best lollipop)", color="white")
 ax2.tick_params(colors="white")
