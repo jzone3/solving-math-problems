@@ -16,6 +16,6 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P10 | queued | queued | queued | queued | queued |
 | P11 | queued | queued | queued | queued | queued |
 | P12 | queued | queued | queued | queued | queued |
-| P13 | queued | queued | queued | queued | queued |
+| P13 | queued | queued | queued | running (V4: (9,6) and (10,6) UNSAT) | queued |
 | P14 | queued | queued | queued | queued | queued |
 | P15 | queued | queued | queued | queued | queued |

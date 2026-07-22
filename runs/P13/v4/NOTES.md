@@ -63,8 +63,22 @@ pair whose x has maximum distance-1 deficiency) for cross-verification per METHO
   smallest open case of the k=6 PMD spectrum (Handbook VI.35 / Abel–Bennett–Zhang table),
   and is a nonexistence result — the first new entry in this table since 2000.
 
-### (10,6)-PMD: in progress
+### (10,6)-PMD: DOES NOT EXIST — settled by complete search
 
-- C searcher running (15 blocks, first block fixed WLOG). See STATUS below for outcome.
+- Searcher v2 (`pmd6_search2.c`: MRV branching on the most-constrained uncovered
+  distance-1 pair + forward-check pruning; completeness argument unchanged — any single
+  uncovered pair must be completed, so branching on any one of them is exhaustive).
+- Parallel partitioning: top-level branches (completions of the first branching pair after
+  the fixed block; 548 of them) split 8 ways by index mod 8; shard partitioning validated
+  on v=7 `-all` (2 solutions whole = 0+2+0 across 3 shards) and v=9 (all shards UNSAT).
+- All 8 shards UNSAT. Total ≈ 655.3 M nodes (77.9–85.8 M per shard), ~9 min wall on
+  8 cores. **No (10,6)-PMD exists.**
+- Cross-check: independent lex-first searcher (pmd6_search.c, different branching order)
+  re-run on v=10 — see result appended below.
+
+### (12,6)-PMD: escalation
+
+- 22 blocks; exhaustive tree expected to be enormously larger. 8-way sharded run launched;
+  progress lines every 2^30 nodes. Outcome recorded below.
 
 ## STATUS: (to be finalized at end of run)
