@@ -60,8 +60,57 @@ sympy-re-verified): clique+pendant-j, clique−matching, K_q∪cK₂∪tK₁, K_
 q ≤ 59, t ≤ 3q; plus steepest-ascent single-edge-toggle local search over ALL simple graphs
 on N ∈ {8,10,12,14} vertices seeded at G_q and random 1–4-edge perturbations of it.
 
-Result: (see run log below)
+Result: **all strictly negative except the equality family itself** (score 0). Local
+search from G_q and its random 1–4-edge perturbations always terminates back at score 0
+(the equality graph) or below; no positive direction exists among single edge toggles on
+N ∈ {8,10,12,14}.
+
+## 5. Exhaustive check n ≤ 10, ALL graphs including disconnected (`exhaust_small.py`)
+
+nauty-geng over all 12,293,434 graphs with 2 ≤ n ≤ 10. Only graphs with score ≥ −1e−9:
+empty graphs (0 = 0) and exactly the equality family members K_q ∪ (q−2)K₁ for
+q = 2,3,4,5,6 — each re-verified to be EXACTLY zero in sympy. No violation. This extends
+Brewster–Dinneen–Faber's connected-only n ≤ 10 exhaust to all graphs.
+
+## 6. Reduction to degree sequences + new exhaustive frontier (`degseq_search.py`, `frontier.py`)
+
+Since dev depends only on d, define the realization-independent lower bound
+    R_lb(d) = ½ Σ_u w_u · (sum of the d_u smallest weights among the others), w=d^{−1/2}.
+Then dev(d) ≤ R_lb(d) for all graphical d of length n ⟹ conj 129 holds for all graphs on
+n vertices. Exhausting ALL graphical degree sequences (Erdős–Gallai) with float scoring +
+60-digit mpmath re-check of near-zeros + sympy-exact settlement of ties:
+
+- n ≤ 17: max of dev − R_lb is EXACTLY 0, attained only by the all-zero sequence and
+  (for n = 2(q−1)) the equality sequence (q−1)^q 0^(q−2).  ⟹ **conjecture 129 holds for
+  every graph on ≤ 17 vertices** (new exhaustive frontier; previous exhaustive was n ≤ 10).
+- randomized hillclimb over graphical sequences at n = 16…400: max 0, always the equality
+  sequence.
+- 114k random graphical sequences scored (blocks, power-law, uniform, equality-
+  perturbations; n up to 700, `random_degseq.py`): max = 0, again exactly the equality
+  sequence (350² 0³⁴⁹ at n = 700); everything else strictly negative.
+
+## 7. Compute spent
+
+~2.5 h total: family closed-form sweeps (seconds), threshold anneal (~15 min),
+mpmath perturbation sweep + local search (~45 min), geng exhaust n≤10 (~8 min),
+degree-sequence exhaust n≤17 (~1.5 h), random degseq search (~10 min).
+
+## Dead ends / lessons
+
+- All connected star-like families approach the bound from below (score → 0⁻) but never
+  cross; complete bipartite has exact closed form dev²−R² = 2ab(a+b−2ab)/(a+b)² ≤ 0.
+- Isolated vertices are essential to reach equality (connected-only searches like the 2025
+  MCTS runs cannot even see the tight family).
+- The coded conjecture 698 in refutationGBR is trivially true as written (negative
+  Laplacian eigenvalues of a PSD matrix); its true WoW statement needs V5's source work.
 
 ## STATUS
 
-(pending final runs)
+**negative / frontier-pushed.** No counterexample to WoW 129. New results:
+(1) exact equality family G_q = K_q ∪ (q−2)K₁ with dev = R = q/2 (verified exactly;
+`solutions/P06/verify.py` prints PASS with two independent checks);
+(2) conj 129 reduced to a pure degree-sequence inequality dev(d) ≤ R_lb(d);
+(3) that inequality — hence conj 129 — verified exhaustively for ALL graphs with n ≤ 17
+(up from the previous exhaustive frontier n ≤ 10). Everything points to 129 being TRUE
+and tight exactly on {∅, K₂, K_q ∪ (q−2)K₁}; recommend V5 attempt a proof via the
+degree-sequence reduction.
