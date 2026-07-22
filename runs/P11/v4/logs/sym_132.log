@@ -46,3 +46,7 @@ round=4 t=5 m=24 slice=184s -> DONE n=132 s=9 t=5 m=24 bestE=197 it=987864 resta
 round=4 t=13 m=24 slice=184s -> DONE n=132 s=9 t=13 m=24 bestE=4043 it=956879 restarts=1310
 round=4 t=31 m=27 slice=184s -> DONE n=132 s=9 t=31 m=27 bestE=252 it=872965 restarts=1453
 round=4 t=25 m=36 slice=184s -> DONE n=132 s=9 t=25 m=36 bestE=34 it=815789 restarts=1096
+round=4 t=131 m=67 slice=184s -> DONE n=132 s=9 t=131 m=67 bestE=1257 it=864065 restarts=1080
+round=4 t=65 m=68 slice=184s -> DONE n=132 s=9 t=65 m=68 bestE=659 it=770052 restarts=944
+round=4 t=43 m=69 slice=184s -> DONE n=132 s=9 t=43 m=69 bestE=406 it=1064780 restarts=1301
+round=4 t=109 m=72 slice=184s -> DONE n=132 s=9 t=109 m=72 bestE=293 it=1036353 restarts=1288

@@ -1,0 +1,3 @@
+--- t=35 m=19 (timeout 7200s)
+EXHAUSTED n=132 k=81 t=35 m=19 leaves=554400: no multiplier-symmetric solution
+--- t=17 m=20 (timeout 7200s)

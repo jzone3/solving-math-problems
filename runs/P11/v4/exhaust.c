@@ -1,0 +1,157 @@
+/* Exact exhaustive search over multiplier-symmetric ternary sequences for CW(n,k).
+ * C port of sym_exhaust.py (see that file for the math). Definitive per subgroup.
+ *
+ * Optimizations: orbits sorted by size desc; DFS over include(+/-)/exclude with
+ * subset-sum and DC-window pruning; first included orbit fixed to sign +1
+ * (global negation symmetry); R maintained incrementally only for shifts 1..n/2.
+ *
+ * Usage: ./exhaust n s t
+ * Output: SOLUTION ... | EXHAUSTED ... (exit 0 / 2), SKIP (3) if t not unit.
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+static int n, s, k, m;
+static int *osize;          /* orbit sizes, sorted desc */
+static int **omem;          /* orbit members */
+static int *suffix;         /* suffix sums of sizes */
+static int *Cc;             /* C[o][p][sh]: (m*m*n) counts */
+static long long *R;        /* running autocorr, sh=0..n */
+static int *sel;            /* selected orbit indices */
+static int *sgn;            /* their signs */
+static int nsel;
+static long long leaves;
+static int solved;
+static int *avec;
+
+static int gcd(int a,int b){ while(b){int t=a%b;a=b;b=t;} return a; }
+
+#define C3(o,p,sh) Cc[((long long)(o)*m+(p))*n+(sh)]
+
+static void report_solution(void){
+    printf("SOLUTION n=%d k=%d vec=",n,k);
+    for(int i=0;i<n;i++) putchar(avec[i]==0?'0':(avec[i]>0?'+':'-'));
+    putchar('\n');
+}
+
+static void add_orbit(int o,int sg){
+    int half = n/2;
+    for(int sh=0; sh<=half; sh++){
+        long long d = C3(o,o,sh);
+        for(int q=0;q<nsel;q++){
+            int p = sel[q];
+            d += (long long)sg*sgn[q]*(C3(p,o,sh)+C3(o,p,sh));
+        }
+        R[sh] += d;
+    }
+    sel[nsel]=o; sgn[nsel]=sg; nsel++;
+}
+static void rem_orbit(void){
+    nsel--;
+    int o = sel[nsel], sg = sgn[nsel];
+    int half = n/2;
+    for(int sh=0; sh<=half; sh++){
+        long long d = C3(o,o,sh);
+        for(int q=0;q<nsel;q++){
+            int p = sel[q];
+            d += (long long)sg*sgn[q]*(C3(p,o,sh)+C3(o,p,sh));
+        }
+        R[sh] -= d;
+    }
+}
+
+static void dfs(int i, int w, int dc){
+    if(solved) return;
+    if(w==k){
+        leaves++;
+        if(dc==s || dc==-s){
+            int half=n/2, ok=1;
+            for(int sh=1; sh<=half; sh++) if(R[sh]!=0){ ok=0; break; }
+            if(ok && R[0]==k){
+                memset(avec,0,n*sizeof(int));
+                for(int q=0;q<nsel;q++){
+                    int o=sel[q];
+                    for(int j=0;j<osize[o];j++) avec[omem[o][j]] = sgn[q];
+                }
+                solved=1; report_solution();
+            }
+        }
+        return;
+    }
+    if(i>=m || w+suffix[i]<k) return;
+    /* skip orbit i */
+    dfs(i+1,w,dc);
+    if(solved) return;
+    int sz=osize[i];
+    if(w+sz<=k){
+        int rem = k-w-sz;
+        int nsg = (nsel==0) ? 1 : 2;    /* fix first included sign = +1 */
+        int sgs[2]={1,-1};
+        for(int y=0;y<nsg;y++){
+            int sg=sgs[y];
+            int dcn=dc+sg*sz;
+            int d1 = s-dcn; if(d1<0) d1=-d1;
+            int d2 = -s-dcn; if(d2<0) d2=-d2;
+            if((d1<=rem)||(d2<=rem)){
+                add_orbit(i,sg);
+                dfs(i+1,w+sz,dcn);
+                rem_orbit();
+                if(solved) return;
+            }
+        }
+    }
+}
+
+int main(int argc,char**argv){
+    if(argc<4){ fprintf(stderr,"usage: %s n s t\n",argv[0]); return 1; }
+    n=atoi(argv[1]); s=atoi(argv[2]); k=s*s;
+    int t=atoi(argv[3]);
+    if(gcd(t,n)!=1){ printf("SKIP t=%d not unit mod %d\n",t,n); return 3; }
+
+    /* orbits */
+    int *orb = malloc(n*sizeof(int));
+    for(int i=0;i<n;i++) orb[i]=-1;
+    int mm=0;
+    int **members = malloc(n*sizeof(int*));
+    int *szs = malloc(n*sizeof(int));
+    for(int i=0;i<n;i++){
+        if(orb[i]<0){
+            int j=i, c=0;
+            static int buf[4096];
+            while(orb[j]<0){ orb[j]=mm; buf[c++]=j; j=(int)(((long long)j*t)%n); }
+            members[mm]=malloc(c*sizeof(int));
+            memcpy(members[mm],buf,c*sizeof(int));
+            szs[mm]=c; mm++;
+        }
+    }
+    m=mm;
+    /* sort orbit ids by size desc */
+    int *ord = malloc(m*sizeof(int));
+    for(int i=0;i<m;i++) ord[i]=i;
+    for(int i=0;i<m;i++) for(int j=i+1;j<m;j++)
+        if(szs[ord[j]]>szs[ord[i]]){ int tmp=ord[i];ord[i]=ord[j];ord[j]=tmp; }
+    osize=malloc(m*sizeof(int)); omem=malloc(m*sizeof(int*));
+    for(int i=0;i<m;i++){ osize[i]=szs[ord[i]]; omem[i]=members[ord[i]]; }
+    suffix=malloc((m+1)*sizeof(int)); suffix[m]=0;
+    for(int i=m-1;i>=0;i--) suffix[i]=suffix[i+1]+osize[i];
+
+    /* cross-correlation tables */
+    Cc = calloc((long long)m*m*n,sizeof(int));
+    for(int o=0;o<m;o++) for(int p=0;p<m;p++)
+        for(int x=0;x<osize[o];x++) for(int y=0;y<osize[p];y++){
+            int sh = (omem[p][y]-omem[o][x]+n)%n;
+            C3(o,p,sh)++;
+        }
+
+    R=calloc(n+1,sizeof(long long));
+    sel=malloc(m*sizeof(int)); sgn=malloc(m*sizeof(int));
+    avec=malloc(n*sizeof(int));
+    dfs(0,0,0);
+    if(!solved){
+        printf("EXHAUSTED n=%d k=%d t=%d m=%d leaves=%lld: no multiplier-symmetric solution\n",
+               n,k,t,m,leaves);
+        return 2;
+    }
+    return 0;
+}

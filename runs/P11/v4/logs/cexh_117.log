@@ -1,0 +1,25 @@
+--- t=2 m=12 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=2 m=12 leaves=0: no multiplier-symmetric solution
+--- t=20 m=12 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=20 m=12 leaves=0: no multiplier-symmetric solution
+--- t=7 m=14 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=7 m=14 leaves=0: no multiplier-symmetric solution
+--- t=58 m=14 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=58 m=14 leaves=0: no multiplier-symmetric solution
+--- t=71 m=14 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=71 m=14 leaves=0: no multiplier-symmetric solution
+--- t=5 m=18 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=5 m=18 leaves=0: no multiplier-symmetric solution
+--- t=19 m=18 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=19 m=18 leaves=0: no multiplier-symmetric solution
+--- t=31 m=20 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=31 m=20 leaves=123012: no multiplier-symmetric solution
+--- t=23 m=21 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=23 m=21 leaves=0: no multiplier-symmetric solution
+--- t=95 m=21 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=95 m=21 leaves=0: no multiplier-symmetric solution
+--- t=4 m=23 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=4 m=23 leaves=514080: no multiplier-symmetric solution
+--- t=17 m=23 (timeout 7200s)
+EXHAUSTED n=117 k=36 t=17 m=23 leaves=0: no multiplier-symmetric solution
+--- t=29 m=23 (timeout 7200s)

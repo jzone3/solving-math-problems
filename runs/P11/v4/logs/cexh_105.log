@@ -1,0 +1,11 @@
+--- t=17 m=14 (timeout 7200s)
+EXHAUSTED n=105 k=36 t=17 m=14 leaves=0: no multiplier-symmetric solution
+--- t=2 m=15 (timeout 7200s)
+EXHAUSTED n=105 k=36 t=2 m=15 leaves=1296: no multiplier-symmetric solution
+--- t=52 m=15 (timeout 7200s)
+EXHAUSTED n=105 k=36 t=52 m=15 leaves=0: no multiplier-symmetric solution
+--- t=37 m=18 (timeout 7200s)
+EXHAUSTED n=105 k=36 t=37 m=18 leaves=26832: no multiplier-symmetric solution
+--- t=59 m=23 (timeout 7200s)
+EXHAUSTED n=105 k=36 t=59 m=23 leaves=0: no multiplier-symmetric solution
+--- t=19 m=24 (timeout 7200s)

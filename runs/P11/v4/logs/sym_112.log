@@ -61,3 +61,8 @@ round=3 t=43 m=49 slice=115s -> DONE n=112 s=6 t=43 m=49 bestE=14 it=669522 rest
 round=3 t=29 m=56 slice=115s -> DONE n=112 s=6 t=29 m=56 bestE=27 it=592467 restarts=752
 round=3 t=55 m=57 slice=115s -> DONE n=112 s=6 t=55 m=57 bestE=151 it=610277 restarts=767
 round=3 t=111 m=57 slice=115s -> DONE n=112 s=6 t=111 m=57 bestE=179 it=613733 restarts=759
+round=3 t=41 m=60 slice=115s -> DONE n=112 s=6 t=41 m=60 bestE=40 it=586303 restarts=640
+round=3 t=15 m=63 slice=115s -> DONE n=112 s=6 t=15 m=63 bestE=22 it=728426 restarts=816
+round=3 t=71 m=63 slice=115s -> DONE n=112 s=6 t=71 m=63 bestE=22 it=727057 restarts=785
+round=3 t=97 m=64 slice=115s -> DONE n=112 s=6 t=97 m=64 bestE=40 it=747503 restarts=774
+round=4 t=3 m=19 slice=184s -> DONE n=112 s=6 t=3 m=19 bestE=98 it=1278539 restarts=2412
