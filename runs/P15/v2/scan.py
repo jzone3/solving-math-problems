@@ -6,16 +6,12 @@ import os
 import sys
 import time
 import numpy as np
-from engine4 import factorize_spec, divisors, cover, repair
+from engine4 import factorize_spec, divisors, cover, repair, one_opt
 
 LADDER = [
-    ("2^4,3^2,5,7", None),
-    ("2^4,3^2,5,7,11", None),
-    ("2^5,3^3,5^2,7,11", None),
-    ("2^5,3^3,5^2,7,11,13", None),
-    ("2^6,3^4,5^2,7,11,13", None),
-    ("2^6,3^4,5^2,7^2,11,13", None),
-    ("2^7,3^4,5^3,7,11,13", None),
+    ("2^6,3^4,5^2,7,11,13", 9),
+    ("2^6,3^4,5^2,7^2,11,13", 9),
+    ("2^7,3^4,5^3,7,11,13", 9),
 ]
 
 os.makedirs("covers", exist_ok=True)
@@ -29,12 +25,20 @@ def recip_budget(fac, T):
 def attempt(spec, T, budget):
     fac = factorize_spec(spec)
     congs, rem, N = cover(fac, T, verbose=False)
-    if rem > 0:
+    cycles = 3
+    for cyc in range(cycles):
+        if rem == 0:
+            break
         U = np.ones(N, dtype=bool)
         for a, v in congs:
             U[a::v] = False
         congs, rem = repair(N, None, congs, U, rounds=100000,
-                            t_budget=budget, verbose=False)
+                            t_budget=budget // (2 * cycles), seed=cyc,
+                            verbose=False)
+        if rem == 0:
+            break
+        congs, rem = one_opt(N, congs, t_budget=budget // (2 * cycles),
+                             seed=cyc, verbose=False)
     return congs, rem, N
 
 
@@ -42,12 +46,12 @@ def main():
     budget = int(sys.argv[1]) if len(sys.argv) > 1 else 300
     with open("scan_results.txt", "a") as log:
         log.write(f"\n# scan started {time.ctime()}, repair budget={budget}s\n")
-        for spec, _ in LADDER:
+        for spec, start in LADDER:
             fac = factorize_spec(spec)
             N = 1
             for p, e in fac.items():
                 N *= p ** e
-            T = 3
+            T = start if start else 3
             best_T = None
             while True:
                 rb = recip_budget(fac, T)

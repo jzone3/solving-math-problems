@@ -1,0 +1,126 @@
+ sweep 0 (gate=0.99): placed=327 uncovered=5923687 congs=327 t=8s
+ sweep 1 (gate=0.9): placed=2 uncovered=5902732 congs=329 t=12s
+ sweep 2 (gate=0.7): placed=52 uncovered=5363431 congs=381 t=15s
+ sweep 3 (gate=0.4): placed=73 uncovered=3157465 congs=454 t=18s
+ sweep 4 (gate=0.15): placed=67 uncovered=1084408 congs=521 t=20s
+ sweep 5 (gate=0.0): placed=47 uncovered=318192 congs=568 t=20s
+ sweep 6 (gate=0.0): placed=0 uncovered=318192 congs=568 t=20s
+  repair it=50: best uncovered=23496 t=5s
+  repair it=100: best uncovered=11118 t=9s
+  repair it=150: best uncovered=7199 t=12s
+  repair it=200: best uncovered=4950 t=16s
+  repair it=250: best uncovered=3894 t=19s
+  repair it=300: best uncovered=2815 t=23s
+  repair it=350: best uncovered=2374 t=27s
+  repair it=400: best uncovered=1750 t=30s
+  one_opt pass: uncovered=990 t=1s
+  one_opt pass: uncovered=680 t=2s
+  one_opt pass: uncovered=632 t=2s
+  one_opt pass: uncovered=618 t=3s
+  one_opt pass: uncovered=618 t=3s
+  one_opt pass: uncovered=606 t=3s
+  one_opt pass: uncovered=606 t=4s
+  one_opt pass: uncovered=606 t=4s
+  one_opt pass: uncovered=606 t=5s
+  one_opt pass: uncovered=606 t=5s
+  one_opt pass: uncovered=606 t=5s
+  one_opt pass: uncovered=606 t=6s
+  one_opt pass: uncovered=606 t=6s
+  one_opt pass: uncovered=606 t=7s
+  one_opt pass: uncovered=606 t=7s
+  one_opt pass: uncovered=602 t=8s
+  one_opt pass: uncovered=602 t=8s
+ cycle 0: uncovered=602
+  repair it=50: best uncovered=602 t=3s
+  repair it=100: best uncovered=602 t=7s
+  repair it=150: best uncovered=602 t=11s
+  repair it=200: best uncovered=602 t=14s
+  repair it=250: best uncovered=602 t=18s
+  repair it=300: best uncovered=602 t=22s
+  repair it=350: best uncovered=602 t=25s
+  repair it=400: best uncovered=602 t=29s
+  one_opt pass: uncovered=602 t=1s
+  one_opt pass: uncovered=602 t=1s
+  one_opt pass: uncovered=602 t=2s
+  one_opt pass: uncovered=602 t=2s
+  one_opt pass: uncovered=602 t=2s
+  one_opt pass: uncovered=602 t=3s
+  one_opt pass: uncovered=602 t=3s
+  one_opt pass: uncovered=602 t=4s
+  one_opt pass: uncovered=602 t=4s
+  one_opt pass: uncovered=602 t=4s
+  one_opt pass: uncovered=602 t=5s
+  one_opt pass: uncovered=602 t=5s
+  one_opt pass: uncovered=602 t=6s
+  one_opt pass: uncovered=602 t=6s
+  one_opt pass: uncovered=602 t=6s
+ cycle 1: uncovered=602
+  repair it=50: best uncovered=599 t=4s
+  repair it=100: best uncovered=599 t=7s
+  repair it=150: best uncovered=594 t=11s
+  repair it=200: best uncovered=591 t=15s
+  repair it=250: best uncovered=587 t=19s
+  repair it=300: best uncovered=587 t=22s
+  repair it=350: best uncovered=562 t=26s
+  repair it=400: best uncovered=562 t=29s
+  one_opt pass: uncovered=555 t=1s
+  one_opt pass: uncovered=555 t=1s
+  one_opt pass: uncovered=550 t=1s
+  one_opt pass: uncovered=535 t=2s
+  one_opt pass: uncovered=535 t=2s
+  one_opt pass: uncovered=535 t=3s
+  one_opt pass: uncovered=535 t=3s
+  one_opt pass: uncovered=535 t=3s
+  one_opt pass: uncovered=535 t=4s
+  one_opt pass: uncovered=530 t=4s
+  one_opt pass: uncovered=515 t=5s
+  one_opt pass: uncovered=514 t=5s
+  one_opt pass: uncovered=514 t=5s
+  one_opt pass: uncovered=514 t=6s
+ cycle 2: uncovered=514
+  repair it=50: best uncovered=514 t=4s
+  repair it=100: best uncovered=514 t=7s
+  repair it=150: best uncovered=514 t=11s
+  repair it=200: best uncovered=502 t=15s
+  repair it=250: best uncovered=502 t=18s
+  repair it=300: best uncovered=502 t=22s
+  repair it=350: best uncovered=502 t=26s
+  repair it=400: best uncovered=502 t=29s
+  one_opt pass: uncovered=502 t=1s
+  one_opt pass: uncovered=496 t=1s
+  one_opt pass: uncovered=496 t=1s
+ cycle 3: uncovered=496
+  repair it=50: best uncovered=496 t=4s
+  repair it=100: best uncovered=496 t=7s
+  repair it=150: best uncovered=496 t=11s
+  repair it=200: best uncovered=496 t=15s
+  repair it=250: best uncovered=496 t=18s
+  repair it=300: best uncovered=496 t=22s
+  repair it=350: best uncovered=485 t=25s
+  repair it=400: best uncovered=479 t=29s
+  one_opt pass: uncovered=399 t=1s
+  one_opt pass: uncovered=370 t=1s
+  one_opt pass: uncovered=355 t=1s
+  one_opt pass: uncovered=350 t=2s
+  one_opt pass: uncovered=350 t=2s
+  one_opt pass: uncovered=350 t=3s
+  one_opt pass: uncovered=350 t=3s
+  one_opt pass: uncovered=350 t=4s
+  one_opt pass: uncovered=350 t=4s
+  one_opt pass: uncovered=350 t=4s
+  one_opt pass: uncovered=350 t=5s
+ cycle 4: uncovered=350
+  repair it=50: best uncovered=350 t=4s
+  repair it=100: best uncovered=344 t=8s
+  repair it=150: best uncovered=344 t=12s
+  repair it=200: best uncovered=344 t=15s
+  repair it=250: best uncovered=344 t=19s
+  repair it=300: best uncovered=344 t=23s
+  repair it=350: best uncovered=335 t=26s
+  repair it=400: best uncovered=335 t=30s
+  one_opt pass: uncovered=335 t=1s
+  one_opt pass: uncovered=335 t=1s
+  one_opt pass: uncovered=335 t=1s
+  one_opt pass: uncovered=335 t=2s
+ cycle 5: uncovered=335
+T=9 N=21621600 (2^5,3^3,5^2,7,11,13): INCOMPLETE congs=568 uncovered=335

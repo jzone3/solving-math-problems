@@ -132,6 +132,45 @@ def repair(N, divs, congs, U, rounds=200, frac=0.06, seed=0, t_budget=600,
     return best, bestrem
 
 
+def one_opt(N, congs, t_budget=600, seed=0, verbose=True):
+    """Exact 1-opt: re-place a used value v elsewhere when the number of new
+    points covered exceeds the exclusive coverage lost. Iterate to fixpoint."""
+    rng = np.random.default_rng(seed)
+    t0 = time.time()
+    cnt = np.zeros(N, dtype=np.uint16)
+    for a, v in congs:
+        cnt[a::v] += 1
+    cur = {(a, v) for a, v in congs}
+    improved = True
+    while improved and time.time() - t0 < t_budget:
+        improved = False
+        uncov = np.flatnonzero(cnt == 0)
+        if uncov.size == 0:
+            break
+        for a, v in sorted(cur, key=lambda t: -t[1]):
+            if time.time() - t0 > t_budget:
+                break
+            idx = np.arange(a, N, v)
+            excl = int((cnt[idx] == 1).sum())
+            bc = np.bincount(uncov % v, minlength=v)
+            a2 = int(bc.argmax())
+            gain = int(bc[a2]) - excl
+            if gain > 0 or (gain == 0 and excl > 0 and rng.random() < 0.1):
+                cnt[idx] -= 1
+                cnt[a2::v] += 1
+                cur.discard((a, v))
+                cur.add((a2, v))
+                uncov = np.flatnonzero(cnt == 0)
+                improved = True
+                if uncov.size == 0:
+                    break
+        if verbose:
+            print(f"  one_opt pass: uncovered={uncov.size} t={time.time()-t0:.0f}s",
+                  flush=True)
+    rem = int((cnt == 0).sum())
+    return sorted(cur, key=lambda t: t[1]), rem
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-T", type=int, required=True)
@@ -140,25 +179,35 @@ def main():
     ap.add_argument("--repair", action="store_true")
     ap.add_argument("--repair-rounds", type=int, default=400)
     ap.add_argument("--repair-budget", type=int, default=600)
+    ap.add_argument("--cycles", type=int, default=4)
     ap.add_argument("-o", "--out")
     args = ap.parse_args()
     fac = factorize_spec(args.N)
     gates = tuple(float(x) for x in args.gates.split(","))
     congs, rem, N = cover(fac, args.T, gates)
     if rem > 0 and args.repair:
-        U = np.ones(N, dtype=bool)
-        for a, v in congs:
-            U[np.arange(a, N, v)] = False
-        congs, rem = repair(N, None, congs, U, rounds=args.repair_rounds,
-                            t_budget=args.repair_budget)
+        for cycle in range(args.cycles):
+            U = np.ones(N, dtype=bool)
+            for a, v in congs:
+                U[np.arange(a, N, v)] = False
+            congs, rem = repair(N, None, congs, U, rounds=args.repair_rounds,
+                                t_budget=args.repair_budget, seed=cycle)
+            if rem == 0:
+                break
+            congs, rem = one_opt(N, congs, t_budget=args.repair_budget,
+                                 seed=cycle)
+            if rem == 0:
+                break
+            print(f" cycle {cycle}: uncovered={rem}", flush=True)
     status = "SUCCESS" if rem == 0 else "INCOMPLETE"
     print(f"T={args.T} N={N} ({args.N}): {status} congs={len(congs)} uncovered={rem}")
-    if rem == 0 and args.out:
-        with open(args.out, "w") as f:
-            f.write(f"# T={args.T} N={args.N} engine4\n")
+    if args.out:
+        path = args.out if rem == 0 else args.out + ".part"
+        with open(path, "w") as f:
+            f.write(f"# T={args.T} N={args.N} engine4 status={status} uncovered={rem}\n")
             for a, v in congs:
                 f.write(f"{a} {v}\n")
-        print(f"wrote {len(congs)} -> {args.out}")
+        print(f"wrote {len(congs)} -> {path}")
 
 
 if __name__ == "__main__":
