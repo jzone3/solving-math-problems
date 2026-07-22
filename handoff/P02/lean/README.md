@@ -13,7 +13,7 @@ record and fidelity review.
 Build:
 
 ```
-cd formalization/P02
+cd lean  # (formalization/P02 in the main repo)
 lake exe cache get
 lake build
 ```
