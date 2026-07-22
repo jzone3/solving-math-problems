@@ -41,6 +41,30 @@ sweep.
 4. **Annealing on SAT hardness** (2 workers x 2 h): hill-climb at n=8, m<=~47 keeping
    tau>=3, score = CaDiCaL conflicts (hunt for hard/fragile packing instances).
 
+## Phase 2: multi-DAG reduction (runs/P03/v1/dagsearch.py, multidag_exhaust.py, exhaust_d6.py)
+
+REDUCTION: dicuts contain only arcs between strong components and correspond
+exactly to dicuts of the condensation; arcs inside strong components lie in no
+dicut. Hence D packs tau dijoins iff its condensation (a DAG with arc
+multiplicities) does => WLOG search acyclic multi-digraphs.
+
+5. **Exhaustive, all non-isomorphic oriented graphs on 7 vertices** (geng -c 7 |
+   directg -o, 2,120,098 graphs; superset of all simple DAGs on <= 7 vertices):
+   1,508,570 with a dicut, tau up to 12 — ALL pack. ~90 s x 4 cores.
+6. **Exhaustive multi-DAGs n=4, <=16 arcs** (fixed topological order, all
+   supports x all multiplicity compositions): 60,632 with tau>=2 — all pack.
+7. **Exhaustive multi-DAGs n=5, <=14 arcs**: 1,241,145 with tau>=2 (tau up to
+   11) — all pack. ~50 s x 4 cores.
+8. **Exhaustive multi-DAGs n=6, <=13 arcs**: 14,732,328 with tau>=2 (tau up to
+   9) — all pack. ~10 min x 6 cores.
+9. **Random multi-DAGs** (2 workers x 3 h): n in 4..12, 6..30 arcs, multiplicity
+   <= 4: ~1M instances, tau up to 24 — all pack.
+10. **Tightness annealing on multi-DAGs** (score = #minimal dicuts that are
+    tight at tau, n=8..10): converges to complete-bipartite-like DAGs with
+    2^(n-2)+ tight cuts (e.g. tau=8, m=16, 256 minimal dicuts all tight) —
+    still SAT with 0 conflicts. These max-tightness instances pack easily.
+11. **Exhaustive multi-DAGs n=6, <=15 arcs** + n=7 small multiplicity: running.
+
 ## Near-misses / observations
 
 - Zero UNSAT instances so far; virtually all instances pack with 0 SAT conflicts —
