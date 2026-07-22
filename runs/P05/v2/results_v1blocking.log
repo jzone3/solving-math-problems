@@ -1,0 +1,9 @@
+RESULT n=9 L=5 status=UNSAT iters=642 time=3.3s
+RESULT n=10 L=3 status=UNSAT iters=1198 time=1.6s
+RESULT n=10 L=4 status=UNSAT iters=1787 time=3.4s
+RESULT n=10 L=5 status=UNSAT iters=2376 time=11.5s
+RESULT n=11 L=3 status=UNSAT iters=36 time=1.0s
+RESULT n=11 L=4 status=UNSAT iters=3209 time=6.4s
+RESULT n=11 L=5 status=UNSAT iters=6532 time=31.7s
+RESULT n=11 L=6 status=UNSAT iters=8188 time=290.3s
+RESULT n=12 L=3 status=UNSAT iters=1 time=0.4s

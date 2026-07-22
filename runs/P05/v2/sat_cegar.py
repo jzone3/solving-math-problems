@@ -42,6 +42,36 @@ def longest_path(n, edges):
     return length, path
 
 
+def all_paths_of_length(n, edges, k, cap=200000):
+    """Yield edge-tuples of all simple paths with exactly k edges in sparse graph."""
+    adj = [[] for _ in range(n)]
+    for u, v in edges:
+        adj[u].append(v); adj[v].append(u)
+    out = []
+    def dfs(v, visited, path):
+        if len(out) >= cap:
+            return
+        if len(path) == k:
+            out.append(tuple(path))
+            return
+        for w in adj[v]:
+            if not (visited >> w) & 1:
+                path.append((v, w) if v < w else (w, v))
+                dfs(w, visited | (1 << w), path)
+                path.pop()
+    for s in range(n):
+        dfs(s, 1 << s, [])
+    # dedup reversed duplicates
+    seen = set()
+    res = []
+    for p in out:
+        key = frozenset(p)
+        if key not in seen:
+            seen.add(key)
+            res.append(p)
+    return res
+
+
 def connected(n, edges):
     adj = [[] for _ in range(n)]
     for u, v in edges:
@@ -153,6 +183,8 @@ def run(n, L, max_iters, time_limit, log):
     it = 0
     status = "TIMEOUT"
     witness = None
+    blocked = set()
+    nclauses = 0
     while True:
         if time.time() - t0 > time_limit:
             status = "TIMEOUT"; break
@@ -191,12 +223,23 @@ def run(n, L, max_iters, time_limit, log):
                 paths.append(pv)
             witness = {"n": n, "L": L, "edges": sorted(edges), "paths": paths}
             status = "COUNTEREXAMPLE"; break
-        # block a subpath of length L+1
-        sub = path[: L + 2]
-        clause = [-enc.evar(sub[i], sub[i + 1]) for i in range(L + 1)]
-        solver.add_clause(clause)
+        # block ALL length-(L+1) paths present in this candidate graph
+        added = 0
+        for pe in all_paths_of_length(n, edges, L + 1):
+            key = frozenset(pe)
+            if key in blocked:
+                continue
+            blocked.add(key)
+            solver.add_clause([-enc.evar(u, v) for (u, v) in pe])
+            added += 1
+        nclauses += added
+        if added == 0:
+            # safety: fall back to blocking a truncation of the returned longest path
+            sub = path[: L + 2]
+            solver.add_clause([-enc.evar(sub[i], sub[i + 1]) for i in range(L + 1)])
+            nclauses += 1
     dt = time.time() - t0
-    line = f"RESULT n={n} L={L} status={status} iters={it} time={dt:.1f}s"
+    line = f"RESULT n={n} L={L} status={status} iters={it} blockclauses={nclauses} time={dt:.1f}s"
     print(line, flush=True)
     with open(log, "a") as f:
         f.write(line + "\n")

@@ -46,6 +46,28 @@ of the three paths ⇒ 3(L+1) ≤ 2n ⇒ L ≤ (2n-3)/3.
 
 Exhaustive frontier in literature is n ≤ 12, so sweep starts at n = 13.
 
+## CEGAR blocking upgrade
+
+First version blocked one length-(L+1) path per counterexample iteration — iteration counts
+exploded (n=11 L=6: 8188 iters, 290s; see results_v1blocking.log). Upgraded to enumerate and
+block ALL length-(L+1) simple paths of each candidate graph (candidates are sparse — union of
+3 paths, <= 3L edges — so DFS enumeration is cheap). n=11 L=6 dropped to 35 iters / 2.8s.
+
+## Soundness cross-checks (sanity_check.py)
+
+- Exhaustive brute force over ALL connected graphs on n <= 7 vertices (all edge subsets of K_n):
+  every triple of longest paths intersects — independent confirmation that small-n UNSATs are
+  expected, and a differently-written longest-path enumerator agreeing with the C oracle's world.
+- SAT layer positively tested: first solver call at each (n,L) IS satisfiable (iters > 0 before
+  UNSAT), i.e. three length-L paths with empty common intersection exist as combinatorial
+  objects; only the "no longer path" CEGAR condition kills them.
+
 ## Run log
 
-(appended as runs complete)
+See results.log (machine-written, one RESULT line per completed (n,L)). Checkpoints:
+
+- n = 10..13, all feasible L (ceil(n/3)-1 <= L <= (2n-3)//3): **UNSAT** — no counterexample.
+  n=13 completes in < 3 min total. This already extends the literature's exhaustive frontier
+  (n <= 12), and does so for ALL graphs (via the R1/R2 minimality reductions), not just via
+  isomorph-free generation.
+- n = 14+: running, see below.
