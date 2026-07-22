@@ -84,6 +84,11 @@ found the *lopsided* optimum much earlier (lollipop-like shapes win at small n).
   n ≤ 117 (154, exhaustive) — consistent with the 1995 exhaustive n ≤ 10 and
   2025 MCTS n ≤ 50 results for 154.
 
+- `anneal_below118.py`: edge-flip simulated annealing at n ∈ {110,115,117}
+  (2 seeds each, seeded at the best lollipop, exact BFS scoring) never beat the
+  lollipop optimum (scores 0.943 / 0.981 / 0.996 < 1) — no sub-118 violation of
+  154 found outside the family; the lollipop appears locally optimal.
+
 ## 5. Compute spent
 ~10 min total: exhaustive (a,ℓ,b) integer scans to n=140 and windowed scan to
 n=1500 (154); numpy eigensolve grid ~5k lollipops/dumbbells n≤200 (143); exact
