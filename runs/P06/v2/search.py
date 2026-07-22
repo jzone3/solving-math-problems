@@ -131,7 +131,10 @@ if __name__ == "__main__":
         t0 = time.time()
         overall = -1e9
         oe = None
-        seeds = [star_edges(n), clique_iso_edges(n)]
+        rng0 = random.Random(n)
+        rand_edges = [(i, j) for i in range(n) for j in range(i + 1, n)
+                      if rng0.random() < 0.3]
+        seeds = [star_edges(n), clique_iso_edges(n), rand_edges]
         for r in range(restarts):
             for si, se in enumerate(seeds):
                 b, be = anneal(n, iters, T0=0.05, Tend=1e-6, seed=9000 * n + 10 * r + si,

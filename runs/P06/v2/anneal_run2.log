@@ -6,3 +6,9 @@ n=  41 best f=-0.003124 (recheck -0.003124) m=210 maxdeg=20 t=60.5s
 n=  55 best f=-0.002314 (recheck -0.002314) m=378 maxdeg=27 t=75.3s
 n=  71 best f=-0.001785 (recheck -0.001785) m=630 maxdeg=35 t=96.3s
 n=  91 best f=-0.001389 (recheck -0.001389) m=1035 maxdeg=45 t=119.9s
+n= 121 best f=-0.001042 (recheck -0.001042) m=1830 maxdeg=60 t=163.4s
+n= 161 best f=-0.000781 (recheck -0.000781) m=3240 maxdeg=80 t=194.9s
+n= 201 best f=-0.000625 (recheck -0.000625) m=5050 maxdeg=100 t=217.0s
+n= 251 best f=-0.000500 (recheck -0.000500) m=7875 maxdeg=125 t=260.5s
+n= 349 best f=-0.000359 (recheck -0.000359) m=15225 maxdeg=174 t=361.1s
+n= 499 best f=-0.000251 (recheck -0.000251) m=31125 maxdeg=249 t=508.8s
