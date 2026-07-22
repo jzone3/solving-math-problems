@@ -4,6 +4,7 @@ All 75 ultra-mode solve sessions launched 2026-07-22 (5 prompt variants per prob
 Result branches: runs/<Pxx>-v<k>; settled runs are folded into runs/<Pxx>/v<k>/ + solutions/<Pxx>/ here.
 
 Headlines so far:
+- **P08 formalized in Lean 4 + mathlib** — both theorems `P08.graffiti_conjecture_39/40` proved end-to-end in `formalization/P08/`; no `sorry`, no added axioms, no `native_decide`; `lake build` + `#print axioms` = `[propext, Classical.choice, Quot.sound]` independently re-verified by the orchestrator. Session: https://app.devin.ai/sessions/a42ac73fd25c44559c3d499ad3c8f5a4
 - **P02 (Brandt regular supergraph, West's >= n/3 statement): REFUTED** — minimal counterexample n=9 (g6 `H?q`qjo`), infinite family n=9t; Brandt's original strict (> n/3) version is the Brandt-Thomasse theorem and stands. Exact-LP/Farkas certificates, `solutions/P02/verify.py`.
 - **P08 proof adversarially CONFIRMED** — independent hostile review + from-scratch exact verifier (runs/P08/adversarial-review/REPORT.md); novelty verdict: correct, first resolution of Graffiti 39/40, though the spectral half (diam <= 2*min(n+,n-)) was published by Geng-Wu-Wang 2020.
 - **P07 (Graffiti/WoW 154 & 143): REFUTED** — minimal witnesses lollipop L(K_50,P_70) (n=120) for 154 and dumbbell(20,13,7) (n=39) for 143; independently re-verified (`solutions/P07/verify.py`, `verify143.py`).
