@@ -1,0 +1,68 @@
+== trees n=4 ==
+checked=2 lemma_fail=0
+best39=-0.219375 g6=Cs
+best40=-0.219375 g6=Cs
+== trees n=5 ==
+checked=3 lemma_fail=0
+best39=-0.224371 g6=Ds_
+best40=-0.224371 g6=Ds_
+== trees n=6 ==
+checked=6 lemma_fail=0
+best39=-0.244363 g6=Esa?
+best40=-0.244363 g6=Esa?
+== trees n=7 ==
+checked=11 lemma_fail=0
+best39=-0.268715 g6=FsaC?
+best40=-0.268715 g6=FsaC?
+== trees n=8 ==
+checked=23 lemma_fail=0
+best39=-0.293584 g6=GsaCC?
+best40=-0.293584 g6=GsaCC?
+== trees n=9 ==
+checked=47 lemma_fail=0
+best39=-0.317517 g6=HsaCCA?
+best40=-0.317517 g6=HsaCCA?
+== trees n=10 ==
+checked=106 lemma_fail=0
+best39=-0.340000 g6=IsaCCA?_?
+best40=-0.340000 g6=IsaCCA?_?
+== trees n=11 ==
+checked=235 lemma_fail=0
+best39=-0.360905 g6=JsaCCA?_C??
+best40=-0.360905 g6=JsaCCA?_C??
+== trees n=12 ==
+checked=551 lemma_fail=0
+best39=-0.380269 g6=KsaCCA?_C?O?
+best40=-0.380269 g6=KsaCCA?_C?O?
+== trees n=13 ==
+checked=1301 lemma_fail=0
+best39=-0.398193 g6=LsaCCA?_C?O?_?
+best40=-0.398193 g6=LsaCCA?_C?O?_?
+== trees n=14 ==
+checked=3159 lemma_fail=0
+best39=-0.414798 g6=MsaCCA?_C?O?_?_??
+best40=-0.414798 g6=MsaCCA?_C?O?_?_??
+== trees n=15 ==
+checked=7741 lemma_fail=0
+best39=-0.430209 g6=NsaCCA?_C?O?_?_?O??
+best40=-0.430209 g6=NsaCCA?_C?O?_?_?O??
+== trees n=16 ==
+checked=19320 lemma_fail=0
+best39=-0.444543 g6=OsaCCA?_C?O?_?_?O?C??
+best40=-0.444543 g6=OsaCCA?_C?O?_?_?O?C??
+== trees n=17 ==
+checked=48629 lemma_fail=0
+best39=-0.457906 g6=PsaCCA?_C?O?_?_?O?C??_??
+best40=-0.457906 g6=PsaCCA?_C?O?_?_?O?C??_??
+== trees n=18 ==
+checked=123867 lemma_fail=0
+best39=-0.470393 g6=QsaCCA?_C?O?_?_?O?C??_?A???
+best40=-0.470393 g6=QsaCCA?_C?O?_?_?O?C??_?A???
+== trees n=19 ==
+checked=317955 lemma_fail=0
+best39=-0.482091 g6=RsaCCA?_C?O?_?_?O?C??_?A??C???
+best40=-0.482091 g6=RsaCCA?_C?O?_?_?O?C??_?A??C???
+== trees n=20 ==
+checked=823065 lemma_fail=0
+best39=-0.493073 g6=SsaCCA?_C?O?_?_?O?C??_?A??C??C???
+best40=-0.493073 g6=SsaCCA?_C?O?_?_?O?C??_?A??C??C???

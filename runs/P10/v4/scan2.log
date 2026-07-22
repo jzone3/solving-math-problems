@@ -1,0 +1,6 @@
+A done 6830 specs 2s min=(Fraction(1, 1), 'H(2,2)', 4, 4, 1)
+B done 1087483 specs 400s min=(Fraction(0, 1), 'K[40, 1]', 41, 40, 1)
+C1 done 2087483 specs 481s min=(Fraction(0, 1), 'K[40, 1]', 41, 40, 1)
+C2 done 2762483 specs 542s min=(Fraction(0, 1), 'K[40, 1]', 41, 40, 1)
+C3 done 2825363 specs 551s min=(Fraction(0, 1), 'K[40, 1]', 41, 40, 1)
+TOTAL 2825363 specs, GLOBAL MIN deficit = (Fraction(0, 1), 'K[40, 1]', 41, 40, 1)
