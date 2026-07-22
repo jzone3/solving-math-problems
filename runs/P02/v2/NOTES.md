@@ -107,7 +107,12 @@ residual interpretation question; the problem file explicitly targets the bounda
 | 15 | 5962             | 64             | **18** |
 | 16 | 584              | 7              | 0 |
 | 17 | 14143            | 31             | 0 |
-| 18 | (running, 8-way parallel) | — | ≥36 candidates so far |
+| 18 | 2438356          | 230            | **77** |
+
+(n=18 run 8-way parallel via geng res/mod classes; ~25 min wall. Also, ALL 171 MTF
+graphs with δ≥n/3 for n=6..17 were re-checked with the exact rational pipeline, not just
+the float-LP-flagged ones — same 24 infeasible, so no false negatives from the screen.
+All 77 n=18 candidates likewise exactly confirmed infeasible, all with δ = 6 = n/3.)
 
 All infeasible instances occur exactly at n ≡ 0 (mod 3) with δ = n/3 (boundary) —
 fully consistent with the strict case δ > n/3 being true (Brandt–Thomassé + positivity
@@ -126,6 +131,12 @@ nauty-labelg): H?qahro (=W, n=9), I`?DYySYG (10), J?ClQlgdN_? (11), K`dkd@OW?N`]
 L`??D\]dbSQ`YD (13), LG@H_BJlSKJHMQ (13), M@Cg`AiTZSQhpoqo? (14), plus two twin-free
 n=15 examples. Several n=12/15 counterexamples are blowups of W itself.
 
+Every counterexample core found at n ≤ 15 contains W as a subgraph (w_containment.py).
+At n = 18 there are 18 distinct twin-free cores (sizes 9–18, cores18.txt), and again
+EVERY one contains W as a subgraph. Empirical conjecture-let: W is the unique minimal
+obstruction (up to n ≤ 18) — all boundary failures of the regular-supergraph property
+contain W.
+
 ## Infinite family
 
 Uniform blowups W[t] (each vertex → t twins) are counterexamples for every n = 9t:
@@ -135,5 +146,52 @@ is MTF), δ(W[t]) = 3t = n/3, and any regular multiplication of W[t] folds (sum 
 over twin classes) to a solution of A_W x = d·1 with x ≥ t ≥ 1, contradicting the
 certificate forcing x_8 = 0. So the boundary statement fails for infinitely many n.
 
-## Log
+## Compute spent
+
+- geng enumeration: ~3.1M triangle-free graphs generated across n = 6..18 (n=18 dominated:
+  2.44M reads, 8 parallel shards, ~25 min wall on 8 vcpus).
+- Exact rational re-verification: all 401 MTF δ≥n/3 graphs (n≤17: 171, n=18: 230).
+- Homomorphism nonexistence check W → W−8: exhaustive backtracking, instant.
+- n ≥ 19: n=19,20 (δ≥7) not run (strict case, covered by theorem); n=21 exhaustive geng
+  (-t -d7, n=21) infeasible in session budget — but the W[t] family already settles all
+  n = 9t, and blowups of the other cores cover many more n ≡ 0 (mod 3).
+
+## Dead ends / near-misses
+
+- Could not retrieve Brandt DM 251 (2002) full text (ScienceDirect captcha wall; no OA
+  mirror via OpenAlex/CORE/Exa/Wayback). Conjecture 3.8 wording taken from
+  Brandt–Thomassé's attribution (strict >). This does not affect the result vs. West's
+  posted ≥-statement, which was re-verified verbatim from regsup.html this session.
+- Float LP screen (HiGHS) produced zero false flags and zero misses vs. exact pipeline.
+
+## STATUS
+
+STATUS: SOLVED (counterexample) — relative to the problem as curated (West's page,
+δ ≥ n/3 including the boundary): W = H?q`qjo (n = 9) is a machine-verified counterexample
+(solutions/P02/verify.py prints PASS; exact integer certificate y = (0,1,1,0,−1,−1,−1,−1,2)
+with yᵀA = 2e₈, yᵀ𝟙 = 0 forces x₈ = 0), robust under the weak reading (no homomorphism
+W → W−8), with an infinite family W[t] for all n = 9t and a full census: 1/5/18/77
+counterexamples at n = 9/12/15/18 and none at any other n ≤ 18. The strict case δ > n/3
+is TRUE (Brandt–Thomassé Cor 4.3(1) + positivity via Γ_i/Vega cores). Caveat: if West's
+"at least" is a paraphrase of Brandt's strict conjecture, then this is instead a
+frontier-pushing negative resolution of the boundary case explicitly targeted by
+problems/P02.
+
+## Chronological log
+
+1. Verified statement vs regsup.html; confirmed open (empty partial-results section).
+2. Built mtf_scan.py (geng → MTF filter → LP screen); first sweep found W at n=9 within
+   seconds; exact nullspace computation showed x₈ ≡ 0 on the whole solution space.
+3. Built exact_check.py (rational RREF nullspace, forced-zero certificates,
+   Fourier–Motzkin exact feasibility) and solutions/P02/verify.py (stdlib-only, PASS).
+4. Weak-reading check: no homomorphism W → W−8 (backtracking), so no regular
+   multiplication with empty classes contains W either.
+5. Full sweeps n=6..17 (exact for all 171 MTF graphs), then 8-way parallel n=18
+   (2.44M graphs read, 230 MTF, 77 infeasible, all exactly confirmed).
+6. Core analysis: 18 distinct twin-free cores at n=18; all counterexample cores at
+   n ≤ 18 contain W as a subgraph. Verified W[2], W[3] blowup family (n = 18, 27).
+
+Files: mtf_scan.py (screen), exact_check.py (exact verifier/certificates),
+core_analysis.py, w_containment.py, scan logs, cands18.g6, cores18.txt,
+exact_all_n6_17.log, exact_n18.log; witness verifier at solutions/P02/verify.py.
 

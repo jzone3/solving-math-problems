@@ -1,0 +1,171 @@
+E?~o n=6 delta=2 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+ECxo n=6 delta=2 boundary=True tf=True mtf=True soldim=2 forced_zero=[] exact_feasible=True
+EFz_ n=6 delta=3 boundary=False tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+F?~v_ n=7 delta=3 boundary=False tf=True mtf=True soldim=6 forced_zero=[] exact_feasible=True
+G?B~vo n=8 delta=3 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+G?o~f_ n=8 delta=3 boundary=False tf=True mtf=True soldim=4 forced_zero=[] exact_feasible=True
+G?~vf_ n=8 delta=4 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+GCrb`o n=8 delta=3 boundary=False tf=True mtf=True soldim=1 forced_zero=[] exact_feasible=True
+H??F~z{ n=9 delta=3 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+H?B@~rw n=9 delta=3 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+H?B~vrw n=9 delta=4 boundary=False tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+H?bF`xw n=9 delta=3 boundary=True tf=True mtf=True soldim=2 forced_zero=[] exact_feasible=True
+H?rF`zo n=9 delta=3 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+H?q`qjo n=9 delta=3 boundary=True tf=True mtf=True soldim=2 forced_zero=[8] exact_feasible=False certs={8: ['0', '1/2', '1/2', '0', '-1/2', '-1/2', '-1/2', '-1/2', '1']}
+H?o~fbo n=9 delta=3 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+I??F~z{~? n=10 delta=4 boundary=False tf=True mtf=True soldim=9 forced_zero=[] exact_feasible=True
+I?B~vrw}? n=10 delta=5 boundary=False tf=True mtf=True soldim=9 forced_zero=[] exact_feasible=True
+I?rFf_{N? n=10 delta=4 boundary=False tf=True mtf=True soldim=6 forced_zero=[] exact_feasible=True
+J???F~}~f{? n=11 delta=4 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+J??F?~{~Fw? n=11 delta=4 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+J??F~z{~Fw? n=11 delta=5 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+J?BEFo}}@{? n=11 delta=4 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+J?B@hzI}Fo? n=11 delta=4 boundary=False tf=True mtf=True soldim=4 forced_zero=[] exact_feasible=True
+J?B@xzw}Fo? n=11 delta=4 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+J?bFF`wN?{? n=11 delta=4 boundary=False tf=True mtf=True soldim=1 forced_zero=[] exact_feasible=True
+K????B~~v}^w n=12 delta=4 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+K???F?^~f{^o n=12 delta=4 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+K???F~}~f{^o n=12 delta=5 boundary=False tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+K??EEB{NvwFw n=12 delta=4 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+K??EF?}Fvw^_ n=12 delta=4 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+K??E@c}rVw^_ n=12 delta=4 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+K??E@{}~Fw^_ n=12 delta=4 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+K??FF?^~Fw^_ n=12 delta=4 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+K??FF?^Fvw^_ n=12 delta=4 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+K??FCo]XVw^_ n=12 delta=4 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=False
+K??F?~{~Fw^_ n=12 delta=4 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+K??F~z{~Fw^_ n=12 delta=6 boundary=False tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+K?AEFBwFrwFo n=12 delta=4 boundary=True tf=True mtf=True soldim=2 forced_zero=[] exact_feasible=True
+K?AFF?^^FoBw n=12 delta=4 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+K?AFE_]JVoN_ n=12 delta=4 boundary=True tf=True mtf=True soldim=2 forced_zero=[0, 5, 10, 11] exact_feasible=False certs={0: ['1', '0', '-1/2', '-1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0'], 5: ['1', '0', '-1/2', '-1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '0', '1'], 10: ['1', '-1', '1/2', '1/2', '0', '0', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0'], 11: ['0', '1', '-1/2', '-1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '0', '1']}
+K?AFCo]XVoN_ n=12 delta=4 boundary=True tf=True mtf=True soldim=3 forced_zero=[0, 5, 10, 11] exact_feasible=False certs={0: ['1', '-1/2', '0', '-1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0'], 5: ['1', '-1/2', '0', '-1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '0', '1'], 10: ['1', '0', '0', '0', '0', '0', '0', '0', '-1', '-1', '0', '1'], 11: ['0', '0', '0', '0', '0', '1', '-1', '-1', '0', '0', '1', '0']}
+K?AF?~w}BwN_ n=12 delta=4 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+K?BEFo}}@{^? n=12 delta=4 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+K?BDF?{UfoBw n=12 delta=4 boundary=True tf=True mtf=True soldim=2 forced_zero=[0, 7, 10, 11] exact_feasible=False certs={0: ['1', '-1/2', '-1/2', '0', '0', '1/2', '1/2', '-1', '-1/2', '-1/2', '1', '0'], 7: ['-1', '1/2', '1/2', '0', '0', '-1/2', '-1/2', '1', '-1/2', '-1/2', '0', '1'], 10: ['1', '-1/2', '-1/2', '1', '0', '-1/2', '-1/2', '0', '-1/2', '-1/2', '1', '0'], 11: ['0', '-1/2', '-1/2', '1', '0', '-1/2', '-1/2', '1', '-1/2', '-1/2', '0', '1']}
+K?BD@g]Qvo^? n=12 delta=4 boundary=True tf=True mtf=True soldim=2 forced_zero=[] exact_feasible=True
+K?BD?{{Ufo^? n=12 delta=4 boundary=True tf=True mtf=True soldim=3 forced_zero=[0, 7] exact_feasible=False certs={0: ['0', '0', '0', '0', '0', '0', '0', '1', '-1', '-1', '1', '0'], 7: ['1', '-1', '-1', '1', '0', '0', '0', '0', '0', '0', '0', '0']}
+K?BFF?{}?}^? n=12 delta=4 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+K?B@hzI}Fo^? n=12 delta=4 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+K?`FE`wl?{Dg n=12 delta=4 boundary=True tf=True mtf=True soldim=2 forced_zero=[] exact_feasible=True
+K?`FAo]]DgSg n=12 delta=4 boundary=True tf=True mtf=True soldim=3 forced_zero=[] exact_feasible=True
+K?r@`boN?^WY n=12 delta=4 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+L????B~~v}^w~o n=13 delta=5 boundary=False tf=True mtf=True soldim=12 forced_zero=[] exact_feasible=True
+L???F~}~f{^o~_ n=13 delta=6 boundary=False tf=True mtf=True soldim=12 forced_zero=[] exact_feasible=True
+L??FF?^Fvw^_~? n=13 delta=5 boundary=False tf=True mtf=True soldim=9 forced_zero=[] exact_feasible=True
+M??????~~~^{~w~w? n=14 delta=5 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+M????BoB~}^w~o~o? n=14 delta=5 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+M????B~~v}^w~o~o? n=14 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+M???FB_Fw~^o~_~_? n=14 delta=5 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+M???F?\FvD^o~_~_? n=14 delta=5 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+M???F?^Fv{^o~_~_? n=14 delta=5 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+M???F~}~f{^o~_~_? n=14 delta=7 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+M??EEBoB~wFw~?No? n=14 delta=5 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+M??EFB_Nfw^_FwFw? n=14 delta=5 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+M??EF?^Fp{^_~?~?? n=14 delta=5 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+M??E@cypX{Xg~?~?? n=14 delta=5 boundary=False tf=True mtf=True soldim=4 forced_zero=[] exact_feasible=True
+M??E@c}NeYXg~?~?? n=14 delta=5 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+M??FFB_~?~^_Fw~?? n=14 delta=5 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+M??FF?^Fvw^_~?~?? n=14 delta=5 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+M?AEFBo}BwFoFoBw? n=14 delta=5 boundary=False tf=True mtf=True soldim=1 forced_zero=[] exact_feasible=True
+N???????F~~}~{~{^}? n=15 delta=5 boundary=True tf=True mtf=True soldim=14 forced_zero=[] exact_feasible=True
+N??????{?^~{~w~w^{? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N??????~~~^{~w~w^{? n=15 delta=6 boundary=False tf=True mtf=True soldim=14 forced_zero=[] exact_feasible=True
+N????B_w?~b}~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N????B_{?~@}~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N????B_FG~[Y~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N????B_Fw~^w~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N????Bo{?^~w~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N????Bo{?^`}~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N????Bor?^EY~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=False
+N????Bob_^MI~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=False
+N????BoB~}^w~o~o^w? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N????B~~v}^w~o~o^w? n=15 delta=7 boundary=False tf=True mtf=True soldim=14 forced_zero=[] exact_feasible=True
+N???EB?{?^~o~_NwF{? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???EB?~`~^oNw~_F{? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N???EB_w@}^o~_F{B}? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???EB_{?~FwB{~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N???EB_No~B{~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???EBo{?^fwNo~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???E?pMP}Wurg~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N???E?pNu\Fwrg~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???E?xMP}Wu~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???E?xMULwuNo~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???E?xLULXQNo~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[7, 12] exact_feasible=False certs={7: ['1', '0', '0', '0', '-1/2', '-1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0', '0'], 12: ['0', '0', '-1', '0', '1/2', '1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0', '0']}
+N???E?xHuLZANo~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[2, 7, 12] exact_feasible=False certs={2: ['0', '0', '1', '-1/2', '0', '-1/2', '0', '0', '1/2', '1/2', '-1/2', '-1/2', '-1', '1', '0'], 7: ['1', '0', '0', '-1/2', '0', '-1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0', '0'], 12: ['0', '0', '-1', '1/2', '0', '1/2', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0', '0']}
+N???E?xph}Fw~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???E?~Np}^o~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N???FB_wF{B}~_F{^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N???FB_{?~@}~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???FB_{?~@}Fw~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???FB_Fw~^o~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N???FB_Fw~B{~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N???FBO{?}DsB{~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[9, 12] exact_feasible=False certs={9: ['-1', '0', '1/2', '1/2', '0', '0', '0', '-1/2', '-1/2', '1', '-1/2', '-1/2', '1', '0', '0'], 12: ['0', '0', '-1/2', '-1/2', '1', '0', '0', '-1/2', '-1/2', '1', '-1/2', '-1/2', '1', '0', '0']}
+N???FBOBw}Ds~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=6 forced_zero=[9] exact_feasible=False certs={9: ['1', '0', '-1', '-1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']}
+N???FBo{?}BwB{~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???FBo{?}@}~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???F?\FvD^o~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N???Fbo{?^~o~_~_^o? n=15 delta=5 boundary=True tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N??CEB_{Fw@}^_FwFw? n=15 delta=5 boundary=True tf=True mtf=True soldim=2 forced_zero=[] exact_feasible=True
+N??CEBo{?^noNo~?@}? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N??CEBoy?^Ay~?NoNo? n=15 delta=5 boundary=True tf=True mtf=True soldim=2 forced_zero=[0, 1, 6, 7, 12, 13, 14] exact_feasible=False certs={0: ['1', '0', '0', '-1/2', '-1/2', '0', '1', '0', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0', '0'], 1: ['0', '1', '0', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '0', '0', '1'], 6: ['1', '0', '0', '-1/2', '-1/2', '0', '1', '0', '-1/2', '-1/2', '-1/2', '-1/2', '0', '0', '1'], 7: ['0', '1', '0', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '0', '1', '0'], 12: ['1', '0', '-1', '1/2', '1/2', '0', '0', '0', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0', '0'], 13: ['0', '0', '1', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '0', '1', '0'], 14: ['0', '1', '0', '-1/2', '-1/2', '0', '1', '0', '-1/2', '-1/2', '-1/2', '-1/2', '0', '0', '1']}
+N??CEBor?^EY~?NoNo? n=15 delta=5 boundary=True tf=True mtf=True soldim=3 forced_zero=[0, 1, 6, 7, 12, 13, 14] exact_feasible=False certs={0: ['1', '0', '-1/2', '0', '-1/2', '0', '1', '0', '-1/2', '-1/2', '-1/2', '-1/2', '1', '0', '0'], 1: ['0', '1', '-1/2', '0', '-1/2', '0', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '0', '0', '1'], 6: ['1', '0', '-1/2', '0', '-1/2', '0', '1', '0', '-1/2', '-1/2', '-1/2', '-1/2', '0', '0', '1'], 7: ['0', '1', '-1/2', '0', '-1/2', '0', '0', '1', '-1/2', '-1/2', '-1/2', '-1/2', '0', '1', '0'], 12: ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '-1', '-1', '0', '1', '0'], 13: ['0', '0', '0', '0', '0', '0', '0', '1', '-1', '-1', '0', '0', '1', '0', '0'], 14: ['0', '1', '-1/2', '0', '-1/2', '0', '1', '0', '-1/2', '-1/2', '-1/2', '-1/2', '0', '0', '1']}
+N??CFBO{?}DsB{~?No? n=15 delta=5 boundary=True tf=True mtf=True soldim=2 forced_zero=[0, 1, 6, 9, 12, 13, 14] exact_feasible=False certs={0: ['1', '0', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '0', '-1/2', '-1/2', '0', '1', '0'], 1: ['0', '1', '-1/2', '-1/2', '0', '0', '0', '1/2', '1/2', '-1', '-1/2', '-1/2', '0', '0', '1'], 6: ['1', '0', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '0', '-1/2', '-1/2', '0', '0', '1'], 9: ['0', '-1', '1/2', '1/2', '0', '0', '0', '-1/2', '-1/2', '1', '-1/2', '-1/2', '1', '0', '0'], 12: ['0', '0', '-1/2', '-1/2', '1', '0', '0', '-1/2', '-1/2', '1', '-1/2', '-1/2', '1', '0', '0'], 13: ['1', '0', '-1/2', '-1/2', '1', '0', '0', '-1/2', '-1/2', '0', '-1/2', '-1/2', '0', '1', '0'], 14: ['0', '1', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '0', '-1/2', '-1/2', '0', '0', '1']}
+N??CFBo{?}@}^_~?No? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N??CFBo{?}@}^_~?@}? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N??CF?ZFvH^_~?^_No? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N??EEBo{Fw@}NoNo^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N??EEBoB~wFw~?No^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N??EDBo{@{Jg~?B{@}? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[12] exact_feasible=False certs={12: ['1', '-1/2', '-1/2', '0', '1', '0', '-1/2', '-1/2', '0', '0', '-1/2', '-1/2', '1', '0', '0']}
+N??EDBo{@{JgFoB{^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=3 forced_zero=[0, 3, 12, 13, 14] exact_feasible=False certs={0: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '-1', '-1', '1', '0', '1'], 3: ['0', '-1/2', '-1/2', '1', '0', '0', '-1/2', '-1/2', '1', '0', '-1/2', '-1/2', '1', '0', '0'], 12: ['1', '-1', '-1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'], 13: ['0', '-1/2', '-1/2', '0', '1', '0', '-1/2', '-1/2', '1', '0', '-1/2', '-1/2', '0', '1', '0'], 14: ['1', '-1/2', '-1/2', '0', '1', '0', '-1/2', '-1/2', '0', '0', '-1/2', '-1/2', '0', '0', '1']}
+N??ED?ZDp{[cVOyC^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=3 forced_zero=[14] exact_feasible=False certs={14: ['1', '-1/2', '-1/2', '1', '0', '0', '-1/2', '-1/2', '0', '0', '-1/2', '0', '-1/2', '0', '1']}
+N??ED?ZFp{[cVO~?^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=3 forced_zero=[0, 5, 8, 9, 11] exact_feasible=False certs={0: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '-1', '0', '-1', '1', '0'], 5: ['0', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '0', '1', '-1/2', '1', '-1/2', '0', '0'], 8: ['0', '-1/2', '-1/2', '1', '0', '0', '-1/2', '-1/2', '1', '0', '-1/2', '1', '-1/2', '0', '0'], 9: ['1', '-1', '-1', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0'], 11: ['0', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '1', '0', '-1/2', '1', '-1/2', '0', '0']}
+N??EFB_Nfw^_FwFw^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N??EFB_N`{^_~?FwB{? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[] exact_feasible=True
+N??EFBOFo^Ds~?~?^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[6, 10] exact_feasible=False certs={6: ['1', '0', '-1/2', '-1/2', '0', '0', '1', '-1/2', '-1/2', '1/2', '-1', '1/2', '0', '0', '0'], 10: ['0', '0', '-1/2', '-1/2', '1', '0', '-1', '1/2', '1/2', '-1/2', '1', '-1/2', '0', '0', '0']}
+N??EFBo{@{Bw~?B{^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N??E@bo{@{Xg~?B{@}? n=15 delta=5 boundary=True tf=True mtf=True soldim=6 forced_zero=[12] exact_feasible=False certs={12: ['0', '0', '0', '0', '1', '0', '-1', '-1', '1', '0', '0', '0', '0', '0', '0']}
+N??E@_qBp{]A~?rWXk? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N??E@_NMeIfo{GrO^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=3 forced_zero=[4, 5, 8, 9, 10, 12, 14] exact_feasible=False certs={4: ['-1/2', '0', '-1/2', '0', '1', '0', '-1/2', '-1/2', '1', '1', '0', '-3/2', '0', '-1/2', '1'], 5: ['-1/2', '0', '-1/2', '0', '0', '1', '-1/2', '-1/2', '1', '0', '1', '-1/2', '0', '-3/2', '1'], 8: ['-1', '0', '-1', '0', '1', '1', '-1', '-1', '2', '1', '1', '-2', '1', '-2', '1'], 9: ['-1/2', '0', '-1/2', '0', '1', '0', '-1/2', '-1/2', '1', '1', '1', '-3/2', '0', '-3/2', '1'], 10: ['-1/2', '0', '-1/2', '0', '0', '1', '-1/2', '-1/2', '1', '1', '1', '-3/2', '0', '-3/2', '1'], 12: ['0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '-1', '0', '-1', '1'], 14: ['-1/2', '0', '-1/2', '0', '1', '1', '-3/2', '-3/2', '1', '1', '1', '-3/2', '1', '-3/2', '1']}
+N??E@cypX{Xg~?~?^_? n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N??FFB_~Fw^_FwFwB{? n=15 delta=6 boundary=False tf=True mtf=True soldim=11 forced_zero=[] exact_feasible=True
+N?AFF?[FFo[E^?Fp?^O n=15 delta=5 boundary=True tf=True mtf=True soldim=5 forced_zero=[] exact_feasible=True
+N?BE@_o{@{FoqWqW@}? n=15 delta=5 boundary=True tf=True mtf=True soldim=8 forced_zero=[14] exact_feasible=False certs={14: ['-1/2', '0', '-1/2', '0', '0', '1/2', '0', '1/2', '0', '0', '-1/2', '0', '-1/2', '0', '1']}
+N?BE@_o}@{^?qWBw?}_ n=15 delta=5 boundary=True tf=True mtf=True soldim=6 forced_zero=[4, 13, 14] exact_feasible=False certs={4: ['-1/2', '0', '-1/2', '0', '1', '-1/2', '0', '-1/2', '0', '1', '-1/2', '0', '-1/2', '1', '0'], 13: ['-1', '0', '-1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'], 14: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '-1', '0', '-1', '1', '0']}
+O???????F~~}~{~{^}F~_ n=16 delta=6 boundary=False tf=True mtf=True soldim=15 forced_zero=[] exact_feasible=True
+O??????~~~^{~w~w^{F~? n=16 delta=7 boundary=False tf=True mtf=True soldim=15 forced_zero=[] exact_feasible=True
+O????Bo{?^`}~o~o^wF}? n=16 delta=6 boundary=False tf=True mtf=True soldim=12 forced_zero=[] exact_feasible=True
+O????B~~v}^w~o~o^wF}? n=16 delta=8 boundary=False tf=True mtf=True soldim=15 forced_zero=[] exact_feasible=True
+O???FB_wF{B}~_F{^o?~_ n=16 delta=6 boundary=False tf=True mtf=True soldim=12 forced_zero=[] exact_feasible=True
+O???FB_Fw~B{~_~_^oF{? n=16 delta=6 boundary=False tf=True mtf=True soldim=12 forced_zero=[] exact_feasible=True
+O??EEBo{Fw^_NoNo@}?^_ n=16 delta=6 boundary=False tf=True mtf=True soldim=9 forced_zero=[] exact_feasible=True
+P?????????^~~}~}^~F~o~}? n=17 delta=6 boundary=False tf=True mtf=True soldim=16 forced_zero=[] exact_feasible=True
+P???????Fo?~~{~{^}F~_~{? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P???????F~~}~{~{^}F~_~{? n=17 delta=7 boundary=False tf=True mtf=True soldim=16 forced_zero=[] exact_feasible=True
+P??????{F_@~B}~w^{F~?~w? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P??????{?]`}{I~w^{F~?~w? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P??????{?^`}~w~w^{F~?~w? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P??????~~~^{~w~w^{F~?~w? n=17 delta=8 boundary=False tf=True mtf=True soldim=16 forced_zero=[] exact_feasible=True
+P????B_wF?^wF}~oB~F}?F}? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P????B_w?x{XF{F{^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P????B_w?~b}F{~o^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P????B_{F_B{B}B}^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P????B_{?^`}Fw~o^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P????B_FG|[JFwws^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+P????B_FG~B{wsws^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P????B_Fw~B{~o~o^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P????Bo{F_@~B}~o^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P????Bo{F_@~B}B}^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P????Bo{?^`}~o~o^wF}?~o? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P???EB?{F_^oB}~_@~@~?Nw? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P???EB?{?Z`}{a~_F{F{?Nw? n=17 delta=6 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+P???EB_wFo?~No~_^o?~_F{? n=17 delta=6 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+P???EB_{F_FwFw~_^o?^oB}? n=17 delta=6 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+P???EB_{?Z`}FwNo]PF{?~_? n=17 delta=6 boundary=False tf=True mtf=True soldim=4 forced_zero=[] exact_feasible=True
+P???EB_{?^`}FwNo^oF{?~_? n=17 delta=6 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+P???EBo{F_FwNo~_@~?^o~_? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P???E?pMULwuNoNoXsF{?~_? n=17 delta=6 boundary=False tf=True mtf=True soldim=7 forced_zero=[] exact_feasible=True
+P???E?xMULwuNoNo^oF{?~_? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P???FB_wFo?~~_F{^o?~_~_? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P???FB_wF{B}~_F{^o?~_~_? n=17 delta=6 boundary=False tf=True mtf=True soldim=13 forced_zero=[] exact_feasible=True
+P???FB_{?^`}Fw~_^oF{?~_? n=17 delta=6 boundary=False tf=True mtf=True soldim=10 forced_zero=[] exact_feasible=True
+P??CEB_{Fo^_^_NoB{?^_@}? n=17 delta=6 boundary=False tf=True mtf=True soldim=1 forced_zero=[] exact_feasible=True
