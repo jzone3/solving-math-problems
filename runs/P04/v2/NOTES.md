@@ -75,4 +75,40 @@ total). Estimated total class size ≈ 8–9 × 10^9 graphs; ≈ 7 core-hours; ~
 
 ## 3. Run log
 
-(to be appended as shards complete)
+### n = 13: COMPLETE — Hajós' conjecture VERIFIED for all Eulerian graphs of order ≤ 13
+
+Full run: 4096 geng shards (`geng -c -d5 12 r/4096`), 8 cores, ~2.2 h wall.
+Totals (per-shard details in `out13_summary.txt`):
+
+- read (all connected 12-vertex graphs with δ ≥ 5): **8,573,140,092**
+- candidate extensions G (13 vertices, even, 2-connected, ≤1 vertex of deg 4):
+  **8,439,421,188**
+- decomposed into ≤ 6 edge-disjoint cycles, decomposition machine-re-verified:
+  **8,439,421,188 (100%)** — heuristic never failed (hard = 0, so the ILP fallback
+  was never needed)
+- skipped as not 2-connected: 1 graph (graph6 `LQhTQiiTTT^~TT`: even, connected,
+  cutvertex 11, blocks of order 7+7 → ≤ 3+3 = 6 cycles by HNS n ≤ 12; legitimately
+  excluded by the block argument (a)).
+
+Non-candidates (read − candidates − 1 ≈ 133.7M) are the H with #odd(H) < 4
+(deg(w) ∈ {0, 2}: disconnected or excluded by suppression argument (b)).
+
+Together with HNS (n ≤ 12) and reductions (a),(b),(c) of §1 this proves:
+**every Eulerian graph on at most 13 vertices decomposes into ≤ ⌊(n−1)/2⌋ cycles.**
+This extends the exhaustive-verification frontier from n = 12 to n = 13.
+
+Independent spot check: `second_verifier.py` (different decomposition method:
+Eulerian-circuit splitting + exact ILP fallback, networkx-based independent graph6
+decoding) run on random samples of shards — see `spot_result.txt`.
+
+### n = 14: sharded run (in progress)
+
+Bound at n = 14 is still ⌊13/2⌋ = 6. Class (see §1, adapted): H = geng -c -d5 13,
+#odd(H) ≥ 2; #odd = 2 requires the odd pair adjacent (deg-2 vertex with non-adjacent
+neighbours is excluded by suppression + n ≤ 13 now verified; the triangle case
+survives since the bound does not grow from 13 to 14 — see hajos_check14.c).
+Class size ≈ 1.2 × 10^12 graphs ≈ 850 core-hours → split into 1024 geng shards:
+- residues 0–703: 11 child Devin sessions (64 shards each, K = 0..10), branches
+  runs/P04-v2-child<K>; see CHILD_TASK.md. (5 further children hit the org's
+  concurrent-session limit.)
+- residues 704–1023: running locally (run14_local.sh).
