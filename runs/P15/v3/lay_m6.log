@@ -4,3 +4,5 @@
   layer 5 q=3 N=144 mods_avail=5 used=5 holes_left=49 rc2=3.1s
   layer 6 q=5 N=720 mods_avail=14 used=14 holes_left=113 rc2=7.4s
   layer 7 q=7 N=5040 mods_avail=30 used=30 holes_left=274 rc2=79.8s
+  layer 8 q=11 N=55440 mods_avail=60 used=60 holes_left=1391 rc2=861.8s
+  layer 9 q=2 N=110880 mods_avail=24 used=24 holes_left=1976 rc2=152.7s

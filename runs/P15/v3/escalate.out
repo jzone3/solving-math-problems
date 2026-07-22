@@ -1,2 +1,10 @@
 N=360 m=5 reciprocal-sum=1.1667
   mods=20 vars=2318 clauses=4981 build=0.0s
+N=360 m=5 reciprocal-sum=1.1667
+  mods=20 vars=2318 clauses=4981 build=0.0s
+m=5 N=360 status=TIMEOUT(930s) wall=930s
+N=720 m=5 reciprocal-sum=1.2750
+  mods=26 vars=4820 clauses=10333 build=0.0s
+m=5 N=720 status=TIMEOUT(921s) wall=921s
+N=2520 m=5 reciprocal-sum=1.6310
+  mods=44 vars=18714 clauses=39894 build=0.1s
