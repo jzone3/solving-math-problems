@@ -121,18 +121,21 @@ def log_result(rec):
         f.write(json.dumps(rec) + "\n")
 
 
-def run(seconds=3600, seed=0, min_tau=3, nmax=12, mmax=30, log_every=200):
+def run(seconds=3600, seed=0, tau_lo=3, tau_hi=6, nmax=12, mmax=30,
+        log_every=200, init=None):
     rng = random.Random(seed)
     t0 = time.time()
     seen = set()
     stats = Counter()
     best_score = (-1,)
-    cur = None
+    cur = init
     cur_score = None
     evals = 0
     while time.time() - t0 < seconds:
-        if cur is None or rng.random() < 0.05:
+        if cur is None or (init is None and rng.random() < 0.05):
             cand = random_digraph(rng, mmax=min(mmax, 26))
+        elif rng.random() < 0.02 and init is not None:
+            cand = init  # restart from the structured seed
         else:
             cand = mutate(rng, cur[0], cur[1], nmax=nmax, mmax=mmax)
         n, arcs = cand
@@ -143,7 +146,7 @@ def run(seconds=3600, seed=0, min_tau=3, nmax=12, mmax=30, log_every=200):
             stats["dupe"] += 1
             continue
         seen.add(key)
-        res = evaluate(n, arcs)
+        res = evaluate(n, arcs, tau_lo=tau_lo, tau_hi=tau_hi)
         evals += 1
         if res is None:
             stats["tau_out_of_range"] += 1
@@ -181,4 +184,10 @@ def run(seconds=3600, seed=0, min_tau=3, nmax=12, mmax=30, log_every=200):
 if __name__ == "__main__":
     seconds = int(sys.argv[1]) if len(sys.argv) > 1 else 3600
     seed = int(sys.argv[2]) if len(sys.argv) > 2 else 0
-    run(seconds=seconds, seed=seed)
+    tau_lo = int(sys.argv[3]) if len(sys.argv) > 3 else 3
+    tau_hi = int(sys.argv[4]) if len(sys.argv) > 4 else 6
+    init = None
+    if len(sys.argv) > 5 and sys.argv[5] == "schrijver":
+        from schrijver_instance import N, ARCS
+        init = (N, tuple(ARCS))
+    run(seconds=seconds, seed=seed, tau_lo=tau_lo, tau_hi=tau_hi, init=init)
