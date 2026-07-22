@@ -119,3 +119,46 @@ C. Residual-family search per (C7): anneal over (3,4)-regular-shaped graphs
 D. Any witness → solutions/P01/verify.py (independent, dependency-light).
 
 Checkpoints below as the run progresses.
+
+## 4. Window-gadget reduction (V5 core targeted family) — and exhaustion results
+
+**Reduction (sufficient direction).** Let a *window gadget* be the path P_w = 0–1–…–(w−1)
+plus a chord set giving every vertex exactly 2 chords (simple, no chord = path edge; (0,w−1)
+allowed), and let t = number of hamiltonian 0→(w−1) paths (t ≥ 1: the canonical path).
+Chaining k ≥ 2 copies in a ring (edge from (w−1) of copy i to 0 of copy i+1) yields a
+4-REGULAR graph whose windows attach via 2-edge cuts, so every HC restricts to a ham
+end-to-end path in each window: #HC = t^k. **A t=1 gadget ⇒ Sheehan is FALSE.** This is
+exactly the mechanism behind Fleischner's multigraph counterexamples and the
+Thomassen–Zamfirescu constant-216 family (their t = 216^(1/k)-style block counts; 216 = 6^3
+suggests three t=6 blocks). Search space per w is tiny compared to all 4-regular graphs on
+n = kw vertices — this is where literature-first pays off.
+
+**Exhaustive results (window.c, exact min; t1search.c, t=1-targeted with monotone pruning
+[chords only add ham paths] + C4-pattern pruning + adaptive count cutoffs):**
+
+| w | #chord-2-factors | min t | # attaining |
+|---|---|---|---|
+| 8 | 342 | 12 | 26 |
+| 9 | 3 061 | 12 | 1 |
+| 10 | 30 285 | 12 | 4 |
+| 11 | 328 322 | 12 | 2 |
+| 12 | 3 874 539 | 16 | 12 |
+| 13 | 49 475 603 | 18 | 12 |
+| 14 (C4-free subspace) | 60 764 501 | 30 | 8 |
+
+min t is (weakly) INCREASING in w on 12..14 — negative evidence for a 2-cut-ring
+counterexample; also independently confirms: **no uniquely hamiltonian 4-regular graph
+decomposable as a ring of ≥2 identical ≤14-vertex 2-edge-cut windows exists.**
+t1search verified "no t=1 gadget" independently for w ≤ 14 (0 leaves ever reached:
+the partial-monotone prune kills every branch before completion).
+Caveat: w=14 exact-min row is within the C4-free subspace (C4 configs have t ≥ 2 anyway,
+so this does not affect the t=1 conclusion).
+
+Note the value 12 = #HC(K5): the w=8..11 minimizers are K5-derived blocks, matching the
+GMZ observation that girth-3 minimizers are K5/octahedron-block chains.
+
+**Annealing (anneal.c) over full space G = C_n + 2-factor, 8 cores:** current bests
+(cutoff-counted exact): n=22: 360, n=23: 810, n=24: 720, n=25: 2068, n=26: 1440 — vs
+GMZ n=21 minimum 144. Continuing with grow-and-polish (driver.py).
+
+Next: split t1search by first-chord partner and exhaust w = 15, 16 (maybe 17) in parallel.

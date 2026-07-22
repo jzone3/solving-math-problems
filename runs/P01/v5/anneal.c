@@ -124,18 +124,31 @@ int main(int argc,char**argv){
         printf("%lld\n", count_hc(2*lim));
         return 0;
     }
-    if(argc<5){ fprintf(stderr,"usage: %s n seed iters cutoff [restarts] | %s count < spec\n",argv[0],argv[0]); return 1; }
+    if(argc<5){ fprintf(stderr,"usage: %s n seed iters cutoff [restarts] [statefile] | %s count < spec\n",argv[0],argv[0]); return 1; }
     n=atoi(argv[1]); rng_s=strtoull(argv[2],0,10)*2862933555777941757ULL+3037000493ULL;
     long long iters=atoll(argv[3]); long long cut=atoll(argv[4]);
     int restarts=argc>5?atoi(argv[5]):1;
+    int seeded=0; int seed_ch[MAXN][2];
+    if(argc>6){ /* statefile: "k a1 b1 a2 b2 ..." chords on same n */
+        FILE*f=fopen(argv[6],"r"); int k;
+        if(!f||fscanf(f,"%d",&k)!=1){ fprintf(stderr,"bad statefile\n"); return 1; }
+        for(int v=0;v<n;v++) seed_ch[v][0]=seed_ch[v][1]=-1;
+        for(int i=0;i<k;i++){ int a,b; if(fscanf(f,"%d %d",&a,&b)!=2) return 1;
+            if(seed_ch[a][0]<0)seed_ch[a][0]=b; else seed_ch[a][1]=b;
+            if(seed_ch[b][0]<0)seed_ch[b][0]=a; else seed_ch[b][1]=a; }
+        fclose(f); seeded=1;
+    }
     long long global_best=1LL<<60;
     for(int r=0;r<restarts;r++){
-        random_2factor();
+        if(seeded && r==0) memcpy(ch,seed_ch,sizeof(ch));
+        else if(seeded){ /* perturbed reseed from seed state */
+            memcpy(ch,seed_ch,sizeof(ch));
+        } else random_2factor();
         long long dyncut=cut;
         long long e=count_hc(2*dyncut);
         long long best=e;
         if(e<global_best){ global_best=e; print_state(e,"IMPROVE"); }
-        double T=fmax(2.0,(double)e/8.0);
+        double T=seeded?fmax(1.0,(double)e/40.0):fmax(2.0,(double)e/8.0);
         double cool=pow(0.05/T, 1.0/(double)iters);
         int sv_ch[MAXN][2];
         for(long long it=0; it<iters; it++){
