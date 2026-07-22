@@ -89,6 +89,28 @@ Also, R ≥ (Σ_v √d_v)/(2√Δ) (per-vertex bound with neighbor degrees ≤ �
 K_k∪tK_1; if dev(D) ≤ (Σ√d_v)/(2√Δ) held for all degree sequences it would prove 129 —
 left as a note for V5/proof-oriented follow-up.
 
+## 4b. LP certification of ALL graphs on n = 13 (and beyond enumeration)
+
+Since dev depends only on D, 129 holds for every graph on n vertices iff for every
+graphical degree sequence D, dev(D) ≤ Rmin(D). `lp_certify.py` lower-bounds Rmin(D) by
+a transportation-style LP over degree-class edge counts x_ab (min Σ x_ab/√(ab) s.t.
+degree balance Σ_b x_ab + 2x_aa = a·n_a, capacity x_ab ≤ n_a n_b, x_aa ≤ C(n_a,2));
+every realization is feasible, so LP-opt ≤ Rmin(D). A cheap pre-filter
+R ≥ (Σ√d)/(2√Δ) handles most sequences.
+
+Results (all graphical degree sequences enumerated via Erdős–Gallai):
+- n = 11: 59,347 sequences, worst LP/cheap margin +3.6e-4 → CERTIFIED (agrees with the
+  1.02e9-graph enumeration).
+- n = 12: 222,116 sequences; single tight case = [6^7,0^5] = K_7∪5K_1 (exact equality,
+  proven in exact arithmetic) → CERTIFIED apart from the known equality family.
+- **n = 13: 836,314 sequences, worst margin +9.5e-7 (cheap bound; its LP margin is
+  +1.375) → conjecture 129 CERTIFIED for ALL ≈50 trillion graphs on 13 vertices** —
+  the V4 mandate n = 11–13 is thus fully covered without enumerating n = 13.
+- n = 14+ running.
+
+Caveat: float LP; any |margin| < 1e-6 case is re-examined exactly (only the K_k family
+ever appears, and it is proven equal exactly).
+
 ## 5. Compute spent (so far)
 
 - n=11 full exhaust: ~8 core × 7 min.
