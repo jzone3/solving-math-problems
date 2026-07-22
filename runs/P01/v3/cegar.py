@@ -30,12 +30,12 @@ from pysat.solvers import Cadical153
 from hc import find_second_hc, count_hcs
 
 
-def chords_of(n):
+def chords_of(n, min_dist=2):
     out = []
     for i in range(n):
         for j in range(i + 1, n):
-            d = (j - i) % n
-            if 2 <= d <= n - 2:
+            d = min((j - i) % n, (i - j) % n)
+            if d >= min_dist:
                 out.append((i, j))
     return out
 
@@ -50,8 +50,9 @@ def dihedral_images(n, edge):
             yield (min(a, b), max(a, b))
 
 
-def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True):
-    chords = chords_of(n)
+def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True,
+        min_dist=2):
+    chords = chords_of(n, min_dist)
     pool = IDPool()
     var = {e: pool.id(("x", e)) for e in chords}
     solver = Cadical153()
@@ -150,7 +151,7 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
 
     elapsed = time.time() - t0
     result = {
-        "n": n, "status": status, "models": models,
+        "n": n, "min_dist": min_dist, "status": status, "models": models,
         "clauses": clauses_added, "seconds": round(elapsed, 1),
         "best_hc_count": best[0] if best[1] else None,
         "best_chords": best[1],
@@ -169,6 +170,9 @@ if __name__ == "__main__":
     ap.add_argument("--seconds", type=float, default=3600)
     ap.add_argument("--notes", type=str, default=None)
     ap.add_argument("--no-nearmiss", action="store_true")
+    ap.add_argument("--min-dist", type=int, default=2,
+                    help="minimum cyclic distance of allowed chords (subfamily restriction)")
     a = ap.parse_args()
-    r = run(a.n, a.seconds, notes=a.notes, nearmiss=not a.no_nearmiss)
+    r = run(a.n, a.seconds, notes=a.notes, nearmiss=not a.no_nearmiss,
+            min_dist=a.min_dist)
     sys.exit(0 if r["status"] in ("exhausted-unsat", "FOUND") else 2)
