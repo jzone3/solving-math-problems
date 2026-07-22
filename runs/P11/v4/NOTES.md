@@ -49,6 +49,27 @@ periodic autocorrelations; DFT/fold pruning; polish near-solutions).
 
 ## 4. Search log
 
-(checkpointed as runs progress)
+### Phase 1 — plain annealing / PT / ILS (negative calibration)
+- anneal.c, pt.c, ils.c all stall on the *known* cell CW(48,36):
+  bestE 28 (anneal, 484M moves), 34 (PT), 32 (ILS) in ~5 min each.
+  Conclusion: unstructured single-site/swap local search cannot reach E=0 at
+  weight 36 even where witnesses exist. 4h baseline anneal runs on all six open
+  cells produced nothing below the report threshold (E<=60) before being retired.
+- Fold pruning (fold.c + lift.c): valid folds found for
+  d=16 (k=36, m up to 7), d=21 (m=5), d=24 (m=4); none found within 2-20 min for
+  d=28,33,35,39,40,44 (inconclusive — annealer, not exhaustive). Lifting the known
+  CW(48,36) row to n=96 stalled at E=52; other lifts similar. Fold-constrained
+  moves shrink the space but do not fix the landscape ruggedness.
+
+### Phase 2 — RRR / difference-map (Fourier-side projections) — the V4 winner
+- rrr.py: RRR iteration x += beta*(P_A(2 P_B(x) - x) - P_B(x)) with
+  P_A = flat-spectrum projection (magnitudes := s, DC := +s),
+  P_B = nearest ternary with composition (21+,15-) for k=36.
+- **Solved the known cell CW(48,36) in 117 s / 4.85M iterations** (verified PASS
+  by verify.py) — the cell that all Phase-1 local searches failed on.
+  Also solves CW(13,9) instantly. RRR is qualitatively stronger here.
+- Calibration on larger known cells CW(91,36), CW(104,36) (30 min each) and
+  6-hour RRR runs on all six open cells launched (8 cores, random beta in
+  [0.3,0.9] per restart).
 
 ## STATUS: running
