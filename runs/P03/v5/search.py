@@ -204,14 +204,19 @@ if __name__ == "__main__":
     seconds = int(sys.argv[2]) if len(sys.argv) > 2 else 600
     seed = int(sys.argv[3]) if len(sys.argv) > 3 else 0
     rng = random.Random(seed)
-    # (n_src, n_snk, n_int) combos; n_int - 3(n_snk-n_src) must be even>=0
-    sizes = []
-    for s in range(1, 4):
-        for t in range(1, 4):
-            for m in range(2, 11):
-                if abs(3 * (t - s)) <= m and (m - 3 * (t - s)) % 2 == 0:
-                    if s + t + m <= 16:
-                        sizes.append((s, t, m))
+    if len(sys.argv) > 4:
+        # explicit sizes: "s,t,m;s,t,m;..."
+        sizes = [tuple(int(x) for x in grp.split(','))
+                 for grp in sys.argv[4].split(';')]
+    else:
+        # (n_src, n_snk, n_int) combos; n_int - 3(n_snk-n_src) must be even>=0
+        sizes = []
+        for s in range(1, 4):
+            for t in range(1, 4):
+                for m in range(2, 11):
+                    if abs(3 * (t - s)) <= m and (m - 3 * (t - s)) % 2 == 0:
+                        if s + t + m <= 16:
+                            sizes.append((s, t, m))
     stats = Counter()
     t0 = time.time()
     if mode == "a":

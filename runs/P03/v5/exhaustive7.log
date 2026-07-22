@@ -1,0 +1,15 @@
+progress mask=470264/2097152 checked=20545 tau3=20000 nonpack=0 t=5s
+progress mask=650855/2097152 checked=42290 tau3=40000 nonpack=0 t=10s
+progress mask=837494/2097152 checked=63939 tau3=60000 nonpack=0 t=15s
+progress mask=948781/2097152 checked=86139 tau3=80000 nonpack=0 t=20s
+progress mask=1037529/2097152 checked=110247 tau3=100000 nonpack=0 t=25s
+progress mask=1242317/2097152 checked=132641 tau3=120000 nonpack=0 t=30s
+progress mask=1395685/2097152 checked=155067 tau3=140000 nonpack=0 t=35s
+progress mask=1488839/2097152 checked=181987 tau3=160000 nonpack=0 t=39s
+progress mask=1570247/2097152 checked=212207 tau3=180000 nonpack=0 t=44s
+progress mask=1686185/2097152 checked=241144 tau3=200000 nonpack=0 t=49s
+progress mask=1788521/2097152 checked=277600 tau3=220000 nonpack=0 t=55s
+progress mask=1897517/2097152 checked=309728 tau3=240000 nonpack=0 t=60s
+progress mask=1989861/2097152 checked=341771 tau3=260000 nonpack=0 t=65s
+progress mask=2085598/2097152 checked=378593 tau3=280000 nonpack=0 t=70s
+DONE n=7: masks=2097152 passed_prune=384349 tau3=283267 nonpacking=0 wall=71s
