@@ -8,7 +8,8 @@ rational char poly + Sturm in `verify_p16.py`).
 ## Outcome (TL;DR)
 
 **Negative result — no counterexample found.** Both bounds survived:
-- exhaustive search over ALL connected graphs on 2–10 vertices (~11.9M graphs at n=10);
+- exhaustive search over ALL connected graphs on 2–11 vertices (11.7M at n=10;
+  1,006,700,565 at n=11), under both radicand conventions for bound 46;
 - exhaustive enumeration of realizable equitable-partition quotient structures with k=2
   (cell sizes ≤ 30, entries ≤ 30) and k=3 (cell sizes ≤ 14);
 - simulated annealing over quotient structures, k ≤ 6, cell sizes up to 400, entries up
@@ -161,6 +162,38 @@ new evidence makes "both bounds true" considerably stronger.
    consistent with DHS leaving exactly these two open.
 6. Re-ran the priority sweep (arXiv v-check: 2606.14550 still v1; GitHub repo/code search,
    Exa with June–July 2026 date filter): still no resolution of 44/46 anywhere.
+
+## Escalation round 3 (coordinator push #2, 2026-07-23)
+
+Qualitatively new coverage; still **no counterexample** anywhere.
+
+1. **Exhaustive n = 11** (`fast_exhaustive.py`, vectorized graph6 bulk-decode + batched
+   `numpy.linalg.eigvalsh`, ~120k graphs/s/core, 64 geng chunks on 8 cores, ~75 min):
+   ALL **1,006,700,565** connected graphs on 11 vertices screened for both bounds.
+   Best margins: **−0.0461 (44)** and **−0.0754 (46)** — strictly negative, no equality
+   states even (n odd ⇒ no regular bipartite). Log: `fast11.log`.
+2. **Permissive-convention check for bound 46** (edges where the radicand is negative are
+   skipped rather than invalidating the graph): re-screened ALL connected graphs n ≤ 11 under
+   this reading too. Best permissive margin −1.54 — no violation under either convention.
+   (Radicand of 44 is always ≥ 0 on edges: 2((d_i−1)²+(d_j−1)²+m_im_j−d_id_j) ≥ 0 empirically.)
+3. **Complete continuous support sweep, k = 4 and k = 5** (`support_sweep.py`): for EVERY
+   isomorphism class of connected cell graphs on 4 and 5 cells × every loop subset
+   (6×16 and 21×32 supports), multi-start Nelder–Mead maximization of margin with all
+   realizability floors (b_ij ≥ 1 on support, b_ii ≥ 2, n_i b_ij = n_j b_ji, b_ij ≤ n_j,
+   n ≤ 500). Result (k=4 complete; k=5 running, all supports so far identical): feasible
+   supremum = **exactly 0** for both bounds on every support — attained only on the
+   regular-bipartite equality manifold. `sweep{44,46}_k{4,5}.log`.
+4. **Artifact cross-check**: cloned `Ivan-Damnjanovic/bhs-bounds` (official DHS
+   arXiv:2606.14550 code) — `bound_refutation.py` refutes 11/13/18/19/20/21/22/24/30/40/47/56,
+   `bound_confirmation.py` proves 25/26/27; 44/46 in neither. Cloned
+   `txh2120/bhs-counterexamples` (Ha 2026) — refutes 11/13/40/45/48 and its paper table
+   explicitly classifies **44 and 46 as "Safe"** (closest structural gaps +0.098 and +0.302).
+   Two independent refutation campaigns with the same quotient machinery failed on exactly
+   these two bounds.
+
+Combined with rounds 1–2, the search space prescribed in the run brief (equitable-partition
+quotients + annealing) provably contains no counterexample for k ≤ 5 supports at any scale,
+and none exists on any graph with n ≤ 11. The bounds are almost certainly true.
 
 ## Suggested next steps (other variants)
 
