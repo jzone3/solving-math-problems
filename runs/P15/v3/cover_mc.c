@@ -72,10 +72,27 @@ int main(int argc, char **argv) {
     long nh = 0;
     for (long t = 0; t < N; t++) { hpos[t] = -1; if (cnt[t] == 0) { hl[nh] = t; hpos[t] = nh; nh++; } }
 
-    double t0 = now();
+    double t0 = now(), tbest = t0;
     long long it = 0;
     long stall = 0, stall_lim = 4L * nmods;
+    double kick_after = 300.0;
     while (energy && now() - t0 < budget) {
+        if (now() - tbest > kick_after) {
+            /* kick: restart from best, reset weights, shake 10% of moduli */
+            memcpy(res, best_state, sizeof(long) * nmods);
+            memset(cnt, 0, sizeof(int) * N);
+            for (int i2 = 0; i2 < nmods; i2++) {
+                if (frand() < 0.10) res[i2] = (long)(xrand() % mods[i2]);
+                for (long t = res[i2]; t < N; t += mods[i2]) cnt[t]++;
+            }
+            for (long t = 0; t < N; t++) w[t] = 1.0;
+            nh = 0;
+            for (long t = 0; t < N; t++) { hpos[t] = -1; if (cnt[t] == 0) { hl[nh] = t; hpos[t] = nh; nh++; } }
+            energy = nh;
+            tbest = now();
+            printf("kick energy=%ld t=%.1fs\n", energy, now() - t0);
+            fflush(stdout);
+        }
         it++;
         int i = (int)(xrand() % nmods);
         long n = mods[i];
@@ -117,6 +134,7 @@ int main(int argc, char **argv) {
             best = energy;
             memcpy(best_state, res, sizeof(long) * nmods);
             stall = 0;
+            tbest = now();
             printf("best=%ld it=%lld t=%.1fs\n", best, it, now() - t0);
             fflush(stdout);
         } else if (++stall >= stall_lim) {
