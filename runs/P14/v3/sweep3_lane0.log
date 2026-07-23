@@ -1,1 +1,5 @@
 inst1 group=C2 |G|=2 blocks=45474 borbs=22737 eorbs=7 porbs=49 enum=0.1s
+inst1 group=C2 status=UNKNOWN time=7200.1s
+inst1 group=C2a |G|=2 blocks=45474 borbs=22808 eorbs=8 porbs=49 enum=0.1s
+inst1 group=C2a status=UNKNOWN time=7201.5s
+inst1 group=C2b |G|=2 blocks=45474 borbs=22959 eorbs=9 porbs=51 enum=0.1s
