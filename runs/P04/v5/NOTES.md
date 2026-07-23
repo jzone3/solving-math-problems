@@ -150,3 +150,38 @@ assume every cycle passes through the max-degree vertex.)
 - 22:25 — Probe 3g (sampler.py): mixed-degree layer, degrees ∈ {6,8} (full space
   ~10^10+, not exhaustible; geng cannot pre-filter parity). Random triangle-XOR walk
   sampling, n=13,14,15,16, 1.5h × 4 cores, ~4–5k distinct graphs/s per core.
+- 23:07 — incident: all 7 search processes killed by kernel OOM (unbounded seen/score
+  caches across processes; my bug). Results to that point stand: samplers had tested
+  ~48M mixed-degree graphs (n=13–16), 0 hard; exact annealers 8390s in, plateau 5 < 6.
+  Fixed with cache caps; relaunched final round.
+- 23:57–01:30 — final round (memory-capped): samplers n=13 (25,287,202 tested) and
+  n=14 (20,251,048 tested) degrees∈{6,8}, 0 heuristic-hard; exact annealers n=13/n=14
+  (Δ≤n−3) finished: best min-decomp found = 5, never even reaching the bound 6 — the
+  min-decomposition landscape in the Δ≤n−3 regime sits strictly BELOW the Hajós bound
+  everywhere we looked. n=15 6-regular spot slices extended to 12/400 (44,892,713
+  graphs ≈ 3% of space), 0 escalations.
+
+## 6. Final tally & conclusions
+
+Total machine-verified negative evidence this run (all graphs decompose within bound):
+- ALL 367,860 connected 6-regular graphs on n=13 — exhaustive.
+- ALL 21,609,300 connected 6-regular graphs on n=14 — exhaustive. (New frontier:
+  a counterexample, if any, on n≤14 must have a vertex of degree ≥8 — combined with
+  HNS n≤12 exhaustion and the Δ≤n−3 reduction below, degree ∈ {8,10} at n=13.)
+- ~45M connected 6-regular graphs on n=15 (3% spot-check), ~93M sampled Eulerian
+  graphs with degrees∈{6,8} on n=13–16, 1640 circulants n=13–20, 7424 line graphs,
+  all Eulerian complete multipartite graphs n=13–20 (≤6 parts), cycle blowups,
+  K13/K15/K17 minus random 2-factor unions.
+- Reasoning result: dominating-vertex Eulerian graphs (odd n) always meet the bound
+  via Lovász's odd-degree path-decomposition theorem ⇒ counterexamples have Δ ≤ n−3.
+- Exact-min annealing (CP-SAT scored) in the Δ≤n−3, δ≥6 regime never found ANY graph
+  with min-decomp above bound−1 at n=13/14 — corroborating strong slack.
+
+Suggested next escalations (for future runs): finish n=15 6-regular exhaustion
+(~60 core-hours, embarrassingly parallel via geng res/mod); exhaust n=13 with degree
+sequence (8^k 6^(13−k)) via canonical augmentation rather than geng min/max degree;
+port HNS reduction lemmas (Theorem 2 (i)–(vii)) as a pre-filter to push full n=13.
+
+STATUS: negative / frontier-pushed — no counterexample found; exhaustive verification
+of Hajós' conjecture for all 6-regular graphs on n ≤ 14 (new beyond HNS's n ≤ 12),
+plus ~140M targeted graphs n=13–20 all satisfying the bound.

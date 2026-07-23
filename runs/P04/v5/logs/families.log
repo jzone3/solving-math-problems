@@ -1,0 +1,43 @@
+156 Eulerian multipartite partitions
+HARD K_2_2_4_10: n=18 m=100 cpSAT=True
+HARD K_2_2_14: n=18 m=60 cpSAT=True
+HARD K_2_4_14: n=20 m=92 cpSAT=True
+HARD K_2_2_2_2_6_6: n=20 m=156 cpSAT=True
+HARD K_2_2_6_6: n=16 m=88 cpSAT=True
+HARD K_2_2_16: n=20 m=68 cpSAT=True
+HARD K_2_2_2_6_6: n=18 m=120 cpSAT=True
+HARD K_2_2_2_2_4_8: n=20 m=152 cpSAT=True
+HARD K_2_2_2_4_8: n=18 m=116 cpSAT=True
+HARD K_2_2_8_8: n=20 m=132 cpSAT=True
+HARD K_2_2_2_6_8: n=20 m=144 cpSAT=True
+HARD K_2_2_2_10: n=16 m=72 cpSAT=True
+HARD K_2_2_6_10: n=20 m=128 cpSAT=True
+HARD K_2_2_2_4_4_4: n=18 m=132 cpSAT=True
+HARD K_2_2_2_4_10: n=20 m=136 cpSAT=True
+HARD K_1_1_3_3_11: n=19 m=110 cpSAT=True
+HARD K_2_2_2_2_2_6: n=16 m=100 cpSAT=True
+HARD K_2_2_2_4_4_6: n=20 m=160 cpSAT=True
+HARD K_2_2_4_4_6: n=18 m=124 cpSAT=True
+HARD K_2_2_2_2_2_8: n=18 m=120 cpSAT=True
+HARD K_2_4_4_10: n=20 m=132 cpSAT=True
+HARD K_2_2_4_6_6: n=20 m=152 cpSAT=True
+HARD K_2_2_2_2_8: n=16 m=88 cpSAT=True
+HARD K_2_2_4_4_8: n=20 m=148 cpSAT=True
+HARD K_1_3_3_3_9: n=19 m=126 cpSAT=True
+HARD K_2_2_2_2_2_10: n=20 m=140 cpSAT=True
+HARD K_2_2_2_2_10: n=18 m=104 cpSAT=True
+HARD K_4_4_4_4_4: n=20 m=160 cpSAT=True
+HARD K_1_1_1_5_11: n=19 m=106 cpSAT=True
+HARD K_2_4_4_4_6: n=20 m=156 cpSAT=True
+HARD K_2_2_2_12: n=18 m=84 cpSAT=True
+HARD K_2_2_2_2_12: n=20 m=120 cpSAT=True
+HARD K_2_2_2_14: n=20 m=96 cpSAT=True
+HARD K_2_2_2_2_4_6: n=18 m=128 cpSAT=True
+HARD K_1_1_1_3_13: n=19 m=90 cpSAT=True
+HARD K_1_1_1_1_15: n=19 m=66 cpSAT=True
+HARD K_2_4_12: n=18 m=80 cpSAT=True
+multipartite done
+blowups done
+K13 minus 2-factors done
+K15 minus 2-factors done
+K17 minus 2-factors done

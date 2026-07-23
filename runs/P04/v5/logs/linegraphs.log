@@ -1,0 +1,10 @@
+4-regular on 7 vertices: 2 line graphs checked
+4-regular on 8 vertices: 6 line graphs checked
+4-regular on 9 vertices: 16 line graphs checked
+4-regular on 10 vertices: 59 line graphs checked
+even (2,4)-graphs on 7 vertices: 4 line graphs checked
+even (2,4)-graphs on 8 vertices: 39 line graphs checked
+even (2,4)-graphs on 9 vertices: 235 line graphs checked
+even (2,4)-graphs on 10 vertices: 1229 line graphs checked
+even (2,4)-graphs on 11 vertices: 5834 line graphs checked
+linegraphs done

@@ -1,0 +1,3 @@
+[3600000] t=1225s hard-so-far=0
+>Z 3609609 graphs generated in 766.11 sec
+DONE n=14 resmod=['2', '6']: 3609609 graphs, 0 escalated, t=1229s
