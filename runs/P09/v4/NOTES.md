@@ -214,3 +214,23 @@ complete multipartite graphons.
 Round 3: simulated-annealing edge-flip search at n = 13..64 (~6.4×10⁸ exact
 evaluations, random + Turán-perturbation starts) — zero candidates; the search
 always terminates at or below the complete-multipartite equality manifold.
+
+## Round 4 (coordinator push #3): exhaustive triangle-free subcase (ω = 2)
+
+Fourth attack: exhaustively verify the smallest structured subcase — the
+triangle-free case, where the conjecture reads λ₁² + λ₂² ≤ m — at sizes beyond
+the general n ≤ 12 exhaustion, via `nauty-geng -t` piped into the existing
+cross-validated `checker2` (whose early-out `s ≤ m − 1e-6` is exact here since
+ω = 2 ⇒ RHS = m; ω is still computed exactly for every near-boundary graph).
+
+- n = 13: all 20,797,002 triangle-free graphs — 0 violations
+  (count = A006785(13) exactly).
+- n = 14: all 467,871,369 triangle-free graphs, 8 parallel geng slices —
+  0 violations (slice totals sum to A006785(14) exactly; `tf/n14_*.sum`).
+- n = 15: all triangle-free graphs (A006785(15) = 14,232,552,452),
+  32 slices — results in `tf/n15_*.sum`.
+
+Near-boundary structure: every best_gap is +4e-12 float noise at exact
+equality s = m, attained by disjoint unions of complete bipartite graphs
+(λ₁² + λ₂² = ab + cd = m for K_{a,b} ∪ K_{c,d}) — the known ω = 2 equality
+family. No non-trivial near-miss.
