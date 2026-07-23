@@ -1,0 +1,30 @@
+# Chantier φ — certified sieve η(pool) on SAT-instance pools (exact rational).
+# Each η<1 is a certified UNSAT that Cadical times out on. Direct L: pool={d|L,d+1 prime}.
+# Parity L': by the parity reduction it is EQUIVALENT to the direct instance at 2L',
+#   so we decide it via the direct pool of 2L' (stronger than the single-half sieve).
+
+#           instance |pool|   budget   η (exact)            verdict   time
+      direct L=55440     43   1.0437    0.833943       UNSAT PROVEN   0.1s
+     direct L=110880     52   1.0599    0.858370       UNSAT PROVEN   0.1s
+     direct L=720720     79   1.1057    0.872314       UNSAT PROVEN   0.3s
+     parity L'=27720     43   1.0437    0.833943       UNSAT PROVEN   0.1s
+     parity L'=55440     52   1.0599    0.858370       UNSAT PROVEN   0.1s
+     parity L'=83160     58   1.0666    0.875602       UNSAT PROVEN   0.1s
+
+# (For reference, Fable's single-half criterion η(H∩div(L')): undecided here because
+#  the half-pool contains the powerful small moduli 2,3 — the 2L' equivalence is sharper.)
+     half-pool L'=27720: budget=2.0873  η=1.7221  >=1 (undecided)
+     half-pool L'=55440: budget=2.1197  η=1.7627  >=1 (undecided)
+     half-pool L'=83160: budget=2.1333  η=1.7913  >=1 (undecided)
+
+## Consequences
+  PROVEN NON-COVERING (η<1 certified in exact rationals, seconds each):
+    - direct L=55440: no all moduli dividing 55440.  [η=0.833943]
+    - direct L=110880: no all moduli dividing 110880.  [η=0.858370]
+    - direct L=720720: no all moduli dividing 720720.  [η=0.872314]
+    - parity L'=27720: no a #273 covering on Z_55440 (= two disjoint (p-1)/2-coverings on Z_27720).  [η=0.833943]
+    - parity L'=55440: no a #273 covering on Z_110880 (= two disjoint (p-1)/2-coverings on Z_55440).  [η=0.858370]
+    - parity L'=83160: no a #273 covering on Z_166320 (= two disjoint (p-1)/2-coverings on Z_83160).  [η=0.875602]
+  NO undecided instance: the sieve kills the ENTIRE current sweep, in seconds.
+  ⟹ A blind multi-day SAT siege has no target. Stop the sweep.
+EXIT=0

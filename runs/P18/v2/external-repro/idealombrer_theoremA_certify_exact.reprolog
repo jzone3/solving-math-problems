@@ -1,0 +1,5 @@
+# Chantier θ1 — EXACT (Fraction) certification of η(U_P) < 1  (δ snapped to /5040)
+           P=700 #mod= 123 budget=1.41987  float_η=0.980381  EXACT_η=0.98038109  < 1 CERTIFIED
+           P=850 #mod= 144 budget=1.44717  float_η=0.998313  EXACT_η=0.99831120  < 1 CERTIFIED
+           P=877 #mod= 149 budget=1.45298  float_η=0.999918  EXACT_η=0.99991772  < 1 CERTIFIED
+EXIT=0
