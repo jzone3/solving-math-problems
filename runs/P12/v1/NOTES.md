@@ -211,3 +211,25 @@ Validation (dramatic speedup vs direct CNF):
     (non-Latin) Tuscan-2 squares.
 - New mode 3 in t2dfs.c: rapid randomized restarts with per-restart node
   budget (2M / 20M variants); 8 workers hunting a T2(11) witness.
+
+### Round 3 continued: new engines + crucial calibration
+
+- t2gen.c (memory-free on-the-fly randomized DFS): enables n=13 hunting
+  (no candidate materialization). n=13 reaches 11/13 rows (large budgets),
+  n=11 reaches 9/11 rows; never closes the last 2 rows.
+- CRUCIAL CALIBRATION: t2gen on n=12 — where T2(12) IS KNOWN TO EXIST
+  (Kapralov table: >=2) — also plateaus at 10/12 rows after 1G nodes, and
+  t2dfs mode 3 on n=12 plateaus at maxdepth 8 (9/12 rows) after 80M nodes.
+  => the depth-7 plateau observed on n=11 is largely a METHOD ARTIFACT of
+  chronological/restart search, NOT reliable evidence of nonexistence.
+  Witnesses for odd n could still exist; better endgame reasoning needed.
+- t2dlx.c: exact-cover/DLX formulation (primary items: group slots G_r,
+  distance-1 pairs P_ab, last-symbols L_s; secondary items: distance-2
+  pairs D_ab; MRV branching over all primary items). Validated: n=7 UNSAT
+  in 1317 steps/0.01s, n=8 witness in 85K steps/1.6s (verify PASS).
+  But at n>=9 the per-step cover() cost on 56K-600K-row columns makes DLX
+  SLOWER in wall-clock than t2dfs's vectorized rescans; n=9 exhaustion
+  still running after 1h at maxdepth 6. Dancing-links pointer chasing is
+  cache-hostile at this density — negative result worth recording.
+- n=12 full DLX build needs ~31GB (71.5M usable rows) -> OOM; added
+  candidate sampling (mode 1 arg4 = keep %) as a SAT-hunting fallback.
