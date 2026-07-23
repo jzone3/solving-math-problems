@@ -31,3 +31,4 @@ mod6: 72 raw -> 8 classes
 [c0.27] d=24 parent=12 -> 0 folds (exhausted)
 [c0.28] d=24 parent=12 -> 0 folds (exhausted)
 [c0.29] d=24 parent=12 -> 49 folds (budget)
+  LIFT[c0.29.0] d=24 b=[3, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, -2, -3, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, -2] -> TIMEOUT
