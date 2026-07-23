@@ -1,0 +1,10 @@
+165 subsets of size 3, jobs=8
+progress 20/165 (UNSAT 20)
+progress 40/165 (UNSAT 40)
+progress 60/165 (UNSAT 60)
+progress 80/165 (UNSAT 80)
+progress 100/165 (UNSAT 100)
+progress 120/165 (UNSAT 120)
+progress 140/165 (UNSAT 140)
+progress 160/165 (UNSAT 160)
+DONE k=3: 165 subsets, UNSAT 165, see exhaust_best_T2_11_seed1.txt_k3.log

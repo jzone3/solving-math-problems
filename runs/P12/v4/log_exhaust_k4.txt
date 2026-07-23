@@ -1,0 +1,18 @@
+330 subsets of size 4, jobs=8
+progress 20/330 (UNSAT 20)
+progress 40/330 (UNSAT 40)
+progress 60/330 (UNSAT 60)
+progress 80/330 (UNSAT 80)
+progress 100/330 (UNSAT 100)
+progress 120/330 (UNSAT 120)
+progress 140/330 (UNSAT 140)
+progress 160/330 (UNSAT 160)
+progress 180/330 (UNSAT 180)
+progress 200/330 (UNSAT 200)
+progress 220/330 (UNSAT 220)
+progress 240/330 (UNSAT 240)
+progress 260/330 (UNSAT 260)
+progress 280/330 (UNSAT 280)
+progress 300/330 (UNSAT 300)
+progress 320/330 (UNSAT 320)
+DONE k=4: 330 subsets, UNSAT 330, see exhaust_best_T2_11_seed1.txt_k4.log
