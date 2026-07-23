@@ -18,7 +18,7 @@ If dev(D) <= LP_opt - margin for all graphical D on n vertices, conjecture
 near-tight sequences are re-reported for exact scrutiny).
 
 Enumerates all graphical degree sequences (Erdos-Gallai), including zeros.
-Usage: lp_certify.py n [start_idx end_idx]
+Usage: lp_certify.py n [res mod]   (process sequences with index % mod == res)
 """
 import math, sys, itertools
 import numpy as np
@@ -81,11 +81,15 @@ def gen_partitions(n, maxpart):
 
 def main():
     n = int(sys.argv[1])
+    res = int(sys.argv[2]) if len(sys.argv) > 3 else 0
+    mod = int(sys.argv[3]) if len(sys.argv) > 3 else 1
     worst = 1e18; worstD = None
-    checked = 0; hard = []
+    checked = 0; hard = []; idx = -1
     for D in gen_partitions(n, n-1):
         if sum(D) == 0 or sum(D) % 2: continue
         if not graphical(D): continue
+        idx += 1
+        if idx % mod != res: continue
         dv = dev(D)
         # cheap pre-bound: R >= sum(sqrt(d))/(2 sqrt(Delta))
         Delta = D[0]

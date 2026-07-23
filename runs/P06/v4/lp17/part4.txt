@@ -1,0 +1,4 @@
+n=17: 22000713 graphical degree sequences checked
+worst margin (bound - dev) = 2.351388785e-06 at ([15, 11, 11, 10, 10, 8, 7, 6, 6, 5, 4, 4, 2, 1, 1, 1, 0], 'cheap')
+hard/tight cases: 0
+CERTIFIED: conjecture 129 holds for ALL graphs on 17 vertices

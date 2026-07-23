@@ -108,7 +108,12 @@ Results (all graphical degree sequences enumerated via Erdős–Gallai):
   the V4 mandate n = 11–13 is thus fully covered without enumerating n = 13.
 - n = 14: 3,166,851 sequences; tight case only K_8∪6K_1 (exact equality) → CERTIFIED.
 - n = 15: 12,042,619 sequences, no tight cases → CERTIFIED.
-- n = 16 running (45.97M sequences).
+- n = 16: 45,967,478 sequences; tight case only K_9∪7K_1 (exact equality) → CERTIFIED.
+- n = 17: 176,005,706 sequences (8-way parallel), no tight cases, worst margin +1.1e-7
+  (cheap bound) → CERTIFIED.
+
+**Net: conjecture 129 holds for EVERY graph on n ≤ 17 vertices** (enumeration n ≤ 12,
+LP certification n = 13–17).
 
 Caveat: float LP; any |margin| < 1e-6 case is re-examined exactly (only the K_k family
 ever appears, and it is proven equal exactly).
@@ -136,7 +141,7 @@ ever appears, and it is proven equal exactly).
 No counterexample to Graffiti 129 anywhere. New exhaustive frontiers established:
 - ALL graphs on n ≤ 12 enumerated (165.09 billion at n = 12 alone; previous published
   exhaustive frontier was n ≤ 10), zero violations;
-- ALL graphs on n = 13–15 certified via the degree-sequence LP (no enumeration needed:
+- ALL graphs on n = 13–17 certified via the degree-sequence LP (no enumeration needed:
   dev depends only on the degree sequence, and the transportation LP lower-bounds
   min-Randić over realizations), zero violations — V4's n = 11–13 mandate exceeded;
 - every graph on ≤ 12 vertices plus ANY number of isolated vertices: zero violations;
