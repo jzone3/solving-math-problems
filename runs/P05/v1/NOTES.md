@@ -242,6 +242,19 @@ Also extended the exhaustive frontier: n=13 biconnected 23–24 edge band,
 **all 8.15 × 10⁹ 2-connected n=13 graphs with ≤ 24 edges have t ≥ 2** (57 extremal
 graphs total), consistent with the ≥2 mini-conjecture.
 
+## 11. Wave 5: symmetry-breaking refinement (`asym.py`)
+
+Two-phase anneal: (1) Z3-voltage symmetric anneal down to a t=3 optimum, then (2)
+asymmetric single-edge refinement (add/del/subdivide/smooth, exact ./lp scoring) — the
+asymmetric triples are NOT quantized to 3Z, so the descent 3→2→1→0 is open. 8 parallel
+waves, 226+ full restarts (n ≤ 52): the refinement descends 3 → 2 → 1 readily (230
+restarts reached t=1, 83 stopped at 2, 105 stuck at 3) but **never 1 → 0**. The t=1
+configurations are the same single-hub attractor as the general-graph searches: breaking
+the symmetric orbit collapses the three-fold structure back into one shared hub instead
+of dispersing it. Conclusion: the t=1 hub attractor dominates every encoding tried; a
+counterexample, if one exists, is not adjacent (in edge-move distance) to either the
+symmetric t=3 optima or generic random graphs at these sizes.
+
 ## STATUS: negative / frontier-pushed
 
 No counterexample found (t never 0 anywhere: ~10⁶ annealed graphs to n = 40, 30 k+

@@ -1,0 +1,24 @@
+[as1r0] asym it=1143 best t=2 L=13 n=31 masks=7 ovf=0
+[as1r0] asym it=1394 best t=1 L=13 n=43 masks=5 ovf=0
+[as1r0] done best t=1 (sym start t=3)
+[as1r1] asym it=429 best t=2 L=15 n=47 masks=16 ovf=0
+[as1r1] asym it=5258 best t=1 L=11 n=52 masks=39 ovf=0
+[as1r1] done best t=1 (sym start t=3)
+[as1r3] asym it=1966 best t=1 L=13 n=53 masks=8 ovf=0
+[as1r3] done best t=1 (sym start t=3)
+[as1r5] done best t=3 (sym start t=3)
+[as1r6] asym it=334 best t=1 L=7 n=15 masks=14 ovf=0
+[as1r6] done best t=1 (sym start t=3)
+[as1r8] done best t=3 (sym start t=3)
+[as1r13] done best t=3 (sym start t=3)
+[as1r15] asym it=7647 best t=2 L=17 n=53 masks=23 ovf=0
+[as1r15] asym it=12488 best t=1 L=11 n=32 masks=5 ovf=0
+[as1r15] done best t=1 (sym start t=3)
+[as1r17] done best t=3 (sym start t=3)
+[as1r18] asym it=2513 best t=2 L=19 n=56 masks=18 ovf=0
+[as1r18] asym it=3724 best t=1 L=15 n=55 masks=5 ovf=0
+[as1r18] done best t=1 (sym start t=3)
+[as1r21] done best t=3 (sym start t=3)
+[as1r23] done best t=3 (sym start t=3)
+[as1r24] done best t=3 (sym start t=3)
+[as1r25] asym it=862 best t=1 L=7 n=21 masks=11 ovf=0

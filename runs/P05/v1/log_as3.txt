@@ -1,0 +1,13 @@
+[as3r71] done best t=3 (sym start t=3)
+[as3r72] asym it=3073 best t=1 L=15 n=56 masks=14 ovf=0
+[as3r72] done best t=1 (sym start t=3)
+[as3r83] done best t=3 (sym start t=3)
+[as3r86] done best t=3 (sym start t=3)
+[as3r95] asym it=2743 best t=2 L=14 n=56 masks=6 ovf=0
+[as3r95] asym it=3122 best t=1 L=15 n=57 masks=14 ovf=0
+[as3r95] done best t=1 (sym start t=3)
+[as3r111] done best t=3 (sym start t=3)
+[as3r122] asym it=2391 best t=1 L=15 n=52 masks=8 ovf=0
+[as3r122] done best t=1 (sym start t=3)
+[as3r123] done best t=3 (sym start t=3)
+[as3r133] done best t=3 (sym start t=3)

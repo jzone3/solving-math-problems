@@ -1,0 +1,119 @@
+[as4r0] asym it=2571 best t=2 L=19 n=56 masks=7 ovf=0
+[as4r0] asym it=7603 best t=1 L=17 n=57 masks=11 ovf=0
+[as4r0] done best t=1 (sym start t=3)
+[as4r1] asym it=3687 best t=2 L=17 n=50 masks=12 ovf=0
+[as4r1] asym it=3900 best t=1 L=15 n=49 masks=11 ovf=0
+[as4r1] done best t=1 (sym start t=3)
+[as4r2] done best t=3 (sym start t=3)
+[as4r5] asym it=3335 best t=1 L=15 n=55 masks=14 ovf=0
+[as4r5] done best t=1 (sym start t=3)
+[as4r7] done best t=3 (sym start t=3)
+[as4r10] done best t=3 (sym start t=3)
+[as4r11] done best t=3 (sym start t=3)
+[as4r12] asym it=1392 best t=1 L=13 n=39 masks=5 ovf=0
+[as4r12] done best t=1 (sym start t=3)
+[as4r14] done best t=3 (sym start t=3)
+[as4r15] asym it=24375 best t=1 L=17 n=56 masks=5 ovf=0
+[as4r15] done best t=1 (sym start t=3)
+[as4r16] done best t=3 (sym start t=3)
+[as4r17] done best t=3 (sym start t=3)
+[as4r18] asym it=5983 best t=2 L=17 n=55 masks=10 ovf=0
+[as4r18] asym it=7778 best t=1 L=13 n=56 masks=18 ovf=0
+[as4r18] done best t=1 (sym start t=3)
+[as4r19] asym it=5630 best t=2 L=19 n=57 masks=15 ovf=0
+[as4r19] done best t=2 (sym start t=3)
+[as4r22] done best t=3 (sym start t=3)
+[as4r24] done best t=3 (sym start t=3)
+[as4r25] asym it=15734 best t=1 L=13 n=45 masks=27 ovf=0
+[as4r25] done best t=1 (sym start t=3)
+[as4r26] done best t=3 (sym start t=3)
+[as4r27] asym it=2659 best t=1 L=13 n=44 masks=11 ovf=0
+[as4r27] done best t=1 (sym start t=3)
+[as4r28] asym it=1418 best t=2 L=15 n=39 masks=10 ovf=0
+[as4r28] asym it=1994 best t=1 L=13 n=43 masks=7 ovf=0
+[as4r28] done best t=1 (sym start t=3)
+[as4r29] asym it=2847 best t=2 L=15 n=45 masks=10 ovf=0
+[as4r29] asym it=3593 best t=1 L=13 n=45 masks=8 ovf=0
+[as4r29] done best t=1 (sym start t=3)
+[as4r30] asym it=919 best t=1 L=11 n=38 masks=7 ovf=0
+[as4r30] done best t=1 (sym start t=3)
+[as4r31] asym it=4345 best t=1 L=11 n=41 masks=26 ovf=0
+[as4r31] done best t=1 (sym start t=3)
+[as4r32] asym it=3642 best t=2 L=13 n=45 masks=18 ovf=0
+[as4r32] asym it=3757 best t=1 L=13 n=49 masks=15 ovf=0
+[as4r32] done best t=1 (sym start t=3)
+[as4r33] done best t=3 (sym start t=3)
+[as4r34] asym it=4053 best t=2 L=19 n=57 masks=10 ovf=0
+[as4r34] asym it=6229 best t=1 L=13 n=52 masks=8 ovf=0
+[as4r34] done best t=1 (sym start t=3)
+[as4r35] asym it=3657 best t=2 L=21 n=57 masks=7 ovf=0
+[as4r35] asym it=7026 best t=1 L=19 n=57 masks=5 ovf=0
+[as4r35] done best t=1 (sym start t=3)
+[as4r36] done best t=3 (sym start t=3)
+[as4r37] asym it=3057 best t=1 L=15 n=58 masks=8 ovf=0
+[as4r37] done best t=1 (sym start t=3)
+[as4r38] done best t=3 (sym start t=3)
+[as4r39] asym it=7818 best t=2 L=21 n=53 masks=29 ovf=0
+[as4r39] asym it=19368 best t=1 L=13 n=49 masks=14 ovf=0
+[as4r39] done best t=1 (sym start t=3)
+[as4r41] asym it=840 best t=2 L=12 n=39 masks=14 ovf=0
+[as4r41] asym it=898 best t=1 L=11 n=38 masks=8 ovf=0
+[as4r41] done best t=1 (sym start t=3)
+[as4r42] done best t=3 (sym start t=3)
+[as4r45] asym it=378 best t=1 L=13 n=36 masks=7 ovf=0
+[as4r45] done best t=1 (sym start t=3)
+[as4r46] done best t=3 (sym start t=3)
+[as4r47] done best t=3 (sym start t=3)
+[as4r48] done best t=3 (sym start t=3)
+[as4r51] done best t=3 (sym start t=3)
+[as4r53] asym it=2392 best t=2 L=21 n=50 masks=6 ovf=0
+[as4r53] asym it=2455 best t=1 L=17 n=51 masks=5 ovf=0
+[as4r53] done best t=1 (sym start t=3)
+[as4r54] asym it=640 best t=1 L=15 n=36 masks=8 ovf=0
+[as4r54] done best t=1 (sym start t=3)
+[as4r57] asym it=1952 best t=2 L=16 n=57 masks=8 ovf=0
+[as4r57] asym it=2289 best t=1 L=15 n=55 masks=19 ovf=0
+[as4r57] done best t=1 (sym start t=3)
+[as4r58] asym it=293 best t=2 L=14 n=29 masks=10 ovf=0
+[as4r58] asym it=1064 best t=1 L=11 n=27 masks=5 ovf=0
+[as4r58] done best t=1 (sym start t=3)
+[as4r59] done best t=3 (sym start t=3)
+[as4r60] asym it=9615 best t=2 L=16 n=48 masks=16 ovf=0
+[as4r60] done best t=2 (sym start t=3)
+[as4r61] done best t=3 (sym start t=3)
+[as4r62] done best t=3 (sym start t=3)
+[as4r63] done best t=3 (sym start t=3)
+[as4r64] done best t=3 (sym start t=3)
+[as4r65] asym it=5067 best t=2 L=15 n=53 masks=28 ovf=0
+[as4r65] asym it=5133 best t=1 L=13 n=52 masks=17 ovf=0
+[as4r65] done best t=1 (sym start t=3)
+[as4r66] asym it=6619 best t=2 L=16 n=51 masks=6 ovf=0
+[as4r66] asym it=11745 best t=1 L=19 n=57 masks=7 ovf=0
+[as4r66] done best t=1 (sym start t=3)
+[as4r67] done best t=3 (sym start t=3)
+[as4r68] asym it=376 best t=2 L=10 n=23 masks=12 ovf=0
+[as4r68] asym it=723 best t=1 L=11 n=30 masks=5 ovf=0
+[as4r68] done best t=1 (sym start t=3)
+[as4r69] asym it=1512 best t=2 L=10 n=26 masks=8 ovf=0
+[as4r69] asym it=2149 best t=1 L=11 n=32 masks=5 ovf=0
+[as4r69] done best t=1 (sym start t=3)
+[as4r70] asym it=848 best t=1 L=15 n=53 masks=5 ovf=0
+[as4r70] done best t=1 (sym start t=3)
+[as4r71] asym it=2462 best t=1 L=17 n=55 masks=11 ovf=0
+[as4r71] done best t=1 (sym start t=3)
+[as4r72] asym it=361 best t=2 L=21 n=53 masks=12 ovf=0
+[as4r72] asym it=619 best t=1 L=19 n=57 masks=11 ovf=0
+[as4r72] done best t=1 (sym start t=3)
+[as4r73] done best t=3 (sym start t=3)
+[as4r74] asym it=667 best t=2 L=6 n=12 masks=8 ovf=0
+[as4r74] asym it=2996 best t=1 L=13 n=40 masks=7 ovf=0
+[as4r74] done best t=1 (sym start t=3)
+[as4r76] asym it=8405 best t=2 L=19 n=55 masks=7 ovf=0
+[as4r76] asym it=14766 best t=1 L=15 n=50 masks=11 ovf=0
+[as4r76] done best t=1 (sym start t=3)
+[as4r77] done best t=3 (sym start t=3)
+[as4r79] asym it=15372 best t=2 L=14 n=49 masks=16 ovf=0
+[as4r79] asym it=17083 best t=1 L=13 n=52 masks=14 ovf=0
+[as4r79] done best t=1 (sym start t=3)
+[as4r80] asym it=9037 best t=2 L=12 n=41 masks=4 ovf=0
+[as4r80] asym it=9695 best t=1 L=11 n=39 masks=20 ovf=0

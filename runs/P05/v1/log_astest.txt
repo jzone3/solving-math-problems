@@ -1,0 +1,1 @@
+[astestr1] done best t=3 (sym start t=3)
