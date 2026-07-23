@@ -1,0 +1,357 @@
+rho=  1.00 L=     -inf U=      inf
+    Larg: None
+    Uarg: None
+rho=  1.50 L=     -inf U=      inf
+    Larg: None
+    Uarg: None
+rho=  2.00 L=  -3.0000 U=      inf
+    Larg: d=(1,2) m=(2.00,1.00) s=3 z1=1 zs=3 BW
+    Uarg: None
+rho=  2.50 L=  -3.0000 U=      inf
+    Larg: d=(1,2) m=(2.00,1.00) s=3 z1=1 zs=3 BW
+    Uarg: None
+rho=  3.00 L=  -3.0000 U=      inf
+    Larg: d=(1,2) m=(2.00,1.00) s=3 z1=1 zs=3 BW
+    Uarg: None
+rho=  3.50 L=  -3.0000 U=      inf
+    Larg: d=(1,2) m=(2.00,1.00) s=3 z1=1 zs=3 BW
+    Uarg: None
+rho=  4.00 L=  -2.5000 U=      inf
+    Larg: d=(2,1) m=(1.50,2.00) s=3 z1=2 zs=7 DQo
+    Uarg: None
+rho=  4.50 L=  -2.6000 U=      inf
+    Larg: d=(2,1) m=(1.50,2.00) s=3 z1=2 zs=7 DQo
+    Uarg: None
+rho=  5.00 L=  -2.3333 U=      inf
+    Larg: d=(1,2) m=(2.00,1.50) s=3 z1=2 zs=8 E?qo
+    Uarg: None
+rho=  5.50 L=  -2.4286 U=      inf
+    Larg: d=(1,2) m=(2.00,1.50) s=3 z1=2 zs=8 E?qo
+    Uarg: None
+rho=  6.00 L=  -1.6667 U=  -1.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=13 FCOf?
+    Uarg: d=(2,3) m=(2.00,2.00) s=5 z1=7 zs=31 FCOf?
+rho=  6.50 L=  -1.8571 U=   3.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=13 FCOf?
+    Uarg: d=(2,3) m=(2.00,2.00) s=5 z1=7 zs=31 FCOf?
+rho=  7.00 L=  -2.0000 U=      inf
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=13 FCOf?
+    Uarg: None
+rho=  7.50 L=  -1.8889 U=      inf
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=14 G?`@eC
+    Uarg: None
+rho=  8.00 L=  -2.0000 U=      inf
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=14 G?`@eC
+    Uarg: None
+rho=  8.50 L=  -2.0909 U=      inf
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=14 G?`@eC
+    Uarg: None
+rho=  9.00 L=  -2.0000 U=      inf
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 G?`acK
+    Uarg: None
+rho=  9.50 L=  -2.0769 U=      inf
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 G?`acK
+    Uarg: None
+rho= 10.00 L=  -2.1429 U=   0.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 G?`acK
+    Uarg: d=(3,3) m=(2.33,2.33) s=6 z1=12 zs=60 EEj_
+rho= 10.50 L=  -2.2000 U=   2.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 FCQeG
+    Uarg: d=(3,3) m=(2.33,2.33) s=6 z1=12 zs=60 EEj_
+rho= 11.00 L=  -2.2500 U=   6.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 FCQeG
+    Uarg: d=(3,3) m=(2.33,2.33) s=6 z1=12 zs=60 EEj_
+rho= 11.50 L=  -2.2941 U=  18.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 FCQeG
+    Uarg: d=(3,3) m=(2.33,2.33) s=6 z1=12 zs=60 EEj_
+rho= 12.00 L=  -2.3333 U=  -2.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 FCQeG
+    Uarg: d=(3,3) m=(2.33,3.00) s=6 z1=14 zs=76 FEhf?
+rho= 12.50 L=  -2.3684 U=  -0.6667
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 EQj_
+    Uarg: d=(3,3) m=(2.67,2.67) s=6 z1=14 zs=76 FCpbO
+rho= 13.00 L=  -2.4000 U=   2.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 EQj_
+    Uarg: d=(3,3) m=(2.67,2.67) s=6 z1=14 zs=76 FCpbO
+rho= 13.50 L=  -2.4286 U=  10.0000
+    Larg: d=(2,1) m=(2.00,2.00) s=3 z1=3 zs=15 EQj_
+    Uarg: d=(3,3) m=(2.67,2.67) s=6 z1=14 zs=76 FCpbO
+rho= 14.00 L=  -2.3333 U=  -2.0000
+    Larg: d=(3,2) m=(2.67,3.00) s=5 z1=11 zs=63 FCZf?
+    Uarg: d=(3,3) m=(2.67,3.00) s=6 z1=15 zs=86 G?ovF?
+rho= 14.50 L=  -2.3913 U=   2.0000
+    Larg: d=(1,2) m=(2.00,2.00) s=3 z1=3 zs=16 G?BDCw
+    Uarg: d=(3,3) m=(2.67,3.00) s=6 z1=15 zs=86 G?ovF?
+rho= 15.00 L=  -2.4167 U=      inf
+    Larg: d=(1,2) m=(2.00,2.00) s=3 z1=3 zs=16 G?BDCw
+    Uarg: None
+rho= 15.50 L=  -2.4400 U=      inf
+    Larg: d=(1,2) m=(2.00,2.00) s=3 z1=3 zs=16 G?BDCw
+    Uarg: None
+rho= 16.00 L=  -2.2500 U=      inf
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=21 FCOf_
+    Uarg: None
+rho= 16.50 L=  -2.2800 U=      inf
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=21 FCOf_
+    Uarg: None
+rho= 17.00 L=  -2.1538 U=   0.3333
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=23 GCOcf_
+    Uarg: d=(3,4) m=(3.00,2.50) s=7 z1=20 zs=118 GCOcf_
+rho= 17.50 L=  -2.1852 U=   1.8000
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=23 GCOcf_
+    Uarg: d=(3,4) m=(3.00,2.50) s=7 z1=20 zs=118 GCOcf_
+rho= 18.00 L=  -2.2143 U=   4.0000
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=23 GCOcf_
+    Uarg: d=(3,4) m=(3.00,2.50) s=7 z1=20 zs=118 GCOcf_
+rho= 18.50 L=  -2.1724 U=   1.0000
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=24 GCQ`f_
+    Uarg: d=(3,4) m=(3.00,2.75) s=7 z1=21 zs=127 GCQ`f_
+rho= 19.00 L=  -2.2000 U=   1.6000
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=24 GCQ`f_
+    Uarg: d=(4,4) m=(2.50,2.50) s=8 z1=24 zs=144 GCOf?{
+rho= 19.50 L=  -2.2258 U=   2.6667
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=24 GCQ`f_
+    Uarg: d=(4,4) m=(2.50,2.50) s=8 z1=24 zs=144 GCOf?{
+rho= 20.00 L=  -2.2500 U=   1.0000
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=24 GCQ`f_
+    Uarg: d=(3,4) m=(3.00,3.00) s=7 z1=22 zs=138 FEhbo
+rho= 20.50 L=  -1.9048 U=   0.3636
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=62 GCOf@s
+    Uarg: d=(4,4) m=(2.75,2.75) s=8 z1=26 zs=162 GCOf@s
+rho= 21.00 L=  -2.0000 U=   1.2000
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=62 GCOf@s
+    Uarg: d=(4,4) m=(2.75,2.75) s=8 z1=26 zs=162 GCOf@s
+rho= 21.50 L=  -2.0870 U=   2.2222
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=62 GCOf@s
+    Uarg: d=(4,4) m=(2.75,2.75) s=8 z1=26 zs=162 GCOf@s
+rho= 22.00 L=  -2.0000 U=  -1.3333
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=64 GCOfBc
+    Uarg: d=(4,4) m=(3.00,3.00) s=8 z1=28 zs=184 FCZbg
+rho= 22.50 L=  -2.0800 U=  -0.7273
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=64 GCOfBc
+    Uarg: d=(4,4) m=(3.00,3.00) s=8 z1=28 zs=184 FCZbg
+rho= 23.00 L=  -2.1538 U=   0.0000
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=64 GCOfBc
+    Uarg: d=(4,4) m=(3.00,3.00) s=8 z1=28 zs=184 FCZbg
+rho= 23.50 L=  -2.2222 U=   0.8889
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=64 GCOfBc
+    Uarg: d=(4,4) m=(3.00,3.00) s=8 z1=28 zs=184 FCZbg
+rho= 24.00 L=  -2.2857 U=  -0.4000
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=64 G?`vf_
+    Uarg: d=(4,4) m=(3.00,3.25) s=8 z1=29 zs=194 GCXeeo
+rho= 24.50 L=  -2.3448 U=   0.4444
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=64 G?`vf_
+    Uarg: d=(4,4) m=(3.00,3.25) s=8 z1=29 zs=194 GCXeeo
+rho= 25.00 L=  -2.3333 U=   1.2500
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=65 GCQbfC
+    Uarg: d=(4,4) m=(3.00,3.25) s=8 z1=29 zs=195 FQjV_
+rho= 25.50 L=  -2.3226 U=   0.0000
+    Larg: d=(3,1) m=(3.00,3.00) s=4 z1=10 zs=66 FCZfG
+    Uarg: d=(4,4) m=(3.25,3.25) s=8 z1=30 zs=204 G?ovFC
+rho= 26.00 L=  -2.3636 U=  -0.5000
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=26 GCQdfC
+    Uarg: d=(4,4) m=(3.25,3.25) s=8 z1=30 zs=210 EFzo
+rho= 26.50 L=  -2.3778 U=   0.5714
+    Larg: d=(2,1) m=(2.50,2.00) s=3 z1=4 zs=26 GCQdfC
+    Uarg: d=(4,4) m=(3.25,3.25) s=8 z1=30 zs=210 EFzo
+rho= 27.00 L=  -2.3913 U=  -0.2500
+    Larg: d=(1,2) m=(2.00,2.50) s=3 z1=4 zs=26 G?qtdg
+    Uarg: d=(4,4) m=(3.25,3.50) s=8 z1=31 zs=217 FEjdg
+rho= 27.50 L=  -2.4043 U=   0.8571
+    Larg: d=(1,2) m=(2.00,2.50) s=3 z1=4 zs=26 G?qtdg
+    Uarg: d=(4,4) m=(3.25,3.50) s=8 z1=31 zs=217 FEjdg
+rho= 28.00 L=  -2.3043 U=   1.3333
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=31 FCOfo
+    Uarg: d=(4,4) m=(3.25,3.50) s=8 z1=31 zs=220 FQzV_
+rho= 28.50 L=  -2.3191 U=  -1.7143
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=31 FCOfo
+    Uarg: d=(4,4) m=(3.50,3.50) s=8 z1=32 zs=234 G?zeeo
+rho= 29.00 L=  -2.3333 U=  -0.6667
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=31 FCOfo
+    Uarg: d=(4,4) m=(3.50,3.50) s=8 z1=32 zs=234 G?zeeo
+rho= 29.50 L=  -2.3469 U=   0.8000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=31 FCOfo
+    Uarg: d=(4,4) m=(3.50,3.50) s=8 z1=32 zs=234 G?zeeo
+rho= 30.00 L=  -2.2400 U=   2.0000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=34 GCOcfc
+    Uarg: d=(4,4) m=(3.50,3.50) s=8 z1=32 zs=236 D^{
+rho= 30.50 L=  -2.2549 U=   0.4000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=34 GCOcfc
+    Uarg: d=(4,4) m=(3.50,3.75) s=8 z1=33 zs=243 GEhvBo
+rho= 31.00 L=  -2.2308 U=   2.5000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=35 FCXfW
+    Uarg: d=(4,4) m=(3.50,3.75) s=8 z1=33 zs=243 GEhvBo
+rho= 31.50 L=  -2.2453 U=   6.0000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=35 FCXfW
+    Uarg: d=(4,4) m=(3.50,3.75) s=8 z1=33 zs=243 GEhvBo
+rho= 32.00 L=  -2.2593 U=  -1.0000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=35 FCXfW
+    Uarg: d=(4,4) m=(3.50,4.00) s=8 z1=34 zs=258 GEhbro
+rho= 32.50 L=  -2.2727 U=   0.0000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=35 FCXfW
+    Uarg: d=(4,4) m=(3.75,3.75) s=8 z1=34 zs=260 FEzvO
+rho= 33.00 L=  -2.2857 U=   4.0000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=35 FCXfW
+    Uarg: d=(4,4) m=(3.75,3.75) s=8 z1=34 zs=260 FEzvO
+rho= 33.50 L=  -2.2982 U=   2.6364
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=35 FCXfW
+    Uarg: d=(4,5) m=(3.50,3.20) s=9 z1=39 zs=287 GCXeew
+rho= 34.00 L=  -2.2759 U=   1.0000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=36 G?`bfK
+    Uarg: d=(4,4) m=(3.75,4.00) s=8 z1=35 zs=271 GEjbro
+rho= 34.50 L=  -2.2881 U=   5.2222
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=36 G?`bfK
+    Uarg: d=(4,5) m=(3.50,3.20) s=9 z1=39 zs=287 GCXeew
+rho= 35.00 L=  -2.3000 U=   5.5000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=36 G?`bfK
+    Uarg: d=(4,5) m=(3.75,3.00) s=9 z1=39 zs=293 GCQtfW
+rho= 35.50 L=  -2.3115 U=   1.1818
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=36 G?`bfK
+    Uarg: d=(4,5) m=(3.75,3.40) s=9 z1=41 zs=313 GCZTfo
+rho= 36.00 L=  -2.2903 U=   2.2000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=37 GCQdfK
+    Uarg: d=(4,5) m=(3.75,3.40) s=9 z1=41 zs=313 GCZTfo
+rho= 36.50 L=  -2.3016 U=   1.6667
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=37 GCQdfK
+    Uarg: d=(4,5) m=(4.00,3.20) s=9 z1=41 zs=321 FQino
+rho= 37.00 L=  -2.3125 U=   3.0000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=37 GCQdfK
+    Uarg: d=(4,5) m=(4.00,3.20) s=9 z1=41 zs=321 FQino
+rho= 37.50 L=  -2.2923 U=  -0.0952
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=38 GCQtfg
+    Uarg: d=(5,5) m=(3.40,3.40) s=10 z1=48 zs=376 G?ovfc
+rho= 38.00 L=  -2.3030 U=   0.4000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=38 GCQtfg
+    Uarg: d=(5,5) m=(3.40,3.40) s=10 z1=48 zs=376 G?ovfc
+rho= 38.50 L=  -2.3134 U=   0.9474
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=38 GCQtfg
+    Uarg: d=(5,5) m=(3.40,3.40) s=10 z1=48 zs=376 G?ovfc
+rho= 39.00 L=  -2.3235 U=   1.5000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=38 GCQtfg
+    Uarg: d=(4,5) m=(4.00,3.60) s=9 z1=43 zs=345 FEnfo
+rho= 39.50 L=  -2.3333 U=   1.2941
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=38 GCQTek
+    Uarg: d=(5,5) m=(3.40,3.40) s=10 z1=48 zs=384 EQ~w
+rho= 40.00 L=  -2.3429 U=  -0.2000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=38 GCQTek
+    Uarg: d=(5,5) m=(3.60,3.60) s=10 z1=50 zs=402 GCdffS
+rho= 40.50 L=  -2.3521 U=   0.3158
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=38 GCQTek
+    Uarg: d=(5,5) m=(3.60,3.60) s=10 z1=50 zs=402 GCdffS
+rho= 41.00 L=  -2.3333 U=   0.2222
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=39 FQinW
+    Uarg: d=(5,5) m=(3.60,3.60) s=10 z1=50 zs=408 GCXfQ{
+rho= 41.50 L=  -2.3425 U=   0.5882
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=39 FQinW
+    Uarg: d=(5,5) m=(3.60,3.60) s=10 z1=50 zs=410 GCQvds
+rho= 42.00 L=  -2.3514 U=   1.2500
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=39 FQinW
+    Uarg: d=(5,5) m=(3.60,3.60) s=10 z1=50 zs=410 GCQvds
+rho= 42.50 L=  -2.3600 U=   2.0000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=39 FQinW
+    Uarg: d=(5,5) m=(3.60,3.60) s=10 z1=50 zs=410 GCQvds
+rho= 43.00 L=  -2.3043 U=  -0.6667
+    Larg: d=(1,4) m=(4.00,3.75) s=5 z1=20 zs=162 G?qtts
+    Uarg: d=(5,5) m=(3.80,3.80) s=10 z1=52 zs=436 GCQuus
+rho= 43.50 L=  -2.3617 U=  -0.1176
+    Larg: d=(1,4) m=(4.00,3.75) s=5 z1=20 zs=162 G?qtts
+    Uarg: d=(5,5) m=(3.80,3.80) s=10 z1=52 zs=436 GCQuus
+rho= 44.00 L=  -2.3846 U=   0.5000
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=39 FQinW
+    Uarg: d=(5,5) m=(3.80,3.80) s=10 z1=52 zs=436 GCQuus
+rho= 44.50 L=  -2.3671 U=  -0.1176
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=40 GCQTmk
+    Uarg: d=(5,5) m=(3.80,4.00) s=10 z1=53 zs=446 GCZVes
+rho= 45.00 L=  -2.3750 U=   0.2500
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=40 GCQTmk
+    Uarg: d=(5,5) m=(3.80,4.00) s=10 z1=53 zs=448 GCpves
+rho= 45.50 L=  -2.3827 U=   0.9333
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=40 GCQTmk
+    Uarg: d=(5,5) m=(3.80,4.00) s=10 z1=53 zs=448 GCpves
+rho= 46.00 L=  -2.3902 U=  -0.7500
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=40 GCQTmk
+    Uarg: d=(5,5) m=(4.00,4.00) s=10 z1=54 zs=466 GCZnbw
+rho= 46.50 L=  -2.3976 U=  -0.1333
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=40 GCQTmk
+    Uarg: d=(5,5) m=(4.00,4.00) s=10 z1=54 zs=466 GCZnbw
+rho= 47.00 L=  -2.4048 U=   0.5714
+    Larg: d=(2,1) m=(3.00,2.00) s=3 z1=5 zs=40 GCQTmk
+    Uarg: d=(5,5) m=(4.00,4.00) s=10 z1=54 zs=466 GCZnbw
+rho= 47.50 L=  -2.3735 U=   0.7692
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=44 G?`@fs
+    Uarg: d=(5,5) m=(4.00,4.00) s=10 z1=54 zs=470 G?rnfW
+rho= 48.00 L=  -2.2857 U=  -0.1429
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=48 GCQ`fk
+    Uarg: d=(5,5) m=(4.20,4.00) s=10 z1=55 zs=481 GCXnRs
+rho= 48.50 L=  -2.2941 U=   0.6154
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=48 GCQ`fk
+    Uarg: d=(5,5) m=(4.20,4.00) s=10 z1=55 zs=481 GCXnRs
+rho= 49.00 L=  -2.3023 U=   1.5000
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=48 GCQ`fk
+    Uarg: d=(5,5) m=(4.20,4.00) s=10 z1=55 zs=481 GCXnRs
+rho= 49.50 L=  -2.3103 U=  -0.4615
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=48 GCQ`fk
+    Uarg: d=(5,5) m=(4.20,4.20) s=10 z1=56 zs=498 GCZMmk
+rho= 50.00 L=  -2.3182 U=  -0.6667
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=48 GCQ`fk
+    Uarg: d=(5,5) m=(4.20,4.20) s=10 z1=56 zs=504 GCR^uw
+rho= 50.50 L=  -2.3258 U=   0.1818
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=48 GCQ`fk
+    Uarg: d=(5,5) m=(4.20,4.20) s=10 z1=56 zs=504 GCR^uw
+rho= 51.00 L=  -2.3333 U=  -0.1667
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=48 GCQ`fk
+    Uarg: d=(5,5) m=(4.20,4.40) s=10 z1=57 zs=511 GCzvfW
+rho= 51.50 L=  -2.3407 U=   0.7273
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=48 GCQ`fk
+    Uarg: d=(5,5) m=(4.20,4.40) s=10 z1=57 zs=511 GCzvfW
+rho= 52.00 L=  -2.3043 U=   1.0000
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=50 G?`rfk
+    Uarg: d=(5,5) m=(4.20,4.40) s=10 z1=57 zs=515 GEhztk
+rho= 52.50 L=  -2.3118 U=   2.2222
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=50 G?`rfk
+    Uarg: d=(5,5) m=(4.20,4.40) s=10 z1=57 zs=515 GEhztk
+rho= 53.00 L=  -2.3191 U=  -0.4000
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=50 G?`rfk
+    Uarg: d=(5,5) m=(4.40,4.40) s=10 z1=58 zs=532 G?znfW
+rho= 53.50 L=  -2.3263 U=   0.6667
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=50 G?`rfk
+    Uarg: d=(5,5) m=(4.40,4.40) s=10 z1=58 zs=532 G?znfW
+rho= 54.00 L=  -2.3333 U=   0.5000
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=50 G?`rfk
+    Uarg: d=(5,5) m=(4.40,4.40) s=10 z1=58 zs=538 FFz~o
+rho= 54.50 L=  -2.3402 U=   0.0000
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=50 G?`rfk
+    Uarg: d=(5,5) m=(4.40,4.60) s=10 z1=59 zs=545 GQz^`{
+rho= 55.00 L=  -2.3061 U=   1.2500
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=52 GCQtfk
+    Uarg: d=(5,5) m=(4.40,4.60) s=10 z1=59 zs=545 GQz^`{
+rho= 55.50 L=  -2.3131 U=   2.8571
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=52 GCQtfk
+    Uarg: d=(5,5) m=(4.40,4.60) s=10 z1=59 zs=545 GQz^`{
+rho= 56.00 L=  -2.3200 U=   3.3333
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=52 GCQtfk
+    Uarg: d=(5,5) m=(4.60,4.40) s=10 z1=59 zs=550 GErvvW
+rho= 56.50 L=  -2.2871 U=  -0.8571
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=54 GCXb^[
+    Uarg: d=(5,5) m=(4.60,4.60) s=10 z1=60 zs=568 E^~w
+rho= 57.00 L=  -2.2941 U=   0.6667
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=54 GCXb^[
+    Uarg: d=(5,5) m=(4.60,4.60) s=10 z1=60 zs=568 E^~w
+rho= 57.50 L=  -2.3010 U=   2.4118
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=54 GCXb^[
+    Uarg: d=(5,6) m=(4.60,3.67) s=11 z1=66 zs=612 GCXj^w
+rho= 58.00 L=  -2.3077 U=   2.7778
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=54 GCXb^[
+    Uarg: d=(5,6) m=(4.40,4.00) s=11 z1=67 zs=613 GEhevs
+rho= 58.50 L=  -2.3143 U=   2.0000
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=54 GCXb^[
+    Uarg: d=(5,5) m=(4.80,4.60) s=10 z1=61 zs=580 GUZvd[
+rho= 59.00 L=  -2.3208 U=   3.5000
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=54 GCXb^[
+    Uarg: d=(5,6) m=(4.60,3.83) s=11 z1=67 zs=621 GCZVnw
+rho= 59.50 L=  -2.3271 U=   2.4118
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=54 GCXb^[
+    Uarg: d=(5,6) m=(4.60,4.00) s=11 z1=68 zs=634 GEjfJ{
+rho= 60.00 L=  -2.3333 U=   0.0000
+    Larg: d=(2,1) m=(3.50,2.00) s=3 z1=6 zs=54 GCXb^[
+    Uarg: d=(6,6) m=(4.00,4.00) s=12 z1=76 zs=720 GCXfZ{
