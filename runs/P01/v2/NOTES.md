@@ -189,6 +189,24 @@ order was known. Our results, machine-exhaustive:
   has at least 20 vertices.** (Two independent engines overlap and agree on n <= 15.)
 - n=20 multigraph cube sweep launched (45 cases, running at session end).
 
+## 7. Third phase — Fleischner-primitive gadget search (sat_path.py)
+
+Structure-guided reduction from the literature's extremal construction: a simple graph H
+with deg(s)=deg(t)=3, all other degrees 4, and a UNIQUE hamiltonian s-t path would give a
+Sheehan counterexample directly (ring of m >= 3 copies, junctions t_i—s_{i+1}: every HC
+must traverse each copy as a ham s-t path, so #HC = 1). This is the all-degree-4 analogue
+of the unique-ham-path gadget in Fleischner, J. Graph Theory 75 (2014), Lemma 1.
+
+Encoding: WLOG the unique path is the spine 0-1-...-n-1; chord vars; exact-2 chords per
+vertex; CEGAR oracle = ham s-t path enumeration via apex-augmented HC counter; minimized
+blocking clauses + reflection images. (Bug found & fixed during validation: apex removal
+from the cycle sequence must respect cyclic order, else phantom chords appear — caught by
+an assertion that blocking sets are subsets of the model.)
+
+Results: **UNSAT for all n <= 17** — no such gadget exists on <= 17 vertices, so no
+"one-gadget-ring" Sheehan counterexample on <= 51 vertices via this schema. n=18 running
+(47k+ refinements). Refinement counts grow ~2.3x per vertex.
+
 STATUS: negative / frontier-pushed (NEW: multigraph minimum order >= 20, proved by two
 independent exhaustive engines — SAT-CEGAR with dihedral-symmetrized minimized blocking
 clauses + cube-and-conquer, and memoized completion DFS; simple case independently
