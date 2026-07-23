@@ -14,3 +14,6 @@
 [d27-d27 seed=82] step=1082 checked=415 best=4313 tau=3 m=39 cuts=152 tight=42 t=369s
 [d27-d27 seed=82] step=1095 checked=421 best=4954 tau=3 m=38 cuts=192 tight=48 t=372s
 [d27-d27 seed=82] step=1184 checked=459 best=5872 tau=3 m=37 cuts=209 tight=57 t=396s
+[d27-d27 seed=82] step=2777 checked=1034 best=6060 tau=3 m=37 cuts=197 tight=59 t=827s
+[d27-d27 seed=82] step=14360 checked=5749 best=6217 tau=3 m=35 cuts=1452 tight=48 t=5124s
+[d27-d27 seed=82] DONE steps=22662 checked=9003 best=6217

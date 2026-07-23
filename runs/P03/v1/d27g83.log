@@ -1,0 +1,25 @@
+[d27-glue seed=83] step=32869 checked=1 best=1455 tau=3 m=91 cuts=46 tight=15 t=5554s
+[d27-glue seed=83] step=32880 checked=8 best=1557 tau=3 m=90 cuts=47 tight=16 t=5568s
+[d27-glue seed=83] step=32890 checked=17 best=1580 tau=3 m=89 cuts=69 tight=16 t=5580s
+[d27-glue seed=83] step=32891 checked=18 best=1679 tau=3 m=89 cuts=68 tight=17 t=5581s
+[d27-glue seed=83] step=32892 checked=19 best=1788 tau=3 m=88 cuts=76 tight=18 t=5582s
+[d27-glue seed=83] step=32901 checked=26 best=1789 tau=3 m=87 cuts=76 tight=18 t=5591s
+[d27-glue seed=83] step=32912 checked=35 best=1797 tau=3 m=88 cuts=85 tight=18 t=5601s
+[d27-glue seed=83] step=32917 checked=38 best=1898 tau=3 m=87 cuts=85 tight=19 t=5606s
+[d27-glue seed=83] step=32932 checked=49 best=1899 tau=3 m=86 cuts=85 tight=19 t=5619s
+[d27-glue seed=83] step=32934 checked=50 best=2000 tau=3 m=85 cuts=85 tight=20 t=5621s
+[d27-glue seed=83] step=32937 checked=52 best=2001 tau=3 m=84 cuts=85 tight=20 t=5624s
+[d27-glue seed=83] step=32948 checked=60 best=2050 tau=3 m=83 cuts=133 tight=20 t=5636s
+[d27-glue seed=83] step=32953 checked=64 best=2052 tau=3 m=84 cuts=236 tight=19 t=5640s
+[d27-glue seed=83] step=32989 checked=82 best=2266 tau=3 m=84 cuts=450 tight=19 t=5663s
+[d27-glue seed=83] step=32994 checked=86 best=2367 tau=3 m=83 cuts=450 tight=20 t=5667s
+[d27-glue seed=83] step=33006 checked=92 best=2426 tau=3 m=82 cuts=308 tight=22 t=5676s
+[d27-glue seed=83] step=33008 checked=93 best=2433 tau=3 m=81 cuts=314 tight=22 t=5678s
+[d27-glue seed=83] step=33019 checked=101 best=2456 tau=3 m=81 cuts=337 tight=22 t=5688s
+[d27-glue seed=83] step=33036 checked=106 best=2457 tau=3 m=80 cuts=337 tight=22 t=5712s
+[d27-glue seed=83] step=33066 checked=115 best=2458 tau=3 m=79 cuts=337 tight=22 t=5748s
+[d27-glue seed=83] step=33081 checked=124 best=2509 tau=3 m=78 cuts=387 tight=22 t=5768s
+[d27-glue seed=83] step=33091 checked=129 best=2510 tau=3 m=77 cuts=387 tight=22 t=5780s
+[d27-glue seed=83] step=33093 checked=130 best=2511 tau=3 m=76 cuts=387 tight=22 t=5783s
+[d27-glue seed=83] step=33131 checked=145 best=2587 tau=3 m=77 cuts=464 tight=22 t=5830s
+[d27-glue seed=83] DONE steps=50336 checked=155 best=2587

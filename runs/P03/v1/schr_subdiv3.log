@@ -24,3 +24,26 @@ dp=3 dm=3 ms=2 ext=3 sp=1 n=36 m=126 tau=10 cuts=13257 packs=True t=12.2s
 skip 3 3 2 3 2
 dp=4 dm=1 ms=1 ext=None sp=1 n=48 m=57 tau=4 cuts=70384 packs=True t=257.5s
 skip 4 1 1 None 2
+dp=4 dm=1 ms=1 ext=3 sp=1 n=48 m=60 tau=4 cuts=70384 packs=True t=261.3s
+skip 4 1 1 3 2
+dp=4 dm=1 ms=2 ext=None sp=1 n=48 m=66 tau=6 cuts=70384 packs=True t=294.3s
+skip 4 1 2 None 2
+dp=4 dm=1 ms=2 ext=3 sp=1 n=48 m=66 tau=6 cuts=70384 packs=True t=281.2s
+skip 4 1 2 3 2
+dp=4 dm=2 ms=1 ext=None sp=1 n=48 m=105 tau=6 cuts=70384 packs=True t=265.1s
+skip 4 2 1 None 2
+dp=4 dm=2 ms=1 ext=3 sp=1 n=48 m=108 tau=6 cuts=70384 packs=True t=256.9s
+skip 4 2 1 3 2
+dp=4 dm=2 ms=2 ext=None sp=1 n=48 m=114 tau=8 cuts=70384 packs=True t=338.7s
+skip 4 2 2 None 2
+dp=4 dm=2 ms=2 ext=3 sp=1 n=48 m=114 tau=8 cuts=70384 packs=True t=341.1s
+skip 4 2 2 3 2
+dp=4 dm=3 ms=1 ext=None sp=1 n=48 m=153 tau=8 cuts=70384 packs=True t=311.5s
+skip 4 3 1 None 2
+dp=4 dm=3 ms=1 ext=3 sp=1 n=48 m=156 tau=8 cuts=70384 packs=True t=303.2s
+skip 4 3 1 3 2
+dp=4 dm=3 ms=2 ext=None sp=1 n=48 m=162 tau=10 cuts=70384 packs=True t=316.2s
+skip 4 3 2 None 2
+dp=4 dm=3 ms=2 ext=3 sp=1 n=48 m=162 tau=10 cuts=70384 packs=True t=314.5s
+skip 4 3 2 3 2
+DONE

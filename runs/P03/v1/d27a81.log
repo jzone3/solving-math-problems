@@ -12,3 +12,14 @@
 [d27-d27 seed=81] step=1022 checked=448 best=3170 tau=3 m=49 cuts=1919 tight=13 t=527s
 [d27-d27 seed=81] step=1058 checked=470 best=3271 tau=3 m=48 cuts=1919 tight=14 t=550s
 [d27-d27 seed=81] step=1075 checked=484 best=3353 tau=3 m=47 cuts=2159 tight=14 t=558s
+[d27-d27 seed=81] step=2330 checked=995 best=3440 tau=3 m=41 cuts=681 tight=28 t=1013s
+[d27-d27 seed=81] step=2386 checked=1020 best=3458 tau=3 m=42 cuts=800 tight=27 t=1031s
+[d27-d27 seed=81] step=2567 checked=1090 best=3739 tau=3 m=41 cuts=480 tight=33 t=1087s
+[d27-d27 seed=81] step=2777 checked=1172 best=5693 tau=3 m=40 cuts=433 tight=53 t=1144s
+[d27-d27 seed=81] step=4833 checked=1995 best=5848 tau=3 m=38 cuts=886 tight=50 t=1736s
+[d27-d27 seed=81] step=18433 checked=7669 best=5856 tau=3 m=40 cuts=296 tight=56 t=6723s
+[d27-d27 seed=81] step=18533 checked=7709 best=6249 tau=3 m=40 cuts=189 tight=61 t=6774s
+[d27-d27 seed=81] step=18848 checked=7823 best=6595 tau=3 m=40 cuts=135 tight=65 t=6933s
+[d27-d27 seed=81] step=18866 checked=7835 best=6697 tau=3 m=39 cuts=136 tight=66 t=6942s
+[d27-d27 seed=81] step=18891 checked=7843 best=8610 tau=3 m=38 cuts=148 tight=85 t=6955s
+[d27-d27 seed=81] DONE steps=25143 checked=10452 best=8610

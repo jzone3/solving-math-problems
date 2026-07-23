@@ -22,3 +22,6 @@
 [schr-anneal seed=66] step=202588 best=15104 tau=5 m=16 cuts=144 tight=144 t=278s
 [schr-anneal seed=66] step=407956 best=18882 tau=6 m=18 cuts=180 tight=180 t=551s
 [schr-anneal seed=66] step=408172 best=18883 tau=6 m=17 cuts=180 tight=180 t=552s
+[schr-anneal seed=66] step=583283 best=20621 tau=7 m=19 cuts=288 tight=192 t=798s
+[schr-anneal seed=66] step=583303 best=30222 tau=7 m=18 cuts=288 tight=288 t=798s
+[schr-anneal seed=66] DONE steps=6891120 best=30222

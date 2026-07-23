@@ -155,10 +155,27 @@ Zero UNSAT instances; SAT solver almost never even hits a conflict.
   regime of Schrijver's weighted CE; brute force must be replaced by the
   structural restrictions of Abdi–Cornuéjols–Zlatin (V3/V5 territory).
 
+## Phase 3 final tallies
+
+- Schrijver expansion grid (parallel-arc): 96 configs, all pack.
+- Schrijver subdivision grids (dash paths len 2-4, mult 1-3, solid subdiv):
+  ~60 configs up to n=48, m=162, tau=10, 70k minimal dicuts — all pack.
+- Schrijver-seeded annealing at tau>=3 (6 workers x 2-2.5h): ~13M proposal
+  steps, every accepted candidate SAT-checked — zero UNSAT.
+- D27-seeded annealing (2 workers x 2.5h at n=27): ~48k steps, ~19.5k full
+  SAT checks at tau=3, m in 30-60 — zero UNSAT (best tightness: 85 tau-size
+  minimal dicuts at m=38).
+- D27 2-copy gluing annealing (2 workers x 2.5h, n up to 46, m<=100): ~93k
+  steps, ~850 SAT checks (most candidates exceeded cut/ideal caps) — zero
+  UNSAT.
+
 ## STATUS
 
-STATUS: negative — no counterexample; conjecture exhaustively verified for all
-digraphs with condensation a multi-DAG within the size bounds above (all
+STATUS: negative / frontier-pushed — no counterexample. Exhaustive: all
 digraphs on <=6 vertices; all simple <=7-vertex DAGs; multi-DAGs n<=7 up to
-the stated arc budgets), plus >15M randomized larger instances. No
-solutions/P03/verify.py since there is no claimed witness.
+the stated arc budgets; >155M instances total. Seeded phase: Schrijver's 1980
+weighted CE and ACZ's D27 near-miss extracted exactly from arXiv:2202.00392
+and machine-verified; every unweighted expansion/subdivision/mutation tried
+(tau up to 10, n up to 48, m up to 162, ~30k SAT-checked candidates around
+the seeds) still packs. No solutions/P03/verify.py since there is no claimed
+witness.
