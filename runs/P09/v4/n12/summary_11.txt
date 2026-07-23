@@ -1,0 +1,1 @@
+SUMMARY total=1357762089 evaluated=1314025208 violations=0 best_gap=-1.230923e+00 best_g6=K??FCy[f[z^{ best_n=12 best_m=32 best_w=3 best_s=41.435744136307 best_rhs=42.666666666667

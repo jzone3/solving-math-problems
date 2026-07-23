@@ -1,0 +1,1 @@
+n=35 subsets=131071 evaluated=80330 violations=0 best_gap=0.000000e+00 best_S=0x1bdef best_m=490 best_w=5 best_s2=784.0000000000

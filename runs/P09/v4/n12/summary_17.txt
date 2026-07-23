@@ -1,0 +1,1 @@
+SUMMARY total=1306723272 evaluated=1284853638 violations=0 best_gap=-4.437043e-01 best_g6=K?B@powMxv^{ best_n=12 best_m=32 best_w=3 best_s=42.222962386375 best_rhs=42.666666666667

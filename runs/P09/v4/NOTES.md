@@ -77,12 +77,25 @@ K_{5×10}-type Turán graphs); all non-equality maxima are clearly negative
 families. Compute: ~40 CPU-min. This covers vertex-transitive territory up to
 n = 50 within the circulant subclass called for by the V4 spec.
 
-### In progress
+### n = 12: ALL connected graphs — ZERO violations (COMPLETE)
 
-- n = 12 connected sweep (`geng -c`, 141,100,986,679 graphs = A001349(12),
-  120 res/mod slices, checker2). Slices 0–11 local (6 workers); slices 12–119
-  delegated to 12 child worker sessions (9 slices each, branches
-  `runs/P09-v4-n12-<k>`), to be folded back here.
+Connected sweep (`geng -c 12`, 120 res/mod slices, checker2; slices 0–11 run
+locally, slices 12–119 fanned out to 12 child worker sessions, results folded
+back from branches `runs/P09-v4-n12-<k>`; slice summaries in `n12/`):
+
+- graphs checked: **164,059,830,476** — exactly A001349(12), the number of
+  connected 12-vertex graphs (generation sanity check passed).
+- clique-evaluated (s > m prune passed): 160,185,787,863.
+- **violations: 0.** No VIOLATION lines in any out file.
+- max gap over all 120 slices: 5.3e-12, at `K]~v~z~~v~~}` = K_{2,2,2,2,2,2}
+  (cocktail-party Turán graph, m=60, ω=6, exact equality 100 = 100; confirmed
+  independently by `solutions/P09/verify.py`). All top “near-misses” are again
+  exact-equality complete-multipartite graphs + float noise; nothing strictly
+  between equality and violation.
+
+Combined with the connectivity reduction above, this verifies the conjecture
+for **every graph on ≤ 12 vertices**. Compute: ≈ 550 CPU-hours total across
+13 machines (≈ 6 h wall).
 
 ### Independent verifier
 
@@ -91,7 +104,25 @@ n = 50 within the circulant subclass called for by the V4 spec.
 sanity asserts). Verifies any graph6/edge-list witness; `--demo` self-test
 passes (C5, Petersen, K_{3,3} equality).
 
-## STATUS (checkpoint, to be finalized)
+## Dead ends / notes for other variants
 
-STATUS: negative (so far) — conjecture verified for ALL graphs on ≤ 11 vertices and
-all circulants n ≤ 50; n = 12 connected sweep in progress.
+- The s > m prune keeps ~97% of graphs (top-2 spectral energy exceeding m is
+  common), so it saves clique work but not eigen work; eigen cost dominates.
+- No non-trivial near-miss exists at n ≤ 12: the inequality is only tight on
+  the known equality families (complete multipartite graphs). Perturbation
+  attacks around n ≤ 12 extremal graphs are therefore hopeless; any
+  counterexample lives at n ≥ 13 (or nowhere).
+- Circulants to n = 50 show the same picture: equality exactly on
+  complete-multipartite circulants, everything else clearly negative, with the
+  deficit growing with n. Vertex-transitive structure does not help produce
+  two simultaneously large eigenvalues relative to 2m(1−1/ω).
+- n = 13 all-connected would be ≈ 5×10¹³ graphs (≈ 300× the n = 12 cost) —
+  not feasible with this approach; would need stronger pruning or restricted
+  families (V3-style fixed-ω sweeps).
+
+## STATUS
+
+STATUS: negative / frontier-pushed — no counterexample and no non-trivial
+near-miss; conjecture machine-verified for ALL graphs on ≤ 12 vertices
+(1.65×10¹¹ graphs; beyond any published check) and ALL circulant graphs
+C_n(S) for n ≤ 50 (≈1.3×10⁸). Only known equality families touch the bound.

@@ -1,0 +1,1 @@
+SUMMARY total=1244176025 evaluated=1214133229 violations=0 best_gap=-2.916778e-12 best_g6=K???EA}nd{Vo best_n=12 best_m=26 best_w=2 best_s=25.999999999997 best_rhs=26.000000000000
