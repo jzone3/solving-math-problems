@@ -52,6 +52,8 @@ def main():
                     help="JSON dump from cegar.py --dump-on-stall")
     ap.add_argument("--seconds", type=float, default=43200)
     ap.add_argument("--notes", type=str, default=None)
+    ap.add_argument("--dump-every", type=int, default=25,
+                    help="rewrite --blocking dump every K models (resume point)")
     a = ap.parse_args()
     n = a.n
 
@@ -119,6 +121,11 @@ def main():
                     added += 1
         log(f"n={n} endgame model {models}: solve {stime:.1f}s, "
             f"+{added} clauses (total {len(blocking)})")
+        if a.blocking and a.dump_every and models % a.dump_every == 0:
+            with open(a.blocking, "w") as f:
+                json.dump({"n": n, "min_dist": a.min_dist,
+                           "blocking": blocking}, f)
+            log(f"n={n} rewrote resume dump ({len(blocking)} clauses)")
 
     result = {"n": n, "min_dist": a.min_dist, "mode": "kissat-endgame",
               "status": status, "models": models, "blocking": len(blocking),

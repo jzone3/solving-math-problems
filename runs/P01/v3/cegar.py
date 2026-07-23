@@ -110,7 +110,8 @@ def blocking_clauses_for(n, cyc, chordset, var):
 
 
 def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True,
-        min_dist=2, dump_on_stall=0, dump_on_stall_path="residual.cnf"):
+        min_dist=2, dump_on_stall=0, dump_on_stall_path="residual.cnf",
+        diversify=False, seed=0):
     chords, var, base_clauses = build_encoding(n, min_dist)
     blocking = []  # all learned blocking clauses, for solver rebuilds
 
@@ -126,6 +127,10 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
 
     solver = fresh_solver()
     restarts = 0
+    rng = None
+    if diversify:
+        import random as _random
+        rng = _random.Random(seed)
 
     t0 = time.time()
     models = 0
@@ -138,6 +143,9 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
         if time.time() - t0 > max_seconds:
             status = "timeout"
             break
+        if rng is not None:
+            solver.set_phases([v if rng.random() < 0.12 else -v
+                               for v in var.values()])
         # budgeted solve; on stall, rebuild solver fresh (re-preprocessing the
         # accumulated clause DB is often far faster than grinding on)
         budget = 2_000_000
@@ -253,8 +261,11 @@ if __name__ == "__main__":
     ap.add_argument("--dump-on-stall", type=int, default=0,
                     help="dump residual CNF to --dump-path at this rebuild count")
     ap.add_argument("--dump-path", type=str, default="residual.cnf")
+    ap.add_argument("--diversify", action="store_true",
+                    help="randomize solver phases each model (sampling mode)")
+    ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
     r = run(a.n, a.seconds, notes=a.notes, nearmiss=not a.no_nearmiss,
             min_dist=a.min_dist, dump_on_stall=a.dump_on_stall,
-            dump_on_stall_path=a.dump_path)
+            dump_on_stall_path=a.dump_path, diversify=a.diversify, seed=a.seed)
     sys.exit(0 if r["status"] in ("exhausted-unsat", "FOUND") else 2)
