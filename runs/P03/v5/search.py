@@ -22,6 +22,7 @@ verified independently by solutions/P03/verify.py).
 """
 
 import json
+import os
 import random
 import sys
 import time
@@ -199,10 +200,15 @@ def phase_b(sizes, seconds, rng, stats):
                 cur = region_score(n, arcs)
 
 
-def count_packings(n, arcs, cap=40):
+PACKING_CAP = 40
+
+
+def count_packings(n, arcs, cap=None):
     """Count partitions into 3 dijoins, up to `cap`, modulo the 3! color
     symmetry (broken by fixing the colors of one size-3 dicut, which must be
     rainbow in every valid partition). Returns 0 if none."""
+    if cap is None:
+        cap = PACKING_CAP
     from harness import minimal_dicuts
     from pysat.formula import IDPool
     from pysat.solvers import Glucose4
@@ -295,6 +301,8 @@ if __name__ == "__main__":
                     if abs(3 * (t - s)) <= m and (m - 3 * (t - s)) % 2 == 0:
                         if s + t + m <= 16:
                             sizes.append((s, t, m))
+    if os.environ.get("PACKING_CAP"):
+        PACKING_CAP = int(os.environ["PACKING_CAP"])
     stats = Counter()
     t0 = time.time()
     if mode == "a":
