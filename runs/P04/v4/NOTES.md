@@ -147,6 +147,24 @@ New scripts: `circulants.py`, `blowups.py`, `regular_sample.py`, `count_anneal.p
 Totals across both waves: ≈115,000 Eulerian instances exactly decided, n = 13–26,
 zero violations of the Hajós bound.
 
+## 8. Wave 3 — LP/ILP duality gap + nonabelian Cayley frontier
+
+1. **LP/ILP duality-gap attack** (`lp_gap.py`, METHODOLOGY-V4 framing proper): fractional
+   cycle-decomposition LP solved by column generation (master over a cycle pool seeded with
+   all ≤5-cycles; pricing = exact max-dual-weight cycle DFS; CBC master). Sanity: K7 → 3,
+   K9 → 4 (LP = ILP). Annealed toggles maximizing gap = mincyc − LP at n = 13 (500 iters,
+   done) and n = 17 (partial): **the observed gap is 0.000 everywhere** — on every sampled
+   Eulerian graph in these neighborhoods the fractional and integer cycle-decomposition
+   numbers coincide, and for the extremal clique trees even the LP equals K exactly. There
+   is no local LP/ILP gap to exploit; an LP-value certificate > K (which would imply a
+   counterexample) never came close. Logs: `lp_gap_n13_s901.txt`, `lp_gap_n17_s902.txt`.
+2. **Dihedral Cayley sweep** (`dihedral.py`, first nonabelian family): all Eulerian Cayley
+   graphs of D_m — exhaustive over inverse-closed connection sets for m = 7, 8, 9
+   (n = 14, 16, 18; 6,482 connected Eulerian graphs) and 1,729 random connection sets for
+   m = 10–13 (n = 20–26). All decompose within K. Log: `dihedral.txt`. Combined with the
+   circulant sweep, Hajós now machine-verified for 24k+ vertex-transitive Eulerian graphs
+   on 13–26 vertices.
+
 ## STATUS
 
 STATUS: negative / frontier-pushed — no counterexample found; ~51k perturbed instances
@@ -155,3 +173,11 @@ around all known extremal families (n = 13–20), plus exhaustive verification f
 families tried (n ≤ 26), and 40k random δ≥6 regular graphs (n = 13–20): every instance
 decomposes within ⌊(n−1)/2⌋. Oracle cross-validated by an independent brancher. The
 equality plateau is large, connected under parity-preserving moves, and never exceeded.
+
+Wave 3 additions: zero LP/ILP duality gap observed anywhere (fractional = integer
+cycle-decomposition number on every instance sampled; LP = K on extremal clique trees),
+and 8,211 dihedral Cayley graphs (exhaustive n = 14–18, sampled to 26) all satisfy Hajós.
+Most informative negative findings for future attacks: (i) any counterexample must beat
+the LP relaxation too, so LP-based pruning is sound and cheap; (ii) tightness is
+plentiful but always exactly K — the conjecture behaves like a sharp isoperimetric-type
+inequality with a fat equality manifold rather than a fragile bound.
