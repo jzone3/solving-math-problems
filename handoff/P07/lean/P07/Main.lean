@@ -5,6 +5,13 @@ Original conjecture (Fajtlowicz, *Written on the Wall*, item 154):
 
 > "deviation of eigenvalues < n / average distance."
 
+The original WoW wording may also be read with a non-strict inequality
+(`deviation of eigenvalues ≤ n / average distance`).  Both readings are
+refuted here: the witness satisfies the STRICT reverse inequality
+`dev > n/μ` (`graffiti_conjecture_154_false_le`), which refutes the
+non-strict reading `dev ≤ n/μ` and a fortiori the strict reading
+`dev < n/μ` (`graffiti_conjecture_154_false`).
+
 Encoding conventions (documented against `runs/P07/v5/NOTES.md` and
 `solutions/P07/verify.py`):
 
@@ -200,5 +207,24 @@ theorem graffiti_conjecture_154_false :
       = Real.sqrt ((1728000 / 372120) ^ 2) := by
         rw [Real.sqrt_sq h1]
     _ ≤ Real.sqrt (2590 / 120) := Real.sqrt_le_sqrt h2
+
+/-- **Graffiti conjecture 154 is FALSE** (non-strict reading): the deviation
+of the adjacency eigenvalues of the lollipop `L(K₅₀, P₇₀)` is NOT `≤ n/μ(D)`
+either — it is strictly greater, since the integer violation
+`358645832496000 > 358318080000000` is strict.  This refutes both possible
+readings ('<' and '≤') of the original wording. -/
+theorem graffiti_conjecture_154_false_le :
+    ¬ (popStdDev (adjMatrix_isHermitian.eigenvalues) ≤ 120 / lollipopMu) := by
+  rw [dev_eigenvalues_eq, lollipopMu_eq, not_le]
+  rw [show (120 : ℝ) / (372120 / 14400) = 1728000 / 372120 by norm_num]
+  rw [show (2 * 1295 / 120 : ℝ) = 2590 / 120 by norm_num]
+  have h1 : (0 : ℝ) ≤ 1728000 / 372120 := by norm_num
+  have h2 : (1728000 / 372120 : ℝ) ^ 2 < 2590 / 120 := by
+    rw [div_pow, div_lt_div_iff₀ (by norm_num) (by norm_num)]
+    norm_num
+  calc (1728000 / 372120 : ℝ)
+      = Real.sqrt ((1728000 / 372120) ^ 2) := by
+        rw [Real.sqrt_sq h1]
+    _ < Real.sqrt (2590 / 120) := Real.sqrt_lt_sqrt (by positivity) h2
 
 end P07
