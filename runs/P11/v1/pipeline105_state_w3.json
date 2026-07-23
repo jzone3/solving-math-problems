@@ -1,1 +1,1 @@
-{"done": ["0_3", "0_7", "0_11"], "b_stats": {"0_3": {"count": 1, "status": "budget"}, "0_7": {"count": 0, "status": "budget"}, "0_11": {"count": 0, "status": "budget"}}, "lift_stats": {"SAT": 0, "UNSAT": 0, "TIMEOUT": 1}}
+{"done": ["0_3", "0_7", "0_11", "0_15", "0_19"], "b_stats": {"0_3": {"count": 1, "status": "budget"}, "0_7": {"count": 0, "status": "budget"}, "0_11": {"count": 0, "status": "budget"}, "0_15": {"count": 1, "status": "budget"}, "0_19": {"count": 1, "status": "budget"}}, "lift_stats": {"SAT": 0, "UNSAT": 0, "TIMEOUT": 3}}

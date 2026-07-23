@@ -96,7 +96,7 @@ STATS = {"lift": {"SAT": 0, "UNSAT": 0, "TIMEOUT": 0}, "enum_branches": 0}
 
 def dfs(level, parent_fold, tag):
     pd, pb = parent_fold
-    if N // pd <= 5:
+    if N // pd <= 3:
         # early lift attempt at this level: SAT wins, UNSAT prunes subtree,
         # TIMEOUT falls through to deeper enumeration
         res, row = lift(pb, tag, pd)

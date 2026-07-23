@@ -1,0 +1,4 @@
+mod7: 21 raw -> 2 classes
+=== top-level class 0: [3, 3, 0, 3, 0, 0, -3] ===
+[c0] d=14 parent=7 -> 2 folds (exhausted)
+[c0.0] d=28 parent=14 -> 2 folds (exhausted)
