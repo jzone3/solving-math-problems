@@ -113,12 +113,16 @@ Local search plateaus at these; they are strict local maxima of the landscape.
 
 1. **Exhaustive** (`exhaustive_small.py`, nauty-geng): all graphs n ≤ 9
    (12,346 + 274,668 + …), float scores, tol 1e-7: no candidate; best = 0 only
-   at equality graphs. n = 10 connected scan (`near_miss_scan.py`) also run.
-   (Confirms BDF 1995 n ≤ 10 exhaustive.)
+   at equality graphs. n = 10: full connected scan (`near_miss_scan.py`,
+   geng -c, 11.7M graphs — sufficient since any violator contains a connected
+   violator): best connected non-equality score21 = −0.0645 (2K₅+e), score20 =
+   −0.654; no violation. (Confirms BDF 1995 n ≤ 10 exhaustive.)
 2. **Annealing** (`search_anneal.py`): edge-flip simulated annealing on both
-   scores, n ∈ {10,…,60}, 8 restarts × 150k iters per size, connectivity
-   penalty to avoid trivial equality assembly. Result: converges to equality
-   families (score → 0⁻), never > 0.
+   scores, n ∈ {10,12,14,16,18,20,24,26,30,36,40,44,50,60}, 8 restarts × 150k
+   iters per size (plus earlier 6×60k pass), connectivity penalty to avoid
+   trivial equality assembly. Result: converges to equality families
+   (matchings for 20, disjoint cliques/K₃-unions for 21; score → 0 to within
+   1e-14 float fuzz), never > 0.
 3. **Seeded low-T local search** (`seeded_search.py`) around the two best
    near-equality structures (below): collapses back to equality; no crossing.
 4. **Closed-form families** (`family_scans.py`), n ≫ 50 regime:
