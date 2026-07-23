@@ -2,3 +2,5 @@ __pycache__/
 log_*.txt
 log_*.err
 *.g6
+zout_*
+zerr_*
