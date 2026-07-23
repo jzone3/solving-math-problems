@@ -126,6 +126,42 @@ Hardware: 8-core VM, pure Python/NumPy; total ≈ 2–3 CPU-hours.
    (2×40 wide @ 400k iters) over quotients, graph annealer up to n = 40, exhaustive
    n ≤ 10 complete (11,716,571 connected graphs at n = 10, matching the known count).
 
+## Escalation round 2 (after coordinator push, 2026-07-23)
+
+Re-attacked with heavier and qualitatively new machinery. Still **no counterexample**; the
+new evidence makes "both bounds true" considerably stronger.
+
+1. **Continuous relaxation of the quotient family** (`continuous_relax.py`,
+   `continuous_refine.py`, `precise_k3.py`): treat cell sizes and quotient entries as reals,
+   maximize margin = ρ(L_B) − RHS. Without integrality floors (b_ij ≥ 1) the optimizer finds
+   *fake* positive margins (up to +0.53) that live at b_ij ≪ 1 — i.e., partitions that are
+   not equitable and not realizable. With the b ≥ 1 feasibility floors and 40-digit mpmath
+   precision (exact 3×3 char poly, high-precision roots):
+   - Bound 44: feasible supremum = **0**, approached only as cell sizes → ∞ (best 5.8e-11 at
+     n ~ 1e30 — a vanishing-margin escape to infinity, never positive at finite size).
+   - Bound 46: strictly **negative** everywhere on k=3 supports (best ≈ −0.59).
+   Conclusion: within k ≤ 3 quotient certificates the violation set is empty; the earlier
+   float "positives" (1.9e-6, 1.5e-2) were infeasibility/precision artifacts.
+2. **Targeted k=3 integer scans** (`scan_k3.py`, `beam_refine.py`): bipartite-plus-gadget
+   families up to a = 100; best margins −0.0025 (44) and −0.0026 (46), the near-misses being
+   K_{a,a} + one vertex joined to one side (margin → 0⁻ as a → ∞). Beam search around all
+   near-miss seeds tops out at exactly 0 (equality states).
+3. **Exhaustive special families**: all trees on ≤ 20 vertices (n = 22 screen still running at wrap-up) (paths are extremal;
+   margin → 0⁻ since μ(P_n) < 4 = RHS on interior edges); all connected bipartite graphs
+   on ≤ 13 vertices (2,241,730 at n=13; best −0.0096/−0.059).
+4. **Heavier direct-graph annealing** (`anneal_graphs2.py`, `guided_search.py`,
+   `sparse_anneal.py`): dense annealing seeded from perturbed regular bipartite graphs up to
+   n = 88 (120k flips/run); eigenvector-guided flip proposals up to n = 80; sparse eigsh-based
+   annealing at n = 200 and 500 (hub+matching-cloud seeds motivated by the unconstrained
+   continuous optima). All negative.
+5. **Proof probe**: the natural Collatz–Wielandt test vector y = d + m − 2 does NOT certify
+   either bound per-vertex (fails on 660k+ vertex instances at n ≤ 9), and per-edge
+   domination of the known Das bound (d_i+d_j+√((d_i−d_j)²+4m_im_j))/2 by f44 also fails
+   pointwise (only the edge-max dominates). So a proof needs a genuinely new argument —
+   consistent with DHS leaving exactly these two open.
+6. Re-ran the priority sweep (arXiv v-check: 2606.14550 still v1; GitHub repo/code search,
+   Exa with June–July 2026 date filter): still no resolution of 44/46 anywhere.
+
 ## Suggested next steps (other variants)
 
 - V5/proof direction looks promising: try Collatz–Wielandt on L or the signless
