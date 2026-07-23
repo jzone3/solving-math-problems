@@ -236,6 +236,12 @@ New attack lines launched after the frontier result (scripts in `scripts/`):
    ≥ 6 and Δ ≤ 4; 4-critical ⇒ δ ≥ 3), so searching critical graphs only is
    exhaustive for the existence question and prunes the space substantially.
    Complements Exoo–Goedgebeur's ≤25 exhaustive frontier (their Thm 4).
+   **Result: n=26 UNSAT (smsg exit 20, ~50 min CPU)** — there is no
+   4-vertex-critical graph with δ≥3, Δ≤4, girth ≥ 6 on 26 vertices. Combined
+   with EG's exhaustive ≤25 verification this shows: **no graph with Δ≤4,
+   girth ≥ 6 and χ ≥ 4 exists on ≤ 26 vertices** (any such graph contains a
+   4-critical subgraph on ≤ n vertices), i.e. n6(4) ≥ 27 in the Δ≤4 setting.
+   n=27..31 still running.
 
 Status: still NO witness and no claimed solution; all second-wave searches
 remain negative so far and continue.
