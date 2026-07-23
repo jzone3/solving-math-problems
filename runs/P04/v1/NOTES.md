@@ -142,8 +142,10 @@ In progress: exhaustive sweep of all ~733 M connected 6-regular graphs on n = 15
 
 Tight-family perturbation probe (`perturb_tight.py`): K_n minus random even subgraphs
 (unions of short cycles, δ ≥ 6 kept), every instance **exact CP-SAT checked** at k:
-n=13 / 15 / 17, 2 h each — thousands of near-extremal instances, all FEASIBLE (counts in
-logs; final numbers below when runs complete).
+n=13 / 15 / 17, 2 h each — final: 25 253 (n=13, k=6) + 10 512 (n=15, k=7) + 3 717
+(n=17, k=8) near-extremal instances, **all exact-FEASIBLE at k**. The tight family
+K_{2k+1} is locally rigid: no perturbation direction increases the min decomposition
+past k.
 
 ## STATUS
 
