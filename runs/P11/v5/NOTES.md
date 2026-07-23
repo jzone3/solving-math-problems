@@ -193,4 +193,40 @@ for k=81, 3 self-conjugate mod 5 and 3^4||81 gives fold == 0 mod 9, hence
   exhaust (icw_recheck.py): 0 solutions for both, and exact count agreement
   on three nonzero controls.
 
-STATUS: see end of file.
+## 6. Final assessment
+
+Main new result: **CW(120,49) does not exist** (Strassler-table cell listed
+open in Tan 2018, AGZ 2021 Table 10, and the current La Jolla dataset).
+Proof chain: (i) 7 is a multiplier of any putative CW(120,49) and fixes a
+translate, with A(1)=+7 wlog [classical theorems, re-derived in section 2];
+(ii) exhaustive orbit search over all such fixed elements (21.6B nodes,
+proven fold normalizations as pruning) finds zero solutions. The exhaust
+was run twice (two engine builds), the engine passes exact-count
+cross-validation against AGZ Table 9 and an independently written
+Python/FFT exhaust on 5 control cases, and finds the known CW(57,49) as a
+positive control. Two SAT-based fully independent re-derivations
+(CaDiCaL / kissat on a product-variable CNF encoding, with and without
+fold constraints) were still running UNSAT-side at session close; per
+METHODOLOGY a claim of SOLVED requires the second independent verifier to
+complete, so this is filed as frontier-pushed, with the SAT confirmation
+left running (kissat -q /tmp/cw120.cnf and /tmp/cw120f.cnf; regenerate via
+sat_check.py).
+
+Secondary results:
+- Five "Open" cells in the current dataset — CW(96,36), CW(146,64),
+  CW(155,25), CW(165,25), CW(186,25) — have valid witnesses present in the
+  dataset's own 2024 history (commit 1113578), verified by
+  solutions/P11/verify.py (PASS). This is a data regression upstream that
+  should be reported to the maintainer, not a mathematical discovery.
+- AGZ Props 4.2/5.1 kills of CW(132,81), CW(182,64) mechanically
+  re-verified by two independent implementations (0 ICW solutions each).
+- CW(192,49) decision exhaust: ~2.9T nodes searched across split jobs with
+  zero solutions found so far, not complete at session close.
+- All remaining open cells: multiplier/self-conjugacy/ICW battery finds
+  nonempty ICW solution sets (counts in section 3a), so this toolbox alone
+  cannot kill them; CW(155,100) is structurally out of reach (trivial
+  multiplier group).
+
+STATUS: frontier-pushed (CW(120,49) nonexistence established by exhaustive
+multiplier-orbit search, pending completion of the independent SAT
+confirmation; no other open cell newly decided).
