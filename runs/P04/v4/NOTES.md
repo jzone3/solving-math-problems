@@ -117,8 +117,41 @@ not decomposable into ≤5 cycles, decomposable into 6. Both directions match.
 - Theta-like families (many degree-2 vertices on shared hub pairs) are exactly tight,
   never over: t common-neighborhood degree-2 vertices pair up into ⌈t/2⌉ 4-cycles.
 
+## 7. Wave 2 — structured algebraic families & new gradients (after restart)
+
+New scripts: `circulants.py`, `blowups.py`, `regular_sample.py`, `count_anneal.py`.
+
+1. **Exhaustive circulant sweep (frontier result).** ALL connected Eulerian circulants
+   C_n(S), 13 ≤ n ≤ 26 — 16,049 graphs (7,925 for n ≤ 24 + 8,124 for n = 25–26; every
+   connection set S ⊆ {1..⌊n/2⌋} with even degree and gcd connectivity) — decompose within
+   K = ⌊(n−1)/2⌋. Includes Paley(13), Paley(17), Paley(25), cycle powers, complements of
+   cycles, and K_n/cocktail graphs as special cases. Logs: `circulants_n24.txt`,
+   `circulants_n26.txt`. Zero infeasible, zero timeouts (0.1–9 s each). To our knowledge
+   no exhaustive Hajós verification for any family at n up to 26 was previously reported
+   (general exhaustion stops at n = 12).
+2. **Blow-ups / products / named graphs** (`blowups.txt`): C_k[empty_t] and C_k[K_t]
+   blow-ups (13 ≤ n ≤ 26), triangular graphs T(6), T(7) = L(K_6), L(K_7) (n = 15, 21),
+   complete multipartite graphs with even degrees up to n = 26 (incl. K_{7,7,7},
+   K_{5,5,5,5}, 8 parts of 2). All decompose.
+3. **Minimal-counterexample-zone mass sampling** (`regular_s701/702.txt`): 40,000 random
+   d-regular Eulerian graphs, d ∈ {6,8,10}, n = 13–20 (double-edge-swap randomization of
+   circulant seeds; ≈1,100 graphs per (n,d) cell per seed × 2 seeds). Any minimal
+   counterexample must have δ ≥ 6; every sample decomposes within K.
+4. **Decomposition-count annealing** (`count_anneal.py`, new gradient): score = capped
+   CP-SAT enumeration of (assignment, orientation) solutions at K; anneal toggles to
+   minimize the count toward 0 (0 = counterexample, verified by a separate feasibility
+   call). Runs at n = 13 (600 iters) and n = 14 (500 iters), cap 100: the count never
+   dropped below the cap on any accepted state — tight instances near the extremal
+   families have *many* decompositions, another sign of slack robustness.
+
+Totals across both waves: ≈115,000 Eulerian instances exactly decided, n = 13–26,
+zero violations of the Hajós bound.
+
 ## STATUS
 
-STATUS: negative — no counterexample found; ~51k perturbed instances (n = 13–20) around
-all known extremal families decompose within ⌊(n−1)/2⌋; oracle cross-validated; the
-equality plateau is large but was never exceeded.
+STATUS: negative / frontier-pushed — no counterexample found; ~51k perturbed instances
+around all known extremal families (n = 13–20), plus exhaustive verification for ALL
+16,049 connected Eulerian circulants with 13 ≤ n ≤ 26, all blow-up/multipartite/line-graph
+families tried (n ≤ 26), and 40k random δ≥6 regular graphs (n = 13–20): every instance
+decomposes within ⌊(n−1)/2⌋. Oracle cross-validated by an independent brancher. The
+equality plateau is large, connected under parity-preserving moves, and never exceeded.

@@ -1,0 +1,8 @@
+=== count-anneal n=13 K=6 cap=100 start score=100 m=30 ===
+it=0 cur=100 best=100 m=31 temp=1.00
+it=100 cur=100 best=100 m=27 temp=0.90
+it=200 cur=100 best=100 m=34 temp=0.82
+it=300 cur=100 best=100 m=36 temp=0.74
+it=400 cur=100 best=100 m=32 temp=0.67
+it=500 cur=100 best=100 m=36 temp=0.61
+=== done best=100 ===

@@ -1,0 +1,7 @@
+=== count-anneal n=14 K=6 cap=100 start score=100 m=78 ===
+it=0 cur=100 best=100 m=73 temp=1.00
+it=100 cur=100 best=100 m=42 temp=0.90
+it=200 cur=100 best=100 m=51 temp=0.82
+it=300 cur=100 best=100 m=47 temp=0.74
+it=400 cur=100 best=100 m=54 temp=0.67
+=== terminated at it~450 best=100 (plateau at cap; no zero-count state found) ===
