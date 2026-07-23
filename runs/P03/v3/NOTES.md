@@ -141,4 +141,38 @@ Dead ends / notes:
   near UNSAT; local search cannot see a gradient.
 - No verify.py/solutions artifact: nothing to verify — no witness found.
 
+## 7. Second wave (post-restart escalation)
+
+### 7a. n ≤ 6 fully closed, parallel arcs included (multigraph_n6.py)
+
+Reduction proved & documented: a MINIMAL τ=3 counterexample has arc multiplicities ≤ 2
+(a ≥3-bundle can be rainbow-colored; the remaining dicuts are exactly those of the
+contraction, which is a smaller counterexample — contradiction with minimality). Since
+contraction reduces n, exhausting mult≤2 at n=6 plus the simple n≤6 exhaustion rules out
+ALL n≤6 counterexamples including parallel arcs. At n=6 ACZ forces ρ=4 exactly ⟹ every
+vertex imbalance ≡ 2 (mod 3). Skeleton filters (multiplicity-invariant): weakly conn.,
+not ss-connected, all skeleton dicuts ≥ 2 → only **53 skeletons** out of 1,530,843
+(count_skeletons.py). All 33,472 mult∈{1,2} patterns enumerated: **0 pass τ=3∧ρ=4**
+(the class is empty), hence **no τ=3 counterexample on ≤ 6 vertices, multigraphs
+included**.
+
+### 7b. NEW TARGET FAMILY: ACZ-complete sink-regular (3,4)-bipartite digraphs (bip.py)
+
+ACZ §2 ("Decompose, Lift, and Reduce", valid for unweighted digraphs when τ≥3) reduces
+τ=3 Woodall to sink-regular (3,4)-bipartite digraphs: **if any τ=3 counterexample exists,
+one exists in this class.** Class: all arcs source→sink; sinks have in-degree 3; sources
+out-degree 3 or 4; all dicuts ≥ 3. Here ρ = |S₄|/3, so ACZ safe cases force
+**≥ 12 degree-4 sources ⟹ ≥ 16 sinks, ≥ 48 arcs, n ≥ 28** — far beyond every slice any
+generic small-digraph search (incl. our first wave) ever touched; this explains why
+random small-n searches are hopeless and makes this the right haystack.
+
+Encoding: dicuts ↔ source subsets X with Y=Ymax(X), PLUS per-sink in-arc dicuts
+(δ⁻(t) via U=V∖{t}) — a subtle omission caught by cross-validation against core.py
+(test_bip.py: 120 random bipartite instances, τ + minimal dicut sets + packing decisions
+all agree). Degree-preserving double-swap annealing, score = tight-dicut density,
+non-planar filter (LY), SAT packing decision per valid candidate.
+
+Runs: 8 parallel shapes (|S₄|,|S₃|) ∈ {12}×{0..4} ∪ {15}×{0,1,3}, 240 min each
+(results appended below).
+
 ## STATUS: negative / frontier-pushed — no τ=3 counterexample with n≤7 (simple, any) or n=8 (oriented); ~1.04M filtered multigraph candidates + 1.4B nauty-enumerated digraphs scanned, 0 UNSAT.
