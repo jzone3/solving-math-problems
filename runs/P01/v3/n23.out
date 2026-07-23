@@ -110,3 +110,34 @@ n=23 models=7661 clauses=1404403 t=16012s best_hc_count=NA
 n=23 models=7663 clauses=1404771 t=16136s best_hc_count=NA
 n=23 models=7665 clauses=1405116 t=16542s best_hc_count=NA
 n=23 models=7667 clauses=1405484 t=16689s best_hc_count=NA
+n=23 models=7668 clauses=1405668 t=16843s best_hc_count=NA
+n=23 models=7672 clauses=1406404 t=17047s best_hc_count=NA
+n=23 models=7676 clauses=1407140 t=17277s best_hc_count=NA
+n=23 models=7678 clauses=1407508 t=17413s best_hc_count=NA
+n=23 models=7681 clauses=1408060 t=17635s best_hc_count=NA
+n=23 models=7683 clauses=1408428 t=17825s best_hc_count=NA
+n=23 models=7685 clauses=1408796 t=17984s best_hc_count=NA
+n=23 solver stall -> rebuild #4 (models=7689, blocking=1409532)
+n=23 models=7690 clauses=1409716 t=18450s best_hc_count=NA
+n=23 models=7756 clauses=1421791 t=18573s best_hc_count=NA
+n=23 models=7793 clauses=1428599 t=18699s best_hc_count=NA
+n=23 models=7797 clauses=1429335 t=18819s best_hc_count=NA
+n=23 models=7809 clauses=1431520 t=18949s best_hc_count=NA
+n=23 models=7823 clauses=1434096 t=19088s best_hc_count=NA
+n=23 models=7843 clauses=1437730 t=19245s best_hc_count=NA
+n=23 models=7851 clauses=1439179 t=19384s best_hc_count=NA
+n=23 models=7859 clauses=1440651 t=19508s best_hc_count=NA
+n=23 models=7866 clauses=1441939 t=19653s best_hc_count=NA
+n=23 models=7870 clauses=1442675 t=19780s best_hc_count=NA
+n=23 models=7884 clauses=1445251 t=19930s best_hc_count=NA
+n=23 models=7888 clauses=1445987 t=20072s best_hc_count=NA
+n=23 models=7894 clauses=1447091 t=20252s best_hc_count=NA
+n=23 models=7897 clauses=1447643 t=20409s best_hc_count=NA
+n=23 models=7905 clauses=1449115 t=20541s best_hc_count=NA
+n=23 models=7908 clauses=1449667 t=20732s best_hc_count=NA
+n=23 models=7921 clauses=1452059 t=20933s best_hc_count=NA
+n=23 models=7925 clauses=1452795 t=21081s best_hc_count=NA
+n=23 models=7929 clauses=1453531 t=21214s best_hc_count=NA
+n=23 models=7934 clauses=1454451 t=21389s best_hc_count=NA
+n=23 models=7939 clauses=1455371 t=21570s best_hc_count=NA
+{"n": 23, "min_dist": 2, "status": "timeout", "models": 7941, "clauses": 1455739, "seconds": 21601.5, "best_hc_count": null, "best_chords": null, "witness": null}

@@ -131,3 +131,48 @@ n=22 models=2558 clauses=446050 t=16235s best_hc_count=NA
 n=22 solver stall -> rebuild #25 (models=2560, blocking=446380)
 n=22 models=2561 clauses=446556 t=16512s best_hc_count=NA
 n=22 models=2566 clauses=447436 t=16653s best_hc_count=NA
+n=22 solver stall -> rebuild #26 (models=2568, blocking=447788)
+n=22 models=2569 clauses=447964 t=16891s best_hc_count=NA
+n=22 solver stall -> rebuild #27 (models=2569, blocking=447964)
+n=22 models=2570 clauses=448140 t=17071s best_hc_count=NA
+n=22 models=2573 clauses=448646 t=17227s best_hc_count=NA
+n=22 solver stall -> rebuild #28 (models=2574, blocking=448822)
+n=22 models=2575 clauses=448998 t=17415s best_hc_count=NA
+n=22 solver stall -> rebuild #29 (models=2581, blocking=450054)
+n=22 models=2582 clauses=450230 t=17706s best_hc_count=NA
+n=22 solver stall -> rebuild #30 (models=2583, blocking=450406)
+n=22 models=2584 clauses=450582 t=17845s best_hc_count=NA
+n=22 solver stall -> rebuild #31 (models=2589, blocking=451462)
+n=22 models=2590 clauses=451638 t=18163s best_hc_count=NA
+n=22 solver stall -> rebuild #32 (models=2590, blocking=451638)
+n=22 models=2591 clauses=451814 t=18313s best_hc_count=NA
+n=22 solver stall -> rebuild #33 (models=2592, blocking=451990)
+n=22 models=2593 clauses=452166 t=18581s best_hc_count=NA
+n=22 models=2595 clauses=452518 t=18708s best_hc_count=NA
+n=22 solver stall -> rebuild #34 (models=2600, blocking=453398)
+n=22 models=2601 clauses=453574 t=19154s best_hc_count=NA
+n=22 solver stall -> rebuild #35 (models=2601, blocking=453574)
+n=22 models=2602 clauses=453750 t=19463s best_hc_count=NA
+n=22 solver stall -> rebuild #36 (models=2603, blocking=453926)
+n=22 models=2604 clauses=454102 t=19602s best_hc_count=NA
+n=22 solver stall -> rebuild #37 (models=2606, blocking=454454)
+n=22 models=2607 clauses=454630 t=19818s best_hc_count=NA
+n=22 solver stall -> rebuild #38 (models=2607, blocking=454630)
+n=22 models=2609 clauses=454960 t=19983s best_hc_count=NA
+n=22 solver stall -> rebuild #39 (models=2612, blocking=455488)
+n=22 models=2613 clauses=455664 t=20257s best_hc_count=NA
+n=22 models=2618 clauses=456544 t=20395s best_hc_count=NA
+n=22 solver stall -> rebuild #40 (models=2618, blocking=456544)
+n=22 models=2619 clauses=456720 t=20545s best_hc_count=NA
+n=22 models=2623 clauses=457424 t=20684s best_hc_count=NA
+n=22 solver stall -> rebuild #41 (models=2625, blocking=457776)
+n=22 models=2626 clauses=457952 t=20973s best_hc_count=NA
+n=22 solver stall -> rebuild #42 (models=2627, blocking=458128)
+n=22 models=2628 clauses=458304 t=21120s best_hc_count=NA
+n=22 solver stall -> rebuild #43 (models=2628, blocking=458304)
+n=22 models=2629 clauses=458480 t=21328s best_hc_count=NA
+n=22 solver stall -> rebuild #44 (models=2630, blocking=458656)
+n=22 models=2631 clauses=458766 t=21474s best_hc_count=NA
+n=22 solver stall -> rebuild #45 (models=2633, blocking=459096)
+n=22 models=2634 clauses=459272 t=21598s best_hc_count=NA
+{"n": 22, "min_dist": 3, "status": "timeout", "models": 2635, "clauses": 459448, "seconds": 21603.7, "best_hc_count": null, "best_chords": null, "witness": null}

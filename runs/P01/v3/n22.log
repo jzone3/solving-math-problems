@@ -113,3 +113,33 @@ n=22 models=6273 clauses=1099351 t=16182s best_hc_count=NA
 n=22 models=6275 clauses=1099703 t=16425s best_hc_count=NA
 n=22 models=6278 clauses=1100231 t=16666s best_hc_count=NA
 n=22 models=6286 clauses=1101617 t=16795s best_hc_count=NA
+n=22 models=6289 clauses=1102145 t=17046s best_hc_count=NA
+n=22 models=6290 clauses=1102321 t=17252s best_hc_count=NA
+n=22 models=6297 clauses=1103553 t=17515s best_hc_count=NA
+n=22 models=6301 clauses=1104257 t=17802s best_hc_count=NA
+n=22 models=6315 clauses=1106721 t=17937s best_hc_count=NA
+n=22 models=6320 clauses=1107601 t=18302s best_hc_count=NA
+n=22 models=6330 clauses=1109361 t=18455s best_hc_count=NA
+n=22 solver stall -> rebuild #4 (models=6333, blocking=1109889)
+n=22 models=6334 clauses=1110065 t=18849s best_hc_count=NA
+n=22 models=6355 clauses=1113739 t=18974s best_hc_count=NA
+n=22 models=6361 clauses=1114795 t=19096s best_hc_count=NA
+n=22 models=6367 clauses=1115851 t=19252s best_hc_count=NA
+n=22 models=6372 clauses=1116731 t=19381s best_hc_count=NA
+n=22 models=6375 clauses=1117259 t=19505s best_hc_count=NA
+n=22 models=6382 clauses=1118491 t=19674s best_hc_count=NA
+n=22 models=6389 clauses=1119723 t=19812s best_hc_count=NA
+n=22 models=6416 clauses=1124475 t=19954s best_hc_count=NA
+n=22 models=6421 clauses=1125355 t=20077s best_hc_count=NA
+n=22 models=6430 clauses=1126939 t=20206s best_hc_count=NA
+n=22 models=6450 clauses=1130437 t=20344s best_hc_count=NA
+n=22 models=6454 clauses=1131141 t=20492s best_hc_count=NA
+n=22 models=6463 clauses=1132725 t=20684s best_hc_count=NA
+n=22 models=6477 clauses=1135189 t=20811s best_hc_count=NA
+n=22 models=6487 clauses=1136949 t=20953s best_hc_count=NA
+n=22 models=6496 clauses=1138533 t=21089s best_hc_count=NA
+n=22 models=6500 clauses=1139237 t=21208s best_hc_count=NA
+n=22 models=6505 clauses=1140117 t=21343s best_hc_count=NA
+n=22 models=6508 clauses=1140645 t=21488s best_hc_count=NA
+n=22 models=6517 clauses=1142229 t=21636s best_hc_count=NA
+{"n": 22, "min_dist": 2, "status": "timeout", "models": 6517, "clauses": 1142229, "seconds": 21635.9, "best_hc_count": null, "best_chords": null, "witness": null}

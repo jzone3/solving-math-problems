@@ -89,3 +89,31 @@ UNSAT proof gets hard.
   independent method from Goedgebeur et al.'s generation approach).
 - In flight: n=19 (endgame, likely exhaustible), n=20 (12h budget), samplers
   n=22, n=22 (chord-dist>=3), n=23, n=24, n=26, n=28.
+
+## Sampler results (6h/5h budgets each, 2026-07-23 ~04:00 UTC)
+
+All timed out without finding a witness; no near-miss (candidate with < 4
+Hamiltonian cycles besides the base cycle) was ever encountered:
+
+| run | models blocked | learned clauses | wall time |
+|---|---|---|---|
+| n=22 | 6,517 | 1,142,229 | 6h |
+| n=22 chord-dist>=3 | 2,635 | 459,448 | 6h |
+| n=23 | 7,941 | 1,455,739 | 6h |
+| n=24 | 11,638 | 2,227,412 | 6h |
+| n=26 | 21,302 | 4,421,547 | 5h |
+| n=28 | 39,076 | 8,740,620 | 5h |
+
+Each "model" is a full 2-factor candidate; each blocking clause kills all
+supersets of a second-HC chord support and all its 2n dihedral images, so the
+excluded region is vastly larger than the model count. Still nowhere near
+exhaustion at n>=19: the candidate space grows superexponentially and the
+learned-clause DB makes late SAT calls minutes-long.
+
+## Exhaustion frontier for this encoding
+
+- n <= 18 fully exhausted (UNSAT) — independently re-confirms
+  Goedgebeur–Meersman–Zamfirescu for those orders with a different method.
+- n = 19: all but the endgame done (1,427 models blocked, then a single
+  residual SAT instance resisting >3h of escalating-budget Cadical restarts).
+- n = 20: same shape (2,777 models, endgame grinding).

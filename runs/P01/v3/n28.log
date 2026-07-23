@@ -162,3 +162,25 @@ n=28 models=38475 clauses=8606136 t=14074s best_hc_count=NA
 n=28 models=38479 clauses=8607032 t=14199s best_hc_count=NA
 n=28 models=38487 clauses=8608796 t=14320s best_hc_count=NA
 n=28 models=38500 clauses=8611708 t=14427s best_hc_count=NA
+n=28 models=38507 clauses=8613276 t=14685s best_hc_count=NA
+n=28 models=38509 clauses=8613724 t=14855s best_hc_count=NA
+n=28 models=38546 clauses=8621984 t=14980s best_hc_count=NA
+n=28 models=38571 clauses=8627556 t=15109s best_hc_count=NA
+n=28 models=38576 clauses=8628676 t=15335s best_hc_count=NA
+n=28 models=38581 clauses=8629796 t=15460s best_hc_count=NA
+n=28 models=38587 clauses=8631140 t=15635s best_hc_count=NA
+n=28 models=38607 clauses=8635620 t=15795s best_hc_count=NA
+n=28 models=38617 clauses=8637860 t=15972s best_hc_count=NA
+n=28 models=38644 clauses=8643908 t=16129s best_hc_count=NA
+n=28 models=38688 clauses=8653764 t=16255s best_hc_count=NA
+n=28 models=38698 clauses=8656004 t=16377s best_hc_count=NA
+n=28 models=38771 clauses=8672356 t=16498s best_hc_count=NA
+n=28 models=38805 clauses=8679972 t=16619s best_hc_count=NA
+n=28 models=38854 clauses=8690948 t=16778s best_hc_count=NA
+n=28 models=38881 clauses=8696996 t=17124s best_hc_count=NA
+n=28 models=38923 clauses=8706404 t=17252s best_hc_count=NA
+n=28 models=38974 clauses=8717800 t=17372s best_hc_count=NA
+n=28 models=39000 clauses=8723624 t=17480s best_hc_count=NA
+n=28 models=39072 clauses=8739724 t=17790s best_hc_count=NA
+n=28 models=39074 clauses=8740172 t=17938s best_hc_count=NA
+{"n": 28, "min_dist": 2, "status": "timeout", "models": 39076, "clauses": 8740620, "seconds": 18002.7, "best_hc_count": null, "best_chords": null, "witness": null}

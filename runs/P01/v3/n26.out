@@ -130,3 +130,27 @@ n=26 models=21161 clauses=4392245 t=13968s best_hc_count=NA
 n=26 models=21171 clauses=4394325 t=14096s best_hc_count=NA
 n=26 models=21175 clauses=4395157 t=14219s best_hc_count=NA
 n=26 models=21183 clauses=4396821 t=14414s best_hc_count=NA
+n=26 models=21186 clauses=4397445 t=14551s best_hc_count=NA
+n=26 models=21188 clauses=4397861 t=14686s best_hc_count=NA
+n=26 models=21192 clauses=4398693 t=14809s best_hc_count=NA
+n=26 models=21194 clauses=4399109 t=14958s best_hc_count=NA
+n=26 models=21197 clauses=4399733 t=15137s best_hc_count=NA
+n=26 models=21206 clauses=4401605 t=15428s best_hc_count=NA
+n=26 models=21210 clauses=4402437 t=15557s best_hc_count=NA
+n=26 models=21215 clauses=4403477 t=15677s best_hc_count=NA
+n=26 models=21219 clauses=4404309 t=15808s best_hc_count=NA
+n=26 models=21225 clauses=4405557 t=15930s best_hc_count=NA
+n=26 models=21244 clauses=4409509 t=16053s best_hc_count=NA
+n=26 models=21264 clauses=4413643 t=16239s best_hc_count=NA
+n=26 models=21266 clauses=4414059 t=16454s best_hc_count=NA
+n=26 models=21269 clauses=4414683 t=16574s best_hc_count=NA
+n=26 models=21272 clauses=4415307 t=16753s best_hc_count=NA
+n=26 models=21274 clauses=4415723 t=16875s best_hc_count=NA
+n=26 models=21278 clauses=4416555 t=17072s best_hc_count=NA
+n=26 models=21281 clauses=4417179 t=17199s best_hc_count=NA
+n=26 models=21285 clauses=4418011 t=17353s best_hc_count=NA
+n=26 models=21288 clauses=4418635 t=17495s best_hc_count=NA
+n=26 models=21292 clauses=4419467 t=17683s best_hc_count=NA
+n=26 models=21298 clauses=4420715 t=17896s best_hc_count=NA
+n=26 models=21302 clauses=4421547 t=18022s best_hc_count=NA
+{"n": 26, "min_dist": 2, "status": "timeout", "models": 21302, "clauses": 4421547, "seconds": 18021.7, "best_hc_count": null, "best_chords": null, "witness": null}

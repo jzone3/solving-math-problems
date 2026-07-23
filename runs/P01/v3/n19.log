@@ -29,3 +29,4 @@ n=19 solver stall -> rebuild #8 (models=1427, blocking=214833, next_budget=40000
 n=19 solver stall -> rebuild #9 (models=1427, blocking=214833, next_budget=8000000)
 n=19 solver stall -> rebuild #10 (models=1427, blocking=214833, next_budget=16000000)
 n=19 solver stall -> rebuild #11 (models=1427, blocking=214833, next_budget=32000000)
+n=19 solver stall -> rebuild #12 (models=1427, blocking=214833, next_budget=64000000)
