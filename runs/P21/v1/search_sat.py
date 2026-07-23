@@ -22,7 +22,7 @@ Encoding (exact, integer-only):
 Symmetry breaking: colors are interchangeable; where the group has a fixed vertex
 (order 7), the 7 orbits through the fixed vertex are bijectively matched to colors.
 """
-import sys, itertools, time
+import os, sys, itertools, time
 from pysat.formula import CNF, IDPool
 from pysat.card import CardEnc, EncType
 from pysat.solvers import Cadical195
@@ -261,6 +261,15 @@ def build_and_solve(name, gens, k, fixed_vertex=None, timeout=None, fix_copy=Non
             cnf.append([-X(o, c) for o in q])
 
     print(f"[{name}] CNF: {pool.top} vars, {len(cnf.clauses)} clauses ({time.time()-t0:.1f}s)", flush=True)
+    dimacs = os.environ.get('DIMACS')
+    if dimacs:
+        cnf.to_file(dimacs)
+        with open(dimacs + '.map', 'w') as f:
+            for o in range(no):
+                for c in range(k):
+                    f.write(f"{X(o, c)} {o} {c}\n")
+        print(f"[{name}] wrote {dimacs} (+.map), exiting", flush=True)
+        sys.exit(0)
     with Cadical195(bootstrap_with=cnf) as s:
         sat = s.solve()
         print(f"[{name}] k={k}: {'SAT' if sat else 'UNSAT'} ({time.time()-t0:.1f}s)", flush=True)
