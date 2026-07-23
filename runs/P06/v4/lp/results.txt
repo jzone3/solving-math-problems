@@ -31,3 +31,9 @@ hard/tight cases: 0
 CERTIFIED: conjecture 129 holds for ALL graphs on 15 vertices
 elapsed 2302s
 === lp n=16 ===
+TIGHT/VIOL [8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0] dev=4.500000000 lp=4.500000000 margin=0.000e+00
+n=16: 45967478 graphical degree sequences checked
+worst margin (bound - dev) = 0.000000000e+00 at ([8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0], 'lp')
+hard/tight cases: 1
+   ([8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0], 'margin=0.000e+00 dev=4.500000000 lp=4.500000000')
+elapsed 8010s

@@ -1,0 +1,256 @@
+DONE count=2933793996
+129: violations=0  best(dev-R)=0.000000000000  witness=K???????????
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.238927238252 g6=K?????????^~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.200910255128 at N=22 witness=KF~~~~~~~~~~
+DONE count=2845073376
+129: violations=0  best(dev-R)=-0.142977396045  witness=K????A?_K@oF
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.142977396045 g6=K????A?_K@oF
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.339801850565 at N=22 witness=KTzn~~~~~~~~
+DONE count=2433178164
+129: violations=0  best(dev-R)=-0.331588961531  witness=K???CB?o]BwN
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.331588961531 g6=K???CB?o]BwN
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.407639144258 at N=22 witness=KEv~v~~~~~~~
+DONE count=2518442767
+129: violations=0  best(dev-R)=-0.153924468468  witness=K??EEFBo}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.153924468468 g6=K??EEFBo}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.105738031312 at N=14 witness=K??EEFBo}Fw^
+DONE count=2364220975
+129: violations=0  best(dev-R)=-0.041960108450  witness=K???CA@_[BoN
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.041960108450 g6=K???CA@_[BoN
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.264520119075 at N=18 witness=K?bMU^Nr}^x~
+DONE count=2416193369
+129: violations=0  best(dev-R)=-0.402610388264  witness=K??CABBo}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.402610388264 g6=K??CABBo}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.297556520060 at N=15 witness=K?ACKNFp}Nw~
+DONE count=2647920253
+129: violations=0  best(dev-R)=-0.665557000670  witness=K??CFFaw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.665557000670 g6=K??CFFaw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.408695185656 at N=22 witness=KTnvv~~~~~~~
+DONE count=2662891621
+129: violations=0  best(dev-R)=-0.215359102478  witness=K???CB@o]BwN
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.215359102478 g6=K???CB@o]BwN
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.230214641562 at N=18 witness=K?aM]^Nr}^x~
+DONE count=2796378319
+129: violations=0  best(dev-R)=-0.592026966438  witness=K??CCFbw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.592026966438 g6=K??CCFbw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.087679853303 at N=18 witness=K?rM]^Nr}^x~
+DONE count=2584903546
+129: violations=0  best(dev-R)=-0.761722644839  witness=K??CEF_w~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.761722644839 g6=K??CEF_w~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.355593619724 at N=17 witness=K?AFNNfx~N{~
+DONE count=2308315744
+129: violations=0  best(dev-R)=-0.413320026771  witness=K???CB`w^B{N
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.413320026771 g6=K???CB`w^B{N
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.214505624072 at N=20 witness=K?zn^^nz~^|~
+DONE count=2701401922
+129: violations=0  best(dev-R)=-0.528691298486  witness=K??EEFbw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.528691298486 g6=K??EEFbw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.369657769685 at N=16 witness=K?ACMNEp}Nw~
+DONE count=2497819914
+129: violations=0  best(dev-R)=-0.180137790941  witness=K????B?oM@wF
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.180137790941 g6=K????B?oM@wF
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.223832849411 at N=14 witness=K??EEBBo}Fw^
+DONE count=2188507379
+129: violations=0  best(dev-R)=-0.525529043406  witness=K?AEEFFp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.525529043406 g6=K?AEEFFp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.313204720578 at N=16 witness=K?BEENEp}Nw~
+DONE count=2648706830
+129: violations=0  best(dev-R)=-0.361025357468  witness=K??CEFAo}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.361025357468 g6=K??CEFAo}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.323053741751 at N=20 witness=KCvUu~^v}~z~
+DONE count=2410770492
+129: violations=0  best(dev-R)=-0.688453547403  witness=K???Fbo{^b}N
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.688453547403 g6=K???Fbo{^b}N
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.327677090081 at N=22 witness=KEn~~~~~~~~~
+DONE count=3023902063
+129: violations=0  best(dev-R)=-0.697205820041  witness=K?AACJDp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.697205820041 g6=K?AACJDp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.441349922190 at N=20 witness=KQzn^^nz~^|~
+DONE count=2414226687
+129: violations=0  best(dev-R)=-0.650514571920  witness=K?AAENEp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.650514571920 g6=K?AAENEp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.280284575408 at N=20 witness=K?rn^^nz~^|~
+DONE count=2597730049
+129: violations=0  best(dev-R)=-0.763240939836  witness=K??EDAaw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.763240939836 g6=K??EDAaw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.353493856483 at N=18 witness=K?bE]ZNr}^x~
+DONE count=2295478159
+129: violations=0  best(dev-R)=-0.699602809251  witness=K??EFBaw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.699602809251 g6=K??EFBaw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.164821648544 at N=18 witness=K?bM]^Nr}^x~
+DONE count=3238252031
+129: violations=0  best(dev-R)=-0.619839935255  witness=K??EFFaw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.619839935255 g6=K??EFFaw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.393654879813 at N=20 witness=KCrM}z^v}~z~
+DONE count=2344021837
+129: violations=0  best(dev-R)=-0.254808923529  witness=K???EB?o]BwN
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.254808923529 g6=K???EB?o]BwN
+PAD: violations=0 ties=1 best(dev_pad-R)=0.000000000000 at N=20 witness=KTm||}~n|~v~
+DONE count=2839132498
+129: violations=0  best(dev-R)=-0.398168615988  witness=K?AEMNFp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.398168615988 g6=K?AEMNFp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.179028013213 at N=16 witness=K?AEMNFp}Nw~
+DONE count=2865568447
+129: violations=0  best(dev-R)=-0.287212082615  witness=K????B_wN@{F
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.287212082615 g6=K????B_wN@{F
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.365125080383 at N=20 witness=KCe]}z^v}~z~
+DONE count=2709412561
+129: violations=0  best(dev-R)=-0.731418824579  witness=K??FFB_w~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.731418824579 g6=K??FFB_w~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.351083402457 at N=22 witness=KE~v~~~~~~~~
+DONE count=2970621215
+129: violations=0  best(dev-R)=-0.442471283807  witness=K?ACMNFp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.442471283807 g6=K?ACMNFp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.247564781862 at N=16 witness=K?ACMNFp}Nw~
+DONE count=2626039605
+129: violations=0  best(dev-R)=-0.668834146639  witness=K??EFB`w~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.668834146639 g6=K??EFB`w~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.251402378256 at N=22 witness=KTn~~~~~~~~~
+DONE count=2927345738
+129: violations=0  best(dev-R)=-0.234351889854  witness=K??CEFBo}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.234351889854 g6=K??CEFBo}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.195690539998 at N=14 witness=K??CEFBo}Fw^
+DONE count=2392752053
+129: violations=0  best(dev-R)=-0.117665736464  witness=K???EB@o]BwN
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.117665736464 g6=K???EB@o]BwN
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.142026679192 at N=22 witness=KV~~~~~~~~~~
+DONE count=2337791729
+129: violations=0  best(dev-R)=-0.451350002282  witness=K???EA`w^B{N
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.451350002282 g6=K???EA`w^B{N
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.281048583503 at N=18 witness=K?rE]ZNr}^x~
+DONE count=2221343014
+129: violations=0  best(dev-R)=-0.401587273473  witness=K??CEB@o}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.401587273473 g6=K??CEB@o}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.378937441538 at N=13 witness=K??CEB@o}Fw^
+DONE count=2103199599
+129: violations=0  best(dev-R)=-0.651431681520  witness=K??FFBaw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.651431681520 g6=K??FFBaw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.335774068235 at N=18 witness=K?BfFNfx~N{~
+DONE count=2050266432
+129: violations=0  best(dev-R)=-0.728566825864  witness=K??CBBBw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.728566825864 g6=K??CBBBw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.080725570521 at N=20 witness=KEv]}~^v}~z~
+DONE count=2285687279
+129: violations=0  best(dev-R)=-0.725144539099  witness=K??CFBaw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.725144539099 g6=K??CFBaw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.335311589728 at N=20 witness=K?rN^^nz~^|~
+DONE count=3061154959
+129: violations=0  best(dev-R)=-0.432831830287  witness=K????Bo{N`}F
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.432831830287 g6=K????Bo{N`}F
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.379481779372 at N=20 witness=KCrU]~^v}~z~
+DONE count=2157792737
+129: violations=0  best(dev-R)=-0.365316172211  witness=K???EB`w^B{N
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.365316172211 g6=K???EB`w^B{N
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.335215075335 at N=20 witness=K?bn^^nz~^|~
+DONE count=2168305819
+129: violations=0  best(dev-R)=-0.699356647134  witness=K???EAp{^b}N
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.699356647134 g6=K???EAp{^b}N
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.181276230872 at N=18 witness=K?rE]^Nr}^x~
+DONE count=2338382226
+129: violations=0  best(dev-R)=-0.651431681520  witness=K?AEEJEp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.651431681520 g6=K?AEEJEp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.297186283861 at N=22 witness=KU~v~~~~~~~~
+DONE count=2408086077
+129: violations=0  best(dev-R)=-0.667654128454  witness=K??EDFaw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.667654128454 g6=K??EDFaw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.212316668636 at N=22 witness=KU~~~~~~~~~~
+DONE count=2464225367
+129: violations=0  best(dev-R)=-0.571682883530  witness=K??CEFbw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.571682883530 g6=K??CEFbw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.408255881711 at N=19 witness=K?bf^^nz~^|~
+DONE count=2543424716
+129: violations=0  best(dev-R)=-0.660349812473  witness=K??CFB`w~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.660349812473 g6=K??CFB`w~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.285993543544 at N=22 witness=K]zn~~~~~~~~
+DONE count=2978182184
+129: violations=0  best(dev-R)=-0.495579141598  witness=K??EFFbw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.495579141598 g6=K??EFFbw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.165800405440 at N=20 witness=KEr]}~^v}~z~
+DONE count=2603943922
+129: violations=0  best(dev-R)=-0.327953398035  witness=K??CEBBo}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.327953398035 g6=K??CEBBo}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.297233448575 at N=14 witness=K??CEBBo}Fw^
+DONE count=2686162979
+129: violations=0  best(dev-R)=-0.668834146639  witness=K?AAEJBp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.668834146639 g6=K?AAEJBp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.223446903021 at N=22 witness=K]z~~~~~~~~~
+DONE count=2491415592
+129: violations=0  best(dev-R)=-0.554048443011  witness=K??FFBbw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.554048443011 g6=K??FFBbw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.336335455129 at N=20 witness=KCvU}z^v}~z~
+DONE count=2507724054
+129: violations=0  best(dev-R)=-0.603746900204  witness=K????Bw}Np~F
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.603746900204 g6=K????Bw}Np~F
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.229815694806 at N=18 witness=K?BfNNfx~N{~
+DONE count=2370601102
+129: violations=0  best(dev-R)=-0.941741266634  witness=K??FFBRw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.941741266634 g6=K??FFBRw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.350201918537 at N=20 witness=K?qn^^nz~^|~
+DONE count=2648380896
+129: violations=0  best(dev-R)=-0.561291089434  witness=K??EDFBo}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.561291089434 g6=K??EDFBo}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.274591060831 at N=22 witness=KQ~~~~~~~~~~
+DONE count=2597993640
+129: violations=0  best(dev-R)=-0.635570516995  witness=K??EDDbw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.635570516995 g6=K??EDDbw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.308362928084 at N=22 witness=K]~vv~~~~~~~
+DONE count=2525511778
+129: violations=0  best(dev-R)=-0.970734902877  witness=K??FFbr{~f}^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.970734902877 g6=K??FFbr{~f}^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.319263923406 at N=22 witness=K]~v~z~~~~~~
+DONE count=2597579567
+129: violations=0  best(dev-R)=-0.669872981078  witness=KCe[{}^f{~r~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.669872981078 g6=KCe[{}^f{~r~
+PAD: violations=0 ties=1 best(dev_pad-R)=0.000000000000 at N=18 witness=KCe[{}^f{~r~
+DONE count=2647605201
+129: violations=0  best(dev-R)=-0.835630771031  witness=K?BEFJFp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.835630771031 g6=K?BEFJFp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.152840765590 at N=22 witness=K]~~~~~~~~~~
+DONE count=2956271310
+129: violations=0  best(dev-R)=-0.590604118883  witness=K??EFBbw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.590604118883 g6=K??EFBbw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.074773858760 at N=22 witness=K^~~~~~~~~~~
+DONE count=2699468273
+129: violations=0  best(dev-R)=-0.854118289215  witness=K?ACNJFp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.854118289215 g6=K?ACNJFp}Nw~
+PAD: violations=0 ties=1 best(dev_pad-R)=0.000000000000 at N=22 witness=K~~~~~~~~~~~
+DONE count=2574654735
+129: violations=0  best(dev-R)=-0.335834035271  witness=K?BEMNFp}Nw~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.335834035271 g6=K?BEMNFp}Nw~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.095899716687 at N=16 witness=K?BEMNFp}Nw~
+DONE count=2577919176
+129: violations=0  best(dev-R)=-0.771824838384  witness=K???FBO{^b}N
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.771824838384 g6=K???FBO{^b}N
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.363254330514 at N=22 witness=KFzv~~~~~~~~
+DONE count=2640485429
+129: violations=0  best(dev-R)=-0.490945286400  witness=K??CABAo}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.490945286400 g6=K??CABAo}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.214811773057 at N=20 witness=KCf]}~^v}~z~
+DONE count=2587788845
+129: violations=0  best(dev-R)=-0.257359312881  witness=K?aK[]Nb{^p~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.257359312881 g6=K?aK[]Nb{^p~
+PAD: violations=0 ties=1 best(dev_pad-R)=0.000000000000 at N=16 witness=K?aK[]Nb{^p~
+DONE count=2927623837
+129: violations=0  best(dev-R)=-0.991712187354  witness=K??FFFq{~f}^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.991712187354 g6=K??FFFq{~f}^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.407988635373 at N=19 witness=K?rF^^nz~^|~
+DONE count=2364387205
+129: violations=0  best(dev-R)=-0.488610192029  witness=K?AEEFBo}Fw^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.488610192029 g6=K?AEEFBo}Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.354089757428 at N=18 witness=K?bMUZNr}^x~
+DONE count=2713166414
+129: violations=0  best(dev-R)=-0.790389404626  witness=K?aK[^Nr}^x~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.790389404626 g6=K?aK[^Nr}^x~
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.285733943467 at N=22 witness=KFz~~~~~~~~~
+DONE count=2775177384
+129: violations=0  best(dev-R)=-0.603466093586  witness=K??EEBbw~F{^
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.603466093586 g6=K??EEBbw~F{^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.266279992174 at N=20 witness=KCe]}~^v}~z~
+DONE count=2526623561
+129: violations=0  best(dev-R)=0.000000000000  witness=K??CCEB_{Fo^
+129: ties(|gap|<eps,m>0)=1 example=K??CCEB_{Fo^   best strict near-miss gap=-0.283999225791 g6=K??CCEB_{Fw^
+PAD: violations=0 ties=0 best(dev_pad-R)=-0.228513013580 at N=20 witness=KCr]}~^v}~z~
+DONE count=2749843944
+129: violations=0  best(dev-R)=-0.055946811267  witness=K?ACKMF`{No~
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.055946811267 g6=K?ACKMF`{No~
+PAD: violations=0 ties=1 best(dev_pad-R)=0.000000000000 at N=14 witness=K?ACKMF`{No~

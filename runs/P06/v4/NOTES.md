@@ -63,9 +63,9 @@ optimal isolated-vertex padding of every graph, i.e. floor/ceil of N* clamped to
 | all graphs n ≤ 10 (geng, incl. disconnected) | 12,293,449 | 0 | 0 (ties only: K_4∪2K_1 n=6, K_6∪4K_1 n=10) | — |
 | **all graphs n = 11** | **1,018,997,864** (matches known count) | 0 | −0.01449 (K_7∪4K_1) | — |
 | n ≤ 11 + optimal isolated-vertex padding (any total N) | same | 0 | 0 (ties = K_k family only) | — |
-| all graphs n = 12 | 165,091,172,592 | RUNNING (64 chunks × ./run12.sh, ~17 h est.) | | |
-| trees n = 13..25 (gentreeg) | 164,650,262 | 0 | −0.1837 (star K_{1,24}) | — |
-| trees n = 26..28 | RUNNING | | | |
+| **all graphs n = 12** | **165,091,172,592** (matches known count) | 0 | 0 (unique tie: K_7∪5K_1; PAD ties all K_k family) | — |
+| trees n = 13..29 (gentreeg) | 8,733,109,269 | 0 | −0.1727 (star K_{1,28}) | — |
+| trees n = 30 | RUNNING (14.8B) | | | |
 
 Best strict near-miss at n = 11: K_7 ∪ 4K_1, gap −0.014492815876 (it wants N = 12 =
 2·7−2, where it ties exactly — confirmed by the PAD check).
@@ -73,9 +73,9 @@ Best strict near-miss at n = 11: K_7 ∪ 4K_1, gap −0.014492815876 (it wants N
 698-alt (dev·√n ≤ R) violation counts at n = 11: 1,018,996,485 / 1,018,997,864 graphs
 violate — reading definitively wrong.
 
-n = 13 (5.01e13 graphs) is infeasible on this hardware (~200 core-days at our
-throughput); documented as out of reach; padding check partially compensates by
-covering all ≤12-core + any-padding graphs.
+n = 13 (5.01e13 graphs) is infeasible to enumerate on this hardware (~200 core-days at
+our throughput) — instead n = 13 (and 14, 15) is fully covered by the LP certification
+of section 4b.
 
 ## 4. Degree-sequence optimization beyond exhaustive range
 
@@ -106,16 +106,22 @@ Results (all graphical degree sequences enumerated via Erdős–Gallai):
 - **n = 13: 836,314 sequences, worst margin +9.5e-7 (cheap bound; its LP margin is
   +1.375) → conjecture 129 CERTIFIED for ALL ≈50 trillion graphs on 13 vertices** —
   the V4 mandate n = 11–13 is thus fully covered without enumerating n = 13.
-- n = 14+ running.
+- n = 14: 3,166,851 sequences; tight case only K_8∪6K_1 (exact equality) → CERTIFIED.
+- n = 15: 12,042,619 sequences, no tight cases → CERTIFIED.
+- n = 16 running (45.97M sequences).
 
 Caveat: float LP; any |margin| < 1e-6 case is re-examined exactly (only the K_k family
 ever appears, and it is proven equal exactly).
 
 ## 5. Compute spent (so far)
 
-- n=11 full exhaust: ~8 core × 7 min.
-- trees to 25: ~2 min. n=12: ~8 core × 17 h (in progress).
+- n=11 full exhaust: ~8 core × 7 min. n=12 full exhaust: 8 cores × ~3.2 h wall.
+- trees to 29: ~2.7 h single core. LP certification n≤15: ~1 h. n=16: hours.
 - degree-sequence search: 5 min.
+- Perturbation families at optimal padding scanned to k = 3000 (K_k−e, K_k+pendant,
+  K_k∪K_2, 2K_k): all strictly negative, K_k−e → 0⁻ like −Θ(1/k²·...) (max −0.00033 at
+  k = 2999) — the equality family is an accumulation point of near-misses but nothing
+  crosses.
 
 ## 6. Dead ends / gotchas
 
@@ -125,10 +131,23 @@ ever appears, and it is proven equal exactly).
   false. Do not burn compute on 698 until V5 pins the definition.
 - Background jobs launched from one-shot shells get killed; use setsid + persistent tty.
 
-## STATUS (checkpoint, n=12 still running): negative
+## STATUS: negative / frontier-pushed
 
-No counterexample to 129 in: all graphs n ≤ 11 (new exhaustive frontier, previous
-published frontier n ≤ 10), those graphs with arbitrary isolated-vertex padding, all
-trees n ≤ 25 (mandate was 24), and degree-sequence optimization to n = 40. The
-conjecture is exactly tight on the infinite family K_k ∪ (k−2)K_1 — strong structural
-evidence that 129 is TRUE, and any counterexample must beat an exact-equality family.
+No counterexample to Graffiti 129 anywhere. New exhaustive frontiers established:
+- ALL graphs on n ≤ 12 enumerated (165.09 billion at n = 12 alone; previous published
+  exhaustive frontier was n ≤ 10), zero violations;
+- ALL graphs on n = 13–15 certified via the degree-sequence LP (no enumeration needed:
+  dev depends only on the degree sequence, and the transportation LP lower-bounds
+  min-Randić over realizations), zero violations — V4's n = 11–13 mandate exceeded;
+- every graph on ≤ 12 vertices plus ANY number of isolated vertices: zero violations;
+- all trees n ≤ 29 (mandate: 24), zero violations (extremal tree = star, gap → 0⁻,
+  exactly dev²−R² = −2k(k−1)/(k+1)² for K_{1,k});
+- degree-sequence hill-climbing to n = 40 and perturbation families to k = 3000: never
+  positive.
+
+Structural discovery: the infinite equality family K_k ∪ (k−2)K_1 (dev = R = k/2,
+exact). Conjecture 129 is tight but appears TRUE; a proof route is suggested by the LP
+dual (y_a = 1/(2√(aΔ)) recovers R ≥ (Σ√d)/(2√Δ), tight on the equality family).
+Conjecture 698 as coded in the reference repo is vacuous (Laplacian has no negative
+eigenvalues); the natural centered-L² reading is trivially false at n = 5 — definitional
+resolution must precede any compute (V5).
