@@ -269,14 +269,14 @@ vertex sets), which if anything strengthens the shared-vertex basin.
 4. Two crisp obstruction patterns worth theory follow-up: (a) the k=3 "per-pair maximum
    paths on a triple always share a vertex" lemma (min intersection exactly 1 at extremes);
    (b) the k≥4 arm-length min-max infeasibility.
-6. Round 3: subcubic graphs exhausted completely through n = 18 (89.6M more), n = 12
-   through 23 edges (771M), n = 13–14 through 19 edges (345M); weighted-multigraph
-   annealing (which lifts to unweighted by subdivision) also floors at a shared vertex.
 5. Round 2 (subset-DP encoding): **complete exhaustive verification of Gallai-3 for every
    connected graph on ≤ 11 vertices** (1,006,700,565 graphs at n = 11 alone; count matches
    OEIS A001349), n = 12 up to 22 edges (745M graphs), sparse (≤ 17 edges) to n = 16 —
    ~1.79B graphs directly checked, 0 counterexamples. Annealing at n = 14–18 with an exact
    DP oracle never escaped the "all longest paths share exactly one vertex" basin.
+6. Round 3: subcubic graphs exhausted completely through n = 18 (89.6M more), n = 12
+   through 23 edges (771M), n = 13–14 through 19 edges (345M); weighted-multigraph
+   annealing (which lifts to unweighted by subdivision) also floors at a shared vertex.
 
 STATUS: negative / frontier-pushed — no counterexample found. Direct exhaustive frontier:
 all n ≤ 11 complete (~1.0B graphs), n = 12 ≤ 23 edges, n = 13–14 ≤ 19 edges, sparse
