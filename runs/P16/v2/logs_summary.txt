@@ -1,0 +1,61 @@
+== qs44 ==
+bound 44: no violation. restarts=61448, best gap=2.2737367544323206e-13
+best B=
+[[  0   0 106]
+ [  0   0 106]
+ [ 56  50   0]]
+== an44 ==
+bound 44: min gap found = -2.84217e-13 after 9056 restarts
+[[  0 128   0]
+ [ 78   0  50]
+ [  0 128   0]]
+== an46 ==
+bound 46: min gap found = -2.84217e-13 after 9207 restarts
+[[  0 108   0]
+ [ 89   0  19]
+ [  0 108   0]]
+== sa44 ==
+bound 44: min gap = -6.25278e-13 over 4960 chains
+[[  0   0 166  39]
+ [  0   0 205   0]
+ [198   7   0   0]
+ [205   0   0   0]]
+== sa46 ==
+bound 46: min gap = -6.82121e-13 over 5215 chains
+[[  0   0 188   4]
+ [  0   0 192   0]
+ [173  19   0   0]
+ [192   0   0   0]]
+== cont2 ==
+==> cont2_44_2.log <==
+bound 44 k=2: min gap = -5.6843e-14 at sup=[(0, 1)]
+ns= [0.01306 0.01306] entries= [3.32982]
+
+==> cont2_44_3.log <==
+NEGATIVE bound 44 k=3 sup=[(0, 1), (0, 2), (1, 1)] gap=-6.103515625e-05
+ns= [6.49489731e-02 8.40077106e-07 6.49489747e-02] entries= [1.00004340e+00 1.07655599e+10 1.00000129e+00]
+
+==> cont2_46_2.log <==
+bound 46 k=2: min gap = -5.6843e-14 at sup=[(0, 1)]
+ns= [0.01306 0.01306] entries= [3.32982]
+
+==> cont2_46_3.log <==
+bound 46 k=3: min gap = -2.8422e-14 at sup=[(0, 1), (0, 2)]
+ns= [0.73433 0.10701 0.62732] entries= [10.14507 59.47255]
+== n10 parts ==
+part 0/16 done cnt=602072 worst44=1.926e-01 worst46=1.926e-01
+part 1/16 done cnt=508270 worst44=1.801e-01 worst46=2.087e-01
+part 10/16 done cnt=810514 worst44=2.265e-02 worst46=2.215e-01
+part 11/16 done cnt=1078725 worst44=6.151e-02 worst46=2.242e-01
+part 12/16 done cnt=1335009 worst44=5.543e-02 worst46=1.226e-01
+part 13/16 done cnt=789448 worst44=4.671e-02 worst46=1.245e-01
+part 14/16 done cnt=764578 worst44=1.467e-01 worst46=1.716e-01
+part 15/16 done cnt=775301 worst44=5.543e-02 worst46=1.827e-01
+part 2/16 done cnt=562497 worst44=4.056e-02 worst46=3.007e-01
+part 3/16 done cnt=607709 worst44=-3.553e-15 worst46=-3.553e-15
+part 4/16 done cnt=319966 worst44=4.957e-02 worst46=1.936e-01
+part 5/16 done cnt=586883 worst44=1.332e-15 worst46=1.332e-15
+part 6/16 done cnt=879635 worst44=1.049e-01 worst46=9.712e-02
+part 7/16 done cnt=597745 worst44=-8.882e-16 worst46=-8.882e-16
+part 8/16 done cnt=674677 worst44=-1.776e-15 worst46=-1.776e-15
+part 9/16 done cnt=823542 worst44=4.671e-02 worst46=1.088e-01

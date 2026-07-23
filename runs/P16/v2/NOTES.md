@@ -24,6 +24,10 @@ mᵢ = average degree of neighbors.
 Cross-check: our implementation of both RHS formulas agrees with the independent
 implementation in Taewoo Ha's artifact repo (github.com/txh2120/bhs-counterexamples,
 `src/exhaustive_bound_search.py`, lines for bounds 44/46) and with DHS Table 2.
+Note the canonical numbering of the 68 bounds comes from Ghebleh–Al-Yakoob–Kanso–
+Stevanović (DAM 380, 2026; paywalled — residual risk); DHS Table 2 and Ha's repo are
+two independent sources agreeing on the formulas for #44/#46, which we treat as the
+authoritative statement.
 
 Status per DHS Theorem 1.1: of the 68 BHS bounds, all are now settled EXCEPT 44
 and 46 (22 proved + 12 refuted by DHS; 30 refuted by GAKS 2024; 2 refuted by
@@ -79,7 +83,7 @@ DHS proof techniques and why they fail here:
    at dᵢ=dⱼ=mᵢ=mⱼ=d), so any proof must control third-order behavior. We did not
    find such a proof.
 
-## 4. Structured search for counterexamples (all negative so far)
+## 4. Structured search for counterexamples (all negative)
 
 All search code in this directory; floats for screening only, tolerance 1e-9;
 any candidate would go through `verify_p16.py` (exact rationals + Sturm; no floats
@@ -94,10 +98,25 @@ on the accept path; self-tested).
    refutations came): random restarts + hill-climbing + simulated annealing over
    k×k nonnegative-integer quotient matrices, k ∈ {2,...,5}, entries ≤ 400–500,
    symmetrizability + Lemma 2.3 realizability enforced, score = λ_max(L_B) − RHS
-   computed from cell data (Lemma 2.2 certificate). Runs: quotient_search.py,
-   anneal_quotient.py, seeded_anneal.py (seeded at the tightest DHS Table-3
-   counterexample quotients and K_{d,d}−e quotients). **No violation**; best
-   reachable gap → 0 only along regular-bipartite equality configurations.
+   computed from cell data (Lemma 2.2 certificate). Runs: quotient_search.py
+   (61,448 hill-climb restarts, bound 44), anneal_quotient.py (30 min each bound;
+   9,056 / 9,207 annealing restarts), seeded_anneal.py (30 min each bound; 4,960 /
+   5,215 chains seeded at the tightest DHS Table-3 counterexample quotients and
+   K_{d,d}−e quotients). **No violation**; minimum gap found ~ −6e-13 = float noise
+   exactly on regular-bipartite equality configurations (e.g. 4-cell bipartite
+   205-regular quotient), never genuinely below.
+3b. **Continuous relaxation over quotient space** (continuous_opt2.py): minimize
+   gap over CONTINUOUS B = diag(n)^{-1}S (S symmetric, n > 0) with the
+   realizability-faithful constraint that every present entry of B is ≥ 1, per
+   support pattern, Nelder-Mead multistart. Integer quotients are a subset, so a
+   nonnegative infimum rules out ALL certificates with that cell count regardless
+   of entry size. Result for k = 2 (both bounds): min gap −5.7e-14 ≈ 0, attained
+   only at regular bipartite ⇒ numerically, **no 2-cell equitable-partition
+   certificate can refute either bound**. k = 3: minima also ≈ 0 (−6e-5 outlier for
+   bound 44 occurred at entries ~1e10 where float eigensolves have ~1e-15 relative
+   error — noise, not a candidate; a first, buggy relaxation without the ≥ 1
+   constraint produced spurious "negative" points with fractional edges — recorded
+   as a warning for future runs).
 4. **Targeted families near the equality manifold**:
    - K_{d,d} − e, d up to 320 (4-cell quotient): gap ↓ 0⁺ like Θ(1/d) but positive
      (d=320: gap44 ≈ 0.0031, gap46 ≈ 0.0062). Tightest known non-equality family.
@@ -109,6 +128,13 @@ on the accept path; self-tested).
    - All 10 DHS Table-3 counterexample quotients (which refute OTHER bounds)
      satisfy 44 and 46 (smallest gap: 0.131 for their bound-24 graph, cells
      (69,19,76)).
+
+Additional small observation (Bound 46 −∞ convention cannot bite globally): an
+edge term of Bound 46 is undefined (arg < 0) only if mᵢ+mⱼ < 4−O(1/d²) at
+degrees ~d, which forces a degree-1 neighbor; but any leaf edge (dⱼ = 1) has
+arg = 2dᵢ²+6−16dᵢ/(mᵢ+dᵢ) > 0 for dᵢ ≥ 2. So every graph with an edge has at
+least one well-defined Bound-46 edge term; the −∞ convention never yields a
+trivial counterexample.
 
 ## 5. Encodings / compute log
 
@@ -125,9 +151,12 @@ on the accept path; self-tested).
 ## 6. Outcome
 
 **Negative result (no resolution).** No counterexample to Bound 44 or Bound 46
-found in: all connected graphs n ≤ 10, all trees n ≤ 17, extensive equitable-
-partition quotient search (k ≤ 5) including annealing seeded at every known tight
-configuration, and targeted near-bipartite-regular families up to degree 320.
+found in: all connected graphs n ≤ 10 (12,293,443 graphs, incl. 11,716,571 at
+n = 10), all trees n ≤ 17, ~2×10⁴ annealing chains / 6×10⁴ hill-climb restarts
+over equitable-partition quotients (k ≤ 5, entries ≤ 500) seeded at every known
+tight configuration, targeted near-bipartite-regular families up to degree 320,
+and a continuous relaxation showing (numerically) that no 2-cell quotient
+certificate exists at all.
 No proof found either; the precise obstruction to each DHS technique is documented
 in §3, including one new conditional positive result (§3.1 criterion for Bound 46)
 and the observation that both bounds are exactly tight on bipartite regular graphs
