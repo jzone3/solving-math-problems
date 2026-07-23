@@ -106,5 +106,36 @@ reproduces the extremal known constructions fully automatically.
    tower) is exhausted at the compute scale available; artifacts, encodings, and the
    local-search discovery are reusable for follow-up runs.
 
-STATUS: negative (no m≥43 witness; SAT frontier mapped to m=6 verified-optimal,
-m=7 open at this compute; target m=43 out of reach for explicit SAT encodings)
+## SECOND PHASE (coordinator requested new methods after CNF-SAT exhaustion)
+
+### Cube-and-conquer (negative)
+cube_conquer.py: cubes = joint residue choices of scarce pure-prime-power moduli
+(e.g. 8,16,9), translation-canonicalized, kissat per cube. On m=6/N=5040 every cube
+timed out at 30 s — each cube retains the whole global alignment problem. Dead end.
+
+### Native weighted min-conflicts (BREAKTHROUGH #2)
+anneal.py → anneal2.py (numpy, greedy init, breakout hole-weighting, kissat endgame
+repair) → anneal3.py (incremental hole tracking) → cover_mc.c (C engine, ~325k it/s,
+~300x python). State = one residue per divisor ≥ m of N; energy = #holes; move =
+min-conflicts reassignment of a random modulus; stagnation bumps hole weights
+(breakout/PAWS style). Searching the combinatorial space directly beats CNF/SLS
+(yalsat plateaued at m=7; native engine solves it in seconds–minutes).
+
+KEY EMPIRICAL LAW: reciprocal slack drives feasibility. m=9 at N=55440 (recip 1.47)
+stalled at ~800 holes; at N=332640 (recip 1.65) solved. Choose N with recip ≥ ~1.6.
+
+### Verified witnesses, phase 2 (all PASS solutions/P15/verify.py)
+| m | lcm     | #congr | engine  | time   |
+|---|---------|--------|---------|--------|
+| 7 | 15120   | 74     | anneal2 | 243 s  |
+| 8 | 30240   | 89     | anneal2 | 341 s  |
+| 9 | 332640  | 184    | anneal2 | 3541 s |
+
+m=7 lcm 15120 matches Klein's conjectured-minimal L(7); found fully automatically.
+
+### Running
+cover_mc fleet (4 h budgets): m=10 N=1081080, m=12 N∈{1441440, 2162160},
+m=14 N∈{2882880, 4324320}, 8 cores.
+
+STATUS: frontier-pushed (SAT/local-search frontier moved from m=4 to m=9 verified;
+no m≥43 witness — explicit-enumeration methods cannot reach it, see calibration)
