@@ -209,6 +209,11 @@ CPU-years for full exhaustion with this searcher — T2(11) is ~10⁵× harder t
 (which takes ~1 CPU-hour today). A cluster-scale SAT/parallel effort is the right next step;
 a single-VM complete search is out of reach.
 
+### D5a. Lemma machine checks (lemma_check.py — standalone, no deps, prints PASS/FAIL)
+- No sequencing of Z_n for n = 5, 7, 9, 11, 13 (exhaustive DFS): ALL PASS.
+- No M-fixed row contains a self-mirror arc, n = 5, 7, 9 (full enumeration): ALL PASS.
+These are the two computational ingredients of theorem C6.
+
 ### D5b. Mirror exhaustion results at the open orders
 - mirror2 11 (direct DFS, T2 mode): **full exhaustion, solutions = 0**, 10,717,468,881 nodes,
   805 s × 2 threads. Machine-verifies theorem C6 at order 11: no mirror-symmetric T2(11).
