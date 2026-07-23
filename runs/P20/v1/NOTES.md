@@ -97,7 +97,7 @@ published table (https://www.mathe2.uni-bayreuth.de/markus/reggraphs.html, GIRTH
 | 29 | 0                   | 0              | – |
 | 30 | 4                   | 4              | 0 |
 | 31 | 0                   | 0              | – |
-| 32 | RUNNING (own gen); 19 via Meringer SCD | 19 | 0 |
+| 32 | 19 (own gen, isomorphic 19/19 to Meringer SCD set) | 19 | 0 |
 | 33 | QUEUED (own gen)    | 0              | – |
 | 34 | 1272 via Meringer SCD (own gen infeasible here) | 1272 | 0 |
 
@@ -109,9 +109,10 @@ by our own exhaustive generation; n = 32, 34 by 3-coloring every graph in Mering
 published census SCD files, decoded with GENREG's readscd; n = 33: count 0 in the
 published table, own regeneration queued). All 19 + 1272 census graphs verified
 4-regular / connected / girth ≥ 6 / properly 3-colored by `verify.py` (PASS).
-Dependence on census completeness for n = 32 (being independently re-derived here),
-n = 33 and n = 34 (Kimberley/Meringer, GENREG on up to 250 cores) is an explicit
-assumption for the frontier beyond 31; flagged as residual risk.
+For n = 32 we independently regenerated all graphs and matched them 1-to-1 (graph
+isomorphism, networkx) against the census SCD set — 19/19. Census completeness remains
+an assumption only for n = 33 (own regeneration running) and n = 34; flagged as residual
+risk (source: Kimberley/Meringer, GENREG on up to 250 cores).
 
 ## 5. Structured searches (negative)
 
@@ -120,9 +121,12 @@ assumption for the frontier beyond 31; flagged as residual risk.
 - **Tetravalent 2-arc-transitive census** (`Census4val2AT-2000.mgm`): 165 entries parsed
   in Graph<> literal form (entries defined via other Magma constructions not parsed —
   logged as residual), 48 of girth 6 — all 3-colorable.
-- **Circulants**: all connected 4-regular circulants C_n(a,b), 26 ≤ n ≤ 500: RUNNING.
-  (Note: abelian Cayley graphs are a thin family for high chromatic + girth, expected
-  negative; included for completeness.)
+- **Circulants**: all connected 4-regular circulants C_n(a,b), 26 ≤ n ≤ 1000
+  (34,516,003 parameter pairs, single-root BFS girth fuzz-validated against networkx):
+  **girth-6 count is 0** — the family is vacuous. Reason (proof, not just data): in any
+  abelian Cayley graph with two non-inverse generators a, b the walk a + b − a − b closes
+  a 4-cycle, so girth ≤ 4 whenever it is simple; hence any 4-valent girth-6 Cayley graph
+  must come from a NON-abelian group. Useful pointer for the V2 structured variant.
 - Cayley census up to 1025 (graphsym.net) is a 100+ GB download — out of scope for this
   box; the AT census above covers the most symmetric slice.
 
