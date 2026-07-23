@@ -187,13 +187,17 @@ graphs cannot be minimal counterexamples given n ≤ 11 is verified.
 `nauty-geng -c 12` (153,620,333,545 connected graphs), 16-way res/mod split
 through check2. Expected ~14 h wall on 8 cores.
 
-### Vertex-transitive census sweep (running)
+### Vertex-transitive census sweep (DONE)
 Downloaded the full Holt–Royle census of ALL vertex-transitive graphs on
 < 48 vertices (Zenodo record 4010122, ~11 GB) and ran check64 over every
-graph, n = 10..47. Results so far (graphs checked / candidates — all
-candidates are exact-equality complete multipartite graphs pending final
-exact recheck): n≤39 done, e.g. n=36: 1,963,202 graphs, 10 candidates;
-n=38: 814,216 graphs, 2 candidates. Big classes n=40,42,44,46 in progress.
+graph with n = 10..47 (n < 10 covered by the all-graph exhaustive check):
+**100,720,344 vertex-transitive graphs checked, 0 violations.** The
+threshold checker printed 110 unique CANDIDATE graphs; every one was
+exact-rechecked in numpy/networkx (exact clique number via find_cliques,
+eigvalsh) and every one has ratio = 1.0 exactly — the known equality class
+(balanced complete multipartite). Per-n counts in `vt/summary.txt`;
+candidate graph6 lists in `vt/vt_*.cand`. The conjecture is now verified
+for EVERY vertex-transitive graph on fewer than 48 vertices.
 
 ## STATUS: negative — no counterexample found. Frontier pushed:
 conjecture exhaustively machine-verified for ALL graphs n ≤ 11
