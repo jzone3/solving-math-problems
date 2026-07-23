@@ -228,5 +228,14 @@ New attack lines launched after the frontier result (scripts in `scripts/`):
    (|mono|=7), EG171 ~1.55M (|mono|=19). The perfect-matching case of EG66 is
    the only one decided (UNSAT, see item 2).
 
+8. **4-critical restriction runs** (after a VM restart forced relaunch of all
+   jobs; SMS re-set-up from a persistent clone): SMS with
+   `--color-critical 4 --chi-low 4 --delta-low 3 --Delta-upp 4 --girth 6` at
+   n=26..31. Soundness for existence: any Δ≤4 girth-6 χ≥4 graph contains a
+   4-vertex-critical subgraph with the same properties (subgraphs keep girth
+   ≥ 6 and Δ ≤ 4; 4-critical ⇒ δ ≥ 3), so searching critical graphs only is
+   exhaustive for the existence question and prunes the space substantially.
+   Complements Exoo–Goedgebeur's ≤25 exhaustive frontier (their Thm 4).
+
 Status: still NO witness and no claimed solution; all second-wave searches
 remain negative so far and continue.
