@@ -213,3 +213,20 @@ New attack lines launched after the frontier result (scripts in `scripts/`):
 4. **Tabucol-hardness annealing over lift voltages**: objective = iterations
    Tabucol needs to 3-color (budget-capped); shows real gradient (440→2900/3000
    on Brinkmann Z_7 lifts, n=147) but plateaus below cap; no witness.
+5. **5-regular annealing pipeline** (`anneal_lcf5b.py` + C Tabucol +
+   `hit_pipeline.py` + orbit-aware `matching_cegar3.py`): anneal 5-regular
+   LCF(1,n) graphs to exact girth ≥ 6 then maximize Tabucol hardness; every
+   non-3-colorable hit is auto-fed to edge-cover CEGAR. First three hits
+   (n=66) were all WL-hash-identical to EG66 (annealer now hash-kicks out of
+   repeated basins); no new isomorphism class found yet.
+6. **House of Graphs database check** (2026-07-23): query
+   {Chromatic Number = 4, Girth >= 6, Maximum Degree = 4} on
+   houseofgraphs.org returns **0 graphs** — the curated HoG database contains
+   no witness either, reconfirming priority (no known solution artifact).
+7. **Orbit-aware edge-cover CEGAR status** (still running, no decision):
+   EG66 ~600k iterations (blocking sets |mono|=5), EG96 Cayley ~790k
+   (|mono|=7), EG171 ~1.55M (|mono|=19). The perfect-matching case of EG66 is
+   the only one decided (UNSAT, see item 2).
+
+Status: still NO witness and no claimed solution; all second-wave searches
+remain negative so far and continue.
