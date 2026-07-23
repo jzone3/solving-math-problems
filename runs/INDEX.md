@@ -17,5 +17,5 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P11 | queued | queued | queued | queued | queued |
 | P12 | queued | queued | queued | queued | queued |
 | P13 | queued | queued | **(9,6,1)-PMD proven nonexistent — DRAT-verified, adversarially CONFIRMED (see solutions/P13)** | queued | queued |
-| P14 | queued | queued | queued | queued | queued |
+| P14 | **3 BTD instances proven nonexistent — DRAT-verified, adversarially CONFIRMED (see solutions/P14)** | UNSAT ×3 + 4th undecided | basin-hopping (running) | running | counting-ILP: no obstruction |
 | P15 | queued | queued | queued | queued | queued |
