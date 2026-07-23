@@ -103,3 +103,31 @@ Runs (4h budget each, in progress): I1 full, I2 full, I1-reduced (b2=14 sector).
 - I1 reduced b2=14 sector (T,Q matrix equation, 252 booleans): UNKNOWN after
   14400 s — even the collapsed algebraic form resists a complete decision.
 - I3, I4: launched 4 h runs (results below).
+- I3 full (12,20;4,3,10;6,4): UNKNOWN after 14400 s.
+- I4 full (14,28;8,3,14;7,6): UNKNOWN after 14400 s.
+(~20 CPU-core-hours total across the five 4 h runs; no witness, no UNSAT.)
+
+## Compute spent
+- Counting ILPs: seconds-to-minutes each (CBC), all four instances, three levels.
+- CP-SAT complete searches: 5 runs x 4 h wall (4 workers each) = ~80 core-hours.
+
+## Dead ends / lessons
+- Two-point (pair/block-pair/element-profile + all trace identities) counting
+  closure is provably too weak: feasible for all 4 cells, and cannot re-derive
+  even the published I1 b2=14 restriction. Any counting-based nonexistence
+  proof must use >= 3-point structure or explicit case analysis.
+- Rational congruence (Hasse-Minkowski) can never bite here: codim B-V >= 3.
+- mod-2 self-orthogonal-code conditions are all satisfiable.
+- False-infeasibility incident (buggy T10 trace identity) underscores the
+  methodology rule: validate every identity against explicit known designs
+  before trusting an infeasibility conclusion.
+
+## STATUS: negative (no cell closed; frontier pushed)
+No nonexistence proof and no design. Contributions: (i) machine-verified proof
+that all classical counting/divisibility/linear-algebra obstructions vanish on
+all four cells; (ii) a validated reusable two-point counting-ILP library;
+(iii) a clean algebraic reformulation of I1's b2=14 sector as the 0/1 matrix
+equation T^T T + 2(T+T^T) + Q^T Q = 3I + 4J (with lambda_2(T+T^T) <= 3/2
+spectral corollary) — a compact target for future algebraic or SAT attacks;
+(iv) first (to our knowledge) complete-solver attack on all four cells:
+4 h CP-SAT each, all UNKNOWN — these cells are genuinely hard, not neglected-easy.
