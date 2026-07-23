@@ -128,6 +128,21 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
   independent-set blowups of any pattern with ≤ 9 vertices, at ANY blowup size**
   (≤ 8 with the heavier optimization budget; ≤ 9 with the lighter one).
 
+### Round 6 — new methods (coordinator push #2)
+
+- **Frank–Wolfe / ILP duality attack** (`fw_ilp.py`, CBC via python-mip): iterate
+  {compute top-2 eigenpairs → linearize dF/dA_ij = 4λ₁x_ix_j + 4λ₂y_iy_j − 2(1−1/ω)
+  → re-choose the ENTIRE edge set by ILP subject to K_{ω+1}-freeness via lazy clique
+  cuts}. Global jumps, completely different dynamics from flip search. Result: from
+  every start (n ∈ {18,24,30}, ω ∈ {3,4,5}), the linearized global optimum converges
+  to the Turán equality plateau with score EXACTLY 0 and never exceeds it — a strong
+  dual/variational confirmation that the extremal family is the global maximizer of
+  the first-order model.
+- **Cones/joins over named spectral-extremal families** (`cones.py`): K_s ∨ H and
+  K_s ∨ (H ∪ H) for H ∈ {Paley(q≤41), Kneser(v,k), triangular J(v,2) v≤9, co-C_n,
+  hypercube-like}; 120 graphs, all irregular and triangle-rich (open region).
+  All negative; best −0.618 (small co-cycle cone). No near-misses.
+
 ## 4. Near-misses & dead ends
 
 - Best genuinely non-tight score found anywhere: ≈ **−0.105** (T(9,3)-blobs overlapping
