@@ -195,6 +195,44 @@ contribute as *pieces* hanging off hubs, which is exactly the t = 1 plateau the 
 finds. Any counterexample must break TWO hubs simultaneously in a 2-connected core, or
 live at n well beyond 13 with a cut-vertex structure no search here reached.
 
+## 10. Wave 4 (fourth phase): C3-symmetric "triangle of hubs" encoding
+
+New targeted encoding motivated by the classical fact that any TWO longest paths share a
+vertex: a t=0 triple needs three path families meeting pairwise in three DIFFERENT
+regions, i.e. a triangle pattern. Natural candidate: Z3-symmetric graphs (three hubs
+h0,h1,h2, three identical arms A_i joining h_i to h_{i+1}); if the three longest paths
+form one Z3 orbit, their common intersection is rotation-invariant and (with no fixed
+vertices) has size divisible by 3 — so for symmetric triples **t is quantized to
+{0, 3, 6, …}** and the search only has to break the LAST quantum: t=3 → t=0.
+
+- `c3sym.py` — annealer over Z3-symmetric weighted skeletons (quotient = arm graph +
+  hub attachments + hub pendant paths + hub-hub chords; mutations act on the quotient so
+  symmetry is preserved; exact scoring of the realized graph via ./lp). 4 waves × 300
+  restarts × 40k iters, realized n ≤ 58: **plateau exactly t = 3**, never 0.
+- `analyze_c3.py` — diagnosis of the plateau: in every t=3 optimum the minimizing triple
+  shares exactly one Z3 orbit — either the three hubs themselves or one arm-vertex orbit
+  (all three rotated copies of a single articulation-like arm vertex). The three
+  symmetric paths each traverse ALL THREE hubs (or all three copies of the arm bottleneck)
+  instead of skipping one.
+- `c3grid.py` — exhaustive parametric grid over the spur-arm family (arm = path of a ≤ 8
+  unit edges with up to two dead-end spurs of length ≤ 8, hub pendants ≤ 8, optional hub
+  chords; 51 446 configs, n ≤ 60): **min t = 3 over the whole grid**. So within this
+  family the quantum never breaks — a clean structured negative.
+- `c3hybrid.py` — Z3-symmetric wiring of hypotraceable pieces (seed minus a vertex, 3
+  stubs assigned L/R/third-hub/pendant): exact scoring too slow on the resulting n≈40
+  non-traceable hybrids (minutes/config); abandoned after a few configs (dead end for
+  the exact scanner; the stochastic hybridizer already covers this family at t=1).
+
+Interpretation: the Z3-symmetric encoding reduces the problem to breaking a single
+3-orbit, but in every reachable configuration one orbit (hubs or an arm bottleneck) is
+"unavoidable" — every maximum-weight path must cross all three of its copies. A t=0
+symmetric witness needs an arm gadget where the longest path through the arm avoids the
+arm's own bottleneck AND one hub; no such gadget appeared in ~4×10⁶ scored realizations
+or the exhaustive spur grid.
+
+Also extended: n=13 biconnected, 23–24 edges (dense band) sweep — running; min t so far
+3 apart from K₂,₁₁+e (t=2, the expected extremal), consistent with the ≥2 mini-conjecture.
+
 ## STATUS: negative / frontier-pushed
 
 No counterexample found (t never 0 anywhere: ~10⁶ annealed graphs to n = 40, 30 k+
