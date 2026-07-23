@@ -9,8 +9,10 @@ DOI 10.5281/zenodo.20673865) — six weeks before this project's runs (2026-07-2
 - Their 154 witnesses: lollipop(48,70) (n=118, distinct-pairs convention),
   **lollipop(50,70) (n=120 — the same graph as this project's witness)**,
   lollipop(72,72) (n=144, both conventions). Dual-checker exact verification.
-- Their 143 witnesses: dumbbell(7,12,20) (n=39, both conventions; same graph
-  family and size as this project's K₂₀–P₁₃–K₇), dumbbell(6,12,19) (n=37,
+- Their 143 witnesses: dumbbell(7,12,20) — their notation counts the 12 internal
+  path vertices, i.e. a 13-edge path; n = 7+12+20 = 39; the same graph as this
+  project's dumbbell(20,13,7) with the middle number counting path edges — and
+  dumbbell(6,12,19) (n=37,
   distinct-pairs convention — smaller than this project's witness).
 
 Why this project's priority checks missed it: the artifacts live on
