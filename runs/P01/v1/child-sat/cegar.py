@@ -16,7 +16,8 @@ HC exists (verified negative for order n).
 
 Usage: python3 cegar.py n [time_limit_s] [max_block_per_iter]
 """
-import sys, time
+import sys, time, functools
+print = functools.partial(print, flush=True)
 from ortools.sat.python import cp_model
 
 

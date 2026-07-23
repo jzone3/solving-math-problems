@@ -40,6 +40,22 @@ Date: 2026-07-23. Branch: runs/P01-v1-sat.
 (n ≤ 21 are known negatives — GMZ exhaustive search — used here to validate the
 pipeline before escalating; results below extend to the open range.)
 
+## Incremental SAT rewrite (`cegar_sat.py`, PySAT + CaDiCaL 1.9.5)
+
+CP-SAT re-presolves the whole model each CEGAR iteration; with millions of blocking
+clauses this dominates runtime (n=18: 1341 s). Rewrote the identical encoding on an
+incremental CaDiCaL (`pysat`): exactly-2 via sequential counters, prefix-lex chains in
+raw CNF, blocking clauses added incrementally so learned clauses persist.
+
+| n  | result | iters | blocking clauses | time | solver |
+|----|--------|-------|------------------|------|--------|
+| 16 | UNSAT (verified negative) | 33 | 597 314 | 9.5 s | cegar_sat |
+| 18 | UNSAT (verified negative) | 67 | 2 730 648 | 379 s | cegar_sat (3.5× faster than CP-SAT) |
+
+Clause growth per +2 vertices is ~×5–7; n=20 estimated ~15–40 M blocking clauses,
+n=22 likely ≳ 10⁸ — the CEGAR frontier is memory/time bound, mirroring the fact that
+the exhaustive frontier in the literature stops at n=21.
+
 ## STATUS
 
-(in progress)
+(in progress — n=20 and n=22 incremental-SAT runs ongoing)
