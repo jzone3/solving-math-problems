@@ -439,3 +439,39 @@ promise:
 STATUS: near-miss (T=43 counting blueprint stands; first explicit patch
 REFUTED by faithful clearance — corrected free-modulus budget derived and
 density-feasible; explicit construction of the hole cover outstanding).
+
+## 16. Phase 6b — route-1 yield quantified: Nielsen 11/13 reconstruction (setexpr.py)
+
+Built `setexpr.py`, a set-expression engine for the up-arrow calculus
+(C/T/Tow/Lev/Sum nodes -> modulus value multisets; Owens's residue
+permutations never change moduli, so Nielsen's 4.5/4.6 value sets equal
+Owens's 3.5/3.6). Transcribed Nielsen's full prime-11 section (all ten
+inputs of 11^, incl. the composite tenth input) and the prime-13 section
+(same ten sets + two modified 11^s, over-approximated safely).
+
+Result: 483 moduli <= 1e5 in the 11-section, 625 in the 13-section, and
+the FREED {2,3,5,7,11,13}-smooth patch moduli >= 43 are essentially only
+second powers and cross products Nielsen had no reason to touch:
+
+    121, 169, 242, 338, 363, 429, 507, 1331, 2197, 2662  (M < 3000)
+
+Total inner density gain: **0.0515**. Nielsen consumes practically every
+first-power 11/13 multiplier (44,55,66,77,88,99,110,132,154,165,176,198,
+...), so route 1 (unlock [11,89] moduli) yields ~0.05/prime-pair — an
+order of magnitude too little. Extrapolating over primes to 89 gives at
+most ~0.2-0.3 extra inner density (and the ledger table shows sections
+3.10+ fill towers over nearly all smaller primes, so cross-pair moduli
+p*q with 11 <= q < p <= 89 are mostly used too).
+
+CONCLUSION: the 42-hole patch budget is, definitively,
+  0.6167 (7-adic free) + ~0.05-0.3 ([11,89] scraps) + safe primes >= 97
+    (mu <= 8 per modulus, unbounded prime supply, density divergent).
+Safe primes are unavoidable, and the binding problem is the route-2
+construction: an inner covering system with effective min modulus ~97 and
+multiplicity 2-8, feasible by density (~2.2x margin with primes to 1e5)
+but a Krukenberg-scale design project. That - not ledger accounting - is
+the true remaining wall between the counting-level blueprint and a T=43
+witness.
+
+STATUS: near-miss (T=43 counting blueprint stands; patch budget now fully
+quantified; explicit hole-cover construction is the single remaining gap).
