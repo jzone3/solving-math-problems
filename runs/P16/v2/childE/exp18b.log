@@ -1,0 +1,34 @@
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:60: RuntimeWarning: invalid value encountered in scalar divide
+  return max((d[i] * f[idx[m[i]]] + d[j] * f[idx[m[j]]]
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:60: RuntimeWarning: divide by zero encountered in scalar divide
+  return max((d[i] * f[idx[m[i]]] + d[j] * f[idx[m[j]]]
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:59: RuntimeWarning: overflow encountered in exp
+  f = np.exp(u)
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:61: RuntimeWarning: invalid value encountered in scalar multiply
+  + (d[i] - 2) * f[idx[d[i]]] + (d[j] - 2) * f[idx[d[j]]])
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:60: RuntimeWarning: invalid value encountered in scalar add
+  return max((d[i] * f[idx[m[i]]] + d[j] * f[idx[m[j]]]
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:69: RuntimeWarning: overflow encountered in exp
+  f = np.exp(u)
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:70: RuntimeWarning: invalid value encountered in scalar subtract
+  return c2 * f[k] - c1 * f[k - 1] - c3 * f[k + 1]
+/home/ubuntu/.local/lib/python3.10/site-packages/scipy/optimize/_numdiff.py:592: RuntimeWarning: invalid value encountered in subtract
+  df = fun(x1) - f0
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:60: RuntimeWarning: overflow encountered in scalar divide
+  return max((d[i] * f[idx[m[i]]] + d[j] * f[idx[m[j]]]
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childE/exp18_additive.py:60: RuntimeWarning: overflow encountered in scalar multiply
+  return max((d[i] * f[idx[m[i]]] + d[j] * f[idx[m[j]]]
+hard graphs: 204; PL-1-breakpoint OK: 16; general-f OK (extra): 175; NEITHER: 13
+   GCOfBc +0.02180
+   H?`@fBP +0.02180
+   H?`@f@h +0.02180
+   H?`@db` +0.02180
+   H?`aeRS +0.02180
+   HCOfBej +0.00654
+   HCOefDf +0.00654
+   IhOK?E??G +0.01858
+   KhH?GI??K??@ +0.03590
+   LhH?GI??G?o??@ +0.03590
+   MhCP?CAO??o??@??_ +0.03590
+   MhH?GI??G?_A_???_ +0.03590
+   MhOK?C@?_?o??@?@? +0.03590

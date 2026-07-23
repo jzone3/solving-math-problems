@@ -1,0 +1,31 @@
+total sum-failures: 225
+...of which prod ALSO fails: 0
+...bipartite: 6
+...with leaves (delta=1): 225
+delta,Delta histogram: Counter({(np.float64(1.0), np.float64(4.0)): 143, (np.float64(1.0), np.float64(3.0)): 53, (np.float64(1.0), np.float64(5.0)): 29})
+beta0-blocked count: 0
+  FCpbO n=7 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.199,-2.032) beta0bad=0
+  FCdcg n=7 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.303,-2.129) beta0bad=0
+  G?r@eC n=8 prodOK=True bip=True delta=1 Delta=3 c-window=(-2.634,-2.268) beta0bad=0
+  G?r@cS n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.852,-2.129) beta0bad=0
+  G?qadO n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.599,-2.032) beta0bad=0
+  G?qaaW n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.271,-2.129) beta0bad=0
+  G?qbdO n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.278,-2.129) beta0bad=0
+  G?ovF? n=8 prodOK=True bip=True delta=1 Delta=3 c-window=(-2.271,-2.129) beta0bad=0
+  G?ovEG n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.278,-2.129) beta0bad=0
+  G?zeeW n=8 prodOK=True bip=False delta=1 Delta=4 c-window=(-2.434,-2.085) beta0bad=0
+  GCOfBc n=8 prodOK=True bip=False delta=1 Delta=4 c-window=(-1.770,-1.891) beta0bad=0
+  GCQ`e_ n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.199,-2.032) beta0bad=0
+  GCQbV? n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.278,-2.129) beta0bad=0
+  GCQRE_ n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.271,-2.129) beta0bad=0
+  GCQRU_ n=8 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.278,-2.129) beta0bad=0
+  GCrbUK n=8 prodOK=True bip=False delta=1 Delta=4 c-window=(-2.174,-2.085) beta0bad=0
+  GCrRUW n=8 prodOK=True bip=False delta=1 Delta=4 c-window=(-2.434,-2.085) beta0bad=0
+  GCrRUK n=8 prodOK=True bip=False delta=1 Delta=4 c-window=(-2.174,-2.085) beta0bad=0
+  GCrJeS n=8 prodOK=True bip=False delta=1 Delta=4 c-window=(-2.527,-2.085) beta0bad=0
+  GCrJc[ n=8 prodOK=True bip=False delta=1 Delta=4 c-window=(-2.723,-2.085) beta0bad=0
+  GCXnBS n=8 prodOK=True bip=False delta=1 Delta=4 c-window=(-2.379,-2.085) beta0bad=0
+  H?`D@`a n=9 prodOK=True bip=False delta=1 Delta=3 c-window=(-2.199,-2.032) beta0bad=0
+  H?`@fBP n=9 prodOK=True bip=False delta=1 Delta=4 c-window=(-1.770,-1.891) beta0bad=0
+  H?`@f@h n=9 prodOK=True bip=False delta=1 Delta=4 c-window=(-1.770,-1.891) beta0bad=0
+  H?`@db` n=9 prodOK=True bip=False delta=1 Delta=4 c-window=(-1.770,-1.891) beta0bad=0
