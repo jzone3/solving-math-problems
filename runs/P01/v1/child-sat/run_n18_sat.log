@@ -1,0 +1,5 @@
+n=18: 135 chord vars, 7933 base clauses
+[     0.1s] it=1 model #HC>= 991 (new best)
+[     4.7s] it=24 model #HC>= 887 (new best)
+[     5.1s] it=26 model #HC>= 810 (new best)
+UNSAT n=18 after 67 iters, 2730648 blocking clauses, 379.0s -- VERIFIED NEGATIVE (no 4-regular graph on 18 vertices has cycle 0..17 as its unique HC; WLOG none uniquely hamiltonian)

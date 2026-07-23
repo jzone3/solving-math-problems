@@ -1,0 +1,23 @@
+n=20: 170 chord vars, 9177 base clauses
+[     0.0s] it=1 model #HC>= 501 (new best)
+[     4.8s] it=200 nblock=100000 best=501
+[     9.7s] it=400 nblock=200000 best=501
+[    14.9s] it=600 nblock=300000 best=501
+[    21.1s] it=800 nblock=400000 best=501
+[    27.0s] it=1000 nblock=500000 best=501
+[    33.6s] it=1200 nblock=600000 best=501
+[    41.9s] it=1400 nblock=700000 best=501
+[    54.3s] it=1600 nblock=800000 best=501
+[    75.6s] it=1800 nblock=900000 best=501
+[    90.7s] it=2000 nblock=1000000 best=501
+[   114.1s] it=2200 nblock=1100000 best=501
+[   144.5s] it=2400 nblock=1200000 best=501
+[   194.4s] it=2600 nblock=1300000 best=501
+[   264.4s] it=2800 nblock=1400000 best=501
+[   434.2s] it=3000 nblock=1500000 best=501
+[   716.2s] it=3200 nblock=1600000 best=501
+[  1330.5s] it=3400 nblock=1700000 best=501
+[  2782.6s] it=3600 nblock=1800000 best=501
+[  4531.6s] it=3800 nblock=1900000 best=501
+[  8515.9s] it=4000 nblock=2000000 best=501
+[ 13596.3s] it=4200 nblock=2100000 best=501

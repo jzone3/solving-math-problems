@@ -1,0 +1,3 @@
+n=22: 209 chord vars, 10485 base clauses
+[     0.1s] it=1 model #HC>= 2001 (new best)
+[  1110.7s] it=200 nblock=17509184 best=2001
