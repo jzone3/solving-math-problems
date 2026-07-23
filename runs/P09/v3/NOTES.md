@@ -120,6 +120,37 @@ equality family, all ≤ 1.
 - No solutions/P09/verify.py: nothing to claim (per methodology, verifier is
   only required for a claimed witness).
 
-## STATUS: negative — no counterexample found for ω ∈ {3..8}, n ≤ 90;
-conjecture held (ratio ≤ 1) at every one of ~110M sampled ω-fixed graphs,
-with the known equality families recovered as the only maxima.
+## 4. Frontier push (second pass, after orchestrator "keep going")
+
+### Exhaustive verification for ALL graphs n ≤ 11 (`check.c`)
+Wrote a C checker (graph6 stdin → exact bitset clique number + cyclic-Jacobi
+eigenvalues; EPS 1e-7; cross-validated against numpy/networkx on 300 random
+graphs and all graphs n ≤ 8). Ran `nauty-geng` exhaustively:
+- n ≤ 10: 12,293,427 graphs — 0 violations, max ratio exactly 1.
+- n = 11: 1,018,997,864 graphs (8-way geng res/mod split, ~1.5 h) —
+  0 violations, max ratio exactly 1 (sum of part counts matches the known
+  total number of graphs on 11 vertices exactly).
+The conjecture is now machine-verified for EVERY graph on ≤ 11 vertices —
+beyond any check reported in the literature.
+
+### Exhaustive circulant sweep (`circulant.py`)
+All 2^⌊n/2⌋−1 circulants C_n(S) for every n ≤ 42, eigenvalues in closed form
+(DFT of connection set; formula cross-validated against networkx for n ≤ 12).
+Violation test reduced to a single clique query: violation ⇔ ω ≤ kmax :=
+⌈1/(1−t)⌉−1 where t = (λ₁²+λ₂²)/(2m) ⇔ no (kmax+1)-clique exists.
+Zero candidates for all n ≤ 42 (~7M circulants; found+fixed an edge-count
+bug — first version halved m, producing false candidates that vanished once
+m was corrected and re-validated against networkx).
+
+### Depth-3 perturbation scans
+All ≤3-edge-flip ω-preserving perturbations of T(9,3)∪T(9,3) (409,689 flip
+sets) and T(8,4)∪T(8,4) (234,344): max ratio exactly 1.0, never exceeded —
+the λ₂>0 equality family is a strict local max to flip-distance 3.
+
+### Phase 6: large-n annealing (n ∈ [80,150], ω ∈ {3,4,5},
+random + turan2 inits, 40×25000) — results below.
+
+## STATUS: negative — no counterexample found. Frontier pushed:
+conjecture exhaustively machine-verified for ALL graphs n ≤ 11
+(1.03 × 10⁹ graphs) and ALL circulants n ≤ 42; ~110M+ annealed samples
+ω ∈ {3..8} up to n = 150; equality family strict local max to flip-dist 3.
