@@ -1,0 +1,16 @@
+t=5,r=0: 24 orbits -> UNKNOWN
+t=5,r=1: 9 orbits -> UNSAT
+t=5,r=2: 18 orbits -> UNSAT
+t=5,r=3: 9 orbits -> UNSAT
+t=5,r=4: 24 orbits -> UNKNOWN
+t=5,r=5: 9 orbits -> UNSAT
+t=5,r=6: 18 orbits -> UNSAT
+t=5,r=7: 9 orbits -> UNSAT
+t=5,r=8: 24 orbits -> UNKNOWN
+t=5,r=9: 9 orbits -> UNSAT
+t=5,r=10: 18 orbits -> UNSAT
+t=5,r=11: 9 orbits -> UNSAT
+t=5,r=12: 24 orbits -> UNKNOWN
+t=5,r=13: 9 orbits -> UNSAT
+t=5,r=14: 18 orbits -> UNSAT
+t=5,r=15: 9 orbits -> UNSAT
