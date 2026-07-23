@@ -84,3 +84,22 @@ Variant: V1 = direct SAT encoding, per problems/P12-tuscan-2-squares.md.
   T2(11) being UNSAT (odd-n pattern: T2(5)=T2(7)=T2(9)=0) but not evidence.
 - kissat t9 (UNSAT calibration), kissat+cadical t11, kissat t13 still
   running (5h wall each, no verdicts).
+
+## Incident + restart 2026-07-23 ~04:20 UTC (t+8h)
+- Discovered that all long runs so far used the ORIGINAL weaker encoding
+  (row-0 identity + sorted first column) — NOT the standard-form encoding
+  (column 0 fixed + last-column alldiff). Cause: the regeneration shell was
+  killed prematurely (its own `pkill -f kissat` matched the parent shell's
+  command line), so the old CNFs from the first generation survived, and the
+  follow-up loop only generated the missing t12.cnf. Detected via a cube
+  probe: cube literal x(6,0,10) should conflict with the col-0 unit
+  x(6,0,6) but didn't — t11.cnf had no unit `733 0`.
+- All prior results remain SOUND (old encoding is valid, just weaker):
+  n=7 UNSAT (~6 min), n=8 SAT verified PASS (~65 min), n=10/n=12 kissat
+  2h-timeouts, t9/t11/t13 8h without verdict, yalsat plateaus
+  (best 25 unsat clauses of ~151k on t11; 43 on t13),
+  march_cu 4096 depth-12 cubes (numbering was fine after all; per-cube
+  n=8 probes: 85/256 UNSAT in <20s, rest timeout — poor splitting payoff).
+- Killed everything; regenerated ALL CNFs with standard-form encoding
+  (verified unit 733 present in new t11.cnf); relaunched: kissat t9/t11/t13,
+  cadical t11, yalsat t11+t13, smalls loop {4,6,7,8,10}.
