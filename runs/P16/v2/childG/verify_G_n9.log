@@ -1,0 +1,5 @@
+leafy connected graphs n<=9: 67394; G1 iff failures: 0
+G2: covers 57380 / 67394
+G3: covers 37 / 67394
+G4: covers 10760 / 67394
+union: covers 57398 / 67394
