@@ -30,10 +30,21 @@ def greedy(N, L, divs, strategy="asc", rng=None, verbose=False):
     unc = np.ones(N, dtype=bool)
     chosen = []
     usable = [d for d in divs if d >= L and d < N + 1]
+    def colsums(d):
+        rows = N // d
+        # dtype-adaptive to avoid multi-GB int64 count arrays for huge d
+        if rows < 250:
+            dt = np.uint8
+        elif rows < 65000:
+            dt = np.uint16
+        else:
+            dt = np.int64
+        return unc.reshape(rows, d).sum(axis=0, dtype=dt)
+
     if strategy == "asc":
         order = sorted(usable)
         for d in order:
-            counts = unc.reshape(N // d, d).sum(axis=0)
+            counts = colsums(d)
             best = int(counts.max())
             if best == 0:
                 continue
