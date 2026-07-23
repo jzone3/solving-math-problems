@@ -1,0 +1,4 @@
+[C25] group order 25, 49 edge orbits, k=6
+[C25] 704 triangle reps, 17106 C4 reps (2.1s)
+[C25] CNF: 10482 vars, 160299 clauses (2.3s)
+[C25] k=6: UNSAT (2.6s)
