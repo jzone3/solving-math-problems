@@ -72,4 +72,7 @@ See results.log (machine-written, one RESULT line per completed (n,L)). Checkpoi
   isomorph-free generation.
 - n = 14, L = 4..8 (full feasible range): **UNSAT**. Total ~29 min, hardest cell L=8
   (949s, 95960 blocking clauses). No counterexample on <= 14 vertices.
-- n = 15+: running, see below.
+- n = 15, L = 4..9 (full feasible range): **UNSAT**. Hardest cell L=9 (20450s, 272760
+  blocking clauses). No counterexample on <= 15 vertices.
+- n = 16: L = 5, 6, 7 UNSAT; L = 8, 9 running.
+- n = 17: L = 7 UNSAT (3727s); L = 5, 6, 8, 9, 10 running.
