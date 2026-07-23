@@ -63,7 +63,14 @@ multiplicities) does => WLOG search acyclic multi-digraphs.
     tight at tau, n=8..10): converges to complete-bipartite-like DAGs with
     2^(n-2)+ tight cuts (e.g. tau=8, m=16, 256 minimal dicuts all tight) —
     still SAT with 0 conflicts. These max-tightness instances pack easily.
-11. **Exhaustive multi-DAGs n=6, <=15 arcs** + n=7 small multiplicity: running.
+11. **Exhaustive multi-DAGs n=6, <=15 arcs**: 82,784,664 with tau>=2 (tau up to
+    11) — all pack. ~60 min x 6 cores.
+12. **Exhaustive multi-DAGs n=7, <=10 arcs**: 1,910,436 with tau>=2 — all pack.
+13. **Exhaustive multi-DAGs n=7, <=12 arcs**: 52,138,929 with tau>=2
+    (bytau: 2:47.5M, 3:4.33M, 4:261k, 5:25k, 6:1683, 7:52) — all pack.
+    ~80 min x 6 cores.
+14. **More random multi-DAGs** (2 workers x 70 min, n 6..10, m 8..30,
+    multiplicity <= 8): 8.48M instances, tau up to 19 — all pack.
 
 ## Near-misses / observations
 
@@ -72,6 +79,34 @@ multiplicities) does => WLOG search acyclic multi-digraphs.
   literature: unweighted CE, if any, is expected to need special structure).
 - SAT-hardness annealing mostly inflates tau via parallel arcs; conflicts stay tiny.
 
-## STATUS (updated at end of run)
+## Coverage summary
 
-STATUS: running
+Exhaustively verified Woodall's conjecture (tau disjoint dijoins exist) for:
+- ALL digraphs on <= 6 vertices (via labeled n<=5 + non-isomorphic n=6);
+- ALL oriented graphs on 7 vertices (hence all simple DAGs on <= 7 vertices);
+- ALL multi-DAGs (== all digraphs up to condensation, integer weights as
+  parallel arcs) with n=4 (<=16 arcs), n=5 (<=14 arcs), n=6 (<=15 arcs),
+  n=7 (<=12 arcs);
+plus ~15M random multi-digraphs/multi-DAGs up to n=14, 30 arcs, mult <= 8,
+and tightness-annealed instances. Total >155M instances SAT-checked.
+Zero UNSAT instances; SAT solver almost never even hits a conflict.
+
+## Dead ends / lessons
+
+- SAT-conflict annealing is a bad fragility signal here: conflicts stay ~0
+  everywhere; parallel arcs inflate tau without creating tension.
+- Tightness annealing (maximize tau-size minimal dicuts) converges to
+  bipartite-crown-like DAGs (2^(n-2) tight cuts) that still pack trivially —
+  such symmetric extremal instances are exactly the ones with clean colorings.
+- If an unweighted counterexample exists, it needs > 15 arcs on >= 6
+  condensation vertices (or >12 arcs on >=7), i.e. beyond the "tiny witness"
+  regime of Schrijver's weighted CE; brute force must be replaced by the
+  structural restrictions of Abdi–Cornuéjols–Zlatin (V3/V5 territory).
+
+## STATUS
+
+STATUS: negative — no counterexample; conjecture exhaustively verified for all
+digraphs with condensation a multi-DAG within the size bounds above (all
+digraphs on <=6 vertices; all simple <=7-vertex DAGs; multi-DAGs n<=7 up to
+the stated arc budgets), plus >15M randomized larger instances. No
+solutions/P03/verify.py since there is no claimed witness.

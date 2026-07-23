@@ -23,3 +23,4 @@
 [daganneal seed=42] step=13592 best=11327 tau=5 m=13 cuts=108 tight=108 t=14s
 [daganneal seed=42] step=74702 best=20145 tau=7 m=15 cuts=192 tight=192 t=85s
 [daganneal seed=42] step=673990 best=26864 tau=8 m=16 cuts=256 tight=256 t=784s
+[daganneal seed=42] DONE steps=7859001 best=26864

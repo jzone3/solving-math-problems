@@ -28,3 +28,4 @@
 [daganneal seed=41] step=71893 best=26862 tau=9 m=18 cuts=256 tight=256 t=82s
 [daganneal seed=41] step=72000 best=26863 tau=9 m=17 cuts=256 tight=256 t=82s
 [daganneal seed=41] step=72158 best=26864 tau=8 m=16 cuts=256 tight=256 t=83s
+[daganneal seed=41] DONE steps=7933452 best=26864

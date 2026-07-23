@@ -12,3 +12,4 @@
 [anneal seed=11] step=140 new best hardness=80 tau=16 m=31 t=0s
 [anneal seed=11] step=232 new best hardness=10218 tau=15 m=47 t=0s
 [anneal seed=11] step=235 new best hardness=10228 tau=14 m=46 t=1s
+[anneal seed=11] DONE steps=4914 best_h=10228
