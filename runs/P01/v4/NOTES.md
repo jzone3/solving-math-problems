@@ -79,7 +79,8 @@ Machine: 8 cores, 31 GB RAM. Timings single-core unless noted.
 | g5 n=25 | **leaves=0** (nodes 8.4e8, hc_calls 2.9e9, 16/16 residues) | ~35 min on 8 cores |
 | g5 n=26 | preempted at 4/32 residues, leaves=0 so far (already covered by GMZ ≤26) | |
 | g5 n=27 | paused at 5/256 residues (1.06e9 nodes, leaves=0); measured rate ⇒ ~7 days on 8 cores | resumable |
-| g4 n=22 | **main push**, 64-way mod split on 8 cores (running) | est. ~9 h |
+| g4 n=22 | **COMPLETE: leaves=0** — nodes 1.22e10, hc_calls 5.96e10, 64/64 residues | ~7.5 h wall on 8 cores |
+| g4 n=23 | running, 128-way mod split | est. ~2–3 days |
 | g5 count n=19 | min=2688 over 417 labeled leaves — matches GMZ Table 3 ✔ | 4 min |
 
 Growth ≈ ×7–11 per vertex. Revised projections from measured nodes: full n=22 ≈ 10–20 days
@@ -100,6 +101,20 @@ Dead ends / notes:
   scheme (GMZ-style orderly generation with full isomorphism rejection).
 - Connectivity pruning in the HC test: negative, reverted (kept in git history).
 
-## 4. Status
+## 4. Results so far
 
-STATUS: running
+**NEW (this run): there is no uniquely hamiltonian 4-regular simple graph of girth ≥ 4 on
+22 vertices.** (Exhaustive: every hamiltonian 4-regular graph is C_22 + a chord 2-factor; all
+chord 2-factors compatible with girth ≥ 4 were covered by the pruned DFS; pruning only
+discards subtrees that provably contain a second hamiltonian cycle.) Together with GMZ 2020
+(all 4-regular graphs ≤ 21), the girth≥4 frontier for Sheehan's conjecture moves from 21
+to 22. Zero candidates survived; no near-misses to report (the prune cuts before leaf level).
+
+Independent confirmations produced along the way: girth≥5 orders 19–25 have no uniquely
+hamiltonian 4-regular graph (consistent with GMZ ≤26); all-girth orders ≤18 (GMZ ≤21);
+GMZ Table 3 minimum-HC values reproduced exactly (n=5..12 all girths; n=19 girth 5).
+
+## 5. Status
+
+STATUS: frontier-pushed (girth≥4 exhausted through n=22, 0 counterexamples; g4 n=23 and g5
+n=27 campaigns resumable, partial)
