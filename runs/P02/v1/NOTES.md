@@ -101,7 +101,8 @@ many graphs.
 | 16 | 25617     | 7     | 7     | 0                       | 0          | 0 |
 | 17 | 127355    | 15    | 15    | 0                       | 0          | 0 |
 | 18 | 1337848   | 230   | 4     | **77**                  | 0          | 0 |
-| 19 | 13734745  | (run) |       |                         |            |   |
+| 19 | 13734745  | 9     | 9     | 0                       | 0          | 0 |
+| 20 | 178587364 | 75    | 75    | 0                       | 0          | 0 |
 
 - All 101 "≥"-counterexamples (n=9,12,15,18; only at n ≡ 0 mod 3, δ = n/3 exactly)
   were **exactly** re-verified (analyze_boundary.py): maximal TF, δ = n/3,
@@ -120,7 +121,10 @@ many graphs.
 - [x] Full MTF sweep n ≤ 18 (Tracks A+B): no counterexample to the original conjecture.
 - [x] n = 19 (13.7M graphs) sweep.
 - [x] n = 20: 178,587,364 MTF graphs generated (mtf `file` extension of the N19 set,
-      1782 s); sweep running (~8 h on 8 cores).
+      1782 s); sweep completed in 26,316 s (7.3 h) on 8 cores: CLEAN — zero Track A
+      failures (75 graphs with δ > n/3, all feasible), zero Track B failures
+      (no graph with d_f < 3 and infeasible multiplication system), and zero new
+      "≥"-boundary counterexamples (none can exist at n = 20 since 3 ∤ 20).
 - [x] vega.py: exact verification that every Andrásfai graph Γ_i (2 ≤ i ≤ 40,
       n ≤ 119) and every Vega graph Υ^{µν}_i (µ,ν ∈ {0,1}, 2 ≤ i ≤ 40, n ≤ 127)
       is maximal triangle-free and admits a positive rational solution of Ax = c·1
@@ -128,3 +132,32 @@ many graphs.
       (maximal TF, δ > n/3 ⇒ blow-up of an Andrásfai or Vega graph), this
       machine-verifies Conjecture 4.1 for every graph of ANY order whose core is one
       of these 195 graphs — complementing the exhaustive core sweep (n ≤ 20).
+
+## Compute spent
+
+- MTF generation: n ≤ 19 in 134 s; n = 20 (178.6M graphs, 9.4 GB m2so) in 1782 s.
+- Sweep processing (LU fast path + HiGHS LP fallback + exact rational simplex for
+  every candidate): n ≤ 18 ≈ 4 min; n = 19 ≈ 37 min; n = 20 ≈ 7.3 h on 8 cores.
+- Vega/Andrásfai exact verification (i ≤ 40): ≈ 50 min.
+- Total ≈ 9–10 CPU-hours wall, ~60 CPU-core-hours.
+
+## Final verdict
+
+1. West's paraphrase of the conjecture (δ ≥ n/3, as stated in this repo's problem
+   file) is FALSE: 101 machine-verified counterexamples at n = 9, 12, 15, 18; the
+   smallest (n = 9, graph6 `H?q`qjo`) is independently verified by
+   solutions/P02/verify.py (stdlib-only, exact rational arithmetic, prints PASS).
+2. Brandt's ORIGINAL Conjecture 4.1 (δ > n/3) and its LP form Conjecture 5.1
+   (d_f < 3) survive an exhaustive sweep of ALL 193,832,553 maximal triangle-free
+   graphs on n ≤ 20 vertices. By core-invariance this decides the conjecture for
+   every graph (of any order) whose similarity-core has ≤ 20 vertices.
+3. All 101 "≥"-failures have d_f = 3 exactly: the conjecture fails *precisely* on
+   the LP boundary and nowhere inside it, sharpening the picture: the strict
+   inequality in Brandt's original statement is essential and optimal.
+4. Complementary check: every Andrásfai Γ_i and Vega Υ^{µν}_i core (i ≤ 40,
+   n ≤ 127) admits a positive rational solution — consistent with (and via
+   Brandt–Thomassé, extending) the sweep for the δ > n/3 class.
+
+STATUS: negative (no counterexample to the original conjecture; frontier-pushed:
+exhaustive over all cores with ≤ 20 vertices + Andrásfai/Vega families to i = 40;
+plus a machine-verified refutation of the common "δ ≥ n/3" paraphrase at n = 9).
