@@ -1,0 +1,3 @@
+=== checkpoint 2026-07-23T19:32:13Z parts_done=6/96 ===
+aggregate total=9.45614e+09 cliqued=23 cand=23
+cand_lines=23

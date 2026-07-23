@@ -1,0 +1,14 @@
+CAND K????Bo{F_Xw
+ score=7.105427357601e-15 w=2
+CAND K????Bo{F_\w
+ score=3.552713678801e-15 w=2
+CAND K????Bo{F_^w
+ score=1.065814103640e-14 w=2
+CAND K????Bo{F}^w
+ score=3.197442310920e-14 w=2
+CAND K????BoBv}^w
+ score=2.842170943040e-14 w=2
+CAND K????Bozv]\w
+ score=3.552713678801e-15 w=2
+CAND K????Bo~v}^w
+ score=7.105427357601e-15 w=2

@@ -1,0 +1,6 @@
+CAND K????Bw}Fo^w
+ score=7.105427357601e-15 w=2
+CAND K????Bw}F}^w
+ score=2.131628207280e-14 w=2
+CAND K????BwpvoWw
+ score=7.105427357601e-15 w=2

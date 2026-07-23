@@ -1,0 +1,6 @@
+CAND K????B}~f{^w
+ score=3.907985046681e-14 w=2
+CAND K????B}~f}^w
+ score=2.842170943040e-14 w=2
+CAND K????B}~v}^w
+ score=4.263256414561e-14 w=2
