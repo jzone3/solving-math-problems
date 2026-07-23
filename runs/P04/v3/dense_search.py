@@ -72,7 +72,8 @@ def geng_defects(n, degspec, maxedges):
 def main():
     n = int(sys.argv[1])
     mode = sys.argv[2] if len(sys.argv) > 2 else "auto"
-    log = f"search_n{n}_dense.log"
+    shard, nshard = (int(sys.argv[3]), int(sys.argv[4])) if len(sys.argv) > 4 else (0, 1)
+    log = f"search_n{n}_dense_s{shard}.log" if nshard > 1 else f"search_n{n}_dense.log"
     Kn = nx.complete_graph(n)
     stats = {"OK": 0, "TIGHT": 0, "CE": 0}
     t0 = time.time()
@@ -103,7 +104,8 @@ def main():
             if nx.is_connected(G):
                 cands.append((f"Kn-oddH{cnt}", G))
             cnt += 1
-    print(f"n={n}: {len(cands)} dense candidates", flush=True)
+    cands = [c for i, c in enumerate(cands) if i % nshard == shard]
+    print(f"n={n}: {len(cands)} dense candidates (shard {shard}/{nshard})", flush=True)
     for i, (tag, G) in enumerate(cands):
         r = check(G, n, log, tag, check_tight=True)
         stats[r] += 1
