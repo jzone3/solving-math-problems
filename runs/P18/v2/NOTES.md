@@ -173,6 +173,9 @@ Accept path is exact `Fraction` arithmetic; floats only steer the δ-search (coo
 | m \| 73513440 | 243 | 1.1909 | ≈ 0.97699 | **no covering** |
 | m \| 122522400 | 257 | 1.1944 | ≈ 0.98912 | **no covering** |
 | m \| 232792560 = lcm(1..22) | 250 | 1.1716 | ≈ 0.91180 | **no covering** |
+| m \| 465585120 | 304 | 1.1904 | ≈ 0.94221 | **no covering** |
+| m \| 698377680 | 348 | 1.1986 | ≈ 0.96264 | **no covering** |
+| m \| 5354228880 = lcm(1..23) | 395 | 1.2058 | ≈ 0.93326 | **no covering** |
 | {p−1 : 5 ≤ p ≤ 877} | 149 | 1.4530 | ≈ 0.9999091 | **no covering** (Theorem A re-derived) |
 
 (pool always = {m : m+1 prime ≥ 5} within the stated divisor set; logs:
@@ -184,8 +187,8 @@ Theorems 3.1+3.2; exact-rational certification of η < 1). The p ≤ 877 row ind
 re-derives the artifact repo's Theorem A — this supplies the "second independent verifier"
 the methodology asks for. η(p ≤ 877) ≈ 0.9999091 is razor-thin; p ≤ 881 gives η ≈ 1.0015 and
 did not certify even with multi-start δ optimization (consistent with 877 being the method's
-saturation point for this pool family). L=21621600 also fails to certify (η ≈ 1.0075) while
-its multiples 36756720/73513440 certify — the min(M1, M2/4δ(1−δ)) trade-off is not monotone in L.
+saturation point for this pool family). L=21621600 (η ≈ 1.0075) and L=2327925600 (η ≈ 1.0061) fail to certify while
+their multiples/relatives 36756720, 73513440 and 5354228880 certify — the min(M1, M2/4δ(1−δ)) trade-off is not monotone in L.
 
 ### 7.2 Strengthened SAT/CP-SAT encodings (round 2)
 
@@ -211,7 +214,8 @@ results (`kissat2_55440.log`, `kissat_parity_55440.log`, `cpsat2_55440.log`).
 - **New verified partial results (round 2, exact-rational certificates):** no covering system
   with distinct p−1 moduli (p ≥ 5) has all moduli dividing any of
   L ∈ {55440, 166320, 720720, 1441440, 2162160, 4324320, 8648640, 12252240, 36756720,
-  61261200, 73513440, 122522400, 232792560 = lcm(1..22)} — extending the known excluded
+  61261200, 73513440, 122522400, 232792560 = lcm(1..22), 465585120, 698377680,
+  5354228880 = lcm(1..23)} — extending the known excluded
   periods (previously ≤ 720720) by two orders of magnitude — and the p > 877 lower bound
   (Theorem A) was independently re-derived from first principles, satisfying the methodology's
   second-verifier requirement.
