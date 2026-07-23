@@ -47,15 +47,61 @@ Hardware: 8 cores, 32 GB. Tooling built this run (in `~/p25`, key files committe
 - `gen_sat.py` — CNF: 729 indicator vars, 729 cover clauses (13-ary), totalizer ≤72,
   symmetry breaking x[000000]=1 (per-coordinate symbol translations act transitively).
   7,724 vars / 273,082 clauses. Solver: kissat 4.0.4.
-- `ilp.py` — HiGHS ILP: min Σx, cover constraints; LP relaxation ≈ 56.6 at root (matches
-  LMT's reported root bound ~56.6 → the 140-CPU-year gap; UNSAT-at-72 via vanilla MIP is
-  hopeless, as expected).
+- `ilp.py` — HiGHS ILP: min Σx, cover constraints; root LP = 56.077 = 729/13 (exactly the
+  sphere-covering bound, as expected; LMT report the same relaxation quality → the
+  140-CPU-year gap; UNSAT-at-72 via vanilla MIP is hopeless).
 
-Status of K=72 runs: local search (5 workers, T ∈ [0.40,0.55], random + 73-seeded starts)
-reaches 1–2 uncovered words within seconds and then plateaus — exactly the landscape
-behavior reported since 1987. Long budgets (2×10¹⁰ iterations/worker) in progress.
+### Attack battery on size 72 (all negative)
 
-(Results section updated at end of run — see below.)
+1. **Metropolis local search** (`ls.c`): 5 workers, T ∈ {0.40,…,0.55}, random and
+   73-code-seeded starts, **>10¹⁰ iterations per worker** (>6×10¹⁰ total). Every run
+   reaches 2 uncovered words within seconds and never improves — a hard plateau at
+   cost 2, matching the landscape folklore since Wille 1987.
+2. **Weighted local search with dynamic weights + exhaustive 2-exchange** (`ls2.c`,
+   breakout-style weight bumping at local minima; whenever cost ≤ 2, an *exhaustive*
+   (remove-2, add-2) exchange over all C(72,2) codeword pairs × all valid replacements is
+   run): finds 73-codes ~20× faster than `ls.c` (20k iterations), but at 72 again
+   plateaus at cost 2, and **no cost-2 configuration encountered ever admitted an
+   improving 2-exchange**.
+3. **LNS with exact repair** (`lns.c`): start from a fresh 73-code; each round remove r
+   random codewords and *exactly* re-cover the holes with ≤ r−1 words (DFS set-cover with
+   ball-branching, 2×10⁶ node budget), accepting equal-size repairs as plateau hops.
+   **>13×10⁶ exact repair rounds** (r=5: >10.7M, r=6: >2.4M) without a single 73→72
+   reduction.
+4. **Structured/invariant codes** (`orbit_search.py`): random cyclic monomial symmetries
+   g ∈ S₃≀S₆ (coordinate permutation + per-coordinate affine symbol map); ILP over orbit
+   indicator variables for an ⟨g⟩-invariant cover of size ≤ 72 (HiGHS, 60 s/group).
+   Several core-hours of group trials: no invariant ≤72 cover found (the machinery is
+   validated: it finds invariant 77-covers instantly at looser targets).
+5. **SAT** (`gen_sat.py` + kissat 4.0.4, default and `--sat` configs): no answer after
+   hours on the size-72 CNF; consistent with the instance being UNSAT and far beyond
+   direct SAT reach (see Step 2).
+6. **ILP** (HiGHS, single thread, 12 h limit): root LP = 56.077 (sphere-covering bound);
+   dual bound crawled to 59.0 after ~1.5 h — confirms LMT's assessment that vanilla branch-and-bound
+   cannot close [59, 72] without symmetry machinery and CPU-centuries.
+
+**Outcome: negative (no 72-word code found; no bound change).** The run adds concrete,
+reproducible evidence for the standing conjecture K₃(6,1) = 73: modern multi-strategy
+search with budgets ~10⁴–10⁵× Wille's 1987 compute reproduces 73 instantly and cannot
+touch 72, and all cost-2 local optima are 2-exchange-rigid.
+
+## Catalog correction
+
+`research/wave3-smallest-open-cases.md` §C9 stated the interval as [65, 73], crediting
+LMT 2009 with "lower 65". That is wrong: LMT *started* from 65 (Östergård–Wassermann 2002)
+and **proved 71**. Corrected in this branch (§C9 header and statement). The problem file
+`problems/P25-football-pool.md` was already correct.
+
+## Next steps / handoff
+
+- The upper-bound direction stays the only feasible target; what's left untried at scale:
+  (a) parallel tempering / population-based LS across many machines; (b) orbit ILPs over
+  *larger* subgroups (order 4–12, non-cyclic) with exact (not time-limited) solves;
+  (c) seeding from the classified structure of published 73-codes (Wille's code itself —
+  JCTA 44 print copy not freely available; worth obtaining).
+- Lower-bound/UNSAT direction: needs LMT-style isomorph-pruned decomposition + modern SAT
+  per cell with DRAT; a serious cluster project (CPU-decades even optimistically), not a
+  single-box run.
 
 ## Step 2 — UNSAT direction
 

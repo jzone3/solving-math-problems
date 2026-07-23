@@ -19,3 +19,4 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P13 | queued | queued | **(9,6,1)-PMD proven nonexistent — DRAT-verified, adversarially CONFIRMED (see solutions/P13)** | queued | queued |
 | P14 | queued | queued | queued | queued | queued |
 | P15 | queued | queued | queued | queued | queued |
+| P25 | **negative — no 72-code found (LS 6×10¹⁰ it + LNS 13M exact repairs + SAT/ILP/orbit-ILP); bounds re-pinned [71,73], catalog §C9 corrected; see runs/P25/v1** | queued | queued | queued | queued |

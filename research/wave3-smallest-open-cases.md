@@ -238,18 +238,20 @@ already cataloged. Those are not repeated here.
   artifact means the low-vertex frontier is claimed — start above it.
 - **Impact 4 × Feasibility 4 (audit risk noted).**
 
-## C9. Football pool problem for 6 matches — K₃(6,1) ∈ [65, 73]
+## C9. Football pool problem for 6 matches — K₃(6,1) ∈ [71, 73]
 
 - **Statement.** Minimum size of a ternary covering code of length 6, radius 1:
-  65 ≤ K₃(6,1) ≤ 73. Upper 73: Wille 1987 (simulated annealing), JCTA 44; lower 65:
+  71 ≤ K₃(6,1) ≤ 73. Upper 73: Wille 1987 (simulated annealing), JCTA 44; lower 71:
   Linderoth–Margot–Thain, INFORMS J. Comput. 21 (2009), doi:10.1287/ijoc.1090.0334, TR PDF:
-  https://jlinderoth.github.io/papers/Linderoth-Margot-Thain-07-TR-2.pdf (prior 64:
-  Östergård–Wassermann, JCTA 99 (2002), doi:10.1006/jcta.2002.3260).
+  https://jlinderoth.github.io/papers/Linderoth-Margot-Thain-07-TR-2.pdf ("improve the
+  lower bound on |C∗₆| from 65 to 71"; prior 65: Östergård–Wassermann, JCTA 99 (2002),
+  doi:10.1006/jcta.2002.3260). [Corrected 2026-07-23 by the P25 v1 run: this section
+  previously misstated the LMT result as "lower 65"; Kéri's tables confirm 71–73.]
 - **Notability.** "One of the most famous problems in coding theory" (Linderoth et al.); OEIS
   A004044; decades of work by Östergård, van Lint, Hämäläinen, Wille.
 - **Smallest open case.** Either a 72-word covering code (witness: 72×6 ternary array, verifier
-  trivial) or lower-bound 66 (IP + isomorph-pruned branch-and-bound).
-- **Computational frontier.** The 2009 lower-bound-65 run consumed ~140 CPU-*years* of 2007
+  trivial) or lower-bound 72 = proving K₃(6,1)=73 (IP + isomorph-pruned branch-and-bound).
+- **Computational frontier.** The 2009 lower-bound-71 run consumed ~140 CPU-*years* of 2007
   hardware via Condor. A 2026 rerun with symmetry-exploiting ILP (or SAT with cardinality
   encodings) buys maybe 100× — pushing 66 is ~10^13–10^14 ops: **MARGINAL-INFEASIBLE**. The
   *upper* bound (find a 72-cover) has had no published improvement since 1987 despite heuristics —
