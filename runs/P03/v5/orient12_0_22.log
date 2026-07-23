@@ -1,0 +1,2 @@
+[10/22] {'graphs': 10, 'skip_not_3ec': 3, 'graphs_kept': 6, 'profile_orientations': 273978, 'dags': 197394, 'tau3': 197394, 'ss_connected_skip': 193466, 'checked': 3928, 'skip_planar': 1} t=211s
+DONE {'graphs': 22, 'skip_not_3ec': 5, 'graphs_kept': 14, 'profile_orientations': 640554, 'dags': 446522, 'tau3': 446522, 'ss_connected_skip': 432450, 'checked': 14072, 'skip_planar': 3} wall=481s

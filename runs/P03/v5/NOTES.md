@@ -166,6 +166,54 @@ Dead ends / lessons:
   structured (algebraic), not findable by local search from random seeds — V2-style
   constructions or much larger SAT-modulo-symmetry runs (V3) are the better follow-ups.
 
-STATUS: negative (no counterexample found; exhaustive for simple digraphs n <= 8;
-frontier-pushed on the targeted region n <= 16 with ~460k out-of-safe-class instances
-verified and a derived n >= 12 lower bound for minimal tau=3 counterexamples).
+STATUS (phase 1): negative (no counterexample found; exhaustive for simple digraphs
+n <= 8; frontier-pushed on the targeted region n <= 16 with ~460k out-of-safe-class
+instances verified and a derived n >= 12 lower bound for minimal tau=3 counterexamples).
+
+## 8. Phase 2 (session continuation): NEW METHOD — cubic-orientation exhaustion of the minimal cells
+
+Fundamentally different attack from the random/annealed searches above: instead of
+sampling the target region, EXHAUST it, one vertex-count cell at a time, using
+nauty's isomorph-free cubic-graph generator plus complete orientation enumeration.
+
+Key observation making this feasible (all from §2 items 4/8 + §7 lower-bound):
+a MINIMAL tau=3 counterexample is reduced (Schrijver Thm 3), so every vertex has
+degree 3 => its UNDERLYING GRAPH IS A CONNECTED CUBIC GRAPH, 3-edge-connected
+(weak 3-arc-connectivity), hence simple; and it is non-planar (safe class 5).
+Moreover tau = 3 holds automatically for ANY acyclic orientation of a
+3-edge-connected cubic graph (every dicut is one side of an edge cut, so >= 3;
+a degree-3 source gives one of size exactly 3) — verified by sampled asserts.
+Role profiles (#sources, #sinks, #(1,2), #(2,1)) allowed by rho >= 4 in both arc
+directions + stub balance + (>= 2 sources and >= 2 sinks, else source-sink
+connected):
+- n=12: (2,2,4,4) only;  n=14: (2,2,5,5),(3,3,4,4),(2,3,6,3),(3,2,3,6);
+- n=16: (2,2,6,6),(3,3,5,5),(4,4,4,4),(2,3,7,4),(3,2,4,7),(2,4,8,2),(4,2,2,8),
+  (3,4,6,3),(4,3,3,6).
+
+Pipeline (code: orient_exhaust.py for n=12 CPython; prep_graphs.py + enum_pypy.py
+(PyPy) + sat_check.py for n>=14):
+1. nauty-geng -c -d3 -D3 n  -> all connected cubic graphs (85 @ n=12, 509 @ n=14).
+2. Keep non-planar 3-edge-connected ones (n=12: 43 kept; n=14: 291 kept,
+   133 planar / 85 not-3EC dropped).
+3. Enumerate ALL orientations by edge-DFS with degree caps, incremental
+   reachability (only DAGs generated), and role-count pruning.
+4. At each complete DAG: profile filter; skip source-sink-connected (safe class 3);
+   skip orientations violating the reduced min-dicut structure (every size-3 dicut
+   must be a source out-star or sink in-star — Schrijver Thm 3; filter
+   cross-validated 500/500 vs brute force, test_dicut_filter.py).
+5. Exact packing decision: randomized rainbow-star coloring heuristic (try_pack),
+   else exact backtracking 3-coloring against all minimal dicuts (exact_pack,
+   cross-validated 300/300 vs the PySAT harness, test_exact_pack.py); any
+   non-packing survivor would be re-verified independently in CPython/PySAT.
+
+Results:
+- n=12 (the smallest possible minimal-counterexample cell, by §7): COMPLETE.
+  43 graphs, 1,339,230 profile DAG orientations, 25,072 non-ss-connected ones
+  SAT-checked: ALL pack 3 disjoint dijoins. => NO minimal tau=3 counterexample on
+  12 vertices exists; combined with §7, any counterexample digraph (minimal ones
+  being reduced) needs n >= 14. This is a decisive exhaustive settlement of the
+  minimal cell, not a sampled result.
+- n=14: [in progress, see below]
+
+STATUS: negative / frontier-pushed (phase 2 exhausted the n=12 minimal cell
+completely; n=14 cell enumeration running).

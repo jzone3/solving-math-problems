@@ -1,0 +1,7 @@
+[1/37] {'graphs': 1, 'dags': 511080, 'profile_dags': 488080, 'ss_skip': 269726, 'dicut_skip': 180782, 'packed_heur': 850, 'packed_exact': 36722, 'cand': 0} t=16s
+[2/37] {'graphs': 2, 'dags': 1023160, 'profile_dags': 973296, 'ss_skip': 575474, 'dicut_skip': 303910, 'packed_heur': 2276, 'packed_exact': 91636, 'cand': 0} t=37s
+[3/37] {'graphs': 3, 'dags': 1562740, 'profile_dags': 1478136, 'ss_skip': 967632, 'dicut_skip': 320866, 'packed_heur': 4279, 'packed_exact': 185359, 'cand': 0} t=71s
+[4/37] {'graphs': 4, 'dags': 2115964, 'profile_dags': 1993020, 'ss_skip': 1387952, 'dicut_skip': 333082, 'packed_heur': 6057, 'packed_exact': 265929, 'cand': 0} t=101s
+[5/37] {'graphs': 5, 'dags': 2774844, 'profile_dags': 2595588, 'ss_skip': 1939740, 'dicut_skip': 333082, 'packed_heur': 7260, 'packed_exact': 315506, 'cand': 0} t=120s
+[6/37] {'graphs': 6, 'dags': 3360744, 'profile_dags': 3141940, 'ss_skip': 2375488, 'dicut_skip': 333082, 'packed_heur': 9519, 'packed_exact': 423851, 'cand': 0} t=159s
+[7/37] {'graphs': 7, 'dags': 4015360, 'profile_dags': 3741572, 'ss_skip': 2916336, 'dicut_skip': 333082, 'packed_heur': 10758, 'packed_exact': 481396, 'cand': 0} t=180s

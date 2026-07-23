@@ -1,0 +1,5 @@
+[1/37] {'graphs': 1, 'dags': 529528, 'profile_dags': 498148, 'ss_skip': 356562, 'dicut_skip': 60572, 'packed_heur': 1908, 'packed_exact': 79106, 'cand': 0} t=32s
+[2/37] {'graphs': 2, 'dags': 1131100, 'profile_dags': 1057044, 'ss_skip': 812876, 'dicut_skip': 60572, 'packed_heur': 4046, 'packed_exact': 179550, 'cand': 0} t=71s
+[3/37] {'graphs': 3, 'dags': 1705204, 'profile_dags': 1593800, 'ss_skip': 1228196, 'dicut_skip': 60572, 'packed_heur': 6308, 'packed_exact': 298724, 'cand': 0} t=115s
+[4/37] {'graphs': 4, 'dags': 2279900, 'profile_dags': 2133536, 'ss_skip': 1611412, 'dicut_skip': 129308, 'packed_heur': 8259, 'packed_exact': 384557, 'cand': 0} t=150s
+[5/37] {'graphs': 5, 'dags': 2907196, 'profile_dags': 2713668, 'ss_skip': 2097236, 'dicut_skip': 129308, 'packed_heur': 10266, 'packed_exact': 476858, 'cand': 0} t=185s
