@@ -127,6 +127,10 @@ risk (source: Kimberley/Meringer, GENREG on up to 250 cores).
   abelian Cayley graph with two non-inverse generators a, b the walk a + b − a − b closes
   a 4-cycle, so girth ≤ 4 whenever it is simple; hence any 4-valent girth-6 Cayley graph
   must come from a NON-abelian group. Useful pointer for the V2 structured variant.
+- **Cayley graphs, non-abelian groups of order 26–120** (GAP SmallGroups; all
+  connection sets S = S⁻¹, |S| = 4, generating, up to Aut(G)-equivalence): 21,387
+  connected 4-valent Cayley graphs, **7,410 with girth ≥ 6 — all 3-colorable** (SAT).
+  Scripts: `scripts/cayley.g` (GAP export) + `scripts/check_cayley.py`.
 - Cayley census up to 1025 (graphsym.net) is a 100+ GB download — out of scope for this
   box; the AT census above covers the most symmetric slice.
 
