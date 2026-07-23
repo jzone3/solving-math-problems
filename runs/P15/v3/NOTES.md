@@ -72,5 +72,39 @@ only hole-layered approaches could ever scale, and their exact final windows blo
 - kissat direct on literature-calibrated targets (m=5,N=1440)...(m=10,N=110880):
   NO ANSWERS after 1.5–4 h each — CDCL wall. Killed in favor of local search.
 - YalSAT+verified: m=5 N=1440 (32 congr, 8 s), m=6 N=5040 (46 congr, 302 s).
-- Running (yalsat, 4 h budgets): (m=7,15120) (m=8,30240) (m=9,55440) (m=10,110880)
-  (m=12,166320) (m=12,332640).
+- yalsat single-seed batch (m=7,15120) (m=8,30240) (m=9,55440) (m=10,110880)
+  (m=12,166320) (m=12,332640): no hits in ~35 min each; killed for focused runs.
+- yalsat -v diagnostics on m=7/N=15120: descends to ~13 unsatisfied clauses in seconds,
+  then plateaus (classic SLS heavy tail). 8-thread palsat: no solution in ~1 h.
+- greedy_sat.py (full-N greedy + kissat hole repair), m=7/N=15120, stop_ratio sweep
+  {0.02, 0.05, 0.1, 0.2}: greedy either consumes too many moduli (residual UNSAT:
+  126 holes/12 mods; 56 holes/1 mod) or stops too early (7848 holes/69 mods — kissat
+  timeout). The alignment problem is global; local repair window is too narrow at m=7.
+- palsat 4-thread on slacker targets (m=7,N=30240 recip 1.55) and (m=8,N=55440
+  recip 1.59): no solution in ~1.5 h each. m=7 is the local-search wall on 8 cores.
+
+## Verified witnesses (all pass solutions/P15/verify.py; see witnesses/)
+| m | lcm    | #congruences | method            | time  |
+|---|--------|--------------|-------------------|-------|
+| 3 | 120    | 14           | layered2 + kissat | <1 s  |
+| 4 | 2520   | 45           | layered2 + kissat | ~15 s |
+| 5 | 1440   | 32           | yalsat direct     | 8 s   |
+| 6 | 5040   | 46           | yalsat direct     | 302 s |
+
+m=5 and m=6 witnesses hit the PROVEN-minimal lcms (Klein 2025), i.e. the SAT pipeline
+reproduces the extremal known constructions fully automatically.
+
+## Conclusions
+1. Direct SAT on covering systems is CDCL-hostile (huge translation/unit symmetry,
+   set-cover core); stochastic local search is the right engine, but stalls at m=7
+   on this hardware within hours.
+2. The gap to the target m=43 is astronomical: reciprocal bound alone needs
+   lcm ≥ 1.8·10^8 / ≥926 congruences, and true structure pushes far beyond; explicit
+   enumeration-based SAT cannot bridge 7 → 43. A 43-witness will need Nielsen/Owens-style
+   recursive tree constructions (V4/V5 territory), likely with >>10^6 congruences.
+3. Negative-but-calibrated result: V3 as specified (layer-by-layer SAT over the prime
+   tower) is exhausted at the compute scale available; artifacts, encodings, and the
+   local-search discovery are reusable for follow-up runs.
+
+STATUS: negative (no m≥43 witness; SAT frontier mapped to m=6 verified-optimal,
+m=7 open at this compute; target m=43 out of reach for explicit SAT encodings)

@@ -1,0 +1,58 @@
+c PalSAT Yet Another Local Search Solver
+c Parallel Simple Portfolio Version
+c Version 1.0.1 a0fd39f072f2d4693dd5a1977de3c3d3f69c8850
+c Copyright (C) 2021-2022 Armin Biere University of Freiburg
+c Copyright (C) 2013-2021 Armin Biere, Johannes Kepler University Linz
+c Released Wed Jul 22 23:42:09 UTC 2026
+c Compiled Wed Jul 22 23:42:09 UTC 2026
+c Linux devin-box 5.15.200 x86_64
+c CC gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+c CFLAGS -Wall -DNDEBUG -O3
+c using 8 solver instances and 8 worker threads ('-t 8')
+c creating 8 solver instances
+c worker 0 uses specified seed 5555
+c worker 1 uses seed 6130027198320
+c worker 2 uses seed 13070134633062509289
+c worker 3 uses seed 10460693401814299502
+c worker 4 uses seed 15869398180658174479
+c worker 5 uses seed 7121050300858571420
+c worker 6 uses seed 11421958313716747429
+c worker 7 uses seed 1198605689371875450
+c no flips limit set (by default)
+c no mems limit set (by default)
+c parsing 'ycover_15120_7.cnf'
+c parsed header 'p cnf 118211 205390'
+c clause variable ratio 1.74
+c finished parsing after 0.13 seconds
+c allocated 65.0 MB after parsing
+c created thread 0
+c created thread 1
+c created thread 2
+c created thread 3
+c created thread 4
+c created thread 5
+c created thread 6
+c created thread 7
+c
+c UNKNOWN
+c 
+c 00 final worker 0 minimum of 9 unsatisfied clauses
+c 
+c 01 final worker 1 minimum of 9 unsatisfied clauses
+c 
+c 02 final worker 2 minimum of 8 unsatisfied clauses
+c 
+c 03 final worker 3 minimum of 34 unsatisfied clauses
+c 
+c 04 final worker 4 minimum of 7 unsatisfied clauses
+c 
+c 05 final worker 5 minimum of 8 unsatisfied clauses
+c 
+c 06 final worker 6 minimum of 5 unsatisfied clauses
+c 
+c 07 final worker 7 minimum of 31 unsatisfied clauses
+c 
+c total wall clock time of 3608.00 seconds
+c total process time of 27056.71 seconds
+c utilization 93.7% for 8 threads
+c maximally allocated 250.2 MB

@@ -1,0 +1,27 @@
+c PalSAT Yet Another Local Search Solver
+c Parallel Simple Portfolio Version
+c Version 1.0.1 a0fd39f072f2d4693dd5a1977de3c3d3f69c8850
+c Copyright (C) 2021-2022 Armin Biere University of Freiburg
+c Copyright (C) 2013-2021 Armin Biere, Johannes Kepler University Linz
+c Released Wed Jul 22 23:42:09 UTC 2026
+c Compiled Wed Jul 22 23:42:09 UTC 2026
+c Linux devin-box 5.15.200 x86_64
+c CC gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+c CFLAGS -Wall -DNDEBUG -O3
+c using 4 solver instances and 4 worker threads ('-t 4')
+c creating 4 solver instances
+c worker 0 uses specified seed 222
+c worker 1 uses seed 244980396735
+c worker 2 uses seed 12085185491287014796
+c worker 3 uses seed 16806448496940797141
+c no flips limit set (by default)
+c no mems limit set (by default)
+c parsing 'ycover_55440_8.cnf'
+c parsed header 'p cnf 463299 764576'
+c clause variable ratio 1.65
+c finished parsing after 0.42 seconds
+c allocated 258.0 MB after parsing
+c created thread 0
+c created thread 1
+c created thread 2
+c created thread 3
