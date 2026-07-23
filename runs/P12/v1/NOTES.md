@@ -143,3 +143,25 @@ Variant: V1 = direct SAT encoding, per problems/P12-tuscan-2-squares.md.
 ## STATUS: negative (no verdict on open instances n=11, 13; T2(7) UNSAT and
 ## T2(4)/T2(6)/T2(8) witnesses reproduced and machine-verified; encoding +
 ## infrastructure committed; frontier data: known-UNSAT n=9 resists 16h CDCL)
+
+## Resumed 2026-07-23 ~19:50 UTC (VM restart killed processes; disk intact)
+
+New attack (follow-up item 2 from above): Kapralov-style compatible-row DFS,
+implemented in C (runs/P12/v1/t2dfs.c):
+- standard form: row 0 = identity, col 0 = 0..n-1, last column a permutation;
+- per group r: all permutations starting with r whose d1/d2 pairs avoid row 0;
+- DFS choosing one row per group, maintaining used-pair bitsets (n² bits for
+  d1 and d2), full domain propagation (refilter all remaining groups each
+  node, fail on empty domain), most-constrained group first, last-column
+  alldiff pruning; mode 1 = randomized restarts.
+
+Validation (dramatic speedup vs direct CNF):
+- T2(8): witness in 25,802 nodes / <1 s (kissat needed 73 min); PASS
+  (sq8_dfs.txt).
+- T2(7): EXHAUSTED in 1,582 nodes / 0.004 s, found 0 — matches known
+  nonexistence.
+- T2(9) (known UNSAT): exhaustive run in progress.
+- n=11: 6.57M candidate rows (~660K/group, listed in NOTES); exhaustive run +
+  3 randomized-restart runs launched.
+- n=13: candidate generation needs ~48 GB (83M candidates/group) — killed;
+  would need on-the-fly generation or a bigger box.
