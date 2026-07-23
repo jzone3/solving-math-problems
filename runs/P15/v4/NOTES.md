@@ -274,3 +274,18 @@ Artifacts: `owens42.pdf/.txt` (source), `branchgame.py` (+`branchgame_out.txt`),
 STATUS: negative (no >= 43). Frontier-pushed: first machine replay of the
 Owens 42 ledger calculus; exact single-set deficit located at T=43; hole-42
 reduction + modulus-availability tables computed.
+
+### 12d. Model-level repair search for the S3.8 deficit
+
+Within the branch-game model the one-set deficit at S3.8/T=43 CAN be closed:
+after 13^ and 17^ the pool holds 7 sets unused by the first five 3-up-arrow
+copies; 1-3 extra 3-up-arrow copies (2 disjoint sets each, +1 set each) lift
+the usable count to >= 18 before the three cost-6 7-up-arrow copies. CAVEAT
+(unverified semantics): Owens stopped at five 3-copies — extra copies inject
+moduli 3^k*m that must not collide with the global 3-layer (S3.2) or the
+five originals; a real repair requires the full modulus-collision check,
+plus propagating the cost-6 penalty through ALL later sections (S3.10-3.20
+each reuse 7-up-arrow savings and have slack <= 3, several with slack 0).
+Next session: implement explicit modulus-set tracking in branchgame.py
+(replace counts by actual modulus multisets) and re-run the repair search
+end-to-end across all 12 ledgers simultaneously.
