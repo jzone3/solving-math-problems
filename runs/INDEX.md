@@ -19,3 +19,4 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P13 | queued | queued | **(9,6,1)-PMD proven nonexistent — DRAT-verified, adversarially CONFIRMED (see solutions/P13)** | queued | queued |
 | P14 | queued | queued | queued | queued | queued |
 | P15 | queued | queued | queued | queued | queued |
+| P23 | **negative — record 509 (Parts 2020) NOT beaten; reproduced & DRAT-verified from scratch, SAT-core/greedy/plateau/508-swap minimization bottomed out at 586 > 509 (see runs/P23-v1, solutions/P23)** | queued | queued | queued | queued |
