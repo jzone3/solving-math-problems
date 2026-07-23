@@ -237,6 +237,17 @@ Additional search this round:
   long-running (in progress at wrap-up); every support completed so far has feasible
   supremum 0 / negative, no positive support, matching k = 4 and k = 5 exactly.
 
+## Escalation round 5 (coordinator push #4, 2026-07-23): domination test — proof cannot be by comparison
+
+`domination_test.py`: for every connected graph n ≤ 8, compared the max-edge values of f44/f46
+against three PROVEN upper bounds (Das (d_u+d_v+√((d_u−d_v)²+4m_um_v))/2; Merris max(d+m);
+Guo max (d_u(d_u+m_u)+d_v(d_v+m_v))/(d_u+d_v)). Every pairing FAILS graphwise (e.g. f44 vs
+Das min diff −0.31 at n=7): bounds 44/46 are strictly sharper than all three classical bounds
+on some graphs. **Conclusion: no proof by graphwise domination of a known bound is possible —
+a genuinely new spectral argument is required**, which corroborates why DHS left exactly these
+two open. (Also note: since f44/f46 sometimes dip below proven bounds while μ never exceeds
+them, the empirical margin structure is not an artifact of weak comparisons.)
+
 ## Suggested next steps (other variants)
 
 - V5/proof direction looks promising: try Collatz–Wielandt on L or the signless
