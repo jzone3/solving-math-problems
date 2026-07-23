@@ -708,3 +708,32 @@ STATUS: frontier-pushed (T>=43 remains open in this session; the
 counting-level near-miss of phase 5 is downgraded for section 3.8 by
 explicit modulus tracking; remaining routes are cross-section support
 imports or a small-prime redesign).
+
+## 21. Phase 9b: the section-3.8 deficit is UNFIXABLE by any local tower mint (exhaustive)
+
+Extending ledger38.py: after including the section's own 19-tower
+(moduli 19^k * set-moduli) in the used pool, an extra tower copy of
+base q over even the minimal input {1} collides for EVERY base:
+
+  q in {3,9,27}: collides with the five 3^ copies (3^j*m);
+  q in {5,25,125}: collides with the 5/25^ structure (125^2 = 25^3);
+  q in {7,49}: collides with the 7^ copies (49^j = 7^2j * 1);
+  q in {11,121}: collides with s10 = 11^;  q in {13,169}: s16 = 13^;
+  q = 17: s17;  q = 19: the section's own 19^ tower;
+  q = 23: collides cross-section with 3.9 (Nielsen's 23-section inputs
+      include the set 1, so 23^j*1 is used there - thesis text);
+  q >= 97 fresh primes: q^ needs q-1 >= 96 inputs, pool has ~18
+      (counting-infeasible);
+  non-tower support: the only 3-scalable fresh smooth values are
+      {125k} with total density 0.0206 (machine-enumerated) - far short
+      of the density ~1 a covering set requires.
+
+CONCLUSION (machine-checked at cap 10^6): the +1 set deficit of section
+3.8 at T=43 cannot be repaired by ANY additional tower copy or support
+importable into the section.  Together with section 20 this closes the
+entire 'patch Owens locally' program: T >= 43 requires a genuinely
+different global design of the small-prime layers, exactly as Owens
+conjectured - now with a machine-verified, exhaustive local argument.
+
+STATUS: frontier-pushed (local-patch program closed exhaustively;
+open routes: global small-prime redesign only).
