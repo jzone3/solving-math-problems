@@ -1,0 +1,1 @@
+SUMMARY total=1526232358 evaluated=1478887225 violations=0 best_gap=-1.189383e+00 best_g6=K??FFA[fNE[[ best_n=12 best_m=26 best_w=3 best_s=33.477283652418 best_rhs=34.666666666667
