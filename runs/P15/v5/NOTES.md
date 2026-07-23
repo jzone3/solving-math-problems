@@ -216,3 +216,26 @@ for this method family, not a tuning problem: L=16's win leaned on the dense
 small moduli 14, 15, 16 (all lost at 17) and on 2^4 alignment.
 
 Compute this push: ~4 h of parallel sweeps (restarts of 20-52 min each).
+
+### Final L=17/18 restart table (all restarts, uncovered counts)
+
+- L=17, 2^7·3^4·5^2·7·11·13·17: 15,547,207; 15,403,075  (3.5e-3)
+- L=18, same palette:            10,602,192;  9,840,338  (2.2e-3)
+- L=17, 2^7·3^4·5^2·7^2·11·17:  19,331,988; 23,330,945; 14,635,762  (6.2e-3)
+- L=17, 2^7·3^4·5^2·7^2·13·17:  51,653,128; 41,893,833  (1.5e-2)
+
+No restart came within 2 orders of magnitude of the ~1e-5 near-miss densities
+that preceded the L=14/15/16 successes. Combined with the budget ceiling
+analysis (Section 11), we assess L=17 as out of reach for exact flat greedy
+within the memory envelope, independent of restart luck.
+
+Also analyzed (not implemented): surgery on the verified L=16 witness —
+deleting its modulus-16 class and re-covering that cell in a 17-extended
+universe reduces to "cover one CRT cell with fresh distinct moduli", which is
+exactly the arrow-calculus core problem (any prime chain re-creates the
+16-identical-sibling modulus conflict). Reinforces Section 7's conclusion.
+
+STATUS: negative (frontier of this run: verified automated coverings at
+L=14/15/16; L=17 negative across 4 palettes, 9 restarts, ~8 h compute;
+mechanization of the arrow calculus with inherited coverage remains the
+recommended path to approach 43).
