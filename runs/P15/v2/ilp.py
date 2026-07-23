@@ -15,7 +15,7 @@ import highspy
 from engine4 import factorize_spec, divisors
 
 
-def solve(fac, T, time_limit=600, out=None, mip_gap=0.0):
+def solve(fac, T, time_limit=600, out=None, mip_gap=0.0, symbreak=False):
     N = 1
     for p, e in fac.items():
         N *= p ** e
@@ -50,6 +50,10 @@ def solve(fac, T, time_limit=600, out=None, mip_gap=0.0):
     for n in range(N):
         idx = np.array([col_of[(v, n % v)] for v in divs], dtype=np.int32)
         h.addRow(1.0, inf, len(idx), idx, np.ones(len(idx)))
+    if symbreak:
+        # translation symmetry: WLOG the class covering point 0 has residue 0
+        idx = np.array([col_of[(v, 0)] for v in divs], dtype=np.int32)
+        h.addRow(1.0, inf, len(idx), idx, np.ones(len(idx)))
 
     h.run()
     status = h.getModelStatus()
@@ -79,5 +83,6 @@ if __name__ == "__main__":
     ap.add_argument("-T", type=int, required=True)
     ap.add_argument("--time-limit", type=float, default=600)
     ap.add_argument("-o", "--out")
+    ap.add_argument("--symbreak", action="store_true")
     a = ap.parse_args()
-    solve(factorize_spec(a.N), a.T, a.time_limit, a.out)
+    solve(factorize_spec(a.N), a.T, a.time_limit, a.out, symbreak=a.symbreak)

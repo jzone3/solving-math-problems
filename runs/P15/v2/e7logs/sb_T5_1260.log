@@ -1,0 +1,1736 @@
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 1293 rows; 4358 cols; 44710 nonzeros; 4358 integer variables (4358 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e+00, 1e+00]
+Presolving model
+1293 rows, 4358 cols, 44710 nonzeros 0s
+1292 rows, 4358 cols, 44678 nonzeros 0s
+Presolve reductions: rows 1292(-1); columns 4358(-0); nonzeros 44678(-32) 
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   1292 rows
+   4358 cols (4358 binary, 0 integer, 0 implied int., 0 continuous, 0 domain fixed)
+   44678 nonzeros
+   Thread count 4 (of 8 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0     0.4s
+         0       0         0   0.00%   0               inf                  inf        0      0      2       420     0.4s
+         0       0         0   0.00%   0               inf                  inf        9      5     61     50461    26.3s
+
+Symmetry detection completed in 0.1s
+Found 20 generator(s)
+
+        17       0         3   0.04%   0               inf                  inf       12      5    126     79682    32.0s
+        37       0        14   0.19%   0               inf                  inf       21      5    331    113488    37.6s
+        48       0        19   0.24%   0               inf                  inf       26      5    376    153781    43.7s
+        65       0        28   0.24%   0               inf                  inf       34      5    399    185964    48.9s
+        75       0        33   0.29%   0               inf                  inf       39      5    428    219284    53.9s
+        88       0        40   0.38%   0               inf                  inf       45      5    475    251313    59.2s
+        98       0        45   0.39%   0               inf                  inf       50      5    489    285941    64.5s
+       107       8        47   1.17%   0               inf                  inf       52      6    503    310524    83.6s
+       126       8        56   1.73%   0               inf                  inf       61      6    584    345895    88.9s
+       150       8        68   1.93%   0               inf                  inf       72      6    624    381814    94.4s
+       182       8        84   2.34%   0               inf                  inf       88      6    691    415459    99.5s
+       208      15        94   3.30%   0               inf                  inf      108      7    741    504419   136.9s
+       222      15       101   3.69%   0               inf                  inf      115      7    778    539067   142.4s
+       237      15       108   5.84%   0               inf                  inf      122      7    811    572517   148.3s
+       255      15       117   6.04%   0               inf                  inf      131      7    853    606379   153.8s
+       270      15       125   6.38%   0               inf                  inf      139      7    880    635436   158.9s
+       281      15       130   6.52%   0               inf                  inf      144      7    894    668220   164.8s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+       301      15       140   6.79%   0               inf                  inf      154      7    938    702009   170.4s
+       311      19       142   6.89%   0               inf                  inf      296      8    957    770523   200.9s
+       344      19       159   7.18%   0               inf                  inf      312      8   1144    807153   205.9s
+       377      19       175   7.35%   0               inf                  inf      328      8   1217    843270   211.0s
+       407      26       189   8.94%   0               inf                  inf      342      8   1256    931951   227.2s
+       417      26       193  10.06%   0               inf                  inf      346      8   1279    995662   238.6s
+       425      26       197  10.28%   0               inf                  inf      350      8   1300     1025k   244.1s
+       427      26       198  10.29%   0               inf                  inf      351      8   1304     1056k   249.5s
+       430      26       199  10.29%   0               inf                  inf      352      8   1308     1096k   256.8s
+       435      26       202  10.30%   0               inf                  inf      355      8   1318     1141k   264.6s
+       441      26       205  10.30%   0               inf                  inf      358      8   1324     1175k   270.8s
+       449      26       209  10.38%   0               inf                  inf      362      8   1343     1232k   280.3s
+       456      26       213  10.49%   0               inf                  inf      366      8   1358     1280k   289.2s
+       463      26       216  10.50%   0               inf                  inf      369      8   1364     1348k   301.9s
+       465      26       217  10.50%   0               inf                  inf      370      8   1368     1388k   309.2s
+       467      26       218  10.50%   0               inf                  inf      371      8   1378     1432k   316.7s
+       471      26       220  11.28%   0               inf                  inf      373      8   1385     1471k   324.6s
+       479      26       224  13.62%   0               inf                  inf      376      8   1399     1530k   338.4s
+       488      25       226  19.97%   0               inf                  inf      349      8   1414     1584k   347.5s
+       517      25       241  20.26%   0               inf                  inf      363      8   1548     1620k   352.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+       547      25       255  20.36%   0               inf                  inf      376      8   1604     1654k   357.7s
+       575      25       269  20.54%   0               inf                  inf      390      8   1673     1691k   362.7s
+       591      30       274  20.80%   0               inf                  inf      358      8   1702     1722k   368.3s
+       604      30       281  21.14%   0               inf                  inf      365      8   1768     1758k   373.9s
+       624      30       290  21.19%   0               inf                  inf      374      8   1827     1795k   379.5s
+       639      30       297  21.24%   0               inf                  inf      381      8   1852     1831k   385.0s
+       648      30       303  21.29%   0               inf                  inf      387      8   1867     1867k   390.3s
+       664      30       310  21.33%   0               inf                  inf      392      8   1890     1898k   395.5s
+       683      37       318  21.40%   0               inf                  inf      400      8   1936     1928k   400.9s
+       689      37       320  22.57%   0               inf                  inf      358      8   1948     1941k   406.1s
+       698      37       324  23.84%   0               inf                  inf      362      8   1962     1971k   411.2s
+       706      37       328  24.28%   0               inf                  inf      366      8   1982     2010k   417.3s
+       715      37       332  25.21%   0               inf                  inf      370      8   2000     2090k   431.1s
+       719      37       334  25.70%   0               inf                  inf      372      8   2010     2123k   436.5s
+       723      37       336  26.09%   0               inf                  inf      374      8   2017     2156k   442.4s
+       724      37       337  27.65%   0               inf                  inf      375      8   2018     2182k   449.2s
+       741      36       344  27.85%   0               inf                  inf      448      3   2067     2216k   454.7s
+       763      36       355  27.99%   0               inf                  inf      459      3   2124     2257k   460.6s
+       776      36       362  28.03%   0               inf                  inf      466      3   2163     2296k   466.4s
+       790      36       368  28.07%   0               inf                  inf      472      3   2183     2332k   471.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+       810      36       378  28.20%   0               inf                  inf      481      3   2226     2370k   477.3s
+       824      40       385  28.23%   0               inf                  inf      488      3   2249     2405k   482.4s
+       849      41       394  28.40%   0               inf                  inf      473      4   2330     2437k   487.8s
+       881      45       408  28.49%   0               inf                  inf      487      4   2390     2475k   493.2s
+       912      46       422  28.53%   0               inf                  inf      501      4   2459     2512k   498.4s
+       934      51       432  28.71%   0               inf                  inf      567      6   2518     2548k   503.8s
+       952      51       441  28.90%   0               inf                  inf      576      6   2571     2581k   508.9s
+       960      51       446  28.93%   0               inf                  inf      581      6   2582     2615k   514.2s
+       999      49       466  28.94%   0               inf                  inf      741      4   2634     2651k   519.3s
+      1013      48       473  35.19%   0               inf                  inf      755      5   2661     2682k   524.9s
+      1030      47       479  41.49%   0               inf                  inf      750      5   2694     2710k   530.8s
+      1053      47       491  41.71%   0               inf                  inf      762      5   2763     2744k   536.0s
+      1073      47       501  41.88%   0               inf                  inf      772      5   2799     2779k   541.5s
+      1087      47       507  42.06%   0               inf                  inf      778      5   2822     2814k   546.8s
+      1097      47       512  42.13%   0               inf                  inf      783      5   2841     2847k   552.0s
+      1111      47       517  42.18%   0               inf                  inf      788      5   2855     2885k   557.8s
+      1118      47       521  42.21%   0               inf                  inf      792      5   2862     2920k   563.1s
+      1124      47       524  42.22%   0               inf                  inf      795      5   2866     2975k   572.4s
+      1143      45       535  42.23%   0               inf                  inf     1121      8   2892     3008k   577.4s
+      1170      44       545  42.35%   0               inf                  inf     1125      5   2960     3038k   582.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      1201      44       561  42.37%   0               inf                  inf     1140      5   3058     3075k   587.6s
+      1229      44       575  42.45%   0               inf                  inf     1153      5   3101     3110k   592.7s
+      1267      50       594  42.48%   0               inf                  inf     1320      9   3174     3145k   597.7s
+      1293      48       606  42.58%   0               inf                  inf     1339     11   3206     3179k   602.8s
+      1318      48       619  42.97%   0               inf                  inf     1352     11   3294     3215k   608.0s
+      1342      48       631  43.06%   0               inf                  inf     1364     11   3341     3251k   613.4s
+      1364      48       642  43.16%   0               inf                  inf     1375     11   3394     3286k   618.5s
+      1389      53       654  43.22%   0               inf                  inf     1387     11   3442     3323k   624.0s
+      1410      51       662  43.37%   0               inf                  inf     1353      2   3517     3349k   629.1s
+      1440      51       677  43.46%   0               inf                  inf     1367      2   3581     3387k   634.2s
+      1475      51       695  43.55%   0               inf                  inf     1385      2   3657     3424k   639.4s
+      1504      55       710  43.57%   0               inf                  inf     1632      6   3702     3460k   644.5s
+      1527      52       723  43.60%   0               inf                  inf     1853      9   3752     3489k   649.8s
+      1534      52       724  43.69%   0               inf                  inf     1809      8   3766     3502k   677.4s
+      1554      52       734  44.21%   0               inf                  inf     1819      8   3865     3540k   683.4s
+      1562      52       739  44.28%   0               inf                  inf     1824      8   3890     3573k   688.5s
+      1571      52       744  44.38%   0               inf                  inf     1829      8   3901     3607k   694.0s
+      1594      52       754  44.52%   0               inf                  inf     1839      8   3957     3642k   699.1s
+      1609      52       762  44.57%   0               inf                  inf     1846      8   3995     3678k   704.2s
+      1624      52       770  44.76%   0               inf                  inf     1854      8   4024     3722k   710.8s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      1639      54       778  44.77%   0               inf                  inf     1876     12   4044     3813k   716.2s
+      1657      52       786  44.98%   0               inf                  inf     1779     13   4088     3840k   721.2s
+      1692      53       802  45.02%   0               inf                  inf     1793     13   4157     3875k   726.4s
+      1727      53       818  45.09%   0               inf                  inf     1808     13   4223     3910k   731.5s
+      1772      57       841  45.12%   0               inf                  inf     2035      5   4271     3945k   736.5s
+      1801      58       855  45.13%   0               inf                  inf     2282      7   4310     3979k   741.6s
+      1826      54       869  45.14%   0               inf                  inf     2494     10   4336     4015k   746.9s
+      1866      52       887  45.16%   0               inf                  inf     2605      5   4386     4056k   753.9s
+      1890      52       898  45.20%   0               inf                  inf     2616      5   4507     4090k   759.2s
+      1912      52       909  45.22%   0               inf                  inf     2626      5   4557     4126k   764.4s
+      1934      53       920  45.23%   0               inf                  inf     2637      5   4601     4160k   769.5s
+      1952      54       929  45.23%   0               inf                  inf     2646      5   4629     4192k   774.6s
+      1969      58       937  45.23%   0               inf                  inf     2728      8   4655     4218k   780.0s
+      1998      57       952  45.24%   0               inf                  inf     2876      7   4707     4251k   785.1s
+      2021      54       964  45.30%   0               inf                  inf     2701      8   4752     4284k   790.6s
+      2033      54       970  45.37%   0               inf                  inf     2707      8   4777     4315k   795.6s
+      2048      54       976  45.41%   0               inf                  inf     2713      8   4797     4351k   801.1s
+      2060      54       982  45.43%   0               inf                  inf     2719      8   4811     4388k   806.9s
+      2073      54       989  45.44%   0               inf                  inf     2726      8   4831     4420k   812.1s
+      2082      53       993  45.45%   0               inf                  inf     2850      9   4844     4444k   829.3s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      2117      54      1011  45.45%   0               inf                  inf     2872     10   4896     4524k   834.5s
+      2144      55      1022  45.60%   0               inf                  inf     2760     10   4931     4556k   839.5s
+      2194      55      1046  45.64%   0               inf                  inf     2780     10   5039     4593k   844.6s
+      2242      60      1070  45.64%   0               inf                  inf     2794      4   5126     4631k   849.7s
+      2284      59      1092  45.64%   0               inf                  inf     2909      5   5182     4669k   854.9s
+      2319      55      1110  45.64%   0               inf                  inf     3184      6   5249     4704k   859.9s
+      2365      55      1133  45.64%   0               inf                  inf     3206      6   5326     4742k   865.0s
+      2414      56      1158  45.64%   0               inf                  inf     3088      7   5394     4782k   870.3s
+      2453      55      1178  45.65%   0               inf                  inf     3216      8   5440     4816k   875.4s
+      2481      54      1189  45.66%   0               inf                  inf     3198      9   5478     4857k   882.1s
+      2500      54      1198  45.68%   0               inf                  inf     3207      9   5559     4893k   887.3s
+      2524      54      1210  45.71%   0               inf                  inf     3215      9   5652     4930k   893.0s
+      2545      54      1221  45.72%   0               inf                  inf     3225      9   5700     4966k   898.5s
+      2565      54      1230  45.76%   0               inf                  inf     3232      9   5768     5000k   903.8s
+      2580      60      1238  45.77%   0               inf                  inf     3243      3   5816     5040k   909.6s
+      2590      58      1243  45.80%   0               inf                  inf     3181      4   5839     5079k   915.1s
+      2609      58      1252  45.80%   0               inf                  inf     3190      4   5895     5117k   920.3s
+      2630      58      1263  45.80%   0               inf                  inf     3198      4   5953     5156k   925.7s
+      2648      58      1272  45.81%   0               inf                  inf     3207      4   5983     5194k   931.1s
+      2668      58      1282  45.81%   0               inf                  inf     3215      4   6020     5229k   936.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      2687      61      1291  45.81%   0               inf                  inf     3235      5   6057     5259k   950.9s
+      2706      60      1300  45.81%   0               inf                  inf     3112      6   6085     5328k   956.2s
+      2721      59      1307  45.82%   0               inf                  inf     2937      7   6101     5360k   961.3s
+      2736      58      1314  45.83%   0               inf                  inf     2656      5   6117     5398k   967.0s
+      2752      58      1322  45.84%   0               inf                  inf     2664      5   6156     5436k   972.2s
+      2771      58      1331  45.87%   0               inf                  inf     2673      5   6175     5476k   977.8s
+      2793      58      1342  45.88%   0               inf                  inf     2684      5   6222     5512k   982.8s
+      2811      58      1352  45.89%   0               inf                  inf     2694      5   6247     5552k   988.6s
+      2831      64      1360  45.90%   0               inf                  inf     2702      5   6293     5587k   993.7s
+      2846      61      1366  45.95%   0               inf                  inf     2339      9   6327     5615k  1000.4s
+      2874      63      1380  46.09%   0               inf                  inf     2353      9   6410     5653k  1005.7s
+      2900      64      1392  46.17%   0               inf                  inf     2365      9   6471     5691k  1011.2s
+      2928      64      1406  46.19%   0               inf                  inf     2378      9   6517     5726k  1016.3s
+      2943      67      1414  46.22%   0               inf                  inf     2437      6   6554     5758k  1048.3s
+      2962      67      1424  46.23%   0               inf                  inf     2447      6   6589     5794k  1053.4s
+      2975      65      1431  46.23%   0               inf                  inf     2326      8   6615     5916k  1058.6s
+      2991      65      1439  46.23%   0               inf                  inf     2334      8   6641     5954k  1063.9s
+      3016      65      1451  46.23%   0               inf                  inf     2346      8   6688     5991k  1069.0s
+      3041      65      1464  46.23%   0               inf                  inf     2359      8   6741     6026k  1074.3s
+      3064      66      1476  46.23%   0               inf                  inf     2371      8   6772     6061k  1079.3s
+
+Restarting search from the root node
+Model after restart has 1273 rows, 4250 cols (4250 bin., 0 int., 0 impl., 0 cont., 0 dom.fix.), and 42752 nonzeros
+
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      3064       0         0   0.00%   0               inf                  inf        8      0      0     6061k  1079.7s
+      3064       0         0   0.00%   0               inf                  inf        8      0      2     6061k  1079.7s
+      3064       0         0   0.00%   0               inf                  inf       15      5     62     6130k  1101.1s
+
+Symmetry detection completed in 0.1s
+Found 18 generator(s)
+
+      3089       0        10   1.56%   0               inf                  inf       25      5    185     6163k  1106.3s
+      3118       0        23   2.69%   0               inf                  inf       38      5    266     6201k  1111.7s
+      3141       0        36   2.73%   0               inf                  inf       51      5    307     6236k  1116.8s
+      3165       7        47   3.78%   0               inf                  inf       62      5    411     6270k  1121.8s
+      3192       7        57   4.17%   0               inf                  inf       72      6    515     6303k  1126.9s
+      3233       7        77   4.50%   0               inf                  inf       92      6    729     6341k  1132.3s
+      3273      14        94   4.74%   0               inf                  inf      197      8    830     6390k  1140.5s
+      3298      14       106   4.83%   0               inf                  inf      208      8    909     6426k  1145.9s
+      3315      14       115   5.03%   0               inf                  inf      217      8    962     6461k  1151.2s
+      3333      14       125   5.32%   0               inf                  inf      226      8   1035     6494k  1156.3s
+      3370      22       139   7.13%   0               inf                  inf      242      5   1146     6536k  1163.7s
+      3376      22       142   7.81%   0               inf                  inf      245      5   1170     6562k  1168.7s
+      3386      22       146   7.90%   0               inf                  inf      249      5   1186     6593k  1174.5s
+      3391      22       149   7.91%   0               inf                  inf      251      5   1203     6631k  1181.4s
+      3393      22       150   7.91%   0               inf                  inf      251      5   1205     6664k  1186.4s
+      3395      22       151   7.91%   0               inf                  inf      252      5   1207     6711k  1194.4s
+      3400      22       154   8.69%   0               inf                  inf      255      5   1215     6745k  1199.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      3403      22       155   8.89%   0               inf                  inf      256      5   1223     6776k  1204.8s
+      3407      22       157   9.18%   0               inf                  inf      258      5   1232     6832k  1214.6s
+      3409      22       158   9.23%   0               inf                  inf      258      5   1236     6864k  1220.3s
+      3411      22       159   9.25%   0               inf                  inf      259      5   1240     6908k  1228.5s
+      3413      22       160   9.28%   0               inf                  inf      260      5   1246     6955k  1237.0s
+      3425      22       165   9.32%   0               inf                  inf      265      5   1274     6985k  1242.1s
+      3432      22       168   9.36%   0               inf                  inf      268      5   1286     7017k  1247.3s
+      3439      22       172   9.37%   0               inf                  inf      272      5   1302     7075k  1256.7s
+      3441      22       173   9.37%   0               inf                  inf      273      5   1305     7112k  1263.1s
+      3447      22       176   9.41%   0               inf                  inf      276      5   1315     7150k  1269.0s
+      3454      22       180   9.45%   0               inf                  inf      280      5   1328     7182k  1274.1s
+      3460      22       183   9.47%   0               inf                  inf      283      5   1335     7225k  1281.5s
+      3466      24       186   9.47%   0               inf                  inf      286      5   1340     7264k  1288.1s
+      3482      23       191  10.04%   0               inf                  inf      297      6   1406     7294k  1293.4s
+      3502      23       202  12.40%   0               inf                  inf      308      6   1485     7328k  1298.5s
+      3523      23       211  12.79%   0               inf                  inf      317      6   1546     7363k  1303.7s
+      3555      23       227  12.91%   0               inf                  inf      333      6   1638     7402k  1309.1s
+      3569      28       234  14.50%   0               inf                  inf      303      7   1654     7424k  1318.8s
+      3579      28       239  16.84%   0               inf                  inf      308      7   1660     7448k  1324.4s
+      3609      27       255  19.19%   0               inf                  inf      357      8   1694     7479k  1329.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      3654      26       278  19.19%   0               inf                  inf      553      9   1753     7517k  1334.8s
+      3693      25       298  19.19%   0               inf                  inf      538      9   1791     7553k  1339.9s
+      3719      23       309  19.38%   0               inf                  inf      579      5   1854     7587k  1345.0s
+      3752      23       326  19.60%   0               inf                  inf      596      5   1943     7625k  1350.1s
+      3780      23       340  19.89%   0               inf                  inf      609      5   2036     7662k  1355.4s
+      3808      29       354  19.95%   0               inf                  inf      623      5   2081     7701k  1360.8s
+      3840      27       370  20.07%   0               inf                  inf      642      6   2152     7738k  1366.1s
+      3872      27       386  20.07%   0               inf                  inf      657      6   2186     7775k  1371.2s
+      3909      27       405  20.09%   0               inf                  inf      675      6   2228     7811k  1376.3s
+      3935      27       415  20.36%   0               inf                  inf      671      6   2325     7840k  1381.3s
+      3958      27       427  20.46%   0               inf                  inf      683      6   2402     7877k  1386.5s
+      3977      27       436  20.48%   0               inf                  inf      692      6   2419     7913k  1391.6s
+      4000      27       447  20.62%   0               inf                  inf      703      6   2482     7949k  1396.9s
+      4019      32       457  20.66%   0               inf                  inf      738      7   2506     7982k  1402.1s
+      4046      31       471  21.06%   0               inf                  inf     1001      3   2564     8018k  1407.1s
+      4062      30       478  21.52%   0               inf                  inf     1154      4   2590     8052k  1412.3s
+      4102      30       498  21.57%   0               inf                  inf     1174      4   2641     8092k  1417.7s
+      4138      30       516  21.64%   0               inf                  inf     1192      4   2705     8130k  1423.0s
+      4164      31       529  21.70%   0               inf                  inf     1263      5   2759     8167k  1428.4s
+      4181      29       537  21.79%   0               inf                  inf     1273      6   2805     8202k  1433.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      4201      29       548  21.84%   0               inf                  inf     1284      6   2851     8236k  1438.7s
+      4216      29       555  21.87%   0               inf                  inf     1291      6   2893     8266k  1443.7s
+      4247      29       570  21.89%   0               inf                  inf     1302      6   2953     8302k  1449.0s
+      4267      29       580  21.91%   0               inf                  inf     1312      6   2997     8338k  1454.1s
+      4291      29       592  21.93%   0               inf                  inf     1500      7   3038     8372k  1459.6s
+      4312      29       603  21.94%   0               inf                  inf     1511      7   3076     8407k  1464.7s
+      4331      29       613  21.95%   0               inf                  inf     1521      7   3110     8441k  1469.7s
+      4343      28       617  22.44%   0               inf                  inf     1496      2   3137     8470k  1474.8s
+      4352      28       622  22.72%   0               inf                  inf     1501      2   3171     8507k  1480.2s
+      4364      28       628  22.73%   0               inf                  inf     1507      2   3183     8548k  1486.4s
+      4373      28       633  23.32%   0               inf                  inf     1512      2   3202     8585k  1492.2s
+      4386      28       639  23.48%   0               inf                  inf     1518      2   3229     8622k  1497.9s
+      4399      28       646  23.51%   0               inf                  inf     1525      2   3245     8668k  1504.9s
+      4406      28       650  23.51%   0               inf                  inf     1529      2   3262     8712k  1511.5s
+      4416      28       655  24.98%   0               inf                  inf     1534      2   3289     8747k  1517.0s
+      4427      28       660  25.05%   0               inf                  inf     1539      2   3307     8784k  1522.8s
+      4435      32       664  25.07%   0               inf                  inf     1543      2   3323     8823k  1528.9s
+      4462      30       677  25.26%   0               inf                  inf     1558      4   3361     8859k  1534.1s
+      4500      30       696  25.45%   0               inf                  inf     1577      4   3429     8898k  1539.5s
+      4521      30       707  25.56%   0               inf                  inf     1588      4   3470     8934k  1544.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      4554      30       723  25.73%   0               inf                  inf     1604      4   3525     8971k  1549.6s
+      4586      30       739  25.81%   0               inf                  inf     1597      6   3589     9007k  1554.7s
+      4626      30       759  25.85%   0               inf                  inf     1616      6   3663     9045k  1559.8s
+      4663      30       778  25.85%   0               inf                  inf     1635      6   3716     9083k  1564.9s
+      4690      31       791  25.90%   0               inf                  inf     1600      6   3776     9119k  1569.9s
+      4715      30       803  26.26%   0               inf                  inf     1622      4   3849     9153k  1575.1s
+      4742      30       816  26.57%   0               inf                  inf     1635      4   3898     9189k  1580.1s
+      4764      30       827  26.88%   0               inf                  inf     1646      4   3932     9224k  1585.3s
+      4788      30       838  27.23%   0               inf                  inf     1657      4   3971     9265k  1590.7s
+      4816      29       853  27.50%   0               inf                  inf     1905      5   4013     9301k  1595.9s
+      4840      28       865  27.53%   0               inf                  inf     1902      7   4082     9337k  1601.0s
+      4880      27       885  27.56%   0               inf                  inf     1867      8   4137     9369k  1606.1s
+      4927      27       908  27.58%   0               inf                  inf     1889      8   4197     9408k  1611.4s
+      4955      26       920  27.81%   0               inf                  inf     1800      9   4255     9440k  1616.9s
+      4976      26       931  28.07%   0               inf                  inf     1810      9   4357     9482k  1622.9s
+      4990      26       938  28.33%   0               inf                  inf     1817      9   4408     9514k  1628.1s
+      5024      26       955  28.36%   0               inf                  inf     1830      9   4539     9552k  1633.6s
+      5042      28       964  28.76%   0               inf                  inf     1838      9   4581     9584k  1638.9s
+      5066      28       975  28.88%   0               inf                  inf     1883      4   4654     9626k  1644.3s
+      5088      28       986  28.97%   0               inf                  inf     1894      4   4706     9665k  1649.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      5118      28      1001  29.02%   0               inf                  inf     1908      4   4772     9702k  1654.9s
+      5149      30      1017  29.04%   0               inf                  inf     2011      5   4818     9738k  1659.9s
+      5187      29      1035  29.07%   0               inf                  inf     2006      6   4900     9775k  1665.0s
+      5225      29      1054  29.08%   0               inf                  inf     2023      6   4946     9812k  1670.1s
+      5268      30      1075  29.09%   0               inf                  inf     1973      8   5016     9848k  1675.3s
+      5305      30      1094  29.10%   0               inf                  inf     1988      8   5069     9887k  1680.6s
+      5348      29      1116  29.10%   0               inf                  inf     2104      4   5132     9926k  1686.0s
+      5373      27      1128  29.18%   0               inf                  inf     2326      6   5172     9961k  1691.1s
+      5405      27      1144  29.27%   0               inf                  inf     2338      6   5245     9996k  1696.1s
+      5428      27      1156  29.29%   0               inf                  inf     2350      6   5281    10037k  1701.6s
+      5452      27      1167  29.33%   0               inf                  inf     2361      6   5343    10076k  1706.9s
+      5470      30      1176  30.90%   0               inf                  inf     2540      7   5401    10128k  1715.2s
+      5477      30      1179  31.59%   0               inf                  inf     2543      7   5413    10164k  1721.4s
+      5481      30      1181  31.66%   0               inf                  inf     2545      7   5419    10209k  1728.8s
+      5490      30      1185  31.68%   0               inf                  inf     2549      7   5429    10282k  1740.7s
+      5492      30      1186  31.68%   0               inf                  inf     2550      7   5433    10321k  1747.0s
+      5494      30      1187  31.68%   0               inf                  inf     2551      7   5437    10368k  1754.4s
+      5498      30      1189  31.68%   0               inf                  inf     2553      7   5440    10439k  1765.6s
+      5502      30      1191  31.68%   0               inf                  inf     2554      7   5446    10490k  1773.9s
+      5504      30      1192  31.68%   0               inf                  inf     2555      7   5450    10536k  1781.2s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      5505      30      1193  31.68%   0               inf                  inf     2556      7   5452    10568k  1786.4s
+      5506      30      1194  31.68%   0               inf                  inf     2557      7   5453    10600k  1791.5s
+      5515      30      1198  32.05%   0               inf                  inf     2560      7   5471    10638k  1797.9s
+      5521      30      1201  32.07%   0               inf                  inf     2563      7   5477    10669k  1803.0s
+      5524      30      1203  32.27%   0               inf                  inf     2565      7   5482    10717k  1810.6s
+      5531      30      1207  32.46%   0               inf                  inf     2569      7   5489    10766k  1819.5s
+      5539      30      1210  33.15%   0               inf                  inf     2572      7   5502    10805k  1825.8s
+      5543      30      1211  33.16%   0               inf                  inf     2573      7   5508    10846k  1832.1s
+      5549      30      1214  33.44%   0               inf                  inf     2576      7   5528    10879k  1837.4s
+      5556      30      1217  33.73%   0               inf                  inf     2579      7   5543    10914k  1843.2s
+      5566      30      1221  33.88%   0               inf                  inf     2583      7   5559    10957k  1850.1s
+      5568      31      1222  33.93%   0               inf                  inf     2584      7   5563    10983k  1855.3s
+      5592      30      1234  33.98%   0               inf                  inf     2692      3   5606    11022k  1860.4s
+      5618      30      1247  33.98%   0               inf                  inf     2704      3   5650    11054k  1865.4s
+      5647      29      1260  34.04%   0               inf                  inf     2513      4   5714    11089k  1870.8s
+      5677      29      1275  34.08%   0               inf                  inf     2528      4   5781    11125k  1876.0s
+      5704      29      1287  34.10%   0               inf                  inf     2540      4   5830    11160k  1881.2s
+      5734      30      1302  34.13%   0               inf                  inf     2439      6   5890    11198k  1886.9s
+      5770      30      1320  34.16%   0               inf                  inf     2457      6   5958    11237k  1892.1s
+      5804      30      1337  34.17%   0               inf                  inf     2474      6   6015    11276k  1897.6s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      5828      30      1350  34.20%   0               inf                  inf     2487      6   6060    11316k  1903.0s
+      5849      30      1360  34.23%   0               inf                  inf     2400      7   6102    11350k  1908.8s
+      5867      29      1369  34.27%   0               inf                  inf     2363      6   6137    11383k  1914.0s
+      5903      29      1387  34.27%   0               inf                  inf     2381      6   6206    11422k  1919.0s
+      5937      29      1404  34.28%   0               inf                  inf     2398      6   6260    11459k  1924.1s
+      5966      31      1419  34.30%   0               inf                  inf     2291      7   6311    11496k  1929.4s
+      5986      30      1427  34.39%   0               inf                  inf     2424      8   6335    11527k  1935.3s
+      6007      30      1438  34.88%   0               inf                  inf     2435      8   6414    11564k  1940.6s
+      6033      30      1451  34.98%   0               inf                  inf     2448      8   6454    11602k  1945.9s
+      6061      31      1465  35.08%   0               inf                  inf     2462      8   6502    11637k  1951.2s
+      6086      35      1477  35.27%   0               inf                  inf     2546     10   6554    11671k  1956.3s
+      6117      33      1492  35.28%   0               inf                  inf     2786      6   6595    11701k  1961.9s
+      6142      33      1504  35.30%   0               inf                  inf     2798      6   6648    11737k  1967.1s
+      6180      33      1521  35.30%   0               inf                  inf     2813      6   6729    11774k  1972.2s
+      6217      35      1540  35.31%   0               inf                  inf     3188      9   6797    11809k  1977.3s
+      6249      34      1556  35.31%   0               inf                  inf     3186     10   6846    11845k  1982.4s
+      6284      33      1573  35.31%   0               inf                  inf     3168     11   6899    11880k  1987.6s
+      6306      33      1584  35.32%   0               inf                  inf     3179     11   6945    11913k  1992.7s
+      6326      33      1594  35.32%   0               inf                  inf     3187     11   6967    11947k  1998.0s
+      6354      33      1608  35.32%   0               inf                  inf     3201     11   7022    11984k  2003.3s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      6378      32      1620  35.33%   0               inf                  inf     2902      7   7061    12021k  2016.1s
+      6391      32      1626  35.36%   0               inf                  inf     2908      7   7087    12057k  2021.2s
+      6408      32      1635  35.37%   0               inf                  inf     2917      7   7117    12093k  2026.4s
+      6422      32      1642  35.37%   0               inf                  inf     2924      7   7139    12131k  2032.0s
+      6437      32      1650  35.37%   0               inf                  inf     2932      7   7158    12167k  2037.1s
+      6468      32      1664  35.38%   0               inf                  inf     2945      7   7243    12203k  2042.2s
+      6480      34      1670  37.73%   0               inf                  inf     2930      8   7271    12271k  2049.4s
+      6489      34      1674  38.51%   0               inf                  inf     2934      8   7285    12323k  2058.1s
+      6495      34      1676  40.26%   0               inf                  inf     2936      8   7295    12402k  2071.4s
+      6498      34      1677  40.31%   0               inf                  inf     2936      8   7301    12468k  2082.1s
+      6500      34      1679  40.85%   0               inf                  inf     2938      8   7306    12498k  2087.1s
+      6505      34      1681  41.34%   0               inf                  inf     2940      8   7312    12537k  2093.7s
+      6510      33      1684  41.63%   0               inf                  inf     2939      9   7320    12552k  2101.7s
+      6514      32      1686  41.64%   0               inf                  inf     2915     10   7331    12570k  2108.4s
+      6530      31      1693  41.69%   0               inf                  inf     2920     11   7368    12608k  2117.3s
+      6555      31      1706  41.82%   0               inf                  inf     2933     11   7428    12643k  2122.4s
+      6587      31      1721  41.89%   0               inf                  inf     2948     11   7496    12680k  2127.6s
+      6607      31      1731  41.91%   0               inf                  inf     2958     11   7543    12719k  2133.0s
+      6629      34      1742  41.96%   0               inf                  inf     3030      2   7588    12764k  2150.4s
+      6660      32      1757  41.99%   0               inf                  inf     3040      4   7652    12840k  2155.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      6700      32      1777  42.00%   0               inf                  inf     3060      4   7725    12878k  2160.5s
+      6733      32      1794  42.01%   0               inf                  inf     3076      4   7774    12916k  2165.6s
+      6764      32      1810  42.01%   0               inf                  inf     2699      6   7807    12951k  2170.6s
+      6787      31      1822  42.11%   0               inf                  inf     2564      6   7858    12986k  2175.6s
+      6815      31      1836  42.16%   0               inf                  inf     2578      6   7905    13023k  2180.6s
+      6850      31      1853  42.19%   0               inf                  inf     2595      6   7955    13061k  2185.9s
+      6880      33      1866  42.40%   0               inf                  inf     2548      7   8030    13095k  2191.2s
+      6902      33      1877  42.57%   0               inf                  inf     2559      7   8096    13133k  2196.6s
+      6934      33      1893  42.59%   0               inf                  inf     2572      7   8168    13167k  2201.7s
+      6964      33      1908  42.74%   0               inf                  inf     2587      7   8220    13205k  2207.2s
+      6972      38      1911  42.77%   0               inf                  inf     2462      8   8236    13214k  2230.6s
+      7026      37      1939  42.77%   0               inf                  inf     2471      9   8309    13316k  2235.6s
+      7062      33      1958  42.79%   0               inf                  inf     2572      8   8353    13350k  2240.8s
+      7099      33      1977  42.79%   0               inf                  inf     2591      8   8407    13386k  2245.9s
+      7120      32      1986  43.67%   0               inf                  inf     2477      9   8459    13425k  2251.8s
+      7144      32      1998  44.04%   0               inf                  inf     2489      9   8526    13460k  2257.1s
+      7161      32      2007  44.28%   0               inf                  inf     2498      9   8570    13492k  2262.1s
+      7185      32      2019  44.94%   0               inf                  inf     2509      9   8645    13527k  2267.4s
+      7200      32      2027  45.43%   0               inf                  inf     2517      9   8681    13562k  2272.6s
+      7220      33      2035  45.71%   0               inf                  inf     2506     10   8734    13595k  2277.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      7249      33      2050  45.92%   0               inf                  inf     2521     10   8819    13633k  2282.8s
+      7291      33      2071  46.11%   0               inf                  inf     2541     10   8900    13671k  2288.0s
+      7325      37      2088  46.21%   0               inf                  inf     2735     11   8959    13706k  2293.3s
+      7354      36      2102  46.37%   0               inf                  inf     2782      3   9007    13738k  2298.4s
+      7380      36      2114  46.47%   0               inf                  inf     2794      3   9046    13776k  2304.0s
+      7394      35      2122  46.61%   0               inf                  inf     2959      4   9073    13809k  2309.7s
+      7427      35      2138  46.63%   0               inf                  inf     2975      4   9144    13846k  2314.8s
+      7462      35      2156  46.64%   0               inf                  inf     2993      4   9213    13884k  2319.9s
+      7484      35      2167  46.65%   0               inf                  inf     3004      4   9236    13922k  2325.3s
+      7493      35      2172  46.65%   0               inf                  inf     3033      5   9246    13943k  2338.7s
+      7507      34      2178  46.89%   0               inf                  inf     2856      8   9280    13985k  2344.0s
+      7518      34      2184  46.99%   0               inf                  inf     2862      8   9314    14022k  2349.9s
+      7533      34      2189  47.25%   0               inf                  inf     2867      8   9331    14053k  2355.2s
+      7543      34      2195  47.31%   0               inf                  inf     2873      8   9364    14090k  2360.9s
+      7551      34      2199  47.33%   0               inf                  inf     2877      8   9379    14128k  2367.1s
+      7557      34      2202  47.36%   0               inf                  inf     2880      8   9394    14184k  2375.9s
+      7560      34      2203  47.36%   0               inf                  inf     2881      8   9399    14222k  2381.9s
+      7565      34      2206  47.40%   0               inf                  inf     2884      8   9411    14251k  2386.9s
+      7581      34      2213  47.49%   0               inf                  inf     2891      8   9451    14283k  2392.3s
+      7598      38      2222  47.55%   0               inf                  inf     2900      8   9522    14322k  2398.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      7600      37      2223  47.57%   0               inf                  inf     2912      9   9532    14326k  2405.2s
+      7606      36      2226  47.59%   0               inf                  inf     2597      6   9551    14354k  2415.5s
+      7615      36      2231  47.62%   0               inf                  inf     2602      6   9574    14394k  2421.1s
+      7623      35      2234  47.65%   0               inf                  inf     2119      7   9590    14451k  2426.3s
+      7642      35      2243  47.67%   0               inf                  inf     2128      7   9636    14488k  2431.6s
+      7665      36      2255  47.72%   0               inf                  inf     2138      7   9678    14533k  2438.0s
+      7682      36      2261  47.78%   0               inf                  inf     2144      7   9721    14566k  2443.1s
+      7717      36      2279  47.78%   0               inf                  inf     2162      7   9833    14603k  2448.4s
+      7726      39      2282  47.88%   0               inf                  inf     2387      8   9850    14619k  2470.3s
+      7762      39      2299  47.96%   0               inf                  inf     2403      8   9936    14655k  2475.3s
+      7800      39      2319  47.98%   0               inf                  inf     2423      8   9996    14692k  2480.5s
+      7842      44      2340  48.26%   0               inf                  inf     2383      8   9653    14739k  2485.6s
+      7862      41      2351  48.27%   0               inf                  inf     2438     10   9681    14776k  2490.9s
+      7885      40      2363  48.27%   0               inf                  inf     2450     10   9713    14810k  2496.4s
+      7887      40      2364  48.32%   0               inf                  inf     2461     11   9724    14816k  2508.0s
+      7911      39      2375  48.38%   0               inf                  inf     2399      3   9758    14904k  2514.1s
+      7938      39      2389  48.42%   0               inf                  inf     2413      3   9854    14942k  2519.6s
+      7974      39      2406  48.44%   0               inf                  inf     2430      3   9971    14979k  2524.8s
+      8014      41      2425  48.44%   0               inf                  inf     2432      5   9341    15016k  2530.2s
+      8046      41      2442  48.45%   0               inf                  inf     2448      5   9388    15052k  2535.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      8078      40      2457  48.45%   0               inf                  inf     2453      7   9449    15086k  2540.6s
+      8119      40      2477  48.46%   0               inf                  inf     2471      7   9530    15128k  2546.7s
+      8149      42      2493  48.46%   0               inf                  inf     2487      7   9599    15163k  2552.1s
+      8169      42      2501  48.80%   0               inf                  inf     2526      9   9649    15199k  2557.2s
+      8203      42      2518  48.80%   0               inf                  inf     2542      9   9698    15237k  2562.5s
+      8235      42      2534  48.82%   0               inf                  inf     2558      9   9749    15274k  2567.6s
+      8257      43      2546  48.83%   0               inf                  inf     2410     10   9782    15309k  2572.7s
+      8290      42      2562  48.83%   0               inf                  inf     2412      5   9831    15345k  2577.9s
+      8318      42      2576  48.83%   0               inf                  inf     2426      5   9905    15384k  2583.1s
+      8342      42      2588  48.83%   0               inf                  inf     2438      5   9959    15420k  2588.3s
+      8370      42      2602  48.83%   0               inf                  inf     2451      5   9500    15456k  2593.6s
+      8401      42      2618  48.83%   0               inf                  inf     2417      7   9544    15493k  2598.8s
+      8427      42      2631  48.84%   0               inf                  inf     2429      7   9585    15529k  2603.8s
+      8446      40      2640  48.85%   0               inf                  inf     2402      9   9610    15571k  2610.1s
+      8466      40      2651  48.87%   0               inf                  inf     2413      9   9684    15606k  2615.2s
+      8488      40      2661  48.88%   0               inf                  inf     2423      9   9742    15641k  2620.3s
+      8520      40      2677  48.89%   0               inf                  inf     2439      9   9804    15679k  2625.7s
+      8549      43      2689  48.94%   0               inf                  inf     2820     11   9865    15720k  2636.3s
+      8577      43      2703  49.21%   0               inf                  inf     2834     11   9972    15757k  2641.4s
+      8608      43      2719  49.24%   0               inf                  inf     2849     11   9984    15794k  2646.6s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      8637      43      2733  49.26%   0               inf                  inf     2863     11   9941    15831k  2651.7s
+      8644      47      2737  49.26%   0               inf                  inf     2764     12   9956    15851k  2659.0s
+      8650      45      2741  49.26%   0               inf                  inf     2730      4   9972    15869k  2666.7s
+      8667      43      2749  49.27%   0               inf                  inf     2737      6   9998    15906k  2671.7s
+      8706      43      2768  49.27%   0               inf                  inf     2756      6   9781    15944k  2677.0s
+      8736      43      2783  49.28%   0               inf                  inf     2771      6   9837    15983k  2682.6s
+      8762      45      2797  49.28%   0               inf                  inf     2814      8   9906    16020k  2695.3s
+      8785      44      2808  49.28%   0               inf                  inf     2881     10   9953    16075k  2700.6s
+      8805      44      2818  49.29%   0               inf                  inf     2891     10   9993    16108k  2705.7s
+      8834      44      2833  49.29%   0               inf                  inf     2905     10   9902    16142k  2710.7s
+      8861      44      2847  49.29%   0               inf                  inf     2919     10   9935    16177k  2715.7s
+      8883      44      2858  49.29%   0               inf                  inf     2736      6   9958    16212k  2720.8s
+      8919      43      2873  49.37%   0               inf                  inf     2676      7   9797    16246k  2725.9s
+      8973      43      2900  49.46%   0               inf                  inf     2701      7   9926    16285k  2731.2s
+      9010      48      2918  49.60%   0               inf                  inf     2641      9   9985    16319k  2736.2s
+      9049      48      2937  49.65%   0               inf                  inf     2660      9   9983    16356k  2741.3s
+      9091      53      2957  49.70%   0               inf                  inf     2678      9   9848    16392k  2746.5s
+      9093      52      2958  49.70%   0               inf                  inf     2622     10   9854    16395k  2751.7s
+      9129      50      2976  49.72%   0               inf                  inf     2283      6   9904    16442k  2757.0s
+      9166      49      2992  49.73%   0               inf                  inf     2268      7   9969    16478k  2762.6s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      9191      49      3006  49.80%   0               inf                  inf     2282      7   9835    16519k  2768.5s
+      9208      49      3015  49.82%   0               inf                  inf     2291      7   9905    16554k  2773.9s
+      9222      49      3022  49.87%   0               inf                  inf     2298      7   9968    16588k  2778.9s
+      9243      49      3032  49.91%   0               inf                  inf     2308      7   9727    16622k  2784.3s
+      9259      54      3040  49.92%   0               inf                  inf     2316      7   9758    16656k  2789.6s
+      9263      52      3042  49.92%   0               inf                  inf     2417      8   9767    16667k  2797.6s
+      9268      51      3045  49.93%   0               inf                  inf     2617      9   9777    16694k  2811.1s
+      9303      51      3062  49.96%   0               inf                  inf     2633      9   9834    16730k  2816.2s
+      9333      50      3075  50.02%   0               inf                  inf     2809      2   9884    16798k  2823.2s
+      9361      50      3088  50.13%   0               inf                  inf     2820      2   9969    16834k  2828.8s
+      9379      50      3097  50.16%   0               inf                  inf     2829      2   9792    16869k  2834.0s
+      9400      50      3107  50.23%   0               inf                  inf     2838      2   9836    16903k  2839.2s
+      9428      54      3121  50.24%   0               inf                  inf     2850      2   9882    16938k  2844.6s
+      9451      53      3133  50.25%   0               inf                  inf     2917      4   9907    16975k  2849.9s
+      9471      53      3143  50.26%   0               inf                  inf     2927      4   9930    17017k  2855.6s
+      9488      52      3150  50.27%   0               inf                  inf     2937      6   9951    17051k  2860.7s
+      9503      52      3159  50.31%   0               inf                  inf     2946      6   9807    17085k  2866.1s
+      9521      52      3167  50.34%   0               inf                  inf     2954      6   9847    17118k  2871.2s
+      9534      52      3174  50.36%   0               inf                  inf     2961      6   9869    17153k  2876.7s
+      9550      52      3181  50.39%   0               inf                  inf     2967      6   9905    17190k  2882.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      9568      52      3190  50.41%   0               inf                  inf     2976      6   9943    17223k  2887.7s
+      9580      52      3196  50.42%   0               inf                  inf     2982      6   9968    17263k  2893.7s
+      9587      53      3199  50.43%   0               inf                  inf     2926      7   9986    17292k  2904.0s
+      9613      52      3210  50.51%   0               inf                  inf     2867      4   9801    17343k  2909.1s
+      9644      52      3225  50.56%   0               inf                  inf     2881      4   9886    17380k  2914.4s
+      9668      52      3237  50.60%   0               inf                  inf     2893      4   9929    17417k  2919.6s
+      9690      58      3248  50.60%   0               inf                  inf     3070      5   9981    17446k  2932.6s
+      9720      57      3264  50.61%   0               inf                  inf     3063      6   9884    17508k  2937.8s
+      9734      56      3270  50.62%   0               inf                  inf     2889      7   9906    17542k  2943.2s
+      9755      56      3279  50.63%   0               inf                  inf     2897      7   9935    17576k  2948.6s
+      9769      57      3286  50.63%   0               inf                  inf     2904      7   9947    17610k  2953.6s
+      9780      58      3292  50.63%   0               inf                  inf     2910      7   9959    17653k  2960.2s
+      9798      57      3300  51.31%   0               inf                  inf     2895      7   9999    17682k  2965.4s
+      9815      57      3308  51.36%   0               inf                  inf     2902      7   9560    17718k  2970.8s
+      9833      57      3317  51.40%   0               inf                  inf     2911      7   9586    17754k  2976.3s
+      9844      57      3323  51.41%   0               inf                  inf     2917      7   9607    17790k  2981.5s
+      9856      57      3329  51.75%   0               inf                  inf     2923      7   9630    17822k  2986.6s
+      9869      57      3336  51.80%   0               inf                  inf     2930      7   9644    17861k  2992.2s
+      9882      59      3342  51.99%   0               inf                  inf     2959      8   9669    17893k  3027.8s
+      9912      59      3356  52.04%   0               inf                  inf     2882      7   9717    18038k  3033.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      9950      59      3376  52.09%   0               inf                  inf     2577      8   9789    18073k  3038.4s
+      9980      56      3390  52.10%   0               inf                  inf     2595      6   9860    18108k  3044.0s
+     10004      56      3402  52.13%   0               inf                  inf     2605      6   9935    18142k  3049.3s
+     10017      56      3410  52.14%   0               inf                  inf     2613      6   9964    18177k  3054.7s
+     10056      56      3428  52.15%   0               inf                  inf     2630      6   9822    18214k  3060.0s
+     10074      58      3437  52.40%   0               inf                  inf     2496      8   9851    18247k  3065.3s
+     10092      58      3446  52.53%   0               inf                  inf     2505      8   9880    18284k  3070.9s
+     10104      58      3452  52.54%   0               inf                  inf     2511      8   9902    18323k  3076.7s
+     10115      58      3458  52.55%   0               inf                  inf     2516      8   9913    18358k  3082.0s
+     10130      58      3465  52.55%   0               inf                  inf     2523      8   9931    18390k  3087.1s
+     10152      58      3475  52.65%   0               inf                  inf     2532      8   9973    18426k  3092.4s
+     10177      60      3487  52.67%   0               inf                  inf     2476      9   9831    18466k  3098.0s
+     10200      59      3499  52.70%   0               inf                  inf     2577     10   9861    18501k  3103.0s
+     10217      58      3507  52.70%   0               inf                  inf     2667      6   9888    18528k  3108.1s
+     10233      58      3515  52.71%   0               inf                  inf     2675      6   9917    18562k  3113.2s
+     10250      58      3525  52.72%   0               inf                  inf     2685      6   9960    18597k  3118.2s
+     10264      57      3530  52.73%   0               inf                  inf     2548      8   9984    18618k  3123.5s
+     10293      57      3545  52.75%   0               inf                  inf     2563      8   9879    18654k  3128.5s
+     10318      57      3558  52.79%   0               inf                  inf     2575      8   9919    18691k  3133.8s
+     10341      57      3569  52.80%   0               inf                  inf     2586      8   9956    18728k  3138.9s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     10361      58      3579  52.81%   0               inf                  inf     2550      8   9994    18764k  3145.3s
+     10389      57      3593  52.82%   0               inf                  inf     2601      9   9806    18799k  3150.5s
+     10419      57      3608  52.83%   0               inf                  inf     2510     11   9841    18838k  3156.0s
+     10439      56      3617  53.03%   0               inf                  inf     2560      5   9913    18871k  3161.1s
+     10460      57      3627  53.21%   0               inf                  inf     2570      5   9963    18909k  3166.3s
+     10490      57      3641  53.36%   0               inf                  inf     2584      5   9871    18946k  3171.3s
+     10523      63      3656  53.48%   0               inf                  inf     2598      5   9937    18983k  3176.7s
+     10559      61      3674  53.49%   0               inf                  inf     2634      6   9981    19018k  3181.8s
+     10600      60      3695  53.49%   0               inf                  inf     2520      7   9937    19054k  3186.9s
+     10619      58      3704  53.52%   0               inf                  inf     2337      9   9992    19087k  3192.1s
+     10637      58      3712  53.53%   0               inf                  inf     2345      9   9829    19119k  3197.3s
+     10667      58      3727  53.53%   0               inf                  inf     2359      9   9921    19156k  3202.5s
+     10693      58      3740  53.53%   0               inf                  inf     2372      9   9985    19192k  3207.6s
+     10706      58      3747  53.54%   0               inf                  inf     2377      9   9793    19223k  3212.7s
+     10738      61      3760  53.55%   0               inf                  inf     2109      3   9891    19257k  3218.0s
+     10772      61      3777  53.55%   0               inf                  inf     2126      3   9956    19296k  3223.3s
+     10803      61      3794  53.55%   0               inf                  inf     2143      3  10000    19334k  3228.5s
+     10830      60      3807  53.55%   0               inf                  inf     1994      4   9845    19368k  3233.6s
+     10856      60      3819  53.55%   0               inf                  inf     2006      4   9898    19407k  3239.2s
+     10875      60      3829  53.55%   0               inf                  inf     2016      4   9931    19441k  3244.2s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     10897      60      3841  53.55%   0               inf                  inf     2028      4   9963    19476k  3249.2s
+     10908      61      3845  53.60%   0               inf                  inf     2023      4   9981    19496k  3259.4s
+     10946      61      3863  53.63%   0               inf                  inf     2041      4   9793    19533k  3264.7s
+     10985      61      3883  53.64%   0               inf                  inf     2060      4   9843    19567k  3269.7s
+     11008      64      3894  53.65%   0               inf                  inf     2058      5   9882    19604k  3284.8s
+     11050      62      3916  53.65%   0               inf                  inf     2152      6   9942    19678k  3290.2s
+     11099      62      3940  53.65%   0               inf                  inf     2297      7   9806    19719k  3295.4s
+     11151      64      3966  53.65%   0               inf                  inf     2528      2   9890    19757k  3300.6s
+     11193      62      3987  53.65%   0               inf                  inf     2428      4   9946    19794k  3305.7s
+     11245      62      4013  53.65%   0               inf                  inf     2453      4   9983    19831k  3310.7s
+     11289      63      4035  53.65%   0               inf                  inf     2481      6   9797    19869k  3315.9s
+     11333      62      4057  53.65%   0               inf                  inf     2436      8   9861    19906k  3320.9s
+     11377      62      4079  53.65%   0               inf                  inf     2456      8   9928    19943k  3325.9s
+     11419      61      4099  53.68%   0               inf                  inf     2424      9   9988    19984k  3332.1s
+     11449      63      4113  53.83%   0               inf                  inf     2435      9   9809    20019k  3337.3s
+     11477      64      4127  53.84%   0               inf                  inf     2449      9   9863    20054k  3342.4s
+     11503      64      4140  53.89%   0               inf                  inf     2461      9   9934    20090k  3347.6s
+     11530      66      4153  53.93%   0               inf                  inf     2344     10   9990    20118k  3352.7s
+     11556      62      4168  53.94%   0               inf                  inf     2302      7   9988    20151k  3357.9s
+     11593      62      4187  53.94%   0               inf                  inf     2317      7   9794    20189k  3363.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     11614      61      4197  53.95%   0               inf                  inf     2274      9   9818    20227k  3373.5s
+     11630      61      4205  53.95%   0               inf                  inf     2280      9   9856    20261k  3379.0s
+     11646      61      4213  53.95%   0               inf                  inf     2287      9   9892    20296k  3384.7s
+     11661      61      4221  53.96%   0               inf                  inf     2293      9   9918    20331k  3390.3s
+     11675      61      4228  53.96%   0               inf                  inf     2300      9   9938    20363k  3395.8s
+     11681      61      4232  53.96%   0               inf                  inf     2304      9   9944    20415k  3400.9s
+     11685      60      4233  53.97%   0               inf                  inf     2189     10   9954    20421k  3409.5s
+     11729      60      4255  53.98%   0               inf                  inf     2210     10   9835    20460k  3414.8s
+     11779      60      4280  53.99%   0               inf                  inf     2230     10   9901    20498k  3419.9s
+     11804      61      4291  54.12%   0               inf                  inf     2375      4   9934    20542k  3425.1s
+     11820      61      4299  54.24%   0               inf                  inf     2383      4   9994    20582k  3430.9s
+     11834      61      4306  54.33%   0               inf                  inf     2390      4   9590    20617k  3436.2s
+     11848      61      4313  54.37%   0               inf                  inf     2397      4   9622    20651k  3441.5s
+     11861      61      4320  54.38%   0               inf                  inf     2404      4   9649    20692k  3447.9s
+     11874      61      4326  54.52%   0               inf                  inf     2410      4   9680    20725k  3453.0s
+     11888      61      4334  54.58%   0               inf                  inf     2418      4   9704    20759k  3458.1s
+     11902      63      4339  54.67%   0               inf                  inf     2451      6   9734    20785k  3470.1s
+     11938      63      4358  54.70%   0               inf                  inf     2469      6   9789    20823k  3475.5s
+     11973      63      4375  54.71%   0               inf                  inf     2485      6   9857    20860k  3480.6s
+     12003      65      4390  54.71%   0               inf                  inf     2574      7   9896    20917k  3485.6s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     12053      64      4415  54.71%   0               inf                  inf     2626      8   9963    20953k  3490.8s
+     12096      64      4436  54.72%   0               inf                  inf     2646      8   9947    20990k  3495.8s
+     12107      65      4442  54.72%   0               inf                  inf     2541      9   9974    20998k  3541.6s
+     12156      64      4466  54.72%   0               inf                  inf     2294      6   9663    21148k  3546.7s
+     12201      64      4489  54.72%   0               inf                  inf     2315      6   9733    21186k  3551.8s
+     12252      64      4515  54.72%   0               inf                  inf     2211      7   9800    21225k  3557.2s
+     12290      64      4534  54.72%   0               inf                  inf     2229      7   9853    21266k  3562.5s
+     12313      63      4546  54.72%   0               inf                  inf     2381      9   9877    21301k  3568.0s
+     12340      63      4560  54.72%   0               inf                  inf     2394      9   9910    21338k  3573.2s
+     12379      62      4579  54.73%   0               inf                  inf     2262     10   9977    21375k  3578.6s
+     12419      62      4599  54.73%   0               inf                  inf     2278     10   9756    21413k  3583.8s
+     12447      64      4610  54.75%   0               inf                  inf     2296     11   9805    21449k  3589.1s
+     12482      64      4628  54.89%   0               inf                  inf     2314     11   9925    21487k  3594.3s
+     12511      64      4643  55.01%   0               inf                  inf     2329     11   9982    21524k  3599.5s
+     12538      67      4655  55.07%   0               inf                  inf     2341     11   9761    21559k  3604.5s
+     12558      66      4667  55.09%   0               inf                  inf     2222      6   9812    21591k  3610.0s
+     12589      66      4682  55.09%   0               inf                  inf     2408      7   9855    21629k  3615.3s
+     12608      65      4692  55.09%   0               inf                  inf     2239      4   9875    21663k  3620.3s
+     12636      64      4706  55.26%   0               inf                  inf     2432      5   9940    21695k  3625.6s
+     12680      64      4728  55.29%   0               inf                  inf     2454      5   9754    21732k  3630.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     12709      64      4742  55.32%   0               inf                  inf     2468      5   9793    21769k  3635.9s
+     12739      66      4755  55.40%   0               inf                  inf     2587      7   9875    21800k  3640.9s
+     12776      66      4774  55.43%   0               inf                  inf     2603      7   9994    21836k  3645.9s
+     12815      66      4793  55.51%   0               inf                  inf     2621      7   9607    21875k  3651.2s
+     12846      69      4809  55.53%   0               inf                  inf     2655      8   9656    21909k  3656.3s
+     12881      68      4827  55.54%   0               inf                  inf     2583      4   9704    21947k  3661.4s
+     12908      67      4841  55.57%   0               inf                  inf     2655      5   9760    21983k  3666.5s
+     12939      67      4856  55.58%   0               inf                  inf     2670      5   9807    22020k  3671.8s
+     12964      67      4869  55.58%   0               inf                  inf     2683      5   9839    22056k  3677.1s
+     12992      66      4883  55.63%   0               inf                  inf     2611      6   9892    22092k  3682.2s
+     13021      66      4897  55.67%   0               inf                  inf     2625      6   9942    22129k  3687.4s
+     13055      66      4914  55.67%   0               inf                  inf     2642      6   9996    22167k  3692.7s
+     13083      66      4928  55.68%   0               inf                  inf     2466      3   9976    22201k  3697.7s
+     13121      66      4947  55.68%   0               inf                  inf     2484      3   9969    22238k  3702.9s
+     13145      66      4960  55.68%   0               inf                  inf     2497      3   9696    22280k  3708.9s
+     13181      66      4978  55.68%   0               inf                  inf     2609      4   9759    22314k  3714.2s
+     13204      66      4987  55.75%   0               inf                  inf     2466      5   9854    22350k  3719.4s
+     13232      68      5000  55.79%   0               inf                  inf     2478      5   9921    22390k  3725.2s
+     13259      69      5013  55.82%   0               inf                  inf     2491      5   9994    22428k  3730.4s
+     13271      69      5019  55.83%   0               inf                  inf     2497      5   9745    22467k  3735.9s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     13297      68      5033  55.86%   0               inf                  inf     2305      8   9384    22504k  3742.0s
+     13329      68      5050  55.88%   0               inf                  inf     2320      8   9462    22540k  3747.2s
+     13365      68      5067  55.89%   0               inf                  inf     2336      8   9556    22577k  3752.3s
+     13399      69      5083  55.89%   0               inf                  inf     2249      9   9575    22616k  3757.7s
+     13438      69      5103  55.89%   0               inf                  inf     2269      9   9654    22655k  3762.8s
+     13476      69      5123  55.90%   0               inf                  inf     2289      9   9708    22695k  3768.2s
+     13508      70      5136  55.92%   0               inf                  inf     2422      5   9426    22733k  3774.3s
+     13525      70      5145  55.97%   0               inf                  inf     2430      5   9526    22770k  3779.6s
+     13545      70      5154  56.02%   0               inf                  inf     2439      5   9610    22803k  3784.8s
+     13581      70      5172  56.03%   0               inf                  inf     2457      5   9714    22841k  3789.8s
+     13605      75      5183  56.03%   0               inf                  inf     2538      6   9600    22867k  3807.7s
+     13638      75      5199  56.03%   0               inf                  inf     2554      6   9658    22902k  3812.7s
+     13666      75      5212  56.03%   0               inf                  inf     2567      6   9716    22941k  3818.0s
+     13704      77      5231  56.03%   0               inf                  inf     2254      8   9722    23039k  3823.3s
+     13734      74      5247  56.03%   0               inf                  inf     2276     10   9701    23080k  3829.0s
+     13762      73      5260  56.04%   0               inf                  inf     2321      6   9736    23115k  3834.2s
+     13793      72      5275  56.04%   0               inf                  inf     2266      7   9769    23152k  3839.3s
+     13818      70      5287  56.07%   0               inf                  inf     2337      9   9798    23187k  3844.6s
+     13852      70      5304  56.07%   0               inf                  inf     2354      9   9836    23226k  3850.0s
+     13874      70      5315  56.07%   0               inf                  inf     2365      9   9860    23261k  3855.0s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     13899      72      5326  56.27%   0               inf                  inf     2353     10   9716    23295k  3860.2s
+     13914      72      5333  56.40%   0               inf                  inf     2360     10   9760    23334k  3866.2s
+     13931      72      5342  56.46%   0               inf                  inf     2369     10   9797    23375k  3872.3s
+     13947      72      5350  56.64%   0               inf                  inf     2377     10   9824    23409k  3877.9s
+     13959      72      5356  56.66%   0               inf                  inf     2383     10   9838    23445k  3883.4s
+     13972      72      5362  57.04%   0               inf                  inf     2389     10   9865    23479k  3888.4s
+     13982      72      5367  57.19%   0               inf                  inf     2394     10   9882    23516k  3894.0s
+     13996      75      5374  57.22%   0               inf                  inf     2400     10   9905    23552k  3899.6s
+     14029      73      5391  57.23%   0               inf                  inf     2347      6   9862    23589k  3905.0s
+     14053      72      5402  57.31%   0               inf                  inf     2337      7   9801    23621k  3910.0s
+     14087      72      5419  57.36%   0               inf                  inf     2353      7   9888    23657k  3915.1s
+     14139      74      5445  57.36%   0               inf                  inf     2372      7   9958    23692k  3920.2s
+     14141      74      5446  57.36%   0               inf                  inf     2501      8   9955    23696k  3931.1s
+     14175      73      5464  57.37%   0               inf                  inf     2475      9   9937    23754k  3936.2s
+     14199      72      5476  57.41%   0               inf                  inf     2432     10   9790    23789k  3941.3s
+     14219      71      5486  57.43%   0               inf                  inf     2327      4   9824    23826k  3947.1s
+     14235      71      5494  57.44%   0               inf                  inf     2335      4   9856    23861k  3952.4s
+     14262      71      5508  57.44%   0               inf                  inf     2349      4   9899    23900k  3957.8s
+     14288      71      5520  57.45%   0               inf                  inf     2361      4   9938    23937k  3963.2s
+     14309      73      5529  57.45%   0               inf                  inf     2370      4   9981    23972k  3968.3s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     14346      72      5546  57.48%   0               inf                  inf     2353      6   9944    24007k  3973.3s
+     14394      72      5570  57.49%   0               inf                  inf     2373      6   9958    24044k  3978.3s
+     14416      74      5581  57.49%   0               inf                  inf     2450      7   9987    24059k  3986.8s
+     14464      74      5605  57.49%   0               inf                  inf     2473      7   9965    24098k  3992.0s
+     14516      75      5631  57.49%   0               inf                  inf     2635      5   9748    24143k  3997.2s
+     14572      74      5659  57.49%   0               inf                  inf     2585      6   9784    24181k  4002.3s
+     14614      74      5680  57.49%   0               inf                  inf     2606      6   9851    24219k  4007.4s
+     14642      75      5694  57.49%   0               inf                  inf     2596      8   9884    24243k  4014.5s
+     14687      74      5717  57.49%   0               inf                  inf     2611      9   9842    24292k  4019.6s
+     14721      73      5733  57.51%   0               inf                  inf     2538     10   9798    24329k  4024.8s
+     14747      73      5746  57.52%   0               inf                  inf     2551     10   9848    24366k  4030.0s
+     14780      73      5762  57.52%   0               inf                  inf     2566     10   9922    24404k  4035.2s
+     14790      76      5767  57.53%   0               inf                  inf     2603      6   9841    24415k  4047.7s
+     14808      75      5776  57.57%   0               inf                  inf     2554      8   9864    24492k  4052.9s
+     14828      75      5786  57.61%   0               inf                  inf     2562      8   9907    24527k  4058.0s
+     14846      75      5795  57.62%   0               inf                  inf     2571      8   9937    24566k  4063.5s
+     14868      75      5805  57.63%   0               inf                  inf     2581      8   9981    24599k  4068.6s
+     14894      79      5818  57.65%   0               inf                  inf     2594      8   9934    24634k  4073.6s
+     14923      77      5832  57.65%   0               inf                  inf     2569      9   9982    24668k  4078.6s
+     14964      77      5853  57.65%   0               inf                  inf     2587      9   9862    24705k  4083.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     14996      76      5869  57.66%   0               inf                  inf     2585     11   9921    24742k  4088.9s
+     15031      76      5886  57.66%   0               inf                  inf     2602     11   9978    24780k  4094.0s
+     15053      76      5897  57.66%   0               inf                  inf     2613     11   9776    24818k  4099.2s
+     15079      76      5911  57.66%   0               inf                  inf     2632     13   9815    24852k  4104.6s
+     15115      75      5928  57.68%   0               inf                  inf     2848     11   9851    24889k  4109.7s
+     15160      75      5950  57.68%   0               inf                  inf     2870     11   9949    24928k  4114.8s
+     15205      76      5973  57.69%   0               inf                  inf     2797     13   9912    24965k  4120.1s
+     15243      76      5992  57.69%   0               inf                  inf     2816     13   9971    25004k  4125.3s
+     15283      76      6012  57.69%   0               inf                  inf     2834     13   9856    25042k  4130.5s
+     15301      76      6020  57.79%   0               inf                  inf     2676     14   9886    25062k  4171.8s
+     15331      76      6035  57.98%   0               inf                  inf     2691     14   9944    25099k  4176.9s
+     15360      76      6050  58.08%   0               inf                  inf     2706     14   9997    25138k  4182.5s
+     15382      76      6061  58.18%   0               inf                  inf     2717     14   9899    25177k  4187.9s
+     15417      78      6078  58.32%   0               inf                  inf     2451      7   9961    25309k  4193.0s
+     15458      78      6098  58.32%   0               inf                  inf     2470      7   9749    25347k  4198.1s
+     15496      77      6117  58.33%   0               inf                  inf     2497      9   9805    25382k  4203.2s
+     15527      77      6133  58.36%   0               inf                  inf     2512      9   9862    25418k  4208.2s
+     15562      77      6151  58.37%   0               inf                  inf     2529      9   9919    25454k  4213.3s
+     15592      76      6165  58.38%   0               inf                  inf     2607     10   9845    25486k  4218.3s
+     15626      76      6182  58.39%   0               inf                  inf     2623     10   9917    25522k  4223.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     15664      79      6201  58.39%   0               inf                  inf     2642     10   9985    25558k  4228.6s
+     15701      78      6220  58.39%   0               inf                  inf     2597      8   9883    25596k  4233.7s
+     15720      77      6229  58.39%   0               inf                  inf     2568     12   9908    25630k  4238.8s
+     15739      76      6239  58.39%   0               inf                  inf     2409     14   9909    25664k  4243.8s
+     15763      75      6249  58.40%   0               inf                  inf     2330     16   9814    25704k  4250.4s
+     15778      77      6257  58.44%   0               inf                  inf     2338     16   9887    25740k  4255.8s
+     15793      77      6265  58.49%   0               inf                  inf     2346     16   9953    25774k  4261.4s
+     15808      77      6272  58.62%   0               inf                  inf     2353     16   9994    25806k  4266.7s
+     15831      78      6283  58.65%   0               inf                  inf     2363     16   9955    25844k  4272.0s
+     15853      78      6293  58.67%   0               inf                  inf     2373     16   9995    25879k  4277.0s
+     15877      77      6307  58.68%   0               inf                  inf     2466     13   9770    25913k  4282.1s
+     15906      77      6321  58.69%   0               inf                  inf     2480     13   9824    25949k  4287.1s
+     15941      77      6339  58.69%   0               inf                  inf     2497     13   9897    25987k  4292.1s
+     15970      79      6353  58.69%   0               inf                  inf     2774     14   9948    26025k  4297.8s
+     16006      78      6371  58.69%   0               inf                  inf     2778     15   9926    26059k  4302.9s
+     16034      77      6385  58.69%   0               inf                  inf     2597     16   9962    26096k  4308.2s
+     16070      77      6403  58.70%   0               inf                  inf     2612     16   9958    26133k  4313.3s
+     16102      77      6419  58.70%   0               inf                  inf     2628     16   9754    26172k  4318.7s
+     16128      78      6432  58.70%   0               inf                  inf     2697     18   9787    26207k  4324.0s
+     16157      77      6447  58.70%   0               inf                  inf     2523     12   9828    26243k  4329.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     16189      77      6463  58.70%   0               inf                  inf     2536     12   9877    26280k  4334.3s
+     16208      76      6470  58.70%   0               inf                  inf     2560     13   9901    26314k  4339.4s
+     16224      76      6480  58.79%   0               inf                  inf     2570     13   9978    26350k  4344.6s
+     16249      76      6492  58.84%   0               inf                  inf     2582     13   9830    26386k  4349.7s
+     16269      76      6502  58.87%   0               inf                  inf     2592     13   9864    26424k  4354.9s
+     16287      76      6511  58.89%   0               inf                  inf     2601     13   9909    26461k  4360.3s
+     16308      77      6521  58.90%   0               inf                  inf     2604     15   9946    26498k  4365.6s
+     16342      77      6538  58.90%   0               inf                  inf     2621     15   9841    26535k  4370.9s
+     16364      77      6549  58.90%   0               inf                  inf     2632     15   9881    26572k  4376.0s
+     16380      77      6558  58.90%   0               inf                  inf     2641     15   9904    26609k  4381.2s
+     16383      76      6559  58.90%   0               inf                  inf     2593     16   9910    26618k  4420.1s
+     16404      76      6569  58.91%   0               inf                  inf     2602     16   9942    26769k  4425.5s
+     16441      75      6586  59.06%   0               inf                  inf     2599     16   9977    26805k  4430.5s
+     16484      76      6607  59.13%   0               inf                  inf     2619     16   9870    26843k  4435.9s
+     16513      77      6621  59.19%   0               inf                  inf     2665     17   9934    26879k  4441.3s
+     16543      76      6637  59.20%   0               inf                  inf     2642      4   9967    26914k  4446.4s
+     16574      75      6652  59.25%   0               inf                  inf     2580      5   9955    26948k  4451.5s
+     16600      75      6665  59.29%   0               inf                  inf     2593      5   9999    26985k  4456.7s
+     16615      74      6672  59.37%   0               inf                  inf     2587      6   9921    27018k  4461.9s
+     16630      74      6680  59.40%   0               inf                  inf     2595      6   9972    27054k  4467.2s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     16645      74      6687  59.48%   0               inf                  inf     2602      6   9893    27091k  4472.8s
+     16667      74      6698  59.59%   0               inf                  inf     2613      6   9938    27125k  4478.0s
+     16710      77      6719  59.59%   0               inf                  inf     2629      6   9992    27159k  4483.2s
+     16732      76      6728  59.67%   0               inf                  inf     2394     10   9988    27187k  4488.3s
+     16755      76      6741  59.79%   0               inf                  inf     2407     10   9875    27230k  4494.5s
+     16799      76      6762  59.84%   0               inf                  inf     2422     10   9964    27266k  4499.5s
+     16827      77      6776  59.87%   0               inf                  inf     2540      7   9757    27301k  4504.6s
+     16851      75      6789  59.98%   0               inf                  inf     2492     10   9786    27337k  4510.0s
+     16908      75      6817  60.07%   0               inf                  inf     2513     10   9884    27374k  4515.2s
+     16947      77      6837  60.08%   0               inf                  inf     2530     10   9945    27407k  4520.2s
+     16988      76      6857  60.13%   0               inf                  inf     2640     14   9991    27444k  4525.3s
+     17023      76      6874  60.16%   0               inf                  inf     2657     14   9837    27482k  4530.3s
+     17052      76      6889  60.18%   0               inf                  inf     2672     14   9892    27520k  4535.5s
+     17080      79      6903  60.22%   0               inf                  inf     2734      9   9938    27558k  4540.8s
+     17118      78      6922  60.23%   0               inf                  inf     2621     12   9984    27595k  4546.0s
+     17154      78      6940  60.23%   0               inf                  inf     2633     12   9890    27631k  4551.1s
+     17171      77      6948  60.24%   0               inf                  inf     2620     13   9925    27664k  4556.9s
+     17201      77      6963  60.24%   0               inf                  inf     2633     13   9979    27700k  4562.1s
+     17217      77      6971  60.25%   0               inf                  inf     2641     13   9905    27742k  4568.5s
+     17239      77      6982  60.25%   0               inf                  inf     2652     13   9939    27778k  4573.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     17253      77      6990  60.25%   0               inf                  inf     2660     13   9961    27812k  4578.7s
+     17266      77      6995  60.34%   0               inf                  inf     2660     14   9991    27840k  4583.8s
+     17281      77      7003  60.42%   0               inf                  inf     2668     14   9851    27882k  4589.7s
+     17312      77      7017  60.48%   0               inf                  inf     2682     14   9944    27918k  4594.9s
+     17348      77      7035  60.49%   0               inf                  inf     2699     14   9843    27955k  4600.3s
+     17377      80      7050  60.50%   0               inf                  inf     2357      5   9884    27992k  4605.7s
+     17400      79      7061  60.52%   0               inf                  inf     2255      6   9920    28026k  4610.8s
+     17421      79      7071  60.53%   0               inf                  inf     2265      6   9952    28065k  4616.2s
+     17440      79      7081  60.54%   0               inf                  inf     2275      6   9987    28100k  4621.3s
+     17459      79      7091  60.54%   0               inf                  inf     2285      6   9858    28134k  4626.3s
+     17477      79      7100  60.55%   0               inf                  inf     2294      6   9883    28169k  4631.7s
+     17493      78      7108  60.55%   0               inf                  inf     2284      7   9904    28199k  4636.7s
+     17515      77      7118  60.59%   0               inf                  inf     2411     10   9920    28231k  4641.8s
+     17540      77      7130  60.64%   0               inf                  inf     2423     10   9982    28268k  4647.0s
+     17566      77      7144  60.68%   0               inf                  inf     2436     10   9789    28304k  4652.2s
+     17594      77      7158  60.72%   0               inf                  inf     2449     10   9841    28341k  4657.3s
+     17604      80      7162  60.72%   0               inf                  inf     2255      3   9866    28354k  4667.7s
+     17659      79      7190  60.72%   0               inf                  inf     2237      4   9962    28404k  4672.7s
+     17688      78      7203  60.75%   0               inf                  inf     2271      6   9945    28433k  4681.8s
+     17719      78      7219  60.84%   0               inf                  inf     2286      6   9838    28474k  4687.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     17745      78      7232  60.91%   0               inf                  inf     2299      6   9883    28512k  4692.1s
+     17781      78      7250  60.92%   0               inf                  inf     2315      6   9926    28552k  4697.4s
+     17813      79      7266  60.92%   0               inf                  inf     2199     10   9779    28610k  4702.4s
+     17858      79      7289  60.92%   0               inf                  inf     2217     10   9839    28648k  4707.6s
+     17890      78      7304  60.97%   0               inf                  inf     2203      7   9851    28686k  4712.8s
+     17921      78      7320  61.00%   0               inf                  inf     2219      7   9894    28724k  4718.0s
+     17953      78      7336  61.02%   0               inf                  inf     2235      7   9936    28763k  4723.3s
+     17977      78      7348  61.07%   0               inf                  inf     2156     11   9939    28798k  4728.4s
+     17997      78      7358  61.09%   0               inf                  inf     2166     11   9970    28838k  4733.7s
+     18019      78      7369  61.10%   0               inf                  inf     2177     11   9996    28875k  4738.9s
+     18055      78      7387  61.12%   0               inf                  inf     2195     11   9974    28913k  4744.0s
+     18065      79      7392  61.12%   0               inf                  inf     2207     12   9991    28926k  4786.0s
+     18101      78      7409  61.12%   0               inf                  inf     2106     13   9880    29086k  4791.4s
+     18137      79      7427  61.13%   0               inf                  inf     2124     13   9930    29124k  4796.6s
+     18191      81      7452  61.14%   0               inf                  inf     2183      7   9814    29163k  4802.3s
+     18213      82      7463  61.17%   0               inf                  inf     2193      7   9926    29198k  4807.5s
+     18238      82      7474  61.18%   0               inf                  inf     2204      7   9988    29236k  4813.0s
+     18260      82      7485  61.19%   0               inf                  inf     2215      7   9918    29272k  4818.1s
+     18278      82      7494  61.19%   0               inf                  inf     2224      7   9938    29308k  4823.1s
+     18314      85      7512  61.20%   0               inf                  inf     2447      9   9944    29345k  4828.3s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     18343      80      7527  61.22%   0               inf                  inf     2239      5   9844    29378k  4833.5s
+     18362      80      7537  61.22%   0               inf                  inf     2248      5   9881    29418k  4839.1s
+     18382      79      7547  61.23%   0               inf                  inf     2332      6   9766    29453k  4844.2s
+     18419      79      7564  61.23%   0               inf                  inf     2348      6   9846    29490k  4849.2s
+     18470      81      7590  61.23%   0               inf                  inf     2288      8   9903    29528k  4854.3s
+     18503      80      7605  61.24%   0               inf                  inf     2280      8   9942    29566k  4859.9s
+     18523      80      7615  61.27%   0               inf                  inf     2290      8   9995    29600k  4864.9s
+     18536      80      7622  61.28%   0               inf                  inf     2297      8   9888    29678k  4875.7s
+     18553      80      7630  61.30%   0               inf                  inf     2305      8   9921    29716k  4880.8s
+     18571      80      7639  61.31%   0               inf                  inf     2314      8   9947    29755k  4886.1s
+     18590      80      7649  61.32%   0               inf                  inf     2322      8   9969    29819k  4895.3s
+     18608      84      7657  61.33%   0               inf                  inf     2409     10   9953    29852k  4900.3s
+     18638      82      7672  61.35%   0               inf                  inf     2270      4   9775    29893k  4906.0s
+     18662      81      7684  61.36%   0               inf                  inf     2199      5   9805    29928k  4911.1s
+     18683      81      7695  61.37%   0               inf                  inf     2210      5   9842    29962k  4916.2s
+     18717      80      7712  61.37%   0               inf                  inf     2221      7   9882    29998k  4921.2s
+     18738      79      7722  61.38%   0               inf                  inf     2253      8   9905    30034k  4926.6s
+     18763      79      7735  61.39%   0               inf                  inf     2266      8   9945    30073k  4931.9s
+     18787      79      7747  61.39%   0               inf                  inf     2278      8   9977    30109k  4937.0s
+     18819      78      7762  61.42%   0               inf                  inf     2284      9   9641    30146k  4942.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     18854      78      7779  61.44%   0               inf                  inf     2301      9   9736    30181k  4947.5s
+     18892      78      7798  61.46%   0               inf                  inf     2320      9   9792    30219k  4952.6s
+     18919      81      7810  61.50%   0               inf                  inf     2098      4   9844    30253k  4957.7s
+     18946      81      7824  61.51%   0               inf                  inf     2112      4   9875    30291k  4962.9s
+     18964      81      7833  61.54%   0               inf                  inf     2121      4   9910    30331k  4968.3s
+     18979      81      7840  61.55%   0               inf                  inf     2128      4   9934    30370k  4973.9s
+     18983      81      7843  61.56%   0               inf                  inf     2131      4   9941    30408k  4979.2s
+     19016      84      7858  61.60%   0               inf                  inf     1942      5   9502    30444k  4984.5s
+     19055      84      7878  61.61%   0               inf                  inf     1961      5   9568    30482k  4989.7s
+     19085      82      7894  61.63%   0               inf                  inf     1943      6   9623    30518k  4994.7s
+     19121      82      7912  61.64%   0               inf                  inf     1960      6   9677    30555k  5000.0s
+     19139      81      7921  61.67%   0               inf                  inf     1832      6   9697    30588k  5005.0s
+     19157      81      7930  61.70%   0               inf                  inf     1841      6   9746    30623k  5010.2s
+     19173      81      7938  61.72%   0               inf                  inf     1848      6   9774    30657k  5015.4s
+     19192      81      7948  61.73%   0               inf                  inf     1858      6   9814    30692k  5020.8s
+     19202      80      7953  61.73%   0               inf                  inf     2130      7   9795    30725k  5026.5s
+     19221      79      7964  61.75%   0               inf                  inf     2141      7   9822    30762k  5031.7s
+     19225      78      7965  61.78%   0               inf                  inf     2315      8   9826    30767k  5040.2s
+     19249      77      7977  61.96%   0               inf                  inf     2178      6   9818    30819k  5045.5s
+     19274      77      7990  61.97%   0               inf                  inf     2191      6   9874    30858k  5050.8s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     19302      77      8004  61.97%   0               inf                  inf     2204      6   9915    30895k  5056.1s
+     19330      78      8017  61.98%   0               inf                  inf     2215      6   9963    30928k  5061.1s
+     19351      78      8026  61.98%   0               inf                  inf     2226      8   9990    30967k  5066.5s
+     19375      78      8037  62.03%   0               inf                  inf     2062      9   9691    31003k  5071.8s
+     19396      79      8047  62.09%   0               inf                  inf     2072      9   9734    31044k  5077.7s
+     19421      80      8059  62.12%   0               inf                  inf     2084      9   9784    31081k  5082.9s
+     19445      81      8071  62.14%   0               inf                  inf     2096      9   9821    31116k  5088.2s
+     19462      81      8079  62.17%   0               inf                  inf     2104      9   9850    31150k  5093.3s
+     19465      83      8081  62.17%   0               inf                  inf     2170     10   9857    31158k  5103.7s
+     19496      79      8097  62.20%   0               inf                  inf     2141     10   9598    31212k  5109.4s
+     19511      79      8105  62.32%   0               inf                  inf     2149     10   9636    31249k  5114.7s
+     19535      79      8116  62.38%   0               inf                  inf     2160     10   9671    31285k  5120.1s
+     19561      79      8129  62.41%   0               inf                  inf     2173     10   9762    31322k  5125.3s
+     19591      83      8143  62.43%   0               inf                  inf     2187     10   9802    31358k  5130.4s
+     19593      82      8144  62.43%   0               inf                  inf     2266     11   9738    31362k  5155.1s
+     19616      80      8155  62.44%   0               inf                  inf     2269      8   9593    31477k  5161.0s
+     19641      79      8168  62.47%   0               inf                  inf     2270      9   9498    31512k  5166.6s
+     19660      79      8178  62.50%   0               inf                  inf     2280      9   9552    31549k  5171.8s
+     19671      79      8184  62.50%   0               inf                  inf     2286      9   9569    31585k  5177.0s
+     19692      79      8193  62.52%   0               inf                  inf     2295      9   9592    31619k  5182.2s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     19727      79      8211  62.53%   0               inf                  inf     2313      9   9666    31655k  5187.2s
+     19754      82      8223  62.55%   0               inf                  inf     2375     11   9712    31688k  5192.6s
+     19777      82      8234  62.59%   0               inf                  inf     2386     11   9774    31724k  5197.8s
+     19800      82      8246  62.60%   0               inf                  inf     2398     11   9821    31763k  5203.1s
+     19822      83      8256  62.62%   0               inf                  inf     2408     11   9856    31797k  5208.1s
+     19847      85      8269  62.62%   0               inf                  inf     2483     12   9861    31832k  5213.2s
+     19879      82      8285  62.63%   0               inf                  inf     2612     10   9767    31864k  5218.5s
+     19910      82      8300  62.63%   0               inf                  inf     2627     10   9815    31901k  5223.6s
+     19944      82      8318  62.63%   0               inf                  inf     2645     10   9877    31941k  5229.1s
+     19972      84      8332  62.64%   0               inf                  inf     2518     12   9879    31979k  5234.6s
+     19996      83      8345  62.64%   0               inf                  inf     2486     13   9764    32015k  5239.7s
+     20005      82      8350  62.65%   0               inf                  inf     2449     14   9746    32071k  5248.4s
+     20034      81      8364  62.69%   0               inf                  inf     2097      7   9746    32108k  5253.7s
+     20061      81      8377  62.69%   0               inf                  inf     2110      7   9787    32148k  5259.2s
+     20101      81      8398  62.70%   0               inf                  inf     2129      7   9855    32190k  5264.9s
+     20137      83      8414  62.79%   0               inf                  inf     2305      8   9719    32223k  5270.1s
+     20169      83      8430  62.84%   0               inf                  inf     2321      8   9781    32260k  5275.1s
+     20200      83      8445  62.84%   0               inf                  inf     2335      8   9825    32297k  5280.2s
+     20228      84      8458  62.87%   0               inf                  inf     2564     11   9679    32337k  5285.8s
+     20239      84      8464  62.87%   0               inf                  inf     2570     11   9695    32374k  5291.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     20258      84      8474  62.87%   0               inf                  inf     2580     11   9728    32417k  5297.0s
+     20274      82      8482  62.87%   0               inf                  inf     2607      8   9659    32455k  5302.3s
+     20323      82      8507  62.87%   0               inf                  inf     2630      8   9745    32495k  5307.5s
+     20357      81      8523  62.89%   0               inf                  inf     2618      9   9748    32531k  5312.6s
+     20382      81      8536  62.92%   0               inf                  inf     2631      9   9784    32572k  5318.4s
+     20409      81      8549  62.93%   0               inf                  inf     2643      9   9834    32611k  5323.7s
+     20439      81      8564  62.94%   0               inf                  inf     2658      9   9872    32648k  5328.8s
+     20450      84      8569  62.95%   0               inf                  inf     2778     10   9766    32661k  5343.0s
+     20482      84      8585  62.95%   0               inf                  inf     2794     10   9810    32698k  5348.1s
+     20513      83      8600  62.95%   0               inf                  inf     2594     11   9821    32782k  5353.1s
+     20547      83      8617  62.95%   0               inf                  inf     2610     11   9870    32818k  5358.2s
+     20577      83      8632  62.96%   0               inf                  inf     2625     11   9911    32855k  5363.4s
+     20610      82      8648  62.96%   0               inf                  inf     2418     13   9966    32890k  5368.4s
+     20644      82      8665  62.96%   0               inf                  inf     2435     13   9842    32928k  5373.7s
+     20678      82      8683  62.96%   0               inf                  inf     2451     13   9903    32966k  5378.9s
+     20701      83      8693  63.05%   0               inf                  inf     2794      7   9936    32992k  5383.9s
+     20737      85      8709  63.09%   0               inf                  inf     2808      7   9856    33028k  5389.0s
+     20769      86      8725  63.11%   0               inf                  inf     2824      7   9907    33066k  5394.2s
+     20801      87      8741  63.12%   0               inf                  inf     2893      9   9836    33102k  5399.5s
+     20834      85      8759  63.12%   0               inf                  inf     2942      7   9817    33138k  5405.0s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     20854      85      8769  63.12%   0               inf                  inf     2952      7   9846    33177k  5410.4s
+     20884      84      8784  63.13%   0               inf                  inf     3071      9   9823    33213k  5415.6s
+     20918      84      8801  63.14%   0               inf                  inf     3087      9   9868    33250k  5420.7s
+     20948      83      8816  63.14%   0               inf                  inf     3030     11   9910    33286k  5426.2s
+     20961      83      8823  63.14%   0               inf                  inf     3037     11   9932    33327k  5431.4s
+     20982      83      8833  63.14%   0               inf                  inf     3047     11   9966    33365k  5436.6s
+     21013      83      8849  63.14%   0               inf                  inf     3063     11   9832    33404k  5441.8s
+     21030      85      8855  63.14%   0               inf                  inf     3029     12   9866    33433k  5565.7s
+     21067      86      8873  63.15%   0               inf                  inf     3043     12   9953    33473k  5571.1s
+     21101      86      8891  63.15%   0               inf                  inf     3058     12   9790    33510k  5576.3s
+     21124      88      8903  63.16%   0               inf                  inf     3070     12   9837    33937k  5581.5s
+     21156      85      8920  63.16%   0               inf                  inf     2721      7   9864    33974k  5586.8s
+     21173      84      8929  63.16%   0               inf                  inf     2616      8   9884    34013k  5592.2s
+     21193      83      8939  63.17%   0               inf                  inf     2511     10   9907    34046k  5597.3s
+     21218      83      8951  63.18%   0               inf                  inf     2522     10   9943    34082k  5602.3s
+     21244      82      8964  63.18%   0               inf                  inf     2576      5   9944    34117k  5607.6s
+     21267      81      8975  63.38%   0               inf                  inf     2625      6   9941    34154k  5612.6s
+     21302      81      8993  63.47%   0               inf                  inf     2643      6   9777    34192k  5617.7s
+     21335      81      9009  63.52%   0               inf                  inf     2658      6   9841    34231k  5622.9s
+     21361      82      9022  63.54%   0               inf                  inf     2657      9   9796    34267k  5628.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     21388      82      9036  63.57%   0               inf                  inf     2671      9   9832    34303k  5633.4s
+     21412      82      9048  63.57%   0               inf                  inf     2683      9   9861    34338k  5638.5s
+     21420      81      9051  63.62%   0               inf                  inf     2527     11   9855    34355k  5644.3s
+     21432      81      9057  63.71%   0               inf                  inf     2533     11   9894    34391k  5649.8s
+     21442      81      9061  63.75%   0               inf                  inf     2537     11   9917    34423k  5655.2s
+     21457      81      9068  63.79%   0               inf                  inf     2544     11   9950    34457k  5660.6s
+     21480      83      9079  63.83%   0               inf                  inf     2554     11   9990    34493k  5666.1s
+     21502      83      9090  63.86%   0               inf                  inf     2565     11   9839    34537k  5672.9s
+     21508      83      9093  63.86%   0               inf                  inf     2568     11   9850    34572k  5678.1s
+     21518      85      9098  63.88%   0               inf                  inf     2573     11   9866    34599k  5683.3s
+     21544      84      9110  63.97%   0               inf                  inf     2680      8   9864    34640k  5688.7s
+     21577      84      9127  64.02%   0               inf                  inf     2695      8   9914    34676k  5693.7s
+     21610      84      9143  64.06%   0               inf                  inf     2711      8   9977    34713k  5698.8s
+     21645      86      9161  64.07%   0               inf                  inf     2568      9   9992    34750k  5704.0s
+     21683      85      9179  64.10%   0               inf                  inf     2547     10   9948    34788k  5709.1s
+     21723      85      9199  64.11%   0               inf                  inf     2564     10   9965    34825k  5714.3s
+     21759      87      9217  64.12%   0               inf                  inf     2591     11   9803    34860k  5719.3s
+     21797      86      9236  64.12%   0               inf                  inf     2640      7   9865    34897k  5724.5s
+     21828      86      9252  64.12%   0               inf                  inf     2656      7   9903    34935k  5729.7s
+     21853      86      9265  64.12%   0               inf                  inf     2669      7   9936    34969k  5734.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     21883      85      9280  64.15%   0               inf                  inf     2608      8   9984    35006k  5739.9s
+     21919      85      9298  64.17%   0               inf                  inf     2626      8   9846    35044k  5745.0s
+     21955      85      9316  64.17%   0               inf                  inf     2644      8   9893    35082k  5750.2s
+     21989      85      9333  64.17%   0               inf                  inf     2511      9   9939    35119k  5755.4s
+     22021      85      9349  64.17%   0               inf                  inf     2527      9   9978    35158k  5760.6s
+     22050      85      9364  64.17%   0               inf                  inf     2542      9   9908    35196k  5765.9s
+     22079      85      9377  64.18%   0               inf                  inf     2422     10   9962    35231k  5771.0s
+     22112      86      9393  64.18%   0               inf                  inf     2438     10   9840    35267k  5776.1s
+     22152      86      9413  64.18%   0               inf                  inf     2456     10   9906    35304k  5781.2s
+     22172      85      9424  64.18%   0               inf                  inf     2420     10   9899    35336k  5786.2s
+     22195      85      9436  64.19%   0               inf                  inf     2327     12   9908    35373k  5791.7s
+     22217      84      9446  64.22%   0               inf                  inf     2240     13   9873    35410k  5797.2s
+     22247      84      9461  64.23%   0               inf                  inf     2255     13   9920    35448k  5802.5s
+     22276      84      9475  64.23%   0               inf                  inf     2269     13   9963    35486k  5807.7s
+     22311      86      9493  64.23%   0               inf                  inf     2290     14   9817    35523k  5813.0s
+     22340      85      9507  64.24%   0               inf                  inf     2128     15   9850    35561k  5818.7s
+     22373      85      9524  64.25%   0               inf                  inf     2145     15   9899    35599k  5823.8s
+     22399      85      9537  64.26%   0               inf                  inf     2158     15   9935    35635k  5829.2s
+     22427      85      9551  64.27%   0               inf                  inf     2172     15   9988    35672k  5834.4s
+     22462      87      9568  64.27%   0               inf                  inf     2162     11   9989    35708k  5839.6s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     22494      86      9584  64.27%   0               inf                  inf     1965     12   9823    35744k  5844.7s
+     22520      85      9597  64.27%   0               inf                  inf     1823     13   9855    35781k  5850.1s
+     22537      85      9606  64.28%   0               inf                  inf     1831     13   9880    35819k  5855.2s
+     22547      85      9611  64.28%   0               inf                  inf     1836     13   9892    35856k  5860.4s
+     22564      85      9618  64.31%   0               inf                  inf     1742     14   9909    35891k  5865.6s
+     22601      86      9636  64.34%   0               inf                  inf     1760     14   9988    35927k  5870.8s
+     22640      86      9656  64.36%   0               inf                  inf     1775     14   9863    35963k  5875.9s
+     22658      86      9665  64.37%   0               inf                  inf     2615     11   9873    35998k  5881.1s
+     22677      86      9675  64.38%   0               inf                  inf     2625     11   9905    36039k  5887.0s
+     22705      86      9689  64.38%   0               inf                  inf     2639     11   9951    36077k  5892.3s
+     22735      86      9704  64.38%   0               inf                  inf     2653     11   9988    36114k  5897.3s
+     22757      87      9715  64.38%   0               inf                  inf     2794     12   9909    36149k  5903.0s
+     22773      85      9724  64.38%   0               inf                  inf     2931     15   9807    36186k  5908.9s
+     22783      85      9729  64.39%   0               inf                  inf     2936     15   9821    36224k  5914.5s
+     22797      85      9736  64.39%   0               inf                  inf     2943     15   9836    36262k  5920.4s
+     22807      85      9741  64.39%   0               inf                  inf     2948     15   9851    36300k  5925.7s
+     22831      84      9753  64.47%   0               inf                  inf     2888     17   9831    36340k  5931.6s
+     22846      83      9760  64.48%   0               inf                  inf     2802      3   9824    36376k  5936.7s
+     22865      82      9770  64.49%   0               inf                  inf     2763      5   9750    36412k  5941.7s
+     22898      82      9787  64.49%   0               inf                  inf     2780      5   9799    36448k  5946.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     22929      82      9802  64.49%   0               inf                  inf     2795      5   9860    36485k  5951.8s
+     22959      83      9815  64.49%   0               inf                  inf     2741      7   9842    36523k  5957.4s
+     22989      83      9829  64.53%   0               inf                  inf     2755      7   9932    36559k  5962.6s
+     23014      83      9840  64.57%   0               inf                  inf     2766      7   9991    36597k  5968.0s
+     23039      83      9852  64.58%   0               inf                  inf     2778      7   9838    36636k  5973.4s
+     23073      84      9868  64.58%   0               inf                  inf     2546      9   9865    36678k  5980.0s
+     23096      84      9880  64.58%   0               inf                  inf     2558      9   9954    36717k  5985.6s
+     23120      84      9892  64.59%   0               inf                  inf     2570      9   9862    36751k  5990.6s
+     23147      84      9905  64.59%   0               inf                  inf     2582      9   9930    36787k  5995.9s
+     23172      89      9916  64.60%   0               inf                  inf     2593      9   9972    36824k  6001.6s
+     23193      86      9926  64.60%   0               inf                  inf     2552     10   9971    36857k  6006.8s
+     23216      85      9938  64.60%   0               inf                  inf     2490     11   9885    36890k  6011.9s
+     23242      84      9951  64.60%   0               inf                  inf     2496     13   9954    36925k  6017.0s
+     23271      84      9965  64.60%   0               inf                  inf     2510     13   9917    36963k  6022.5s
+     23293      84      9976  64.61%   0               inf                  inf     2521     13   9975    36997k  6027.7s
+     23330      87      9995  64.61%   0               inf                  inf     2728     14   9898    37034k  6032.8s
+     23342      86     10000  64.95%   0               inf                  inf     2742     10   9922    37066k  6038.0s
+     23365      86     10010  65.12%   0               inf                  inf     2752     10   9961    37101k  6043.1s
+     23392      86     10023  65.23%   0               inf                  inf     2763     10   9859    37139k  6048.4s
+     23434      90     10044  65.23%   0               inf                  inf     2828     12   9927    37175k  6053.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     23483      89     10069  65.23%   0               inf                  inf     2920     13   9970    37214k  6058.6s
+     23510      87     10082  65.24%   0               inf                  inf     3097     16   9909    37247k  6063.7s
+     23523      86     10089  65.24%   0               inf                  inf     2963     17   9800    37278k  6068.7s
+     23538      86     10097  65.24%   0               inf                  inf     2971     17   9832    37313k  6074.0s
+     23551      86     10104  65.25%   0               inf                  inf     2978     17   9859    37347k  6079.1s
+     23562      86     10110  65.25%   0               inf                  inf     2984     17   9871    37383k  6084.7s
+     23593      85     10124  65.26%   0               inf                  inf     3011      8   9936    37419k  6089.7s
+     23641      85     10148  65.27%   0               inf                  inf     3035      8   9894    37460k  6095.5s
+     23673      85     10164  65.48%   0               inf                  inf     3053     12   9932    37502k  6101.9s
+     23692      85     10173  65.86%   0               inf                  inf     3062     12   9982    37535k  6107.0s
+     23711      85     10183  65.97%   0               inf                  inf     3072     12   9992    37572k  6112.4s
+     23730      85     10192  66.04%   0               inf                  inf     3081     12   9821    37610k  6118.3s
+     23741      85     10198  66.07%   0               inf                  inf     3087     12   9837    37651k  6124.5s
+     23761      86     10207  66.33%   0               inf                  inf     3096     12   9874    37686k  6129.7s
+     23782      87     10217  66.45%   0               inf                  inf     3026     14   9910    37718k  6134.7s
+     23806      87     10228  66.47%   0               inf                  inf     3037     14   9970    37755k  6139.8s
+     23826      87     10239  66.50%   0               inf                  inf     3048     14   9808    37791k  6144.9s
+     23844      87     10248  66.51%   0               inf                  inf     3057     14   9837    37832k  6150.9s
+     23858      87     10255  66.53%   0               inf                  inf     3064     14   9859    37867k  6156.1s
+     23870      87     10261  66.53%   0               inf                  inf     3070     14   9877    37905k  6161.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     23887      89     10268  66.75%   0               inf                  inf     3018      6   9904    37939k  6167.0s
+     23907      89     10278  66.84%   0               inf                  inf     3027      6   9957    37977k  6172.4s
+     23930      89     10290  66.87%   0               inf                  inf     3038      6   9953    38013k  6177.5s
+     23948      89     10299  66.90%   0               inf                  inf     3047      6   9985    38051k  6183.3s
+     23968      89     10309  66.91%   0               inf                  inf     3053      6   9969    38089k  6188.9s
+     23986      88     10319  66.94%   0               inf                  inf     3217      7   9992    38124k  6194.1s
+     24001      86     10327  67.34%   0               inf                  inf     3359      8   9900    38155k  6199.2s
+     24039      86     10346  67.36%   0               inf                  inf     3376      8   9960    38194k  6204.5s
+     24065      86     10359  67.36%   0               inf                  inf     3389      8   9790    38234k  6209.9s
+     24093      86     10374  67.36%   0               inf                  inf     3404      8   9826    38272k  6215.1s
+     24132      85     10393  67.46%   0               inf                  inf     3420     10   9896    38310k  6220.3s
+     24165      85     10409  67.50%   0               inf                  inf     3435     10   9950    38346k  6225.5s
+     24203      87     10428  67.52%   0               inf                  inf     3203     11   9838    38383k  6230.6s
+     24240      86     10446  67.53%   0               inf                  inf     2901      5   9901    38420k  6235.8s
+     24273      85     10463  67.54%   0               inf                  inf     2724      5   9954    38458k  6241.0s
+     24303      85     10478  67.55%   0               inf                  inf     2739      5   9972    38497k  6246.2s
+     24329      85     10491  67.55%   0               inf                  inf     2752      5   9923    38536k  6251.7s
+     24347      84     10500  67.56%   0               inf                  inf     2490      6   9942    38574k  6257.0s
+     24378      84     10516  67.58%   0               inf                  inf     2505      6   9990    38611k  6262.1s
+     24407      84     10530  67.58%   0               inf                  inf     2519      6   9904    38649k  6267.2s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     24440      84     10546  67.58%   0               inf                  inf     2535      6   9950    38687k  6272.4s
+     24465      86     10557  67.58%   0               inf                  inf     2501      8   9876    38722k  6277.4s
+     24483      87     10566  67.58%   0               inf                  inf     2509      8   9893    38759k  6282.7s
+     24504      87     10576  67.59%   0               inf                  inf     2519      8   9937    38795k  6288.0s
+     24527      88     10587  67.59%   0               inf                  inf     2530      8   9973    38834k  6293.3s
+     24548      89     10598  67.59%   0               inf                  inf     2606     10   9817    38869k  6298.3s
+     24578      87     10614  67.59%   0               inf                  inf     2853      7   9855    38905k  6303.5s
+     24606      85     10629  67.59%   0               inf                  inf     2860     10   9692    38941k  6308.6s
+     24629      85     10640  67.59%   0               inf                  inf     2871     10   9721    38975k  6313.7s
+     24650      84     10651  67.63%   0               inf                  inf     2863     12   9664    39013k  6318.8s
+     24689      85     10670  67.66%   0               inf                  inf     2882     12   9730    39051k  6323.9s
+     24731      86     10690  67.67%   0               inf                  inf     2901     12   9793    39090k  6329.0s
+     24762      85     10706  67.69%   0               inf                  inf     3115      9   9555    39133k  6335.3s
+     24795      85     10722  67.69%   0               inf                  inf     3131      9   9628    39172k  6340.5s
+     24818      85     10734  67.70%   0               inf                  inf     3143      9   9666    39209k  6345.5s
+     24840      85     10745  67.71%   0               inf                  inf     3154      9   9701    39246k  6350.6s
+     24865      88     10757  67.71%   0               inf                  inf     2895     11   9711    39279k  6355.8s
+     24891      86     10771  67.72%   0               inf                  inf     2769     14   9571    39311k  6361.0s
+     24921      86     10786  67.72%   0               inf                  inf     2918      9   9553    39351k  6366.2s
+     24925      85     10788  67.72%   0               inf                  inf     2847     12   9559    39359k  6390.8s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     24962      85     10806  67.72%   0               inf                  inf     2862     12   9624    39394k  6395.8s
+     24990      85     10821  67.72%   0               inf                  inf     2875     12   9654    39429k  6400.8s
+     25009      85     10830  67.72%   0               inf                  inf     2884     12   9689    39466k  6406.0s
+     25035      85     10843  67.72%   0               inf                  inf     2790     13   9538    39568k  6411.2s
+     25060      85     10855  67.72%   0               inf                  inf     2651     14   9566    39605k  6416.3s
+     25088      85     10869  67.72%   0               inf                  inf     2663     14   9606    39641k  6421.6s
+     25107      85     10879  67.72%   0               inf                  inf     2673     14   9627    39679k  6427.0s
+     25133      84     10892  67.73%   0               inf                  inf     2731     15   9635    39713k  6432.2s
+     25174      84     10912  67.73%   0               inf                  inf     2749     15   9710    39751k  6437.4s
+     25211      86     10930  67.74%   0               inf                  inf     2766     15   9763    39786k  6442.5s
+     25243      84     10946  67.74%   0               inf                  inf     2496      4   9805    39823k  6447.6s
+     25276      84     10963  67.74%   0               inf                  inf     2513      4   9848    39860k  6452.6s
+     25298      83     10973  67.75%   0               inf                  inf     2518      7   9674    39897k  6458.1s
+     25305      83     10977  67.76%   0               inf                  inf     2522      7   9699    39952k  6465.9s
+     25308      83     10979  67.76%   0               inf                  inf     2523      7   9713    39998k  6472.1s
+     25330      83     10989  67.78%   0               inf                  inf     2532      7   9758    40032k  6477.3s
+     25345      83     10997  67.78%   0               inf                  inf     2539      7   9789    40067k  6482.4s
+     25350      83     10999  67.78%   0               inf                  inf     2541      7   9795    40106k  6488.2s
+     25364      83     11006  67.79%   0               inf                  inf     2548      7   9815    40142k  6493.5s
+     25377      83     11013  67.79%   0               inf                  inf     2555      7   9838    40181k  6499.0s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     25393      85     11019  67.81%   0               inf                  inf     2518     10   9846    40209k  6504.9s
+     25414      85     11030  67.83%   0               inf                  inf     2529     10   9887    40242k  6509.9s
+     25425      84     11036  67.88%   0               inf                  inf     2479     11   9883    40275k  6515.0s
+     25439      84     11043  67.92%   0               inf                  inf     2486     11   9901    40310k  6520.6s
+     25451      84     11049  67.92%   0               inf                  inf     2492     11   9918    40343k  6525.6s
+     25463      83     11053  67.93%   0               inf                  inf     2332      6   9886    40373k  6531.2s
+     25478      83     11061  67.93%   0               inf                  inf     2340      6   9943    40410k  6536.4s
+     25491      83     11068  67.93%   0               inf                  inf     2347      6   9977    40448k  6542.0s
+     25505      83     11074  67.94%   0               inf                  inf     2352      6   9998    40485k  6547.5s
+     25529      83     11086  67.94%   0               inf                  inf     2364      6   9622    40525k  6553.1s
+     25547      83     11095  67.94%   0               inf                  inf     2373      6   9664    40565k  6558.4s
+     25560      85     11101  67.94%   0               inf                  inf     2279      7   9693    40588k  6575.5s
+     25571      84     11106  67.94%   0               inf                  inf     2236      8   9701    40655k  6581.2s
+     25589      84     11114  67.95%   0               inf                  inf     2244      8   9732    40694k  6587.2s
+     25606      84     11123  67.95%   0               inf                  inf     2253      8   9779    40731k  6592.2s
+     25615      84     11128  67.95%   0               inf                  inf     2258      8   9794    40768k  6597.8s
+     25626      84     11133  67.95%   0               inf                  inf     2263      8   9815    40808k  6603.8s
+     25642      84     11141  67.95%   0               inf                  inf     2271      8   9842    40844k  6609.0s
+     25662      86     11151  67.95%   0               inf                  inf     2280      8   9883    40877k  6614.0s
+     25676      85     11158  67.95%   0               inf                  inf     2057      9   9884    40919k  6620.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     25687      83     11163  67.96%   0               inf                  inf     2196     11   9722    40942k  6635.4s
+     25723      83     11182  68.00%   0               inf                  inf     2215     11   9790    40979k  6640.5s
+     25767      83     11203  68.02%   0               inf                  inf     2235     11   9855    41016k  6645.7s
+     25795      84     11216  68.07%   0               inf                  inf     2482      8   9885    41082k  6651.4s
+     25811      85     11224  68.17%   0               inf                  inf     2490      8   9929    41123k  6657.3s
+     25829      85     11233  68.21%   0               inf                  inf     2498      8   9962    41164k  6663.0s
+     25831      85     11234  68.21%   0               inf                  inf     2499      8   9964    41211k  6670.3s
+     25851      85     11243  68.27%   0               inf                  inf     2507      8   9973    41247k  6675.5s
+     25862      85     11249  68.32%   0               inf                  inf     2513      8   9990    41277k  6681.2s
+     25878      85     11258  68.36%   0               inf                  inf     2522      8   9671    41319k  6687.6s
+     25908      90     11271  68.43%   0               inf                  inf     2601     10   9769    41353k  6692.7s
+     25940      88     11288  68.43%   0               inf                  inf     2642     12   9816    41389k  6697.9s
+     25961      88     11298  68.44%   0               inf                  inf     2943      3   9792    41417k  6719.6s
+     25995      89     11315  68.46%   0               inf                  inf     2958      3   9858    41454k  6725.0s
+     26035      87     11336  68.46%   0               inf                  inf     2822      5   9784    41556k  6730.1s
+     26049      85     11344  68.48%   0               inf                  inf     2843      9   9575    41592k  6735.5s
+     26051      84     11345  68.49%   0               inf                  inf     2844      9   9577    41596k  6742.1s
+     26053      84     11346  68.68%   0               inf                  inf     2845      6   9446    41675k  6753.1s
+     26055      84     11347  68.78%   0               inf                  inf     2846      6   9448    41721k  6761.1s
+     26071      83     11355  68.88%   0               inf                  inf     2672      7   9374    41754k  6766.3s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     26077      80     11360  68.89%   0               inf                  inf     2677      7   9380    41784k  6771.4s
+     26090      80     11366  68.89%   0               inf                  inf     2950     10   9314    41817k  6777.1s
+     26101      80     11371  68.89%   0               inf                  inf     2955     10   9329    41850k  6782.8s
+     26113      78     11376  68.89%   0               inf                  inf     3074     14   9237    41878k  6787.9s
+     26149      78     11395  68.89%   0               inf                  inf     3093     14   9313    41914k  6793.1s
+     26178      78     11409  68.89%   0               inf                  inf     3106     14   9362    41950k  6798.1s
+     26209      79     11425  68.89%   0               inf                  inf     2983      8   9298    41986k  6803.1s
+     26232      78     11437  68.89%   0               inf                  inf     2972      9   9324    42023k  6808.3s
+     26259      77     11451  68.89%   0               inf                  inf     2858     11   9362    42059k  6813.4s
+     26291      76     11465  69.00%   0               inf                  inf     2867     12   9444    42094k  6818.8s
+     26308      76     11475  69.09%   0               inf                  inf     2877     12   9533    42129k  6824.0s
+     26336      76     11488  69.20%   0               inf                  inf     2890     12   9608    42170k  6830.0s
+     26363      81     11501  69.39%   0               inf                  inf     2903     12   9682    42211k  6835.8s
+     26377      76     11510  69.49%   0               inf                  inf     2930      9   9574    42241k  6840.9s
+     26404      75     11523  69.49%   0               inf                  inf     2908     10   9468    42275k  6846.2s
+     26434      75     11538  69.49%   0               inf                  inf     2921     10   9515    42312k  6851.4s
+     26466      75     11554  69.49%   0               inf                  inf     2936     10   9557    42349k  6856.4s
+     26480      76     11561  69.49%   0               inf                  inf     2938     11   9544    42365k  6863.1s
+     26511      75     11577  69.49%   0               inf                  inf     2997     12   9436    42416k  6868.1s
+     26540      74     11592  69.49%   0               inf                  inf     3011     12   9480    42451k  6873.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     26571      74     11606  69.51%   0               inf                  inf     3037      4   9530    42492k  6879.1s
+     26596      74     11619  69.53%   0               inf                  inf     3050      4   9572    42531k  6884.6s
+     26620      74     11631  69.54%   0               inf                  inf     3061      4   9604    42564k  6890.0s
+     26635      74     11639  69.54%   0               inf                  inf     3068      4   9623    42598k  6895.0s
+     26667      77     11652  69.56%   0               inf                  inf     2990      5   9681    42635k  6900.3s
+     26695      77     11665  69.58%   0               inf                  inf     3003      5   9727    42672k  6905.5s
+     26723      77     11676  69.58%   0               inf                  inf     3013      5   9765    42709k  6910.8s
+     26744      79     11686  69.58%   0               inf                  inf     2937      6   9781    42729k  6922.0s
+     26766      77     11698  69.59%   0               inf                  inf     2785      8   9767    42785k  6927.2s
+     26782      75     11706  69.60%   0               inf                  inf     2536      3   9708    42820k  6932.3s
+     26813      75     11721  69.61%   0               inf                  inf     2551      3   9765    42858k  6937.4s
+     26842      75     11736  69.61%   0               inf                  inf     2566      3   9817    42896k  6942.7s
+     26861      75     11746  69.61%   0               inf                  inf     2576      3   9840    42933k  6947.9s
+     26879      76     11755  69.62%   0               inf                  inf     2501      4   9853    42974k  6953.9s
+     26891      75     11761  69.62%   0               inf                  inf     2387      6   9750    43016k  6960.0s
+     26898      75     11765  69.62%   0               inf                  inf     2391      6   9758    43057k  6965.4s
+     26907      75     11770  69.62%   0               inf                  inf     2396      6   9767    43099k  6971.2s
+     26911      74     11771  69.63%   0               inf                  inf     2308      9   9703    43114k  6979.1s
+     26927      74     11779  69.64%   0               inf                  inf     2316      9   9746    43143k  6985.0s
+     26943      74     11787  69.64%   0               inf                  inf     2324      9   9785    43175k  6990.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     26965      74     11798  69.65%   0               inf                  inf     2335      9   9817    43213k  6995.2s
+     26995      74     11813  69.65%   0               inf                  inf     2349      9   9870    43251k  7000.4s
+     27011      76     11820  69.65%   0               inf                  inf     2228     12   9881    43286k  7011.5s
+     27039      76     11834  69.65%   0               inf                  inf     2241     12   9940    43324k  7016.7s
+     27069      76     11849  69.65%   0               inf                  inf     2256     12   9991    43363k  7022.0s
+     27094      76     11862  69.65%   0               inf                  inf     2268     12   9799    43400k  7027.0s
+     27111      78     11870  69.65%   0               inf                  inf     2113      7   9823    43435k  7058.1s
+     27130      76     11881  69.65%   0               inf                  inf     2243      9   9779    43587k  7063.3s
+     27155      75     11893  69.65%   0               inf                  inf     2279     10   9643    43622k  7068.4s
+     27176      74     11903  69.67%   0               inf                  inf     2188     12   9633    43661k  7074.3s
+     27205      74     11918  69.72%   0               inf                  inf     2202     12   9706    43696k  7079.5s
+     27231      74     11931  69.74%   0               inf                  inf     2215     12   9755    43735k  7084.9s
+     27250      74     11941  69.75%   0               inf                  inf     2225     12   9779    43770k  7090.0s
+     27266      74     11949  69.75%   0               inf                  inf     2233     12   9806    43805k  7095.1s
+     27288      75     11959  69.78%   0               inf                  inf     2245      3   9719    43839k  7100.2s
+     27306      75     11968  69.81%   0               inf                  inf     2254      3   9755    43876k  7105.3s
+     27324      75     11977  69.82%   0               inf                  inf     2263      3   9784    43914k  7110.4s
+     27342      75     11987  69.84%   0               inf                  inf     2273      3   9809    43953k  7115.9s
+     27360      75     11996  69.85%   0               inf                  inf     2282      3   9837    44003k  7123.1s
+     27375      73     12004  69.85%   0               inf                  inf     2123      6   9805    44041k  7129.0s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     27398      73     12015  70.13%   0               inf                  inf     2115      7   9827    44073k  7134.1s
+     27422      74     12026  70.36%   0               inf                  inf     2126      7   9883    44109k  7139.2s
+     27446      74     12038  70.41%   0               inf                  inf     2138      7   9929    44145k  7144.3s
+     27472      76     12051  70.56%   0               inf                  inf     2148      7   9962    44182k  7149.8s
+     27488      76     12059  70.60%   0               inf                  inf     2155      7   9982    44218k  7155.1s
+     27505      78     12066  70.66%   0               inf                  inf     2012     10   9871    44253k  7160.5s
+     27527      78     12077  70.68%   0               inf                  inf     2023     10   9913    44291k  7165.8s
+     27543      78     12086  70.69%   0               inf                  inf     2032     10   9948    44353k  7174.8s
+     27570      78     12098  70.70%   0               inf                  inf     2044     10   9994    44388k  7180.1s
+     27588      78     12107  70.70%   0               inf                  inf     2053     10   9867    44490k  7194.5s
+     27603      78     12115  70.71%   0               inf                  inf     2179      6   9788    44526k  7199.7s
+     27625      74     12126  70.82%   0               inf                  inf     2087     11   9633    44563k  7205.4s
+     27644      74     12136  70.91%   0               inf                  inf     2097     11   9683    44600k  7210.6s
+     27665      74     12146  70.99%   0               inf                  inf     2107     11   9722    44634k  7215.7s
+     27688      74     12158  71.03%   0               inf                  inf     2119     11   9767    44674k  7221.2s
+     27712      77     12170  71.07%   0               inf                  inf     2131     11   9819    44711k  7226.8s
+     27727      76     12178  71.08%   0               inf                  inf     2040      8   9838    44746k  7232.0s
+     27746      75     12187  71.10%   0               inf                  inf     2014     10   9859    44780k  7237.4s
+     27764      75     12196  71.12%   0               inf                  inf     2023     10   9891    44816k  7242.7s
+     27777      75     12203  71.13%   0               inf                  inf     2030     10   9918    44851k  7247.9s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     27787      75     12208  71.13%   0               inf                  inf     2035     10   9932    44891k  7254.0s
+     27800      74     12214  71.62%   0               inf                  inf     2064     12   9907    44924k  7259.2s
+     27821      74     12225  71.89%   0               inf                  inf     2075     12   9937    44960k  7264.6s
+     27838      73     12233  72.69%   0               inf                  inf     2174     13   9790    44988k  7269.8s
+     27872      73     12250  72.69%   0               inf                  inf     2187     13   9844    45027k  7275.2s
+     27909      74     12268  72.70%   0               inf                  inf     2205     13   9913    45065k  7280.5s
+     27930      78     12278  72.70%   0               inf                  inf     2111     13   9937    45082k  7314.3s
+     27967      75     12297  72.70%   0               inf                  inf     2512      8   9789    45217k  7319.4s
+     28004      75     12316  72.70%   0               inf                  inf     2531      8   9837    45257k  7324.7s
+     28035      75     12331  72.70%   0               inf                  inf     2546      8   9885    45295k  7329.8s
+     28073      77     12350  72.70%   0               inf                  inf     2370      9   9921    45331k  7334.9s
+     28103      75     12365  72.70%   0               inf                  inf     2357     11   9891    45368k  7340.0s
+     28136      75     12382  72.70%   0               inf                  inf     2374     11   9949    45408k  7345.4s
+     28171      75     12399  72.70%   0               inf                  inf     2390     11   9832    45443k  7350.5s
+     28201      76     12414  72.70%   0               inf                  inf     2560     10   9835    45478k  7355.7s
+     28234      76     12431  72.70%   0               inf                  inf     2577     10   9888    45516k  7360.8s
+     28257      75     12441  72.98%   0               inf                  inf     2549     11   9970    45552k  7366.2s
+     28276      75     12450  73.21%   0               inf                  inf     2557     11   9886    45587k  7371.6s
+     28295      75     12460  73.44%   0               inf                  inf     2566     11   9939    45623k  7376.9s
+     28307      75     12466  73.57%   0               inf                  inf     2572     11   9957    45661k  7382.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     28336      79     12480  73.83%   0               inf                  inf     2586     11  10004    45698k  7387.6s
+     28354      77     12488  73.86%   0               inf                  inf     2885     12   9941    45729k  7392.8s
+     28378      76     12500  73.87%   0               inf                  inf     2834     13   9984    45764k  7398.2s
+     28415      76     12519  73.87%   0               inf                  inf     2852     13   9839    45804k  7403.5s
+     28443      76     12533  73.87%   0               inf                  inf     2866     13   9880    45842k  7408.9s
+     28465      75     12544  73.99%   0               inf                  inf     2994      3   9914    45874k  7414.4s
+     28480      75     12551  74.09%   0               inf                  inf     2999      3   9941    45908k  7419.6s
+     28500      75     12561  74.21%   0               inf                  inf     3008      3   9986    45948k  7425.4s
+     28514      74     12568  74.26%   0               inf                  inf     2869      5   9996    45979k  7430.5s
+     28542      73     12582  74.26%   0               inf                  inf     2736      8   9819    46015k  7435.7s
+     28556      72     12589  74.26%   0               inf                  inf     2933     10   9839    46041k  7441.0s
+     28580      72     12601  74.27%   0               inf                  inf     2945     10   9893    46080k  7446.5s
+     28603      72     12613  74.27%   0               inf                  inf     2955     10   9928    46115k  7451.5s
+     28615      72     12619  74.27%   0               inf                  inf     2961     10   9945    46148k  7456.7s
+     28630      72     12626  74.27%   0               inf                  inf     2968     10   9970    46184k  7461.7s
+     28647      72     12634  74.27%   0               inf                  inf     2975     10   9990    46217k  7467.0s
+     28661      70     12642  74.28%   0               inf                  inf     2869     10   9976    46252k  7472.1s
+     28687      69     12654  74.32%   0               inf                  inf     2719     10   9873    46284k  7477.3s
+     28720      69     12671  74.32%   0               inf                  inf     2735     10   9922    46320k  7482.3s
+     28761      73     12690  74.32%   0               inf                  inf     2753     10   9993    46356k  7487.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     28783      68     12703  74.33%   0               inf                  inf     2626     12   9840    46387k  7492.6s
+     28804      68     12710  74.43%   0               inf                  inf     2670     13   9871    46419k  7497.7s
+     28831      67     12724  74.82%   0               inf                  inf     2578     16   9907    46453k  7502.8s
+     28857      67     12737  75.16%   0               inf                  inf     2591     16   9947    46490k  7507.9s
+     28881      67     12749  75.30%   0               inf                  inf     2603     16   9977    46526k  7513.1s
+     28898      66     12757  75.33%   0               inf                  inf     2495      8   9911    46551k  7602.9s
+     28928      66     12772  75.45%   0               inf                  inf     2510      8   9987    46585k  7608.1s
+     28961      66     12788  75.53%   0               inf                  inf     2525      8   9940    46621k  7613.3s
+     28994      69     12805  75.56%   0               inf                  inf     2542      8   9998    46934k  7618.6s
+     29013      67     12813  75.62%   0               inf                  inf     2647     12   9856    46966k  7623.8s
+     29060      67     12836  75.62%   0               inf                  inf     2666     12   9934    47004k  7629.1s
+     29098      72     12855  75.62%   0               inf                  inf     2685     12   9981    47043k  7634.4s
+     29123      69     12868  75.64%   0               inf                  inf     2654     16   9952    47073k  7639.8s
+     29146      68     12880  75.65%   0               inf                  inf     2781      8   9954    47107k  7645.3s
+     29177      68     12896  75.65%   0               inf                  inf     2791      8   9774    47142k  7650.5s
+     29198      68     12906  75.65%   0               inf                  inf     2800      8   9806    47178k  7655.7s
+     29218      67     12916  75.67%   0               inf                  inf     2423      9   9837    47207k  7660.8s
+     29239      67     12926  75.68%   0               inf                  inf     2433      9   9877    47247k  7666.5s
+     29255      67     12934  75.69%   0               inf                  inf     2441      9   9903    47288k  7672.4s
+     29258      67     12935  75.69%   0               inf                  inf     2442      9   9907    47323k  7677.6s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     29271      67     12942  75.69%   0               inf                  inf     2448      9   9928    47363k  7683.6s
+     29287      67     12950  75.70%   0               inf                  inf     2455      9   9942    47397k  7688.9s
+     29304      66     12958  75.70%   0               inf                  inf     2410     10   9896    47425k  7694.0s
+     29331      66     12971  75.73%   0               inf                  inf     2422     10   9944    47459k  7699.3s
+     29349      65     12980  75.75%   0               inf                  inf     2638     12   9959    47495k  7705.5s
+     29376      65     12994  75.75%   0               inf                  inf     2652     12   9945    47530k  7710.8s
+     29402      65     13008  75.76%   0               inf                  inf     2665     12   9988    47565k  7715.9s
+     29419      65     13017  75.76%   0               inf                  inf     2674     12   9924    47599k  7720.9s
+     29440      65     13026  75.76%   0               inf                  inf     2683     12   9966    47634k  7726.3s
+     29455      67     13034  75.76%   0               inf                  inf     2663      6   9817    47663k  7731.3s
+     29480      67     13045  75.77%   0               inf                  inf     2643      9   9870    47700k  7736.4s
+     29511      67     13060  75.78%   0               inf                  inf     2658      9   9938    47737k  7741.5s
+     29555      71     13082  75.78%   0               inf                  inf     2680      9   9844    47776k  7746.6s
+     29572      70     13091  75.79%   0               inf                  inf     2654     12   9881    47809k  7751.7s
+     29591      68     13101  75.79%   0               inf                  inf     2463     15   9872    47854k  7758.3s
+     29606      67     13108  75.79%   0               inf                  inf     2233      8   9902    47886k  7763.4s
+     29636      67     13123  75.80%   0               inf                  inf     2248      8   9948    47921k  7768.7s
+     29654      67     13132  75.80%   0               inf                  inf     2257      8   9981    47959k  7773.9s
+     29685      67     13147  75.81%   0               inf                  inf     2272      8   9909    47995k  7779.0s
+     29706      68     13158  75.81%   0               inf                  inf     2042     11   9771    48028k  7784.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     29737      68     13172  75.81%   0               inf                  inf     2056     11   9827    48064k  7789.6s
+     29759      68     13182  75.81%   0               inf                  inf     2065     11   9857    48100k  7794.8s
+     29781      68     13193  75.81%   0               inf                  inf     2075     11   9905    48132k  7799.9s
+     29799      68     13201  75.81%   0               inf                  inf     2083     11   9936    48167k  7805.4s
+     29814      68     13208  75.81%   0               inf                  inf     1692      7   9776    48202k  7810.9s
+     29828      68     13216  75.81%   0               inf                  inf     1700      7   9797    48235k  7815.9s
+     29840      67     13221  75.82%   0               inf                  inf     1841     10   9776    48268k  7821.5s
+     29866      67     13234  75.82%   0               inf                  inf     1854     10   9820    48305k  7826.6s
+     29892      67     13247  75.83%   0               inf                  inf     1867     10   9874    48341k  7831.6s
+     29922      67     13262  75.83%   0               inf                  inf     1882     10   9918    48379k  7836.7s
+     29946      68     13274  75.84%   0               inf                  inf     2134     12   9867    48415k  7841.9s
+     29968      68     13285  75.84%   0               inf                  inf     2145     12   9901    48453k  7847.2s
+     29986      68     13294  75.85%   0               inf                  inf     2154     12   9921    48518k  7856.6s
+     29993      68     13298  75.85%   0               inf                  inf     2158     12   9931    48560k  7862.7s
+     30001      68     13302  75.85%   0               inf                  inf     2162     12   9945    48597k  7868.1s
+     30017      68     13310  75.86%   0               inf                  inf     2169     12   9967    48660k  7877.5s
+     30032      66     13318  75.86%   0               inf                  inf     2158     12   9904    48693k  7882.8s
+     30053      65     13329  75.88%   0               inf                  inf     2162     15   9893    48730k  7888.1s
+     30096      65     13349  75.89%   0               inf                  inf     2179     15   9975    48766k  7893.2s
+     30130      65     13367  75.90%   0               inf                  inf     2195     15   9902    48802k  7898.2s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     30156      66     13379  75.90%   0               inf                  inf     2009      6   9920    48834k  7903.5s
+     30170      65     13386  75.93%   0               inf                  inf     2058      8   9940    48865k  7908.6s
+     30200      65     13401  75.98%   0               inf                  inf     2070      8   9994    48899k  7913.7s
+     30229      65     13415  76.03%   0               inf                  inf     2084      8   9800    48935k  7918.9s
+     30261      65     13431  76.04%   0               inf                  inf     2100      8   9853    48971k  7923.9s
+     30293      68     13445  76.08%   0               inf                  inf     2070     11   9961    49004k  7929.2s
+     30325      68     13461  76.11%   0               inf                  inf     2086     11   9828    49041k  7934.3s
+     30358      68     13478  76.13%   0               inf                  inf     2100     11   9903    49078k  7939.4s
+     30405      72     13501  76.14%   0               inf                  inf     2145      6   9974    49112k  7944.4s
+     30447      70     13523  76.14%   0               inf                  inf     2285      9   9955    49149k  7949.9s
+     30478      69     13539  76.14%   0               inf                  inf     2292     10   9844    49185k  7955.1s
+     30513      69     13556  76.14%   0               inf                  inf     2309     10   9897    49221k  7960.2s
+     30544      68     13571  76.14%   0               inf                  inf     2312      6   9918    49258k  7965.4s
+     30573      68     13586  76.14%   0               inf                  inf     2327      6   9980    49298k  7970.5s
+     30611      68     13605  76.15%   0               inf                  inf     2346      6   9790    49335k  7975.5s
+     30643      71     13621  76.15%   0               inf                  inf     2725      7   9844    49370k  7980.6s
+     30683      70     13641  76.15%   0               inf                  inf     2616      8   9894    49405k  7985.8s
+     30720      69     13660  76.15%   0               inf                  inf     2644      9   9851    49440k  7990.8s
+     30758      69     13679  76.15%   0               inf                  inf     2662      9   9906    49480k  7996.2s
+     30791      68     13694  76.15%   0               inf                  inf     2798     10   9761    49516k  8001.3s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     30825      68     13712  76.15%   0               inf                  inf     2816     10   9821    49553k  8006.4s
+     30863      69     13731  76.15%   0               inf                  inf     2835     10   9874    49590k  8011.6s
+     30890      70     13745  76.15%   0               inf                  inf     2867      5   9699    49630k  8017.3s
+     30912      69     13756  76.15%   0               inf                  inf     2835      8   9631    49666k  8022.4s
+     30947      69     13773  76.15%   0               inf                  inf     2852      8   9682    49703k  8027.6s
+     30977      69     13788  76.15%   0               inf                  inf     2867      8   9743    49741k  8033.0s
+     30995      70     13797  76.15%   0               inf                  inf     2759     11   9761    49777k  8038.1s
+     31021      69     13810  76.15%   0               inf                  inf     2752      8   9615    49814k  8043.5s
+     31049      69     13824  76.15%   0               inf                  inf     2766      8   9666    49855k  8049.3s
+     31080      69     13839  76.15%   0               inf                  inf     2781      8   9717    49892k  8054.4s
+     31108      69     13853  76.15%   0               inf                  inf     2653     10   9565    49925k  8059.9s
+     31136      69     13867  76.15%   0               inf                  inf     2667     10   9606    49960k  8064.9s
+     31163      69     13881  76.15%   0               inf                  inf     2681     10   9641    49999k  8070.7s
+     31170      68     13885  76.15%   0               inf                  inf     2685     10   9652    50031k  8075.8s
+     31196      68     13898  76.15%   0               inf                  inf     2689     13   9678    50069k  8080.8s
+     31200      68     13900  76.15%   0               inf                  inf     2691     13   9681    50119k  8088.1s
+     31202      68     13901  76.15%   0               inf                  inf     2691     13   9684    50152k  8093.3s
+     31204      68     13902  76.15%   0               inf                  inf     2692     13   9687    50189k  8098.7s
+     31206      68     13903  76.15%   0               inf                  inf     2693     13   9690    50226k  8103.7s
+     31209      68     13905  76.15%   0               inf                  inf     2694     13   9694    50271k  8110.0s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     31230      68     13914  76.17%   0               inf                  inf     2680     14   9630    50305k  8115.6s
+     31249      68     13924  76.17%   0               inf                  inf     2690     14   9655    50342k  8121.1s
+     31274      68     13936  76.18%   0               inf                  inf     2702     14   9715    50380k  8126.4s
+     31300      68     13949  76.18%   0               inf                  inf     2714     14   9758    50417k  8131.8s
+     31323      68     13961  76.18%   0               inf                  inf     2524     14   9761    50452k  8137.2s
+     31352      67     13975  76.18%   0               inf                  inf     2319      6   9757    50486k  8142.3s
+     31378      67     13988  76.18%   0               inf                  inf     2330      6   9810    50525k  8147.8s
+     31408      67     14003  76.18%   0               inf                  inf     2343      6   9853    50563k  8153.1s
+     31436      67     14017  76.18%   0               inf                  inf     2356      6   9892    50599k  8158.2s
+     31460      68     14028  76.18%   0               inf                  inf     2545      9   9847    50632k  8163.3s
+     31488      68     14043  76.18%   0               inf                  inf     2560      9   9898    50673k  8169.0s
+     31508      67     14052  76.21%   0               inf                  inf     2514     10   9870    50709k  8174.2s
+     31549      67     14072  76.24%   0               inf                  inf     2528     10   9935    50752k  8180.0s
+     31570      67     14083  76.27%   0               inf                  inf     2539     10   9984    50789k  8185.0s
+     31590      67     14093  76.30%   0               inf                  inf     2548     10   9908    50836k  8191.9s
+     31600      68     14097  76.33%   0               inf                  inf     2622     11   9935    50851k  8201.1s
+     31645      68     14119  76.35%   0               inf                  inf     2640     11   9970    50889k  8206.4s
+     31688      68     14141  76.35%   0               inf                  inf     2661     11   9938    50929k  8211.6s
+     31722      69     14156  76.35%   0               inf                  inf     2712      9   9976    50995k  8217.3s
+     31740      69     14166  76.36%   0               inf                  inf     2722      9   9850    51031k  8222.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     31771      69     14181  76.37%   0               inf                  inf     2737      9   9929    51067k  8227.9s
+     31793      69     14193  76.38%   0               inf                  inf     2749      9   9974    51100k  8232.9s
+     31816      72     14204  76.38%   0               inf                  inf     2760      9   9961    51133k  8238.3s
+     31838      71     14215  76.39%   0               inf                  inf     2801     11   9663    51161k  8243.6s
+     31859      70     14225  76.40%   0               inf                  inf     3006     12   9708    51191k  8248.6s
+     31884      70     14238  76.40%   0               inf                  inf     3019     12   9759    51225k  8253.6s
+     31909      70     14251  76.40%   0               inf                  inf     3031     12   9784    51258k  8258.7s
+     31925      69     14258  76.41%   0               inf                  inf     2918      4   9826    51292k  8263.9s
+     31947      69     14269  76.41%   0               inf                  inf     2929      4   9877    51327k  8269.2s
+     31976      69     14283  76.41%   0               inf                  inf     2943      4   9921    51363k  8274.6s
+     32010      72     14300  76.41%   0               inf                  inf     2958      4   9975    51400k  8280.0s
+     32014      70     14302  76.41%   0               inf                  inf     2759      6   9986    51408k  8288.7s
+     32041      69     14316  76.41%   0               inf                  inf     2705      7   9861    51461k  8293.9s
+     32065      68     14327  76.42%   0               inf                  inf     2658      8   9905    51493k  8299.0s
+     32099      68     14344  76.44%   0               inf                  inf     2673      8   9993    51529k  8304.2s
+     32137      68     14363  76.44%   0               inf                  inf     2691      8   9762    51566k  8309.2s
+     32168      70     14376  76.49%   0               inf                  inf     2671     10   9811    51607k  8326.5s
+     32183      70     14383  76.67%   0               inf                  inf     2678     10   9879    51645k  8332.4s
+     32202      70     14393  76.78%   0               inf                  inf     2687     10   9933    51680k  8337.6s
+     32219      70     14400  76.82%   0               inf                  inf     2694     10   9964    51712k  8342.8s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     32238      70     14410  76.99%   0               inf                  inf     2704     10   9846    51747k  8348.0s
+     32249      70     14416  77.02%   0               inf                  inf     2710     10   9871    51788k  8353.7s
+     32263      74     14422  77.06%   0               inf                  inf     2716     10   9889    51847k  8359.0s
+     32306      72     14444  77.08%   0               inf                  inf     2365      5   9988    51886k  8364.2s
+     32335      71     14459  77.10%   0               inf                  inf     2430      6   9819    51923k  8369.6s
+     32353      71     14468  77.13%   0               inf                  inf     2439      6   9850    51961k  8375.0s
+     32363      70     14473  77.15%   0               inf                  inf     2288      7   9850    51984k  8388.1s
+     32374      69     14480  77.23%   0               inf                  inf     2422     10   9846    52029k  8393.5s
+     32391      68     14489  77.29%   0               inf                  inf     2541      8   9687    52062k  8398.7s
+     32416      68     14501  77.31%   0               inf                  inf     2553      8   9722    52098k  8403.8s
+     32438      68     14512  77.33%   0               inf                  inf     2564      8   9754    52133k  8409.0s
+     32451      68     14519  77.33%   0               inf                  inf     2571      8   9772    52170k  8414.4s
+     32456      68     14521  77.33%   0               inf                  inf     2573      8   9778    52210k  8420.2s
+     32463      68     14525  77.34%   0               inf                  inf     2577      8   9787    52254k  8426.5s
+     32464      67     14526  77.34%   0               inf                  inf     2578      8   9788    52285k  8431.6s
+     32468      67     14527  77.34%   0               inf                  inf     2584      9   9672    52298k  8444.4s
+     32484      69     14534  77.35%   0               inf                  inf     2591      9   9705    52335k  8450.3s
+     32504      71     14543  77.36%   0               inf                  inf     2600      9   9735    52369k  8455.7s
+     32527      71     14554  77.37%   0               inf                  inf     2611      9   9783    52405k  8461.1s
+     32543      71     14562  77.37%   0               inf                  inf     2619      9   9801    52439k  8466.3s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     32565      74     14573  77.38%   0               inf                  inf     2630      9   9838    52499k  8471.9s
+     32570      72     14575  77.42%   0               inf                  inf     2499     10   9800    52548k  8487.9s
+     32572      72     14576  77.45%   0               inf                  inf     2500     10   9805    52595k  8495.8s
+     32581      72     14580  77.55%   0               inf                  inf     2503     10   9819    52728k  8518.2s
+     32583      72     14581  77.56%   0               inf                  inf     2504     10   9822    52775k  8526.5s
+     32586      72     14582  77.56%   0               inf                  inf     2505     10   9826    52868k  8540.9s
+     32588      72     14583  77.56%   0               inf                  inf     2506     10   9830    52907k  8547.0s
+     32590      72     14585  77.57%   0               inf                  inf     2508     10   9835    52958k  8555.0s
+     32598      71     14589  77.77%   0               inf                  inf     2475     11   9839    52992k  8566.4s
+     32607      70     14594  77.77%   0               inf                  inf     2405     12   9847    53016k  8577.8s
+     32627      67     14606  77.77%   0               inf                  inf     2468      5   9815    53070k  8583.0s
+     32644      66     14614  77.77%   0               inf                  inf     2419      6   9651    53104k  8588.3s
+     32666      66     14625  77.77%   0               inf                  inf     2430      6   9684    53139k  8593.5s
+     32692      65     14639  77.77%   0               inf                  inf     2584      9   9557    53173k  8598.6s
+     32707      64     14646  77.87%   0               inf                  inf     2718     10   9578    53205k  8603.8s
+     32739      64     14662  77.93%   0               inf                  inf     2734     10   9644    53242k  8609.0s
+     32770      65     14677  77.96%   0               inf                  inf     2749     10   9686    53278k  8614.2s
+     32788      65     14687  77.97%   0               inf                  inf     2759     10   9705    53315k  8619.5s
+     32790      64     14688  77.97%   0               inf                  inf     2951      6   9690    53319k  8632.7s
+     32814      63     14698  77.99%   0               inf                  inf     2806      8   9580    53397k  8637.7s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+     32836      63     14710  78.02%   0               inf                  inf     2818      8   9668    53428k  8642.8s
+     32852      63     14718  78.03%   0               inf                  inf     2826      8   9723    53463k  8648.4s
+     32876      63     14730  78.04%   0               inf                  inf     2838      8   9763    53498k  8653.5s
+     32899      66     14742  78.06%   0               inf                  inf     2849      8   9808    53534k  8659.2s
+     32923      65     14754  78.07%   0               inf                  inf     2972     10   9700    53562k  8664.6s
+     32957      65     14770  78.07%   0               inf                  inf     2986     10   9752    53597k  8670.0s
+     32983      65     14783  78.07%   0               inf                  inf     2997     10   9790    53630k  8675.0s
+     32995      64     14789  78.09%   0               inf                  inf     3085     12   9789    53671k  8680.9s
+     33015      64     14798  78.11%   0               inf                  inf     3094     12   9818    53703k  8686.0s
+     33034      64     14808  78.12%   0               inf                  inf     3104     12   9843    53736k  8691.1s
+     33047      64     14815  78.12%   0               inf                  inf     3110     12   9860    53802k  8701.2s
+     33051      64     14817  78.12%   0               inf                  inf     3110     12   9866    53868k  8711.0s
+     33053      64     14818  78.12%   0               inf                  inf     3111     12   9867    53904k  8716.5s
+     33055      64     14819  78.12%   0               inf                  inf     3112     12   9868    53938k  8721.8s
+     33058      64     14820  78.12%   0               inf                  inf     3112     12   9870    54004k  8731.8s
+     33060      64     14821  78.12%   0               inf                  inf     3113     12   9874    54046k  8737.9s
