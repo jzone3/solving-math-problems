@@ -103,6 +103,29 @@ class PatchBuilder:
             key = key * p**k + comps[:, i] % p**k
         return key
 
+    def truncate(self, p):
+        """Drop prime p from the window entirely (its structured classes
+        have been placed); merge classes, keeping exact hole counts."""
+        pi = self.wprimes.index(p)
+        cells = self.comps.copy()
+        cells[:, pi] = 0
+        order = np.lexsort(cells.T)
+        cells = cells[order]
+        cc = [self.counts[i] for i in order.tolist()]
+        uniq = np.ones(len(cells), dtype=bool)
+        if len(cells) > 1:
+            uniq[1:] = np.any(cells[1:] != cells[:-1], axis=1)
+        nc, nn = [], []
+        for i, u in enumerate(uniq.tolist()):
+            if u:
+                nc.append(cells[i])
+                nn.append(cc[i])
+            else:
+                nn[-1] += cc[i]
+        self.comps = np.array(nc, dtype=np.int64)
+        self.counts = nn
+        self.win[p] = 0
+
     def process(self, p):
         t0 = time.time()
         H = len(self.counts)
@@ -210,17 +233,94 @@ class PatchBuilder:
                       else np.zeros((0, len(self.wprimes)), dtype=np.int64))
         self.counts = ccounts
         tot = sum(ccounts) if ccounts else 0
+        self.den = getattr(self, "den", 1) * p
+        frac = tot / self.den
         self.log(f"level {p}: emitted so far {len(self.emitted)}, "
                  f"classes={len(ccounts)}, holes={tot}, "
-                 f"t={time.time()-t0:.1f}s")
+                 f"measure={frac:.6f}, t={time.time()-t0:.1f}s")
         return tot
+
+
+    def process_prime_virtual(self, q):
+        """Safe prime q >= 97 processed WITHOUT window blow-up.
+
+        Each free modulus M = q*d*g yields one inner class mod q*d, killing
+        exactly one q-child of one cell mod d.  Choosing distinct residues
+        mod q for all kills of this prime (possible: total kills < q), a
+        window-class i inside K_i chosen cells keeps q - K_i of its q
+        children:  counts_i *= (q - K_i), den *= q.  Exact.
+        """
+        t0 = time.time()
+        H = len(self.counts)
+        if H == 0:
+            return 0
+        # candidate inner d: divisors of window product
+        divs = [1]
+        for pq, e in self.win.items():
+            divs = [d * pq**k for d in divs for k in range(e + 1)
+                    if d * pq**k <= 10**7]
+        cand = []
+        for d in sorted(set(divs)):
+            mu = len(free_realizations(q * d))
+            if mu == 0:
+                continue
+            key = self.key_for(self.comps, self._nfact(d))
+            vals, inv = np.unique(key, return_inverse=True)
+            agg = np.zeros(len(vals), dtype=object)
+            for i, j in enumerate(inv.tolist()):
+                agg[j] += self.counts[i]
+            order = np.argsort([-float(x) for x in agg])[:mu]
+            for j in order:
+                if agg[j] > 0:
+                    cand.append((float(agg[j]), d, int(vals[j])))
+        cand.sort(reverse=True)
+        kills = []
+        pool = {}
+        for val, d, cell in cand:
+            if len(kills) >= q - 1:
+                break
+            Ms = pool.setdefault(d, list(free_realizations(q * d)))
+            if not Ms:
+                continue
+            kills.append((d, cell))
+            self.emitted.append((cell, q * d, Ms.pop(0)))
+        # apply: K_i = number of chosen cells containing class i
+        K = np.zeros(H, dtype=np.int64)
+        for d, cell in kills:
+            key = self.key_for(self.comps, self._nfact(d))
+            K += (key == cell)
+        self.counts = [c * (q - int(k)) for c, k in zip(self.counts, K)]
+        self.den = getattr(self, "den", 1) * q
+        # drop zero classes
+        alive = [i for i, c in enumerate(self.counts) if c > 0]
+        if len(alive) < H:
+            self.comps = self.comps[alive]
+            self.counts = [self.counts[i] for i in alive]
+        tot = sum(self.counts)
+        self.log(f"prime {q}: kills={len(kills)}, classes={len(self.counts)},"
+                 f" measure={float(tot)/self.den:.6f}, t={time.time()-t0:.1f}s")
+        return tot
+
+    def _nfact(self, n):
+        f = {}
+        for pq in self.wprimes:
+            k = 0
+            while n % pq == 0:
+                n //= pq
+                k += 1
+            if k:
+                f[pq] = k
+        return f
 
 
 def run(levels, out=None, seed=0):
     b = PatchBuilder(seed=seed)
     tot = 1
     for p in levels:
-        tot = b.process(p)
+        if p >= 97:
+            tot = b.process_prime_virtual(p)
+        else:
+            tot = b.process(p)
         if tot == 0:
             b.log("HOLE FULLY COVERED - patch complete!")
             break
@@ -240,6 +340,15 @@ def run(levels, out=None, seed=0):
 
 if __name__ == "__main__":
     seed = int(sys.argv[1]) if len(sys.argv) > 1 else 0
-    levels = ([7] * 4 + [2] * 3 + [5] * 2 + [3] * 2 + [7] * 2
-              + SAFE_PRIMES[:8])
+    def primerange(a, b):
+        for n in range(a, b):
+            if all(n % i for i in range(2, int(n**0.5) + 1)):
+                yield n
+    safe = list(primerange(97, 3000))
+    levels = ([7, 7, 3, 2, 7, 3, 7, 2, 5, 7, 3]
+              + safe[:40]
+              + [7, 3, 2]
+              + safe[40:120]
+              + [7, 3]
+              + safe[120:250])
     run(levels, out="patch43_witness.json", seed=seed)

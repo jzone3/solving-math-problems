@@ -99,12 +99,11 @@ def entry_sets(cap):
         E.add(m)
     for m in _mults(32, (2,), cap):
         E.add(m)
-    # e3: 6, 12, 3^j*{1,2} j>=2
+    # e3 = 3(2,4,3^(1,2)): moduli 3*{2,4} = {6,12} and 3*3^i*{1,2}
+    # = {3^j, 2*3^j : j >= 2}.  EXACT - the earlier _mults(18,(3,2))
+    # over-approximation wrongly included 4*3^j (36, 108, ...), hiding
+    # the free family 7^k*4*3^j (see NOTES section 19).
     E |= {6, 12}
-    E |= _mults(9, (3,), cap) | _mults(18, (3, 2), cap // 1)
-    # (conservative: 3^j*2*2^i not in text; keep exact: 3^j*2 only)
-    E -= {m for m in list(E) if m % 4 == 0 and m // (m & -m) % 9 == 0
-          and False}
     E |= _mults(9, (3,), cap) | {2 * t for t in _mults(9, (3,), cap // 2)}
     # e4
     E |= {5 * 3 * 4, 5 * 3 * 8, 5 * 3 * 16, 5 * 3, 5 * 2}

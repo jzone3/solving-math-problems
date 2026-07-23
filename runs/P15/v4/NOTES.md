@@ -549,3 +549,96 @@ STATUS: frontier-pushed / near-miss (T=43 blueprint v2 = 12 repaired
 ledgers + re-aim lemma; single remaining validation class:
 explicit fresh-support modulus tracking, for which owens_smooth.py +
 setexpr.py are the working tools).
+
+## 19. Phase 8: transcription bug fix, corrected free budget (0.94), fuel-conservation law, and geometric decay with safe primes
+
+### 19a. The e3 over-approximation bug (owens_smooth.py, FIXED)
+
+The phase-6 transcription of Owens entry e3 = 3(2,4,3^(1,2)) used
+`_mults(18,(3,2))`, i.e. it closed {18} under multiplication by BOTH 3
+and 2.  The faithful modulus set of that entry is only
+{6, 12} ∪ {3^j, 2·3^j : j >= 2} — the generator 2 was spurious, and it
+wrongly marked 4·3^j (36, 108, 324, ...) as used 7-tower entries.
+No other entry produces 4·3^j (e2 gives 3^j·8 and 3^j·16·2^i; the 9^·4
+structure is a separate non-7 congruence set).  Fix committed; re-run of
+the free-multiplier scan now gives primitive free multipliers
+
+    t in {1, 2, 3, 4, 5, 36, 108, 324, 480, 960, 972, 1000, 1920, 2000, ...}
+
+(previously only {1,...,5}).  In particular M = 252 = 7·36 is FREE in
+Owens's system — machine-checked (owens_smooth.used_smooth).
+
+Two immediate consequences, both machine-checked:
+
+1. blueprint43b re-aim improves: the 42-cell is covered by four STOLEN
+   moduli {84, 126, 168, 504} plus the FREE modulus 252.  Relocated
+   measure drops from 2/63 (growth 4/3) to 1/36 (growth 7/6).
+2. freefuel.py: corrected total free 7-smooth inner density of the
+   42-cell patch problem is 0.93615 (was 0.6167).  Largest new family:
+   t = 36 alone contributes 7/36 = 0.19444 (inner moduli 6·3^i·7^k,
+   including inner n = 6 at k=1 — the first FREE small inner modulus).
+
+### 19b. Fuel-conservation law (supersedes the section-17 'refuted' verdict)
+
+Measure bookkeeping for the cascade: covering a hole cell (normalized
+measure 1) by congruences with multipliers D creates new burden
+(stolen old holes + uncovered remainder) of exactly 1 − (free measure
+applied).  Stealing is measure-neutral; only FREE moduli make progress.
+Hence the 42-cell patch closes measure-wise iff total free inner density
+(with alignment) reaches 1.  Section 17's impossibility argument
+implicitly required per-level FULL tower covers (the S >= 88 packing);
+that architecture is sufficient but NOT necessary — a cascade whose
+burden goes to 0 with per-tower trapped-chain patches (one congruence
+per tower, standard Krukenberg/Nielsen device, and free moduli are
+infinite in number) is also a valid finite closure PROVIDED the endgame
+reaches exactly zero via the kill pool.  So section 17 is downgraded
+from 'refuted' to 'open, fuel-limited': the corrected fuel is
+0.936 (7-smooth) + unbounded safe-prime fuel (sum over q >= 97 of
+~Sum_d mu(qd)/(qd) diverges like sum 1/q).
+
+### 19c. Empirical geometric decay (patchcover.py, extended)
+
+patchcover.py upgraded: (i) free budget now uses the corrected
+enumeration, (ii) new `process_prime_virtual(q)` processes a safe prime
+q >= 97 WITHOUT window blow-up — each free modulus q·d·g kills one
+q-child of one cell mod d; choosing distinct residues mod q for all
+kills of one prime (total kills < q), counts update exactly as
+counts_i *= (q − K_i), den *= q.  Exact big-int arithmetic throughout.
+
+Trajectory (smooth levels 2^3·3^4·5·7^5 then safe primes 97, 101, ...):
+
+    after smooth levels:  measure 0.238269   (2.16M hole classes)
+    prime  97: kills= 96  measure 0.209849
+    prime 101: kills=100  measure 0.185134   (approx; see patchrun.log)
+    prime 103: kills=102  measure 0.164862
+    prime 107: kills=106  measure 0.146952
+    prime 109: kills=108  measure 0.131266
+    prime 113: kills=112  measure 0.117713
+    prime 127: kills=126  measure 0.106811
+    prime 131: kills=130  measure 0.097208
+    prime 137: kills=136  measure 0.088837
+
+Contraction ~x0.89-0.91 per prime, roughly q-independent so far —
+consistent with the divergent-fuel prediction, NOT with a stall.  Run
+continuing (patchrun.log); with 250 primes the projected measure is
+~1e-12.
+
+### 19d. What is and is NOT established
+
+Established (machine-checked): corrected free budget incl. 252 free;
+improved re-aim (growth 7/6); fuel 0.936 + divergent safe-prime
+reservoir; empirical geometric measure decay under exact counting.
+
+NOT established: a finite closure.  The virtual-prime cascade thins
+holes geometrically but never reaches exactly zero: hole CLASS count
+stays at 2.16M while counts shrink, and a finite covering system needs
+holes = 0 exactly.  The missing device is Owens's fill(q, copies, need)
+move — covering q−1 FULL children of a cell at prime q using complete
+pool covers, which kills classes outright.  Bridging the measured
+geometric decay to an exact zero (pool covers from the free families
+{7^k·t} + safe primes, plus trapped-chain patches) is the concrete
+remaining construction problem, now with quantified fuel slack.
+
+STATUS: frontier-pushed / near-miss (fuel obstruction of section 17
+removed; corrected budget 0.936 + divergent safe primes; exact-zero
+endgame is the single remaining constructive gap).

@@ -63,20 +63,26 @@ def verify_reaim(a_star=2, verbose=True):
 
 
 def owens_usage_check():
-    """Confirm all five moduli really are used by Owens (else they would
-    already be free and section 15 analysis would have found them)."""
+    """Usage status of the five moduli.  Phase 8 correction: fixing the
+    e3 over-approximation in owens_smooth (which wrongly marked 4*3^j as
+    7-tower entries) shows 252 = 7*36 is in fact FREE - Owens never uses
+    it.  So only FOUR moduli need stealing, and the relocated measure
+    drops to 1/84+1/126+1/168+1/504 = 14/504 = 1/36 (growth 7/6, not
+    4/3)."""
     from owens_smooth import used_smooth
     U = used_smooth(10**4)
     rows = [(m, "USED" if m in U else "FREE") for m in
             (84, 126, 168, 252, 504)]
     print("Owens usage of the re-aim moduli:", rows)
-    return all(v == "USED" for _, v in rows)
+    expected = {84: "USED", 126: "USED", 168: "USED",
+                252: "FREE", 504: "USED"}
+    return all(expected[m] == v for m, v in rows)
 
 
 def relocation_growth():
     from fractions import Fraction as F
     cell = F(1, 42)
-    relocated = sum(F(1, m) for m in (84, 126, 168, 252, 504))
+    relocated = sum(F(1, m) for m in (84, 126, 168, 504))  # 252 is free
     print(f"hole measure: 42-cell = {cell} = {float(cell):.5f} -> "
           f"relocated = {relocated} = {float(relocated):.5f} "
           f"(growth x{float(relocated / cell):.4f})")
@@ -89,10 +95,10 @@ if __name__ == "__main__":
     relocation_growth()
     print()
     if ok and used_ok:
-        print("RESULT: re-aim lemma PASS; 42-cell coverable by Owens's own "
-              "moduli. Open validation burden: absorb the five relocated "
-              "cells (measure 16/504) in the >=11 sections - same burden "
-              "class as the 12 repaired ledgers, replacing the refuted "
-              "free-modulus 13th section.")
+        print("RESULT: re-aim lemma PASS; 42-cell coverable by four stolen "
+              "Owens moduli + the FREE modulus 252. Relocated measure 1/36 "
+              "(growth 7/6). Open validation burden: absorb the four "
+              "relocated cells - same burden class as the 12 repaired "
+              "ledgers, replacing the refuted free-modulus 13th section.")
     else:
         print("RESULT: check FAILED - see above.")
