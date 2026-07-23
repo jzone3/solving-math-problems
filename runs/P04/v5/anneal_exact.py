@@ -39,10 +39,11 @@ def exact_min(n, edges, tl=45):
     CACHE[edges] = k
     return k
 
-def run(n, seconds, seed):
+def run(n, seconds, seed, maxdeg=None):
     rng = random.Random(seed)
     bound = (n - 1) // 2
-    maxdeg = n - 3 - ((n - 3) % 2)  # largest even degree <= n-3
+    if maxdeg is None:
+        maxdeg = n - 3 - ((n - 3) % 2)  # largest even degree <= n-3
     # start: circulant S={1,2,3,4}, degree 8
     edges_set = set()
     for d in (1, 2, 3, 4):
@@ -88,4 +89,6 @@ def run(n, seconds, seed):
     print(f"[n={n}] done: {it} its, best min-decomp {best} vs bound {bound}", flush=True)
 
 if __name__ == "__main__":
-    run(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]) if len(sys.argv) > 3 else 7)
+    run(int(sys.argv[1]), int(sys.argv[2]),
+        int(sys.argv[3]) if len(sys.argv) > 3 else 7,
+        int(sys.argv[4]) if len(sys.argv) > 4 else None)
