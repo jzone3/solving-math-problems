@@ -86,3 +86,24 @@ found no later resolution. To our knowledge this nonexistence is NEW.
   5 runs × 2–8 G iterations plateau at cost 76–80 (out of 660 pair-slots), nowhere near
   a design — consistent with CPro1's report that generic heuristics fail on this type.
   Annealing looks hopeless here; SAT is the right hammer.
+
+## Final run summary (session end, ~11.5 h wall)
+
+- (9,6) STS-reduced SAT: **UNSAT in ~4 min, DRAT verified** (main result; artifacts
+  committed under artifacts/: pmd9sts.cnf.gz + pmd9sts.drat.xz, re-checkable with
+  `xz -d`, `gzip -d`, then `drat-trim pmd9sts.cnf pmd9sts.drat` → s VERIFIED).
+- (9,6) assumption-free full instance: kissat ran ~11 h, DRAT grew to >30 GB, no
+  termination. Not needed logically (STS route + two exhaustive searches close v=9),
+  but a future session could finish it for an assumption-free proof artifact.
+- (12,6), (15,6), (16,6), (18,6) strengthened instances: kissat (plus kissat --sat and
+  cadical on v=12) ran 6–10 h each with no verdict. These remain open; a
+  prescribed-automorphism (V2) or CP/LNS (V3) attack is likely needed for the SAT
+  direction, or much longer/parallel cube-and-conquer for UNSAT.
+- Compute spent: 8 cores saturated for ~11 h (SAT) + ~5 annealer runs (2–8 G iters each).
+
+## STATUS
+
+STATUS: SOLVED (partial / frontier-pushed): **(9,6,1)-PMD proven NOT to exist** — new
+nonexistence result closing the smallest open case of P13; remaining open v for k=6
+after this session: 12, 15, 16, 18 (10 was already closed by Abel–Bennett 2006; the
+problem file's open list should drop 9 and 10).
