@@ -1,32 +1,37 @@
 n=19 models=1 clauses=19 t=0s best_hc_count=NA
-n=19 models=500 clauses=74670 t=2s best_hc_count=NA
-n=19 models=1000 clauses=150176 t=29s best_hc_count=NA
-n=19 models=1143 clauses=171855 t=159s best_hc_count=NA
-n=19 models=1192 clauses=179246 t=283s best_hc_count=NA
-n=19 models=1232 clauses=185326 t=409s best_hc_count=NA
-n=19 models=1239 clauses=186390 t=537s best_hc_count=NA
-n=19 models=1272 clauses=191330 t=659s best_hc_count=NA
-n=19 models=1329 clauses=199994 t=789s best_hc_count=NA
-n=19 models=1361 clauses=204820 t=916s best_hc_count=NA
-n=19 models=1384 clauses=208316 t=1037s best_hc_count=NA
-n=19 models=1402 clauses=211052 t=1167s best_hc_count=NA
-n=19 models=1406 clauses=211641 t=1332s best_hc_count=NA
-n=19 models=1409 clauses=212097 t=1485s best_hc_count=NA
-n=19 models=1415 clauses=213009 t=1615s best_hc_count=NA
-n=19 models=1419 clauses=213617 t=1809s best_hc_count=NA
-n=19 solver stall -> rebuild #1 (models=1422, blocking=214073, next_budget=4000000)
-n=19 models=1423 clauses=214225 t=2161s best_hc_count=NA
-n=19 solver stall -> rebuild #2 (models=1423, blocking=214225, next_budget=4000000)
-n=19 solver stall -> rebuild #3 (models=1424, blocking=214377, next_budget=4000000)
-n=19 models=1425 clauses=214529 t=2386s best_hc_count=NA
-n=19 solver stall -> rebuild #4 (models=1425, blocking=214529, next_budget=4000000)
-n=19 solver stall -> rebuild #5 (models=1425, blocking=214529, next_budget=8000000)
-n=19 solver stall -> rebuild #6 (models=1425, blocking=214529, next_budget=16000000)
-n=19 models=1426 clauses=214681 t=3236s best_hc_count=NA
-n=19 solver stall -> rebuild #7 (models=1426, blocking=214681, next_budget=4000000)
-n=19 models=1427 clauses=214833 t=3367s best_hc_count=NA
-n=19 solver stall -> rebuild #8 (models=1427, blocking=214833, next_budget=4000000)
-n=19 solver stall -> rebuild #9 (models=1427, blocking=214833, next_budget=8000000)
-n=19 solver stall -> rebuild #10 (models=1427, blocking=214833, next_budget=16000000)
-n=19 solver stall -> rebuild #11 (models=1427, blocking=214833, next_budget=32000000)
-n=19 solver stall -> rebuild #12 (models=1427, blocking=214833, next_budget=64000000)
+n=19 models=500 clauses=74784 t=1s best_hc_count=NA
+n=19 models=1000 clauses=150081 t=19s best_hc_count=NA
+n=19 models=1191 clauses=178961 t=141s best_hc_count=NA
+n=19 models=1230 clauses=184794 t=278s best_hc_count=NA
+n=19 models=1238 clauses=186010 t=407s best_hc_count=NA
+n=19 models=1278 clauses=192071 t=529s best_hc_count=NA
+n=19 models=1323 clauses=198892 t=651s best_hc_count=NA
+n=19 models=1363 clauses=204915 t=774s best_hc_count=NA
+n=19 models=1386 clauses=208411 t=930s best_hc_count=NA
+n=19 models=1401 clauses=210691 t=1070s best_hc_count=NA
+n=19 models=1414 clauses=212648 t=1195s best_hc_count=NA
+n=19 models=1422 clauses=213845 t=1445s best_hc_count=NA
+n=19 models=1424 clauses=214149 t=1575s best_hc_count=NA
+n=19 models=1428 clauses=214757 t=1727s best_hc_count=NA
+n=19 models=1429 clauses=214909 t=1886s best_hc_count=NA
+n=19 solver stall -> rebuild #1 (models=1430, blocking=215061, next_budget=4000000)
+n=19 models=1431 clauses=215213 t=2200s best_hc_count=NA
+n=19 solver stall -> rebuild #2 (models=1431, blocking=215213, next_budget=4000000)
+n=19 solver stall -> rebuild #3 (models=1432, blocking=215365, next_budget=4000000)
+n=19 solver stall -> rebuild #4 (models=1432, blocking=215365, next_budget=8000000)
+n=19 models=1433 clauses=215517 t=2649s best_hc_count=NA
+n=19 solver stall -> rebuild #5 (models=1433, blocking=215517, next_budget=4000000)
+n=19 solver stall -> rebuild #6 (models=1433, blocking=215517, next_budget=8000000)
+n=19 models=1434 clauses=215669 t=3344s best_hc_count=NA
+n=19 solver stall -> rebuild #7 (models=1434, blocking=215669, next_budget=4000000)
+n=19 solver stall -> rebuild #8 (models=1434, blocking=215669, next_budget=8000000)
+n=19 solver stall -> rebuild #9 (models=1434, blocking=215669, next_budget=16000000)
+n=19 models=1435 clauses=215821 t=4796s best_hc_count=NA
+n=19 solver stall -> rebuild #10 (models=1435, blocking=215821, next_budget=4000000)
+n=19 solver stall -> rebuild #11 (models=1435, blocking=215821, next_budget=8000000)
+n=19 models=1436 clauses=215973 t=5464s best_hc_count=NA
+n=19 solver stall -> rebuild #12 (models=1436, blocking=215973, next_budget=4000000)
+n=19 solver stall -> rebuild #13 (models=1436, blocking=215973, next_budget=8000000)
+n=19 solver stall -> rebuild #14 (models=1436, blocking=215973, next_budget=16000000)
+n=19 solver stall -> rebuild #15 (models=1436, blocking=215973, next_budget=32000000)
+n=19 solver stall -> rebuild #16 (models=1436, blocking=215973, next_budget=64000000)

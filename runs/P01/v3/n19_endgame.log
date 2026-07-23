@@ -1,0 +1,5 @@
+n=19 endgame model 1: solve 273.4s, +152 clauses (total 215517)
+n=19 endgame model 2: solve 12.1s, +152 clauses (total 215669)
+n=19 endgame model 3: solve 96.1s, +152 clauses (total 215821)
+n=19 endgame model 4: solve 730.7s, +152 clauses (total 215973)
+{"n": 19, "min_dist": 2, "mode": "kissat-endgame", "status": "exhausted-unsat", "models": 4, "blocking": 215973, "seconds": 5837.6, "witness": null}

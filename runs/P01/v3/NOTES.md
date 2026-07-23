@@ -117,3 +117,17 @@ learned-clause DB makes late SAT calls minutes-long.
 - n = 19: all but the endgame done (1,427 models blocked, then a single
   residual SAT instance resisting >3h of escalating-budget Cadical restarts).
 - n = 20: same shape (2,777 models, endgame grinding).
+
+## n=19 EXHAUSTED (2026-07-23 07:36 UTC)
+
+Hybrid pipeline: incremental Cadical CEGAR to the frontier (1,433 models,
+215,517 dihedral-closed blocking clauses, ~40 min), dump blocking set, then
+native kissat 4.0.4 on the full DIMACS per iteration (endgame.py). Kissat
+found 4 more models (up to 731s each — where incremental Cadical stalled for
+hours) and then proved the residual formula **UNSATISFIABLE** in ~4,400s.
+
+=> No 4-regular uniquely Hamiltonian graph on n=19 vertices (already known
+from GMZ n<=21, but independently re-derived with a completely different
+method: SAT-CEGAR over canonical-HC chord 2-factors).
+
+n=20 pipeline running the same way.
