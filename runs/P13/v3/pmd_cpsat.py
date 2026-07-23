@@ -17,7 +17,9 @@ Symmetry breaking:
  - blocks strictly ordered by (cell0, cell1) (valid: distance-1 pairs unique)
  - optional: symbols >= 6 first appear in increasing order
 
-Usage: pmd_cpsat.py v [time_limit_s] [workers] [--no-firstocc] [--seed N] [--hint file]
+Usage: pmd_cpsat.py v [time_limit_s] [workers] [--firstocc] [--seed N] [--hint file]
+The first-occurrence ordering is OFF by default (opt-in via --firstocc): it is only
+audited sound in isolation, not in combination with the key ordering.
 Prints SOLUTION rows (one block per line) on success, or UNSAT/UNKNOWN.
 """
 import sys
@@ -27,7 +29,7 @@ from ortools.sat.python import cp_model
 K = 6
 
 
-def build(v, first_occ=True):
+def build(v, first_occ=False):
     b = v * (v - 1) // K
     m = cp_model.CpModel()
     x = [[[m.NewBoolVar(f"x_{bl}_{p}_{s}") for s in range(v)] for p in range(K)]
@@ -90,7 +92,7 @@ def build(v, first_occ=True):
     return m, x, c, b
 
 
-def solve(v, time_limit=600, workers=8, first_occ=True, seed=0, hint_blocks=None,
+def solve(v, time_limit=600, workers=8, first_occ=False, seed=0, hint_blocks=None,
           log=False):
     m, x, c, b = build(v, first_occ)
     if hint_blocks:
@@ -115,7 +117,7 @@ if __name__ == "__main__":
     v = int(sys.argv[1])
     tl = float(sys.argv[2]) if len(sys.argv) > 2 else 600
     wk = int(sys.argv[3]) if len(sys.argv) > 3 else 8
-    fo = "--no-firstocc" not in sys.argv
+    fo = "--firstocc" in sys.argv
     seed = 0
     if "--seed" in sys.argv:
         seed = int(sys.argv[sys.argv.index("--seed") + 1])

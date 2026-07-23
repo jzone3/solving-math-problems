@@ -10,7 +10,7 @@ Three independent machine confirmations (details in `runs/P13/v3/NOTES.md`):
    reordering). kissat: UNSAT in 7.3 s; DRAT proof (`pmd9_unsat.drat.gz`) verified by
    drat-trim: `s VERIFIED`.
    Reproduce: `gunzip -k pmd9_unsat.{cnf,drat}.gz && drat-trim pmd9_unsat.cnf pmd9_unsat.drat`
-2. **CP-SAT**: independent OR-Tools model (`runs/P13/v3/pmd_cpsat.py 9`), UNSAT in ~6 s.
+2. **CP-SAT**: independent OR-Tools model (`runs/P13/v3/pmd_cpsat.py 9` — the optional first-occurrence rule is off by default; only audited-sound symmetry breaking), UNSAT in ~6 s.
 3. **Exhaustive backtracking**: `runs/P13/v3/pmd_dfs.py 9`, exact-cover DFS with only
    the WLOG first block fixed, exhausts the space in 581,650 nodes (~10 min), no design.
 

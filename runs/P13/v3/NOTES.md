@@ -143,7 +143,7 @@ same quotient space combinatorially.
    DRAT proof verified by drat-trim), and exhaustive exact-cover backtracking (581,650
    nodes). This settles the smallest open case of the k=6 PMD spectrum negatively.
 2. v=10: kissat reproduced the known nonexistence (UNSAT, 4.7 h) — method benchmark.
-   NOTE: the problem file lists v=10 as open, but Abel–Bennett 2006 Thm 1.4 already
+   NOTE: the problem file lists v=10 as open, but Abel–Bennett 2006 Thm 1.3 already
    records it as a proven exception; the problem file should be corrected.
 3. v=12, 15, 16, 18: no design found and no refutation — hours of CP-SAT (incl. soft-LNS
    packing with hint hand-off) and kissat; best soft-packing deviations 160/232/304/412.

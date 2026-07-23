@@ -22,7 +22,7 @@ appears t-apart in exactly λ blocks. For (9,6,1): exactly b = v(v−1)/k = 12 b
    1,005,098 clauses; symmetry breaking audited sound — see ADVERSARIAL_REVIEW.md §1).
    kissat: UNSAT; DRAT proof `pmd9_unsat.drat.gz` verified by drat-trim (`s VERIFIED`).
    Reproduce: `gunzip -k pmd9_unsat.{cnf,drat}.gz && drat-trim pmd9_unsat.cnf pmd9_unsat.drat`
-2. **CP-SAT**: independent OR-Tools model `pmd_cpsat.py 9` → UNSAT (~10 s).
+2. **CP-SAT**: independent OR-Tools model `pmd_cpsat.py 9` → UNSAT (~10 s; the optional first-occurrence rule is off by default — only audited-sound symmetry breaking).
 3. **Exhaustive backtracking**: `pmd_dfs.py 9` exact-cover DFS, only the WLOG first block
    fixed; exhausts in 581,650 nodes, no design.
 4. **Adversarial review (ADVERSARIAL_REVIEW.md): CONFIRMED** — an independent reviewer
