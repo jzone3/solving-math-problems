@@ -77,3 +77,5 @@ n=18 it=15200 t=2065s last_clause_len=6
 n=18 it=15400 t=2132s last_clause_len=6
 n=18 it=15600 t=2208s last_clause_len=6
 n=18 it=15800 t=2317s last_clause_len=5
+n=18 it=16000 t=2499s last_clause_len=5
+n=18 it=16200 t=2930s last_clause_len=9
