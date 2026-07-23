@@ -14,7 +14,12 @@ Constraints:
   - distance-1: every ordered pair (a,b) covered exactly once (ALO over all
     w1 occurrences + pairwise AMO via sequential counter).
   - distance-2: AMO per pair.
-  - symmetry breaking: column 0 non-decreasing down rows (rows are unordered).
+  - symmetry breaking: STANDARD FORM. Counting argument: every symbol s emits
+    one distance-1 out-pair per row except the row where s is last; 10 out-pairs
+    total => s is last in exactly one row; dually s is first in exactly one row.
+    Hence first and last columns are permutations, and (rows being unordered)
+    we may sort rows so that column 0 is the identity: X[r][0]=r. The last
+    column is also constrained to be a permutation (implied, aids propagation).
 
 Writes DIMACS to stdout or file. decode with decode_model.py.
 """
@@ -52,6 +57,12 @@ for r in range(n):
 # row 0 = identity
 for i in range(n):
     clauses.append([X[0][i][i]])
+# standard form: first column = identity
+for r in range(1, n):
+    clauses.append([X[r][0][r]])
+# last column is a permutation (implied; helps propagation)
+for s in range(n):
+    exactly_one([X[r][n - 1][s] for r in range(n)])
 
 # occurrence vars
 pairs = [(a, b) for a in range(n) for b in range(n) if a != b]
@@ -103,13 +114,6 @@ for (a, b) in pairs:
     occ2 = [W2[(r, i, a, b)] for r in range(n) for i in range(n - 2)]
     amo_seq(occ2)
 
-# symmetry breaking: first-column symbols non-decreasing for rows 1..n-1
-# (row 0 fixed = identity starts with 0). Encode: if X[r][0][s] then
-# X[r+1][0][t] is false for all t < s.
-for r in range(1, n - 1):
-    for s in range(n):
-        for t in range(s):
-            clauses.append([-X[r][0][s], -X[r + 1][0][t]])
 
 print(f"p cnf {top} {len(clauses)}", file=out)
 for c in clauses:
