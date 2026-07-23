@@ -1,0 +1,4 @@
+new min t=8 L=10 masks=6 g6=K???CB?WC{Fw (graph 1)
+new min t=6 L=9 masks=9 g6=K???CB?KC[nw (graph 1187)
+new min t=5 L=9 masks=21 g6=K???CB?MCLnw (graph 8177)
+done: 36709940 graphs, min t=5, hist: 5->327 6->9006 7->46069 8->9402 9->1277123 10->31717 11->14319 12->35321977

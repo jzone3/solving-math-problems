@@ -164,12 +164,14 @@ Orchestrator asked to push decisively past the first stop. New machinery:
 | all biconnected n = 10 | 9 743 542 | 2 | K₂,₈, K₂,₈+e only (hist: 2→2, 3→150, 4→63, 5→1 534, 6→380, 7→31 325, 8→2 270, 9→352, 10→9 707 466) |
 | all biconnected n = 11 | 900 969 091 | 2 | K₂,₉, K₂,₉+e only (hist: 2→2, 3→217, 4→76, 5→36 451, 6→18 976, 7→18 880, 8→958 352, 9→72 942, 10→6 734, 11→899 856 461) |
 | biconnected n = 11, ≤ 22 edges (earlier partial) | 57 M | 2 | same two graphs |
-| biconnected n = 12, ≤ 22 edges | (see lp12s_*.err) | (see below) | |
+| biconnected n = 12, ≤ 22 edges | 294 490 261 | 2 | 57 graphs: K₂,₁₀(±e) plus a NEW family of 55 graphs (L=8, 10 path-sets, degrees 2/3 + two 5–11 hubs — subdivided/expanded K₂,ₘ-like doubled-hub graphs), `t2_n12.txt` |
 
 **Result:** the mini-conjecture "in a 2-connected graph any three longest paths share ≥ 2
 vertices" is now verified exhaustively for **all 2-connected graphs on ≤ 11 vertices**
-(0.9 × 10⁹ graphs) — and the extremal graphs are exactly K₂,ₘ (± hub edge) at every order
-7 ≤ n ≤ 11. No SAT/exhaustive result of this shape appears in the literature (the known
+(0.9 × 10⁹ graphs) plus all sparse (≤ 22 edges) 2-connected n = 12 (0.29 × 10⁹) — extremal
+graphs are exactly K₂,ₘ (± hub edge) for 7 ≤ n ≤ 11; at n = 12 a second extremal family
+appears (55 doubled-hub graphs with longest paths of 8 vertices, catalogued in
+`t2_n12.txt` and used as annealing seeds — `t2n12*` runs stayed at t = 2). No SAT/exhaustive result of this shape appears in the literature (the known
 exhaustive Gallai-3 frontier is over all connected graphs, ~n ≤ 12, checking t ≥ 1 only).
 
 ## STATUS: negative / frontier-pushed

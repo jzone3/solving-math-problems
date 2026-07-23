@@ -1,0 +1,1 @@
+[t2n12r0] done iters=30000 best t=2 (L=5v, n=12) elapsed=1641s
