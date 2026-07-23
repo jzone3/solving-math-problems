@@ -248,6 +248,23 @@ a genuinely new spectral argument is required**, which corroborates why DHS left
 two open. (Also note: since f44/f46 sometimes dip below proven bounds while μ never exceeds
 them, the empirical margin structure is not an artifact of weak comparisons.)
 
+## Escalation round 6 (coordinator push #5, 2026-07-23): Collatz–Wielandt certificate scan
+
+Tried the proof technique behind DHS's 22 confirmations: μ ≤ ρ(Q) ≤ max_u (Qx)_u/x_u for any
+positive test vector x (Q = D + A signless Laplacian). Scanned 449 candidate closed-form test
+vectors over all connected graphs n ≤ 9 (`cw_scan.py`, `cw{44,46}.log`):
+- linear family x = a·d + b·m + c (245 triples),
+- power family x = d^p·m^q + c (144),
+- sum-power family x = (d+m)^p + c (24+).
+**Every candidate fails by n ≤ 6 for both bounds** (the last survivors for 46 die at n=6).
+Together with round 5 (no domination by Das/Merris/Guo), this rules out the two standard
+proof routes: no simple degree-based CW certificate and no comparison proof exists. A proof
+of 44/46 requires a structurally new argument (e.g., edge-max-aware test vectors that depend
+on the maximizing edge, or a case analysis over the hard-edge configuration of Lemma C).
+
+(The k=6 continuous support sweep was interrupted by infra restarts several times; all
+completed supports across every attempt gave feasible sup ≤ 0, identical to k=4/5.)
+
 ## Suggested next steps (other variants)
 
 - V5/proof direction looks promising: try Collatz–Wielandt on L or the signless
