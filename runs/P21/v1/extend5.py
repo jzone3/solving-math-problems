@@ -105,7 +105,13 @@ with Cadical195(bootstrap_with=cnf) as s:
                     sel.append((o, c))
                     packing.setdefault(c, []).extend(orbits[o])
         cnt += 1
-        s.add_clause([-X(o, c) for (o, c) in sel])
+        # block all 120 color-permutations of this packing (extension test is
+        # invariant under color relabeling)
+        classes = {}
+        for (o, c) in sel:
+            classes.setdefault(c, []).append(o)
+        for perm in itertools.permutations(range(K)):
+            s.add_clause([-X(o, perm[c]) for c in classes for o in classes[c]])
         if cnt <= offset:
             continue
         used = set()
