@@ -202,12 +202,17 @@ Searches (all tau=3 instances SAT-checked for 3-dijoin-partition):
 - random sampling p=10/q=13, p=12/q=15: ~50k tau=3 instances - all pack.
 - D27-seeded structural annealing (rewire/add/delete sinks, q<=24): ~60k
   SAT checks - all pack.
-- open-class annealing: (4,3)-biregular p=12/q=16 (3 workers) and p=15/q=20
+- open-class annealing: (4,3)-biregular p=12/q=16 (5 workers, incl. 2 seeded
+  from constructed instances containing a nontrivial tight 3-cut:
+  sources {0,1,2} fully covering three parallel sinks) and p=15/q=20
   (1 worker), degree-preserving double-swaps, tightness+cut-count score:
-  >130k open-case instances checked - all pack. Notably tight nontrivial
-  3-cuts NEVER appear at p=12/q=16 in hill-climbing - the only tight minimal
-  dicuts in the biregular class seen so far are the single-sink triples,
-  suggesting packing slack is structural here too.
+  ~570k open-case instances SAT-checked - all pack.
+- tight-cut-seeded random sampling at p=12/q=16 (all instances containing
+  the built-in nontrivial tight 3-cut, rest configuration-model): 259k
+  tau=3 instances - all pack.
+- Total: >0.8M instances checked inside the smallest open class
+  (48-arc (4,3)-biregular, rho=4). Hill-climbing never even retains
+  nontrivial tight 3-cuts - packing slack appears structural here too.
 
 ## STATUS
 
@@ -217,5 +222,9 @@ the stated arc budgets; >155M instances total. Seeded phase: Schrijver's 1980
 weighted CE and ACZ's D27 near-miss extracted exactly from arXiv:2202.00392
 and machine-verified; every unweighted expansion/subdivision/mutation tried
 (tau up to 10, n up to 48, m up to 162, ~30k SAT-checked candidates around
-the seeds) still packs. No solutions/P03/verify.py since there is no claimed
-witness.
+the seeds) still packs. Phase 4: identified the exact smallest open case via
+ACZ's P2-P4 (tau=3, rho>=4: (4,3)-biregular bipartite, >=12 sources, >=48
+arcs), exhausted all bipartite in-degree-3 instances with p<=6 sources q<=9
+sinks (2.95M tau=3 checks), and SAT-checked >0.8M instances inside the open
+class itself (random, annealed, and tight-cut-seeded) - all pack. No
+solutions/P03/verify.py since there is no claimed witness.

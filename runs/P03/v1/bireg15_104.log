@@ -24,3 +24,9 @@
 [bireg p=15 q=20 seed=104] step=3949 checked=2785 best=5503 cuts=5503 tight=0 t=4433s
 [bireg p=15 q=20 seed=104] step=4457 checked=3143 best=5507 cuts=5507 tight=0 t=5024s
 [bireg p=15 q=20 seed=104] step=4461 checked=3146 best=5514 cuts=5514 tight=0 t=5030s
+[bireg p=15 q=20 seed=104] step=7993 checked=5633 best=5530 cuts=5530 tight=0 t=8970s
+[bireg p=15 q=20 seed=104] step=8062 checked=5678 best=5536 cuts=5536 tight=0 t=9059s
+[bireg p=15 q=20 seed=104] step=9827 checked=6966 best=5551 cuts=5551 tight=0 t=11112s
+[bireg p=15 q=20 seed=104] step=12079 checked=8564 best=5591 cuts=5591 tight=0 t=13573s
+[bireg p=15 q=20 seed=104] step=17381 checked=12311 best=5598 cuts=5598 tight=0 t=19276s
+[bireg p=15 q=20 seed=104] step=17394 checked=12322 best=5603 cuts=5603 tight=0 t=19300s
