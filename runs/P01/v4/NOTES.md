@@ -80,7 +80,7 @@ Machine: 8 cores, 31 GB RAM. Timings single-core unless noted.
 | g5 n=26 | preempted at 4/32 residues, leaves=0 so far (already covered by GMZ ≤26) | |
 | g5 n=27 | paused at 5/256 residues (1.06e9 nodes, leaves=0); measured rate ⇒ ~7 days on 8 cores | resumable |
 | g4 n=22 | **COMPLETE: leaves=0** — nodes 1.22e10, hc_calls 5.96e10, 64/64 residues | ~7.5 h wall on 8 cores |
-| g4 n=23 | running, 128-way mod split | est. ~2–3 days |
+| g4 n=23 | running, 128-way mod split; checkpoint 2026-07-23 19:32 UTC: 7/128 residues done, 1.09e10 nodes, leaves=0 | est. ~3–4 days total |
 | g5 count n=19 | min=2688 over 417 labeled leaves — matches GMZ Table 3 ✔ | 4 min |
 
 Growth ≈ ×7–11 per vertex. Revised projections from measured nodes: full n=22 ≈ 10–20 days
