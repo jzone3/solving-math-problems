@@ -1,0 +1,19 @@
+graphs=132683590 n=11
+top WoW20 (n+ - sumpos, violation if >0):
+  -1.2643906014  J?`FAqcJBP?
+  -1.3614365359  J?`FAqcJ?{?
+  -1.4105693560  J?AAF@cE`M?
+  -1.4128085559  J?AAF@ckFO?
+  -1.4160401654  J?AAF@cM?r?
+  -1.4390738613  J?AAF@ckBW?
+  -1.4430834941  J?`FAqcJRP?
+  -1.4503411105  J?AAF@ckDo?
+top WoW21 (n- - sumpos, violation if >0):
+  -0.2254909294  JQil\]nj~^_
+  -0.3995893980  JQil\]nz~^_
+  -0.4353548455  JCQRCiTd]j_
+  -0.4516056517  JQhVVVjy~V_
+  -0.4829281960  JCQRCiTd\j_
+  -0.5263597239  JQil\^nz~^_
+  -0.5759887699  JQhVVVjy~v_
+  -0.5816625345  JCQRCiTd^j_
