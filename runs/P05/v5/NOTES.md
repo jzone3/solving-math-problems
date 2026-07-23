@@ -90,11 +90,11 @@ direct computation agree exactly.
 | subcubic (Δ≤3) n = 12, 13, 14 | 19,430 + 69,322 + 262,044 | 0 | 1 |
 | subcubic n = 15, 16 | 1,016,740 + 4,101,318 | 0 | 1 |
 | subcubic n = 17 | 16,996,157 | 0 | 1 |
-| random sparse n = 15–22, m = n..n+5 (genrang) | tens of millions (ongoing) | 0 | 1 |
+| random sparse n = 15–26, m = n..n+5 (genrang, seeded) | 196,000,000 | 0 | 1 |
 | cubic n = 18 | 41,301 | 0 | 1 |
 | cubic n = 20 | 510,489 | 0 | 1 |
 
-Every one of ~72M cores has, for every triple (a,b,c) and every choice of per-pair maximum
+Every one of ~390M cores has, for every triple (a,b,c) and every choice of per-pair maximum
 paths avoiding the third vertex, a common vertex — and the minimum triple intersection is
 exactly 1 in the extremal cases, at every size. This is strong evidence for a clean lemma:
 "any per-pair-maximum a–b, b–c, a–c paths have a common vertex", which (if true) would kill
@@ -115,18 +115,18 @@ brute-force verifies.
 | all connected n = 7 | 31,039 | 0 | 0 |
 | all connected n = 8 | 521,717 (103,241 unique systems) | 0 | 0 |
 | all connected n = 9, ≤ 20 edges | 10,080,459 (~1.07M unique systems) | 0 | 0 |
-| all connected n = 10, ≤ 17 edges | (running) | | |
+| all connected n = 10, ≤ 17 edges | 189,438,551 (~5.9M unique systems) | 0 | 0 |
 
 Note: full-range stage-2 at n = 9 was started and aborted — dense graphs (K9 alone > 2 min)
 make full n = 9 stage-2 impractical, and dense cores are the least plausible (their maximum
 paths are near-Hamiltonian, and dense Gallai classes like 2K2-free are already settled).
 Edge bound 20 = 2·n covers the sparse residual class identified in the literature digest.
 
-Stage-2 finding so far: over half a million candidate structures where the three core paths
-DO have empty intersection, yet the arm-length system is infeasible **every single time** —
-whenever three per-pair-maximum paths avoid a common vertex, some other tip-pair distance is
-forced long enough to beat the required common length S. This smells like a min-max/duality
-theorem about the "max path-length metric" M on the attachment set.
+Stage-2 finding: ~200 million candidate structures where the three core paths DO have empty
+intersection, yet the arm-length system is infeasible **every single time** — whenever three
+per-pair-maximum paths avoid a common vertex, some other tip-pair distance is forced long
+enough to beat the required common length S. This smells like a min-max/duality theorem
+about the "max path-length premetric" M on the attachment set.
 
 ### Two distinct obstructions (analysis)
 
@@ -134,7 +134,7 @@ The data cleanly separates into two phenomena:
 
 1. **k = 3 attachment vertices (triangle pair structure, stage 1).** An empty triple of
    per-pair maximum paths *never exists at all*: min over mask choices of |P1∩P2∩P3| = 1 in
-   every extremal core found (~90M cores). For k=3 the arm-length system is always solvable,
+   every extremal core found (~390M cores). For k=3 the arm-length system is always solvable,
    so this is the only obstruction — and it looks like an unproved but clean lemma:
    *for any distinct a,b,c and any maximum a–b, b–c, a–c paths, the three share a vertex.*
    (This lemma is implied by Gallai-3 via the spider construction, so proving it is strictly
@@ -162,4 +162,40 @@ maximum lengths, path masks, endpoint memberships, and empty intersections confi
   Thomassen T34, plus all connected single-vertex-deleted subgraphs of each: 367 cores
   (running).
 
-(updated as runs complete)
+## 5. Compute spent
+
+Single 8-core VM, ~6 hours wall. Stage 1: ~390M cores exhausted/sampled (geng exhausts
+~194M + genrang random 196M), C bitmask DFS. Stage 2: ~200M candidate structures generated
+(multi_search), all filtered through deduped z3 integer-feasibility (~9M unique systems).
+Largest single blocks: n=12 e=19–20 exhaust (126M graphs), stage-2 n=10 e≤17 filtering
+(189M candidates, ~3.5 h across 8 workers).
+
+## 6. Dead ends and caveats
+
+- Full-range stage-2 beyond n=9 is blocked by dense graphs (K9 alone > 2 min; K10 far worse);
+  restricted to ≤ 2n edges, which matches the sparse residual class from the literature.
+- Hypotraceable seeds (the V1-style idea) are provably poor 3-spider cores: their per-pair
+  maximum paths are near-Hamiltonian, giving triple intersections of ~25 vertices (T34).
+  The useful direction is the opposite: cores whose per-pair max paths miss whole regions.
+- The reduction only produces counterexamples; it cannot certify Gallai-3 for any class —
+  a spider-family negative is necessary-but-not-sufficient evidence for the conjecture.
+- lp_filter2 dedupes on a 64-bit hash of the (pairs, M-matrix) system; a hash collision
+  could in principle suppress a feasible system (probability ~1e-6 over the whole run);
+  lp_filter (no hashing) fully confirmed n≤8, and all other counts were hit-free anyway.
+
+## 7. Conclusions
+
+1. Confirmed still open as of 2026-07 (arXiv claim 2006.16245 self-retracted).
+2. New (to our knowledge) finite reduction: pendant-arm structures over a core H reduce
+   Gallai-3 counterexample hunting to a per-pair maximum-path condition on H, searchable
+   exhaustively far beyond the direct n≤12 frontier.
+3. Negative sweep: no counterexample in any pendant-arm (3-arm or generalized ≤6-attachment)
+   construction over ~390M cores (all connected graphs to n=10, sparse to n=14, subcubic to
+   n=17, cubic to n=20, hypotraceable/hypohamiltonian seeds, 196M random sparse n≤26).
+4. Two crisp obstruction patterns worth theory follow-up: (a) the k=3 "per-pair maximum
+   paths on a triple always share a vertex" lemma (min intersection exactly 1 at extremes);
+   (b) the k≥4 arm-length min-max infeasibility.
+
+STATUS: negative / frontier-pushed — no counterexample found; pendant-arm spider families
+excluded over a large exhaustive frontier; two conjecture-relevant lemma candidates isolated
+and documented. No solutions/P05/verify.py (nothing to verify — no witness claimed).

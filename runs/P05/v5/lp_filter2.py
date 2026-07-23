@@ -56,7 +56,7 @@ def main():
         chosen = tuple(sorted(
             (min(idx[a], idx[b]), max(idx[a], idx[b]), M)
             for a, b, M in ((u1, v1, M1), (u2, v2, M2), (u3, v3, M3))))
-        key = (k, chosen, tuple(sorted(Mmat.items())))
+        key = hash((k, chosen, tuple(sorted(Mmat.items()))))
         if key in seen:
             if seen[key]:
                 print('FEASIBLE-DUP', line.strip(), flush=True)
