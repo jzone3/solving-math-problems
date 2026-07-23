@@ -169,6 +169,36 @@ Calibration (kissat 4.0.4):
 - n=9 (known UNSAT, Kapralov 2012 clique search): running — key scaling benchmark.
 - n=11: kissat --sat and --unsat portfolio running.
 
+## 8. Standard-form lemma and row-based complete search
+
+**Lemma (machine-checkable counting argument).** In any T2(n), every symbol s is
+first in exactly one row and last in exactly one row: each row emits one distance-1
+out-pair from s unless s is last, there are n rows and exactly n-1 out-pairs (s,b)
+each covered exactly once, so s is last in exactly one row; dually for first.
+Hence the first column (and the last column) is a permutation of the symbols, and
+WLOG (relabel + reorder rows) row 0 = identity AND column 0 = identity ("standard
+form", cf. Kapralov's normalization). Added to the SAT encoding this cut kissat's
+T2(7) UNSAT time from ~3 min to 2.2 s.
+
+**Row-based complete DFS** (`rowdfs2.c`): precompute for each start symbol s all
+candidate rows (permutations starting with s avoiding the identity row's
+distance-1/2 pairs), then DFS over start symbols with forward checking (incremental
+filtering of all remaining candidate lists, fail on empty) and MRV branching,
+using 169-bit masks for used pairs. Results:
+- T2(7): 10,778 nodes, UNSAT in 0.01 s (third independent nonexistence proof).
+- T2(8): witness in 0.1 s (kissat needed 259 s, naive cell DFS failed in 3 h).
+- T2(9): candidate sets ~7-8k per symbol; full tree too big for one core;
+  split at top level (6,985 candidates for s=1) into 8 ranges, distributed to
+  8 child Devin sessions (64 cores) via `rowsplit.sh`; results are committed to
+  `runs/P12/v3/rowres_9/` on this branch. Goal: first SAT/DFS-based independent
+  verification of Kapralov's T2(9) nonexistence, then scale to n=11.
+- T2(11): ~660k candidates per symbol (260 MB tables) — witness-hunt run local.
+- T2(13): ~80M candidates per symbol -> 38 GB, OOM; needs on-the-fly generation.
+
+Earlier SAT cube-and-conquer of T2(9) (2,317 row-1-prefix cubes, ~15 core-min each,
+~580 core-h est.) was retired after ~37 cubes (all UNSAT) when rowdfs2 proved
+orders of magnitude faster.
+
 STATUS: negative / frontier-pushed — no witness found (searches hit the n−1 wall);
 new structural theorems close off ALL algebraic/symmetric construction routes for
 T2(11) and T2(13); problem remains open.
