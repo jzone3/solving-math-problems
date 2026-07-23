@@ -176,8 +176,33 @@ the conjecture being TRUE.
   (min over that subset jumps to 432), so a smarter incremental counter would be needed
   to push further.
 
+## Continuation 2 (2026-07-23): bitmask counter, deeper floors, mult-3 relaxation, n=46+
+
+- New counter `fastcount.c`/`fastlib.c` (independent 3rd implementation): uint64 bitmask
+  adjacency + availability pruning; exact count of g45 in 16 s (was minutes). Validated
+  against previous counters on best22/h16/g32/g40/g45 (144/72/144/144/144 all match).
+- `search5.c` = annealer driven by the fast counter (~10–50× more move evaluations/h).
+  6-h random-seed anneals: the **144 floor was re-hit independently from random seeds** at
+  n = 22 (3.37M its), 24 (1.27M), 28 (120k), and 40 (seeded); n=26 stalled at 192.
+  Nothing below 144 at any order; nothing remotely near count 1.
+- Grow chain (fast counter): g46 found with exactly **144 HCs** (seed/g46.txt), verified
+  144 by the independent weighted counter (`msearch count`). Naive extrapolation of the
+  insertion pattern (new x adj {0,12,x−3,x−1}) FAILS at n=46 (gives 432) — the greedy
+  min-count pair is genuinely non-stationary; full grow costs ~2.5–4 h/vertex at n≥46.
+- Multiplicity-3 multigraph anneals (`msearch3.c`, 6 h × 2): best exact-verified states
+  **25 weighted HCs at n=18 with 5 extra parallel copies** (multigraph/m18-mult3-best.txt)
+  and **72 HCs at n=22 with 2 extra copies** (m22-mult3-best.txt); still nothing below 16.
+- Structural note: g45 has only 8 two-vertex cuts, all isolating 3–5-vertex gadgets in the
+  original n=19 core; the growing chain region is 3-connected, so a constant-144 proof
+  would need a width-4 boundary DP ({0,12,last two chain vertices}), left as a direction.
+- Delegated two child sessions with fundamentally different encodings: incremental-SAT
+  CEGAR (branch runs/P01-v1-sat) and girth-5/4-connected structure-targeted search
+  (branch runs/P01-v1-struct); their notes live under runs/P01/v1/child-*/.
+
 ## STATUS: negative (no counterexample; frontier pushed: constant-144-HC simple family
-   verified for all n = 19–45 with anneal floor checks to n = 44, beating published
-   few-HC constructions [GMZ 36·2^⌊n/5⌋−2, TZ constant-216] for n ≥ 25; multigraph
-   relaxation adds 96-HC @ n=22 with one doubled edge and 16-HC multigraphs @ n=14/16;
-   no state below 16 HCs ever observed in any space searched)
+   verified for all n = 19–46 (n=46 double-verified with two independent counters), the
+   144 floor independently reproduced from random seeds at n=22/24/28 with a 10× faster
+   bitmask counter, beating published few-HC constructions [GMZ 36·2^⌊n/5⌋−2, TZ
+   constant-216] for n ≥ 25; multigraph relaxations (mult ≤ 2 and ≤ 3) reach 25 weighted
+   HCs @ n=18 but never below 16 HCs in any space searched; SAT-CEGAR and structure-
+   targeted child searches spawned on branches runs/P01-v1-sat / runs/P01-v1-struct)
