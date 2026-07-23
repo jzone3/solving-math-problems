@@ -64,3 +64,5 @@ EXHAUSTED n=105 k=36 t=4 m=27 leaves=147912400: no multiplier-symmetric solution
 --- gens=(8, 71) |H|=8 m=28 timeout=3600s
 EXHAUSTED n=105 k=36 t=8 m=28 leaves=758864372: no multiplier-symmetric solution
 --- gens=(11,) |H|=6 m=30 timeout=3600s
+TIMEOUT gens=(11,) m=30 after 3600s
+--- gens=(31,) |H|=6 m=30 timeout=3600s

@@ -65,3 +65,9 @@ TIMEOUT gens=(16,) m=41 after 3600s
 --- gens=(61,) |H|=3 m=41 timeout=3600s
 TIMEOUT gens=(61,) m=41 after 3600s
 --- gens=(55,) |H|=3 m=45 timeout=3600s
+TIMEOUT gens=(55,) m=45 after 3600s
+SKIP gens=(116,) m=59 (> 45)
+SKIP gens=(64,) m=63 (> 45)
+SKIP gens=(40,) m=65 (> 45)
+SKIP gens=(53,) m=65 (> 45)
+ALL-DONE n=117

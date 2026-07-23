@@ -144,3 +144,7 @@ round=5 t=116 m=59 slice=295s -> DONE n=117 s=6 t=116 m=59 bestE=66 it=1503720 r
 round=5 t=64 m=63 slice=295s -> DONE n=117 s=6 t=64 m=63 bestE=48 it=1695724 restarts=2075
 round=5 t=40 m=65 slice=295s -> DONE n=117 s=6 t=40 m=65 bestE=32 it=1745840 restarts=2137
 round=5 t=53 m=65 slice=295s -> DONE n=117 s=6 t=53 m=65 bestE=36 it=1742183 restarts=2143
+round=6 t=2 m=12 slice=472s -> DONE n=117 s=6 t=2 m=12 bestE=144 it=3167308 restarts=5698
+round=6 t=20 m=12 slice=472s -> DONE n=117 s=6 t=20 m=12 bestE=144 it=3487561 restarts=6409
+round=6 t=7 m=14 slice=472s -> DONE n=117 s=6 t=7 m=14 bestE=153 it=3487106 restarts=7424
+round=6 t=58 m=14 slice=472s -> DONE n=117 s=6 t=58 m=14 bestE=153 it=3466487 restarts=7368

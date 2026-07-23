@@ -138,3 +138,24 @@ UNSAT n=120 k=49 gens=[29, 59, 91] m=32: no H-fixed CW exists
 --- gens=(11, 79) |H|=4 m=35 timeout=3600s
 TIMEOUT gens=(11, 79) m=35 after 3600s
 --- gens=(19, 71) |H|=4 m=35 timeout=3600s
+TIMEOUT gens=(19, 71) m=35 after 3600s
+--- gens=(11, 109) |H|=4 m=36 timeout=3600s
+n=120 k=49 gens=[11, 109] |H|=4 m=36 sizes=[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+pairs=630 base_vars=2592
+CNF: vars=28166 clauses=260879
+UNSAT n=120 k=49 gens=[11, 109] m=36: no H-fixed CW exists
+--- gens=(13, 109) |H|=8 m=36 timeout=3600s
+n=120 k=49 gens=[13, 109] |H|=8 m=36 sizes=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 8, 8, 8, 8, 8]
+pairs=630 base_vars=2592
+CNF: vars=36948 clauses=347718
+UNSAT n=120 k=49 gens=[13, 109] m=36: no H-fixed CW exists
+--- gens=(19, 89) |H|=4 m=36 timeout=3600s
+TIMEOUT gens=(19, 89) m=36 after 3600s
+--- gens=(49, 79, 109) |H|=8 m=36 timeout=3600s
+n=120 k=49 gens=[49, 79, 109] |H|=8 m=36 sizes=[1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 8, 8, 8, 8, 8]
+pairs=630 base_vars=2592
+CNF: vars=31356 clauses=292056
+UNSAT n=120 k=49 gens=[49, 79, 109] m=36: no H-fixed CW exists
+--- gens=(49, 101, 109) |H|=8 m=36 timeout=3600s
+TIMEOUT gens=(49, 101, 109) m=36 after 3600s
+--- gens=(71, 79) |H|=4 m=36 timeout=3600s

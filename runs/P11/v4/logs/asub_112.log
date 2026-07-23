@@ -58,3 +58,28 @@ EXHAUSTED n=112 k=36 t=27 m=28 leaves=180943200: no multiplier-symmetric solutio
 --- gens=(73,) |H|=6 m=28 timeout=3600s
 EXHAUSTED n=112 k=36 t=73 m=28 leaves=262458560: no multiplier-symmetric solution
 --- gens=(27, 29) |H|=8 m=29 timeout=3600s
+TIMEOUT gens=(27, 29) m=29 after 3600s
+SKIP gens=(13, 29) m=32 (> 30)
+SKIP gens=(17,) m=32 (> 30)
+SKIP gens=(15, 41) m=34 (> 30)
+SKIP gens=(41, 71) m=34 (> 30)
+SKIP gens=(15, 29) m=35 (> 30)
+SKIP gens=(9,) m=36 (> 30)
+SKIP gens=(15, 97) m=36 (> 30)
+SKIP gens=(55, 71) m=36 (> 30)
+SKIP gens=(27,) m=43 (> 30)
+SKIP gens=(55, 57) m=43 (> 30)
+SKIP gens=(13,) m=44 (> 30)
+SKIP gens=(41, 57) m=48 (> 30)
+SKIP gens=(65,) m=48 (> 30)
+SKIP gens=(15, 71) m=49 (> 30)
+SKIP gens=(43,) m=49 (> 30)
+SKIP gens=(29,) m=56 (> 30)
+SKIP gens=(55,) m=57 (> 30)
+SKIP gens=(111,) m=57 (> 30)
+SKIP gens=(41,) m=60 (> 30)
+SKIP gens=(15,) m=63 (> 30)
+SKIP gens=(71,) m=63 (> 30)
+SKIP gens=(97,) m=64 (> 30)
+SKIP gens=(57,) m=84 (> 30)
+ALL-DONE n=112

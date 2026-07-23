@@ -68,3 +68,5 @@ EXHAUSTED n=120 k=49 t=59 m=26 leaves=196927320: no multiplier-symmetric solutio
 --- gens=(59, 83) |H|=8 m=26 timeout=3600s
 EXHAUSTED n=120 k=49 t=59 m=26 leaves=214870920: no multiplier-symmetric solution
 --- gens=(83, 89) |H|=8 m=26 timeout=3600s
+EXHAUSTED n=120 k=49 t=83 m=26 leaves=188508128: no multiplier-symmetric solution
+--- gens=(13, 79) |H|=8 m=27 timeout=3600s

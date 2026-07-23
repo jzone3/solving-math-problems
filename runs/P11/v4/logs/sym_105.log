@@ -123,3 +123,7 @@ round=6 t=19 m=24 slice=472s -> DONE n=105 s=6 t=19 m=24 bestE=115 it=2898520 re
 round=6 t=44 m=24 slice=472s -> DONE n=105 s=6 t=44 m=24 bestE=35 it=2957020 restarts=4169
 round=6 t=26 m=25 slice=472s -> DONE n=105 s=6 t=26 m=25 bestE=118 it=3093164 restarts=5898
 round=6 t=4 m=27 slice=472s -> DONE n=105 s=6 t=4 m=27 bestE=35 it=3202399 restarts=5278
+round=6 t=11 m=30 slice=472s -> DONE n=105 s=6 t=11 m=30 bestE=35 it=3180168 restarts=4706
+round=6 t=31 m=30 slice=472s -> DONE n=105 s=6 t=31 m=30 bestE=357 it=3365516 restarts=4634
+round=6 t=62 m=32 slice=472s -> DONE n=105 s=6 t=62 m=32 bestE=70 it=3370225 restarts=4194
+round=6 t=13 m=33 slice=472s -> DONE n=105 s=6 t=13 m=33 bestE=35 it=3348903 restarts=4436

@@ -119,3 +119,7 @@ round=6 t=13 m=42 slice=472s -> DONE n=120 s=7 t=13 m=42 bestE=32 it=2696560 res
 round=6 t=73 m=48 slice=472s -> DONE n=120 s=7 t=73 m=48 bestE=241 it=2522839 restarts=3048
 round=6 t=59 m=61 slice=472s -> DONE n=120 s=7 t=59 m=61 bestE=236 it=2722571 restarts=3353
 round=6 t=119 m=61 slice=472s -> DONE n=120 s=7 t=119 m=61 bestE=277 it=2956054 restarts=3609
+round=6 t=29 m=62 slice=472s -> DONE n=120 s=7 t=29 m=62 bestE=112 it=2902860 restarts=3498
+round=6 t=19 m=63 slice=472s -> DONE n=120 s=7 t=19 m=63 bestE=57 it=3197830 restarts=3815
+round=6 t=79 m=63 slice=472s -> DONE n=120 s=7 t=79 m=63 bestE=57 it=3338298 restarts=3923
+round=6 t=89 m=64 slice=472s -> DONE n=120 s=7 t=89 m=64 bestE=112 it=3349072 restarts=4047

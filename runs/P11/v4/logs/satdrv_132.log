@@ -27,3 +27,19 @@ pairs=630 base_vars=2592
 CNF: vars=28516 clauses=261658
 UNSAT n=132 k=81 gens=[67, 89, 109] m=36: no H-fixed CW exists
 --- gens=(23, 43) |H|=4 m=41 timeout=3600s
+TIMEOUT gens=(23, 43) m=41 after 3600s
+--- gens=(23, 109) |H|=4 m=42 timeout=3600s
+TIMEOUT gens=(23, 109) m=42 after 3600s
+SKIP gens=(43, 89) m=46 (> 45)
+SKIP gens=(89, 109) m=48 (> 45)
+SKIP gens=(67, 131) m=51 (> 45)
+SKIP gens=(67, 109) m=54 (> 45)
+SKIP gens=(23, 67) m=66 (> 45)
+SKIP gens=(131,) m=67 (> 45)
+SKIP gens=(65,) m=68 (> 45)
+SKIP gens=(43,) m=69 (> 45)
+SKIP gens=(109,) m=72 (> 45)
+SKIP gens=(23,) m=77 (> 45)
+SKIP gens=(89,) m=88 (> 45)
+SKIP gens=(67,) m=99 (> 45)
+ALL-DONE n=132
