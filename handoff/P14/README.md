@@ -43,7 +43,11 @@ product exactly L.
    pinned the definition against the primary literature, validated encodings by exhaustive
    model counting on small instances, confirmed the instances were genuinely open
    (Handbook tables, Kaski–Östergård 2004, CPro1 repo/papers, artifact sweeps), re-ran the
-   full shipped pipeline, and ran its own independently written encoding.
+   full shipped pipeline, and ran its own independently written encoding
+   (order-encoding + totalizer + its own lex): kissat UNSAT + drat-trim VERIFIED on all
+   three instances. **Verdict (2026-07-23): CONFIRMED.** Documented residual risks: all
+   certified runs share one lex orientation (mirror orientation computationally
+   intractable); drat-trim is unverified C (a cake_lpr pass would upgrade the trust base).
 
 ## Priority
 

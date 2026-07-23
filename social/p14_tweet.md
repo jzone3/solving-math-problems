@@ -31,6 +31,9 @@ Repo: https://github.com/jzone3/solving-math-problems (handoff/P14)
 
 ---
 
-NOTE BEFORE POSTING: hold until the adversarial review verdict (runs/P14/v1/ADVERSARIAL_REVIEW.md)
-is CONFIRMED. No Lean formalization for P14 (proof certificates are 1-40 GB — beyond
-Lean-checkable size); say "machine-verified (DRAT certificates)" NOT "Lean-verified".
+NOTE BEFORE POSTING: adversarial review verdict is CONFIRMED (runs/P14/v1/ADVERSARIAL_REVIEW.md,
+2026-07-23): definition pinned vs Kunkle–Sarvate/CPro1/arXiv, encodings audited by exhaustive
+model counting, priority confirmed open, and the reviewer's OWN independent encoding also went
+kissat UNSAT + drat-trim VERIFIED on all three. No Lean formalization for P14 (proof
+certificates are 1-40 GB — beyond Lean-checkable size); say "machine-verified (DRAT
+certificates)" NOT "Lean-verified".
