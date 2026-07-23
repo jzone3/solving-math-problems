@@ -4,10 +4,19 @@ Session: 2026-07-23, Devin ultra run (8 cores, 32 GB).
 Goal: decide whether G₁₂₇ = G(127, cubic residues mod 127) arrows (3,3)ᵉ.
 UNSAT ⇒ Fe(3,3;4) ≤ 127 (from 786). SAT ⇒ refutes Exoo's conjecture.
 
-**Outcome: UNDECIDED (negative result documented).** No solver came close to
-deciding the instance; all structured/heuristic SAT-side searches strongly
-support the arrowing conjecture (no coloring below ~240 mono triangles found;
-no circulant coloring works). Details below.
+**Outcome: main question UNDECIDED, but a new machine-verified partial
+theorem was established:**
+
+> **Theorem (symmetric-coloring exclusion).** Every 2-coloring of E(G₁₂₇)
+> without a monochromatic triangle — if one exists — has trivial stabilizer
+> in Aut(G₁₂₇). Equivalently: any witness that G₁₂₇ ↛ (3,3)ᵉ must be
+> completely asymmetric (invariant under no nontrivial automorphism).
+
+Proof: exhaustive + DRAT-certified case analysis over the subgroup lattice of
+Aut(G₁₂₇) = Z₁₂₇ ⋊ Z₄₂ (order 5334, confirmed exactly by nauty) — see §3b.
+All heuristic/structured SAT-side searches support Exoo's arrowing conjecture
+(no coloring below 243 mono triangles found). The unrestricted SAT instance
+remains far beyond current solvers (§4).
 
 ## 1. Statement fidelity & priority
 
@@ -75,32 +84,42 @@ H-orbits; SAT ⇔ an H-invariant good coloring exists):
 - **order 7** (381 orbit-vars, 2794 clauses): kissat UNSAT in 0.04 s;
   DRAT certificate checked by drat-trim: VERIFIED (`inv_7.drat`).
   Order 14 likewise UNSAT+VERIFIED (implied by 7, checked independently).
-- **order 2** (⟨x ↦ −x⟩, 1344 orbit-vars, 9800 clauses): the hard case —
-  see run log `kissat_inv2.log` (status recorded below).
+- **order 2** (⟨x ↦ −x⟩, 1344 orbit-vars, 9800 clauses): too hard for plain
+  CDCL (kissat: no progress in 20+ min, `kissat_inv2.log`), but solved by
+  **cube-and-conquer with full certification**:
+  - march_cu depth-12 cubing: 4096 cubes (`inv2_cubes_d12.icnf.gz`).
+  - Cube-cover completeness PROVED: the CNF {¬cubeᵢ} is UNSAT, DRAT checked
+    by drat-trim (`check_cover.py`: "COVER VERIFIED").
+  - All **4096/4096 cubes UNSAT, each with its own DRAT certificate checked
+    by drat-trim** (`cnc_prove.py`; ledger `inv2_d12_status.txt`: 4096
+    distinct indices 0–4095, all VERIFIED; logs `cnc_inv2.log`,
+    `cnc_inv2b.log`). Per-cube times mostly < 20 s, none hit the 300 s
+    limit; total ≈ 2.5 h on 6–8 workers.
 
-Consequence if order-2 resolves UNSAT: **every 2-coloring of E(G₁₂₇)
-avoiding monochromatic triangles (if one exists) has trivial stabilizer in
-Aut(G₁₂₇)** — i.e. a counterexample to Exoo's conjecture must be completely
-asymmetric. Already unconditionally: no witness coloring is invariant under
-any automorphism of order 3, 6, 7, 14, 21, 42, or 127 (or any subgroup
-containing such).
+This completes the theorem stated at the top: combined with the circulant
+exclusion (order 127) and orders 3 and 7, **no good coloring of E(G₁₂₇) is
+invariant under any nontrivial automorphism**. Independent re-verifier:
+`solutions/P22/verify_symmetric_exclusion.py` (PASS).
 
 ## 4. UNSAT-side solver runs
 
 - **kissat 4.0.4** on `plain.cnf` and `sb.cnf`, single-threaded, DRAT logging
-  on, multi-hour runs: no termination and no meaningful progress signal
-  (remaining-variables gauge stayed at 2666/2667 resp. ~39–100%; conflict
-  rate ~30k/s). RX07 observed the same with zChaff/march_eq in 2007;
-  modern CDCL alone still cannot touch φ(G₁₂₇).
+  on: 68 min resp. 63 min CPU in the first runs (~40M conflicts each) plus
+  follow-up runs, no termination and no meaningful progress signal
+  (remaining-variables gauge stayed at 2666/2667 resp. ~38–100%). RX07
+  observed the same with zChaff/march_eq in 2007; modern CDCL alone still
+  cannot touch φ(G₁₂₇). Symmetry breaking gave no observable advantage,
+  as predicted.
 - **Cube-and-conquer** (march_cu from marijnheule/CnC, built with -fcommon):
   - depth 10: 1024 cubes, 0 refuted leaves; average cube "weight" 2646
     (out of 2667 free vars) — lookahead fixes essentially nothing: the
     instance has no easily-refutable branches near the top.
   - depth 16: 65536 cubes, 0 refuted leaves, average weight 2631.
   - Sampled conquering with kissat: 30/30 depth-10 cubes TIMEOUT at 60 s;
-    200-cube depth-16 sample: see `cnc_d16_sample.log` (essentially all
-    TIMEOUT at 30 s). Cubing on ~16 of 2667 edge variables does not
-    decompose the problem; march_cu's lookahead heuristic finds no leverage.
+    depth-16 sample: 152/152 TIMEOUT at 30 s (`cnc_d16_sample.log`).
+    Cubing on ~16 of 2667 edge variables does not decompose the problem;
+    march_cu's lookahead finds no leverage (contrast with the
+    order-2-invariant instance, where depth-12 CnC succeeded fully).
 - Estimated hardness: with ~10–16 assumed literals producing no measurable
   simplification, a full CnC tree would need depth ≫ 40 (≫ 10¹² cubes) —
   far beyond a single machine. This is consistent with the problem having
@@ -127,14 +146,23 @@ containing such).
 - `build_g127.py`, `verify_props.py` — construction + independent property
   verification (PASS).
 - `gen_cnf.py`, `selftest_encoding.py` — CNF generation + encoding self-test.
-- `plain.cnf`, `sb.cnf` not committed (regenerable, ~1–3 MB); DRAT logs not
-  kept (no UNSAT result).
+- `plain.cnf`, `sb.cnf` not committed (regenerable via `gen_cnf.py`); their
+  DRAT logs not kept (no UNSAT result).
+- `invariant_colorings.py`, `inv_2.cnf`, `inv_7.cnf/.drat`, `inv_14.cnf/.drat`
+  — orbit-collapsed instances + certificates.
+- `inv2_cubes_d12.icnf.gz`, `inv2_d12_status.txt`, `cover.cnf`,
+  `cnc_prove.py`, `check_cover.py` — the certified order-2 CnC proof
+  (per-cube DRATs regenerable; each was drat-trim-checked before deletion).
 - `walk.c`, `anneal.c`, `circulant_colorings.py`, `cnc_run.py` — search tools.
 - `verify_coloring.py` — independent witness checker (unused: no witness).
+- `solutions/P22/verify_symmetric_exclusion.py` — standalone re-verifier of
+  the theorem (PASS, < 1 s + optional kissat re-solve).
 - Logs: `kissat_plain.log`, `kissat_sb.log`, `walk_*.log`,
-  `cnc_d16_sample.log`.
+  `cnc_d16_sample.log`, `cnc_inv2*.log`, `kissat_inv2.log`.
 
 ## 7. Compute spent
 
-~8 cores for ~4 h: 2 × kissat CDCL (plain, sb), 6→2 × walk local search,
-march_cu cubing (d10/d16/d20 attempt), 230 sampled cube-conquer kissat runs.
+~8 cores for ~4.5 h: 2 × kissat CDCL on the main instance (68/63 min + extra),
+6→2 × walk local search (~10⁹ flips), march_cu cubing (d10/d16/d20 on main;
+d12/d18 on inv_2), ~230 sampled cube-conquer runs on the main instance, and
+the full certified 4096-cube CnC proof of the order-2 case (~2.5 h).

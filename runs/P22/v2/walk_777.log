@@ -1,0 +1,16 @@
+nohup: ignoring input
+restart: best=248 steps=200000000
+restart: best=244 steps=400000000
+restart: best=244 steps=600000000
+restart: best=244 steps=800000000
+restart: best=244 steps=1000000000
+restart: best=234 steps=1200000000
+restart: best=234 steps=1400000000
+restart: best=234 steps=1600000000
+restart: best=234 steps=1800000000
+restart: best=234 steps=2000000000
+restart: best=234 steps=2200000000
+restart: best=234 steps=2400000000
+restart: best=234 steps=2600000000
+restart: best=234 steps=2800000000
+restart: best=234 steps=3000000000
