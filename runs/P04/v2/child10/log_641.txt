@@ -1,0 +1,1 @@
+read=4203928782 candidates=4184225357 ok=4184225351 hard=6 bicon_skip=0
