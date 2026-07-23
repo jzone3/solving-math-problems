@@ -1,0 +1,10 @@
+m=192 s=7 d=1 t=7 orbits=51 folds=1
+progress: nodes=2147483648 leaves=117321232 found=0
+progress: nodes=4294967296 leaves=234644833 found=0
+progress: nodes=6442450944 leaves=351966762 found=0
+progress: nodes=8589934592 leaves=469289910 found=0
+progress: nodes=10737418240 leaves=588925203 found=0
+progress: nodes=12884901888 leaves=733082728 found=0
+progress: nodes=15032385536 leaves=872973160 found=0
+progress: nodes=17179869184 leaves=1012045621 found=0
+progress: nodes=19327352832 leaves=1154942642 found=0

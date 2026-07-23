@@ -166,10 +166,10 @@ int main(int argc, char **argv) {
             for (int r = 0; r < fm[f]; r++) fcap[f][r] += dmax * fcnt[i][f][r];
     }
     total *= dmax;
-    fprintf(stderr, "m=%d s=%d d=%d t=%d orbits=%d folds=%d\n",
-            n, s, dmax, tmul, norb, nf);
+    fprintf(stderr, "m=%d s=%d d=%d t=%d orbits=%d folds=%d split=%d/%d@%d\n",
+            n, s, dmax, tmul, norb, nf, split_r, split_k, split_depth);
     rec(0, 0, 0, total);
-    printf("m=%d s=%d d=%d t=%d folds=%d done: solutions=%lld nodes=%lld leaves=%lld\n",
-           n, s, dmax, tmul, nf, found, nodes, leaves);
+    printf("m=%d s=%d d=%d t=%d folds=%d split=%d/%d@%d done: solutions=%lld nodes=%lld leaves=%lld\n",
+           n, s, dmax, tmul, nf, split_r, split_k, split_depth, found, nodes, leaves);
     return 0;
 }
