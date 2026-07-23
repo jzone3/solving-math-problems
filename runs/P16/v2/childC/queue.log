@@ -1,0 +1,31 @@
+++ dirname ./run_queue.sh
++ cd .
++ pgrep -f 'geng_screen.py d2D5'
++ sleep 20
++ pgrep -f 'geng_screen.py d2D5'
++ sleep 20
++ pgrep -f 'geng_screen.py d2D5'
++ sleep 20
++ pgrep -f 'geng_screen.py d2D5'
+++ seq 0 7
++ for i in $(seq 0 7)
++ for i in $(seq 0 7)
++ for i in $(seq 0 7)
++ for i in $(seq 0 7)
++ for i in $(seq 0 7)
++ for i in $(seq 0 7)
++ for i in $(seq 0 7)
++ for i in $(seq 0 7)
++ wait
++ bash -c 'nauty-geng -q -c -d3 -D6 11 0/8 | python3 geng_screen.py d3D6_0'
++ bash -c 'nauty-geng -q -c -d3 -D6 11 5/8 | python3 geng_screen.py d3D6_5'
++ bash -c 'nauty-geng -q -c -d3 -D6 11 4/8 | python3 geng_screen.py d3D6_4'
++ bash -c 'nauty-geng -q -c -d3 -D6 11 1/8 | python3 geng_screen.py d3D6_1'
++ bash -c 'nauty-geng -q -c -d3 -D6 11 3/8 | python3 geng_screen.py d3D6_3'
++ bash -c 'nauty-geng -q -c -d3 -D6 11 2/8 | python3 geng_screen.py d3D6_2'
++ bash -c 'nauty-geng -q -c -d3 -D6 11 7/8 | python3 geng_screen.py d3D6_7'
++ bash -c 'nauty-geng -q -c -d3 -D6 11 6/8 | python3 geng_screen.py d3D6_6'
++ python3 overlay_search.py
++ wait
++ python3 continuous_quotient.py --bound 44 --kmin 4 --kmax 8 --restarts 30
++ python3 continuous_quotient.py --bound 46 --kmin 4 --kmax 8 --restarts 30
