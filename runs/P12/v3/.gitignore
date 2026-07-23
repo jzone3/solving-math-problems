@@ -1,1 +1,8 @@
 __pycache__/
+*.cnf
+*.log
+cubes*_L*/
+cubes9/
+cubes9d/
+*.res
+nohup.out
