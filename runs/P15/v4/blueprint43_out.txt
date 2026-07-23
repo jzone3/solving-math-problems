@@ -1,0 +1,235 @@
+#### T=43 counting-level blueprint (penalties + repairs) ####
+
+== 3.8 prime 19 (T=43, repaired) : PASS
+   seed +4 -> 4  1,2,4,8^
+   mul  +5 -> 9  with 5 and 25^
+   fill 1x11^ (need 9, uses 9 of 9) -> 10  
+   fill 5x3^ (need 2, uses 10 of 10) -> 15  five 3^ copies (support: sets 1-10)
+   fill 1x13^ (need 12, uses 12 of 15) -> 16  
+   fill 1x17^ (need 16, uses 16 of 16) -> 17  
+   fill 2x3^ (need 2, uses 4 of 17) -> 19  REPAIR: 2 extra 3^ copies (support: sets 11-14; 3^k*m moduli new - needs explicit check)
+   fill 3x7^ (need 6, uses 18 of 19) -> 22  penalty: 42-congruence dead -> need 6 each; 18 <= 19
+   OK finish 19^: need 18, have 22 - drop 2 = 20  20+... usable
+
+== 3.10 prime 29 (T=43, repaired) : PASS
+   seed +10 -> 10  
+   mul  +5 -> 15  
+   mul  +1 -> 16  25^ pair set
+   fill 1x17^ (need 16, uses 16 of 16) -> 17  
+   mul  +4 -> 21  four 7^-combination sets (each now needs +1 filler)
+   fill 2x3^ (need 2, uses 4 of 21) -> 23  REPAIR: fillers for 4 combo sets + B-set: use 2 extra 3^ copies as the +5 filler supply (support sets 17-20)
+   fill 2x11^ (need 10, uses 20 of 23) -> 25  
+   fill 1x23^ (need 22, uses 22 of 25) -> 26  
+   fill 2x13^ (need 12, uses 24 of 26) -> 28  
+   fill 2x19^ (need 13, uses 26 of 28) -> 30  
+   mul  +1 -> 31  B-set (17^ with first sixteen)
+   OK finish 29^: need 28, have 31 - drop 1 = 30  
+
+== 3.11 prime 31 (T=43, unchanged) : PASS
+   seed +14 -> 14  
+   fill 3x5^ (need 4, uses 12 of 14) -> 17  
+   mul  +1 -> 18  C
+   fill 3x7^ (need 5, uses 15 of 18) -> 21  saving from 9*4 at level 252: legal at 43
+   mul  +1 -> 22  C + 7^ combo
+   fill 3x11^ (need 7, uses 21 of 22) -> 25  
+   fill 2x13^ (need 12, uses 24 of 25) -> 27  
+   fill 2x17^ (need 13, uses 26 of 27) -> 29  
+   fill 1x19^ (need 18, uses 18 of 29) -> 30  
+   fill 1x23^ (need 22, uses 22 of 30) -> 31  
+   fill 1x29^ (need 28, uses 28 of 31) -> 32  
+   OK finish 31^: need 30, have 32 - drop 1 = 31  
+
+== 3.12 prime 37 (T=43, repaired) : PASS
+   seed +5 -> 5  
+   mul  +4 -> 9  
+   mul  +8 -> 17  
+   fill 2x25^ (need 1, uses 2 of 17) -> 19  
+   fill 2x25^ (need 4, uses 8 of 19) -> 21  REPAIR: two extra 25^ copies (conservative cost 4)
+   fill 4x7^ (need 4, uses 16 of 21) -> 25  penalty: need 4 not 3 per copy; REPAIR: 4 copies not 6
+   fill 2x13^ (need 12, uses 24 of 25) -> 27  
+   fill 2x19^ (need 13, uses 26 of 27) -> 29  
+   fill 1x29^ (need 28, uses 28 of 29) -> 30  
+   fill 1x31^ (need 30, uses 30 of 30) -> 31  
+   fill 3x11^ (need 10, uses 30 of 31) -> 34  
+   fill 2x17^ (need 16, uses 32 of 34) -> 36  
+   fill 1x23^ (need 22, uses 22 of 36) -> 37  
+   OK finish 37^: need 36, have 37 - drop 1 = 36  
+
+== 3.13 prime 41 (T=43, repaired) : PASS
+   seed +4 -> 4  
+   mul  +6 -> 10  3 and 9^
+   fill 1x11^ (need 10, uses 10 of 10) -> 11  
+   fill 1x13^ (need 11, uses 11 of 11) -> 12  
+   mul  +12 -> 24  prime 5
+   mul  +3 -> 27  25^
+   fill 2x19^ (need 13, uses 26 of 27) -> 29  
+   fill 1x29^ (need 28, uses 28 of 29) -> 30  
+   fill 5x7^ (need 6, uses 30 of 30) -> 35  penalty: 6 per copy; REPAIR: 5 copies not 6
+   fill 1x31^ (need 30, uses 30 of 35) -> 36  
+   fill 2x17^ (need 16, uses 32 of 36) -> 38  
+   fill 1x37^ (need 36, uses 36 of 38) -> 39  
+   fill 2x23^ (need 19, uses 38 of 39) -> 41  
+   fill 1x3^ (need 2, uses 2 of 41) -> 42  REPAIR: 1 extra 3^ copy to replace lost 6th 7^ set
+   OK finish 41^: need 40, have 42 - drop 1 = 41  
+
+== 3.14 prime 43 (T=43, repaired) : PASS
+   seed +4 -> 4  
+   mul  +5 -> 9  
+   fill 1x11^ (need 9, uses 9 of 9) -> 10  
+   mul  +15 -> 25  
+   fill 2x3^ (need 2, uses 4 of 25) -> 27  REPAIR: two extra 3^ copies
+   fill 4x7^ (need 6, uses 24 of 27) -> 31  penalty need 6; REPAIR: 4 copies not 5
+   fill 1x31^ (need 30, uses 30 of 31) -> 32  
+   fill 1x29^ (need 28, uses 28 of 32) -> 33  
+   fill 2x17^ (need 16, uses 32 of 33) -> 35  
+   fill 1x23^ (need 22, uses 22 of 35) -> 36  
+   fill 1x37^ (need 30, uses 30 of 36) -> 37  
+   fill 3x13^ (need 12, uses 36 of 37) -> 40  
+   fill 3x19^ (need 13, uses 39 of 40) -> 43  
+   OK finish 43^: need 42, have 43 - drop 0 = 43  43*1 = 43 >= 43 ok
+
+== 3.15 prime 47 (T=43, unchanged) : PASS
+   seed +25 -> 25  
+   mul  +7 -> 32  7^/25^ trick (levels >= 175: legal)
+   fill 2x17^ (need 16, uses 32 of 32) -> 34  
+   fill 1x29^ (need 28, uses 28 of 34) -> 35  
+   fill 1x31^ (need 30, uses 30 of 35) -> 36  
+   fill 3x13^ (need 12, uses 36 of 36) -> 39  
+   fill 3x19^ (need 13, uses 39 of 39) -> 42  
+   fill 1x41^ (need 40, uses 40 of 42) -> 43  
+   fill 1x43^ (need 42, uses 42 of 43) -> 44  
+   fill 2x23^ (need 22, uses 44 of 44) -> 46  
+   OK finish 47^: need 46, have 46 - drop 0 = 46  
+
+== 3.16 prime 53 (T=43, repaired) : PASS
+   seed +4 -> 4  
+   mul  +4 -> 8  
+   mul  +16 -> 24  
+   fill 2x125^ (need 1, uses 2 of 24) -> 26  
+   fill 2x125^ (need 1, uses 2 of 26) -> 28  REPAIR: two extra 125^ copies
+   fill 2x19^ (need 13, uses 26 of 28) -> 30  
+   fill 1x29^ (need 28, uses 28 of 30) -> 31  
+   fill 1x31^ (need 29, uses 29 of 31) -> 32  
+   fill 5x7^ (need 6, uses 30 of 32) -> 37  penalty: need 6; REPAIR: 5 copies not 6
+   fill 3x13^ (need 12, uses 36 of 37) -> 40  
+   fill 1x37^ (need 36, uses 36 of 40) -> 41  
+   fill 4x11^ (need 10, uses 40 of 41) -> 45  
+   fill 1x41^ (need 40, uses 40 of 45) -> 46  
+   fill 1x43^ (need 42, uses 42 of 46) -> 47  
+   fill 1x47^ (need 46, uses 46 of 47) -> 48  
+   fill 2x23^ (need 22, uses 44 of 48) -> 50  
+   fill 3x17^ (need 16, uses 48 of 50) -> 53  
+   OK finish 53^: need 52, have 53 - drop 0 = 53  
+
+== 3.17 prime 59 (T=43, repaired) : PASS
+   seed +5 -> 5  
+   mul  +7 -> 12  
+   mul  +13 -> 25  
+   fill 3x25^ (need 1, uses 3 of 25) -> 28  
+   fill 3x25^ (need 1, uses 3 of 28) -> 31  REPAIR: three extra 25^ copies
+   fill 1x29^ (need 28, uses 28 of 31) -> 32  
+   fill 1x23^ (need 22, uses 22 of 32) -> 33  
+   fill 8x7^ (need 4, uses 32 of 33) -> 41  penalty: need 4 not 3; REPAIR: 8 copies not 10
+   fill 1x41^ (need 40, uses 40 of 41) -> 42  
+   fill 4x11^ (need 10, uses 40 of 42) -> 46  
+   fill 1x43^ (need 42, uses 42 of 46) -> 47  
+   fill 1x47^ (need 46, uses 46 of 47) -> 48  
+   fill 1x37^ (need 36, uses 36 of 48) -> 49  
+   fill 3x17^ (need 16, uses 48 of 49) -> 52  
+   fill 4x13^ (need 12, uses 48 of 52) -> 56  
+   fill 3x19^ (need 13, uses 39 of 56) -> 59  
+   OK finish 59^: need 58, have 59 - drop 0 = 59  
+
+== 3.18 prime 61 (T=43, repaired) : PASS
+   seed +28 -> 28  
+   fill 1x29^ (need 28, uses 28 of 28) -> 29  
+   fill 1x31^ (need 29, uses 29 of 29) -> 30  
+   fill 9x7^ (need 3, uses 27 of 30) -> 39  penalty: need 3 not 2
+   fill 3x19^ (need 13, uses 39 of 39) -> 42  
+   fill 1x37^ (need 36, uses 36 of 42) -> 43  
+   fill 1x41^ (need 40, uses 40 of 43) -> 44  
+   fill 1x43^ (need 42, uses 42 of 44) -> 45  
+   fill 2x23^ (need 22, uses 44 of 45) -> 47  
+   fill 1x47^ (need 46, uses 46 of 47) -> 48  
+   fill 3x17^ (need 16, uses 48 of 48) -> 51  
+   fill 4x13^ (need 12, uses 48 of 51) -> 55  
+   fill 1x53^ (need 52, uses 52 of 55) -> 56  
+   fill 6x11^ (need 9, uses 54 of 56) -> 62  
+   fill 1x59^ (need 58, uses 58 of 62) -> 63  
+   OK finish 61^: need 60, have 63 - drop 0 = 63  
+
+== 3.19 prime 71 (T=43, repaired) : PASS
+   seed +5 -> 5  
+   mul  +12 -> 17  
+   fill 1x7^ (need 6, uses 6 of 17) -> 18  penalty; REPAIR: reorder after 3/9^ minting
+   fill 1x17^ (need 16, uses 16 of 18) -> 19  
+   fill 1x19^ (need 18, uses 18 of 19) -> 20  
+   fill 2x11^ (need 10, uses 20 of 20) -> 22  
+   fill 2x13^ (need 11, uses 22 of 22) -> 24  
+   mul  +30 -> 54  
+   fill 1x53^ (need 52, uses 52 of 54) -> 55  
+   fill 1x47^ (need 46, uses 46 of 55) -> 56  
+   fill 1x43^ (need 42, uses 42 of 56) -> 57  
+   fill 1x41^ (need 40, uses 40 of 57) -> 58  
+   fill 1x59^ (need 58, uses 58 of 58) -> 59  
+   fill 1x37^ (need 36, uses 36 of 59) -> 60  
+   fill 2x31^ (need 30, uses 60 of 60) -> 62  
+   fill 1x61^ (need 60, uses 60 of 62) -> 63  
+   fill 3x23^ (need 21, uses 63 of 63) -> 66  
+   fill 3x29^ (need 22, uses 66 of 66) -> 69  
+   fill 1x67^ (need 66, uses 66 of 69) -> 70  
+   OK finish 71^: need 70, have 70 - drop 0 = 70  
+
+== 3.20 prime 79 (T=43, repaired) : PASS
+   seed +7 -> 7  
+   mul  +7 -> 14  
+   fill 3x3^ (need 2, uses 6 of 14) -> 17  REPAIR: three extra 3^ copies
+   fill 4x7^ (need 3, uses 12 of 17) -> 21  penalty: need 3 not 2; REPAIR: 4 copies not 7
+   mul  +26 -> 47  
+   fill 1x47^ (need 46, uses 46 of 47) -> 48  
+   fill 3x17^ (need 16, uses 48 of 48) -> 51  
+   fill 5x11^ (need 10, uses 50 of 51) -> 56  
+   fill 2x29^ (need 28, uses 56 of 56) -> 58  
+   fill 1x59^ (need 58, uses 58 of 58) -> 59  
+   fill 1x53^ (need 52, uses 52 of 59) -> 60  
+   fill 1x61^ (need 60, uses 60 of 60) -> 61  
+   fill 2x31^ (need 30, uses 60 of 61) -> 63  
+   fill 5x13^ (need 12, uses 60 of 63) -> 68  
+   fill 1x67^ (need 66, uses 66 of 68) -> 69  
+   fill 3x23^ (need 22, uses 66 of 69) -> 72  
+   fill 4x19^ (need 18, uses 72 of 72) -> 76  
+   fill 1x71^ (need 70, uses 70 of 76) -> 77  
+   fill 1x73^ (need 72, uses 72 of 77) -> 78  
+   OK finish 79^: need 78, have 78 - drop 0 = 78  
+
+== NEW 42-hole via 97 (T=43) : PASS
+   seed +4 -> 4  1,2,4,8^ (deeper 2-chain inside the hole)
+   mul  +6 -> 10  3 and 9^ (deeper 3-structure free)
+   mul  +12 -> 22  7 and 49^ (deeper 7-levels free inside the k=1 cell!)
+   fill 1x11^ (need 10, uses 10 of 22) -> 23  
+   fill 1x13^ (need 12, uses 12 of 23) -> 24  
+   fill 1x17^ (need 16, uses 16 of 24) -> 25  
+   fill 1x19^ (need 18, uses 18 of 25) -> 26  
+   fill 1x23^ (need 22, uses 22 of 26) -> 27  
+   fill 3x25^ (need 1, uses 3 of 27) -> 30  25^ copies
+   mul  +37 -> 67  5 and 25^ on 30 pre-5 sets
+   fill 1x29^ (need 28, uses 28 of 67) -> 68  
+   fill 1x31^ (need 30, uses 30 of 68) -> 69  
+   fill 1x37^ (need 36, uses 36 of 69) -> 70  
+   fill 1x41^ (need 40, uses 40 of 70) -> 71  
+   fill 1x43^ (need 42, uses 42 of 71) -> 72  
+   fill 1x47^ (need 46, uses 46 of 72) -> 73  
+   fill 1x53^ (need 52, uses 52 of 73) -> 74  
+   fill 1x59^ (need 58, uses 58 of 74) -> 75  
+   fill 1x61^ (need 60, uses 60 of 75) -> 76  
+   fill 1x67^ (need 66, uses 66 of 76) -> 77  
+   fill 1x71^ (need 70, uses 70 of 77) -> 78  
+   fill 1x73^ (need 72, uses 72 of 78) -> 79  
+   fill 1x79^ (need 78, uses 78 of 79) -> 80  
+   fill 8x11^ (need 10, uses 80 of 80) -> 88  extra 11^ copies (fresh support)
+   fill 6x13^ (need 12, uses 72 of 88) -> 94  extra 13^ copies
+   fill 1x83^ (need 82, uses 82 of 94) -> 95  
+   fill 1x89^ (need 88, uses 88 of 95) -> 96  
+   OK finish 97^: need 96, have 96 - drop 0 = 96  97*1 = 97 >= 43: no drops
+
+T=43 blueprint: ALL LEDGERS PASS (counting level)

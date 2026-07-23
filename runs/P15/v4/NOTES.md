@@ -325,3 +325,38 @@ two now-precise subproblems replace the vague target "build a 43 system".
 STATUS: negative (no >= 43). Frontier-pushed: exact reduction chain +
 quantified infeasibility of the safe-patch route (S = 9 measured vs 88
 required, LP cap 51 at moduli <= 10^5).
+
+## 14. Phase 5 (2026-07-23): full T=43 counting-level blueprint (`blueprint43.py`)
+
+Executed option (ii) end-to-end at the counting level. Key new structural
+fact: in the 7-up-arrow, the third-input content 3(2,4,3^(1,2)) recurs at
+every level k with moduli 7^k*3*m, and ONLY the k=1 instance of the '2'
+entry has modulus 42 < 43 (42 is the unique 89-smooth integer in [42,43)).
+Hence (a) the 42-hole is one flat class mod 42 with deeper 2-, 3-, 5- AND
+7-structure free inside it, and (b) the T=43 penalty is exactly +1 set per
+7-up-arrow copy that cited the third-input saving (its k=1 cell needs one
+replacement set at modulus 42*s >= 43... i.e. level-42 substructure).
+
+Blueprint: all 12 Owens ledgers re-derived at T=43 with the penalty applied
+(3.11/3.15 unaffected - their savings sit at levels 252/175), each deficit
+repaired by extra 3^/25^/125^ tower copies (fresh support) and/or trading a
+7^ copy for cheaper sets; plus a NEW 13th section covering the 42-hole,
+which closes with a single new prime 97 (pool: seeds + free 3/7/5 minting +
+towers 11..89 + extra 11^/13^ copies = 96 sets exactly).
+
+RESULT: **ALL 13 LEDGERS PASS at the counting level** - the first complete
+T=43 blueprint in the Owens calculus. Extra primes needed: just {97}
+(Owens's own conjecture said "likely require even more large primes").
+
+CAVEATS (why this is a near-miss, not a SOLVED): the counting model
+abstracts (1) explicit modulus collisions of repair copies (extra 3^/25^
+copies inject moduli 3^k*m / 25^k*m whose global uniqueness is unchecked),
+(2) content semantics: trading 7^ copies for other sets preserves set
+COUNT but the cross-section pre-cover claims ("19^ needs only thirteen
+inputs") must be re-derived for the repaired contents, and (3) the +1
+penalty placement. Validation = explicit-modulus witness tracking (the
+compressed verify4-style format of phase 2 is the right target: emit each
+ledger's actual congruences and machine-check global distinctness + cover).
+
+STATUS: near-miss (counting-level T=43 blueprint passes all 13 ledgers;
+explicit-modulus validation outstanding).
