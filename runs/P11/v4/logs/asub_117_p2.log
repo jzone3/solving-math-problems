@@ -1,83 +1,72 @@
 n=117: 47 subgroups total (incl. non-cyclic), m range 6..65
---- gens=(29, 31) |H|=72 m=6 timeout=3600s
+--- gens=(29, 31) |H|=72 m=6 timeout=10800s
 EXHAUSTED n=117 k=36 t=29 m=6 leaves=0: no multiplier-symmetric solution
---- gens=(4, 5) |H|=36 m=8 timeout=3600s
+--- gens=(4, 5) |H|=36 m=8 timeout=10800s
 EXHAUSTED n=117 k=36 t=4 m=8 leaves=0: no multiplier-symmetric solution
---- gens=(7, 53) |H|=24 m=8 timeout=3600s
+--- gens=(7, 53) |H|=24 m=8 timeout=10800s
 EXHAUSTED n=117 k=36 t=7 m=8 leaves=0: no multiplier-symmetric solution
---- gens=(8, 29) |H|=24 m=8 timeout=3600s
+--- gens=(8, 29) |H|=24 m=8 timeout=10800s
 EXHAUSTED n=117 k=36 t=8 m=8 leaves=0: no multiplier-symmetric solution
---- gens=(4, 17) |H|=36 m=9 timeout=3600s
+--- gens=(4, 17) |H|=36 m=9 timeout=10800s
 EXHAUSTED n=117 k=36 t=4 m=9 leaves=0: no multiplier-symmetric solution
---- gens=(4, 31) |H|=36 m=10 timeout=3600s
+--- gens=(4, 31) |H|=36 m=10 timeout=10800s
 EXHAUSTED n=117 k=36 t=4 m=10 leaves=0: no multiplier-symmetric solution
---- gens=(19, 53) |H|=24 m=10 timeout=3600s
+--- gens=(19, 53) |H|=24 m=10 timeout=10800s
 EXHAUSTED n=117 k=36 t=19 m=10 leaves=0: no multiplier-symmetric solution
---- gens=(2,) |H|=12 m=12 timeout=3600s
+--- gens=(2,) |H|=12 m=12 timeout=10800s
 EXHAUSTED n=117 k=36 t=2 m=12 leaves=0: no multiplier-symmetric solution
---- gens=(5, 31) |H|=24 m=12 timeout=3600s
+--- gens=(5, 31) |H|=24 m=12 timeout=10800s
 EXHAUSTED n=117 k=36 t=5 m=12 leaves=0: no multiplier-symmetric solution
---- gens=(20,) |H|=12 m=12 timeout=3600s
+--- gens=(20,) |H|=12 m=12 timeout=10800s
 EXHAUSTED n=117 k=36 t=20 m=12 leaves=0: no multiplier-symmetric solution
---- gens=(4, 29) |H|=12 m=13 timeout=3600s
+--- gens=(4, 29) |H|=12 m=13 timeout=10800s
 EXHAUSTED n=117 k=36 t=4 m=13 leaves=0: no multiplier-symmetric solution
---- gens=(16, 17) |H|=18 m=13 timeout=3600s
+--- gens=(16, 17) |H|=18 m=13 timeout=10800s
 EXHAUSTED n=117 k=36 t=16 m=13 leaves=0: no multiplier-symmetric solution
---- gens=(43, 53) |H|=12 m=13 timeout=3600s
+--- gens=(43, 53) |H|=12 m=13 timeout=10800s
 EXHAUSTED n=117 k=36 t=43 m=13 leaves=0: no multiplier-symmetric solution
---- gens=(7,) |H|=12 m=14 timeout=3600s
+--- gens=(7,) |H|=12 m=14 timeout=10800s
 EXHAUSTED n=117 k=36 t=7 m=14 leaves=0: no multiplier-symmetric solution
---- gens=(58,) |H|=12 m=14 timeout=3600s
+--- gens=(58,) |H|=12 m=14 timeout=10800s
 EXHAUSTED n=117 k=36 t=58 m=14 leaves=0: no multiplier-symmetric solution
---- gens=(71,) |H|=12 m=14 timeout=3600s
+--- gens=(71,) |H|=12 m=14 timeout=10800s
 EXHAUSTED n=117 k=36 t=71 m=14 leaves=0: no multiplier-symmetric solution
---- gens=(4, 10) |H|=18 m=15 timeout=3600s
+--- gens=(4, 10) |H|=18 m=15 timeout=10800s
 EXHAUSTED n=117 k=36 t=4 m=15 leaves=720: no multiplier-symmetric solution
---- gens=(10, 53) |H|=12 m=15 timeout=3600s
+--- gens=(10, 53) |H|=12 m=15 timeout=10800s
 EXHAUSTED n=117 k=36 t=10 m=15 leaves=0: no multiplier-symmetric solution
---- gens=(29, 40) |H|=18 m=15 timeout=3600s
+--- gens=(29, 40) |H|=18 m=15 timeout=10800s
 EXHAUSTED n=117 k=36 t=29 m=15 leaves=2400: no multiplier-symmetric solution
---- gens=(5,) |H|=12 m=18 timeout=3600s
+--- gens=(5,) |H|=12 m=18 timeout=10800s
 EXHAUSTED n=117 k=36 t=5 m=18 leaves=0: no multiplier-symmetric solution
---- gens=(19,) |H|=12 m=18 timeout=3600s
+--- gens=(19,) |H|=12 m=18 timeout=10800s
 EXHAUSTED n=117 k=36 t=19 m=18 leaves=0: no multiplier-symmetric solution
---- gens=(8, 53) |H|=8 m=20 timeout=3600s
+--- gens=(8, 53) |H|=8 m=20 timeout=10800s
 EXHAUSTED n=117 k=36 t=8 m=20 leaves=0: no multiplier-symmetric solution
---- gens=(31,) |H|=12 m=20 timeout=3600s
+--- gens=(31,) |H|=12 m=20 timeout=10800s
 EXHAUSTED n=117 k=36 t=31 m=20 leaves=123012: no multiplier-symmetric solution
---- gens=(23,) |H|=6 m=21 timeout=3600s
+--- gens=(23,) |H|=6 m=21 timeout=10800s
 EXHAUSTED n=117 k=36 t=23 m=21 leaves=0: no multiplier-symmetric solution
---- gens=(38, 53) |H|=12 m=21 timeout=3600s
+--- gens=(38, 53) |H|=12 m=21 timeout=10800s
 EXHAUSTED n=117 k=36 t=38 m=21 leaves=0: no multiplier-symmetric solution
---- gens=(95,) |H|=6 m=21 timeout=3600s
+--- gens=(95,) |H|=6 m=21 timeout=10800s
 EXHAUSTED n=117 k=36 t=95 m=21 leaves=0: no multiplier-symmetric solution
---- gens=(4,) |H|=6 m=23 timeout=3600s
+--- gens=(4,) |H|=6 m=23 timeout=10800s
 EXHAUSTED n=117 k=36 t=4 m=23 leaves=514080: no multiplier-symmetric solution
---- gens=(17,) |H|=6 m=23 timeout=3600s
+--- gens=(17,) |H|=6 m=23 timeout=10800s
 EXHAUSTED n=117 k=36 t=17 m=23 leaves=0: no multiplier-symmetric solution
---- gens=(29,) |H|=6 m=23 timeout=3600s
+--- gens=(29,) |H|=6 m=23 timeout=10800s
 EXHAUSTED n=117 k=36 t=29 m=23 leaves=1713600: no multiplier-symmetric solution
---- gens=(43,) |H|=6 m=23 timeout=3600s
+--- gens=(43,) |H|=6 m=23 timeout=10800s
 EXHAUSTED n=117 k=36 t=43 m=23 leaves=514080: no multiplier-symmetric solution
---- gens=(68,) |H|=6 m=23 timeout=3600s
+--- gens=(68,) |H|=6 m=23 timeout=10800s
 EXHAUSTED n=117 k=36 t=68 m=23 leaves=1713600: no multiplier-symmetric solution
---- gens=(16, 40) |H|=9 m=25 timeout=3600s
+--- gens=(16, 40) |H|=9 m=25 timeout=10800s
 EXHAUSTED n=117 k=36 t=16 m=25 leaves=12121200: no multiplier-symmetric solution
---- gens=(35,) |H|=6 m=25 timeout=3600s
+--- gens=(35,) |H|=6 m=25 timeout=10800s
 EXHAUSTED n=117 k=36 t=35 m=25 leaves=4724160: no multiplier-symmetric solution
---- gens=(10,) |H|=6 m=27 timeout=3600s
+--- gens=(10,) |H|=6 m=27 timeout=10800s
 EXHAUSTED n=117 k=36 t=10 m=27 leaves=143942400: no multiplier-symmetric solution
-SKIP gens=(8,) m=32 (> 30)
-SKIP gens=(38,) m=33 (> 30)
-SKIP gens=(25,) m=35 (> 30)
-SKIP gens=(53, 116) m=35 (> 30)
-SKIP gens=(73,) m=36 (> 30)
-SKIP gens=(14,) m=39 (> 30)
-SKIP gens=(16,) m=41 (> 30)
-SKIP gens=(61,) m=41 (> 30)
-SKIP gens=(55,) m=45 (> 30)
-SKIP gens=(116,) m=59 (> 30)
-SKIP gens=(64,) m=63 (> 30)
-SKIP gens=(40,) m=65 (> 30)
-SKIP gens=(53,) m=65 (> 30)
-ALL-DONE n=117
+--- gens=(8,) |H|=4 m=32 timeout=10800s
+EXHAUSTED n=117 k=36 t=8 m=32 leaves=0: no multiplier-symmetric solution
+--- gens=(38,) |H|=6 m=33 timeout=10800s

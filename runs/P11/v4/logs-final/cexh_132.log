@@ -1,0 +1,13 @@
+--- t=35 m=19 (timeout 7200s)
+EXHAUSTED n=132 k=81 t=35 m=19 leaves=554400: no multiplier-symmetric solution
+--- t=17 m=20 (timeout 7200s)
+EXHAUSTED n=132 k=81 t=17 m=20 leaves=2439360: no multiplier-symmetric solution
+--- t=7 m=21 (timeout 7200s)
+EXHAUSTED n=132 k=81 t=7 m=21 leaves=7650720: no multiplier-symmetric solution
+--- t=47 m=21 (timeout 7200s)
+EXHAUSTED n=132 k=81 t=47 m=21 leaves=4774560: no multiplier-symmetric solution
+--- t=5 m=24 (timeout 7200s)
+EXHAUSTED n=132 k=81 t=5 m=24 leaves=169433600: no multiplier-symmetric solution
+--- t=13 m=24 (timeout 7200s)
+EXHAUSTED n=132 k=81 t=13 m=24 leaves=153679680: no multiplier-symmetric solution
+--- t=31 m=27 (timeout 7200s)

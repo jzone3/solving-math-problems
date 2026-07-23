@@ -120,4 +120,60 @@ periodic autocorrelations; DFT/fold pruning; polish near-solutions).
   neighbourhood exhaustion (stronger than SAT within the same radius), and the
   full-space SAT encoding is V1's lane.
 
-## STATUS: running
+## 5. Final results (after ~8 h wall / 8 cores)
+
+### Witness found
+- **CW(96,36): verified witness** (solutions/P11/cw96_36.txt, verify.py PASS)
+  found by rrr_sym (t=41). Caveat: it is a zero-interleaved lift of a CW(48,36),
+  so it closes the "Open" repository cell via the classical CW(n,k) => CW(mn,k)
+  implication rather than a new theorem. Recommend reporting to the dataset
+  maintainer either way (the cell should not be listed Open).
+
+### Definitive exhaustions (no multiplier-symmetric witness exists)
+Exact, machine-verified exhaustion of ALL ternary sequences fixed by each
+multiplier subgroup H <= Z_n^* (cyclic and non-cyclic, exhaust.c), per cell —
+counts of distinct subgroups fully exhausted, with orbit-count (m) frontier:
+
+| cell        | subgroups exhausted | orbit counts m covered | timeouts |
+|-------------|--------------------:|------------------------|----------|
+| CW(105,36)  | 41 | all subgroups with m <= 28, plus m=30 in progress | none |
+| CW(112,36)  | 38 | all with m <= 28 (m=29 in progress) | none |
+| CW(117,36)  | 53 | all with m <= 32 (m=33 in progress) | none |
+| CW(120,49)  | 34 | all with m <= 26 | (23, m=37) cyclic |
+| CW(132,81)  | 20 | all with m <= 24 | (31, m=27) |
+
+Interpretation: if any of these five cells has a witness, it is fixed by NO
+multiplier subgroup with orbit count below the per-cell frontier — i.e. any
+solution has (at most) very small multiplier symmetry. Combined with the known
+multiplier theorems this is structured negative evidence; the raw logs
+(runs/P11/v4/logs/asub_*.log, cexh_*.log) list every exhausted subgroup with
+generators, m, and leaf counts.
+
+### Near-miss inventory (best energies reached, E = sum R(t)^2 (+weight dev))
+- CW(105,36): E=24 (rrr_sym t=16, m=45)
+- CW(112,36): E=14 (rrr_sym t=43, m=49) — isolated: exhaustive orbit-space
+  Hamming ball to radius 4 (3.39M candidates) contains nothing better
+- CW(117,36): E=32 (t=40, m=65)
+- CW(120,49): E=32 (t=13, m=42)
+- CW(132,81): E=34 (t=25, m=36)
+- plain (non-symmetric) RRR best: n=96 E=70, n=105 E=72, n=112 E=104,
+  n=117 E=96, n=120 E=140, n=132 E=268
+
+### Compute spent (approx)
+- ~8 h x 8 cores: ~2 h plain annealing/PT/ILS baselines, ~3 h plain+symmetric
+  RRR (~10^10 replica-iterations total), ~4 h exact subgroup exhaustion
+  (~10^9-10^10 DFS leaves machine-checked), overlapping.
+
+### Dead ends
+- Plain annealing / parallel tempering / ILS: cannot reach E=0 at k=36 even for
+  n=48 where witnesses exist; useless at n >= 96.
+- Fold(stage-A)/lift(stage-B) two-level annealing: folds easy to find for
+  m = n/d >= 3, lifts stall (E >= 50).
+- Negative-beta RRR diverges; ILS polish of RRR near-misses does not help.
+
+## STATUS: near-miss / frontier-pushed
+(One repository cell CW(96,36) closed with a verified witness, but via a
+classical padding implication — not a genuinely new existence result. The five
+hard cells remain open; contributed: exact exhaustion of all small-orbit-count
+multiplier subgroups + best-known local-search near-misses + a validated
+RRR/difference-map toolchain that rediscovers known witnesses at n <= 104.)

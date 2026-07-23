@@ -72,3 +72,16 @@ round=6 t=5 m=24 slice=472s -> DONE n=132 s=9 t=5 m=24 bestE=197 it=2122864 rest
 round=6 t=13 m=24 slice=472s -> DONE n=132 s=9 t=13 m=24 bestE=4043 it=2017873 restarts=2731
 round=6 t=31 m=27 slice=472s -> DONE n=132 s=9 t=31 m=27 bestE=252 it=2215157 restarts=3630
 round=6 t=25 m=36 slice=472s -> DONE n=132 s=9 t=25 m=36 bestE=34 it=2061645 restarts=2708
+round=6 t=131 m=67 slice=472s -> DONE n=132 s=9 t=131 m=67 bestE=1262 it=2135715 restarts=2602
+round=6 t=65 m=68 slice=472s -> DONE n=132 s=9 t=65 m=68 bestE=615 it=2192111 restarts=2632
+round=6 t=43 m=69 slice=472s -> DONE n=132 s=9 t=43 m=69 bestE=430 it=2219621 restarts=2736
+round=6 t=109 m=72 slice=472s -> DONE n=132 s=9 t=109 m=72 bestE=286 it=1978749 restarts=2396
+round=6 t=23 m=77 slice=472s -> DONE n=132 s=9 t=23 m=77 bestE=238 it=2093593 restarts=2555
+round=7 t=35 m=19 slice=600s -> DONE n=132 s=9 t=35 m=19 bestE=899 it=2978880 restarts=6130
+round=7 t=17 m=20 slice=600s -> DONE n=132 s=9 t=17 m=20 bestE=1349 it=2831097 restarts=5836
+round=7 t=7 m=21 slice=600s -> DONE n=132 s=9 t=7 m=21 bestE=1788 it=2964573 restarts=4869
+round=7 t=47 m=21 slice=600s -> DONE n=132 s=9 t=47 m=21 bestE=471 it=2969650 restarts=4842
+round=7 t=5 m=24 slice=600s -> DONE n=132 s=9 t=5 m=24 bestE=197 it=3036363 restarts=5704
+round=7 t=13 m=24 slice=600s -> DONE n=132 s=9 t=13 m=24 bestE=4043 it=3038775 restarts=4064
+round=7 t=31 m=27 slice=600s -> DONE n=132 s=9 t=31 m=27 bestE=252 it=2999664 restarts=4869
+round=7 t=25 m=36 slice=600s -> DONE n=132 s=9 t=25 m=36 bestE=34 it=3135839 restarts=4127
