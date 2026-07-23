@@ -62,11 +62,13 @@ All runs: **0 counterexamples**. Stats format: total / nontraceable / emptyfulli
 | subcubic n=16 | 4,101,318 | 1,804,938 | 2 | 0 | ~4m |
 | subcubic n=17 | 16,996,157 | 7,614,062 | 4 | 0 | ~13m |
 | subcubic n=18 | 72,556,640 | 32,961,827 | 14 | 0 | ~45m |
+| subcubic n=19 | 317,558,689 | 145,890,055 | 25 | 0 | ~1h 8-way |
+| subcubic n=20 | 1,424,644,848 | 660,271,120 | 79 | 0 | ~4h 8-way |
 | 4-regular connected n=14 | 88,168 | 0 | 0 | 0 | ~1m |
 | 4-regular connected n=15 | 805,491 | 0 | 0 | 0 | ~2m |
 | 4-regular connected n=16 | 8,037,418 | 0 | 0 | 0 | ~25m |
 
-Totals: **~164.1 billion** connected graphs at n=12 alone; grand total ≈ 165.3 billion graphs
+Totals: **~164.1 billion** connected graphs at n=12 alone; grand total ≈ 165.6 billion graphs
 checked across all classes. **Zero counterexamples to the 3-longest-paths property anywhere.**
 
 ### Byproduct: unique 12-vertex graph with empty full longest-path intersection
@@ -88,8 +90,14 @@ subcubic n=16 (2):      O???C@?G?o?od?R?EOCS?   O???C@?G?o?ooAPOCKCH?
 subcubic n=17 (4):      P????A?O@?B?p?WG?e?M?_D?  P????A?O@_D?D??oR?BG??`_
                         P????A?O@_@_?oAaOoAI?aO?  P???C@?GCAB?D?A_H_@c?_?o
 ```
-- cubic n=24: 1 graph (graph6 in `logs/`; capture run `c24pf_0`) — first cubic
-  empty-full-intersection graph, appears at n=24 (none for cubic n≤22).
+- cubic n=24 (unique for cubic n≤24; none exist for cubic n≤22):
+  `W??????_A?C?C?B?OQCC_OQ@@G@c??` + backtick + `G?@E?GG_?X??@_G?` — see
+  `witnesses-emptyfull.txt` for the exact string. Independently re-verified with
+  `brute_check.py`: L=18 vertices, 15 longest-path vertex sets, every triple intersects.
+
+All captured witnesses (102 graphs: n=12 unique, subcubic 15–18 and 20, cubic 24) are in
+`witnesses-emptyfull.txt`; subcubic n=19 witnesses were counted (25) but not captured.
+Per-run raw STATS lines are in `stats/`.
 
 ## 3. Checkpoint log
 
@@ -100,5 +108,21 @@ subcubic n=17 (4):      P????A?O@?B?p?WG?e?M?_D?  P????A?O@_D?D??oR?BG??`_
   — generation-completeness sanity check). 0 counterexamples, 1 emptyfull graph.
 - 07-09: rescan of the relevant n=12 residue class captured the witness `K?AA@BOX?[SO`;
   cubic n=24 and subcubic 13–18 and 4-regular 14–16 sweeps completed clean.
+- 09-15: subcubic n=19 (317M) and n=20 (1.42B) sweeps clean; cubic-24 witness captured and
+  cross-verified in Python.
 
-STATUS: negative (frontier-pushed)
+## 4. Dead ends / limits
+
+- Full connected n=13 is ~5.1e13 graphs (~300x n=12) — out of reach for this box (~2 CPU-months
+  at our ~1M graphs/s/core); would need a cluster or a proof-based reduction (e.g. to
+  2-connected graphs with structural constraints) to prune generation.
+- geng (not the checker) is the bottleneck for regular classes; cubic n=26 (~1.6e9, est. ~10 days
+  CPU of geng) not attempted. A specialized generator (genreg/snarkhunter) would push further.
+- No near-misses observed anywhere: in every graph whose longest paths have empty total
+  intersection, every triple of longest paths still intersects, usually in many vertices.
+
+STATUS: negative (frontier-pushed). No counterexample among ~165.6 billion graphs: all connected
+graphs n ≤ 12 (first full n=12 sweep we know of, prior literature frontier ~n ≤ 12 unclear/lower),
+all subcubic connected graphs n ≤ 20, all cubic connected graphs n ≤ 24, all 4-regular connected
+graphs n ≤ 16. Machine-verified corollary: any counterexample to Gallai's 3-longest-paths
+question has ≥ 13 vertices; if subcubic ≥ 21; if cubic ≥ 26.
