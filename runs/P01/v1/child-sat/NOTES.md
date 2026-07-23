@@ -56,6 +56,49 @@ Clause growth per +2 vertices is ~×5–7; n=20 estimated ~15–40 M blocking cl
 n=22 likely ≳ 10⁸ — the CEGAR frontier is memory/time bound, mirroring the fact that
 the exhaustive frontier in the literature stops at n=21.
 
+## NOIMG mode (blocking without dihedral image expansion)
+
+Expanding every blocking clause to its ≤2n dihedral images turned out to be
+counterproductive at n ≥ 20: clause DB explodes (17.5 M at n=22 after 200 iterations)
+and single CaDiCaL solves start taking hours. `NOIMG=1` adds only the pattern actually
+found (letting the solver rediscover symmetric variants via cheap extra iterations):
+~30× higher CEGAR throughput (6 000 iterations in 573 s at n=22 vs 200 in 1 111 s).
+
+## Open-range runs (NOIMG, max_block=500, one CaDiCaL core each; killed at wrap-up)
+
+| n  | result  | iters  | blocking clauses | wall time | min #HC over all models |
+|----|---------|--------|------------------|-----------|--------------------------|
+| 20 | TIMEOUT | 4 200  | 2.1 M | 3.8 h | ≥ 501 (cutoff) |
+| 22 | TIMEOUT | 11 000 | 5.5 M | 4.8 h | ≥ 501 (cutoff) |
+| 24 | TIMEOUT | 24 000 | 12.0 M | 4.9 h | ≥ 501 (cutoff) |
+| 26 | TIMEOUT | 42 600 | 21.3 M | 4.9 h | ≥ 501 (cutoff) |
+| 28 | TIMEOUT | 43 600 | 21.8 M | 3.3 h | ≥ 501 (cutoff) |
+
+- No witness was ever produced: every single SAT model across ~125 000 CEGAR iterations
+  (≥ 60 M blocked second-HC patterns) had > 500 Hamiltonian cycles (enumeration cutoff).
+- Per-iteration solve time degrades sharply as clauses accumulate (n=20 fell from
+  ~7 it/s to one solve per ~35 s after 2 M clauses, then a single solve > 1 h) — the
+  bottleneck is genuinely hard SAT instances, not the enumerator (independent DFS,
+  cross-validated against `../verify_nearmiss.py` semantics: exact match of the
+  fixed-cycle count in every iteration).
+
+## Conclusions
+
+- SAT-CEGAR independently re-verifies Sheehan for n ≤ 18 (fast, complete, UNSAT), a
+  fundamentally different pipeline from GMZ's generation-based exhaustion.
+- The CEGAR wall sits at n≈20: full convergence there needs (well) beyond ~2 M distinct
+  second-HC chord patterns and hours-long individual solves. n ≥ 22 is out of reach for
+  this encoding on one box — consistent with the literature frontier stopping at n=21.
+- No evidence against the conjecture: no model with ≤ 500 HCs was ever produced by the
+  solver in the open range (the annealer's minimum, 144 at n=22, required targeted
+  minimization; random SAT models sit far above it).
+- Promising follow-ups: (a) seed the base encoding with all k≤4-chord second-HC
+  patterns computed combinatorially instead of discovering them one CEGAR iteration at
+  a time; (b) SAT-modulo-symmetries (SMS) with a custom "second HC" propagator instead
+  of clause-level blocking; (c) distribute CEGAR at n=20 across many cores with cube-
+  and-conquer on the first chords.
+
 ## STATUS
 
-(in progress — n=20 and n=22 incremental-SAT runs ongoing)
+STATUS: NEGATIVE (no counterexample; SAT-CEGAR verified negatives n ∈ {8,12,14,16,18};
+n=20..28 TIMEOUT after ~4–5 h each with no witness and no model below 501 HCs).

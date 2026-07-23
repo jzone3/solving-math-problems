@@ -1,0 +1,7 @@
+n=20: 170 chord vars, 9177 base clauses
+[     0.1s] it=1 model #HC>= 2001 (new best)
+[    13.3s] it=37 model #HC>= 1950 (new best)
+[    14.2s] it=39 model #HC>= 1924 (new best)
+[    56.3s] it=70 model #HC>= 1749 (new best)
+[   475.0s] it=98 model #HC>= 1581 (new best)
+[  4746.0s] it=138 model #HC>= 1419 (new best)
