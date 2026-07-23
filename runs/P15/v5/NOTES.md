@@ -265,3 +265,28 @@ program), now precisely scoped by three measured failure modes (Sections 7, 11, 
 
 (witness_E_L6.json verification: verify_cover's direct sweep is inapplicable
 — lcm ~ 1e40; verify_tree run in background, slow on the deep 5-chains.)
+
+## 13. Engine F (BFS deferral) and a third verifier
+
+`engine_f.py`: breadth-first work-queue variant of Engine E — no backtracking;
+cells that cannot be based/chained are deferred by splitting. Result: L=3 ok,
+**L=6 diverges** (pending cells grow to >2e6, front modulus ~7e9): without
+DFS rollback, bad early chains poison the whole tree and guided splits
+multiply cells faster than inheritance retires them. Negative, documented.
+Conclusion pair (E vs F): inheritance + DFS rollback works to L=6; inheritance
++ BFS deferral fails even there. The rollback is load-bearing too.
+
+`verify_subtract.py`: third independent verifier (exact cell subtraction,
+ascending-modulus order). Handles witnesses with astronomically large lcm
+where the flat sweep (verify_cover) and the naive CRT tree (verify_tree, >20
+min CPU, killed) are infeasible. Validated: PASS on witness_E_L3 (peak 116
+cells), witness_E_L6 (**PASS, 292 congruences, min modulus 6, peak 22899
+cells**), and the known-good L=15 witness (peak 593345 cells); correctly
+FAILs a corrupted L=15 witness with 3 classes removed.
+
+FINAL STATUS (unchanged): negative for min modulus >= 43; frontier of this
+run: verified automated coverings at L=14/15/16 (greedy), structural
+inheritance-mechanized covering at L=6 (Engine E, verified), L=10 structural
+still open for the mechanized calculus; three measured failure modes now
+scope exactly what a full Nielsen mechanization must add (recipe reuse +
+inheritance + DFS rollback + per-branch budgeting, simultaneously).
