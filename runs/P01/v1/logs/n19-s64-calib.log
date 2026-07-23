@@ -1,0 +1,173 @@
+BEST n=19 hc=2092 edges: 0-1 0-6 0-8 0-18 1-2 1-6 1-15 2-3 2-12 2-18 3-7 3-9 3-15 4-5 4-6 4-14 4-17 5-6 5-12 5-14 7-8 7-11 7-16 8-9 8-13 9-10 9-18 10-11 10-13 10-16 11-12 11-17 12-13 13-14 14-15 15-16 16-17 17-18
+BEST n=19 hc=1763 edges: 0-1 0-6 0-8 0-18 1-6 1-14 1-15 2-3 2-12 2-13 2-18 3-7 3-9 3-15 4-5 4-6 4-14 4-17 5-6 5-12 5-14 7-8 7-11 7-16 8-9 8-13 9-10 9-18 10-11 10-13 10-16 11-12 11-17 12-13 14-15 15-16 16-17 17-18
+BEST n=19 hc=1638 edges: 0-1 0-4 0-6 0-18 1-6 1-8 1-14 2-3 2-9 2-13 2-18 3-7 3-9 3-15 4-6 4-14 4-17 5-6 5-9 5-12 5-14 7-8 7-11 7-17 8-13 8-18 9-10 10-11 10-15 10-16 11-12 11-16 12-13 12-15 13-14 15-16 16-17 17-18
+BEST n=19 hc=1626 edges: 0-1 0-4 0-6 0-9 1-3 1-6 1-14 2-3 2-9 2-10 2-17 3-12 3-15 4-5 4-8 4-13 5-9 5-12 5-17 6-16 6-18 7-8 7-10 7-11 7-17 8-13 8-18 9-10 10-11 11-14 11-15 12-15 12-18 13-14 13-16 14-17 15-16 16-18
+BEST n=19 hc=1554 edges: 0-1 0-5 0-6 0-9 1-3 1-7 1-14 2-3 2-9 2-11 2-17 3-7 3-12 4-5 4-8 4-12 4-13 5-9 5-17 6-10 6-16 6-18 7-8 7-10 8-13 8-18 9-17 10-12 10-15 11-13 11-14 11-15 12-15 13-16 14-17 14-18 15-16 16-18
+BEST n=19 hc=1534 edges: 0-1 0-7 0-17 0-18 1-8 1-10 1-16 2-5 2-11 2-12 2-13 3-6 3-7 3-15 3-18 4-9 4-12 4-14 4-17 5-6 5-9 5-11 6-8 6-11 7-14 7-16 8-11 8-15 9-13 9-16 10-12 10-14 10-18 12-13 13-16 14-17 15-17 15-18
+BEST n=19 hc=1532 edges: 0-1 0-7 0-15 0-18 1-10 1-14 1-16 2-5 2-11 2-12 2-13 3-6 3-7 3-17 3-18 4-8 4-9 4-12 4-17 5-6 5-9 5-10 6-8 6-11 7-14 7-16 8-11 8-15 9-13 9-16 10-14 10-18 11-12 12-13 13-16 14-17 15-17 15-18
+BEST n=19 hc=1480 edges: 0-6 0-7 0-8 0-18 1-5 1-11 1-12 1-13 2-3 2-5 2-6 2-13 3-4 3-12 3-17 4-11 4-13 4-15 5-6 5-14 6-8 7-10 7-14 7-15 8-10 8-16 9-12 9-13 9-16 9-18 10-14 10-16 11-12 11-17 14-16 15-17 15-18 17-18
+BEST n=19 hc=1452 edges: 0-6 0-7 0-8 0-18 1-11 1-12 1-13 1-17 2-3 2-5 2-6 2-13 3-4 3-12 3-17 4-11 4-13 4-15 5-6 5-11 5-14 6-8 7-10 7-14 7-15 8-10 8-16 9-12 9-13 9-16 9-18 10-14 10-16 11-12 14-16 15-17 15-18 17-18
+BEST n=19 hc=1435 edges: 0-6 0-7 0-13 0-14 1-3 1-7 1-12 1-15 2-5 2-8 2-13 2-16 3-11 3-15 3-18 4-8 4-9 4-10 4-13 5-6 5-8 5-17 6-17 6-18 7-14 7-17 8-15 9-10 9-13 9-16 10-12 10-16 11-12 11-15 11-17 12-18 14-16 14-18
+BEST n=19 hc=1415 edges: 0-6 0-7 0-13 0-14 1-3 1-10 1-12 1-15 2-5 2-8 2-13 2-16 3-11 3-15 3-18 4-8 4-9 4-10 4-13 5-6 5-8 5-17 6-17 6-18 7-12 7-14 7-17 8-15 9-10 9-13 9-16 10-16 11-12 11-15 11-17 12-18 14-16 14-18
+BEST n=19 hc=1395 edges: 0-6 0-7 0-14 0-17 1-10 1-12 1-13 1-14 2-4 2-5 2-8 2-16 3-8 3-11 3-15 3-18 4-9 4-10 4-13 5-6 5-8 5-17 6-17 6-18 7-12 7-15 7-17 8-15 9-10 9-13 9-16 10-16 11-12 11-13 11-15 12-18 14-16 14-18
+BEST n=19 hc=1247 edges: 0-1 0-7 0-14 0-17 1-10 1-13 1-14 2-4 2-5 2-8 2-16 3-8 3-11 3-15 3-18 4-9 4-10 4-13 5-6 5-8 5-17 6-12 6-17 6-18 7-12 7-15 7-17 8-15 9-10 9-13 9-16 10-16 11-12 11-13 11-15 12-18 14-16 14-18
+BEST n=19 hc=1020 edges: 0-1 0-7 0-14 0-17 1-10 1-13 1-14 2-4 2-5 2-8 2-16 3-8 3-11 3-15 3-18 4-9 4-10 4-13 5-6 5-8 5-17 6-12 6-17 6-18 7-12 7-15 7-17 8-15 9-10 9-13 9-16 10-13 11-12 11-15 11-16 12-18 14-16 14-18
+BEST n=19 hc=762 edges: 0-3 0-7 0-11 0-18 1-2 1-6 1-13 1-14 2-6 2-14 2-17 3-8 3-11 3-17 4-8 4-9 4-10 4-11 5-8 5-9 5-10 5-16 6-14 6-17 7-12 7-13 7-15 8-10 9-15 9-16 10-12 11-12 12-13 13-18 14-17 15-16 15-18 16-18
+BEST n=19 hc=706 edges: 0-8 0-10 0-13 0-16 1-2 1-13 1-14 1-16 2-5 2-8 2-18 3-6 3-11 3-12 3-15 4-9 4-14 4-15 4-18 5-10 5-11 5-13 6-11 6-12 6-17 7-9 7-11 7-17 7-18 8-13 8-18 9-15 9-17 10-14 10-16 12-15 12-17 14-16
+BEST n=19 hc=598 edges: 0-1 0-9 0-14 0-16 1-2 1-11 1-14 2-11 2-12 2-18 3-8 3-9 3-10 3-17 4-7 4-8 4-13 4-15 5-12 5-14 5-16 5-18 6-11 6-12 6-14 6-18 7-8 7-13 7-17 8-9 9-10 10-13 10-17 11-18 12-16 13-15 15-16 15-17
+BEST n=19 hc=572 edges: 0-1 0-9 0-14 0-16 1-2 1-11 1-14 2-11 2-12 2-18 3-8 3-9 3-10 3-17 4-7 4-10 4-13 4-15 5-12 5-14 5-16 5-18 6-11 6-12 6-14 6-18 7-8 7-13 7-17 8-9 8-17 9-10 10-13 11-18 12-16 13-15 15-16 15-17
+BEST n=19 hc=520 edges: 0-1 0-9 0-14 0-16 1-2 1-11 1-14 2-11 2-12 2-18 3-9 3-10 3-16 3-17 4-7 4-10 4-13 4-15 5-12 5-14 5-16 5-18 6-11 6-12 6-14 6-18 7-8 7-13 7-17 8-9 8-15 8-17 9-10 10-13 11-18 12-16 13-15 15-17
+BEST n=19 hc=462 edges: 0-1 0-2 0-14 0-16 1-2 1-11 1-14 2-6 2-11 3-4 3-10 3-16 3-17 4-7 4-10 4-13 5-12 5-14 5-16 5-18 6-11 6-14 6-18 7-8 7-13 7-17 8-9 8-15 8-17 9-10 9-12 9-15 10-13 11-18 12-16 12-18 13-15 15-17
+BEST n=19 hc=444 edges: 0-4 0-6 0-14 0-16 1-2 1-9 1-11 1-12 2-5 2-12 2-16 3-5 3-9 3-10 3-14 4-6 4-10 4-17 5-10 5-17 6-14 6-17 7-8 7-13 7-15 7-18 8-11 8-13 8-18 9-10 9-11 11-12 12-16 13-15 13-18 14-17 15-16 15-18
+BEST n=19 hc=432 edges: 0-4 0-6 0-11 0-14 1-3 1-10 1-11 1-14 2-3 2-11 2-12 2-17 3-8 3-17 4-6 4-9 4-16 5-9 5-10 5-11 5-12 6-14 6-16 7-8 7-13 7-15 7-18 8-13 8-18 9-14 9-16 10-12 10-16 12-17 13-15 13-18 15-17 15-18
+BEST n=19 hc=396 edges: 0-4 0-6 0-12 0-14 1-3 1-10 1-11 1-16 2-3 2-11 2-12 2-17 3-8 3-17 4-6 4-9 4-14 5-9 5-10 5-11 5-12 6-14 6-16 7-8 7-13 7-15 7-18 8-13 8-18 9-14 9-16 10-12 10-16 11-17 13-15 13-18 15-17 15-18
+BEST n=19 hc=384 edges: 0-1 0-9 0-11 0-14 1-12 1-14 1-16 2-3 2-5 2-12 2-17 3-4 3-8 3-17 4-5 4-6 4-9 5-6 5-12 6-9 6-10 7-8 7-13 7-15 7-18 8-13 8-18 9-11 10-11 10-14 10-16 11-16 12-17 13-15 13-18 14-16 15-17 15-18
+BEST n=19 hc=360 edges: 0-1 0-4 0-9 0-14 1-4 1-12 1-14 2-3 2-5 2-12 2-17 3-4 3-8 3-17 4-5 5-10 5-11 6-9 6-10 6-11 6-16 7-8 7-13 7-15 7-18 8-13 8-18 9-11 9-16 10-11 10-16 12-14 12-17 13-15 13-18 14-16 15-17 15-18
+BEST n=19 hc=324 edges: 0-1 0-4 0-7 0-11 1-3 1-4 1-17 2-5 2-6 2-9 2-14 3-4 3-11 3-17 4-11 5-10 5-12 5-14 6-10 6-12 6-16 7-8 7-13 7-15 8-13 8-15 8-18 9-10 9-12 9-17 10-16 11-16 12-14 13-15 13-18 14-16 15-18 17-18
+BEST n=19 hc=288 edges: 0-1 0-4 0-7 0-11 1-3 1-4 1-17 2-5 2-6 2-9 2-14 3-4 3-11 3-17 4-11 5-9 5-12 5-14 6-10 6-12 6-16 7-8 7-13 7-15 8-13 8-15 8-18 9-10 9-17 10-12 10-16 11-16 12-14 13-15 13-18 14-16 15-18 17-18
+BEST n=19 hc=252 edges: 0-1 0-4 0-7 0-11 1-3 1-4 1-17 2-6 2-9 2-14 2-16 3-4 3-11 3-17 4-11 5-6 5-9 5-10 5-12 6-10 6-12 7-8 7-13 7-15 8-13 8-15 8-18 9-14 9-17 10-12 10-16 11-16 12-14 13-15 13-18 14-16 15-18 17-18
+BEST n=19 hc=216 edges: 0-1 0-4 0-7 0-11 1-3 1-4 1-17 2-9 2-12 2-14 2-16 3-4 3-11 3-17 4-11 5-6 5-9 5-10 5-12 6-10 6-12 6-16 7-8 7-13 7-15 8-13 8-15 8-18 9-14 9-17 10-12 10-16 11-14 13-15 13-18 14-16 15-18 17-18
+BEST n=19 hc=192 edges: 0-7 0-8 0-13 0-18 1-3 1-8 1-11 1-15 2-6 2-10 2-14 2-17 3-4 3-8 3-15 4-11 4-15 4-18 5-6 5-9 5-14 5-16 6-7 6-10 7-13 7-17 8-11 9-12 9-14 9-16 10-12 10-16 11-15 12-14 12-16 13-17 13-18 17-18
+restart: it_total=30000 best_ever=192 elapsed=44s
+BEST n=19 hc=144 edges: 0-4 0-12 0-14 0-16 1-5 1-6 1-11 1-15 2-3 2-9 2-11 2-17 3-6 3-9 3-17 4-7 4-12 4-16 5-6 5-11 5-15 6-15 7-12 7-13 7-16 8-9 8-10 8-13 8-18 9-17 10-14 10-17 10-18 11-15 12-16 13-14 13-18 14-18
+restart: it_total=60000 best_ever=144 elapsed=90s
+restart: it_total=90000 best_ever=144 elapsed=135s
+restart: it_total=120000 best_ever=144 elapsed=182s
+restart: it_total=150000 best_ever=144 elapsed=226s
+restart: it_total=180000 best_ever=144 elapsed=273s
+restart: it_total=210000 best_ever=144 elapsed=325s
+restart: it_total=240000 best_ever=144 elapsed=370s
+restart: it_total=270000 best_ever=144 elapsed=420s
+restart: it_total=300000 best_ever=144 elapsed=464s
+restart: it_total=330000 best_ever=144 elapsed=512s
+restart: it_total=360000 best_ever=144 elapsed=560s
+restart: it_total=390000 best_ever=144 elapsed=600s
+restart: it_total=420000 best_ever=144 elapsed=646s
+restart: it_total=450000 best_ever=144 elapsed=689s
+restart: it_total=480000 best_ever=144 elapsed=732s
+restart: it_total=510000 best_ever=144 elapsed=775s
+restart: it_total=540000 best_ever=144 elapsed=816s
+restart: it_total=570000 best_ever=144 elapsed=860s
+restart: it_total=600000 best_ever=144 elapsed=903s
+restart: it_total=630000 best_ever=144 elapsed=944s
+restart: it_total=660000 best_ever=144 elapsed=984s
+restart: it_total=690000 best_ever=144 elapsed=1030s
+restart: it_total=720000 best_ever=144 elapsed=1078s
+restart: it_total=750000 best_ever=144 elapsed=1127s
+restart: it_total=780000 best_ever=144 elapsed=1171s
+restart: it_total=810000 best_ever=144 elapsed=1219s
+restart: it_total=840000 best_ever=144 elapsed=1262s
+restart: it_total=870000 best_ever=144 elapsed=1312s
+restart: it_total=900000 best_ever=144 elapsed=1359s
+restart: it_total=930000 best_ever=144 elapsed=1404s
+restart: it_total=960000 best_ever=144 elapsed=1448s
+restart: it_total=990000 best_ever=144 elapsed=1497s
+restart: it_total=1020000 best_ever=144 elapsed=1538s
+restart: it_total=1050000 best_ever=144 elapsed=1587s
+restart: it_total=1080000 best_ever=144 elapsed=1632s
+restart: it_total=1110000 best_ever=144 elapsed=1672s
+restart: it_total=1140000 best_ever=144 elapsed=1721s
+restart: it_total=1170000 best_ever=144 elapsed=1763s
+restart: it_total=1200000 best_ever=144 elapsed=1808s
+restart: it_total=1230000 best_ever=144 elapsed=1853s
+restart: it_total=1260000 best_ever=144 elapsed=1895s
+restart: it_total=1290000 best_ever=144 elapsed=1941s
+restart: it_total=1320000 best_ever=144 elapsed=1982s
+restart: it_total=1350000 best_ever=144 elapsed=2031s
+restart: it_total=1380000 best_ever=144 elapsed=2078s
+restart: it_total=1410000 best_ever=144 elapsed=2118s
+restart: it_total=1440000 best_ever=144 elapsed=2162s
+restart: it_total=1470000 best_ever=144 elapsed=2207s
+restart: it_total=1500000 best_ever=144 elapsed=2257s
+restart: it_total=1530000 best_ever=144 elapsed=2304s
+restart: it_total=1560000 best_ever=144 elapsed=2353s
+restart: it_total=1590000 best_ever=144 elapsed=2398s
+restart: it_total=1620000 best_ever=144 elapsed=2440s
+restart: it_total=1650000 best_ever=144 elapsed=2480s
+restart: it_total=1680000 best_ever=144 elapsed=2524s
+restart: it_total=1710000 best_ever=144 elapsed=2566s
+restart: it_total=1740000 best_ever=144 elapsed=2608s
+restart: it_total=1770000 best_ever=144 elapsed=2652s
+restart: it_total=1800000 best_ever=144 elapsed=2700s
+restart: it_total=1830000 best_ever=144 elapsed=2747s
+restart: it_total=1860000 best_ever=144 elapsed=2795s
+restart: it_total=1890000 best_ever=144 elapsed=2841s
+restart: it_total=1920000 best_ever=144 elapsed=2883s
+restart: it_total=1950000 best_ever=144 elapsed=2931s
+restart: it_total=1980000 best_ever=144 elapsed=2983s
+restart: it_total=2010000 best_ever=144 elapsed=3046s
+restart: it_total=2040000 best_ever=144 elapsed=3103s
+restart: it_total=2070000 best_ever=144 elapsed=3163s
+restart: it_total=2100000 best_ever=144 elapsed=3219s
+restart: it_total=2130000 best_ever=144 elapsed=3288s
+restart: it_total=2160000 best_ever=144 elapsed=3344s
+restart: it_total=2190000 best_ever=144 elapsed=3407s
+restart: it_total=2220000 best_ever=144 elapsed=3465s
+restart: it_total=2250000 best_ever=144 elapsed=3521s
+restart: it_total=2280000 best_ever=144 elapsed=3576s
+restart: it_total=2310000 best_ever=144 elapsed=3643s
+restart: it_total=2340000 best_ever=144 elapsed=3708s
+restart: it_total=2370000 best_ever=144 elapsed=3760s
+restart: it_total=2400000 best_ever=144 elapsed=3812s
+restart: it_total=2430000 best_ever=144 elapsed=3876s
+restart: it_total=2460000 best_ever=144 elapsed=3945s
+restart: it_total=2490000 best_ever=144 elapsed=4015s
+restart: it_total=2520000 best_ever=144 elapsed=4070s
+restart: it_total=2550000 best_ever=144 elapsed=4132s
+restart: it_total=2580000 best_ever=144 elapsed=4201s
+restart: it_total=2610000 best_ever=144 elapsed=4266s
+restart: it_total=2640000 best_ever=144 elapsed=4330s
+restart: it_total=2670000 best_ever=144 elapsed=4389s
+restart: it_total=2700000 best_ever=144 elapsed=4454s
+restart: it_total=2730000 best_ever=144 elapsed=4520s
+restart: it_total=2760000 best_ever=144 elapsed=4584s
+restart: it_total=2790000 best_ever=144 elapsed=4649s
+restart: it_total=2820000 best_ever=144 elapsed=4706s
+restart: it_total=2850000 best_ever=144 elapsed=4771s
+restart: it_total=2880000 best_ever=144 elapsed=4823s
+restart: it_total=2910000 best_ever=144 elapsed=4874s
+restart: it_total=2940000 best_ever=144 elapsed=4926s
+restart: it_total=2970000 best_ever=144 elapsed=4978s
+restart: it_total=3000000 best_ever=144 elapsed=5040s
+restart: it_total=3030000 best_ever=144 elapsed=5097s
+restart: it_total=3060000 best_ever=144 elapsed=5160s
+restart: it_total=3090000 best_ever=144 elapsed=5223s
+restart: it_total=3120000 best_ever=144 elapsed=5284s
+restart: it_total=3150000 best_ever=144 elapsed=5345s
+restart: it_total=3180000 best_ever=144 elapsed=5408s
+restart: it_total=3210000 best_ever=144 elapsed=5461s
+restart: it_total=3240000 best_ever=144 elapsed=5523s
+restart: it_total=3270000 best_ever=144 elapsed=5590s
+restart: it_total=3300000 best_ever=144 elapsed=5650s
+restart: it_total=3330000 best_ever=144 elapsed=5713s
+restart: it_total=3360000 best_ever=144 elapsed=5776s
+restart: it_total=3390000 best_ever=144 elapsed=5843s
+restart: it_total=3420000 best_ever=144 elapsed=5909s
+restart: it_total=3450000 best_ever=144 elapsed=5973s
+restart: it_total=3480000 best_ever=144 elapsed=6038s
+restart: it_total=3510000 best_ever=144 elapsed=6095s
+restart: it_total=3540000 best_ever=144 elapsed=6159s
+restart: it_total=3570000 best_ever=144 elapsed=6216s
+restart: it_total=3600000 best_ever=144 elapsed=6270s
+restart: it_total=3630000 best_ever=144 elapsed=6310s
+restart: it_total=3660000 best_ever=144 elapsed=6360s
+restart: it_total=3690000 best_ever=144 elapsed=6402s
+restart: it_total=3720000 best_ever=144 elapsed=6452s
+restart: it_total=3750000 best_ever=144 elapsed=6498s
+restart: it_total=3780000 best_ever=144 elapsed=6536s
+restart: it_total=3810000 best_ever=144 elapsed=6583s
+restart: it_total=3840000 best_ever=144 elapsed=6629s
+restart: it_total=3870000 best_ever=144 elapsed=6670s
+restart: it_total=3900000 best_ever=144 elapsed=6717s
+restart: it_total=3930000 best_ever=144 elapsed=6764s
+restart: it_total=3960000 best_ever=144 elapsed=6804s
+restart: it_total=3990000 best_ever=144 elapsed=6853s
+restart: it_total=4020000 best_ever=144 elapsed=6897s
+restart: it_total=4050000 best_ever=144 elapsed=6944s
+restart: it_total=4080000 best_ever=144 elapsed=6988s
+restart: it_total=4110000 best_ever=144 elapsed=7036s
+restart: it_total=4140000 best_ever=144 elapsed=7081s
+restart: it_total=4170000 best_ever=144 elapsed=7131s
+restart: it_total=4200000 best_ever=144 elapsed=7173s
+restart: it_total=4206939 best_ever=144 elapsed=7200s
+DONE n=19 best_ever=144 it_total=4206939

@@ -1,0 +1,50 @@
+BEST n=16 hc=529 edges: 0-1 0-7 0-12 0-15 1-2 1-4 1-5 2-3 2-8 2-13 3-4 3-9 3-10 4-10 4-11 5-6 5-12 5-14 6-7 6-11 6-15 7-8 7-15 8-9 8-11 9-10 9-13 10-11 12-13 12-14 13-14 14-15
+BEST n=16 hc=514 edges: 0-2 0-3 0-8 0-9 1-2 1-5 1-7 1-11 2-8 2-13 3-6 3-10 3-12 4-5 4-9 4-10 4-14 5-9 5-14 6-7 6-13 6-15 7-8 7-15 8-11 9-13 10-11 10-12 11-13 12-14 12-15 14-15
+BEST n=16 hc=502 edges: 0-2 0-5 0-9 0-11 1-2 1-7 1-8 1-13 2-5 2-14 3-6 3-8 3-10 3-12 4-5 4-9 4-10 4-14 5-14 6-7 6-8 6-11 7-8 7-15 9-13 9-15 10-11 10-12 11-13 12-13 12-15 14-15
+BEST n=16 hc=457 edges: 0-2 0-5 0-9 0-11 1-2 1-7 1-8 1-13 2-5 2-14 3-6 3-8 3-10 3-12 4-5 4-9 4-14 4-15 5-14 6-7 6-8 6-11 7-8 7-15 9-13 9-15 10-11 10-12 10-14 11-13 12-13 12-15
+BEST n=16 hc=445 edges: 0-2 0-5 0-9 0-11 1-2 1-7 1-8 1-13 2-5 2-14 3-6 3-8 3-10 3-12 4-5 4-9 4-14 4-15 5-14 6-7 6-8 6-11 7-8 7-15 9-10 9-13 10-11 10-12 11-13 12-13 12-15 14-15
+BEST n=16 hc=404 edges: 0-2 0-5 0-9 0-11 1-2 1-7 1-8 1-13 2-5 2-14 3-6 3-8 3-10 3-12 4-5 4-9 4-14 4-15 5-14 6-7 6-8 6-11 7-8 7-15 9-11 9-13 10-11 10-12 10-13 12-13 12-15 14-15
+BEST n=16 hc=366 edges: 0-2 0-5 0-9 0-11 1-2 1-7 1-8 1-13 2-5 2-14 3-7 3-8 3-12 3-15 4-5 4-9 4-14 4-15 5-14 6-8 6-10 6-11 6-12 7-8 7-15 9-11 9-13 10-11 10-12 10-13 12-13 14-15
+BEST n=16 hc=357 edges: 0-1 0-4 0-8 0-15 1-5 1-8 1-13 2-4 2-6 2-7 2-13 3-6 3-9 3-10 3-14 4-10 4-15 5-8 5-13 5-14 6-7 6-11 7-11 7-12 8-15 9-10 9-12 9-14 10-11 11-12 12-14 13-15
+BEST n=16 hc=354 edges: 0-1 0-4 0-8 0-15 1-5 1-8 1-13 2-4 2-6 2-7 2-9 3-6 3-9 3-10 3-14 4-10 4-15 5-8 5-13 5-14 6-7 6-11 7-11 7-12 8-15 9-12 9-14 10-11 10-13 11-12 12-14 13-15
+BEST n=16 hc=290 edges: 0-2 0-4 0-11 0-15 1-6 1-7 1-8 1-13 2-4 2-5 2-10 3-6 3-10 3-13 3-14 4-11 4-15 5-9 5-14 5-15 6-7 6-14 7-12 7-13 8-9 8-10 8-12 9-11 9-14 10-12 11-15 12-13
+BEST n=16 hc=276 edges: 0-1 0-3 0-12 0-13 1-3 1-8 1-12 2-8 2-9 2-14 2-15 3-5 3-15 4-5 4-7 4-13 4-14 5-13 5-14 6-7 6-9 6-10 6-11 7-10 7-11 8-12 8-14 9-10 9-11 10-11 12-15 13-15
+BEST n=16 hc=246 edges: 0-1 0-3 0-12 0-13 1-3 1-12 1-15 2-8 2-11 2-14 2-15 3-5 3-15 4-5 4-7 4-13 4-14 5-13 5-14 6-7 6-9 6-10 6-11 7-9 7-10 8-12 8-13 8-14 9-10 9-11 10-11 12-15
+BEST n=16 hc=150 edges: 0-1 0-3 0-12 0-13 1-3 1-12 1-15 2-4 2-8 2-11 2-14 3-5 3-15 4-7 4-13 4-14 5-13 5-14 5-15 6-7 6-9 6-10 6-11 7-9 7-10 8-12 8-13 8-14 9-10 9-11 10-11 12-15
+BEST n=16 hc=144 edges: 0-5 0-7 0-11 0-14 1-4 1-6 1-9 1-15 2-3 2-4 2-9 2-10 3-8 3-12 3-13 4-10 4-15 5-7 5-11 5-14 6-7 6-8 6-15 7-14 8-12 8-13 9-11 9-15 10-12 10-13 11-14 12-13
+BEST n=16 hc=108 edges: 0-1 0-3 0-7 0-11 1-3 1-11 1-14 2-8 2-10 2-12 2-13 3-11 3-14 4-5 4-7 4-12 4-15 5-7 5-9 5-15 6-9 6-10 6-14 6-15 7-9 8-10 8-12 8-13 9-15 10-13 11-14 12-13
+BEST n=16 hc=72 edges: 0-1 0-6 0-11 0-14 1-3 1-11 1-14 2-8 2-10 2-12 2-13 3-7 3-11 3-14 4-5 4-6 4-7 4-15 5-9 5-12 5-15 6-9 6-10 7-9 7-15 8-10 8-12 8-13 9-15 10-13 11-14 12-13
+restart: it_total=30000 best_ever=72 elapsed=16s
+restart: it_total=60000 best_ever=72 elapsed=31s
+restart: it_total=90000 best_ever=72 elapsed=47s
+restart: it_total=120000 best_ever=72 elapsed=64s
+restart: it_total=150000 best_ever=72 elapsed=81s
+restart: it_total=180000 best_ever=72 elapsed=98s
+restart: it_total=210000 best_ever=72 elapsed=118s
+restart: it_total=240000 best_ever=72 elapsed=142s
+restart: it_total=270000 best_ever=72 elapsed=161s
+restart: it_total=300000 best_ever=72 elapsed=179s
+restart: it_total=330000 best_ever=72 elapsed=196s
+restart: it_total=360000 best_ever=72 elapsed=213s
+restart: it_total=390000 best_ever=72 elapsed=227s
+restart: it_total=420000 best_ever=72 elapsed=243s
+restart: it_total=450000 best_ever=72 elapsed=260s
+restart: it_total=480000 best_ever=72 elapsed=277s
+restart: it_total=510000 best_ever=72 elapsed=293s
+restart: it_total=540000 best_ever=72 elapsed=310s
+restart: it_total=570000 best_ever=72 elapsed=327s
+restart: it_total=600000 best_ever=72 elapsed=348s
+restart: it_total=630000 best_ever=72 elapsed=364s
+restart: it_total=660000 best_ever=72 elapsed=381s
+restart: it_total=690000 best_ever=72 elapsed=398s
+restart: it_total=720000 best_ever=72 elapsed=413s
+restart: it_total=750000 best_ever=72 elapsed=429s
+restart: it_total=780000 best_ever=72 elapsed=448s
+restart: it_total=810000 best_ever=72 elapsed=464s
+restart: it_total=840000 best_ever=72 elapsed=480s
+restart: it_total=870000 best_ever=72 elapsed=496s
+restart: it_total=900000 best_ever=72 elapsed=513s
+restart: it_total=930000 best_ever=72 elapsed=534s
+restart: it_total=960000 best_ever=72 elapsed=551s
+restart: it_total=990000 best_ever=72 elapsed=568s
+restart: it_total=1020000 best_ever=72 elapsed=589s
