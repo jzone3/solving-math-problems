@@ -64,8 +64,7 @@ optimal isolated-vertex padding of every graph, i.e. floor/ceil of N* clamped to
 | **all graphs n = 11** | **1,018,997,864** (matches known count) | 0 | −0.01449 (K_7∪4K_1) | — |
 | n ≤ 11 + optimal isolated-vertex padding (any total N) | same | 0 | 0 (ties = K_k family only) | — |
 | **all graphs n = 12** | **165,091,172,592** (matches known count) | 0 | 0 (unique tie: K_7∪5K_1; PAD ties all K_k family) | — |
-| trees n = 13..29 (gentreeg) | 8,733,109,269 | 0 | −0.1727 (star K_{1,28}) | — |
-| trees n = 30 | RUNNING (14.8B) | | | |
+| trees n = 13..30 (gentreeg) | 23,563,981,071 | 0 | −0.1702 (star K_{1,29}) | — |
 
 Best strict near-miss at n = 11: K_7 ∪ 4K_1, gap −0.014492815876 (it wants N = 12 =
 2·7−2, where it ties exactly — confirmed by the PAD check).
@@ -121,7 +120,7 @@ ever appears, and it is proven equal exactly).
 ## 5. Compute spent (so far)
 
 - n=11 full exhaust: ~8 core × 7 min. n=12 full exhaust: 8 cores × ~3.2 h wall.
-- trees to 29: ~2.7 h single core. LP certification n≤15: ~1 h. n=16: hours.
+- trees to 30: ~7.5 h single core. LP certification: n≤15 ~1 h; n=16 2.2 h; n=17 8×~4 h.
 - degree-sequence search: 5 min.
 - Perturbation families at optimal padding scanned to k = 3000 (K_k−e, K_k+pendant,
   K_k∪K_2, 2K_k): all strictly negative, K_k−e → 0⁻ like −Θ(1/k²·...) (max −0.00033 at
@@ -145,7 +144,7 @@ No counterexample to Graffiti 129 anywhere. New exhaustive frontiers established
   dev depends only on the degree sequence, and the transportation LP lower-bounds
   min-Randić over realizations), zero violations — V4's n = 11–13 mandate exceeded;
 - every graph on ≤ 12 vertices plus ANY number of isolated vertices: zero violations;
-- all trees n ≤ 29 (mandate: 24), zero violations (extremal tree = star, gap → 0⁻,
+- all trees n ≤ 30 (mandate: 24; 23.56 billion trees for n = 13..30), zero violations (extremal tree = star, gap → 0⁻,
   exactly dev²−R² = −2k(k−1)/(k+1)² for K_{1,k});
 - degree-sequence hill-climbing to n = 40 and perturbation families to k = 3000: never
   positive.

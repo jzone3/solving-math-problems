@@ -96,3 +96,20 @@ PAD: violations=0 ties=0 best(dev_pad-R)=-10.181191658979 at N=30 witness=\hCGOO
 elapsed 7113s
 === trees n=30 ===
 ...processed 1073741824 graphs (best129=-7.634624309 best698=-1000000000000000000.000000000)
+...processed 2147483648 graphs (best129=-6.554719959 best698=-1000000000000000000.000000000)
+...processed 3221225472 graphs (best129=-6.554719959 best698=-1000000000000000000.000000000)
+...processed 4294967296 graphs (best129=-6.554719959 best698=-1000000000000000000.000000000)
+...processed 5368709120 graphs (best129=-6.554719959 best698=-1000000000000000000.000000000)
+...processed 6442450944 graphs (best129=-5.453755893 best698=-1000000000000000000.000000000)
+...processed 7516192768 graphs (best129=-5.453755893 best698=-1000000000000000000.000000000)
+...processed 8589934592 graphs (best129=-5.453755893 best698=-1000000000000000000.000000000)
+...processed 9663676416 graphs (best129=-5.453755893 best698=-1000000000000000000.000000000)
+...processed 10737418240 graphs (best129=-5.453755893 best698=-1000000000000000000.000000000)
+...processed 11811160064 graphs (best129=-4.335633091 best698=-1000000000000000000.000000000)
+...processed 12884901888 graphs (best129=-4.335633091 best698=-1000000000000000000.000000000)
+...processed 13958643712 graphs (best129=-4.335633091 best698=-1000000000000000000.000000000)
+DONE count=14830871802
+129: violations=0  best(dev-R)=-0.170228992040  witness=]saCCA?_C?O?_?_?O?C??_?A??C??C??A???_??C???O???_???_???O???C????_???A?????
+129: ties(|gap|<eps,m>0)=0 example=   best strict near-miss gap=-0.170228992040 g6=]saCCA?_C?O?_?_?O?C??_?A??C??C??A???_??C???O???_???_???O???C????_???A?????
+PAD: violations=0 ties=0 best(dev_pad-R)=-10.582353431096 at N=31 witness=]hCO_`??G?_A?C?CO???@??C??G??O??O??_???G???_??A???C_???????G???@????G????_
+elapsed 16895s
