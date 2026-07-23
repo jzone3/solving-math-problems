@@ -1,0 +1,4 @@
+n=112 k=36 gens=[27, 29] |H|=8 m=29 sizes=[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 8, 8, 8, 8, 8, 8, 8]
+pairs=406 base_vars=1682
+CNF: vars=17162 clauses=156895
+UNSAT n=112 k=36 gens=[27, 29] m=29: no H-fixed CW exists
