@@ -19,4 +19,4 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P13 | queued | queued | queued | queued | queued |
 | P14 | queued | queued | queued | queued | queued |
 | P15 | queued | queued | queued | queued | queued |
-| P20 | **negative / frontier-pushed: no 4-regular girth-6 4-chromatic graph on ≤34 vertices; AT census ≤640, Cayley ≤120 & circulants ≤1000 all clean** (runs/P20/v1) | queued | queued | queued | queued |
+| P20 | **negative / frontier-pushed: no 4-regular girth-6 4-chromatic graph on ≤34 vertices; AT census ≤640, Cayley ≤159 (excl. 128) & circulants ≤1000 all clean** (runs/P20/v1) | queued | queued | queued | queued |

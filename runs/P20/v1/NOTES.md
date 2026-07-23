@@ -133,6 +133,9 @@ cores — left as the natural next step for a follow-up run (v2) with more compu
   connection sets S = S⁻¹, |S| = 4, generating, up to Aut(G)-equivalence): 21,387
   connected 4-valent Cayley graphs, **7,410 with girth ≥ 6 — all 3-colorable** (SAT).
   Scripts: `scripts/cayley.g` (GAP export) + `scripts/check_cayley.py`.
+- **Cayley graphs, non-abelian groups of order 121–159** (same pipeline; order 128
+  excluded — 2328 groups, out of time budget; enumeration time-boxed after order 159):
+  18,063 further Cayley graphs, **9,646 with girth ≥ 6 — all 3-colorable**.
 - Cayley census up to 1025 (graphsym.net) is a 100+ GB download — out of scope for this
   box; the AT census above covers the most symmetric slice.
 
@@ -168,8 +171,8 @@ n=20: 87 graphs (111 s) — ×10/vertex growth means n=26 (the first open order)
   attempted (est. 15–45 h × 8 cores); covered via census SCD + our 3-coloring.
 - AT census 3-coloring sweep (4820 graphs, ≤ 640 vertices): ~25 min single-core.
 - Circulant sweep n ≤ 1000 (34.5M pairs): ~25 min single-core.
-- GAP Cayley sweep orders 26–120 + coloring: ~30 min; orders 121–200 (excl. 128, 192)
-  run as bonus — results in cayley2 files if completed before session end.
+- GAP Cayley sweep orders 26–120 + coloring: ~30 min; orders 121–159 (excl. 128):
+  ~1.5 h enumeration (time-boxed at order 160) + ~4 min coloring.
 - EG girth-6 Δ≤4 growth measurements: ~3 min.
 
 ## 9. Verdict
