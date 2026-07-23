@@ -1,0 +1,450 @@
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 524 rows; 1550 cols; 11630 nonzeros; 1550 integer variables (1550 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e+00, 1e+00]
+Presolving model
+524 rows, 1550 cols, 11630 nonzeros 0s
+524 rows, 1550 cols, 11630 nonzeros 0s
+Presolve reductions: rows 524(-0); columns 1550(-0); nonzeros 11630(-0) - Not reduced
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   524 rows
+   1550 cols (1550 binary, 0 integer, 0 implied int., 0 continuous, 0 domain fixed)
+   11630 nonzeros
+   Thread count 4 (of 8 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0     0.1s
+         0       0         0   0.00%   0               inf                  inf        0      0      2       407     0.1s
+
+Symmetry detection completed in 0.0s
+Found 18 generator(s)
+
+         8       0         4 100.00%   inf             inf                  inf        4      0     40     21054     2.5s
+
+Solving report
+  Status            Infeasible
+  Primal bound      inf
+  Dual bound        inf
+  Gap               inf
+  P-D integral      0
+  Solution status   -
+  Timing            2.51
+                    0.12 (Presolve)
+                        MIP    time [calls] = 0.05 [1]
+                        subMIP time [calls] = 0.06 [2]
+                    2.39 (Solve)
+                        MIP    time [calls] = 1.12 [1]
+                        subMIP time [calls] = 1.28 [2]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [2]
+  Max sub-MIP depth 4
+  Nodes             8
+  Repair LPs        0
+  LP iterations     21054
+                    0 (strong br.)
+                    0 (separation)
+                    11018 (heuristics)
+N=504 (2^3,3^2,7): UNSAT  t=3s
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 745 rows; 2403 cols; 20403 nonzeros; 2403 integer variables (2403 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e+00, 1e+00]
+Presolving model
+745 rows, 2403 cols, 20403 nonzeros 0s
+745 rows, 2403 cols, 20403 nonzeros 0s
+Presolve reductions: rows 745(-0); columns 2403(-0); nonzeros 20403(-0) - Not reduced
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   745 rows
+   2403 cols (2403 binary, 0 integer, 0 implied int., 0 continuous, 0 domain fixed)
+   20403 nonzeros
+   Thread count 4 (of 8 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0     0.2s
+         0       0         0   0.00%   0               inf                  inf        0      0      2       389     0.2s
+
+Symmetry detection completed in 0.0s
+Found 24 generator(s)
+
+         5       0         1   6.25%   0               inf                  inf        1      0     49      9500     7.4s
+        59       0        28  12.49%   0               inf                  inf       28      0    176     65533    12.6s
+       140       4        65  20.85%   0               inf                  inf      195      2    413    128862    17.8s
+       211       8       100  22.07%   0               inf                  inf      250      3    559    176324    23.3s
+       306       7       147  25.20%   0               inf                  inf      289      4    719    234810    28.3s
+       360       8       174  28.25%   0               inf                  inf      390      5    805    287253    37.4s
+       417       6       202  50.54%   0               inf                  inf      459      7    899    344340    42.4s
+       481       8       232  52.49%   0               inf                  inf      470      8   1027    394911    49.7s
+       550       7       266  55.76%   0               inf                  inf      465      9   1147    452218    54.8s
+       607       6       295  59.52%   0               inf                  inf      502      6   1247    502172    62.2s
+       642       5       313  66.94%   0               inf                  inf      535      7   1294    568533    67.6s
+       716       8       349  69.77%   0               inf                  inf      811     11   1456    615851    76.0s
+       766       4       374  70.04%   0               inf                  inf     1097     13   1520    673411    81.2s
+       833       4       408  70.09%   0               inf                  inf     1131     13   1621    731391    86.2s
+       902       3       442  70.26%   0               inf                  inf     1205     16   1730    784610    91.2s
+       932       2       457  70.51%   0               inf                  inf     1244     18   1770    818495    97.8s
+      1007       2       495  71.47%   0               inf                  inf     1282     18   1944    874300   102.9s
+      1071       3       527  71.78%   0               inf                  inf     1353     15   2058    941280   108.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      1099       2       541  72.27%   0               inf                  inf     1322     16   2102    984591   115.2s
+      1144       0       563  99.41%   0               inf                  inf     1295     12   2179     1038k   120.2s
+      1215       2       596  99.75%   0               inf                  inf     1318     14   2306     1093k   125.4s
+      1279       0       627  99.97%   0               inf                  inf     1328     16   2423     1140k   130.5s
+      1295       0       636 100.00%   inf             inf                  inf     1336     16   2444     1151k   131.5s
+
+Solving report
+  Status            Infeasible
+  Primal bound      inf
+  Dual bound        inf
+  Gap               inf
+  P-D integral      0
+  Solution status   -
+  Timing            131.52
+                    2.81 (Presolve)
+                        MIP    time [calls] = 0.10 [1]
+                        subMIP time [calls] = 2.71 [88]
+                    128.69 (Solve)
+                        MIP    time [calls] = 104.30 [1]
+                        subMIP time [calls] = 24.39 [82]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [88]
+  Max sub-MIP depth 12
+  Nodes             1295
+  Repair LPs        0
+  LP iterations     1151409
+                    0 (strong br.)
+                    4947 (separation)
+                    62737 (heuristics)
+N=720 (2^4,3^2,5): UNSAT  t=134s
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 867 rows; 2865 cols; 25545 nonzeros; 2865 integer variables (2865 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e+00, 1e+00]
+Presolving model
+867 rows, 2865 cols, 25545 nonzeros 0s
+867 rows, 2865 cols, 25545 nonzeros 0s
+Presolve reductions: rows 867(-0); columns 2865(-0); nonzeros 25545(-0) - Not reduced
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   867 rows
+   2865 cols (2865 binary, 0 integer, 0 implied int., 0 continuous, 0 domain fixed)
+   25545 nonzeros
+   Thread count 4 (of 8 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0     0.2s
+         0       0         0   0.00%   0               inf                  inf        0      0      2       412     0.2s
+
+Symmetry detection completed in 0.1s
+Found 16 generator(s)
+
+         6       0         1   3.12%   0               inf                  inf        2      1     51     13177    13.0s
+        40       0        18  11.52%   0               inf                  inf        6      1    139     62233    18.1s
+        67       0        32  12.49%   0               inf                  inf       13      1    178    110130    23.2s
+       103       5        49  26.56%   0               inf                  inf       28      1    248    169929    28.3s
+       143       4        68  38.67%   0               inf                  inf       47      1    304    211179    33.5s
+       186       1        88  95.70%   0               inf                  inf       66      1    367    250874    38.6s
+       205       0        98 100.00%   inf             inf                  inf       89      2    388    271650    41.2s
+
+Solving report
+  Status            Infeasible
+  Primal bound      inf
+  Dual bound        inf
+  Gap               inf
+  P-D integral      0
+  Solution status   -
+  Timing            41.18
+                    1.01 (Presolve)
+                        MIP    time [calls] = 0.13 [1]
+                        subMIP time [calls] = 0.87 [31]
+                    40.16 (Solve)
+                        MIP    time [calls] = 29.31 [1]
+                        subMIP time [calls] = 10.85 [31]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [31]
+  Max sub-MIP depth 12
+  Nodes             205
+  Repair LPs        0
+  LP iterations     271650
+                    0 (strong br.)
+                    201 (separation)
+                    22691 (heuristics)
+N=840 (2^3,3,5,7): UNSAT  t=175s
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 1034 rows; 3214 cols; 29422 nonzeros; 3214 integer variables (3214 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e+00, 1e+00]
+Presolving model
+1034 rows, 3214 cols, 29422 nonzeros 0s
+1034 rows, 3214 cols, 29422 nonzeros 0s
+Presolve reductions: rows 1034(-0); columns 3214(-0); nonzeros 29422(-0) - Not reduced
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   1034 rows
+   3214 cols (3214 binary, 0 integer, 0 implied int., 0 continuous, 0 domain fixed)
+   29422 nonzeros
+   Thread count 4 (of 8 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0     0.2s
+         0       0         0   0.00%   0               inf                  inf        0      0      2       466     0.3s
+
+Symmetry detection completed in 0.1s
+Found 26 generator(s)
+
+         7       0         1   1.56%   0               inf                  inf        4      1     37     11968    12.6s
+        32       0        14  10.16%   0               inf                  inf       11      1    141     58099    17.8s
+        64       0        30  12.30%   0               inf                  inf       17      1    209    101236    22.9s
+        81       0        38  15.43%   0               inf                  inf       22      1    240    146004    28.1s
+       104       5        48  17.58%   0               inf                  inf      223      2    282    189615    35.4s
+       123       5        58  19.87%   0               inf                  inf      233      2    317    234765    40.5s
+       160       7        75  21.97%   0               inf                  inf      250      2    373    278203    45.8s
+       186      10        87  22.33%   0               inf                  inf      261      2    422    320535    50.9s
+       204      13        94  25.60%   0               inf                  inf      284      3    450    349093    58.1s
+       232      13       108  33.99%   0               inf                  inf      297      3    501    389838    63.1s
+       259      14       121  37.88%   0               inf                  inf      309      3    545    429646    68.1s
+       291      14       137  39.61%   0               inf                  inf      324      3    600    481630    74.5s
+       304      15       143  47.06%   0               inf                  inf      331      4    621    506148    80.3s
+       312      15       148  90.81%   0               inf                  inf      335      4    637    563055    86.5s
+       340      14       162  91.59%   0               inf                  inf      532      4    680    589416    91.9s
+       385      14       184  92.58%   0               inf                  inf      619      6    738    641909    97.7s
+       409      13       196  92.71%   0               inf                  inf      601      7    763    681042   102.8s
+       424      13       205  92.79%   0               inf                  inf      609      7    781    727286   108.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+       443      12       215  92.80%   0               inf                  inf      685      8    804    760621   113.6s
+       469       9       228  95.00%   0               inf                  inf      760      6    855    801101   118.6s
+       496      10       241  95.68%   0               inf                  inf      772      6    890    843122   123.7s
+       527      10       255  95.87%   0               inf                  inf      785      6    962    886894   128.9s
+       554      11       268  95.92%   0               inf                  inf      794      6    995    929136   133.9s
+       562      13       272  96.38%   0               inf                  inf      801      7   1010    945820   140.7s
+       570      11       277  96.40%   0               inf                  inf      890      9   1020    982525   146.3s
+       598       9       292  96.60%   0               inf                  inf      913     12   1064     1027k   151.5s
+       621       7       304  96.73%   0               inf                  inf      949     15   1098     1075k   157.3s
+       632       6       310  96.86%   0               inf                  inf     1008     12   1113     1085k   169.4s
+       665       4       327  97.46%   0               inf                  inf     1018     14   1159     1187k   175.5s
+       700       5       344  97.56%   0               inf                  inf     1028     14   1198     1232k   181.1s
+       736       8       361  98.02%   0               inf                  inf     1044     14   1245     1271k   186.2s
+       771       7       379  98.19%   0               inf                  inf     1318     14   1288     1314k   191.8s
+       809       6       398  98.21%   0               inf                  inf     1304     16   1340     1361k   197.5s
+       838       3       414  98.95%   0               inf                  inf     1338     12   1371     1407k   203.4s
+       855       2       423  99.02%   0               inf                  inf     1588     13   1390     1450k   209.0s
+       907       1       449  99.61%   0               inf                  inf     1555     15   1468     1488k   214.2s
+       945       2       468  99.78%   0               inf                  inf     1567     15   1514     1527k   219.2s
+       974       1       483  99.80%   0               inf                  inf     1565     17   1545     1570k   224.5s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      1013       0       503 100.00%   0               inf                  inf     1563     18   1590     1609k   229.8s
+      1014       0       504 100.00%   inf             inf                  inf     1564     18   1591     1610k   230.0s
+
+Solving report
+  Status            Infeasible
+  Primal bound      inf
+  Dual bound        inf
+  Gap               inf
+  P-D integral      0
+  Solution status   -
+  Timing            230.01
+                    4.22 (Presolve)
+                        MIP    time [calls] = 0.18 [1]
+                        subMIP time [calls] = 4.04 [127]
+                    225.76 (Solve)
+                        MIP    time [calls] = 187.13 [1]
+                        subMIP time [calls] = 38.64 [80]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [127]
+  Max sub-MIP depth 10
+  Nodes             1014
+  Repair LPs        0
+  LP iterations     1610805
+                    0 (strong br.)
+                    17041 (separation)
+                    111567 (heuristics)
+N=1008 (2^4,3^2,7): UNSAT  t=405s
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 1107 rows; 3585 cols; 32745 nonzeros; 3585 integer variables (3585 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e+00, 1e+00]
+Presolving model
+1107 rows, 3585 cols, 32745 nonzeros 0s
+1107 rows, 3585 cols, 32745 nonzeros 0s
+Presolve reductions: rows 1107(-0); columns 3585(-0); nonzeros 32745(-0) - Not reduced
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   1107 rows
+   3585 cols (3585 binary, 0 integer, 0 implied int., 0 continuous, 0 domain fixed)
+   32745 nonzeros
+   Thread count 4 (of 8 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0     0.3s
+         0       0         0   0.00%   0               inf                  inf        0      0      2       617     0.3s
+         0       0         0   0.00%   0               inf                  inf       17      2     35      6789     6.4s
+
+Symmetry detection completed in 0.1s
+Found 34 generator(s)
+
+         2       0         1 100.00%   inf             inf                  inf       18      2     39     12570     9.7s
+
+Solving report
+  Status            Infeasible
+  Primal bound      inf
+  Dual bound        inf
+  Gap               inf
+  P-D integral      0
+  Solution status   -
+  Timing            9.68
+                    0.98 (Presolve)
+                        MIP    time [calls] = 0.20 [1]
+                        subMIP time [calls] = 0.78 [13]
+                    8.69 (Solve)
+                        MIP    time [calls] = 1.63 [1]
+                        subMIP time [calls] = 7.06 [13]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [13]
+  Max sub-MIP depth 8
+  Nodes             2
+  Repair LPs        0
+  LP iterations     12570
+                    0 (strong br.)
+                    60 (separation)
+                    9751 (heuristics)
+N=1080 (2^3,3^3,5): UNSAT  t=415s
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 1291 rows; 4353 cols; 43413 nonzeros; 4353 integer variables (4353 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e+00, 1e+00]
+Presolving model
+1291 rows, 4353 cols, 43413 nonzeros 0s
+1291 rows, 4353 cols, 43413 nonzeros 0s
+Presolve reductions: rows 1291(-0); columns 4353(-0); nonzeros 43413(-0) - Not reduced
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   1291 rows
+   4353 cols (4353 binary, 0 integer, 0 implied int., 0 continuous, 0 domain fixed)
+   43413 nonzeros
+   Thread count 4 (of 8 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0     0.4s
+         0       0         0   0.00%   0               inf                  inf        0      0      2       601     0.5s
+         0       0         0   0.00%   0               inf                  inf        0      0     36     32415    12.9s
+
+Symmetry detection completed in 0.1s
+Found 20 generator(s)
+
+        20       0         6   0.68%   0               inf                  inf        3      0    107     77076    21.1s
+        32       0        12   0.68%   0               inf                  inf        5      0    128    109255    26.7s
+        44       0        18   0.71%   0               inf                  inf        7      0    159    139086    31.8s
+        58       0        25   0.73%   0               inf                  inf       13      0    212    171657    37.3s
+        74       0        33   0.77%   0               inf                  inf       20      0    257    204645    42.8s
+        93       0        43   0.78%   0               inf                  inf       30      0    295    237472    48.0s
+       109       8        48   0.88%   0               inf                  inf       35      0    330    264789    81.3s
+       129       8        58   0.97%   0               inf                  inf       45      0    373    297761    86.3s
+       157      12        70   1.08%   0               inf                  inf       54      0    421    331665    91.6s
+       187      12        85   1.08%   0               inf                  inf       68      0    472    366750    96.8s
+       211      17        94   1.30%   0               inf                  inf       77      0    510    451551   133.0s
+       229      17       103   1.49%   0               inf                  inf       86      0    558    484098   138.0s
+       249      17       113   1.67%   0               inf                  inf       96      0    624    515287   143.1s
+       268      17       122   1.68%   0               inf                  inf      105      0    661    546832   148.1s
+       286      17       131   1.68%   0               inf                  inf      114      0    683    580149   153.3s
+       304      25       140   1.68%   0               inf                  inf      123      0    701    664292   158.5s
+       311      24       141   1.88%   0               inf                  inf      124      0    715    678175   190.4s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+       333      27       150   1.97%   0               inf                  inf      132      0    785    712681   195.8s
+       360      28       163   1.97%   0               inf                  inf      145      0    814    747209   201.3s
+       380      28       173   2.02%   0               inf                  inf      155      0    863    779088   206.7s
+       396      28       181   2.02%   0               inf                  inf      162      0    902    809569   211.9s
+       411      36       186   2.13%   0               inf                  inf      167      0    932    890751   238.4s
+       432      36       196   2.23%   0               inf                  inf      177      0    967    923975   243.8s
+       450      36       205   2.23%   0               inf                  inf      186      0    996    957214   248.9s
+       474      37       216   2.25%   0               inf                  inf      197      0   1031    990401   254.0s
+       495      37       227   2.26%   0               inf                  inf      208      0   1073     1025k   259.6s

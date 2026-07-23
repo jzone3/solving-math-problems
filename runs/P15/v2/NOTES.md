@@ -215,3 +215,69 @@ constraint in this range; alignment (the integrality gap) is.
 STATUS: frontier-pushed (verified machine-generated covers up to min modulus 10 at N=2.2e9;
 exact small-N SAT/UNSAT data; two engine soundness bugs caught by independent verification;
 no progress toward 43 — negative for the stated goal).
+
+---
+
+# Session 2 (resumed 2026-07-22/23): SAT attack, symbolic Nielsen constructor, exact minimal-lcm ladders
+
+## 9. SAT / cube-and-conquer attack (sat_cover.py, sat_tree.py)
+
+Encodings tried for "cover Z_N with distinct divisor moduli >= T" as CNF:
+- flat: x_{v,a} vars, one length-|divs| clause per point of Z_N, at-most-one residue per
+  value (pairwise for v<=30, sequential counter above). N=5040,T=6: 38,380 vars / 64,322
+  clauses.
+- CRT-tree layered (sat_tree.py): cell vars c_{m,r} down a prime chain 1|2|4|...|N,
+  c -> (closed by a divisor of m) OR (all p children needed); logically equivalent but gives
+  CDCL hierarchical lemmas. Sanity: T=3@5040 SAT in 6 s, witness verified PASS.
+- translation symmetry handled by a sound case split (cube per divisor v0 with x_{v0,0}=1:
+  any solution can be translated so the class covering 0 has residue 0).
+
+Negative findings (dead end, well-documented):
+- cadical195, glucose42, minicard (via pysat) and kissat 4.0.4 (built from source, --sat)
+  ALL fail to solve the *known-SAT* instance N=5040 T=6 within 10-120 min, an instance HiGHS
+  ILP solves in ~30 s. LP-style global counting reasoning appears essential; clause learning
+  finds nothing to grip on the flat or tree encodings.
+- cube split does not rescue CDCL: cubes are individually as hard.
+- Conclusion: pure CDCL SAT is the wrong tool for covering-feasibility at these sizes;
+  cutting-plane / LP reasoning (ILP) dominates. (A pseudo-Boolean or MaxSAT solver with
+  counting engine might close the gap; not pursued further.)
+
+## 10. Symbolic Nielsen-style constructor (engine6.py, engine7.py, hybrid7.py)
+
+New engine class that never materializes Z_N: state = list of uncovered residue classes
+(r mod M) with M a bigint lcm; incorporating a prime-power block p^k turns each class into
+p^k children, and only *new* divisors v = d*p^j (j > old exponent) can hit children without
+having covered the parent. Sweep-greedy set cover on children with proportional kill
+thresholds; numpy fast path while M < 2^62. This reproduces the cross-branch alignment
+("x-inputs") that engines 3-5 lacked, and verified instantly at small T
+(T=3: 12-18 congruences, PASS).
+
+Frontier findings:
+- growth is structural: at a tail prime p the new-divisor reciprocal sum
+  sum 1/(d p) ~ (sum 1/d)/p is far below (p-1)/p, so the uncovered-class COUNT multiplies
+  every step even though the uncovered FRACTION shrinks. All schedules tried for T=11-14
+  (fat smooth heads 2^6..2^8, 3^4..3^5, 5^2..5^3, 7^2, interleaved re-raises, vmax up to
+  4e6, budget up to 8e7 classes) blow past the class budget before the divisor lattice is
+  rich enough to finish. This matches why Nielsen's 40-cover needs >10^50 congruences:
+  explicit-witness covers (verifiable by listing congruences) are fundamentally capped at
+  low double-digit min modulus.
+- hybrid7.py (engine7 front-end to M = N = 2.2e9, then engine5 hole placement + streaming
+  1-opt): T=11 run plateaued ~0.9-1.0M holes (worse than engine5's 42k plateau from a dense
+  greedy start) — the symbolic front-end's leftovers are more diffuse, not less.
+
+## 11. Exact minimal-lcm ladders (minlcm.py SAT version; minlcm_ilp.py = HiGHS)
+
+New exact results (each N decided SAT/UNSAT; SAT witnesses verified by solutions/P15/verify.py):
+the minimal possible lcm N of a covering system with distinct moduli, all >= T
+(equivalently minimal N such that Z_N is coverable by distinct divisor moduli >= T;
+N ascending, pruned by the necessary condition sum_{v|N, v>=T} 1/v >= 1):
+
+- T=3: N = 120 (all smaller N UNSAT; witness 14 congruences, PASS).
+- T=4: N = 360 (9 measure-feasible smaller N all UNSAT in <= 31 s total; witness 21
+  congruences, PASS).
+- T=5, T=6: ladders running (HiGHS refutes each infeasible N in seconds-minutes where
+  cadical with 1e7-conflict budgets returns UNDECIDED — e.g. N=240,T=5 infeasible in ~1 min
+  by ILP vs UNDECIDED by SAT).
+
+Method note: ILP >> SAT for both directions on this family; the SAT ladder (minlcm.py) was
+abandoned after head-to-head comparison.

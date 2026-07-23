@@ -1,0 +1,8 @@
+step 1/16 p=2^6: uncovered 57, congs 3, t=0s
+step 2/16 p=3^4: uncovered 2759, congs 28, t=0s
+step 3/16 p=5^2: uncovered 29917, congs 96, t=0s
+step 4/16 p=7^1: uncovered 71887, congs 200, t=0s
+step 5/16 p=11^1: uncovered 248583, congs 407, t=1s
+step 6/16 p=2^8: uncovered 839206, congs 518, t=1s
+step 7/16 p=3^6: uncovered 6596971, congs 689, t=15s
+ABORT step 8: children 85760623 > budget

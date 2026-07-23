@@ -1,0 +1,4 @@
+step 1/19 p=2^8: uncovered 225, congs 5, t=0s
+step 2/19 p=3^5: uncovered 36927, congs 46, t=0s
+step 3/19 p=5^3: uncovered 2033039, congs 205, t=3s
+ABORT step 4: children 99618911 > budget
