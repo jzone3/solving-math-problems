@@ -199,5 +199,23 @@ hand-crafted heart of Krukenberg 1971 / Nielsen 2009 / Owens 2014).
   ILP/DP over aligned residue trees), then the kill pool scales it to any
   divisor-rich N. That is a well-posed, promising follow-up.
 
+## 11. Phase-2 escalation attempts (negative, quantified)
+
+- cover4 counting runs at T=10/12/13 (interleaved single-prime levels,
+  survivor alignment, hcap 2M classes): holes reached 1e7–1e9 with pools
+  stuck at ~1e3 — pool growth (x2 per new prime) cannot chase hole growth
+  (x(q - covered)) without a near-exact core. Two runs OOMed at ~26 GB.
+- cover5 = phase-1 explicit prime-power builder + explicit kill mop-up
+  (kills recorded as ordinary congruences r mod d, verifiable by the
+  original verify.py). T=13 attempts (3 configs, survivor): trajectories
+  113 -> 300k -> 4.2M -> 14–17M holes entering the 11/13-levels while the
+  free-divisor pool stayed ~2e3. Kill capacity is 4 orders of magnitude
+  short; aborted.
+- Quantified bootstrap gap for T=13 with configs of the class
+  2^7·3^4·5^3·7^2·...: need holes <= pool/(q-1) ~ 200 at mid-run where the
+  aligned-greedy core leaves ~1e6-1e7 — i.e. core alignment must improve by
+  ~4-5 orders of magnitude, which is an exact-cover optimization problem
+  (per-level ILP / Owens-style hand structure), not a scale problem.
+
 STATUS: negative (no >= 43; compressed-witness machinery built, validated,
 and pushed as the new tooling frontier).
