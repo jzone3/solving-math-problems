@@ -36,7 +36,8 @@ class Fail(Exception):
 
 class Builder:
     def __init__(self, L, caps, max_mod=10**13, max_depth=40,
-                 q_tries=10, p_tries=8, rng=None):
+                 q_tries=10, p_tries=8, rng=None, eps=0.02):
+        self.eps = eps
         self.rng = rng
         self.L = L
         self.caps = caps
@@ -180,10 +181,12 @@ class Builder:
                 continue
             tried += 1
             p_tried = 0
-            # candidate finitizing primes p (small, coprime to M*q)
+            # candidate finitizing primes p (coprime to M*q), ordered
+            # waste-aware: absolute tail waste = sum 1/(p q^{K+1-j}) / M;
+            # prefer the smallest p whose waste is negligible, so fat cells
+            # get deep nearly-lossless tails and thin cells get cheap ones.
+            cands = []
             for p in PRIMES:
-                if p_tried >= self.p_tries:
-                    break
                 if p == q or M % p == 0 or self.caps.get(p, 0) < 1:
                     continue
                 # K >= p-1 and p*M*q^{K+1-p} >= L; take minimal such K
@@ -192,6 +195,13 @@ class Builder:
                     K += 1
                 if eq + K > self.caps[q] or M * q**K > self.max_mod:
                     continue
+                waste = sum(1.0 / (p * q ** (K + 1 - j))
+                            for j in range(1, p + 1)) / M
+                cands.append((waste > self.eps, p, K))
+            cands.sort()
+            for _, p, K in cands:
+                if p_tried >= self.p_tries:
+                    break
                 tail_mods = [p * M * q ** (K + 1 - j) for j in range(1, p + 1)]
                 if not all(self.mod_ok(m) for m in tail_mods):
                     continue
@@ -233,6 +243,7 @@ def main():
                     "23:3,29:3,31:3,37:2,41:2,43:2,47:2,53:2,59:2,61:2,67:2,"
                     "71:1,73:1,79:1,83:1,89:1,97:1,101:1,103:1")
     ap.add_argument("--max-mod", type=float, default=1e13)
+    ap.add_argument("--eps", type=float, default=0.02)
     ap.add_argument("--restarts", type=int, default=20)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default=None)
@@ -246,7 +257,7 @@ def main():
     b = None
     for it in range(a.restarts):
         rng = random.Random(a.seed + it) if it > 0 else None
-        b = Builder(a.L, caps, max_mod=int(a.max_mod), rng=rng)
+        b = Builder(a.L, caps, max_mod=int(a.max_mod), rng=rng, eps=a.eps)
         try:
             b.cover_cell(0, 1)
             break
