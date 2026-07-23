@@ -191,7 +191,7 @@ int main(int argc, char**argv){
             adj[x][p]=adj[p][x]=adj[x][q]=adj[q][x]=1;
             adj[x][r]=adj[r][x]=adj[x][s]=adj[s][x]=1;
             rebuild_nbrs();
-            int c = count_hc(bestcnt<(1<<30)?bestcnt:1000000);
+            int c = count_hc(bestcnt<(1<<30)?bestcnt:200);
             if(c>0 && c<bestcnt){ bestcnt=c; bi=i; bj=j; }
             adj[x][p]=adj[p][x]=adj[x][q]=adj[q][x]=0;
             adj[x][r]=adj[r][x]=adj[x][s]=adj[s][x]=0;
