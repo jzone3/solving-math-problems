@@ -40,7 +40,7 @@ class Walk:
         import heapq
 
         def score(n):
-            c = (self.cov[: N].reshape(N // n, n) == 0).sum(axis=0)
+            c = (self.cov.reshape(N // n, n) == 0).sum(axis=0)
             g = int(c.max())
             if g == 0:
                 return 0.0, int(rng.integers(n))
