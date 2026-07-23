@@ -169,3 +169,55 @@ direction or prove local validity; (b) Lean-style case analysis combining Merris
 Perron edge constraints with global counting (Σᵢ dᵢmᵢ = Σ_{ij∈E}(dᵢ+dⱼ)) to bound
 how many edges can simultaneously have depressed terms; (c) larger-k quotient SAT/
 ILP encoding with λ_max as an eigenvector-certificate variable.
+
+## 7. Escalation round (same session, continued; + three child sessions)
+
+All three suggested next steps above were executed (this session + children).
+Everything remained NEGATIVE for a counterexample; substantial new partial results
+toward a PROOF were obtained (both bounds increasingly look TRUE).
+
+Local (this branch):
+- k ≤ 8 quotient annealing, entries ≤ 3000, 45 min/bound (`anneal_quotient8.py`,
+  an44_big.log/an46_big.log): min gap −3.1e-13 (float noise at 101-regular bipartite
+  equality configs). 12k restarts per bound.
+- Realization search (`realization_search.py`, real44/46.log): 2.1M random
+  near-regular bipartite graphs (configuration model + up to 8 edge flips,
+  d ≤ 30, n ≤ 90) — rationale: μ(G) of a realization can exceed the quotient
+  eigenvalue used by all prior lower bounds. Best gap −8.9e-15 (noise). Negative.
+- k = 4 continuous relaxation (cont2_44_4.log/cont2_46_4.log): only ill-conditioned
+  float artifacts (entry ~1.2e9, relative error 1e-15 scale); no valid negative.
+- **Stronger statement verified at n = 10**: ρ(Q) ≤ RHS44 and ρ(Q) ≤ RHS46 for ALL
+  11,716,571 connected graphs on 10 vertices (`rho_n10.py`, rho10_*.log). Combined
+  with childB's n ≤ 9 check, the signless-Laplacian strengthening holds for all
+  connected graphs n ≤ 10.
+- One-breakpoint piecewise-linear φ (min(x, c+t(x−c))) in childB's edge-CW lemma is
+  NOT sufficient: 1420 (B44) / 1740 (B46) failures on n ≤ 8 — the φ-rule needs to be
+  richer than a single breakpoint family.
+
+Child sessions (branches merged here):
+- `runs/P16/v2/childA/` (branch runs/P16-v2-childA): exact symbolic perturbation
+  analysis around the equality manifold. Closed forms: (d,d+c)-biregular has
+  arg44−(μ−2)² = c² and arg46−(μ−2)² = c²(c+2d+4)/(c+2d) → positivity proved for the
+  whole family. K_{d,d} minus matching: gap t/d − 5t/d² + … > 0. Near-perfect
+  matching: a genuinely NEGATIVE edge-term series exists (−u/d for B44) but other
+  edges rescue at O(1) — pinpoints exactly what a counterexample would need.
+  219,204 exact instance evaluations of 4/6-cell perturbed quotients at d ∈
+  {50,200,1000}: none negative.
+- `runs/P16/v2/childB/` (branch runs/P16-v2-childB): NEW edge-type Collatz–Wielandt
+  lemma on the line graph (μ ≤ ρ(Q) ≤ max_{ij∈E}[dᵢφ(mᵢ)/φ(dⱼ)+dⱼφ(mⱼ)/φ(dᵢ)] for
+  concave φ>0), a new valid one-parameter bound family sharp on bipartite regular,
+  checkable sufficient conditions C44/C46 via second-order Perron localization on
+  the line graph, proof of both bounds for all (r,s)-semiregular bipartite graphs,
+  and the key empirical facts: a per-graph concave φ certifies BOTH bounds on every
+  connected n ≤ 8 graph (0/12,112 failures), and a power φ certifies Bound 46 on
+  every δ ≥ 2 graph n ≤ 9. No universal φ exists (pointwise proofs impossible; the
+  max-vs-max slack is essential). Full writeup in childB/NOTES.md.
+- `runs/P16/v2/childC/` (branch runs/P16-v2-childC): large-scale search in new
+  regimes — bipartite n = 11, degree-restricted n = 11 sweeps (tens of millions of
+  graphs), CP-SAT quotient search k = 4..10 with eigenvector-certificate encoding,
+  bipartite overlays, continuous relaxation k = 4..8. See childC/ notes/logs.
+
+Bottom line after escalation: still **no counterexample and no complete proof**; the
+strengthened conjecture ρ(Q) ≤ RHS holds exhaustively to n = 10, positivity is proved
+exactly for every structured family analyzed, and the most promising proof program
+(childB §3: rule G ↦ φ_G in the edge-CW lemma + leaf case analysis) is documented.
