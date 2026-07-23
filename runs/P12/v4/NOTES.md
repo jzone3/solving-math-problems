@@ -104,5 +104,26 @@ Total compute: ~30 core-hours CP-SAT + ~8 core-hours annealing (8-core VM, ~14 h
    seeding other variants (e.g. V1/V3 SAT runs can use them).
 4. Optimality-bound route (prove min-violation > 0): bound never left 0 even for n=9.
 
+## Resumed phase — SAT neighborhood exhaustion (complete, certified)
+
+New attack after coordinator restart: DIMACS CNF encoding (gen_cnf.py; x/z/P Tseitin
+hierarchy — row-level AMO on pair-occurrence vars P1/P2 instead of quadratic slot-level
+AMO) + kissat 4.0.4 built from source. Encoding validated: n=6 SAT instantly, witness
+PASS via solutions/P12/verify.py.
+
+Complete row-neighborhood exhaustion (exhaust_neighborhoods.py): for the cost-7 incumbent
+best_T2_11_seed1.txt, for every subset F of k rows, fix the other 11-k rows and run kissat
+to completion. UNSAT for all F certifies NO valid T2(11) agrees with the incumbent on any
+11-k rows.
+
+| k free rows | subsets | verdicts | wall time |
+|---|---|---|---|
+| 2 | 55 | all UNSAT | ~3 min |
+| 3 | 165 | all UNSAT | ~5 min |
+| 4 | 330 | all UNSAT | ~10 min |
+| 5 | 462 | all UNSAT | ~9 min |
+| 6 | 462 | running | — |
+
 STATUS: negative (no T2(11)/T2(13) witness, no nonexistence proof; frontier data: robust
-min-violation floors 7 @ n=11 and 12 @ n=13, cost-7 partials published for seeding).
+min-violation floors 7 @ n=11 and 12 @ n=13; certified: no T2(11) shares ≥6 rows with the
+plateau incumbent (k≤5 exhausted UNSAT); cost-7 partials published for seeding).
