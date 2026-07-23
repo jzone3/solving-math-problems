@@ -86,7 +86,23 @@ Groups prescribed (per V, as cycle types of a generator, plus a few non-cyclic):
 - sweep1: all groups × 4 instances @ 600 s each (`sweep1.log`), ~4 h wall.
 - sweep2: long reruns + extra prime cycle types @ 3600 s (`sweep2.log`), ~8 h wall;
   produced the instance-4 witnesses.
-- sweep3: C2 cycle-type ladder @ 7200 s, two 4-worker lanes (`sweep3_lane{0,1}.log`).
+- sweep3: C2 cycle-type ladder @ 7200 s, two 4-worker lanes (`sweep3_lane{0,1}.log`):
+  inst1 C2(2^7), C2(2^6) and inst2 C2(2^6), C2(2^5) all **UNKNOWN even at 7200 s**;
+  ladder aborted in favour of targeted full-width runs.
+- sweep4 (`sweep4.log`): 8 workers, 14400 s each — inst2 C3(3^4) fixed-point-free: UNKNOWN;
+  inst1 C2(2^7) fixed-point-free: UNKNOWN. The order-2 (and inst2's fixed-point-free order-3)
+  Kramer–Mesner subproblems halve the variable count but remain out of CP-SAT reach at ~4 h —
+  they are nearly as hard as the unrestricted problems.
 
-STATUS: SOLVED (existence, instance 4 BTD(14,28;8,3,14;7,6)); frontier-pushed (strong
-automorphism exclusions) on instances 1–3, C2 subgroup cases still running.
+## Dead ends / near-misses
+
+- No near-miss witnesses for instances 1–3: every decided prescribed group is INFEASIBLE
+  (exact, not timeout), so within V3's method the only remaining room is order-2 prescriptions
+  (undecided) or trivial group (V1/V2/V4 territory).
+- Suggested follow-ups for other variants: instance 1's search should exploit ρ2=1
+  (each element doubled in exactly one block); the C2 KM subproblems would suit a SAT encoding
+  with cardinality networks (V2) better than CP-SAT integers.
+
+STATUS: SOLVED (existence, instance 4 BTD(14,28;8,3,14;7,6) — verified witnesses in solutions/P14/);
+frontier-pushed on instances 1–3 (all prescribed automorphisms of order ≥3 excluded; order-2 cases
+undecided after ~30 h total compute); no nonexistence proofs obtained.
