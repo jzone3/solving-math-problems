@@ -199,6 +199,15 @@ eigvalsh) and every one has ratio = 1.0 exactly — the known equality class
 candidate graph6 lists in `vt/vt_*.cand`. The conjecture is now verified
 for EVERY vertex-transitive graph on fewer than 48 vertices.
 
+### Circulant sweep extended to n = 50 (DONE)
+Ran circulant.py for n = 43..50 one process per n (closed-form spectra +
+single clique query): 94,371,839 further circulants, ZERO candidates.
+Max t climbs slowly toward 1 on the dense "consecutive generators" sets
+(t = 0.9804 at n=50, S={1..25}, which is K_50 minus a perfect matching —
+a complete multipartite equality-family graph K_{25×2}; its exact ratio is
+1, t < 1 only because t excludes the 1−1/ω factor). Conjecture now
+verified for ALL circulants on ≤ 50 vertices (~128M total).
+
 ## STATUS: negative — no counterexample found. Frontier pushed:
 conjecture exhaustively machine-verified for ALL graphs n ≤ 11
 (1.03 × 10⁹ graphs) and ALL circulants n ≤ 42; ~110M+ annealed samples
