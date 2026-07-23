@@ -151,3 +151,16 @@ T^T T + 2(T+T^T) + Q^T Q = 3I + 4J (T 14x14 rowsum 5 zero-diag, Q 4x14
 rowsum 7), seqcounter cardinality, WLOG Q row0 = {0..6}; 8 cubes by
 t = |Q row1 ∩ {0..6}| in 0..7. ~17k vars / 35k clauses per cube.
 Running 6h/cube kissat in parallel.
+
+### 8.3 KM results so far (each INFEASIBLE independently confirmed by CBC ILP,
+km_certify.py; LP relaxations feasible in all cases, so these are genuinely
+integral obstructions):
+- I1: Z7 INFEASIBLE (0.3s), Z14 INFEASIBLE => no BTD(14,18;7,1,9;7,4) with an
+  automorphism of order 7 (hence none with order 14).
+- I3: Z4, Z6, Z12 INFEASIBLE => no BTD(12,20;4,3,10;6,4) with an automorphism
+  of order 4, 6 or 12 (fixed-point-free cyclic types).
+- I4: Z14 INFEASIBLE => no BTD(14,28;8,3,14;7,6) with an order-14 automorphism.
+- UNKNOWN at 30min CP-SAT: I1 Z2, I2 Z3/Z2, I3 Z3/Z2, I4 Z7/Z2 (larger orbit
+  systems; CBC certs / longer runs in flight).
+NOTE: our Zk patterns act fixed-point-freely (k | V); results are for these
+specific cycle types.

@@ -1,0 +1,4 @@
+I1 Z7x2: INFEASIBLE wall=0.3s #orbits=6498
+I1 Z2: UNKNOWN wall=1800.6s #orbits=22737
+I1 Z14: INFEASIBLE wall=0.0s #orbits=3249
+I1 Z7: INFEASIBLE wall=0.3s #orbits=6498
