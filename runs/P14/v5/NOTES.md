@@ -131,3 +131,23 @@ equation T^T T + 2(T+T^T) + Q^T Q = 3I + 4J (with lambda_2(T+T^T) <= 3/2
 spectral corollary) — a compact target for future algebraic or SAT attacks;
 (iv) first (to our knowledge) complete-solver attack on all four cells:
 4 h CP-SAT each, all UNKNOWN — these cells are genuinely hard, not neglected-easy.
+
+## 8. Resumed campaign (2026-07-22, coordinator directive): new attacks
+
+### 8.1 Kramer–Mesner prescribed-automorphism searches (km_search.py)
+Assume cyclic automorphism sigma; design = union of block orbits; constraints
+collapse to one per element/pair orbit; orbit multiplicities x_o >= 0 integer
+(repeated blocks allowed). Sanity-validated: reconstructs known BTDs
+(4,8;2,3,8;4,6) [trivial group] and (8,20;8,1,10;4,4) [Z2], both PASS
+verify_witness.py.
+Results (30 min CP-SAT each unless noted):
+- I1 Z7 (two 7-cycles): INFEASIBLE in 0.3s => no BTD(14,18;7,1,9;7,4) admits
+  an order-7 automorphism. First unconditional partial-nonexistence result.
+- (further groups logged below as runs complete)
+
+### 8.2 Cube-and-conquer SAT on reduced I1 (i1_sat.py, kissat 4.0.4)
+DIMACS encoding of the b2=14 sector matrix equation
+T^T T + 2(T+T^T) + Q^T Q = 3I + 4J (T 14x14 rowsum 5 zero-diag, Q 4x14
+rowsum 7), seqcounter cardinality, WLOG Q row0 = {0..6}; 8 cubes by
+t = |Q row1 ∩ {0..6}| in 0..7. ~17k vars / 35k clauses per cube.
+Running 6h/cube kissat in parallel.
