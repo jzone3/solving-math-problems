@@ -62,34 +62,37 @@ def latin_tableau(lam):
     tab = [[0] * lam[r] for r in range(rows)]
     col_used = [set() for _ in range(lam[0])]
     row_remaining = [set(range(1, lam[r] + 1)) for r in range(rows)]
+    unfilled = set(cells)
 
-    def dfs(k):
-        if k == len(cells):
+    def dfs():
+        if not unfilled:
             return True
-        r, c = cells[k]
-        # try values; symmetry note: none broken here — full exhaustive proof
-        for v in sorted(row_remaining[r] - col_used[c]):
+        # MRV heuristic (exhaustive — only affects search order): pick the
+        # unfilled cell with the fewest candidate values; 0 candidates prunes.
+        best, best_opts = None, None
+        for (r, c) in unfilled:
+            opts = row_remaining[r] - col_used[c]
+            if best_opts is None or len(opts) < len(best_opts):
+                best, best_opts = (r, c), opts
+                if not opts:
+                    return False
+                if len(opts) == 1:
+                    break
+        r, c = best
+        unfilled.discard(best)
+        for v in sorted(best_opts):
             tab[r][c] = v
             row_remaining[r].discard(v)
             col_used[c].add(v)
-            # forward check: each remaining cell in this row must have an option
-            ok = True
-            rem = lam[r] - c - 1
-            if rem > 0:
-                free = 0
-                for cc in range(c + 1, lam[r]):
-                    if row_remaining[r] - col_used[cc]:
-                        free += 1
-                if free < rem:
-                    ok = False
-            if ok and dfs(k + 1):
+            if dfs():
                 return True
             row_remaining[r].add(v)
             col_used[c].discard(v)
             tab[r][c] = 0
+        unfilled.add(best)
         return False
 
-    return tab if dfs(0) else None
+    return tab if dfs() else None
 
 
 def check_tableau(lam, tab):

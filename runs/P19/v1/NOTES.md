@@ -74,20 +74,32 @@ Searched 2026-07-23:
   most constrained shapes — where Rota-style obstructions would live — are tested first.
 - `verify.py`: independent verifier, **no external deps, no floats anywhere**. Wideness by
   the same exact-integer dominance definition (independently rewritten); Latinness decided
-  by exhaustive DFS with forward checking (no symmetry breaking — a NOT-LATIN answer is a
-  full exhaustive proof). `--frontier N` re-verifies the whole frontier independently
-  of OR-Tools. Cross-check run: frontier re-verified to n ≤ 40 with identical wide counts
-  and all-Latin outcomes (see `verify_frontier_log.txt`).
+  by exhaustive DFS with a minimum-remaining-values cell order and zero-candidate pruning
+  (heuristics affect only search order, not completeness — a NOT-LATIN answer is a full
+  exhaustive proof). `--frontier N` re-verifies the whole frontier independently of
+  OR-Tools. Cross-check run: see `verify_frontier_log.txt` for the n reached, with wide
+  counts and all-Latin outcomes identical to the CP-SAT sweep.
+- Dead end fixed mid-run: the first verifier DFS filled cells row-major with a row-only
+  forward check; (13,1) already thrashed (12! backtracks: the bottom cell forces 1, but
+  the conflict is only seen after row 1 completes). MRV ordering fixed it instantly.
 
-## Results
+## Results (final)
 
-See `search_log.txt` (per-size wide counts + timing) and `frontier.txt` (final frontier).
-
-- **No counterexample found.** Every wide partition tested is Latin (CP-SAT SAT + exact
-  re-check of the returned tableau). `candidates.txt` / `unknown.txt` never created.
-- Exhaustive frontier reached: see `frontier.txt` (target N = 72; prior published
-  frontier |λ| ≤ 65, so sizes 66..N are new territory).
+- **No counterexample found. Exhaustive frontier: wide ⇒ Latin verified for all
+  |λ| ≤ 72** (1,920,529 wide partitions tested in total; per-size counts in
+  `search_log.txt` match OEIS A070830 for every n = 1..72, e.g. a(72) = 219223).
+- Sizes **66..72 are new territory** beyond the published |λ| ≤ 65 frontier (CFGV 2003);
+  in particular this includes all wide λ of size ≤ 72 with λ₁ ≥ 13 or ℓ(λ) ≥ 13, which
+  are not covered by the 12×12-box check of Chow–Tiefenbruck 2025 either.
+- Every CP-SAT model was SAT (Latin tableau found) and every returned tableau re-checked
+  with exact integer arithmetic; `candidates.txt` / `unknown.txt` were never created
+  (no UNSAT, no timeout at 300 s cap).
+- Independent cross-check: `verify.py --frontier` (pure Python, MRV DFS, no OR-Tools,
+  no floats) independently re-verified the entire frontier for **n ≤ 62** with identical
+  wide counts and all-Latin outcomes (`verify_frontier_log3.txt`; stopped there — single
+  core, is_wide enumeration dominates).
 - Negative result, but the frontier extension is itself citable per the problem file.
+- Wall time: 18,002 s (~5 h) for the CP-SAT sweep on 8 cores.
 
 ## Dead ends / notes
 
