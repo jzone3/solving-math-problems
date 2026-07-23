@@ -131,3 +131,51 @@ from GMZ n<=21, but independently re-derived with a completely different
 method: SAT-CEGAR over canonical-HC chord 2-factors).
 
 n=20 pipeline running the same way.
+
+## Final results (2026-07-23 17:25 UTC)
+
+### Exhaustion (this SAT/CEGAR encoding, independent of GMZ's generation method)
+
+| n | outcome | models blocked | blocking clauses | notes |
+|---|---|---|---|---|
+| 8–16 | UNSAT (exhausted) | 3–196 | up to 24k | seconds–minutes |
+| 17 | UNSAT (exhausted) | 379 | 50,337 | 71s with symmetry breaking |
+| 18 | UNSAT (exhausted) | 709 | 100,053 | 1,244s |
+| 19 | **UNSAT (exhausted)** | 1,437 | 215,973 | Cadical CEGAR to frontier + kissat endgame; final UNSAT proof ~4,400s |
+| 20 | NOT exhausted | ~2,975 | 440,620 | kissat endgame timed out (8h); last residual call ran 3.5h undecided |
+
+### Deep sampling at open orders (no witness, no near-miss)
+
+n=22 (6h), n=22 chord-dist>=3 (6h), n=23 (6h), n=24 (6h), n=26 (5h), n=28 (5h):
+~90,000 candidate 2-factors blocked in total, >18M dihedral-closed blocking
+clauses. Every candidate examined had >= 4 Hamiltonian cycles besides the base
+cycle (near-miss tracker with exact counting below 64 HCs never fired).
+
+### Artifacts
+
+- cegar.py — incremental Cadical CEGAR (canonical-HC chord-2-factor encoding,
+  dihedral-closed clause learning, min-distance symmetry breaking, budgeted
+  solves with shuffled rebuilds, blocking-set dump).
+- endgame.py — kissat-based endgame driver (warm-startable from dump).
+- hc.py — pruned bitmask Hamiltonian-cycle enumerator/counter.
+- n19_blocking.json.gz / n20_blocking.json.gz — frontier blocking sets
+  (resume points; n20 can be resumed with endgame.py --blocking).
+- solutions/P01/verify.py — independent witness verifier (DP-based exact HC
+  count; would print PASS on any claimed counterexample). Cross-validated
+  against hc.py on K5 (12 HCs) and C9(1,2) (41 HCs).
+
+### Dead ends / lessons
+
+- Naive per-model exact HC counting with an early cap silently corrupted
+  near-miss statistics (fixed: exactness flag).
+- Unbudgeted incremental solves stall for hours in the endgame; fresh-solver
+  rebuilds + escalating budgets + native kissat on the full formula are far
+  more effective there.
+- Exhaustion cost grows ~9x per vertex; n=21 (the GMZ frontier) would need
+  ~1 CPU-week with this encoding, n=22 several CPU-months — pure SAT-CEGAR
+  will not push past the known frontier without stronger structural pruning
+  (V4's genreg-style approach is better positioned for that).
+
+STATUS: negative — no counterexample found; n <= 19 exhausted (independent
+re-verification of known results), n=20 partially exhausted, deep sampling at
+n=22–28 found no uniquely Hamiltonian 4-regular graph and no near-miss.
