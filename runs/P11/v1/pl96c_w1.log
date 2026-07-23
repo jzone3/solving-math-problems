@@ -1,0 +1,6 @@
+mod6: 72 raw -> 8 classes
+=== top-level class 1: [3, 3, 0, 3, -3, 0] ===
+[c1] d=12 parent=6 -> 0 folds (exhausted)
+=== top-level class 5: [5, 1, 2, 1, -1, -2] ===
+[c5] d=12 parent=6 -> 0 folds (exhausted)
+PIPELINE COMPLETE {'lift': {'SAT': 0, 'UNSAT': 0, 'TIMEOUT': 0}, 'enum_branches': 2}

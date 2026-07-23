@@ -30,6 +30,7 @@ MAX_B = int(os.environ.get("MAX_B", "500"))
 WORKER_ID = int(os.environ.get("WORKER_ID", "0"))
 NUM_WORKERS = int(os.environ.get("NUM_WORKERS", "1"))
 LIFT_D = LEVELS[-1]
+EARLY_LIFT_SIZE = int(os.environ.get("EARLY_LIFT_SIZE", "3"))
 
 
 def sat_enum(d, subfold, budget, tag):
@@ -96,7 +97,7 @@ STATS = {"lift": {"SAT": 0, "UNSAT": 0, "TIMEOUT": 0}, "enum_branches": 0}
 
 def dfs(level, parent_fold, tag):
     pd, pb = parent_fold
-    if N // pd <= 3:
+    if N // pd <= EARLY_LIFT_SIZE:
         # early lift attempt at this level: SAT wins, UNSAT prunes subtree,
         # TIMEOUT falls through to deeper enumeration
         res, row = lift(pb, tag, pd)

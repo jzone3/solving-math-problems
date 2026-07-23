@@ -2,3 +2,13 @@ mod7: 21 raw -> 2 classes
 === top-level class 0: [3, 3, 0, 3, 0, 0, -3] ===
 [c0] d=14 parent=7 -> 2 folds (exhausted)
 [c0.0] d=28 parent=14 -> 2 folds (exhausted)
+[c0.0.0] d=56 parent=28 -> 0 folds (budget)
+[c0.0.1] d=56 parent=28 -> 0 folds (budget)
+[c0.1] d=28 parent=14 -> 2 folds (exhausted)
+[c0.1.0] d=56 parent=28 -> 0 folds (budget)
+[c0.1.1] d=56 parent=28 -> 0 folds (budget)
+=== top-level class 1: [6, 0, 0, 0, 0, 0, 0] ===
+[c1] d=14 parent=7 -> 14 folds (exhausted)
+[c1.0] d=28 parent=14 -> 26 folds (exhausted)
+[c1.0.0] d=56 parent=28 -> 0 folds (budget)
+[c1.0.1] d=56 parent=28 -> 0 folds (budget)
