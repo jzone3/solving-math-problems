@@ -1,0 +1,4 @@
+>A nauty-geng -cX0x400d2D8 n=9 e=9-36 class=4/8
+>Z 16973 graphs generated in 0.00 sec
+resolvent n=9 res=4/8: 16973 graphs, alpha=0.9 fails 1, alpha=0.95 fails 0, alpha=0.99 fails 0, max CW rho-bound 1.016875
+  BAD a=0.9 H]~v~z}

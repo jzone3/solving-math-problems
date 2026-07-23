@@ -1,0 +1,6 @@
+>A nauty-geng -cX0x800d2D9 n=10 e=10-45 class=8/16
+>Z 527963 graphs generated in 0.17 sec
+I1 n=10 res=8/16: 527963 graphs, max rho0 1.031978, kappa=0.9: fails 3 worst_margin -1.181e-02 at IEzvvz}~_, kappa=0.99: fails 0 worst_margin -1.865e-14 at IQhVe]{^?
+  BAD kappa=0.9 IEzvvz}~_
+  BAD kappa=0.9 IEzvvz}~g
+  BAD kappa=0.9 IQy~e~{~G
