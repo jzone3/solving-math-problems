@@ -245,3 +245,10 @@ New attack lines launched after the frontier result (scripts in `scripts/`):
 
 Status: still NO witness and no claimed solution; all second-wave searches
 remain negative so far and continue.
+
+Operational note: the compute VM was restarted twice mid-run (all background
+jobs killed); searches are relaunched by a cron watchdog
+(`/home/ubuntu/p20/watchdog.sh`, every 5 min) so SMS/CEGAR/annealer jobs
+self-heal. Exhaustive SMS runs restart from scratch on relaunch (SMS has no
+checkpointing), so wall-clock frontier progress at n=35/36 is limited by VM
+stability.
