@@ -92,8 +92,9 @@ cases; triangle-free case was Lin–Ning–Wu 2021).
   **K_a ∪ K_a** (λ₁ = λ₂ = a−1) gives ratio exactly 1, as do padded/union variants.
 
 ### Basin-hopping seeded anneal (`seeded.py`)
-- 700+ re-anneals (30k steps each, low temperature) seeded from the 120 best near-miss
-  endpoints of phases 1–3, perturbed by 3–10 random flips. Best ratio again exactly 1
+- 1,304 re-anneals (30k steps each, low temperature) seeded from the 120 best near-miss
+  endpoints of phases 1–3, perturbed by 3–10 random flips. Best non-equality near-miss
+  improved to 0.99899994 (m=260, ω=6); best ratio again exactly 1
   (equality cases only); no violation. Log: `results_seeded.jsonl`.
 
 ## Near-misses & structure observed
