@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
             memcpy(res, best_state, sizeof(long) * nmods);
             memset(cnt, 0, sizeof(int) * N);
             for (int i2 = 0; i2 < nmods; i2++) {
-                if (frand() < 0.10) res[i2] = (long)(xrand() % mods[i2]);
+                if (frand() < 8.0 / nmods) res[i2] = (long)(xrand() % mods[i2]);
                 for (long t = res[i2]; t < N; t += mods[i2]) cnt[t]++;
             }
             for (long t = 0; t < N; t++) w[t] = 1.0;
