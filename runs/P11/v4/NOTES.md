@@ -101,4 +101,23 @@ periodic autocorrelations; DFT/fold pruning; polish near-solutions).
   The other five cells have no divisor shortcut (CW(39,6)/CW(56,6)/CW(60,7) are
   "No"; k > n excludes the rest) — they remain the real targets.
 
+### Phase 5 — exact multiplier-subgroup exhaustion + ball polish
+- sym_exhaust.py / exhaust.c: exact DFS over orbit-constant ternary sequences
+  for each cyclic multiplier subgroup <t> (orbit subset-sum to weight k, DC
+  window prune, negation symmetry, incremental autocorrelation via precomputed
+  orbit cross-correlation tables). C port ~100x Python; validated by (a)
+  agreement with the Python exhauster on 7 decided subgroups, (b) re-finding
+  known witnesses CW(13,9) (t=3) and CW(104,36) (t=3, 3.6 s).
+- exhaust_all.sh sweeping ALL distinct multiplier subgroups per open cell,
+  cheapest first (7200 s/subgroup timeout). Definitive EXHAUSTED results so far:
+  n=105: 9 subgroups (m <= 27), n=112: 9 (m <= 27), n=117: 18 (m <= 27),
+  n=132: 6 (m <= 24), n=120: none yet (smallest subgroup already m=37).
+  => No CW witness for these cells is fixed by any exhausted multiplier group.
+- Ball polish (ball.py): the persistent rrr_sym near-miss for CW(112,36) with
+  t=43 (m=49, E=14) is an isolated deep local optimum — exhaustive orbit-space
+  Hamming-ball search to radius 4 (3.39M candidates) finds nothing below E=14.
+- SAT polish idea from the variant prompt: superseded — ball search IS an exact
+  neighbourhood exhaustion (stronger than SAT within the same radius), and the
+  full-space SAT encoding is V1's lane.
+
 ## STATUS: running

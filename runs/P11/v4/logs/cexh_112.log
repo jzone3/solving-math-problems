@@ -5,3 +5,15 @@ EXHAUSTED n=112 k=36 t=5 m=20 leaves=122400: no multiplier-symmetric solution
 --- t=11 m=21 (timeout 7200s)
 EXHAUSTED n=112 k=36 t=11 m=21 leaves=471712: no multiplier-symmetric solution
 --- t=37 m=24 (timeout 7200s)
+EXHAUSTED n=112 k=36 t=37 m=24 leaves=10415088: no multiplier-symmetric solution
+--- t=31 m=25 (timeout 7200s)
+EXHAUSTED n=112 k=36 t=31 m=25 leaves=7491120: no multiplier-symmetric solution
+--- t=87 m=25 (timeout 7200s)
+EXHAUSTED n=112 k=36 t=87 m=25 leaves=7491120: no multiplier-symmetric solution
+--- t=23 m=27 (timeout 7200s)
+EXHAUSTED n=112 k=36 t=23 m=27 leaves=61178208: no multiplier-symmetric solution
+--- t=79 m=27 (timeout 7200s)
+EXHAUSTED n=112 k=36 t=79 m=27 leaves=61178208: no multiplier-symmetric solution
+--- t=73 m=28 (timeout 7200s)
+EXHAUSTED n=112 k=36 t=73 m=28 leaves=262458560: no multiplier-symmetric solution
+--- t=17 m=32 (timeout 7200s)
