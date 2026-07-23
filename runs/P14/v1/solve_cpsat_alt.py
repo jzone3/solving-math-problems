@@ -6,9 +6,9 @@ Differences from solve_cpsat.py:
   - single IntVar m[i][j] in {0,1,2}; no boolean expansion
   - row multiplicity counts via m==1 / m==2 reified literals
   - pair inner products via AddMultiplicationEquality on m
-  - symmetry breaking: same double-lex principle but implemented over
-    base-3 channelled integers (each column of a row pair compared via
-    a single big lex integer where V or B small enough, else pairwise).
+  - symmetry breaking: same double-lex principle, implemented via
+    pairwise scalar comparisons on the IntVars with a prefix-equality
+    chain (non-strict >=).
 
 Usage: solve_cpsat_alt.py V B p1 p2 R K L [max_seconds] [workers]
 """
@@ -56,7 +56,6 @@ def main():
     # double-lex via ternary encoding chunks (pairwise scalar comparison)
     def lex_ge(u, v):
         n = len(u)
-        pre = md.NewConstant(1)  # "all previous equal" literal
         pre_true = md.NewBoolVar("")
         md.Add(pre_true == 1)
         prev_eq = pre_true
