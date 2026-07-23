@@ -1,0 +1,9 @@
+n=4: 3 graphs, fails: {'d': 1, 'k1': 0, 'k2': 0, 'maxdk1': 1, 'blend': 0}, none-of-d/k1/k2: 0
+n=5: 11 graphs, fails: {'d': 2, 'k1': 1, 'k2': 0, 'maxdk1': 2, 'blend': 2}, none-of-d/k1/k2: 0
+n=6: 61 graphs, fails: {'d': 7, 'k1': 4, 'k2': 0, 'maxdk1': 7, 'blend': 5}, none-of-d/k1/k2: 0
+n=7: 507 graphs, fails: {'d': 46, 'k1': 13, 'k2': 3, 'maxdk1': 46, 'blend': 18}, none-of-d/k1/k2: 3
+  hard examples: ['FCXe_', 'FEhv?', 'FQjR_']
+n=8: 7442 graphs, fails: {'d': 571, 'k1': 54, 'k2': 12, 'maxdk1': 571, 'blend': 115}, none-of-d/k1/k2: 12
+  hard examples: ['G?r@d_', 'G?qa`o', 'G?qrd_', 'GCQRDO', 'GCR`u_']
+n=9: 197772 graphs, fails: {'d': 23721, 'k1': 887, 'k2': 75, 'maxdk1': 23721, 'blend': 5162}, none-of-d/k1/k2: 75
+  hard examples: ['H?bB@`W', 'H?bB`po', 'H?bB`rG', 'H?bB`qg', 'H?bB`qc']
