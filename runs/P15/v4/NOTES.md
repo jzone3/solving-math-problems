@@ -508,3 +508,44 @@ blocks for such a redesign.
 STATUS: frontier-pushed (patch route to T=43 refuted at explicit-modulus
 level below 1e5; T=43 reduced to a small-prime-layer redesign with the
 12 repaired ledgers as reusable components).
+
+## 18. Phase 7 — skeleton measurement + the re-aim lemma (2026-07-23)
+
+### 18a. Skeleton experiment (skeleton43.py)
+
+Measured on the 2^7*3^4*5^2*7^2 window and on the faithful used-set:
+  * density ceiling of distinct 7-smooth moduli >= 42: 0.6263 (window),
+    Owens's faithful skeleton achieves 0.6292 (cap 1e7) — he is
+    DENSITY-PERFECT: essentially every 7-smooth modulus >= 42 is consumed
+    with disjoint classes. No redesign can free 7-smooth density without
+    handing exactly that density to the primes >= 11.
+  * T=43 ceiling is exactly 1/42 lower (42 is the unique 7-smooth value
+    in [42,43)); greedy packing reproduces the gap (0.5977 vs 0.5728).
+  * So ANY T=43 system delegates residual >= 0.3946 to primes >= 11
+    (Owens delegates 0.3708). The extra 1/42 is the entire problem.
+
+### 18b. The re-aim lemma (blueprint43b.py — machine-verified PASS)
+
+The 42-cell is EXACTLY covered by re-aiming five of Owens's own moduli,
+the multiples of 42 = {84,126,168,252,504}, via the classic distinct
+cover 0(2),0(3),1(4),5(6),7(12) scaled by 42. Verified over lcm 504:
+coverage, distinctness, containment. Consequence: a T=43 completion does
+NOT require any Owens-free modulus — it can steal used ones, replacing
+the refuted free-modulus 13th section entirely.
+
+Cost (the obstruction that remains): stealing relocates the hole to the
+five cells those moduli previously covered — total measure 2/63, a 4/3
+growth over 1/42, because every distinct-moduli cover of Z costs density
+>= 4/3 in this cascade. Pure 7-smooth relocation therefore diverges; the
+five relocated cells must be absorbed by the >= 11 sections. Unlike the
+flat 42-cell, they carry 2/3-adic structure at depths 84–504 inside the
+7-layer's e2/e3 entries — the same burden class as the 12 repaired
+ledgers' fresh-support assumptions (extra 3^/25^/125^ copies), i.e. the
+validation frontier is now UNIFORM: one kind of outstanding check
+(fresh-support modulus tracking across sections), no impossible tower
+construction left in the blueprint.
+
+STATUS: frontier-pushed / near-miss (T=43 blueprint v2 = 12 repaired
+ledgers + re-aim lemma; single remaining validation class:
+explicit fresh-support modulus tracking, for which owens_smooth.py +
+setexpr.py are the working tools).
