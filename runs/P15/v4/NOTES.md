@@ -89,8 +89,10 @@ Engineering notes:
 
 ## 5. Escalation runs (compute log)
 
-- T=13, levels 2^7,3^4,5^3,7^2,11,13,17,19 (slack 2.55): running.
-  Hole trajectory: 105 → 12k → 0.6M? → 4.2M (11) → 13.6M (13) → 36.2M (17).
+- T=13, levels 2^7,3^4,5^3,7^2,11,13,17,19 (slack 2.55): KILLED at 8 h
+  timeout mid-17-level. Hole trajectory: 4.2M (11) → 13.6M (13, used 960
+  moduli) → 36.2M holes entering the 17-level (~5 h there without
+  finishing). Same wall as T=14: compute-bound, not density-bound.
 - T=14, levels 2^8,3^5,5^3,7^2,11,13,17,19 (slack 2.75): KILLED at 8 h
   wall-clock timeout mid-13-level. Hole trajectory: 225 → 36k → 1.8M →
   22.2M (11-level, ~2 h) → 69.5M holes entering the 13-level; the 13-level
@@ -98,6 +100,32 @@ Engineering notes:
   NEGATIVE: T=14 explicit is beyond this machine/day budget with the
   current per-level greedy — compute-bound, not density-bound (slack 2.75).
 
-## 6. Status
+## 6. Ideas not exhausted (for follow-up runs)
 
-(in progress — T=13 still running)
+- Parallelize per-divisor scoring across cores (np.unique is the bottleneck;
+  embarrassingly parallel over ~10^3 divisors) — likely unlocks T=14–16.
+- Hole-CLASS compression: group holes by coverage-isomorphism and track
+  counts, not individuals (this is exactly how Nielsen/Owens scale to
+  10^50/10^86 congruences). Witness becomes a recursive recipe; verifier
+  checks per-class branch accounting + modulus-usage counting instead of an
+  explicit list. This is the only credible route to T≥43 and meshes V4 with V5.
+- Simulated-annealing reassignment of (a, b) choices at the last two levels
+  (planned repair phase) was never needed below the compute wall — greedy +
+  survivor alignment already fully covered whenever the level completed.
+
+## 7. Final summary
+
+STATUS: negative (frontier-pushed on the tooling side; no new record).
+
+- Re-verified problem statement + openness (record still 42, July 2026).
+- Built a fully automated pipeline (build + independent verify) for
+  distinct-moduli covering systems with min modulus ≥ T; key algorithmic
+  finding: survivor-class alignment beats both plain max-gain greedy and
+  max-efficiency greedy by a wide margin (T=10 config: 296k uncovered cells
+  for plain greedy vs 0 with alignment).
+- Verified explicit covers produced for T = 2,3,4,6,8,10,12 (largest:
+  2064 congruences, lcm 2^7·3^4·5^3·7^2·11·13·17). T=13/14 attempts hit an
+  8 h compute wall at 36–70M holes, density slack unused (2.5–2.75).
+- Distance to record remains enormous: T=42 needs >10^86 congruences —
+  explicit-list search cannot reach it on any hardware; compressed
+  recursive witnesses (hole-class counting) are the mandatory next step.
