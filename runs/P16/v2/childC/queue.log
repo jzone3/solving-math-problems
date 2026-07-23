@@ -29,3 +29,7 @@
 + wait
 + python3 continuous_quotient.py --bound 44 --kmin 4 --kmax 8 --restarts 30
 + python3 continuous_quotient.py --bound 46 --kmin 4 --kmax 8 --restarts 30
++ pgrep -f 'cpsat_quotient.py --bound 44'
++ python3 cpsat_quotient.py --bound 46 --kmin 4 --kmax 10 --budget 500
++ echo QUEUE_DONE
+QUEUE_DONE
