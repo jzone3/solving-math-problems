@@ -1,0 +1,1 @@
+SUMMARY total=1459388320 evaluated=1432858064 violations=0 best_gap=-6.347774e-01 best_g6=K?`rbbw\zn]{ best_n=12 best_m=37 best_w=3 best_s=48.698555902697 best_rhs=49.333333333333

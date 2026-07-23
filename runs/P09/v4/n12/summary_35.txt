@@ -1,0 +1,1 @@
+SUMMARY total=1351278289 evaluated=1314260608 violations=0 best_gap=-1.195415e+00 best_g6=K?`rfpu}Fm}y best_n=12 best_m=38 best_w=3 best_s=49.471251273415 best_rhs=50.666666666667
