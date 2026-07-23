@@ -111,5 +111,12 @@ Soft-LNS sweep (5 workers, pack 3000 s + exact-with-hint 1500 s, seed 2):
 | v | best soft-packing deviation (of 5·v·(v−1) slots) | exact-with-hint |
 |---|---|---|
 | 12 | 160 / 660 after 3000 s | UNKNOWN (1500 s) |
+| 15 | 232 / 1050 after 3000 s | UNKNOWN (1500 s) |
+| 16 | 304 / 1200 after 3000 s | UNKNOWN (1500 s) |
+| 18 | 412 / 1530 after 3000 s | UNKNOWN (1500 s) |
 
-Rows appended as the sweep progresses.
+The relative deviation grows with v (24%, 22%, 25%, 27%) — CP-SAT's LNS gets stuck far
+from a perfect design on all of v = 12–18; no near-perfect packings (single-digit
+deviation) were ever observed. SAT-side kissat on the v=12 CNF (5.99 M clauses) also ran
+>7 h CPU without finding a model. These sizes look out of reach for generic CP/SAT
+search without stronger structure (prescribed automorphisms — variant V2's territory).
