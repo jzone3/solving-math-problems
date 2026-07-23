@@ -17,7 +17,7 @@ sys.path.insert(0, ".")
 from icw_enum import orbits_of
 
 
-def fixed_count(m, d, k, t, cap=2 * 10 ** 8):
+def fixed_count(m, d, k, t, cap=3 * 10 ** 7):
     orbs = orbits_of(t, m)
     sizes = [len(o) for o in orbs]
     no = len(orbs)
