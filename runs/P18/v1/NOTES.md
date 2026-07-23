@@ -234,13 +234,30 @@ arithmetic): B = 66 pool mass = 160107799/160240080 ≈ 0.999174 < 1.
 ⇒ **Definitive: no #273 covering with all moduli ≤ 66.** (Extends the
 published 50 → 66 by a one-line exact computation.)
 
-B = 70 is the first nontrivial cap: pool of 18 moduli
-{4,6,10,12,16,18,22,28,30,36,40,42,46,52,58,60,66,70}, mass
-162396943/160240080 ≈ 1.013460, L = 480,720,240. cap_dfs.py runs a
-COMPLETE element-branching DFS over Z/L (bool array, exact Fraction
-mass prune, no floats on any decision path). B = 72 and B = 78 share
-the same L (masses 1.0273, 1.0403) and are queued next; B = 82
-introduces the prime 41 (L ≈ 2·10^10, past array reach).
+B = 70 is the first density-nontrivial cap (mass 1.0135, L =
+480,720,240). cap_dfs.py started a complete element-branching DFS over
+Z/L (bool array, exact Fraction mass prune), but a far stronger and
+purely exact argument superseded it:
+
+**Projection lemma** (cap_project.py). If a prime p has at most p−1
+multiples in the pool, pick c_p mod p avoiding the mod-p class of each
+such multiple; CRT the c_p's over a set S of such primes (iterated to
+a fixpoint, recomputing multiplicity counts on the surviving pool).
+The progression {x ≡ c mod Πp} is untouched by all removed moduli and
+is ≅ Z, with every surviving modulus (coprime to all p ∈ S) inducing
+the SAME modulus on it. Hence a cap-B covering exists only if the
+residual (smooth) pool covers Z; residual mass < 1 ⇒ impossible.
+(Distinctness not even needed. Exact Fraction arithmetic throughout.)
+
+Result: the iterated projection kills **every cap B ≤ 255**
+(residual mass < 1 for all of them). This extends the published
+computational frontier from 50 to 255 with a few milliseconds of exact
+arithmetic. First survivor: B = 256, residual pool = 28
+{2,3,5,7}-smooth moduli {4,6,10,12,16,18,28,30,36,40,42,60,70,72,96,
+100,108,112,126,150,162,180,192,196,210,240,250,256}, L = 127,008,000,
+residual mass 127085857/127008000 ≈ 1.000613 — waste budget only
+6.1·10⁻⁴, decided by complete DFS (cap_project.py, exact prune):
+see run_cap256.log.
 
 ## 5. Final status
 
