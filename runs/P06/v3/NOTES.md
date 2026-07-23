@@ -176,7 +176,25 @@ geng exhaust n ≤ 12.
   annealed searches to n = 200; new exact equality family K_t ∪ (t−2)K_1;
   GM proof route shown to fail first at CS(723,6))
 
-## 8. Conjecture 698 (definitional investigation + test of intended reading)
+## 8. Second push (per follow-up request): bigger frontier + new tooling
+
+- `enum_seq3.c` + `run_enum.sh`: ~3× faster incremental enumerator (O(1) leaf
+  stats, parity pruning, (d1,d2) partitioning), logs every sequence with
+  g > −1e-6 (NEAR) for post-hoc certification.
+- `lp_fallback.py`: NEW certificate — transportation-LP lower bound R_LP ≤ R(G)
+  for every realization of a degree sequence (variables x_{ab} = #edges between
+  degree classes, degree-sum equalities + simple-graph caps). If dev² ≤ R_LP²
+  the sequence is certified even where (★) fails. Validated: certifies
+  CS(723,6) (the (★) counterexample; R_LP ≥ 65.38 > dev = 65.05) and is exactly
+  tight on the equality family. This makes the degree-sequence frontier method
+  sound PAST n₀ ≤ 723.
+- Equality-neighborhood targeted anneal (`hillclimb.py` mode 'eq': seed exactly
+  K_{n/2+1} ∪ isolateds at Φ = 0, low-T anneal): n = 100, 200, 300, 500, 800 —
+  no uphill move ever found; Φ stays ≤ 0 (extremal family locally rigid).
+- `enum_seq3` exhausts of n = 23 and n = 24 (with LP fallback for any NEAR/
+  VIOLATION lines): RUNNING — results recorded below when complete.
+
+## 9. Conjecture 698 (definitional investigation + test of intended reading)
 
 As coded in refutationGBR, 698 is vacuous (negative Laplacian eigenvalues don't
 exist). Under the plausible intended reading — sqrt(Σ λᵢ² over negative

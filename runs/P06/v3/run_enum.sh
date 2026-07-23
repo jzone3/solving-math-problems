@@ -7,9 +7,8 @@ n=$1; J=${2:-8}
 dir=enum${n}_parts; mkdir -p $dir
 tasks=()
 for ((d1=n-1; d1>=0; d1--)); do
-    if ((d1 >= n-4)); then
-        t=$((d1/3))
-        tasks+=("$d1 0 $t" "$d1 $((t+1)) $((2*t))" "$d1 $((2*t+1)) $d1")
+    if ((d1 >= n-8)); then
+        for ((d2=d1; d2>=0; d2--)); do tasks+=("$d1 $d2 $d2"); done
     else
         tasks+=("$d1")
     fi

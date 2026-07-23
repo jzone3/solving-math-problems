@@ -1,0 +1,7 @@
+n=300 restart=0 mode=rand: best Phi=-5129.015536
+n=300 restart=1 mode=clique: best Phi=-3593.597827
+n=300 restart=2 mode=rand: best Phi=-3051.171679
+n=500 restart=0 mode=rand: best Phi=-27708.333280
+n=500 restart=1 mode=clique: best Phi=-22971.502219
+n=500 restart=2 mode=rand: best Phi=-7065.943450
+OVERALL best Phi = -3051.171679

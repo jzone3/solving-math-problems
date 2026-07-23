@@ -29,7 +29,14 @@ def full_R(adj, deg):
 def run(n, iters, seed, mode):
     rnd = random.Random(seed)
     adj = [set() for _ in range(n)]
-    if mode == "clique":
+    if mode == "eq":
+        # seed EXACTLY at the equality graph K_{n/2+1} U isolated (Phi = 0);
+        # low-temperature anneal explores its neighborhood for any uphill move
+        t = n // 2 + 1
+        for i in range(t):
+            for j in range(i):
+                adj[i].add(j); adj[j].add(i)
+    elif mode == "clique":
         k = rnd.randint(3, n)
         for i in range(k):
             for j in range(i):
@@ -52,7 +59,7 @@ def run(n, iters, seed, mode):
     R = full_R(adj, deg)
     cur, _ = phi(n, deg, m, R)
     best = cur
-    T0 = 0.5
+    T0 = 0.02 if mode == "eq" else 0.5
     for it in range(iters):
         T = T0 * (1 - it / iters)
         u, v = rnd.sample(range(n), 2)
@@ -99,7 +106,7 @@ if __name__ == "__main__":
     overall = -1e18
     for n in ns:
         for r in range(restarts):
-            mode = "clique" if r % 2 else "rand"
+            mode = ["rand", "clique", "eq"][r % 3]
             b = run(n, iters, 1000 * n + r, mode)
             overall = max(overall, b)
             print(f"n={n} restart={r} mode={mode}: best Phi={b:.6f}", flush=True)
