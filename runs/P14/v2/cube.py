@@ -11,7 +11,12 @@ So a cube is (a2,a1,b2,b1,c2,c1): counts of 2s/1s of row 1 in each segment, with
 row 1 laid out canonically (2s then 1s then 0s per segment). The cube set covers
 all row-1 possibilities modulo broken symmetry ⇒ UNSAT of all cubes = UNSAT.
 
-Usage: cube.py V B p1 p2 R K L basename
+Usage: cube.py V B p1 p2 R K L basename [--nolex]
+
+With --nolex: base encoding has NO lex/double-lex constraints (sym=False); row 0 is
+fixed here by unit clauses (WLOG) and cubes fix row 1 as above. Soundness then rests
+only on elementary column-permutation arguments — used to cross-check UNSAT results
+independently of the double-lex machinery.
 Writes basename-cube<k>.cnf for each cube (encode.py's CNF + unit clauses).
 """
 import sys
@@ -19,8 +24,18 @@ from encode import encode
 
 V, B, p1, p2, R, K, L = map(int, sys.argv[1:8])
 base = sys.argv[8]
+nolex = '--nolex' in sys.argv
 
-cls, pool, x1, x2 = encode(V, B, p1, p2, R, K, L, sym=True)
+cls, pool, x1, x2 = encode(V, B, p1, p2, R, K, L, sym=not nolex)
+if nolex:
+    for b in range(B):
+        if b < p2:
+            cls.append([x2[0][b]])
+        elif b < p2 + p1:
+            cls.append([x1[0][b]])
+            cls.append([-x2[0][b]])
+        else:
+            cls.append([-x1[0][b]])
 nv = pool.top
 
 seg = [(0, p2), (p2, p2 + p1), (p2 + p1, B)]
