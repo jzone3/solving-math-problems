@@ -1,0 +1,9 @@
+[bip-rand p=12 q=15 seed=93] tried=20000 tau3=158 t=541s
+[bip-rand p=12 q=15 seed=93] tried=40000 tau3=315 t=1081s
+[bip-rand p=12 q=15 seed=93] tried=60000 tau3=464 t=1623s
+[bip-rand p=12 q=15 seed=93] tried=80000 tau3=625 t=2163s
+[bip-rand p=12 q=15 seed=93] tried=100000 tau3=779 t=2706s
+[bip-rand p=12 q=15 seed=93] tried=120000 tau3=925 t=3246s
+[bip-rand p=12 q=15 seed=93] tried=140000 tau3=1058 t=3785s
+[bip-rand p=12 q=15 seed=93] tried=160000 tau3=1216 t=4330s
+[bip-rand p=12 q=15 seed=93] tried=180000 tau3=1356 t=4869s

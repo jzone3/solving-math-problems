@@ -1,0 +1,12 @@
+[bireg p=15 q=20 seed=104] step=1 checked=1 best=2638 cuts=2638 tight=0 t=1s
+[bireg p=15 q=20 seed=104] step=2 checked=2 best=2865 cuts=2865 tight=0 t=1s
+[bireg p=15 q=20 seed=104] step=4 checked=3 best=2996 cuts=2996 tight=0 t=2s
+[bireg p=15 q=20 seed=104] step=7 checked=5 best=3416 cuts=3416 tight=0 t=4s
+[bireg p=15 q=20 seed=104] step=11 checked=7 best=3506 cuts=3506 tight=0 t=6s
+[bireg p=15 q=20 seed=104] step=17 checked=10 best=3696 cuts=3696 tight=0 t=9s
+[bireg p=15 q=20 seed=104] step=18 checked=11 best=3794 cuts=3794 tight=0 t=10s
+[bireg p=15 q=20 seed=104] step=21 checked=14 best=3930 cuts=3930 tight=0 t=13s
+[bireg p=15 q=20 seed=104] step=22 checked=15 best=4109 cuts=4109 tight=0 t=15s
+[bireg p=15 q=20 seed=104] step=32 checked=23 best=4188 cuts=4188 tight=0 t=24s
+[bireg p=15 q=20 seed=104] step=35 checked=26 best=4258 cuts=4258 tight=0 t=28s
+[bireg p=15 q=20 seed=104] step=36 checked=27 best=4758 cuts=4758 tight=0 t=30s

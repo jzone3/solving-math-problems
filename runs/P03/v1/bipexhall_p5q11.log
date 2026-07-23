@@ -1,0 +1,13 @@
+[bip-exhall p=5 q<=11] total=29885 checked=20000 t=10s
+[bip-exhall p=5 q<=11] total=54954 checked=40000 t=19s
+[bip-exhall p=5 q<=11] total=78755 checked=60000 t=28s
+[bip-exhall p=5 q<=11] total=104970 checked=80000 t=38s
+[bip-exhall p=5 q<=11] total=127847 checked=100000 t=47s
+[bip-exhall p=5 q<=11] total=153071 checked=120000 t=56s
+[bip-exhall p=5 q<=11] total=180258 checked=140000 t=66s
+[bip-exhall p=5 q<=11] total=210995 checked=160000 t=76s
+[bip-exhall p=5 q<=11] total=236588 checked=180000 t=85s
+[bip-exhall p=5 q<=11] total=262153 checked=200000 t=94s
+[bip-exhall p=5 q<=11] total=291822 checked=220000 t=104s
+[bip-exhall p=5 q<=11] total=323139 checked=240000 t=114s
+[bip-exhall p=5 q<=11] DONE total=352715 checked=253440 t=121s

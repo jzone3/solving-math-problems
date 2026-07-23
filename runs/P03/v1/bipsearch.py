@@ -228,7 +228,7 @@ def mode_anneal(seconds, seed):
             cand[t][i] = u; cand[t].sort()
         elif op < 0.8 and len(cand) > 8:  # delete a sink
             cand.pop(rng.randrange(len(cand)))
-        else:  # add a sink
+        elif len(cand) < 24:  # add a sink (capped)
             cand.append(sorted(rng.sample(range(p), 3)))
         cuts, tau = min_dicuts_bip(p, cand)
         if cuts is None or tau != 3:
@@ -241,7 +241,9 @@ def mode_anneal(seconds, seed):
             with open("counterexample.txt", "a") as f:
                 f.write(msg + "\n")
             continue
-        tight = sum(1 for c in cuts if len(c) == 3)
+        # every sink's in-triple is trivially a tight 3-cut; only count
+        # nontrivial tight cuts (spanning >1 sink) to avoid degenerate growth
+        tight = sum(1 for c in cuts if len(c) == 3 and len(set(t for t, _ in c)) > 1)
         s = 100 * tight + len(cuts) - 3 * len(cand)
         if s >= cur_s or rng.random() < 0.05:
             cur, cur_s = cand, s
@@ -256,6 +258,62 @@ def mode_anneal(seconds, seed):
           flush=True)
 
 
+def mode_biregular(p, q, seconds, seed):
+    """Smallest OPEN case by ACZ's P2-P4: tau=3 needs rho>=4, i.e. >=12
+    deg-4 sources; minimal instances are (4,3)-biregular: p=12 sources all
+    out-degree 4, q=16 sinks all in-degree 3 (48 arcs). Degree-preserving
+    double-swap annealing from random configuration-model instances."""
+    rng = random.Random(seed)
+    def rand_inst():
+        while True:
+            # 4-regular sources, 3-regular sinks: 4p == 3q arc stubs
+            src = [s for s in range(p) for _ in range(4)]
+            rng.shuffle(src)
+            sinks = [sorted(src[3 * t:3 * t + 3]) for t in range(q)]
+            if all(len(set(t)) == 3 for t in sinks):
+                return sinks
+    assert 4 * p == 3 * q, "need 4p == 3q for (4,3)-biregular"
+    cur = rand_inst()
+    t0 = time.time(); steps = 0; checked = 0; cur_s = -1; best = -1
+    while time.time() - t0 < seconds:
+        steps += 1
+        cand = [list(t) for t in cur]
+        # degree-preserving swap: two sinks exchange one in-neighbour
+        t1 = rng.randrange(q); t2 = rng.randrange(q)
+        if t1 == t2:
+            continue
+        i1 = rng.randrange(3); i2 = rng.randrange(3)
+        u1, u2 = cand[t1][i1], cand[t2][i2]
+        if u1 == u2 or u2 in cand[t1] or u1 in cand[t2]:
+            continue
+        cand[t1][i1], cand[t2][i2] = u2, u1
+        cand[t1].sort(); cand[t2].sort()
+        cuts, tau = min_dicuts_bip(p, cand)
+        if cuts is None or tau != 3:
+            continue
+        checked += 1
+        ok = packs3(cand, cuts)
+        if not ok:
+            msg = f"UNSAT COUNTEREXAMPLE p={p} sinks={cand}"
+            print(msg, flush=True)
+            with open("counterexample.txt", "a") as f:
+                f.write(msg + "\n")
+            continue
+        tight = sum(1 for c in cuts if len(c) == 3 and len(set(t for t, _ in c)) > 1)
+        s = 100 * tight + len(cuts)
+        if s >= cur_s or rng.random() < 0.05:
+            cur, cur_s = cand, s
+        if s > best:
+            best = s
+            print(f"[bireg p={p} q={q} seed={seed}] step={steps} checked={checked} "
+                  f"best={s} cuts={len(cuts)} tight={tight} t={time.time()-t0:.0f}s",
+                  flush=True)
+        if rng.random() < 0.0005:
+            cur = rand_inst(); cur_s = -1
+    print(f"[bireg p={p} q={q} seed={seed}] DONE steps={steps} checked={checked} "
+          f"best={best}", flush=True)
+
+
 if __name__ == "__main__":
     m = sys.argv[1]
     if m == "exhaustall":
@@ -266,3 +324,5 @@ if __name__ == "__main__":
         mode_random(int(sys.argv[2]), int(sys.argv[3]), float(sys.argv[4]), int(sys.argv[5]))
     elif m == "anneal":
         mode_anneal(float(sys.argv[2]), int(sys.argv[3]))
+    elif m == "biregular":
+        mode_biregular(int(sys.argv[2]), int(sys.argv[3]), float(sys.argv[4]), int(sys.argv[5]))
