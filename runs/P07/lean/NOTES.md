@@ -44,8 +44,10 @@ theorem conjecture154_int_violation :
     2 * 1295 * 372120 ^ 2 > 120 ^ 3 * (120 ^ 2) ^ 2
 theorem conjecture154_false_real_form :
     ¬ (2 * (lollipop.edgeFinset.card : ℝ) * lollipopMu ^ 2 ≤ 120 ^ 3)
-theorem graffiti_conjecture_154_false :   -- original wording
+theorem graffiti_conjecture_154_false :   -- original wording, strict '<'
     ¬ (popStdDev (adjMatrix_isHermitian.eigenvalues) < 120 / lollipopMu)
+theorem graffiti_conjecture_154_false_le : -- non-strict '≤' reading
+    ¬ (popStdDev (adjMatrix_isHermitian.eigenvalues) ≤ 120 / lollipopMu)
 ```
 
 where `lollipopMu = (∑ u, ∑ v, (lollipop.dist u v : ℝ)) / 120²` and
@@ -90,6 +92,16 @@ The original strict inequality `dev < n/μ` then fails because
 `(n/μ)² = (1728000/372120)² ≤ 2590/120 = dev²` — an exact rational
 comparison equivalent to the integer core `2·m·S² > n³·(n²)²`, i.e.
 `358645832496000 > 358318080000000` (margin ≈ 0.0915 %).
+
+**Both readings of the wording refuted.** WoW item 154's wording could be
+read strictly (`dev < n/μ`) or non-strictly (`dev ≤ n/μ`). Since the
+integer violation is STRICT, the witness in fact satisfies `dev > n/μ`,
+which refutes both readings: `graffiti_conjecture_154_false` (¬ `<`, via
+`Real.sqrt_le_sqrt` on the non-strict rational comparison) and
+`graffiti_conjecture_154_false_le` (¬ `≤`, i.e. `dev > n/μ`, via
+`Real.sqrt_lt_sqrt` on the strict rational comparison
+`(1728000/372120)² < 2590/120`, which clears denominators exactly to
+`358318080000000 < 358645832496000`).
 
 ### Encoding conventions (reviewed against the original wording)
 
@@ -138,11 +150,12 @@ info: P07/AxiomCheck.lean:17:0: 'P07.conjecture154_false_real_form' depends on a
 info: P07/AxiomCheck.lean:18:0: 'P07.conjecture154_false_pair_convention' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: P07/AxiomCheck.lean:19:0: 'P07.dev_eigenvalues_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: P07/AxiomCheck.lean:20:0: 'P07.graffiti_conjecture_154_false' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: P07/AxiomCheck.lean:23:0: 'P07.dumbbell_dist_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: P07/AxiomCheck.lean:24:0: 'P07.dumbbell_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: P07/AxiomCheck.lean:25:0: 'P07.dumbbell_card_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: P07/AxiomCheck.lean:26:0: 'P07.dumbbell_distSum' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: P07/AxiomCheck.lean:27:0: 'P07.conjecture143_false_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: P07/AxiomCheck.lean:21:0: 'P07.graffiti_conjecture_154_false_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: P07/AxiomCheck.lean:24:0: 'P07.dumbbell_dist_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: P07/AxiomCheck.lean:25:0: 'P07.dumbbell_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: P07/AxiomCheck.lean:26:0: 'P07.dumbbell_card_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: P07/AxiomCheck.lean:27:0: 'P07.dumbbell_distSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: P07/AxiomCheck.lean:28:0: 'P07.conjecture143_false_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
 ## 4. Theorem 2 — conjecture 143 (`Var(positive eigenvalues) < m/μ`): honest partial delivery

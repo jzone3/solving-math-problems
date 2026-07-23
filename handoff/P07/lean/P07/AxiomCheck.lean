@@ -18,6 +18,7 @@ import P07.Dumbbell
 #print axioms P07.conjecture154_false_pair_convention
 #print axioms P07.dev_eigenvalues_eq
 #print axioms P07.graffiti_conjecture_154_false
+#print axioms P07.graffiti_conjecture_154_false_le
 
 -- Theorem 2 (conjecture 143) partial lemmas
 #print axioms P07.dumbbell_dist_eq

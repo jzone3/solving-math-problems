@@ -36,7 +36,10 @@ so the refutation is convention-robust.
 witness graph is defined concretely, its distance sum (S = 372120) and edge count (m = 1295)
 are PROVEN inside Lean (BFS-parent certificates + kernel `decide`; no `native_decide`), and the
 conjecture's real-number form is refuted in both μ conventions, plus the original
-spectral wording via dev(eigenvalues) = √(2m/n). No `sorry`, no added axioms
+spectral wording via dev(eigenvalues) = √(2m/n) — under BOTH possible readings of
+item 154 ('<' and '≤'): since the integer violation is strict, the witness satisfies
+dev > n/μ (`graffiti_conjecture_154_false` for '<', `graffiti_conjecture_154_false_le`
+for '≤'). No `sorry`, no added axioms
 (`#print axioms` = [propext, Classical.choice, Quot.sound]). Conjecture 143's witness is
 defined with proven structure and a reduction lemma, but the final eigenvalue-variance
 computation (irrational algebraic numbers) is deliberately NOT claimed in Lean — the exact-
