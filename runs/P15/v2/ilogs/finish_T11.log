@@ -2,3 +2,116 @@
   one_opt pass: uncovered=42626 t=97s
   one_opt pass: uncovered=42626 t=162s
   one_opt pass: uncovered=42626 t=222s
+  one_opt pass: uncovered=42616 t=283s
+  one_opt pass: uncovered=42616 t=339s
+  one_opt pass: uncovered=42616 t=399s
+  one_opt pass: uncovered=42616 t=458s
+  one_opt pass: uncovered=42616 t=521s
+  one_opt pass: uncovered=42592 t=582s
+  one_opt pass: uncovered=42580 t=645s
+  one_opt pass: uncovered=42564 t=712s
+  one_opt pass: uncovered=42550 t=778s
+  one_opt pass: uncovered=42550 t=843s
+  one_opt pass: uncovered=42550 t=900s
+cycle 0: uncovered=42550
+  repair it=50: best uncovered=42550 t=594s
+  one_opt pass: uncovered=42550 t=90s
+  one_opt pass: uncovered=42550 t=145s
+  one_opt pass: uncovered=42538 t=219s
+  one_opt pass: uncovered=42538 t=279s
+  one_opt pass: uncovered=42538 t=338s
+  one_opt pass: uncovered=42538 t=395s
+  one_opt pass: uncovered=42538 t=450s
+  one_opt pass: uncovered=42538 t=513s
+  one_opt pass: uncovered=42538 t=573s
+  one_opt pass: uncovered=42538 t=628s
+  one_opt pass: uncovered=42538 t=682s
+  one_opt pass: uncovered=42538 t=739s
+  one_opt pass: uncovered=42538 t=803s
+  one_opt pass: uncovered=42538 t=867s
+  one_opt pass: uncovered=42538 t=900s
+cycle 1: uncovered=42538
+  repair it=50: best uncovered=42538 t=577s
+  one_opt pass: uncovered=42538 t=89s
+  one_opt pass: uncovered=42538 t=148s
+  one_opt pass: uncovered=42538 t=206s
+  one_opt pass: uncovered=42538 t=258s
+  one_opt pass: uncovered=42538 t=322s
+  one_opt pass: uncovered=42538 t=381s
+  one_opt pass: uncovered=42538 t=431s
+  one_opt pass: uncovered=42538 t=484s
+  one_opt pass: uncovered=42538 t=538s
+  one_opt pass: uncovered=42538 t=586s
+  one_opt pass: uncovered=42538 t=643s
+  one_opt pass: uncovered=42538 t=701s
+  one_opt pass: uncovered=42538 t=759s
+  one_opt pass: uncovered=42538 t=822s
+  one_opt pass: uncovered=42538 t=879s
+  one_opt pass: uncovered=42538 t=900s
+cycle 2: uncovered=42538
+  repair it=50: best uncovered=42538 t=584s
+  one_opt pass: uncovered=42538 t=88s
+  one_opt pass: uncovered=42538 t=143s
+  one_opt pass: uncovered=42538 t=197s
+  one_opt pass: uncovered=42538 t=260s
+  one_opt pass: uncovered=42538 t=325s
+  one_opt pass: uncovered=42538 t=388s
+  one_opt pass: uncovered=42538 t=455s
+  one_opt pass: uncovered=42538 t=516s
+  one_opt pass: uncovered=42538 t=577s
+  one_opt pass: uncovered=42538 t=635s
+  one_opt pass: uncovered=42538 t=694s
+  one_opt pass: uncovered=42538 t=750s
+  one_opt pass: uncovered=42538 t=815s
+  one_opt pass: uncovered=42538 t=876s
+  one_opt pass: uncovered=42538 t=900s
+cycle 3: uncovered=42538
+  repair it=50: best uncovered=42538 t=588s
+  one_opt pass: uncovered=42538 t=95s
+  one_opt pass: uncovered=42538 t=154s
+  one_opt pass: uncovered=42538 t=212s
+  one_opt pass: uncovered=42538 t=278s
+  one_opt pass: uncovered=42538 t=339s
+  one_opt pass: uncovered=42538 t=403s
+  one_opt pass: uncovered=42538 t=463s
+  one_opt pass: uncovered=42538 t=517s
+  one_opt pass: uncovered=42538 t=585s
+  one_opt pass: uncovered=42538 t=649s
+  one_opt pass: uncovered=42538 t=717s
+  one_opt pass: uncovered=42538 t=791s
+  one_opt pass: uncovered=42538 t=852s
+  one_opt pass: uncovered=42538 t=900s
+cycle 4: uncovered=42538
+  repair it=50: best uncovered=42538 t=591s
+  one_opt pass: uncovered=42538 t=97s
+  one_opt pass: uncovered=42538 t=161s
+  one_opt pass: uncovered=42538 t=225s
+  one_opt pass: uncovered=42538 t=293s
+  one_opt pass: uncovered=42538 t=356s
+  one_opt pass: uncovered=42538 t=420s
+  one_opt pass: uncovered=42538 t=484s
+  one_opt pass: uncovered=42538 t=551s
+  one_opt pass: uncovered=42538 t=613s
+  one_opt pass: uncovered=42538 t=674s
+  one_opt pass: uncovered=42538 t=742s
+  one_opt pass: uncovered=42538 t=805s
+  one_opt pass: uncovered=42538 t=864s
+  one_opt pass: uncovered=42538 t=900s
+cycle 5: uncovered=42538
+  repair it=50: best uncovered=42538 t=559s
+  one_opt pass: uncovered=42538 t=97s
+  one_opt pass: uncovered=42538 t=154s
+  one_opt pass: uncovered=42538 t=221s
+  one_opt pass: uncovered=42538 t=289s
+  one_opt pass: uncovered=42538 t=349s
+  one_opt pass: uncovered=42538 t=415s
+  one_opt pass: uncovered=42538 t=478s
+  one_opt pass: uncovered=42538 t=542s
+  one_opt pass: uncovered=42538 t=599s
+  one_opt pass: uncovered=42538 t=659s
+  one_opt pass: uncovered=42538 t=718s
+  one_opt pass: uncovered=42538 t=775s
+  one_opt pass: uncovered=42538 t=833s
+  one_opt pass: uncovered=42538 t=891s
+  one_opt pass: uncovered=42538 t=900s
+cycle 6: uncovered=42538

@@ -18,3 +18,4 @@ phase1 done: 1423 placements
   materialize 82%: holes so far 250922117 t=227s
   materialize 92%: holes so far 282272078 t=256s
 phase2: exact holes = 305857373 (density 7.30e-03)
+ hole placement: 1926 values, holes left 264911564 t=9397s

@@ -160,3 +160,58 @@ Key structural observations recorded before computing:
     cannot move the 42.6k plateau: ruin-and-recreate over 6% of 1670 placements never beats the
     1-opt fixpoint. The plateau is a deep local optimum, not a shallow one.
   - N=4.2e10, T=12: running (phase3 on 306M holes takes hours/attempt at this scale).
+- ILP long-run outcomes: N=5040 T=7 INDETERMINATE after 3h (no feasible point, no
+  infeasibility proof; the zero-objective feasibility MIP explores ~500 B&B nodes/3h — the
+  translation symmetry that collapses the LP also makes B&B slow). N=55440 T=7 also
+  INDETERMINATE at 90 min. Exact SAT/UNSAT beyond the greedy frontier needs symmetry-broken
+  encodings (or SAT solvers = V3's territory).
+- Plateau diagnostic (T=11, N=2.2e9, 42626 holes): the leftover holes are DIFFUSE — nonzero
+  in 48/64 classes mod 64, 70/81 mod 81, 24/25 mod 25, all 7 mod 7, 10/11 mod 11, 12/13
+  mod 13, 16/17 mod 17. No concentrated 2-3-adic core to attack: covering residue "dust"
+  requires re-matching many already-used values one dust-point each without opening their
+  exclusive sets — a global assignment, not a local move. This is the integrality gap made
+  visible; the hand-built record covers avoid it by constructing the tail exactly, top-down.
+- N=4.2e10, T=12 (final): sample greedy + exact hole placement left 264.9M holes (0.63%);
+  the streaming 1-opt pass at this scale takes >2.5h (12.5M small numpy slice-ops per stream:
+  python-loop overhead dominates), so the local-search budget buys ~1 pass — INCOMPLETE at
+  budget. Scaling one_opt to N ~ 10^10.5 needs a compiled kernel; but the T=11 evidence says
+  the plateau, not iteration speed, is the real wall.
+
+## 3. Results table (all covers verified by solutions/P15/verify.py)
+
+| N (lcm) | factorization | max T achieved | method |
+|---|---|---|---|
+| 5040 | 2^4·3^2·5·7 | 5 greedy / 6 ILP (SAT, 55 congs) | engine4 / ilp.py |
+| 55440 | 2^4·3^2·5·7·11 | 6 (T=7 ILP indeterminate) | engine4+repair |
+| 1.66e6 | 2^5·3^3·5^2·7·11 | 8 | engine4+repair |
+| 2.16e7 | 2^5·3^3·5^2·7·11·13 | 8 (T=9: 514 holes) | engine4+repair+1opt |
+| 1.30e8 | 2^6·3^4·5^2·7·11·13 | 10 (T=11: 86k holes) | engine4 scan |
+| 2.21e9 | 2^6·3^4·5^2·7·11·13·17 | 10, 1671 congs (T=11: 42.6k holes) | engine5 |
+| 4.19e10 | 2^6·3^4·5^2·7·11·13·17·19 | (T=12: 265M holes at budget) | engine5 |
+
+Reciprocal-sum budgets were 1.9-2.6 at every failing T — measure is never the binding
+constraint in this range; alignment (the integrality gap) is.
+
+## 4. Conclusions
+
+1. The V2 attack (fix smooth N; distinct-divisor set cover over Z_N; greedy + ILP layers)
+   is sound and reproduces covering systems with min modulus up to 10 fully automatically,
+   with independent verification. But the achieved min-modulus grows ~ logarithmically in N
+   (5->6 needs 11x, 8->10 needs 100x, 10->11 not reached with 17x + 4h of local search).
+   Reaching T=43 this way would need N far beyond any explicit representation — consistent
+   with Nielsen's 40 needing lcm > 10^50 and Owens's 42 more still.
+2. The LP relaxation is useless as a certificate (collapses to reciprocal sums by translation
+   averaging); exact ILP feasibility stalls already at N=5040/T=7. The gap between the greedy
+   frontier and the counting bound is where all the difficulty lives.
+3. Failure mode is universal and structural: local search always terminates in a DIFFUSE hole
+   set (dust spread over nearly all residue classes of every prime power), which no
+   reassignment of already-used values can absorb. Record constructions (Krukenberg, Nielsen,
+   Owens) avoid dust by building the tail exactly, top-down, with cross-branch alignment
+   planned from the start — that global alignment is precisely what column generation over
+   residue-class columns fails to capture at scale.
+4. Honest bottom line: no covering system with min modulus >= 43 was found; nothing here
+   suggests V2-style search can get anywhere near 43. The constructive record 42 stands.
+
+STATUS: frontier-pushed (verified machine-generated covers up to min modulus 10 at N=2.2e9;
+exact small-N SAT/UNSAT data; two engine soundness bugs caught by independent verification;
+no progress toward 43 — negative for the stated goal).
