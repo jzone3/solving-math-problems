@@ -198,3 +198,40 @@ outside the phase-1 "seed blow-up" neighborhood):
   weighted packing ILP on every instance. 2 workers × 3h.
 
 (Results appended below when the fleet finishes.)
+
+### Phase 2 results (all zero failures)
+
+**2.0 EXHAUSTIVE Woodall verification for ALL digraphs on n ≤ 7 vertices**
+(`exhaust_small.py` + nauty geng/directg, 24-shard sweep, new headline):
+- n ≤ 5: 9,576 weakly-connected simple digraphs (2-cycles allowed) — all pack.
+- n = 6: 1,530,843 — all pack (0 needed ILP; greedy + ρ-shortcut sufficed).
+- n = 7: **880,471,142** — all pack. τ≥2: 157,183,761; ρ-shortcut killed
+  130,396,997; randomized greedy packed 26,785,993; only 771 needed the
+  exact CBC ILP, every one feasible. **FAILURES: 0.**
+- Conclusion: Woodall's Conjecture holds for every digraph on ≤ 7 vertices
+  (no parallel arcs; parallel-arc instances on ≤7 vertices with τ≤6 are
+  covered separately by 2.1's multigraph sampling).
+
+**2.1 General multi-digraph random search** (4×3h + 1 partial worker):
+~435M instances generated (n≤16, m≤32, parallel arcs + 2-cycles allowed,
+40% DAG-oriented, sparse/dense mix), ~176M with τ∈[3,6];
+~101k greedy-resistant instances ILP-certified; 0 failures, 0 timeouts.
+
+**2.2 Hardness-guided annealing** (4×3h): 2,950,541 steps, 1,927,824
+evaluations, 401,830 exact ILP calls on fully-greedy-resistant states
+(greedy fail fraction 1.0 — the boundary a counterexample must sit on);
+best states reached ρ=11, τ up to 6, n up to 22; 0 packing failures.
+
+**2.3 ACZ EG-fix conjecture** (2×3h): 2,656,923 weighted instances
+(w∈{0,1,2}, support spanning connected), 1,486,050 with τ≥2 ILP-certified;
+0 failures — the proposed Edmonds–Giles fix also survives this sweep.
+
+### Phase-2 conclusion
+The frontier is now materially larger than phase 1: an exhaustive proof
+for n ≤ 7 (≈882M digraphs), ~180M τ≥3 general/multigraph random instances,
+and 1.5M weighted EG-fix instances — all pack. Combined two-phase totals:
+> 1.06 BILLION instances checked, 0 counterexamples.
+
+STATUS: negative / frontier-pushed — no witness; Woodall exhaustively
+verified for all digraphs on ≤ 7 vertices, plus ~180M τ≥3 multigraph
+instances to n=16 and 1.49M weighted EG-fix instances, all packing.
