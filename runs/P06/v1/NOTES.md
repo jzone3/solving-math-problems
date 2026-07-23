@@ -85,8 +85,9 @@ n vertices. Exhausting ALL graphical degree sequences (Erdős–Gallai) with flo
   every graph on ≤ 21 vertices** (new exhaustive frontier; previous exhaustive was n ≤ 10).
   Enumeration: Python (`frontier.py`) to n = 15, then C (`frontier.c`, ~200×, outputs
   cross-checked to match Python's graphical-sequence counts and near-zero lists exactly
-  for n ≤ 15) to n = 21 (2.6e9 graphical sequences at n=21); every sequence with float
-  score > −1e−6 was re-verified exactly (sympy): all are the equality family, diff = 0.
+  for n ≤ 15) to n = 21 (10.0e9 graphical sequences at n=20, 38.75e9 at n=21; ~52e9
+  total); every sequence with float score > −1e−6 was re-verified exactly (sympy):
+  all are the equality family (last hits: 10¹¹0⁹ at n=20) or all-zero, diff = 0.
 - randomized hillclimb over graphical sequences at n = 16…400: max 0, always the equality
   sequence.
 - 114k random graphical sequences scored (blocks, power-law, uniform, equality-
@@ -97,7 +98,7 @@ n vertices. Exhausting ALL graphical degree sequences (Erdős–Gallai) with flo
 
 ~4 h total: family closed-form sweeps (seconds), threshold anneal (~15 min),
 mpmath perturbation sweep + local search (~45 min), geng exhaust n≤10 (~8 min),
-degree-sequence exhaust n≤21 (Python ~30 min to n=15, C ~2 h to n=21),
+degree-sequence exhaust n≤21 (Python ~30 min to n=15, C ~3.5 h to n=21),
 random degseq search (~10 min).
 
 ## Dead ends / lessons
