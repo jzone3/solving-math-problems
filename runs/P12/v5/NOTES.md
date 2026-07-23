@@ -204,9 +204,9 @@ containing the identity row: mirror.c (candidate lists + 128-bit arc masks) and 
 
 ### D6. T2(11) frontier run (dfs2 with coverage pruning) — cost estimate
 Long-running partial exhaustion over class-1 seeds. Honest negative: individual class-1 seed
-subtrees each cost multiple CPU-hours (none of the first seeds completed within 4+ CPU-hours
-of cumulative running across several attempts). Extrapolation: ≫ 10⁶ CPU-hours ≈ 100+
-CPU-years for full exhaustion with this searcher — T2(11) is ~10⁵⁻⁶× harder than T2(9)
+subtrees each cost ≥ 3 CPU-hours (a dedicated 4-seed run accumulated 12+ CPU-hours with none
+of the 4 seeds complete). Extrapolation: ≥ 1.6M CPU-hours ≈ 190+ CPU-years for full exhaustion
+with this searcher — T2(11) is ~10⁵⁻⁶× harder than T2(9)
 (which takes ~1 CPU-hour today). A cluster-scale SAT/parallel effort is the right next step;
 a single-VM complete search is out of reach.
 
@@ -218,8 +218,9 @@ These are the two computational ingredients of theorem C6.
 ### D5b. Mirror exhaustion results at the open orders
 - mirror2 11 (direct DFS, T2 mode): **full exhaustion, solutions = 0**, 10,717,468,881 nodes,
   805 s × 2 threads. Machine-verifies theorem C6 at order 11: no mirror-symmetric T2(11).
-- mirror2 13: same search at order 13; still running at report time (14+ CPU-hours). The n=13
-  case is already settled mathematically by theorem C6; the run is a redundancy check only.
+- mirror2 13: same search at order 13 ran 20+ CPU-hours without completing and was stopped
+  (node count scales ~10⁴× from n=11). The n=13 case is settled mathematically by theorem C6
+  (machine-checked ingredients + exhaustions at n=5,7,9,11); the run was a redundancy check only.
 
 ## STATUS: negative (structural results + independent reproduction; no witness; frontier quantified)
 
@@ -236,7 +237,7 @@ Summary of contributions this run:
    brute search or a new nonexistence proof can close the cell.
 3. Kapralov's T2(9) = 0 (ACCT-2012) independently reproduced by two differently-written complete
    searchers (786M and 601G nodes; both 0 solutions).
-4. T2(11) complete-search cost quantified: ~100+ CPU-years with our best pruning (candidate
+4. T2(11) complete-search cost quantified: ~190+ CPU-years with our best pruning (candidate
    lists + arc-coverage forward checking) — out of single-machine range, plausibly cluster/SAT
    range. 6,026,973-candidate clique reformulation documented for a future SAT/cluster attack.
 5. 12 CPU-hours of annealing found nothing below 12 (n=11) / 22 (n=13) violated constraints —
@@ -247,8 +248,8 @@ Direct CNF encoding of the normalized square (cells one-hot; row-permutation; ro
 first column fixed 0..n-1; last column all-different; occurrence variables o_d(a,b,i,j) with
 sequential-counter exactly-one for distance 1 and at-most-one for distance 2).
 - n=8: SAT in ~10 min (loaded machine); witness decoded and verify.py PASS — encoding validated.
-- n=9 (UNSAT instance, 20169 vars / 64359 clauses): kissat had NOT finished after 2+ CPU-hours,
-  vs 20 CPU-min for our specialized dfs2 — the plain encoding is ~an order of magnitude weaker
+- n=9 (UNSAT instance, 20169 vars / 64359 clauses): kissat still unresolved after 5.5+ CPU-hours,
+  vs 20 CPU-min for our specialized dfs2 — the plain encoding is ≥an order of magnitude weaker
   than the candidate-list searcher.
 - n=11 cubes (fix full row 1 = one of the 549,012 class-1 candidates, i.e. the natural
   cube-and-conquer split): sampled cubes each exceed a 3600 s kissat timeout. Consistent with
@@ -256,6 +257,7 @@ sequential-counter exactly-one for distance 1 and at-most-one for distance 2).
   attack would need the clique/candidate reformulation inside the encoding (candidate selector
   variables instead of cell variables) plus cluster-scale cubing — documented as future work.
 
-Recommended next attack: cube-and-conquer SAT (V1's framing) with the C6 rigidity result
-justifying pure normalization-only symmetry breaking, or Kapralov-style clique search with
-modern parallel maximum-clique solvers on the 6M-vertex compatibility graph.
+Recommended next attack: Kapralov-style clique search on the 6,026,973-candidate compatibility
+graph with modern parallel exact solvers on a cluster, or SAT with candidate-selector variables
+(not cell variables) and cluster-scale cubing; the C6 rigidity theorem guarantees that
+normalization-only symmetry breaking is already complete (no further symmetries exist to break).
