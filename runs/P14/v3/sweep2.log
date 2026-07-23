@@ -31,3 +31,18 @@ inst4 group=C5a status=INFEASIBLE time=10.6s
 inst4 group=C5b |G|=5 blocks=45474 borbs=10974 eorbs=10 porbs=47 enum=0.2s
 inst4 group=C5b status=INFEASIBLE time=8.9s
 inst4 group=C3c |G|=3 blocks=45474 borbs=16206 eorbs=10 porbs=49 enum=0.2s
+inst4 group=C3c status=UNKNOWN time=3600.5s
+inst4 group=C3d |G|=3 blocks=45474 borbs=21780 eorbs=12 porbs=67 enum=0.2s
+inst4 group=C3d status=UNKNOWN time=3600.5s
+inst2 group=C7a |G|=7 blocks=28314 borbs=4062 eorbs=6 porbs=18 enum=0.1s
+inst2 group=C7a status=INFEASIBLE time=0.0s
+inst2 group=C5b |G|=5 blocks=28314 borbs=6010 eorbs=8 porbs=30 enum=0.1s
+inst2 group=C5b status=INFEASIBLE time=0.2s
+inst2 group=C3c |G|=3 blocks=28314 borbs=11994 eorbs=10 porbs=46 enum=0.1s
+inst2 group=C3c status=INFEASIBLE time=255.8s
+inst3 group=C7a |G|=7 blocks=8074 borbs=1192 eorbs=6 porbs=18 enum=0.0s
+inst3 group=C7a status=INFEASIBLE time=0.0s
+inst3 group=C5b |G|=5 blocks=8074 borbs=1906 eorbs=8 porbs=30 enum=0.0s
+inst3 group=C5b status=INFEASIBLE time=0.0s
+inst3 group=C3c |G|=3 blocks=8074 borbs=3832 eorbs=10 porbs=46 enum=0.0s
+inst3 group=C3c status=INFEASIBLE time=4.2s
