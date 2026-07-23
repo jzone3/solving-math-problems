@@ -148,13 +148,24 @@ past where we stopped (our machine frontier was M=6; literature is 42).
   - M=12: N=23284800,  477 congs (329 iterations, ~25 min).
   - M=13: N=129729600, 610 congs (lucky seed, 1 iteration, 70 s).
   - M=14: N=129729600, 616 congs (lucky seed, 1 iteration, 111 s).
-  - M=15/16: NOT reached. At N=129729600 every seed plateaus at ~23,000
-    uncovered cells (0.018%) and ruin-recreate does not escape (identical
-    plateau across seeds suggests a structural residue obstruction, not
-    bad luck); at N=908107200 (recip 1.77) iterations take ~10 min each
-    (0.9-1.8 GB arrays) and runs ended at 220k-275k uncovered. The next
-    lever would be an incremental-gain data structure (avoid full O(N)
-    rescans) plus targeted repair of the plateau residue classes.
+  - M=15/16 via anneal alone: NOT reached; every seed plateaus at ~23,000
+    uncovered cells at N=129729600 (structural, seed-independent).
+* `fc_walk.py` / `fc_walk2.py` — third push, WalkSAT-style repair: every
+    modulus always assigned; move = pick uncovered cell x, reassign some
+    modulus n to the class through x (a := x mod n); delta evaluated
+    incrementally via the multiplicity array; fc_walk2 adds an exact
+    finisher (vectorized gain over ALL moduli vs the uncovered set, with
+    cached unique-coverage costs) below a threshold. This BREAKS the
+    anneal plateau (23k -> ~8k at N=129729600) but saturates there.
+    The decisive factor is again slack: at N=518918400 (recip 1.71) the
+    jittered lazy-greedy init already converges and M=15 fell in minutes:
+  - M=15: N=518918400, 1066 congs (PASS verify.py, witnesses_small/).
+  - M=16: N=518918400 stalls at ~215k uncovered after hours of walk;
+    N=1102701600 (recip 1.87, includes prime 17) has ~3h init cost per
+    seed at 1.1e9 cells (see final status for outcome). The array-based
+    LS family runs out of memory-feasible N around M~16-17; beyond that
+    a CRT/tree-structured representation (Krukenberg/Nielsen-style) is
+    required.
   Key lesson vs the 600s M=7 failure at N=10080: feasibility needs SLACK
   (recip >= ~1.7), i.e. much larger N than minimal — the earlier fixed
   small-N attempts were starved, not the search algorithm.
