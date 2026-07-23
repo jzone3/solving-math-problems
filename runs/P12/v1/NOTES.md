@@ -259,3 +259,26 @@ Validation (dramatic speedup vs direct CNF):
 - Running: sliced exhaustive circ 11 (4 slices: 3 child Devin sessions +
   1 local) and circ 13 (6 local slices); any SQUARE hit = open-problem
   witness, full exhaustion = "no circular-structured T2(11)" theorem.
+
+### Round 3 continued: how far does the circular route reach?
+
+- twobase.py: index-2 subgroup construction rows = {u b1: u in QR} u
+  {u b2: u in QNR}. Correctness conditions worked out per-ratio/per-coset
+  (see file header); every generated array machine-checked (check_array).
+  n=7: 108 arrays, none convert (T2(7) nonexistent — consistent).
+  n=11: 47,000 single-base candidates, exactly 2,000 valid two-base arrays,
+  cut-conversion FAILS for all 2,000. n=13: enumeration running.
+- Cumulative: 80 (mult) + 2000 (two-base) circular 10x11 arrays tested for
+  cut conversion — none yield a T2(11).
+- SOBERING CALIBRATIONS:
+  (a) ./circ 8 0: ZERO circular 7x8 Tuscan-2 arrays exist (225K nodes,
+      exhaustive) — yet T2(8) exists. So squares do not need circular
+      structure.
+  (b) The known cyclic T2(12) does NOT decompose as circular 11x12 array +
+      path row for ANY choice of special row (checked directly). So even
+      when squares exist they need not be cut-convertible.
+  => the circular exhaustion for n=11 (3 child sessions + local slices)
+  now has mainly theorem value ("no circular-structured T2(11)"), not
+  witness-hunt value. Kept running.
+- Hall/matching prune in circ.c measured net-negative (n=9: 119M->86M
+  nodes, 3x CPU) — committed disabled for the record.
