@@ -81,9 +81,14 @@ def main():
             mm = re.match(r'--- gens=\(([\d, ]+)\)', line)
             if mm:
                 gens_cur = tuple(int(x) for x in mm.group(1).split(',') if x.strip())
-            elif line.startswith('EXHAUSTED') and gens_cur:
-                done.add(close(n, gens_cur))
-                gens_cur = None
+            elif line.startswith('EXHAUSTED'):
+                if gens_cur:
+                    done.add(close(n, gens_cur))
+                    gens_cur = None
+                else:
+                    mt = re.search(r'\bt=(\d+)', line)
+                    if mt:
+                        done.add(close(n, (int(mt.group(1)),)))
     print(f"n={n}: {len(done)} subgroups already decided by DFS", flush=True)
 
     units = [t for t in range(1, n) if gcd(t, n) == 1]

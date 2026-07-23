@@ -1,0 +1,63 @@
+n=117: 35 subgroups already decided by DFS
+n=117: 47 subgroups, m range 6..65
+DONE-SKIP gens=(29, 31) m=6 (DFS-exhausted)
+DONE-SKIP gens=(4, 5) m=8 (DFS-exhausted)
+DONE-SKIP gens=(7, 53) m=8 (DFS-exhausted)
+DONE-SKIP gens=(8, 29) m=8 (DFS-exhausted)
+DONE-SKIP gens=(4, 17) m=9 (DFS-exhausted)
+DONE-SKIP gens=(4, 31) m=10 (DFS-exhausted)
+DONE-SKIP gens=(19, 53) m=10 (DFS-exhausted)
+DONE-SKIP gens=(2,) m=12 (DFS-exhausted)
+DONE-SKIP gens=(5, 31) m=12 (DFS-exhausted)
+DONE-SKIP gens=(20,) m=12 (DFS-exhausted)
+DONE-SKIP gens=(4, 29) m=13 (DFS-exhausted)
+DONE-SKIP gens=(16, 17) m=13 (DFS-exhausted)
+DONE-SKIP gens=(43, 53) m=13 (DFS-exhausted)
+DONE-SKIP gens=(7,) m=14 (DFS-exhausted)
+DONE-SKIP gens=(58,) m=14 (DFS-exhausted)
+DONE-SKIP gens=(71,) m=14 (DFS-exhausted)
+DONE-SKIP gens=(4, 10) m=15 (DFS-exhausted)
+DONE-SKIP gens=(10, 53) m=15 (DFS-exhausted)
+DONE-SKIP gens=(29, 40) m=15 (DFS-exhausted)
+DONE-SKIP gens=(5,) m=18 (DFS-exhausted)
+DONE-SKIP gens=(19,) m=18 (DFS-exhausted)
+DONE-SKIP gens=(8, 53) m=20 (DFS-exhausted)
+DONE-SKIP gens=(31,) m=20 (DFS-exhausted)
+DONE-SKIP gens=(23,) m=21 (DFS-exhausted)
+DONE-SKIP gens=(38, 53) m=21 (DFS-exhausted)
+DONE-SKIP gens=(95,) m=21 (DFS-exhausted)
+DONE-SKIP gens=(4,) m=23 (DFS-exhausted)
+DONE-SKIP gens=(17,) m=23 (DFS-exhausted)
+DONE-SKIP gens=(29,) m=23 (DFS-exhausted)
+DONE-SKIP gens=(43,) m=23 (DFS-exhausted)
+DONE-SKIP gens=(68,) m=23 (DFS-exhausted)
+DONE-SKIP gens=(16, 40) m=25 (DFS-exhausted)
+DONE-SKIP gens=(35,) m=25 (DFS-exhausted)
+DONE-SKIP gens=(10,) m=27 (DFS-exhausted)
+DONE-SKIP gens=(8,) m=32 (DFS-exhausted)
+--- gens=(38,) |H|=6 m=33 timeout=3600s
+n=117 k=36 gens=[38] |H|=6 m=33 sizes=[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+pairs=528 base_vars=2178
+CNF: vars=24592 clauses=228460
+UNSAT n=117 k=36 gens=[38] m=33: no H-fixed CW exists
+--- gens=(25,) |H|=6 m=35 timeout=3600s
+n=117 k=36 gens=[25] |H|=6 m=35 sizes=[1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+pairs=595 base_vars=2450
+CNF: vars=42280 clauses=402672
+UNSAT n=117 k=36 gens=[25] m=35: no H-fixed CW exists
+--- gens=(53, 116) |H|=4 m=35 timeout=3600s
+n=117 k=36 gens=[53, 116] |H|=4 m=35 sizes=[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+pairs=595 base_vars=2450
+CNF: vars=27166 clauses=251753
+UNSAT n=117 k=36 gens=[53, 116] m=35: no H-fixed CW exists
+--- gens=(73,) |H|=4 m=36 timeout=3600s
+n=117 k=36 gens=[73] |H|=4 m=36 sizes=[1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+pairs=630 base_vars=2592
+CNF: vars=40140 clauses=380598
+UNSAT n=117 k=36 gens=[73] m=36: no H-fixed CW exists
+--- gens=(14,) |H|=6 m=39 timeout=3600s
+n=117 k=36 gens=[14] |H|=6 m=39 sizes=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+pairs=741 base_vars=3042
+CNF: vars=35260 clauses=328516
+UNSAT n=117 k=36 gens=[14] m=39: no H-fixed CW exists
+--- gens=(16,) |H|=3 m=41 timeout=3600s

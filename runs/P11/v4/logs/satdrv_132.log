@@ -1,0 +1,22 @@
+n=132: 14 subgroups already decided by DFS
+n=132: 31 subgroups, m range 12..99
+DONE-SKIP gens=(13, 17, 67) m=12 (DFS-exhausted)
+DONE-SKIP gens=(7, 23) m=13 (DFS-exhausted)
+DONE-SKIP gens=(7, 89) m=14 (DFS-exhausted)
+DONE-SKIP gens=(13, 23) m=14 (DFS-exhausted)
+DONE-SKIP gens=(17, 67) m=15 (DFS-exhausted)
+DONE-SKIP gens=(13, 17) m=16 (DFS-exhausted)
+DONE-SKIP gens=(5, 67) m=18 (DFS-exhausted)
+DONE-SKIP gens=(13, 67) m=18 (DFS-exhausted)
+DONE-SKIP gens=(35,) m=19 (DFS-exhausted)
+DONE-SKIP gens=(17,) m=20 (DFS-exhausted)
+DONE-SKIP gens=(7,) m=21 (DFS-exhausted)
+DONE-SKIP gens=(47,) m=21 (DFS-exhausted)
+DONE-SKIP gens=(5,) m=24 (DFS-exhausted)
+DONE-SKIP gens=(13,) m=24 (DFS-exhausted)
+--- gens=(31,) |H|=10 m=27 timeout=3600s
+n=132 k=81 gens=[31] |H|=10 m=27 sizes=[1, 1, 1, 1, 1, 1, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10, 10, 10, 10, 10, 10]
+pairs=351 base_vars=1458
+CNF: vars=35522 clauses=338953
+UNSAT n=132 k=81 gens=[31] m=27: no H-fixed CW exists
+--- gens=(25,) |H|=5 m=36 timeout=3600s
