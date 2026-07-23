@@ -19,3 +19,4 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P13 | queued | queued | queued | queued | queued |
 | P14 | queued | queued | queued | queued | queued |
 | P15 | queued | queued | queued | queued | queued |
+| P16 | **negative — no counterexample; both bounds tight only on regular bipartite (exhaustive n≤10 + quotient enum/anneal); see runs/P16/v1/NOTES.md** | queued | queued | queued | queued |
