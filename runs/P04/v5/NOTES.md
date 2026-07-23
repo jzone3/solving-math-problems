@@ -182,6 +182,26 @@ Suggested next escalations (for future runs): finish n=15 6-regular exhaustion
 sequence (8^k 6^(13−k)) via canonical augmentation rather than geng min/max degree;
 port HNS reduction lemmas (Theorem 2 (i)–(vii)) as a pre-filter to push full n=13.
 
-STATUS: negative / frontier-pushed — no counterexample found; exhaustive verification
-of Hajós' conjecture for all 6-regular graphs on n ≤ 14 (new beyond HNS's n ≤ 12),
-plus ~140M targeted graphs n=13–20 all satisfying the bound.
+## 7. Session extension (Jul 23): full n=15 6-regular exhaustion
+
+Orchestrator asked for a decisively larger frontier. Ran sweep15_driver.py (7-worker
+pool over geng slices 12–399/400, ~19h wall on 8 cores, ~1200 core-s/slice):
+
+- **ALL 1,470,293,675 connected 6-regular graphs on n=15 verified** (bound 7):
+  400/400 slices complete, every slice DONE with **0 escalations** — the validated
+  RLC greedy found a ≤7-cycle decomposition for every graph within 120 restarts;
+  CP-SAT was never needed. No counterexample.
+- Completeness cross-check: per-n totals of our geng enumeration — 367,860 (n=13),
+  21,609,300 (n=14), 1,470,293,675 (n=15) — match Meringer's published regular-graph
+  census (mathe2.uni-bayreuth.de/markus/reggraphs.html) EXACTLY, confirming the
+  sweeps covered the complete isomorphism classes.
+- Also ran {6,8}-degree exact-score annealers at n=15/16 (killed after ~1h to free
+  cores for the sweep; plateau at min-decomp 4, far below bounds 7).
+- Full slice log: logs/sweep15_full.log.
+
+STATUS: negative / frontier-pushed — no counterexample found; NEW EXHAUSTIVE FRONTIER:
+Hajós' conjecture verified for ALL connected 6-regular graphs on n ≤ 15
+(1.49 billion graphs; previous exhaustive knowledge was all Eulerian graphs n ≤ 12),
+plus ~140M targeted graphs n=13–20 (circulants, line graphs, multipartite, K_n minus
+2-factor unions, {6,8}-degree samples) all satisfying the bound, plus the Δ ≤ n−3
+dominating-vertex reduction via Lovász's odd-degree path theorem.
