@@ -129,3 +129,75 @@ STATUS: negative (frontier-pushed on the tooling side; no new record).
 - Distance to record remains enormous: T=42 needs >10^86 congruences —
   explicit-list search cannot reach it on any hardware; compressed
   recursive witnesses (hole-class counting) are the mandatory next step.
+
+---
+
+# PHASE 2 (resumed session): compressed hole-class counting + kill pool
+
+Executed the "next step" above in depth: replaced explicit hole lists with
+exact big-int per-class counting, plus the counting endgame that is the
+actual scaling mechanism of Nielsen (2009) / Owens (2014).
+
+## 8. The kill-pool formulation (new machinery)
+
+Key observation that removes the explicit-list wall entirely:
+
+- A hole (uncovered residue r mod M_l at level l) can be covered outright by
+  the single congruence r mod d for ANY divisor d | M_l with d >= T —
+  overlaps with other congruences are free; only DISTINCTNESS of moduli
+  constrains us. So leftover holes can be assigned distinct unused divisors
+  by pure counting (an injection suffices; any hole accepts any divisor).
+- Validity is a Hall-type matching condition; the usable divisor sets are
+  nested over levels (d | M_l => d | M_{l'}, l' > l), so Hall's theorem
+  reduces to prefix inequalities
+      kills(<= l) <= #{d | M_l : d >= T} - #{structured moduli dividing M_l}.
+- Witness = structured recipe + per-level kill counts; verifier replays the
+  exact counting semantics and checks the prefix inequalities. This makes
+  Nielsen/Owens-scale systems (10^50+ congruences) certifiable with
+  kilobyte-size witnesses.
+
+Sustainability lemma (why the mechanism is right): if at some level the
+hole count h and pool P satisfy h <= P/(q-1) for the next prime q, then
+killing all but one child of each hole keeps h constant while P roughly
+doubles per new prime — the construction then completes greedily. The
+entire difficulty is the BOOTSTRAP: reaching h <= P/(q-1) at all, which
+requires a near-exact aligned "core" cover over the smooth part of N (the
+hand-crafted heart of Krukenberg 1971 / Nielsen 2009 / Owens 2014).
+
+## 9. Implementations
+
+- runs/P15/v4/cover3.py — counting builder, single residue window mod C
+  (int64-bounded); found the int64 window ceiling destroys alignment.
+- runs/P15/v4/cover4.py — CRT-COMPONENT representation (class = vector of
+  residues mod p^e per window prime): no magnitude ceiling, exact counts,
+  survivor-branch alignment, pool kills with Hall headroom; JSON recipes.
+- solutions/P15/verify3.py, verify4.py — standalone stdlib verifiers that
+  REPLAY the recipes exactly (split/cover/truncate/kill), independently
+  recompute all counts, and check the Hall prefix inequalities; print PASS.
+- runs/P15/v4/feas2.py — optimistic trajectory model. Its key (initially
+  surprising) output: with UNALIGNED (density-random) coverage, even
+  perfect greedy diverges for every T >= 13 and every config tried — proof
+  that ALIGNMENT (holes concentrated in sparse sublattices where moduli
+  cover far more than their 1/m density) is not an optimization but the
+  load-bearing mechanism.
+
+## 10. Phase-2 results (all machine-verified)
+
+- End-to-end compressed pipeline validated: cover4 + verify4 PASS on
+  T=3 (N = 2^2·3^2·5·7, 22 structured congruences + 3 pool kills — kills
+  exercised and verified), T=6 (N = 2^3·3^2·5^2·7^2·11·13, 185 congruences),
+  T=8 (N = 2^4·3^3·5^3·7^2·11^2·13^2, 714 congruences; the last 19,626
+  aligned classes were wiped by 10 congruences — alignment leverage
+  in action).
+- T=10/12/13 counting attempts: hole growth still outruns the pool
+  (holes ~1e7 vs pool ~1e3 mid-run) — the single-prime level decomposition
+  is measurably weaker than the prime-power levels + survivor cleanup of
+  the phase-1 explicit builder, which solved T=10/12 outright.
+- Conclusion sharpened: the bottleneck is not representation (solved by
+  counting) nor endgame (solved by kills) but CORE ALIGNMENT QUALITY.
+  Beating 42 needs an Owens-style machine-optimized exact core (per-level
+  ILP/DP over aligned residue trees), then the kill pool scales it to any
+  divisor-rich N. That is a well-posed, promising follow-up.
+
+STATUS: negative (no >= 43; compressed-witness machinery built, validated,
+and pushed as the new tooling frontier).
