@@ -1,0 +1,19 @@
+name = "P06"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["P06"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = false
+weak.linter.style.header = false
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.0"
+
+[[lean_lib]]
+name = "P06"
