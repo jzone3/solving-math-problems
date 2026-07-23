@@ -257,10 +257,37 @@ counterexample**, but the problem is now reduced to sharply characterized cores.
   with (δ,Δ) ∈ {(2,5),(2,6),(3,6),(3,7)}, 6 spider trees, and leaf-heavy small
   graphs; sharpest path documented in childE/PROOF44.md §5.
 
-Final status after three rounds (5 child sessions + this session): Bounds 44 and 46
+## 9. Round 4 (children F, G, H): attacking the finite targets
+
+- `runs/P16/v2/childF/` (prove D1): **Theorem F3 proved** — for a diagonal D,
+  M := 2D+4I−Q−DHD ⪰ 0 implies K ⪰ 0 (D1), via per-edge Young inequality on (†),
+  tight on the equality manifold. **New Conjecture F2** (with σ = d+m−4):
+  M(G) ⪰ 0 for all connected δ≥2 graphs — an n×n vertex-space Z-matrix statement
+  (equivalently: ∃h>0 with (Q+DHD)h ≤ (2σ+4)h), verified exhaustively at
+  n ≤ 10 (9.8M δ≥2 graphs, 0 failures) + random to n≈120. So the chain is now
+  F2 ⇒ D1 ⇒ Bound 46 (δ≥2), reducing an E-dim PSD problem to an n-dim
+  Collatz–Wielandt target. No closed-form ground state h found yet (h = d works
+  on all but 627/8025 graphs n ≤ 8).
+- `runs/P16/v2/childG/` (leaf case of 46): **Lemma G1 proved** (exact Schur
+  pendant elimination): μ(G) ≤ t ⟺ λ_max(L(H) + (t/(t−1))diag(ℓ)) ≤ t — the
+  δ=1 case is exactly a diagonally-loaded δ≥2 problem. Theorem G2 (leaf-aware
+  Merris) covers 85% of leafy n=9 graphs unconditionally; black-box uses of
+  Hypothesis D provably fail (explicit certificates) — the injection point is
+  Lemma G1's loaded eigenvalue problem.
+- `runs/P16/v2/childH/` (Bound 44 residue): Lemmas H1/H1'/H2 + Corollary H3
+  proved (second-order CW with shifted-sum weights, exact linear-in-c
+  feasibility). **Conjecture H** (first ∪ second-order shifted-sum certificates
+  cover every graph) verified with ZERO failures on all 11,989,762 connected
+  graphs n ≤ 10 and 204,994 trees n ≤ 18, incl. exact Fraction recheck of the
+  198 hard graphs. Bound 44 is now reduced to Conjecture H. (Parent-session
+  datum: second-order alone is NOT universal — 2,123 failures n ≤ 9 — only the
+  union is conjecturally universal.)
+
+Final status after four rounds (8 child sessions + this session): Bounds 44 and 46
 remain OPEN. All evidence (exhaustive to n=10/n=11-windows, ~10⁸ structures, exact
 perturbation series, PSD verification) indicates both bounds are TRUE, with equality
-exactly on regular bipartite graphs. The two crisply-stated finite targets that
-would finish a proof are: (i) Conjecture D1 (K ⪰ 0, δ≥2) + a leaf induction with a
-strengthened hypothesis, for Bound 46; (ii) closing the 190-graph residue of the
-E1/ψ certificate program for Bound 44.
+exactly on regular bipartite graphs. The sharpest remaining targets after round 4:
+(i) Conjecture F2 (vertex-space CW target, ⇒ D1 ⇒ Bound 46 δ≥2) plus injecting
+Hypothesis D into Lemma G1's diagonally-loaded problem for the leaf case;
+(ii) Conjecture H (union of first/second-order shifted-sum certificates) for
+Bound 44 — verified to n = 10 / trees n = 18 with zero failures.
