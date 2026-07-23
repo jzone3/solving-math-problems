@@ -146,6 +146,110 @@ def all_dicuts(n, arcs):
     return dicuts
 
 
+def _dinic(nv, cap_edges, s, t):
+    """Max flow (Dinic). cap_edges: list of (u, v, cap). Returns flow value."""
+    graph = [[] for _ in range(nv)]
+    for (u, v, c) in cap_edges:
+        graph[u].append([v, c, len(graph[v])])
+        graph[v].append([u, 0, len(graph[u]) - 1])
+    flow = 0
+    INF = float("inf")
+    while True:
+        level = [-1] * nv
+        level[s] = 0
+        q = [s]
+        for u in q:
+            for e in graph[u]:
+                if e[1] > 0 and level[e[0]] < 0:
+                    level[e[0]] = level[u] + 1
+                    q.append(e[0])
+        if level[t] < 0:
+            return flow
+        it = [0] * nv
+
+        def dfs(u, f):
+            if u == t:
+                return f
+            while it[u] < len(graph[u]):
+                e = graph[u][it[u]]
+                if e[1] > 0 and level[e[0]] == level[u] + 1:
+                    d = dfs(e[0], min(f, e[1]))
+                    if d > 0:
+                        e[1] -= d
+                        graph[e[0]][e[2]][1] += d
+                        return d
+                it[u] += 1
+            return 0
+
+        while True:
+            f = dfs(s, INF)
+            if f == 0:
+                break
+            flow += f
+
+
+def min_dicut_flow(n, arcs):
+    """tau via s-t min cuts on the condensation, valid for any size.
+    An ideal U (no arc entering U) leaving delta+(U) arcs corresponds to an
+    s-t cut in the network with arc (a,b) capacity = multiplicity (cost of
+    a in U, b out) plus reverse arc (b,a) capacity inf (forbids b in U, a
+    out).  U must contain a source component and miss a sink component, so
+    it suffices to scan (source, sink) pairs.  Returns None if strongly
+    connected."""
+    comp, k, dag_arcs = condensation(n, arcs)
+    if k == 1:
+        return None
+    mult = {}
+    for (u, v) in arcs:
+        a, b = comp[u], comp[v]
+        if a != b:
+            mult[(a, b)] = mult.get((a, b), 0) + 1
+    indeg = [0] * k
+    outdeg = [0] * k
+    for (a, b) in mult:
+        outdeg[a] += 1
+        indeg[b] += 1
+    sources = [c for c in range(k) if indeg[c] == 0]
+    sinks = [c for c in range(k) if outdeg[c] == 0]
+    INF = 10 ** 9
+    edges = []
+    for (a, b), c in mult.items():
+        edges.append((a, b, c))
+        edges.append((b, a, INF))
+    best = None
+    for s in sources:
+        for t in sinks:
+            if s == t:
+                continue
+            f = _dinic(k, list(edges), s, t)
+            if best is None or f < best:
+                best = f
+    return best
+
+
+def seed_dicuts(n, arcs):
+    """A small set of dicuts (source-component ideals and sink-component
+    complements) to seed the packing ILP when full enumeration is
+    infeasible."""
+    comp, k, dag_arcs = condensation(n, arcs)
+    if k == 1:
+        return []
+    indeg = [0] * k
+    outdeg = [0] * k
+    for (a, b) in set(dag_arcs):
+        outdeg[a] += 1
+        indeg[b] += 1
+    cuts = set()
+    for c in range(k):
+        if indeg[c] == 0:
+            cuts.add(frozenset(i for i, (u, v) in enumerate(arcs)
+                               if comp[u] == c and comp[v] != c))
+        if outdeg[c] == 0:
+            cuts.add(frozenset(i for i, (u, v) in enumerate(arcs)
+                               if comp[v] == c and comp[u] != c))
+    return [c for c in cuts if c]
+
+
 def min_dicut(n, arcs):
     """tau = min |dicut| over nonempty dicuts; None if strongly connected.
     Note: dicuts from ideals are exactly all dicuts; a dicut could be empty
@@ -201,6 +305,18 @@ def find_dicut_avoiding(n, arcs, arc_subset):
     return best
 
 
+def condense_multi(n, arcs):
+    """Contract strong components, KEEPING parallel arcs between components.
+    Dicuts of D are exactly dicuts of the condensation (arcs inside an SCC lie
+    in no dicut), and dijoin packings transfer both ways, so WLOG any Woodall
+    counterexample is a multi-DAG. Normalizing search states to condensations
+    collapses a huge amount of redundant search space."""
+    comp, k, _ = condensation(n, arcs)
+    new_arcs = tuple((comp[u], comp[v]) for (u, v) in arcs
+                     if comp[u] != comp[v])
+    return k, new_arcs
+
+
 # ---------------------------------------------------------------------------
 # packing via ILP with lazy dicut generation
 # ---------------------------------------------------------------------------
@@ -215,8 +331,11 @@ def pack(n, arcs, k, relax=False, time_limit=60, init_cuts=None):
     m = len(arcs)
     cuts = set(init_cuts or [])
     if not cuts:
-        # seed with all dicuts if cheap, else the source/sink ones
-        allc = all_dicuts(n, arcs)
+        # seed with all dicuts if cheap, else source/sink component cuts
+        try:
+            allc = all_dicuts(n, arcs)
+        except ValueError:
+            allc = seed_dicuts(n, arcs)
         if allc and len(allc) <= 2000:
             cuts = set(allc)
         else:
@@ -248,14 +367,15 @@ def pack(n, arcs, k, relax=False, time_limit=60, init_cuts=None):
                           "ncuts": len(cuts), "vals": vals}
         # integral: separate
         violated = False
+        cuts_in_model = frozenset(cuts)
         for j in range(k):
             J = [i for i in range(m) if (x[(i, j)].value() or 0) > 0.5]
             new_cut = find_dicut_avoiding(n, arcs, J)
             if new_cut is not None:
-                if new_cut in cuts:
-                    # shouldn't happen: cut in model but class misses it?
+                if new_cut in cuts_in_model:
+                    # cut was a model row yet the class misses it: solver bug
                     raise RuntimeError("separation returned known cut")
-                cuts.add(new_cut)
+                cuts.add(new_cut)  # may repeat across classes within a round
                 violated = True
         if not violated:
             classes = [[i for i in range(m) if (x[(i, j)].value() or 0) > 0.5]
@@ -268,7 +388,10 @@ def max_packing(n, arcs, tau=None, time_limit=60):
     """Return (tau, nu) with nu = max number of disjoint dijoins (capped at
     tau, since nu <= tau always)."""
     if tau is None:
-        tau = min_dicut(n, arcs)
+        try:
+            tau = min_dicut(n, arcs)
+        except ValueError:
+            tau = min_dicut_flow(n, arcs)
     if tau is None or tau == 0:
         return tau, None
     k = tau

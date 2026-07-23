@@ -12,6 +12,7 @@ the sorted arc multiset -- exact), and test every instance with tau in
 Usage: python3 multidag_exhaustive.py k mmax [tau_hi]
 """
 
+import hashlib
 import itertools
 import sys
 import time
@@ -34,13 +35,16 @@ def compositions(s, total_max, mult_max):
 
 
 def canon(k, arc_multiset):
+    """Exact canonical form, returned as a 16-byte digest to bound memory
+    (the earlier tuple-keyed set OOMed at ~1.5M instances). Collision odds
+    for 128-bit hashes over <10^8 items are < 1e-22 -- negligible."""
     best = None
     for perm in itertools.permutations(range(k)):
         key = tuple(sorted((perm[u], perm[v], c) for (u, v), c in
                            arc_multiset.items()))
         if best is None or key < best:
             best = key
-    return best
+    return hashlib.md5(repr(best).encode()).digest()
 
 
 def run(k, mmax, tau_hi=6, tau_lo=3):

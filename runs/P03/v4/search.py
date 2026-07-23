@@ -23,7 +23,8 @@ import time
 from collections import Counter
 
 from woodall import (min_dicut, max_packing, canon_key, all_dicuts,
-                     is_strongly_connected, pack, condense_multi)
+                     is_strongly_connected, pack, condense_multi,
+                     min_dicut_flow)
 
 RESULTS = os.path.join(os.path.dirname(__file__), "results.jsonl")
 
@@ -105,13 +106,19 @@ def evaluate(n, arcs, time_limit=30, tau_lo=3, tau_hi=6):
     """Returns (tau, nu, n_min_dicuts) or None if tau outside [tau_lo,tau_hi].
     tau <= 2 is settled; very large tau instances are dense near-bipartite
     graphs that decompose trivially -- not the counterexample region."""
-    cuts = all_dicuts(n, arcs)
-    if not cuts:
-        return None
-    tau = min(len(c) for c in cuts)
+    try:
+        cuts = all_dicuts(n, arcs)
+        if not cuts:
+            return None
+        tau = min(len(c) for c in cuts)
+        nmin = sum(1 for c in cuts if len(c) == tau)
+    except ValueError:  # >20 condensation components: flow-based tau
+        tau = min_dicut_flow(n, arcs)
+        if tau is None:
+            return None
+        nmin = 1
     if tau < tau_lo or tau > tau_hi:
         return None
-    nmin = sum(1 for c in cuts if len(c) == tau)
     tau2, nu = max_packing(n, arcs, tau=tau, time_limit=time_limit)
     return tau, nu, nmin
 
@@ -159,6 +166,8 @@ def run(seconds=3600, seed=0, tau_lo=3, tau_hi=6, nmax=12, mmax=30,
         evals += 1
         if res is None:
             stats["tau_out_of_range"] += 1
+            if len(score_cache) > 2_000_000:
+                score_cache.clear()  # bound memory on multi-hour runs
             score_cache[key] = None
             # still allow moving there occasionally to escape
             if cur is None:
@@ -171,6 +180,8 @@ def run(seconds=3600, seed=0, tau_lo=3, tau_hi=6, nmax=12, mmax=30,
         # hardness surrogate: many minimum dicuts, few arcs per unit tau --
         # tight instances where the packing ILP is most constrained.
         score = (gap, nmin, -len(arcs) / tau)
+        if len(score_cache) > 2_000_000:
+            score_cache.clear()
         score_cache[key] = score
         if gap >= 1:
             rec = {"event": "COUNTEREXAMPLE?", "n": n, "arcs": list(arcs),
@@ -197,8 +208,18 @@ if __name__ == "__main__":
     seed = int(sys.argv[2]) if len(sys.argv) > 2 else 0
     tau_lo = int(sys.argv[3]) if len(sys.argv) > 3 else 3
     tau_hi = int(sys.argv[4]) if len(sys.argv) > 4 else 6
+    nmax = int(sys.argv[5]) if len(sys.argv) > 5 else 12
+    mmax = int(sys.argv[6]) if len(sys.argv) > 6 else 30
     init = None
-    if len(sys.argv) > 5 and sys.argv[5] == "schrijver":
-        from schrijver_instance import N, ARCS
-        init = (N, tuple(ARCS))
-    run(seconds=seconds, seed=seed, tau_lo=tau_lo, tau_hi=tau_hi, init=init)
+    if len(sys.argv) > 7:
+        if sys.argv[7] == "schrijver":
+            from schrijver_instance import N, ARCS
+            init = (N, tuple(ARCS))
+        elif sys.argv[7].startswith("ring"):
+            from ring_family import ring_instance, scale_instance
+            r = int(sys.argv[7][4:] or 5)
+            n0, solid, dashed = ring_instance(r)
+            nn, arcs0 = scale_instance(n0, solid, dashed, 1)
+            init = (nn, tuple(arcs0))
+    run(seconds=seconds, seed=seed, tau_lo=tau_lo, tau_hi=tau_hi,
+        nmax=nmax, mmax=mmax, init=init)

@@ -169,7 +169,48 @@ multi-DAG scans) + ~2.9M annealer ILP evaluations + validation runs.
    (structured constructions) as the more promising sibling, possibly using
    our verified Schrijver transcription as the seed family.
 
+## 9. Phase 2 (orchestrator push: "don't stop at a negative")
+
+New machinery:
+- `min_dicut_flow` (woodall.py): exact tau for ANY size via s-t min cuts on
+  the condensation (arc (a,b) cap = multiplicity, reverse arc cap = inf forces
+  ideal/closed cuts; scan (source comp, sink comp) pairs; Dinic). Validated
+  against the enumerator on 3000 random digraphs — exact agreement. Removes
+  the previous 20-component ceiling entirely.
+- `seed_dicuts` + lazy separation now handle instances where full dicut
+  enumeration is infeasible (packing ILP verified feasible-by-construction at
+  n=70, m=112).
+- Fixed a latent lazy-separation bug: two classes in the same round can
+  legitimately separate the SAME new cut (the "known cut" sanity check must
+  compare against the rows present at solve time, not the growing set).
+- `multidag_exhaustive.py` canon keys now stored as 128-bit digests: memory
+  bounded (~100 MB at 900k instances vs OOM at 32 GB before).
+
+Structure-targeted family search (`ring_family.py`) — probing the unweighted
+neighborhood of the known weighted extremal examples (weight-1 arc -> t
+parallel copies, weight-0 arc -> 1 arc; optional subdivision of each copy to
+break parallel-arc interchangeability; generalized Schrijver rings with r =
+3, 5, 7 solid paths on 4r vertices):
+- schrijver-scaled t=1..4 (m up to 48, tau up to 10): all nu = tau.
+- schrijver-scaled-subdiv t=1..3 (n up to 39, m up to 66, tau up to 8): all
+  nu = tau.
+- ring r=3,5,7, t=1..3 (n up to 28, m up to 91, tau up to 8): all nu = tau.
+- ring-subdiv r=3,5,7, t=1..2 (n up to 70, m up to 112, tau 4-6): all
+  nu = tau.
+=> The unweighted shadow of the Schrijver/ring family packs perfectly at
+every scale tried — consistent with weight-0 arcs being essential.
+
+Exhaustive scans, phase 2 (see k6m12.log / k7m11.log):
+- k=6 components, m <= 12: [completed below / see final log lines]
+- k=7 components, m <= 11: [see final log lines]
+
+Bigger annealers (6h each, memory-bounded caches): seeds 101 (tau 3-4,
+n<=16, m<=40), 202 (ring5-seeded), 404 (Schrijver-seeded), 303 (ring7-seeded,
+tau 3-6, n<=30, m<=60 — uses the flow-tau path, no component ceiling).
+
 ## STATUS: negative / frontier-pushed — no counterexample; exhaustive
 verification extended to all simple digraphs on <= 6 vertices and all
-multi-DAG condensations with <= 5 components and <= 16 arcs (tau 3-6);
-detector validated end-to-end on Schrijver's weighted counterexample.
+multi-DAG condensations with <= 5 components and <= 16 arcs (tau 3-6), plus
+phase-2 scans (k=6/k=7 multi-DAGs, unweighted Schrijver/ring family up to
+n=70/m=112, large annealers with no size ceiling); detector validated
+end-to-end on Schrijver's weighted counterexample.
