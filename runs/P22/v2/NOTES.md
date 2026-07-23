@@ -160,6 +160,50 @@ invariant under any nontrivial automorphism**. Independent re-verifier:
 - Logs: `kissat_plain.log`, `kissat_sb.log`, `walk_*.log`,
   `cnc_d16_sample.log`, `cnc_inv2*.log`, `kissat_inv2.log`.
 
+## 6b. Resumed run (second wave)
+
+The session was resumed with instructions to push harder. Additional work:
+
+- **Priority re-check** (fresh Exa searches, incl. "solved/certificate/2026"
+  angles): still no resolution of G₁₂₇ → (3,3)ᵉ anywhere. The strongest
+  related results remain LRX 2012 (Fe(3,3;4) ≤ 786 via G₇₈₆ MAX-CUT) and the
+  2025/26 papers; none touch the G₁₂₇ decision.
+- **Star-branching hardness measurement** (`scaling.py`): fix the colors of
+  k of the 42 star edges at vertex 0 uniformly at random and run kissat.
+  Result: k = 25, 30, 35 (3/3 each TIMEOUT at 240 s), k = 38 (4/4 at 300 s)
+  and even k = 41 — all free star edges fixed — (6/6 at 300 s, 3/3 at 240 s)
+  all give instances kissat cannot refute within the limit. So a
+  cube-and-conquer tree over the full star (the natural "orbit
+  representative" cube set, 2⁴¹/84 classes after Stab(0)×flip reduction)
+  would cost ≳ 2⁴¹/84 · 300 s ≈ 8·10¹² core-seconds ≈ 2.5·10⁵ core-years.
+  Star-edge cubing is quantitatively hopeless, matching the march_cu picture.
+  - Cautionary bug note: a first version of this experiment (and of
+    `star_tree.py`) produced spurious instant "UNSAT" because random cubes on
+    var 1 clashed with the unit clause `1 0` already in `plain.cnf`, and
+    (in `star_tree.py`) because a red-unit clause contradicted the flip
+    lex-leader constraint, which forces var(0,1)=False. Both are fixed in the
+    committed versions; no claim was based on the buggy runs.
+- **UP-only star DFS** (`star_dfs.c`): unit propagation over the triangle
+  clauses can never refute a star-only assignment — triangles inside N(0)
+  would be K₄s through 0, and G₁₂₇ is K₄-free, so the forced N(0)-internal
+  edges never interact. 176M nodes, 0 conflicts. This explains *why* the
+  instance resists top-level cubing: all shallow pruning must come from deep
+  CDCL reasoning, not propagation.
+- **BreakID + parallel CDCL**: BreakID (krr/breakid) on the unit-free base
+  formula detects 6 generators (the full 2·5334 group incl. flip) and adds
+  6084 sound lex-leader clauses (`breakid_out.cnf`, 2917 vars, 25642
+  clauses). gimsatul 1.1.3 (4 threads each) ran on `sb.cnf` and
+  `breakid_out.cnf` for hours: no termination, no progress signal. Consistent
+  with everything above.
+- **SAT-side improvement**: continued focused-walk runs improved the best
+  known coloring from 242 to **232 monochromatic triangles** (out of 9779) —
+  i.e. ≥ 9547 triangles simultaneously bichromatic, still 232 short of a
+  counterexample. The plateau structure (many restarts stuck at ~232–245)
+  continues to support the arrowing conjecture.
+
+Bottom line unchanged: G₁₂₇ → (3,3)ᵉ remains undecided; the quantitative
+hardness estimates above are now measured, not guessed.
+
 ## 7. Compute spent
 
 ~8 cores for ~4.5 h: 2 × kissat CDCL on the main instance (68/63 min + extra),

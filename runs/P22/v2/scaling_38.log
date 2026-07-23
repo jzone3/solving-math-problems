@@ -1,0 +1,4 @@
+k=38 trial=0: TIMEOUT 300.0s
+k=38 trial=1: TIMEOUT 300.1s
+k=38 trial=2: TIMEOUT 300.0s
+k=38 trial=3: TIMEOUT 300.0s
