@@ -72,3 +72,12 @@ multiplicity counts, column sums, all pairwise inner products = L; prints PASS/F
 - 00:45 UTC relaunch (12h budgets): nosym × 3 UNSAT candidates; i14-28 sym; kissat with
   DRAT proof logging for i14-18/i12-15/i12-20 (to certify UNSAT with drat-trim);
   CP-SAT independent model on (12,15) (earlier CP-SAT run died silently, restarted).
+
+- 02:04 UTC: drat-trim gotcha: our CNFs carry `c map ...` comment lines after the header;
+  drat-trim misparses those and reports a bogus instant "c trivial UNSAT / s VERIFIED".
+  Detected (fresh kissat couldn't reproduce an instant UNSAT), stripped comments
+  (grep -v '^c'), re-ran real checks.
+- 02:20–03:30 UTC: real DRAT verification: i12-15 **s VERIFIED** (2573s),
+  i12-20 **s VERIFIED** (2570s); i14-18 still checking.
+  Note: original kissat solve times were only ~1–10 min per instance (mtimes show
+  i12-15.out done at 20:36, proofs at 00:44–00:48 within minutes of relaunch).
