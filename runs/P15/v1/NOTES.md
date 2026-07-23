@@ -160,12 +160,16 @@ past where we stopped (our machine frontier was M=6; literature is 42).
     The decisive factor is again slack: at N=518918400 (recip 1.71) the
     jittered lazy-greedy init already converges and M=15 fell in minutes:
   - M=15: N=518918400, 1066 congs (PASS verify.py, witnesses_small/).
-  - M=16: N=518918400 stalls at ~215k uncovered after hours of walk;
-    N=1102701600 (recip 1.87, includes prime 17) has ~3h init cost per
-    seed at 1.1e9 cells (see final status for outcome). The array-based
-    LS family runs out of memory-feasible N around M~16-17; beyond that
-    a CRT/tree-structured representation (Krukenberg/Nielsen-style) is
-    required.
+  - M=16: NOT reached. Best greedy init 258k uncovered at N=518918400
+    (walk closed only ~40k in ~5 h); N=1102701600 (recip 1.87, includes
+    prime 17) has ~2-3h init cost per seed at 1.1e9 cells and inits came
+    out at 3.2-5.3M uncovered (near-max jitter sets are huge at big N, so
+    early residue choices are nearly random); init_frac sweep
+    (0.85/0.9/0.95/0.98/0.99) gave 0.5M-9.7M — all hopeless for walk
+    closure at ~10-30 cells/min. The array-based LS family effectively
+    tops out at M=15 on 32 GB; beyond that a CRT/tree-structured
+    representation (Krukenberg/Nielsen-style layered construction) is
+    required, not more seeds.
   Key lesson vs the 600s M=7 failure at N=10080: feasibility needs SLACK
   (recip >= ~1.7), i.e. much larger N than minimal — the earlier fixed
   small-N attempts were starved, not the search algorithm.
@@ -179,15 +183,21 @@ past where we stopped (our machine frontier was M=6; literature is 42).
 * second push: SAT ~30 min; fc_restart fleets (M=7-9) ~6 h CPU across up
   to 6 parallel processes; fc_anneal fleets (M=10-16) ~20 h CPU across
   up to 10 parallel processes over ~5 h wall.
+* third push (walk engines): ~40 h CPU across up to 8 parallel processes
+  over ~8 h wall (M=15 success at N=518918400; M=16 seed/jitter sweeps
+  negative; two ~2h+ inits at N=1.1e9 negative).
 
 ## 7. STATUS
 
 STATUS: negative (for min modulus >= 43); machine frontier pushed from
-min modulus 6 to min modulus 14: verified explicit covers (PASS by
-solutions/P15/verify.py) for every M in 3..14, culminating in M=14 with
-616 congruences over N=129729600 via ruin-and-recreate lazy-greedy local
-search with parallel seed fleets. M=15/16 plateau (~23k cells at
-N=129729600) documented; SAT encoding documented dead end; recursive
+min modulus 6 to min modulus 15: verified explicit covers (PASS by
+solutions/P15/verify.py) for every M in 3..15, culminating in M=15 with
+1066 congruences over N=518918400 via WalkSAT-style reassignment local
+search (fc_walk2) on top of jittered lazy-greedy initialization. The
+walk engine breaks the fc_anneal 23k plateau at N=129729600 (down to
+~8k) but M=15 ultimately fell via a richer-slack N. M=16 documented
+negative for the whole array-based LS family (init quality collapses at
+big N; see 5b); SAT encoding documented dead end; recursive
 registry-greedy builder documented dead end; best path to 43 remains the
 Owens-42-class surgery with fresh primes 97/101 (Section 5), which needs
 a faithful Owens Ch.3 transcription as its remaining step.

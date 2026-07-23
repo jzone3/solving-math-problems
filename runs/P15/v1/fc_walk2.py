@@ -30,7 +30,7 @@ def divisors(n):
 
 
 class Walk:
-    def __init__(self, M, N, rng):
+    def __init__(self, M, N, rng, init_frac=0.95):
         self.N = N
         self.rng = rng
         self.mods = [d for d in divisors(N) if d >= M and d > 1]
@@ -44,7 +44,7 @@ class Walk:
             g = int(c.max())
             if g == 0:
                 return 0.0, int(rng.integers(n))
-            near = np.flatnonzero(c >= max(1, int(g * 0.95)))
+            near = np.flatnonzero(c >= max(1, int(g * init_frac)))
             a = int(near[rng.integers(len(near))])
             return g / n, a
 
@@ -180,8 +180,9 @@ def main():
     total = int(sys.argv[3]) if len(sys.argv) > 3 else 3600
     seed = int(sys.argv[4]) if len(sys.argv) > 4 else 1
     thresh = int(sys.argv[5]) if len(sys.argv) > 5 else 30000
+    init_frac = float(sys.argv[6]) if len(sys.argv) > 6 else 0.95
     rng = np.random.default_rng(seed)
-    w = Walk(M, N, rng)
+    w = Walk(M, N, rng, init_frac)
     ok = w.run(total, thresh)
     if ok:
         congs = sorted(((a, n) for n, a in w.assign.items()),
