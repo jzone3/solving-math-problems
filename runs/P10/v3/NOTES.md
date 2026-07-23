@@ -113,8 +113,38 @@ a9d51e48dbee4aad92d3a4d39efd5d00, 70df3f75f44c4b549983ed3a5b04bf95,
 9d99c86f4d194acfb7a6a075bad07b10, f1c86115ebbc4a7d854008b1b63f6ede,
 5416463bf875462a9e98271f06f2982d, b7d094c030f946ab939ef3d44de1f614
 
-(results appended below when shards report)
+### Results — COMPLETE, zero violations (frontier pushed to n = 12)
+
+All 12 children completed; all 96 subshard summaries collected (branches
+runs/P10-v3-n12-r0..r11; copies in `n12/`). Aggregate:
+
+- Total graphs processed: **165,091,172,592** — exactly A000088(12); no shard loss.
+- Eigensolved: 164,324,762,231 (GMB prune ~0.46%). Near-misses: **0**. Violations: **0**.
+- Max float margin over eigensolved graphs, t ∈ {3,4,5}: **−0.663668039**.
+  Trend of closest approach: −0.727 (n=8) → −0.703 (n=9) → −0.686 (n=10) → −0.673 (n=11)
+  → −0.664 (n=12): drifting toward 0 extremely slowly — no hint of a small counterexample.
+- Cross-check at n=12: 454,917 sampled graphs (subshards of edge-slices 20:25 and 30:36)
+  run through BOTH the C pipeline and the independent verify2.py (all t ∈ 1..12): agreement,
+  0 violations, exact equality attained at t=4 (`K????Bw~Nx~v`, split-type, as expected).
+- Compute: ~24 h core-time (12 sessions × 8 cores × ~2.5–4 h), ~1.66×10¹¹ graphs at
+  ~1.2 M graphs/s/core through geng + GMB prune + LAPACK dsyev.
+
+⇒ **Brouwer's conjecture verified exhaustively for ALL graphs on ≤12 vertices** — pushes
+the exhaustive frontier two levels past Brouwer's published n ≤ 10.
+
+## 5. Dead ends / notes for other variants
+
+- GMB conjugate-degree prune is weak here (0.2–0.5%): the Brouwer bound is far below the
+  GMB bound on typical graphs; pruning only skips split-like graphs where GMB is tight.
+- Dual GMB prune (Bai on the complement at t' = n−1−t): zero additional prunes — dead end.
+- All observed equality cases are split-type graphs (consistent with arXiv:2607.17293's
+  equality characterization); none perturbs into a violation at n ≤ 12 (V2's territory).
+- n=13 (≈ 5×10¹³ graphs) would need ~300× this compute — out of reach for this method
+  without a much stronger prune.
 
 ## STATUS
 
-(final line appended at end of session)
+STATUS: frontier-pushed — no counterexample; Brouwer's conjecture machine-verified
+exhaustively for all graphs on n ≤ 12 vertices (previous exhaustive frontier: n ≤ 10);
+1.66×10¹¹ + 1.02×10⁹ graphs checked, 0 violations, closest float margin −0.6637;
+results double-checked by an independent full-t verifier on n ≤ 10 and n=12 samples.
