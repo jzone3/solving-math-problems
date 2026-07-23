@@ -71,6 +71,10 @@ These give a very strong filter; the search below only SAT-checks digraphs meeti
 | smoke search2 | n 8–12, 3 min | 3 min | 3260 | 0 |
 | search2 ×7 seeds 11–17 | n ranges 6–9 … 12–16, 150 min each (parallel) | 17.5 core-h | 409,679 | 0 |
 | search3 (min-#colorings anneal) seed 21 | n 8–13, 150 min | 2.5 core-h | 339,194 | 0 (min colorings never dropped below cap 600) |
+| search2 seeds 31 (n 7–10) & 32 (n 6–8), search3 seed 33 (n 7–10) | 75–90 min each | ~4 core-h | 67,127 + 224,049 | 0 |
+
+Total randomized-search SAT decisions on fully-filtered multigraph candidates
+(parallel arcs allowed, the slice nauty can't cover): **~1.04M, all packable (0 UNSAT).**
 
 (long runs appended below)
 
@@ -104,7 +108,37 @@ counterexamples.** TOTAL = 515,858,293 digraphs; ρ≥4 pass = 64,939,394; τ=3�
 3,483,663; additionally not-ss-connected = **14**; all 14 SAT-checked packable.
 (Per-chunk totals in log_exh3_n8_c*.txt; chunk sums verified = 515,858,293.)
 
-n = 7, ALL simple digraphs incl. 2-cycles (≈882M), τ=3-targeted: running in 8 chunks
-(log_exh3_n7full_c*.txt) — closes the n=7 gap for simple digraphs; results below.
+n = 7, ALL simple digraphs incl. 2-cycles, τ=3-targeted (exhaustive3.py, 8 chunks, no
+planarity filter — only ACZ ρ≥4 + τ=3 + not-ss-connected): **DONE, 0 counterexamples.**
+TOTAL = 880,471,142 digraphs; ρ≥4 = 34,092,680; τ=3∧ρ≥4 = 264,454; additionally
+not-ss-connected = **0** — i.e. no τ=3 simple digraph on 7 vertices even satisfies the
+necessary conditions (ACZ + Schrijver) for a counterexample.
 
-## STATUS: (running)
+## 6. Final frontier statement
+
+Assuming only the published safe-class theorems (ACZ 2022/23 ρ≤3 cases; Schrijver 1982 /
+Feofiloff–Younger 1987 source-sink connected; Lucchesi–Younger planar):
+
+1. **Unconditional exhaustion**: Woodall's conjecture (all τ) holds for every simple digraph
+   (2-cycles allowed) on ≤ 6 vertices (1,540,406 digraphs up to iso) and for every oriented
+   digraph on 7 vertices (2,120,098).
+2. **τ=3-targeted exhaustion**: there is NO τ=3 counterexample among ANY simple digraph on
+   ≤ 7 vertices (880M scanned at n=7), nor among any oriented (2-cycle-free) simple digraph
+   on 8 vertices (515.9M scanned; planar-underlying instances excluded as LY-safe).
+3. Hence any τ=3 counterexample requires **n ≥ 8 with 2-cycles or parallel arcs, or n ≥ 9**.
+4. Randomized multigraph search (parallel arcs allowed, n 6–16, ~24 core-hours, ~1.04M
+   fully-filtered candidates SAT-decided): 0 unpackable instances; the min-#colorings
+   annealer never got below 600 colorings — no near-miss pressure anywhere.
+
+Dead ends / notes:
+- The binding constraint is the conjunction τ=3 ∧ ρ≥4 ∧ ¬ss-connected: at n=7 it is
+  EMPTY over simple digraphs, and at n=8 (oriented nonplanar) only 14 of 515.9M instances
+  satisfy it — and all pack trivially. A counterexample, if it exists, seems to need
+  parallel-arc structure (as in Schrijver's weighted example) — that direction is V2's
+  subdivision-seed territory; our random multigraph searches (which do duplicate arcs)
+  found no pressure either.
+- search3's model-count gradient saturated at the cap (600): the filtered class is nowhere
+  near UNSAT; local search cannot see a gradient.
+- No verify.py/solutions artifact: nothing to verify — no witness found.
+
+## STATUS: negative / frontier-pushed — no τ=3 counterexample with n≤7 (simple, any) or n=8 (oriented); ~1.04M filtered multigraph candidates + 1.4B nauty-enumerated digraphs scanned, 0 UNSAT.
