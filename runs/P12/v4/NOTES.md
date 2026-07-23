@@ -122,8 +122,14 @@ to completion. UNSAT for all F certifies NO valid T2(11) agrees with the incumbe
 | 3 | 165 | all UNSAT | ~5 min |
 | 4 | 330 | all UNSAT | ~10 min |
 | 5 | 462 | all UNSAT | ~9 min |
-| 6 | 462 | running | — |
+| 6 | 462 | all UNSAT | ~7 h (8 kissat jobs) |
+| 7 | 330 | running (6 h/subset cap) | — |
+
+k=6 completion certifies: **no valid T2(11) agrees with the cost-7 incumbent on any 5 of
+its 11 rows.** Combined with all smaller k, the incumbent is ≥7 row-replacements away from
+any solution (if one exists).
 
 STATUS: negative (no T2(11)/T2(13) witness, no nonexistence proof; frontier data: robust
-min-violation floors 7 @ n=11 and 12 @ n=13; certified: no T2(11) shares ≥6 rows with the
-plateau incumbent (k≤5 exhausted UNSAT); cost-7 partials published for seeding).
+min-violation floors 7 @ n=11 and 12 @ n=13; certified: no T2(11) shares ≥5 rows with the
+plateau incumbent (k≤6 exhausted UNSAT, 1474 kissat UNSAT verdicts); cost-7 partials
+published for seeding).
