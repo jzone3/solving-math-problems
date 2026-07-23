@@ -238,13 +238,13 @@ already cataloged. Those are not repeated here.
   artifact means the low-vertex frontier is claimed — start above it.
 - **Impact 4 × Feasibility 4 (audit risk noted).**
 
-## C9. Football pool problem for 6 matches — K₃(6,1) ∈ [65, 73]
+## C9. Football pool problem for 6 matches — K₃(6,1) ∈ [71, 73]
 
 - **Statement.** Minimum size of a ternary covering code of length 6, radius 1:
-  65 ≤ K₃(6,1) ≤ 73. Upper 73: Wille 1987 (simulated annealing), JCTA 44; lower 65:
+  71 ≤ K₃(6,1) ≤ 73. Upper 73: Wille 1987 (simulated annealing), JCTA 44; lower 71:
   Linderoth–Margot–Thain, INFORMS J. Comput. 21 (2009), doi:10.1287/ijoc.1090.0334, TR PDF:
-  https://jlinderoth.github.io/papers/Linderoth-Margot-Thain-07-TR-2.pdf (prior 64:
-  Östergård–Wassermann, JCTA 99 (2002), doi:10.1006/jcta.2002.3260).
+  https://jlinderoth.github.io/papers/Linderoth-Margot-Thain-07-TR-2.pdf (improving the prior
+  Östergård–Wassermann bound of 65, JCTA 99 (2002), doi:10.1006/jcta.2002.3260).
 - **Notability.** "One of the most famous problems in coding theory" (Linderoth et al.); OEIS
   A004044; decades of work by Östergård, van Lint, Hämäläinen, Wille.
 - **Smallest open case.** Either a 72-word covering code (witness: 72×6 ternary array, verifier

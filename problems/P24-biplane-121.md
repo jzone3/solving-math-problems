@@ -1,8 +1,8 @@
 # P24 — The undecided biplane: 2-(121,16,2) design
 
 **Statement.** A biplane of order 14 is a 2-(121,16,2) symmetric design. Its existence is the
-smallest undecided biplane case (only 5 nontrivial biplanes are known; existence open for
-order 14). Prior work eliminated many automorphism-group cells: e.g. automorphisms of various
+smallest undecided biplane case (only 16 nontrivial biplanes are known, all with k ≤ 13;
+existence open for order 14). Prior work eliminated many automorphism-group cells: e.g. automorphisms of various
 orders/structures are excluded in the literature (see Radziszowski-adjacent design surveys and
 the dedicated papers of Janko et al.).
 
