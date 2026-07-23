@@ -1,0 +1,2 @@
+[2s] loaded 579005 mask clauses
+[70s] n=8: SYNTHESIS UNSAT after 1 CEGAR iters => NO quasi-Folkman system exists on 8 vertices.

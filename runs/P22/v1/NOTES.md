@@ -148,3 +148,50 @@ No Folkman graph found; no synthesis-UNSAT proof reached either — Problem 5.1 
 but the maximality stratum + orbit blocking is a substantially stronger attack than the
 paper's random sampling and is the recommended continuation (possibly with the full
 12,096-element PΓU(3,3) instead of the 192-element subgroup in `aut.py`).
+
+## 8. Phase 3 (this session): full PΓU(3,3), parallel CEGAR — and a NEW exact result
+
+### 8a. H₃ search upgrades (still negative)
+
+- `aut_full.py` constructs the **full automorphism group** acting on the 63 secants:
+  the 192-element monomial subgroup extended by randomly-found non-monomial unitary
+  matrices (M with Mᵀ·M^(3) = λI), closed under composition → exactly **12,096 = |PΓU(3,3)|**
+  permutations (verified as graph automorphisms of H₃).
+- `cegar_max2.py`: maximality-stratum CEGAR with (i) new counterexamples blocked over
+  random samples of the full 12,096 group, (ii) **partial lex-leader symmetry breaking**
+  on the candidate edge vector (s ≤_lex s∘g for 48 random g ∈ PΓU(3,3); sound since
+  maximality/K₄-freeness/arrowing are Aut-invariant), (iii) multiple parallel workers
+  sharing the persisted pool. >45,000 further iterations across workers; every maximal
+  K₄-free candidate (~515–550 edges) remains colorable. Pool grown to >46,000
+  counterexample colorings (orbit-expanded: hundreds of millions excluded).
+
+### 8b. NEW exact result: minimum order of quasi-Folkman triangle systems
+
+Appendix A of arXiv:2506.14942 defines the **quasi-Folkman property** for (G,T):
+T ⊉ K₄ (no 4 triples of T spanning only 4 vertices) and G →_T (K₃); the authors found
+examples on 12, then 11 vertices (circulant, |T|=88) and left the minimum order open.
+We DECIDED the small cases exactly:
+
+- `enum_mono.c`: exhaustively enumerates ALL 2-colorings of E(K_n) (first edge fixed by
+  complement symmetry) and outputs every distinct set ("mask") of monochromatic triples
+  with ≤ thresh elements. n=7: 2²⁰ colorings (t6: 99,575 masks); n=8: 2²⁷ (t7: zero
+  masks ⇒ every K₈-coloring has ≥8 mono triples; t8: 579,005); n=9: 2³⁵ (t13: 36.5M).
+  Cross-validated for n=7 against an independent pure-Python brute force (exact match),
+  and the paper's 11-vertex circulant example is confirmed quasi-Folkman by our checker.
+- `quasi_exact.py`: a quasi-Folkman T must hit every coloring's mono-mask (a subset of
+  these constraints being UNSAT is therefore a sound impossibility proof) + the 4-set
+  face constraints; SAT models are checked exactly by one kissat arrowing call and,
+  if colorable, refuted via CEGAR with S_n-orbit blocking.
+
+Results (logs `logs/quasi7.log`, `logs/quasi8.log`):
+
+- **n=7: NO quasi-Folkman system exists** (synthesis UNSAT immediately from the t6 masks).
+- **n=8: NO quasi-Folkman system exists** (UNSAT after 1 CEGAR iteration).
+- (Monotone in n via embedding, so none exists on ≤ 8 vertices.)
+- n=9: the 36.5M-clause instance was still being decided at wrap-up (`logs/quasi9b.log`);
+  n=10 open. Hence the minimum order of a quasi-Folkman system is in **{9,10,11}**,
+  improving on the paper's "≤ 11, minimum unknown".
+
+This is (per §5-style priority check: no artifact deciding small quasi-Folkman orders was
+found) a small but genuinely new exact result directly answering a question left open in
+the paper's appendix.
