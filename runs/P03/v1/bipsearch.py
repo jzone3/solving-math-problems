@@ -272,8 +272,29 @@ def mode_biregular(p, q, seconds, seed):
             sinks = [sorted(src[3 * t:3 * t + 3]) for t in range(q)]
             if all(len(set(t)) == 3 for t in sinks):
                 return sinks
+    def tight_inst():
+        """Random (4,3)-biregular instance with a built-in nontrivial tight
+        3-cut: sources {0,1,2} fully cover sinks {0,1,2} (9 arcs) and send
+        their remaining 3 arcs to other sinks."""
+        for _ in range(10000):
+            sinks = [sorted(rng.sample([0, 1, 2], 3)) for _ in range(3)]
+            deg = {0: 3, 1: 3, 2: 3}
+            extra = [0, 1, 2]
+            rng.shuffle(extra)
+            rest_src = [s for s in range(3, p) for _ in range(4)] + extra
+            rng.shuffle(rest_src)
+            ok = True
+            body = []
+            for t in range(3, q):
+                tri = rest_src[3 * (t - 3):3 * (t - 3) + 3]
+                if len(set(tri)) != 3:
+                    ok = False; break
+                body.append(sorted(tri))
+            if ok:
+                return sinks + body
+        return rand_inst()
     assert 4 * p == 3 * q, "need 4p == 3q for (4,3)-biregular"
-    cur = rand_inst()
+    cur = tight_inst() if seed % 2 == 0 else rand_inst()
     t0 = time.time(); steps = 0; checked = 0; cur_s = -1; best = -1
     while time.time() - t0 < seconds:
         steps += 1
@@ -309,7 +330,7 @@ def mode_biregular(p, q, seconds, seed):
                   f"best={s} cuts={len(cuts)} tight={tight} t={time.time()-t0:.0f}s",
                   flush=True)
         if rng.random() < 0.0005:
-            cur = rand_inst(); cur_s = -1
+            cur = tight_inst() if seed % 2 == 0 else rand_inst(); cur_s = -1
     print(f"[bireg p={p} q={q} seed={seed}] DONE steps={steps} checked={checked} "
           f"best={best}", flush=True)
 

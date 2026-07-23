@@ -41,3 +41,5 @@
 [bip-anneal seed=95] step=3662 checked=2810 best=1891 q=24 cuts=1463 tight=5 t=418s
 [bip-anneal seed=95] step=76016 checked=53039 best=2032 q=14 cuts=274 tight=18 t=7572s
 [bip-anneal seed=95] step=76019 checked=53040 best=2117 q=14 cuts=259 tight=19 t=7572s
+[bip-anneal seed=95] step=97951 checked=68141 best=2214 q=13 cuts=253 tight=20 t=9620s
+[bip-anneal seed=95] DONE steps=128130 checked=89450 best=2214

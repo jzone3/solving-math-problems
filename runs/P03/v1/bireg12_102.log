@@ -20,3 +20,4 @@
 [bireg p=12 q=16 seed=102] step=18842 checked=11826 best=1022 cuts=1022 tight=0 t=775s
 [bireg p=12 q=16 seed=102] step=47296 checked=29784 best=1028 cuts=1028 tight=0 t=2001s
 [bireg p=12 q=16 seed=102] step=70306 checked=44341 best=1034 cuts=1034 tight=0 t=2981s
+[bireg p=12 q=16 seed=102] step=123318 checked=77675 best=1054 cuts=1054 tight=0 t=5190s
