@@ -1,0 +1,5 @@
+[bb24r0] it=42 new best t=3 L=11v n=15 m=22 paths=15
+[bb24r0] done iters=30000 best t=3 (L=11v, n=15) elapsed=4379s
+[bb24r1] done iters=30000 best t=3 (L=11v, n=15) elapsed=5106s
+[bb24r2] it=1 new best t=4 L=9v n=13 m=20 paths=60
+[bb24r2] done iters=30000 best t=4 (L=9v, n=13) elapsed=4328s

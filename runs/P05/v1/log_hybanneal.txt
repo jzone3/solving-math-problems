@@ -1,0 +1,187 @@
+[hybannealr0] it=4 new best t=1 L=19v n=29 m=43 paths=11
+[hybannealr0] it=66 new best t=1 L=19v n=34 m=46 paths=15
+[hybannealr0] it=323 new best t=1 L=19v n=34 m=41 paths=16
+[hybannealr0] done iters=5000 best t=1 (L=19v, n=34) elapsed=14s
+[hybannealr1] it=17 new best t=1 L=19v n=29 m=42 paths=11
+[hybannealr1] it=4135 new best t=1 L=19v n=34 m=39 paths=14
+[hybannealr1] done iters=5000 best t=1 (L=19v, n=34) elapsed=9s
+[hybannealr2] done iters=5000 best t=1 (L=19v, n=28) elapsed=18s
+[hybannealr3] it=30 new best t=1 L=19v n=29 m=44 paths=7
+[hybannealr3] it=31 new best t=1 L=19v n=30 m=45 paths=9
+[hybannealr3] it=62 new best t=1 L=19v n=32 m=44 paths=11
+[hybannealr3] it=67 new best t=1 L=19v n=33 m=45 paths=17
+[hybannealr3] it=99 new best t=1 L=19v n=34 m=44 paths=21
+[hybannealr3] done iters=5000 best t=1 (L=19v, n=34) elapsed=18s
+[hybannealr4] it=65 new best t=1 L=19v n=30 m=37 paths=5
+[hybannealr4] it=80 new best t=1 L=19v n=31 m=38 paths=8
+[hybannealr4] it=81 new best t=1 L=19v n=32 m=39 paths=17
+[hybannealr4] it=4626 new best t=1 L=19v n=34 m=38 paths=19
+[hybannealr4] done iters=5000 best t=1 (L=19v, n=34) elapsed=8s
+[hybannealr5] it=53 new best t=1 L=19v n=29 m=43 paths=7
+[hybannealr5] it=118 new best t=1 L=19v n=32 m=44 paths=8
+[hybannealr5] it=142 new best t=1 L=19v n=34 m=44 paths=11
+[hybannealr5] it=211 new best t=1 L=19v n=34 m=42 paths=14
+[hybannealr5] it=253 new best t=1 L=19v n=34 m=39 paths=15
+[hybannealr5] it=1872 new best t=1 L=19v n=34 m=38 paths=16
+[hybannealr5] done iters=5000 best t=1 (L=19v, n=34) elapsed=12s
+[hybannealr6] it=26 new best t=1 L=19v n=31 m=38 paths=11
+[hybannealr6] it=46 new best t=1 L=19v n=34 m=40 paths=12
+[hybannealr6] it=57 new best t=1 L=19v n=34 m=41 paths=16
+[hybannealr6] it=61 new best t=1 L=19v n=34 m=41 paths=20
+[hybannealr6] it=64 new best t=1 L=19v n=34 m=42 paths=28
+[hybannealr6] it=260 new best t=1 L=19v n=34 m=40 paths=39
+[hybannealr6] done iters=5000 best t=1 (L=19v, n=34) elapsed=11s
+[hybannealr7] it=23 new best t=1 L=19v n=29 m=42 paths=9
+[hybannealr7] it=34 new best t=1 L=19v n=30 m=41 paths=17
+[hybannealr7] it=37 new best t=1 L=19v n=32 m=42 paths=20
+[hybannealr7] it=39 new best t=1 L=19v n=33 m=43 paths=36
+[hybannealr7] it=44 new best t=1 L=19v n=34 m=44 paths=45
+[hybannealr7] done iters=5000 best t=1 (L=19v, n=34) elapsed=11s
+[hybannealr8] it=15 new best t=1 L=19v n=29 m=44 paths=19
+[hybannealr8] it=196 new best t=1 L=19v n=34 m=45 paths=24
+[hybannealr8] done iters=5000 best t=1 (L=19v, n=34) elapsed=14s
+[hybannealr9] it=10 new best t=1 L=19v n=29 m=43 paths=5
+[hybannealr9] it=42 new best t=1 L=19v n=29 m=45 paths=7
+[hybannealr9] it=50 new best t=1 L=19v n=30 m=45 paths=9
+[hybannealr9] it=109 new best t=1 L=19v n=33 m=47 paths=11
+[hybannealr9] it=1580 new best t=1 L=19v n=34 m=38 paths=16
+[hybannealr9] done iters=5000 best t=1 (L=19v, n=34) elapsed=18s
+[hybannealr10] it=6 new best t=1 L=19v n=29 m=43 paths=13
+[hybannealr10] it=18 new best t=1 L=19v n=29 m=42 paths=19
+[hybannealr10] it=20 new best t=1 L=19v n=30 m=43 paths=39
+[hybannealr10] it=35 new best t=1 L=19v n=31 m=42 paths=71
+[hybannealr10] done iters=5000 best t=1 (L=19v, n=31) elapsed=11s
+[hybannealr11] it=22 new best t=1 L=19v n=29 m=41 paths=5
+[hybannealr11] it=24 new best t=1 L=19v n=30 m=42 paths=13
+[hybannealr11] it=371 new best t=1 L=19v n=34 m=44 paths=14
+[hybannealr11] it=2638 new best t=1 L=19v n=34 m=40 paths=16
+[hybannealr11] it=2657 new best t=1 L=19v n=34 m=39 paths=24
+[hybannealr11] done iters=5000 best t=1 (L=19v, n=34) elapsed=13s
+[hybannealr12] it=40 new best t=1 L=19v n=31 m=45 paths=7
+[hybannealr12] it=43 new best t=1 L=19v n=32 m=46 paths=9
+[hybannealr12] it=65 new best t=1 L=19v n=33 m=45 paths=13
+[hybannealr12] it=592 new best t=1 L=19v n=34 m=36 paths=14
+[hybannealr12] it=960 new best t=1 L=19v n=34 m=36 paths=15
+[hybannealr12] done iters=5000 best t=1 (L=19v, n=34) elapsed=14s
+[hybannealr13] it=16 new best t=1 L=19v n=29 m=42 paths=7
+[hybannealr13] it=79 new best t=1 L=19v n=34 m=40 paths=9
+[hybannealr13] it=564 new best t=1 L=19v n=34 m=41 paths=14
+[hybannealr13] it=896 new best t=1 L=19v n=34 m=42 paths=15
+[hybannealr13] it=918 new best t=1 L=19v n=34 m=42 paths=23
+[hybannealr13] done iters=5000 best t=1 (L=19v, n=34) elapsed=12s
+[hybannealr14] it=9 new best t=1 L=19v n=30 m=45 paths=19
+[hybannealr14] it=182 new best t=1 L=19v n=33 m=47 paths=35
+[hybannealr14] done iters=5000 best t=1 (L=19v, n=33) elapsed=21s
+[hybannealr15] it=39 new best t=1 L=19v n=30 m=45 paths=9
+[hybannealr15] it=43 new best t=1 L=19v n=31 m=45 paths=19
+[hybannealr15] done iters=5000 best t=1 (L=19v, n=31) elapsed=13s
+[hybannealr16] it=22 new best t=1 L=19v n=29 m=42 paths=5
+[hybannealr16] it=43 new best t=1 L=19v n=33 m=44 paths=7
+[hybannealr16] it=50 new best t=1 L=19v n=34 m=46 paths=15
+[hybannealr16] it=3335 new best t=1 L=19v n=34 m=40 paths=19
+[hybannealr16] it=3391 new best t=1 L=19v n=34 m=39 paths=26
+[hybannealr16] done iters=5000 best t=1 (L=19v, n=34) elapsed=15s
+[hybannealr17] it=4 new best t=1 L=19v n=29 m=42 paths=13
+[hybannealr17] it=1739 new best t=1 L=19v n=34 m=40 paths=19
+[hybannealr17] it=4669 new best t=1 L=19v n=34 m=38 paths=21
+[hybannealr17] done iters=5000 best t=1 (L=19v, n=34) elapsed=18s
+[hybannealr18] it=7 new best t=1 L=19v n=29 m=43 paths=7
+[hybannealr18] it=30 new best t=1 L=19v n=31 m=43 paths=8
+[hybannealr18] it=46 new best t=1 L=19v n=32 m=44 paths=11
+[hybannealr18] it=1078 new best t=1 L=19v n=34 m=35 paths=15
+[hybannealr18] done iters=5000 best t=1 (L=19v, n=34) elapsed=10s
+[hybannealr19] it=32 new best t=1 L=19v n=29 m=40 paths=7
+[hybannealr19] it=39 new best t=1 L=19v n=30 m=40 paths=9
+[hybannealr19] it=44 new best t=1 L=19v n=31 m=40 paths=24
+[hybannealr19] done iters=5000 best t=1 (L=19v, n=31) elapsed=10s
+[hybannealr20] it=48 new best t=1 L=19v n=30 m=38 paths=11
+[hybannealr20] it=52 new best t=1 L=19v n=31 m=39 paths=29
+[hybannealr20] it=61 new best t=1 L=19v n=33 m=40 paths=49
+[hybannealr20] done iters=5000 best t=1 (L=19v, n=33) elapsed=14s
+[hybannealr21] it=9 new best t=1 L=19v n=29 m=41 paths=5
+[hybannealr21] it=29 new best t=1 L=19v n=31 m=40 paths=7
+[hybannealr21] it=106 new best t=1 L=19v n=34 m=39 paths=13
+[hybannealr21] it=3232 new best t=1 L=19v n=34 m=39 paths=15
+[hybannealr21] done iters=5000 best t=1 (L=19v, n=34) elapsed=12s
+[hybannealr22] it=8 new best t=1 L=19v n=29 m=44 paths=19
+[hybannealr22] it=18 new best t=1 L=19v n=30 m=45 paths=35
+[hybannealr22] done iters=5000 best t=1 (L=19v, n=30) elapsed=15s
+[hybannealr23] it=11 new best t=1 L=19v n=29 m=44 paths=11
+[hybannealr23] it=17 new best t=1 L=19v n=30 m=45 paths=59
+[hybannealr23] done iters=5000 best t=1 (L=19v, n=30) elapsed=17s
+[hybannealr24] it=33 new best t=1 L=19v n=29 m=36 paths=5
+[hybannealr24] it=36 new best t=1 L=19v n=31 m=37 paths=9
+[hybannealr24] it=51 new best t=1 L=19v n=34 m=37 paths=12
+[hybannealr24] it=84 new best t=1 L=19v n=34 m=38 paths=24
+[hybannealr24] done iters=5000 best t=1 (L=19v, n=34) elapsed=9s
+[hybannealr25] it=26 new best t=1 L=19v n=29 m=40 paths=11
+[hybannealr25] it=27 new best t=1 L=19v n=30 m=41 paths=23
+[hybannealr25] it=38 new best t=1 L=19v n=32 m=41 paths=29
+[hybannealr25] it=39 new best t=1 L=19v n=33 m=42 paths=40
+[hybannealr25] done iters=5000 best t=1 (L=19v, n=33) elapsed=11s
+[hybannealr26] it=22 new best t=1 L=19v n=31 m=43 paths=11
+[hybannealr26] it=1598 new best t=1 L=19v n=34 m=37 paths=17
+[hybannealr26] done iters=5000 best t=1 (L=19v, n=34) elapsed=12s
+[hybannealr27] it=23 new best t=1 L=19v n=29 m=41 paths=7
+[hybannealr27] it=36 new best t=1 L=19v n=30 m=40 paths=14
+[hybannealr27] it=56 new best t=1 L=19v n=32 m=41 paths=20
+[hybannealr27] it=62 new best t=1 L=19v n=33 m=41 paths=21
+[hybannealr27] done iters=5000 best t=1 (L=19v, n=33) elapsed=17s
+[hybannealr28] it=24 new best t=1 L=19v n=30 m=43 paths=13
+[hybannealr28] it=316 new best t=1 L=19v n=34 m=37 paths=14
+[hybannealr28] it=4853 new best t=1 L=19v n=34 m=38 paths=23
+[hybannealr28] done iters=5000 best t=1 (L=19v, n=34) elapsed=13s
+[hybannealr29] it=98 new best t=1 L=19v n=34 m=40 paths=5
+[hybannealr29] it=1159 new best t=1 L=19v n=34 m=34 paths=8
+[hybannealr29] it=3934 new best t=1 L=19v n=34 m=38 paths=11
+[hybannealr29] it=4076 new best t=1 L=19v n=34 m=36 paths=17
+[hybannealr29] it=4086 new best t=1 L=19v n=34 m=38 paths=19
+[hybannealr29] it=4275 new best t=1 L=19v n=34 m=41 paths=23
+[hybannealr29] done iters=5000 best t=1 (L=19v, n=34) elapsed=11s
+[hybannealr30] it=36 new best t=1 L=19v n=29 m=39 paths=7
+[hybannealr30] it=37 new best t=1 L=19v n=30 m=40 paths=11
+[hybannealr30] it=51 new best t=1 L=19v n=33 m=42 paths=16
+[hybannealr30] done iters=5000 best t=1 (L=19v, n=33) elapsed=13s
+[hybannealr31] it=8 new best t=1 L=19v n=29 m=45 paths=19
+[hybannealr31] it=66 new best t=1 L=19v n=34 m=44 paths=49
+[hybannealr31] done iters=5000 best t=1 (L=19v, n=34) elapsed=19s
+[hybannealr32] it=49 new best t=1 L=19v n=32 m=42 paths=5
+[hybannealr32] it=52 new best t=1 L=19v n=34 m=44 paths=11
+[hybannealr32] it=55 new best t=1 L=19v n=34 m=45 paths=20
+[hybannealr32] done iters=5000 best t=1 (L=19v, n=34) elapsed=16s
+[hybannealr33] it=38 new best t=1 L=19v n=30 m=39 paths=9
+[hybannealr33] done iters=5000 best t=1 (L=19v, n=30) elapsed=7s
+[hybannealr34] it=44 new best t=1 L=19v n=30 m=42 paths=5
+[hybannealr34] it=123 new best t=1 L=19v n=34 m=42 paths=11
+[hybannealr34] it=900 new best t=1 L=19v n=33 m=38 paths=14
+[hybannealr34] it=1143 new best t=1 L=19v n=34 m=39 paths=17
+[hybannealr34] it=3159 new best t=1 L=19v n=34 m=39 paths=19
+[hybannealr34] done iters=5000 best t=1 (L=19v, n=34) elapsed=14s
+[hybannealr35] it=210 new best t=1 L=19v n=32 m=44 paths=8
+[hybannealr35] it=212 new best t=1 L=19v n=32 m=45 paths=17
+[hybannealr35] it=222 new best t=1 L=19v n=34 m=47 paths=24
+[hybannealr35] done iters=5000 best t=1 (L=19v, n=34) elapsed=15s
+[hybannealr36] it=322 new best t=1 L=19v n=34 m=36 paths=5
+[hybannealr36] it=365 new best t=1 L=19v n=34 m=41 paths=8
+[hybannealr36] it=1501 new best t=1 L=19v n=34 m=35 paths=11
+[hybannealr36] it=1698 new best t=1 L=19v n=34 m=37 paths=14
+[hybannealr36] it=3597 new best t=1 L=19v n=34 m=38 paths=15
+[hybannealr36] done iters=5000 best t=1 (L=19v, n=34) elapsed=14s
+[hybannealr37] it=42 new best t=1 L=19v n=29 m=45 paths=7
+[hybannealr37] it=46 new best t=1 L=19v n=31 m=47 paths=19
+[hybannealr37] it=49 new best t=1 L=19v n=32 m=48 paths=23
+[hybannealr37] it=76 new best t=1 L=19v n=33 m=46 paths=38
+[hybannealr37] it=86 new best t=1 L=19v n=34 m=48 paths=44
+[hybannealr37] done iters=5000 best t=1 (L=19v, n=34) elapsed=21s
+[hybannealr38] it=13 new best t=1 L=19v n=29 m=42 paths=9
+[hybannealr38] it=101 new best t=1 L=19v n=34 m=46 paths=11
+[hybannealr38] it=4211 new best t=1 L=19v n=34 m=40 paths=12
+[hybannealr38] it=4670 new best t=1 L=19v n=34 m=39 paths=14
+[hybannealr38] done iters=5000 best t=1 (L=19v, n=34) elapsed=26s
+[hybannealr39] it=21 new best t=1 L=19v n=30 m=41 paths=5
+[hybannealr39] it=30 new best t=1 L=19v n=31 m=42 paths=7
+[hybannealr39] it=36 new best t=1 L=19v n=32 m=43 paths=11
+[hybannealr39] it=38 new best t=1 L=19v n=33 m=44 paths=15
+[hybannealr39] it=47 new best t=1 L=19v n=34 m=44 paths=19
+[hybannealr39] it=61 new best t=1 L=19v n=34 m=41 paths=32
+[hybannealr39] done iters=5000 best t=1 (L=19v, n=34) elapsed=12s

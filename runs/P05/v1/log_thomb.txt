@@ -1,0 +1,28 @@
+[thombr0] it=1 new best t=33 L=33v n=33 m=50 paths=1
+[thombr0] it=9 new best t=32 L=32v n=32 m=49 paths=1
+[thombr0] it=35 new best t=32 L=36v n=38 m=53 paths=9
+[thombr0] it=40 new best t=31 L=35v n=37 m=52 paths=12
+[thombr0] it=47 new best t=29 L=34v n=37 m=52 paths=18
+[thombr0] it=50 new best t=29 L=34v n=37 m=53 paths=19
+[thombr0] it=60 new best t=28 L=34v n=37 m=53 paths=43
+[thombr0] it=154 new best t=27 L=31v n=33 m=52 paths=14
+[thombr0] it=184 new best t=26 L=30v n=32 m=51 paths=13
+[thombr0] it=185 new best t=25 L=29v n=31 m=50 paths=13
+[thombr0] it=210 new best t=25 L=29v n=31 m=49 paths=18
+[thombr0] it=233 new best t=24 L=28v n=30 m=48 paths=8
+[thombr0] it=245 new best t=23 L=29v n=32 m=49 paths=32
+[thombr0] seed unevaluable, abort
+[thombr1] seed unevaluable, abort
+[thombr2] seed unevaluable, abort
+[thombr3] seed unevaluable, abort
+[thombr4] seed unevaluable, abort
+[thombr5] seed unevaluable, abort
+[thombr6] seed unevaluable, abort
+[thombr7] seed unevaluable, abort
+[thombr8] seed unevaluable, abort
+[thombr9] seed unevaluable, abort
+[thombr10] seed unevaluable, abort
+[thombr11] seed unevaluable, abort
+[thombr12] seed unevaluable, abort
+[thombr13] seed unevaluable, abort
+[thombr14] seed unevaluable, abort

@@ -1,0 +1,4 @@
+[t2focusr0] done iters=30000 best t=2 (L=8v, n=12) elapsed=2532s
+[t2focusr1] done iters=30000 best t=2 (L=8v, n=12) elapsed=1604s
+[t2focusr2] done iters=30000 best t=2 (L=8v, n=12) elapsed=2361s
+[t2focusr3] done iters=30000 best t=2 (L=8v, n=12) elapsed=1469s
