@@ -1,0 +1,26 @@
+n=120: 117 subgroups total (incl. non-cyclic), m range 16..90
+--- gens=(13, 19, 59, 71) |H|=32 m=16 timeout=3600s
+EXHAUSTED n=120 k=49 t=13 m=16 leaves=9120: no multiplier-symmetric solution
+--- gens=(7, 19, 71) |H|=16 m=17 timeout=3600s
+EXHAUSTED n=120 k=49 t=7 m=17 leaves=20336: no multiplier-symmetric solution
+--- gens=(13, 49, 59, 79) |H|=16 m=17 timeout=3600s
+EXHAUSTED n=120 k=49 t=13 m=17 leaves=20336: no multiplier-symmetric solution
+--- gens=(7, 49, 79, 83) |H|=16 m=18 timeout=3600s
+EXHAUSTED n=120 k=49 t=7 m=18 leaves=60648: no multiplier-symmetric solution
+--- gens=(13, 19, 59, 89) |H|=16 m=18 timeout=3600s
+EXHAUSTED n=120 k=49 t=13 m=18 leaves=59136: no multiplier-symmetric solution
+--- gens=(19, 53, 71) |H|=16 m=18 timeout=3600s
+EXHAUSTED n=120 k=49 t=19 m=18 leaves=60648: no multiplier-symmetric solution
+--- gens=(49, 79, 83, 89) |H|=16 m=18 timeout=3600s
+EXHAUSTED n=120 k=49 t=49 m=18 leaves=59136: no multiplier-symmetric solution
+--- gens=(53, 71, 109) |H|=16 m=18 timeout=3600s
+EXHAUSTED n=120 k=49 t=53 m=18 leaves=59136: no multiplier-symmetric solution
+--- gens=(13, 59, 109) |H|=16 m=20 timeout=3600s
+EXHAUSTED n=120 k=49 t=13 m=20 leaves=497040: no multiplier-symmetric solution
+--- gens=(17, 49, 79, 89) |H|=16 m=20 timeout=3600s
+EXHAUSTED n=120 k=49 t=17 m=20 leaves=497040: no multiplier-symmetric solution
+--- gens=(19, 83, 89) |H|=16 m=20 timeout=3600s
+EXHAUSTED n=120 k=49 t=19 m=20 leaves=497040: no multiplier-symmetric solution
+--- gens=(49, 53, 79, 91) |H|=16 m=20 timeout=3600s
+EXHAUSTED n=120 k=49 t=49 m=20 leaves=527168: no multiplier-symmetric solution
+--- gens=(49, 83, 89, 101) |H|=16 m=20 timeout=3600s

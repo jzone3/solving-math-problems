@@ -1,0 +1,52 @@
+n=105: 53 subgroups total (incl. non-cyclic), m range 8..70
+--- gens=(26, 62, 71) |H|=48 m=8 timeout=3600s
+EXHAUSTED n=105 k=36 t=26 m=8 leaves=0: no multiplier-symmetric solution
+--- gens=(8, 52) |H|=24 m=9 timeout=3600s
+EXHAUSTED n=105 k=36 t=8 m=9 leaves=0: no multiplier-symmetric solution
+--- gens=(19, 62) |H|=24 m=10 timeout=3600s
+EXHAUSTED n=105 k=36 t=19 m=10 leaves=0: no multiplier-symmetric solution
+--- gens=(26, 62) |H|=24 m=10 timeout=3600s
+EXHAUSTED n=105 k=36 t=26 m=10 leaves=0: no multiplier-symmetric solution
+--- gens=(52, 71) |H|=24 m=10 timeout=3600s
+EXHAUSTED n=105 k=36 t=52 m=10 leaves=0: no multiplier-symmetric solution
+--- gens=(26, 44, 71) |H|=24 m=12 timeout=3600s
+EXHAUSTED n=105 k=36 t=26 m=12 leaves=0: no multiplier-symmetric solution
+--- gens=(37, 71) |H|=24 m=12 timeout=3600s
+EXHAUSTED n=105 k=36 t=37 m=12 leaves=128: no multiplier-symmetric solution
+--- gens=(52, 76) |H|=24 m=12 timeout=3600s
+EXHAUSTED n=105 k=36 t=52 m=12 leaves=0: no multiplier-symmetric solution
+--- gens=(17,) |H|=12 m=14 timeout=3600s
+EXHAUSTED n=105 k=36 t=17 m=14 leaves=0: no multiplier-symmetric solution
+--- gens=(26, 44) |H|=12 m=14 timeout=3600s
+EXHAUSTED n=105 k=36 t=26 m=14 leaves=0: no multiplier-symmetric solution
+--- gens=(2,) |H|=12 m=15 timeout=3600s
+EXHAUSTED n=105 k=36 t=2 m=15 leaves=1296: no multiplier-symmetric solution
+--- gens=(26, 59) |H|=12 m=15 timeout=3600s
+EXHAUSTED n=105 k=36 t=26 m=15 leaves=0: no multiplier-symmetric solution
+--- gens=(52,) |H|=12 m=15 timeout=3600s
+EXHAUSTED n=105 k=36 t=52 m=15 leaves=0: no multiplier-symmetric solution
+--- gens=(22, 71, 76) |H|=16 m=16 timeout=3600s
+EXHAUSTED n=105 k=36 t=22 m=16 leaves=0: no multiplier-symmetric solution
+--- gens=(44, 59) |H|=12 m=16 timeout=3600s
+EXHAUSTED n=105 k=36 t=44 m=16 leaves=0: no multiplier-symmetric solution
+--- gens=(59, 71) |H|=12 m=16 timeout=3600s
+EXHAUSTED n=105 k=36 t=59 m=16 leaves=0: no multiplier-symmetric solution
+--- gens=(19, 76) |H|=12 m=18 timeout=3600s
+EXHAUSTED n=105 k=36 t=19 m=18 leaves=38880: no multiplier-symmetric solution
+--- gens=(37,) |H|=12 m=18 timeout=3600s
+EXHAUSTED n=105 k=36 t=37 m=18 leaves=26832: no multiplier-symmetric solution
+--- gens=(44, 71) |H|=12 m=18 timeout=3600s
+EXHAUSTED n=105 k=36 t=44 m=18 leaves=33392: no multiplier-symmetric solution
+--- gens=(8, 41) |H|=8 m=19 timeout=3600s
+EXHAUSTED n=105 k=36 t=8 m=19 leaves=0: no multiplier-symmetric solution
+--- gens=(8, 62) |H|=8 m=20 timeout=3600s
+EXHAUSTED n=105 k=36 t=8 m=20 leaves=0: no multiplier-symmetric solution
+--- gens=(26, 71) |H|=12 m=20 timeout=3600s
+EXHAUSTED n=105 k=36 t=26 m=20 leaves=348000: no multiplier-symmetric solution
+--- gens=(22, 62) |H|=8 m=22 timeout=3600s
+EXHAUSTED n=105 k=36 t=22 m=22 leaves=0: no multiplier-symmetric solution
+--- gens=(62, 71) |H|=8 m=22 timeout=3600s
+EXHAUSTED n=105 k=36 t=62 m=22 leaves=0: no multiplier-symmetric solution
+--- gens=(59,) |H|=6 m=23 timeout=3600s
+EXHAUSTED n=105 k=36 t=59 m=23 leaves=0: no multiplier-symmetric solution
+--- gens=(19,) |H|=6 m=24 timeout=3600s

@@ -107,3 +107,14 @@ round=4 t=8 m=32 slice=184s -> DONE n=117 s=6 t=8 m=32 bestE=70 it=927160 restar
 round=4 t=38 m=33 slice=184s -> DONE n=117 s=6 t=38 m=33 bestE=66 it=896909 restarts=1174
 round=4 t=25 m=35 slice=184s -> DONE n=117 s=6 t=25 m=35 bestE=48 it=883570 restarts=1187
 round=4 t=73 m=36 slice=184s -> DONE n=117 s=6 t=73 m=36 bestE=82 it=946283 restarts=1486
+round=4 t=14 m=39 slice=184s -> DONE n=117 s=6 t=14 m=39 bestE=36 it=883148 restarts=1680
+round=4 t=16 m=41 slice=184s -> DONE n=117 s=6 t=16 m=41 bestE=36 it=847029 restarts=1127
+round=4 t=61 m=41 slice=184s -> DONE n=117 s=6 t=61 m=41 bestE=36 it=930303 restarts=1268
+round=4 t=55 m=45 slice=184s -> DONE n=117 s=6 t=55 m=45 bestE=36 it=941579 restarts=1257
+round=4 t=116 m=59 slice=184s -> DONE n=117 s=6 t=116 m=59 bestE=66 it=900047 restarts=1124
+round=4 t=64 m=63 slice=184s -> DONE n=117 s=6 t=64 m=63 bestE=66 it=884575 restarts=1120
+round=4 t=40 m=65 slice=184s -> DONE n=117 s=6 t=40 m=65 bestE=32 it=931566 restarts=1157
+round=4 t=53 m=65 slice=184s -> DONE n=117 s=6 t=53 m=65 bestE=36 it=892828 restarts=1116
+round=5 t=2 m=12 slice=295s -> DONE n=117 s=6 t=2 m=12 bestE=144 it=1469453 restarts=2680
+round=5 t=20 m=12 slice=295s -> DONE n=117 s=6 t=20 m=12 bestE=144 it=1530650 restarts=2810
+round=5 t=7 m=14 slice=295s -> DONE n=117 s=6 t=7 m=14 bestE=153 it=1518659 restarts=3264

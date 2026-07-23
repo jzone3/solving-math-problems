@@ -1,0 +1,38 @@
+n=112: 53 subgroups total (incl. non-cyclic), m range 10..84
+--- gens=(13, 15, 87) |H|=48 m=10 timeout=3600s
+EXHAUSTED n=112 k=36 t=13 m=10 leaves=8: no multiplier-symmetric solution
+--- gens=(13, 23) |H|=24 m=12 timeout=3600s
+EXHAUSTED n=112 k=36 t=13 m=12 leaves=36: no multiplier-symmetric solution
+--- gens=(13, 31) |H|=24 m=12 timeout=3600s
+EXHAUSTED n=112 k=36 t=13 m=12 leaves=36: no multiplier-symmetric solution
+--- gens=(29, 31) |H|=24 m=13 timeout=3600s
+EXHAUSTED n=112 k=36 t=29 m=13 leaves=120: no multiplier-symmetric solution
+--- gens=(9, 15, 17) |H|=24 m=14 timeout=3600s
+EXHAUSTED n=112 k=36 t=9 m=14 leaves=468: no multiplier-symmetric solution
+--- gens=(11, 17) |H|=24 m=14 timeout=3600s
+EXHAUSTED n=112 k=36 t=11 m=14 leaves=468: no multiplier-symmetric solution
+--- gens=(23, 29) |H|=24 m=15 timeout=3600s
+EXHAUSTED n=112 k=36 t=23 m=15 leaves=2328: no multiplier-symmetric solution
+--- gens=(13, 17) |H|=24 m=16 timeout=3600s
+EXHAUSTED n=112 k=36 t=13 m=16 leaves=4720: no multiplier-symmetric solution
+--- gens=(15, 87) |H|=12 m=16 timeout=3600s
+EXHAUSTED n=112 k=36 t=15 m=16 leaves=2268: no multiplier-symmetric solution
+--- gens=(23, 31) |H|=12 m=16 timeout=3600s
+EXHAUSTED n=112 k=36 t=23 m=16 leaves=2268: no multiplier-symmetric solution
+--- gens=(15, 31) |H|=12 m=18 timeout=3600s
+EXHAUSTED n=112 k=36 t=15 m=18 leaves=21756: no multiplier-symmetric solution
+--- gens=(17, 23) |H|=12 m=18 timeout=3600s
+EXHAUSTED n=112 k=36 t=17 m=18 leaves=21756: no multiplier-symmetric solution
+--- gens=(3,) |H|=12 m=19 timeout=3600s
+EXHAUSTED n=112 k=36 t=3 m=19 leaves=39504: no multiplier-symmetric solution
+--- gens=(31, 87) |H|=12 m=19 timeout=3600s
+EXHAUSTED n=112 k=36 t=31 m=19 leaves=39504: no multiplier-symmetric solution
+--- gens=(5,) |H|=12 m=20 timeout=3600s
+EXHAUSTED n=112 k=36 t=5 m=20 leaves=122400: no multiplier-symmetric solution
+--- gens=(13, 27, 29) |H|=16 m=20 timeout=3600s
+EXHAUSTED n=112 k=36 t=13 m=20 leaves=210776: no multiplier-symmetric solution
+--- gens=(11,) |H|=12 m=21 timeout=3600s
+EXHAUSTED n=112 k=36 t=11 m=21 leaves=471712: no multiplier-symmetric solution
+--- gens=(15, 23) |H|=12 m=21 timeout=3600s
+EXHAUSTED n=112 k=36 t=15 m=21 leaves=471712: no multiplier-symmetric solution
+--- gens=(9, 17) |H|=12 m=24 timeout=3600s

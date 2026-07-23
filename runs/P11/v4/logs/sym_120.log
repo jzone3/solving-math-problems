@@ -92,3 +92,11 @@ round=5 t=83 m=37 slice=295s -> DONE n=120 s=7 t=83 m=37 bestE=77 it=1455939 res
 round=5 t=53 m=38 slice=295s -> DONE n=120 s=7 t=53 m=38 bestE=65 it=1443461 restarts=1862
 round=5 t=7 m=39 slice=295s -> DONE n=120 s=7 t=7 m=39 bestE=97 it=1461064 restarts=1847
 round=5 t=43 m=39 slice=295s -> DONE n=120 s=7 t=43 m=39 bestE=86 it=1464098 restarts=2173
+round=5 t=17 m=40 slice=295s -> DONE n=120 s=7 t=17 m=40 bestE=69 it=1404624 restarts=1894
+round=5 t=13 m=42 slice=295s -> DONE n=120 s=7 t=13 m=42 bestE=32 it=1465893 restarts=1884
+round=5 t=73 m=48 slice=295s -> DONE n=120 s=7 t=73 m=48 bestE=241 it=1425203 restarts=1739
+round=5 t=59 m=61 slice=295s -> DONE n=120 s=7 t=59 m=61 bestE=231 it=1420186 restarts=1756
+round=5 t=119 m=61 slice=295s -> DONE n=120 s=7 t=119 m=61 bestE=384 it=1532052 restarts=1876
+round=5 t=29 m=62 slice=295s -> DONE n=120 s=7 t=29 m=62 bestE=112 it=1434272 restarts=1731
+round=5 t=19 m=63 slice=295s -> DONE n=120 s=7 t=19 m=63 bestE=57 it=1516465 restarts=1841
+round=5 t=79 m=63 slice=295s -> DONE n=120 s=7 t=79 m=63 bestE=57 it=1500299 restarts=1803

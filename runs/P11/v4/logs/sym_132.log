@@ -66,3 +66,9 @@ round=5 t=109 m=72 slice=295s -> DONE n=132 s=9 t=109 m=72 bestE=296 it=1255327 
 round=5 t=23 m=77 slice=295s -> DONE n=132 s=9 t=23 m=77 bestE=241 it=1250499 restarts=1528
 round=6 t=35 m=19 slice=472s -> DONE n=132 s=9 t=35 m=19 bestE=899 it=2072458 restarts=4277
 round=6 t=17 m=20 slice=472s -> DONE n=132 s=9 t=17 m=20 bestE=1349 it=2081003 restarts=4298
+round=6 t=7 m=21 slice=472s -> DONE n=132 s=9 t=7 m=21 bestE=1788 it=2162452 restarts=3565
+round=6 t=47 m=21 slice=472s -> DONE n=132 s=9 t=47 m=21 bestE=471 it=2066046 restarts=3340
+round=6 t=5 m=24 slice=472s -> DONE n=132 s=9 t=5 m=24 bestE=197 it=2122864 restarts=4010
+round=6 t=13 m=24 slice=472s -> DONE n=132 s=9 t=13 m=24 bestE=4043 it=2017873 restarts=2731
+round=6 t=31 m=27 slice=472s -> DONE n=132 s=9 t=31 m=27 bestE=252 it=2215157 restarts=3630
+round=6 t=25 m=36 slice=472s -> DONE n=132 s=9 t=25 m=36 bestE=34 it=2061645 restarts=2708

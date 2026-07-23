@@ -1,0 +1,20 @@
+n=132: 31 subgroups total (incl. non-cyclic), m range 12..99
+--- gens=(13, 17, 67) |H|=40 m=12 timeout=3600s
+EXHAUSTED n=132 k=81 t=13 m=12 leaves=96: no multiplier-symmetric solution
+--- gens=(7, 23) |H|=20 m=13 timeout=3600s
+EXHAUSTED n=132 k=81 t=7 m=13 leaves=480: no multiplier-symmetric solution
+--- gens=(7, 89) |H|=20 m=14 timeout=3600s
+EXHAUSTED n=132 k=81 t=7 m=14 leaves=1728: no multiplier-symmetric solution
+--- gens=(13, 23) |H|=20 m=14 timeout=3600s
+EXHAUSTED n=132 k=81 t=13 m=14 leaves=1200: no multiplier-symmetric solution
+--- gens=(17, 67) |H|=20 m=15 timeout=3600s
+EXHAUSTED n=132 k=81 t=17 m=15 leaves=5664: no multiplier-symmetric solution
+--- gens=(13, 17) |H|=20 m=16 timeout=3600s
+EXHAUSTED n=132 k=81 t=13 m=16 leaves=19008: no multiplier-symmetric solution
+--- gens=(5, 67) |H|=20 m=18 timeout=3600s
+EXHAUSTED n=132 k=81 t=5 m=18 leaves=174496: no multiplier-symmetric solution
+--- gens=(13, 67) |H|=20 m=18 timeout=3600s
+EXHAUSTED n=132 k=81 t=13 m=18 leaves=195408: no multiplier-symmetric solution
+--- gens=(35,) |H|=10 m=19 timeout=3600s
+EXHAUSTED n=132 k=81 t=35 m=19 leaves=554400: no multiplier-symmetric solution
+--- gens=(17,) |H|=10 m=20 timeout=3600s
