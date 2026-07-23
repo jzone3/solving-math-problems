@@ -120,9 +120,51 @@ passes (C5, Petersen, K_{3,3} equality).
   not feasible with this approach; would need stronger pruning or restricted
   families (V3-style fixed-ω sweeps).
 
+## Round 2: weighted-blowup / step-graphon relaxation (LP-duality framing)
+
+New attack after the exhaustive frontier was reached (coordinator request).
+
+**Setup.** For a support pattern H on k vertices (parts = independent sets) with
+clique number ω, part fractions c on the simplex, and fractional edge densities
+W_ij ∈ (0,1] on E(H), the n-blowup G_n has a.a.s. ω(G_n) = ω(H), while
+λ_i(G_n)/n → μ_i(C^{1/2} W C^{1/2}) (top eigenvalues; λ₂/n → max(μ₂,0), the bulk
+zeros dominate a negative μ₂) and 2m/n² → S = Σ c_i c_j W_ij. Conjecture in the
+limit: F(W,c) = μ₁² + max(μ₂,0)² − S(1−1/ω) ≤ 0. Any strictly positive F rounds
+to an explicit finite counterexample. Note sup F ≥ 0 always (weights supported
+on a maximum clique give the Turán equality).
+
+**Search.** `blowup.c` (0/1 W, optimize c) and `blowup2.c` (joint W and c),
+multi-restart adaptive gradient ascent (finite-difference gradients, Jacobi
+eigensolver, 4–8 restarts, ~600 ascent iterations each):
+
+| patterns | program | count | max F found | positives |
+|---|---|---|---|---|
+| all connected k ≤ 9 | blowup (0/1) | 261,080 + smaller | ~6e-15 | 0 |
+| all connected k ≤ 9 | blowup2 (fractional W) | 261,080 + smaller | ~4e-15 | 0 |
+| all connected k = 10 | blowup2 (fractional W) | 11,716,571 (=A001349(10)) | ~5e-15 | 0 |
+
+**Result: the relaxation supremum is exactly 0 for every pattern** — attained
+only at Turán-type weightings — for every connected template up to 10 vertices
+with arbitrary fractional densities. So NO blowup/step-graphon construction
+from any ≤ 10-vertex template can violate the conjecture, killing the entire
+"two-near-clique join / book / blowup-of-near-miss" family of counterexample
+strategies (V2's territory) in one sweep. This is consistent with (and numerical
+evidence for) the natural graphon formulation of Bollobás–Nikiforov being tight
+exactly on complete multipartite graphons.
+
+Caveats: numerical local search (not a certificate); a positive F would have
+been a proof-grade lead, its absence is evidence. One modeling bug found and
+fixed during development: λ₂ of the blowup is max(μ₂,0)·n, not μ₂·n — without
+the fix, complete patterns show spurious F = 1/ω² > 0 (caught on K₅ sanity run).
+
 ## STATUS
 
 STATUS: negative / frontier-pushed — no counterexample and no non-trivial
 near-miss; conjecture machine-verified for ALL graphs on ≤ 12 vertices
 (1.65×10¹¹ graphs; beyond any published check) and ALL circulant graphs
 C_n(S) for n ≤ 50 (≈1.3×10⁸). Only known equality families touch the bound.
+Round 2: the weighted-blowup / step-graphon relaxation has supremum exactly 0
+for every connected template up to 10 vertices (11.7M patterns, fractional edge
+densities + part weights) — no blowup-type counterexample exists from any such
+template; the graphon form of the conjecture is numerically tight only at
+complete multipartite graphons.

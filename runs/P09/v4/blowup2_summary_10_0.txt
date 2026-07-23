@@ -1,0 +1,1 @@
+BLOWUP2-SUMMARY patterns=1276749 global_best_F=4.798882e-15 g6=ICvV~~~~w
