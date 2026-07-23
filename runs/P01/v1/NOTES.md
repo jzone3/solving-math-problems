@@ -185,8 +185,9 @@ the conjecture being TRUE.
   6-h random-seed anneals: the **144 floor was re-hit independently from random seeds** at
   n = 22 (3.37M its), 24 (1.27M), 28 (120k), and 40 (seeded); n=26 stalled at 192.
   Nothing below 144 at any order; nothing remotely near count 1.
-- Grow chain (fast counter): g46 found with exactly **144 HCs** (seed/g46.txt), verified
-  144 by the independent weighted counter (`msearch count`). Naive extrapolation of the
+- Grow chain (fast counter): g46 and g47 found with exactly **144 HCs** (seed/g46.txt,
+  seed/g47.txt), each verified 144 by the independent weighted counter (`msearch count`);
+  chain continues in the background toward n=60. Naive extrapolation of the
   insertion pattern (new x adj {0,12,x−3,x−1}) FAILS at n=46 (gives 432) — the greedy
   min-count pair is genuinely non-stationary; full grow costs ~2.5–4 h/vertex at n≥46.
 - Multiplicity-3 multigraph anneals (`msearch3.c`, 6 h × 2): best exact-verified states
@@ -195,12 +196,20 @@ the conjecture being TRUE.
 - Structural note: g45 has only 8 two-vertex cuts, all isolating 3–5-vertex gadgets in the
   original n=19 core; the growing chain region is 3-connected, so a constant-144 proof
   would need a width-4 boundary DP ({0,12,last two chain vertices}), left as a direction.
-- Delegated two child sessions with fundamentally different encodings: incremental-SAT
-  CEGAR (branch runs/P01-v1-sat) and girth-5/4-connected structure-targeted search
-  (branch runs/P01-v1-struct); their notes live under runs/P01/v1/child-*/.
+- Delegated two child sessions with fundamentally different encodings; both NEGATIVE,
+  results merged into this branch under runs/P01/v1/child-*/:
+  - child-sat (branch runs/P01-v1-sat): CP-SAT + incremental CaDiCaL CEGAR (fixed HC,
+    chord vars, dihedral symmetry breaking, blocking clause per second HC). Full-CEGAR
+    UNSAT re-verified n=8,12,14,16,18 (independent SAT re-verification of the known
+    frontier; n=18: 379 s / 2.7M clauses); n=20–28 hit multi-hour timeouts, no witness.
+  - child-struct (branch runs/P01-v1-struct): exhaustive girth-5 4-regular minima
+    n=19..23: 2688/2716/3657/5589/8382 (double-verified, two independent counters);
+    constrained anneals floored girth-5 n=24/25/28 at 12968/20423/67350 and 4-connected
+    n=22/26/30 at 1512/4896/40708 — high-girth/high-connectivity families move AWAY
+    from few HCs; nothing below 144.
 
 ## STATUS: negative (no counterexample; frontier pushed: constant-144-HC simple family
-   verified for all n = 19–46 (n=46 double-verified with two independent counters), the
+   verified for all n = 19–47 (n=46/47 double-verified with two independent counters), the
    144 floor independently reproduced from random seeds at n=22/24/28 with a 10× faster
    bitmask counter, beating published few-HC constructions [GMZ 36·2^⌊n/5⌋−2, TZ
    constant-216] for n ≥ 25; multigraph relaxations (mult ≤ 2 and ≤ 3) reach 25 weighted
