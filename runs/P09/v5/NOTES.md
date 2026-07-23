@@ -155,10 +155,13 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
   K₇ minus P₄ optimizes to weights 1/5 on an internal K₅); all flip attacks negative,
   best exactly 0 on the plateau. No new equality graphs, no violations.
 - `gap_analysis.py`: maximized f_H restricted to interior/non-collapsing weights
-  (support inducing a non-CM subgraph): sup approaches 0 (e.g. −7×10⁻⁵ at floor
-  ~10⁻³·⁵) but is never attained — equality is a boundary phenomenon reachable only
-  by degenerating to Turán weights. Non-Turán directions approach but never touch
-  or cross 0.
+  (support inducing a non-CM subgraph), all patterns |H| ≤ 7: sup approaches 0
+  (largest −9.4×10⁻⁸, pattern FQhV_) but every near-zero case again degenerates to
+  the known plateau — e.g. FQhV_'s optimum has support inducing 2K₃ with uniform
+  weights = union of two balanced Turán blowups (known disconnected equality
+  family), which the CM filter alone doesn't catch. Refined finding: **every tight
+  or near-tight blowup direction found is a union of balanced Turán structures**;
+  genuinely non-Turán interior directions stay strictly below 0.
 
 ## 4. Near-misses & dead ends
 

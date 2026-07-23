@@ -23,8 +23,16 @@ GLOBAL BEST n=36 init=turan-union: +0.000000
 GLOBAL BEST n=40 init=random: -5.359149
 GLOBAL BEST n=45 init=random: -2.098337
 GLOBAL BEST n=48 init=turan-union: +0.000000
+HYBRID SUMMARY n=7 0/1: best over attacks = +0.000000
+HYBRID SUMMARY n=8 0/6: best over attacks = +0.000000
+HYBRID SUMMARY n=8 1/6: best over attacks = +0.000000
+HYBRID SUMMARY n=8 2/6: best over attacks = +0.000000
+HYBRID SUMMARY n=8 3/6: best over attacks = +0.000000
+HYBRID SUMMARY n=8 4/6: best over attacks = +0.000000
+HYBRID SUMMARY n=8 5/6: best over attacks = +0.000000
 K4FREE GLOBAL BEST n=30: -0.43464
 K4FREE GLOBAL BEST n=45: -0.58653
+NONTURAN GAP SUMMARY: largest = -9.38742774903023e-08
 ROUND2 GLOBAL BEST n=24 w=4: -1.123399
 ROUND2 GLOBAL BEST n=26 w=4: -0.323085
 ROUND2 GLOBAL BEST n=28 w=4: -0.614783
