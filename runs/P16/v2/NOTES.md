@@ -224,3 +224,43 @@ Bottom line after escalation: still **no counterexample and no complete proof**;
 strengthened conjecture ρ(Q) ≤ RHS holds exhaustively to n = 10, positivity is proved
 exactly for every structured family analyzed, and the most promising proof program
 (childB §3: rule G ↦ φ_G in the edge-CW lemma + leaf case analysis) is documented.
+
+## 8. Proof wave (round 3: children D & E + local n=10 verifications)
+
+Two more children executed the proof program; still **no complete proof, no
+counterexample**, but the problem is now reduced to sharply characterized cores.
+
+- `runs/P16/v2/childD/` (Bound 46): **PSD reformulation** — Lemma D0 factorization
+  K := diag(arg46) − A_L² = diag(arg46−4) − Rᵀ(Q_G−4I)R, and Theorem D1⇒46: K ⪰ 0
+  implies ρ(Q) ≤ RHS46. **Conjecture D1 (K ⪰ 0 for all connected δ≥2 graphs)**
+  verified exhaustively n ≤ 9 + 175k random graphs to n = 40 (childD), and — this
+  session — **exhaustively at n = 10: all 9,808,209 connected δ≥2 graphs, 0
+  failures** (`psd_n10.py`, psd10_*.log). New rigorous sufficient conditions D2
+  ((dᵢ+dⱼ)(mᵢ+mⱼ) ≥ 4dᵢdⱼ per edge ⇒ Bound 46) and D3 (power-weighted), subsuming
+  the equality manifold. Leaf case: induction candidate L4 verified n ≤ 9 but
+  RHS46 is not monotone under leaf deletion (FCOf? family) — needs a stronger
+  induction hypothesis. Resisting core: PSD-ness of (†) requires the global
+  Dirichlet coupling XᵀL_GX; all local Cauchy–Schwarz certificates provably fail.
+- Local: the childB power-φ certificate for Bound 46 was verified at n = 10:
+  **all 9,808,209 δ≥2 connected graphs pass with some a ∈ {0,…,1}** (0 failures;
+  `pow46_n10.py`, pow46_10_*.log).
+- Local negative datum: the analogous PSD statement for **Bound 44 is FALSE**
+  (K44 = diag(arg44) − A_L² has 38 non-PSD δ≥2 graphs at n ≤ 8, worst −0.277 at
+  GQjlt[), so Bound 44 cannot use the D1 route.
+- `runs/P16/v2/childE/` (Bound 44): **Lemma E1** (exact shifted-sum CW weights):
+  ρ(Q) ≤ max_e (M_e + c·s_e)/(s_e + c) for any c > −min s_e — a one-parameter
+  homotopy Das ↔ Anderson–Morley whose feasibility in c is an exact interval
+  intersection. Covers 273,183/273,191 graphs n ≤ 9; sum ∪ affine-product covers
+  ALL n ≤ 9 and all but 190 graphs at n = 10 (all 190 pass the second-order
+  affine test). Correction to childB: best-concave product weights fail at n = 9;
+  the right family is additive/bivariate-ψ. Resisting core for 44: 190 graphs
+  with (δ,Δ) ∈ {(2,5),(2,6),(3,6),(3,7)}, 6 spider trees, and leaf-heavy small
+  graphs; sharpest path documented in childE/PROOF44.md §5.
+
+Final status after three rounds (5 child sessions + this session): Bounds 44 and 46
+remain OPEN. All evidence (exhaustive to n=10/n=11-windows, ~10⁸ structures, exact
+perturbation series, PSD verification) indicates both bounds are TRUE, with equality
+exactly on regular bipartite graphs. The two crisply-stated finite targets that
+would finish a proof are: (i) Conjecture D1 (K ⪰ 0, δ≥2) + a leaf induction with a
+strengthened hypothesis, for Bound 46; (ii) closing the 190-graph residue of the
+E1/ψ certificate program for Bound 44.
