@@ -239,3 +239,29 @@ STATUS: negative (frontier of this run: verified automated coverings at
 L=14/15/16; L=17 negative across 4 palettes, 9 restarts, ~8 h compute;
 mechanization of the arrow calculus with inherited coverage remains the
 recommended path to approach 43).
+
+## 12. Engine E: arrow chains + inherited coverage (executing Section 7's recommendation)
+
+`engine_e.py` = Engine B plus the two inheritance mechanisms:
+- **inherit**: cover_cell(a, M) returns free if a placed class (r, m), m | M,
+  a = r (mod m), already contains the cell;
+- **guided split**: if a placed class intersects the cell (compatible on
+  gcd(m, M)) covering a 1/ratio fraction (ratio = m/gcd <= 256), split the cell
+  along a prime of m/gcd and recurse — the aligned sub-cell then inherits;
+- **tail-first ordering**: a chain's finitizing tail classes are placed BEFORE
+  the children recursion, so children inherit from them (this ordering is what
+  the 'x' entries in Nielsen's tables encode).
+
+Result: **L=6 covered structurally in 0.2 s** (292 congruences, max modulus
+4.5e9) where Engine B thrashed for minutes and failed — direct evidence that
+inheritance is the load-bearing mechanism. But L=10 still fails across 47
+restarts with widened backtracking (q_tries 10, p_tries 8, ~1e6 calls/restart):
+chains still starve on sibling-modulus conflicts that inheritance alone cannot
+resolve. What is still missing vs. Nielsen's hand construction: reuse of one
+recipe across chain levels combined WITH inheritance (Engine C had the reuse
+but not the inheritance; each alone is insufficient), plus per-branch resource
+budgeting. That combination is a substantial dedicated project (the V1
+program), now precisely scoped by three measured failure modes (Sections 7, 11, 12).
+
+(witness_E_L6.json verification: verify_cover's direct sweep is inapplicable
+— lcm ~ 1e40; verify_tree run in background, slow on the deep 5-chains.)
