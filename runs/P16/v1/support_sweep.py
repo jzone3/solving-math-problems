@@ -13,6 +13,8 @@ import networkx as nx
 
 WHICH = int(sys.argv[1]) if len(sys.argv) > 1 else 44
 K = int(sys.argv[2]) if len(sys.argv) > 2 else 4
+MAXLOOPS = int(sys.argv[3]) if len(sys.argv) > 3 else None
+TRIALS = int(sys.argv[4]) if len(sys.argv) > 4 else 12
 NMAX = 500.0
 BIG = 1e6
 
@@ -91,9 +93,11 @@ def main():
     for es in sups:
         for loopmask in range(1 << K):
             loops = [i for i in range(K) if loopmask >> i & 1]
+            if MAXLOOPS is not None and len(loops) > MAXLOOPS:
+                continue
             nvar = K + len(es) + len(loops)
             best = -1e18
-            for trial in range(12):
+            for trial in range(TRIALS):
                 x0 = rng.normal(0, 2, nvar)
                 try:
                     res = minimize(margin, x0, args=(es, loops, K),

@@ -199,6 +199,41 @@ Combined with rounds 1–2, the search space prescribed in the run brief (equita
 quotients + annealing) provably contains no counterexample for k ≤ 5 supports at any scale,
 and none exists on any graph with n ≤ 11. The bounds are almost certainly true.
 
+## Escalation round 4 (coordinator push #3, 2026-07-23): partial PROOFS + more search
+
+Since every line of search evidence says the bounds are true, this round produces rigorous
+**partial proofs** (symbolically machine-checked in `proofs_check.py`, exact sympy, no floats):
+
+- **Theorem A (regular graphs).** For d-regular G, every edge has d_u=d_v=m_u=m_v=d, and the
+  radicands collapse exactly: inner44 = 4(d−1)², inner46 = (2d−2)². Both RHS equal
+  2 + 2(d−1) = 2d, and μ(G) ≤ 2d always (Anderson–Morley μ ≤ max_{uv∈E}(d_u+d_v)), with
+  equality iff G is bipartite. **Both bounds hold for all regular graphs**; tight iff
+  regular bipartite.
+- **Theorem B (semiregular bipartite (a,b)-graphs).** Every edge has (d_u,d_v,m_u,m_v)
+  = (a,b,b,a) and μ = a+b. Exactly: inner44 − (a+b−2)² = (a−b)² ≥ 0 and
+  inner46 − (a+b−2)² = (a−b)² + 4(a−b)²/(a+b) ≥ 0, so RHS ≥ 2+(a+b−2) = a+b = μ.
+  **Both bounds hold on the whole semiregular bipartite family**, equality iff a=b —
+  this proves the empirically observed equality manifold is exactly regular bipartite
+  within this family.
+- **Lemma C (reduction to Anderson–Morley).** For any edge uv: f44(uv) ≥ d_u+d_v iff
+  (d_u−d_v)² + 2(m_um_v − d_ud_v) ≥ 0, and f46(uv) ≥ d_u+d_v iff
+  (d_u−d_v)² + 4(d_u+d_v) − 16d_ud_v/(m_u+m_v) ≥ 0. Consequently:
+  - **bound 44 holds for every graph in which some AM-maximizing edge satisfies
+    2(d_ud_v − m_um_v) ≤ (d_u−d_v)²** (in particular whenever m_um_v ≥ d_ud_v there);
+  - **bound 46 holds for every graph in which some AM-maximizing edge satisfies
+    m_u+m_v ≥ d_u+d_v** (then 16d_ud_v/(m_u+m_v) ≤ 16d_ud_v/(d_u+d_v) ≤ 4(d_u+d_v) by AM–GM,
+    with slack 4(d_u−d_v)²/(d_u+d_v)).
+  The remaining hard case is graphs where every max-degree-sum edge has neighborhoods much
+  sparser than the degrees suggest — exactly where μ itself drops well below max(d_u+d_v),
+  which is why the search finds large negative margins there.
+
+Additional search this round:
+- **Exhaustive trees n = 22 and n = 24** (`trees_fast.py`, gentreeg → batched screener):
+  see `trees_fast.log` — no violations (completes the round-2 leftover).
+- **k = 6 continuous support sweep** (`support_sweep.py 44|46 6 2 8`: all 112 connected
+  cell-graph supports × loop subsets of size ≤ 2, multi-start): `sweep{44,46}_k6.log` —
+  feasible supremum again 0 / negative, no positive support.
+
 ## Suggested next steps (other variants)
 
 - V5/proof direction looks promising: try Collatz–Wielandt on L or the signless
