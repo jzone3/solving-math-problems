@@ -1,1 +1,15 @@
 start cost 13
+[it 6] new best 12
+[it 20] cur 12 best 12
+[it 40] cur 12 best 12
+[it 60] cur 12 best 12
+[it 80] cur 12 best 12
+[it 100] cur 12 best 12
+[it 120] cur 12 best 12
+[it 140] cur 12 best 12
+[it 160] cur 12 best 12
+[it 180] cur 12 best 12
+[it 200] cur 12 best 12
+[it 220] cur 12 best 12
+[it 240] cur 12 best 12
+FINAL best=12
