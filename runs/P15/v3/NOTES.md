@@ -127,15 +127,33 @@ stalled at ~800 holes; at N=332640 (recip 1.65) solved. Choose N with recip ≥ 
 ### Verified witnesses, phase 2 (all PASS solutions/P15/verify.py)
 | m | lcm     | #congr | engine  | time   |
 |---|---------|--------|---------|--------|
-| 7 | 15120   | 74     | anneal2 | 243 s  |
-| 8 | 30240   | 89     | anneal2 | 341 s  |
-| 9 | 332640  | 184    | anneal2 | 3541 s |
+| 7  | 15120    | 74     | anneal2  | 243 s  |
+| 8  | 30240    | 89     | anneal2  | 341 s  |
+| 9  | 332640   | 184    | anneal2  | 3541 s |
+| 10 | 2162160  | 311    | cover_mc | 6373 s |
+| 11 | 21621600 | 566    | cover_mc | greedy init alone |
+| 12 | 21621600 | 565    | cover_mc | greedy init alone |
 
 m=7 lcm 15120 matches Klein's conjectured-minimal L(7); found fully automatically.
 
-### Running
-cover_mc fleet (4 h budgets): m=10 N=1081080, m=12 N∈{1441440, 2162160},
-m=14 N∈{2882880, 4324320}, 8 cores.
+### Engine evolution & lessons
+- cover_mc.c: full-Z_N C engine, ~325k it/s at N=15120; per-move cost O(#holes+N/n).
+- Stagnation kicks (restore best, reset weights, reshuffle ~8 random moduli) were
+  essential for m=10: plateau at ~2-3k holes then staircase descent to 0 over ~90 min.
+- Reciprocal slack law refined: greedy init ALONE covers when slack is high enough
+  relative to m (m=11,12 at N=21621600, recip 1.84-1.93 → 0 holes at init).
+  But slack needed grows with m: m=13 at recip 1.87 (N=73513440) still leaves
+  ~273k holes after greedy; per-move cost at N~10^8 (holes ~10^5-10^6) drops to
+  ~30 it/s — the explicit-enumeration wall for this engine is m≈13.
+- layered_mc.py + holes_mc.c (Krukenberg-style layer-by-layer with hole-set C
+  engine): validated mechanically but strictly worse than direct search at m=7
+  (layers over-consume small moduli; final layer starved). Would need Krukenberg's
+  hand-tuned modulus rationing to work — future direction.
 
-STATUS: frontier-pushed (SAT/local-search frontier moved from m=4 to m=9 verified;
-no m≥43 witness — explicit-enumeration methods cannot reach it, see calibration)
+Scaling summary: m=43 needs recip slack ≈1.8+ over divisors ≥43, i.e. lcm ~10^13+
+and ~10^4-10^5 congruences — outside explicit-array methods entirely; a recursive/
+symbolic construction (Nielsen/Owens style) is the only plausible route.
+
+STATUS: frontier-pushed (verified covering systems built automatically for every
+m ≤ 12 — previous automatic frontier here was m=4-6; no m≥43 witness — explicit
+enumeration cannot reach it, see calibration)
