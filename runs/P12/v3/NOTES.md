@@ -152,6 +152,23 @@ k ∈ {4,5,8} for p=13, ~3h each on 8 cores.
    V1/V2 territory. The rigidity theorem at least removes any hope that symmetry
    reduction can shrink the complete search: there is no symmetry to exploit.
 
+## 7. Pivot: complete SAT search (post-algebraic phase, coordinator-directed)
+
+With the algebraic space closed, we execute the complete-search route the theorems point
+at. `gen_cnf.py`: direct encoding — cell vars x[r][i][s], Tseitin occurrence vars for
+every (row, position, ordered pair) at distances 1 and 2, exactly-once per pair at
+distance 1 (ALO + sequential-counter AMO), AMO at distance 2, row 0 = identity,
+first-column non-decreasing (row-order symmetry). n=11: 47k vars / 151k clauses.
+
+Calibration (kissat 4.0.4):
+- n=4, 6: SAT instantly (witnesses verified).
+- n=7: **UNSAT in ~3 min** (independent second proof of T2(7) nonexistence, agreeing
+  with our exhaustive DFS).
+- n=8: **SAT in 259 s** — witness decoded and verified True. Note plain DFS could not
+  find any T2(8) in 3 h: SAT is qualitatively stronger here.
+- n=9 (known UNSAT, Kapralov 2012 clique search): running — key scaling benchmark.
+- n=11: kissat --sat and --unsat portfolio running.
+
 STATUS: negative / frontier-pushed — no witness found (searches hit the n−1 wall);
 new structural theorems close off ALL algebraic/symmetric construction routes for
 T2(11) and T2(13); problem remains open.
