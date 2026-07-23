@@ -65,3 +65,10 @@ multiplicity counts, column sums, all pairwise inner products = L; prints PASS/F
   representative in every orbit of such a product group.
 
 ## STATUS: running
+
+- 00:40 UTC: 4h budget expired: nosym runs and i14-28 (sym) all TIMEOUT (no answer).
+  All four sanity known-SAT instances returned SAT and their decoded matrices verify PASS
+  → sym encoding does not wrongly exclude designs on any tested solvable sibling.
+- 00:45 UTC relaunch (12h budgets): nosym × 3 UNSAT candidates; i14-28 sym; kissat with
+  DRAT proof logging for i14-18/i12-15/i12-20 (to certify UNSAT with drat-trim);
+  CP-SAT independent model on (12,15) (earlier CP-SAT run died silently, restarted).
