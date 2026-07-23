@@ -219,3 +219,58 @@ hand-crafted heart of Krukenberg 1971 / Nielsen 2009 / Owens 2014).
 
 STATUS: negative (no >= 43; compressed-witness machinery built, validated,
 and pushed as the new tooling frontier).
+
+## 12. Phase 3 (2026-07-23): structure-guided attack from the extremal family
+
+New attack (per coordinator: fundamentally different, literature-guided).
+Downloaded and fully read Owens's thesis (etd/4329); also re-confirmed via a
+July-2026 arXiv paper (2607.19029, min-mod-7 minimal-lcm) that 42 is *still*
+the cited record — problem open as of this week.
+
+### 12a. Machine replay of the Owens set-counting calculus (`branchgame.py`)
+
+Formalized the Krukenberg/Nielsen/Owens "branch game": per hole, a pool of
+*sets* (partial covers of the branch); ops = MUL (mint sets via free residues
+of a small prime) and FILL(p, copies, need) (each p-up-arrow copy consumes
+`need` distinct pool sets — sets reusable across different primes but not
+across copies of the same prime — and yields 1 new set). Transcribed all 12
+counting sections 3.8–3.20 of the thesis. Result: **ALL 12 ledgers replay
+PASS at T=42**, faithfully reproducing every stated tally (two sections need
+the thesis's fractional-input refinements: 11-up-arrow effective cost 7 in
+§3.11; six 3-input copies of 7-up-arrow in §3.12). This is, to our knowledge,
+the first machine-checked replay of the Owens ledger arithmetic.
+
+### 12b. Where T=43 breaks (`branchgame.py` part 2)
+
+At T=43 the single modulus-42 congruence (the '2' at level 7·3 in §3.4's
+third 7-input, 7·3·2 = 42) is forbidden. Its removal kills the "third-entry
+needs only one 3-input" saving used throughout: already in §3.8 the three
+7-up-arrow copies cost 6 sets instead of 5 and the ledger fails by exactly
+ONE set (18 needed > 17 pooled). Owens's ledgers have slack ≤ 3 everywhere
+and slack 0 in §§3.8, 3.15–3.17, 3.19–3.20 — the scheme is *rigid*, matching
+his Conclusion ("similar lack of freedom... would be difficult to fill").
+
+### 12c. The hole-42 reduction (`hole42.py`)
+
+Reduction theorem (elementary, but sharpens the target): O has distinct
+moduli with min exactly 42, hence exactly one congruence a* mod 42. A ≥43
+cover exists iff the class a* + 42Z (minus its overlap with O \ {c*}; in
+Owens's tight scheme: none) can be covered by distinct moduli ≥ 43 unused in
+O. Inside the hole, modulus m acts as inner modulus n = m/gcd(m,42); each n
+has ≤ 8 realizations m = n·g (g | 42). Computed availability: inner n = 2, 3,
+4, 6 are fully BLOCKED by Owens's own 7-layer moduli (84; 63,126; 56,168;
+252) — the cheap doubling route is closed. Restricting to certainly-unused
+moduli (prime factor ≥ 97) with multiplicity 8, the raw density budget needs
+inner moduli out to ~10^7 and reproduces the multiplicity-8 analogue of the
+minimum modulus problem: the wall shifts but does not fall. Conclusion: any
+43 must re-derive the small-prime layers (Owens's own diagnosis), i.e. a new
+§3.2–3.4 with one extra unit of slack — the branch-game formalization in
+`branchgame.py` is now the right search space for that (finite, ledger-
+checkable), and is the concrete next frontier.
+
+Artifacts: `owens42.pdf/.txt` (source), `branchgame.py` (+`branchgame_out.txt`),
+`hole42.py` (+`hole42_out.txt`).
+
+STATUS: negative (no >= 43). Frontier-pushed: first machine replay of the
+Owens 42 ledger calculus; exact single-set deficit located at T=43; hole-42
+reduction + modulus-availability tables computed.

@@ -1,0 +1,33 @@
+inner-n  realizations m=n*g (g|42, gcd ok, m>=43)   unused-under-known-collisions
+n=2   -> [84]   free=[]  <-- mu(n)=0 BLOCKED
+n=3   -> [63, 126]   free=[]  <-- mu(n)=0 BLOCKED
+n=4   -> [56, 168]   free=[]  <-- mu(n)=0 BLOCKED
+n=5   -> [70, 105, 210]   free=[70, 105, 210]
+n=6   -> [252]   free=[]  <-- mu(n)=0 BLOCKED
+n=7   -> [49, 98, 147, 294]   free=[49, 98, 147, 294]
+n=8   -> [48, 112, 336]   free=[48]
+n=9   -> [54, 189, 378]   free=[54]
+n=10  -> [60, 140, 420]   free=[60, 140, 420]
+n=11  -> [66, 77, 154, 231, 462]   free=[66, 77, 154, 231, 462]
+n=12  -> [72, 504]   free=[72, 504]
+n=13  -> [78, 91, 182, 273, 546]   free=[78, 91, 182, 273, 546]
+n=14  -> [196, 588]   free=[196, 588]
+n=15  -> [45, 90, 315, 630]   free=[45, 90, 315, 630]
+n=16  -> [96, 224, 672]   free=[672]
+n=17  -> [51, 102, 119, 238, 357, 714]   free=[51, 102, 119, 238, 357, 714]
+n=18  -> [108, 756]   free=[756]
+n=19  -> [57, 114, 133, 266, 399, 798]   free=[57, 114, 133, 266, 399, 798]
+n=20  -> [120, 280, 840]   free=[120, 280, 840]
+n=21  -> [441, 882]   free=[441, 882]
+n=22  -> [44, 132, 308, 924]   free=[44, 132, 308, 924]
+n=23  -> [46, 69, 138, 161, 322, 483, 966]   free=[46, 69, 138, 161, 322, 483, 966]
+n=24  -> [144, 1008]   free=[1008]
+
+blocked small n (given identified collisions): [2, 3, 4, 6]
+
+97-safe pool: need sum_j 8/j >= 97  ->  j up to 103547 (inner moduli up to 97*103547 ~ 1.00e+07)
+i.e. a raw-density argument alone needs inner moduli ~ 1.7e7;
+covering STRUCTURE with multiplicity 8 and min inner modulus 97
+is the multiplicity-8 analogue of the minimum-modulus problem --
+the same wall, shifted. Small blocked n's show the cheap route is
+closed by Owens's own 7-layer, matching his Conclusion remark.
