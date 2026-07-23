@@ -81,3 +81,10 @@ multiplicity counts, column sums, all pairwise inner products = L; prints PASS/F
   i12-20 **s VERIFIED** (2570s); i14-18 still checking.
   Note: original kissat solve times were only ~1–10 min per instance (mtimes show
   i12-15.out done at 20:36, proofs at 00:44–00:48 within minutes of relaunch).
+- 03:25 UTC: i14-18 DRAT also **s VERIFIED** (3274s; 5.48M/11.5M lemmas in core,
+  650M resolution steps, 1372 RAT lemmas). All three UNSAT sym CNFs are now
+  machine-certified: the CNFs themselves are unsatisfiable.
+  Remaining links for a nonexistence claim: (a) encoding faithfulness (validated on 5
+  known-SAT siblings, decoded+PASS), (b) symmetry-break soundness (row-0 WLOG +
+  double-lex, Flener et al. 2002), (c) independent cross-checks: nosym kissat (12h)
+  and OR-Tools CP-SAT integer model on (12,15) — both still running.
