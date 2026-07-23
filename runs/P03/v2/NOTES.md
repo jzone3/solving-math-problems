@@ -235,3 +235,46 @@ and 1.5M weighted EG-fix instances — all pack. Combined two-phase totals:
 STATUS: negative / frontier-pushed — no witness; Woodall exhaustively
 verified for all digraphs on ≤ 7 vertices, plus ~180M τ≥3 multigraph
 instances to n=16 and 1.49M weighted EG-fix instances, all packing.
+
+---
+
+## Phase 3 (sparse exhaustive frontier past n=7)
+
+Rationale: any counterexample needs a rich dicut lattice, which lives in the
+SPARSE regime (the n<=7 full sweep showed >83% of tau>=2 instances are killed
+by the rho-shortcut, and dense/strongly-connected digraphs have no dicuts at
+all). So extend the exhaustive frontier by vertex count under an
+underlying-edge budget, via a balanced single-generator pipeline
+(`fifo_sweep.sh`: nauty geng|directg -> awk round-robin -> 7 checker
+processes; geng res/mod sharding is grossly unbalanced and classes are NOT
+comparable across mod values — learned the hard way).
+
+Results (all FAILURES: 0):
+- n=8, 7..12 underlying edges: 484,212,058 digraphs; tau>=2: 169,848,174;
+  rho-shortcut killed 149,094,164; greedy packed 20,753,280; 730 ILP-certified.
+- n=9, 8..11 underlying edges: 243,887,206 digraphs; tau>=2: 29,298,576;
+  58 ILP-certified.
+- n=9, exactly 12 underlying edges: 1,509,723,429 digraphs — run below.
+
+### Phase 3 results (complete, all zero failures)
+- n=9, exactly 12 underlying edges: 1,509,723,429 digraphs; tau>=2:
+  335,236,598; rho-shortcut 271,641,554; greedy 63,592,952; 2,092
+  ILP-certified. FAILURES: 0.
+
+### Phase-3 conclusion / new citable frontier
+Woodall's Conjecture now exhaustively verified for:
+- ALL digraphs on <= 7 vertices (880,471,142 weakly-connected, 2-cycles ok);
+- ALL digraphs on 8 vertices with <= 12 underlying edges (484,212,058);
+- ALL digraphs on 9 vertices with <= 12 underlying edges (1,753,610,635).
+Exhaustive total: ~3.12 BILLION digraphs; combined with the phase-2 random /
+annealed / weighted sweeps the campaign total exceeds 3.6 billion instances,
+0 counterexamples. Every greedy-resistant instance (2,880 across the sparse
+sweeps) was certified feasible by exact CBC ILP.
+
+Next escalation (not run): n=10 <= 12 edges (~4-5B, needs a C core or ~2
+days), n=9 e=13 (~5B), or SMS-style canonical generation with tau>=3 pruning
+inside the generator.
+
+STATUS: negative / frontier-pushed — exhaustive verification of Woodall up
+to n=7 (all), and n=8,9 in the sparse regime (<=12 underlying edges), ~3.12B
+digraphs total, 0 failures.
