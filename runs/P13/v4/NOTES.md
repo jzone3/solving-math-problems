@@ -93,8 +93,12 @@ placed + floor(free_d1/6) <= best. Validated on v=7 (returns 7 = perfect).
   deficiency 2). Complete run: 360,490,847 nodes, ~40 min (niced). Witness:
   runs/P13/v4/witness_v9_maxpack10.txt, verified PASS by
   `solutions/P13/verify.py --packing`. So a (9,6)-PMD fails by a margin of 2 blocks — not 1.
-- v=10: packing of 11 blocks (of 15) found; maximality not proven within budget
-  (branch-and-bound stopped at ~1.1 B nodes). So max packing for v=10 is in [11, 14].
+- v=10: **13-block packing found** (of the 15 a perfect design needs) — witness
+  runs/P13/v4/witness_v10_maxpack13.txt, verified PASS by verify.py --packing.
+  Maximality NOT proven: B&B ran ~22.3 B nodes (~6 h) without exhausting; since a perfect
+  (10,6)-PMD does not exist (above), max packing for v=10 is in **[13, 14]**.
+  (Witness recovered by deterministic replay to node 10,101,997,980 with block printing
+  enabled — v10_truemax_replay.log.)
 
 ### SAT-side note
 
@@ -119,7 +123,8 @@ max-packing B&B, v=12 partial (~43 B nodes, inconclusive).
 
 - **(9,6)-PMD does not exist** — settled by complete search, triple-verified.
 - **(10,6)-PMD does not exist** — settled by complete search, triple-verified.
-- Exact near-miss: max partial packing at v=9 is 10/12 blocks.
+- Exact near-miss: max partial packing at v=9 is 10/12 blocks; at v=10 it is 13 or 14
+  of 15 (13-block witness verified).
 - v=12: exhaustive search infeasible; remaining open k=6 cases v ∈ {12, 15, 16, 18}.
 - The Abel–Bennett–Zhang / Handbook VI.35 table's "possible exceptions" list for
   (v,6)-PMDs shrinks from {9,10,12,15,16,18} to {12,15,16,18}, and gains its first

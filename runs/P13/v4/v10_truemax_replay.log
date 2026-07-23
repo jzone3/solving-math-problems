@@ -1,0 +1,141 @@
+new best packing: 2 blocks (nodes=2)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+new best packing: 3 blocks (nodes=3)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+new best packing: 4 blocks (nodes=4)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+0 4 3 2 8 6 
+new best packing: 5 blocks (nodes=5)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+0 4 3 2 8 6 
+0 5 4 6 1 9 
+new best packing: 6 blocks (nodes=7)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+0 4 3 2 8 6 
+0 5 4 6 1 9 
+0 7 6 9 5 8 
+new best packing: 7 blocks (nodes=8)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+0 4 3 2 8 6 
+0 5 4 6 1 9 
+0 7 6 9 5 8 
+0 8 9 4 2 7 
+new best packing: 8 blocks (nodes=9)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+0 4 3 2 8 6 
+0 5 4 6 1 9 
+0 7 6 9 5 8 
+0 8 9 4 2 7 
+0 9 8 7 3 1 
+new best packing: 9 blocks (nodes=12)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+0 4 3 2 8 6 
+0 5 4 6 1 9 
+0 7 6 9 5 8 
+0 8 9 4 2 7 
+0 9 8 7 3 1 
+1 6 8 2 9 7 
+new best packing: 10 blocks (nodes=12461)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+0 4 3 2 8 6 
+0 5 4 6 1 9 
+0 8 7 9 5 2 
+0 9 6 8 2 7 
+1 6 5 7 8 3 
+2 5 9 4 7 6 
+2 9 7 3 8 4 
+new best packing: 11 blocks (nodes=189365)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 1 7 4 
+0 4 3 2 8 6 
+0 5 4 8 1 9 
+0 8 7 6 5 2 
+0 9 8 4 2 7 
+1 6 2 9 7 3 
+1 8 5 7 2 6 
+2 5 9 4 7 8 
+3 6 7 5 8 9 
+truemax v=10: nodes=268435456 best=11 elapsed=155s
+truemax v=10: nodes=536870912 best=11 elapsed=322s
+truemax v=10: nodes=805306368 best=11 elapsed=478s
+truemax v=10: nodes=1073741824 best=11 elapsed=638s
+truemax v=10: nodes=1342177280 best=11 elapsed=798s
+truemax v=10: nodes=1610612736 best=11 elapsed=955s
+truemax v=10: nodes=1879048192 best=11 elapsed=1121s
+truemax v=10: nodes=2147483648 best=11 elapsed=1277s
+truemax v=10: nodes=2415919104 best=11 elapsed=1437s
+truemax v=10: nodes=2684354560 best=11 elapsed=1596s
+truemax v=10: nodes=2952790016 best=11 elapsed=1753s
+truemax v=10: nodes=3221225472 best=11 elapsed=1918s
+truemax v=10: nodes=3489660928 best=11 elapsed=2072s
+truemax v=10: nodes=3758096384 best=11 elapsed=2232s
+truemax v=10: nodes=4026531840 best=11 elapsed=2390s
+truemax v=10: nodes=4294967296 best=11 elapsed=2537s
+truemax v=10: nodes=4563402752 best=11 elapsed=2680s
+truemax v=10: nodes=4831838208 best=11 elapsed=2822s
+truemax v=10: nodes=5100273664 best=11 elapsed=2963s
+truemax v=10: nodes=5368709120 best=11 elapsed=3107s
+truemax v=10: nodes=5637144576 best=11 elapsed=3256s
+truemax v=10: nodes=5905580032 best=11 elapsed=3408s
+truemax v=10: nodes=6174015488 best=11 elapsed=3563s
+truemax v=10: nodes=6442450944 best=11 elapsed=3721s
+truemax v=10: nodes=6710886400 best=11 elapsed=3867s
+truemax v=10: nodes=6979321856 best=11 elapsed=4009s
+truemax v=10: nodes=7247757312 best=11 elapsed=4160s
+truemax v=10: nodes=7516192768 best=11 elapsed=4317s
+truemax v=10: nodes=7784628224 best=11 elapsed=4477s
+truemax v=10: nodes=8053063680 best=11 elapsed=4619s
+truemax v=10: nodes=8321499136 best=11 elapsed=4763s
+truemax v=10: nodes=8589934592 best=11 elapsed=4914s
+truemax v=10: nodes=8858370048 best=11 elapsed=5073s
+truemax v=10: nodes=9126805504 best=11 elapsed=5218s
+truemax v=10: nodes=9395240960 best=11 elapsed=5359s
+truemax v=10: nodes=9663676416 best=11 elapsed=5505s
+truemax v=10: nodes=9932111872 best=11 elapsed=5658s
+new best packing: 12 blocks (nodes=10101997979)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 4 7 6 
+0 4 6 2 5 1 
+0 5 7 8 1 9 
+0 6 4 1 3 7 
+0 8 9 7 2 4 
+0 9 3 6 8 2 
+1 4 2 7 3 9 
+1 6 5 8 4 3 
+1 7 9 2 8 6 
+2 6 7 4 8 5 
+new best packing: 13 blocks (nodes=10101997980)
+0 1 2 3 4 5 
+0 2 1 5 6 3 
+0 3 5 4 7 6 
+0 4 6 2 5 1 
+0 5 7 8 1 9 
+0 6 4 1 3 7 
+0 8 9 7 2 4 
+0 9 3 6 8 2 
+1 4 2 7 3 9 
+1 6 5 8 4 3 
+1 7 9 2 8 6 
+2 6 7 4 8 5 
+2 9 8 7 5 3 
+truemax v=10: nodes=10200547328 best=13 elapsed=5809s
+truemax v=10: nodes=10468982784 best=13 elapsed=5939s

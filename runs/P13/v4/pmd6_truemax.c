@@ -102,6 +102,13 @@ static void search(void) {
         memcpy(bestblocks, blocks, sizeof(blocks));
         fprintf(stderr, "new best packing: %d blocks (nodes=%llu)\n", best,
                 (unsigned long long)nodes);
+        {
+            int a, c;
+            for (a = 0; a < best; a++) {
+                for (c = 0; c < K; c++) fprintf(stderr, "%d ", bestblocks[a][c]);
+                fprintf(stderr, "\n");
+            }
+        }
         fflush(stderr);
         if (best == B) return; /* perfect: cannot do better */
     }
