@@ -65,7 +65,13 @@ Standard-form solution counts, full exhaustion:
 | 6 | 1 | 1 586 | 1 ✔ |
 | 7 | 0 | 151 595 | 0 ✔ |
 | 8 | 6 | 95 180 162 | 6 (Kapralov) ✔ |
-| 9 | (running) | ~10^11 est. | 0 (Kapralov 2012) |
+| 9 | **0** | 432 790 910 996 | 0 (Kapralov 2012) ✔ |
+
+n=9 full exhaustion (t2dfs2, single core, 201 min CPU / 311 min wall under
+contention): **0 solutions**, 4.33·10^11 nodes, 6298 standard-form second rows.
+This independently re-proves Kapralov's T2(9) nonexistence with a completely
+different method (DFS vs. clique search) — end-to-end validation that the
+searcher + symmetry breaking are complete.
 
 All six found T2(8) verify with `solutions/P12/verify.py` (PASS).
 Node growth ≈ ×700 per n step. Pruning gains were modest: n=8 nodes
