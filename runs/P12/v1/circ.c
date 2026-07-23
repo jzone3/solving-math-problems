@@ -135,6 +135,8 @@ static int fillrow(int r, int pos, int used) {
     int a2 = pos >= 2 ? row[pos - 2] : -1;
     for (int i = 0; i < cnt; i++) {
         int s = ord[i];
+        /* canonical row order: second symbols strictly increasing */
+        if (pos == 1 && r >= 2 && s <= rowsv[r - 1][1]) continue;
         if (pget(ud1, a1, s)) continue;
         if (a2 >= 0 && pget(ud2, a2, s)) continue;
         pset(ud1, a1, s);
