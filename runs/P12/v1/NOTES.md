@@ -165,3 +165,12 @@ Validation (dramatic speedup vs direct CNF):
   3 randomized-restart runs launched.
 - n=13: candidate generation needs ~48 GB (83M candidates/group) — killed;
   would need on-the-fly generation or a bigger box.
+
+## RESULT 2026-07-23 ~21:00 UTC: T2(9) nonexistence independently replicated
+- t2dfs 9 0 (exhaustive): 785,853,266 nodes, maxdepth 6, found 0 — no T2(9)
+  exists. Independent replication of Kapralov (ACCT 2012), with a completely
+  different method (domain-propagation DFS vs clique search), satisfying the
+  methodology's two-verifier standard for the negative result at n=9.
+- n=11 status: exhaustive + 3 randomized runs all plateau at depth 7 of 10
+  (no depth-8 node in ~1h across 4 processes; exhaustive at 29.5M nodes).
+  Fourth randomized seed launched on the freed core.
