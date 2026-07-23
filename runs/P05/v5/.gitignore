@@ -6,3 +6,5 @@ multi_search
 *.json
 *.tsv
 *.g6
+direct_dp
+anneal

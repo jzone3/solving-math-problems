@@ -183,6 +183,54 @@ Largest single blocks: n=12 e=19–20 exhaust (126M graphs), stage-2 n=10 e≤17
   could in principle suppress a feasible system (probability ~1e-6 over the whole run);
   lp_filter (no hashing) fully confirmed n≤8, and all other counts were hit-free anyway.
 
+## Round 2 (continuation): new encoding — subset-DP direct exhaustion + annealing
+
+Orchestrator asked to push past the negative with a fundamentally different encoding.
+
+### Encoding: subset DP, no path enumeration (`direct_dp.c`)
+
+reach[mask] = bitset of v such that a simple path with vertex set exactly `mask` ends at v
+(O(2^n · n · deg) per graph, n ≤ 16). Longest-path *vertex sets* are read off directly as
+the masks of maximum popcount with reach ≠ 0 — no exponential path enumeration, automatic
+dedup by vertex set. A graph is a counterexample iff three such masks have empty AND
+(fast filter: if the AND of all masks ≠ 0, skip). This makes the **direct** question —
+"does G itself have three longest paths with empty intersection?" — checkable at
+~40,000 graphs/sec/core at n = 10 (~90 µs/graph at n = 11).
+
+Validated against an independent Python DFS enumerator on all 853 connected n = 7 graphs
+(exact agreement) and consistent with all round-1 results.
+
+### Direct exhaustive frontier (all graphs = all *counterexample candidates*, not cores)
+
+| Class | graphs checked | hits |
+|---|---|---|
+| **all connected n = 11 (complete)** | **1,006,700,565** | **0** |
+| all connected n = 12, ≤ 22 edges | 147,788,327 + 597,075,900 | 0 |
+| all connected n = 13, ≤ 17 edges | 11,388,994 | 0 |
+| all connected n = 14, ≤ 17 edges | 11,324,052 | 0 |
+| all connected n = 15, ≤ 17 edges | 7,577,202 | 0 |
+| all connected n = 16, ≤ 17 edges | 3,373,593 | 0 |
+| subcubic n = 15, 16 | 1,016,740 + 4,101,318 | 0 |
+
+Totals cross-check: n = 11 count matches OEIS A001349(11) = 1,006,700,565 exactly;
+n = 12 edge-sliced counts match geng -u counts exactly.
+
+**Headline: Gallai-3 holds for every connected graph on ≤ 11 vertices (fully exhaustive,
+~1.0B graphs), and for all sparse graphs (≤ 17 edges) up to n = 16 and n = 12 up to 22
+edges.** The previous frontier reported in the problem file was "~n ≤ 12 folklore" with no
+published certificate; this run gives a concrete, reproducible machine verification.
+
+### Structure-targeted simulated annealing (`anneal.c`, n = 14–18)
+
+Same DP as exact oracle inside a Metropolis loop over sparse connected graphs
+(edge toggles, degree cap 3–4). Energy: 10000·(min triple intersection) − (#minimizing
+triples), with gradient shaping 10000 + 500·|AND of all longest-path sets| − (#sets) in
+the regime where all longest paths still share vertices. Batteries of 30M-iteration runs
+at n = 14, 15, 16, 17, 18 (seeds varied): every run bottoms out at |AND| = 1 — dozens of
+longest paths all sharing exactly one common vertex — and never once crossed into the
+AND = 0 regime. The single shared vertex is remarkably robust under local moves, matching
+the round-1 extremal picture (min triple intersection exactly 1, never 0).
+
 ## 7. Conclusions
 
 1. Confirmed still open as of 2026-07 (arXiv claim 2006.16245 self-retracted).
@@ -195,7 +243,14 @@ Largest single blocks: n=12 e=19–20 exhaust (126M graphs), stage-2 n=10 e≤17
 4. Two crisp obstruction patterns worth theory follow-up: (a) the k=3 "per-pair maximum
    paths on a triple always share a vertex" lemma (min intersection exactly 1 at extremes);
    (b) the k≥4 arm-length min-max infeasibility.
+5. Round 2 (subset-DP encoding): **complete exhaustive verification of Gallai-3 for every
+   connected graph on ≤ 11 vertices** (1,006,700,565 graphs at n = 11 alone; count matches
+   OEIS A001349), n = 12 up to 22 edges (745M graphs), sparse (≤ 17 edges) to n = 16 —
+   ~1.79B graphs directly checked, 0 counterexamples. Annealing at n = 14–18 with an exact
+   DP oracle never escaped the "all longest paths share exactly one vertex" basin.
 
-STATUS: negative / frontier-pushed — no counterexample found; pendant-arm spider families
-excluded over a large exhaustive frontier; two conjecture-relevant lemma candidates isolated
-and documented. No solutions/P05/verify.py (nothing to verify — no witness claimed).
+STATUS: negative / frontier-pushed — no counterexample found. Direct exhaustive frontier
+pushed to all n ≤ 11 (complete, ~1.0B graphs) plus n = 12 ≤ 22 edges and sparse n ≤ 16;
+pendant-arm spider families excluded over ~390M cores; annealing at n ≤ 18 never left the
+shared-vertex basin. Two conjecture-relevant lemma candidates isolated and documented.
+No solutions/P05/verify.py (nothing to verify — no witness claimed).
