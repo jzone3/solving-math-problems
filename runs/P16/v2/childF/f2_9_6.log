@@ -1,0 +1,3 @@
+>A nauty-geng -cX0x400d2D8 n=9 e=9-36 class=6/8
+>Z 44203 graphs generated in 0.02 sec
+n=9 res=6/8: 44203 graphs, min eig -4.844e-16 at HCZVRqs, FAILURES 0
