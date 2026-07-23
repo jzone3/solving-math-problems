@@ -130,6 +130,7 @@ def check_array(n, rows):
 def main():
     n = int(sys.argv[1])
     count_only = "--count-only" in sys.argv
+    dump = "--dump" in sys.argv  # print arrays to stdout for cutconv
     QR = qr_set(n)
     bases = enum_bases(n)
     print(f"n={n}: {len(bases)} single-base candidates", file=sys.stderr)
@@ -174,6 +175,14 @@ def main():
                 if not check_array(n, rows):
                     print("BUG: invalid array from construction", b1, b2,
                           file=sys.stderr)
+                    continue
+                if dump:
+                    for row in rows:
+                        print(" ".join(map(str, row)))
+                    print()
+                    tried += 1
+                    if tried % 10000 == 0:
+                        print(f"dumped {tried} arrays", file=sys.stderr)
                     continue
                 sq = try_cuts(n, rows)
                 tried += 1
