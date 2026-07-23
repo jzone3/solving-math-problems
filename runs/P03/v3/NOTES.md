@@ -172,7 +172,27 @@ Encoding: dicuts ↔ source subsets X with Y=Ymax(X), PLUS per-sink in-arc dicut
 all agree). Degree-preserving double-swap annealing, score = tight-dicut density,
 non-planar filter (LY), SAT packing decision per valid candidate.
 
-Runs: 8 parallel shapes (|S₄|,|S₃|) ∈ {12}×{0..4} ∪ {15}×{0,1,3}, 240 min each
-(results appended below).
+Engines: bip.py (tight-dicut-density score, exact minimal dicuts every step),
+bipfast.py (numpy-vectorized cut-size sweep, ~25x faster; exact minimal dicuts + SAT only
+on accepted improvements; τ agreement with bip.py cross-checked on 60 instances),
+bip3.py (min-#colorings gradient, cap 400).
 
-## STATUS: negative / frontier-pushed — no τ=3 counterexample with n≤7 (simple, any) or n=8 (oriented); ~1.04M filtered multigraph candidates + 1.4B nauty-enumerated digraphs scanned, 0 UNSAT.
+### 7c. Results of the bipartite-class runs (~4h x 12 processes, 8 cores)
+
+| engine  | shapes (|S₄|,|S₃|)            | iters | τ=3 nonplanar SAT decisions | UNSAT |
+|---------|-------------------------------|-------|------------------------------|-------|
+| bip.py  | (12,0),(12,1),(12,2),(12,3)   | 380k  | 4,630                        | 0     |
+| bip.py (partial, replaced) | (12,4),(15,0),(15,1),(15,3) | ~5k | ~120         | 0     |
+| bipfast | (12,4),(15,0),(15,1),(15,3),(18,0),(12,8) | 7.6M | 6,533            | 0     |
+| bip3    | (12,0),(12,2)                 | 80k   | 79,938 min-coloring counts   | 0 (never < 400 cap) |
+
+Every SAT decision here is a full check of a τ=3, ρ≥4, non-planar member of the
+ACZ-complete class (n = 28–44, 48–72 arcs) — a regime NO previous slice of this run (or
+any generic small-n scan) could reach. All packable; no near-misses (bip3's coloring-count
+gradient again saturated at its cap).
+
+Exhaustion of the class is impossible (nauty-genbg count of just the minimal shape
+12+16, (4,3)-biregular, did not terminate in 120s → astronomically many), so annealing
+coverage is the practical frontier here.
+
+## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; NEW: ~11.3k SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT.
