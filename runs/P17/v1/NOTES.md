@@ -194,6 +194,14 @@ E/2 ≥ n−α SDP program of arXiv:2509.05814 (which implies both). V3/V4 SAT/I
 variants seem less natural here than for other problems; a V2 structured
 attack could target quadratic-conjugate spectra (x²+ax−b families) directly.
 
+Bug log: `verify_exact.py` originally counted zero eigenvalues as
+positive/negative because sympy `count_roots(a,b)` is endpoint-INCLUSIVE;
+fixed by skipping the irreducible factor `x`. No earlier conclusion was
+affected (all graphs it had been run on had no zero eigenvalues; search
+scoring used numpy with an open tolerance band). Found while building the
+second verifier `solutions/P17/verify_corollary.py` — the two-verifier
+methodology rule caught it.
+
 ## 10. RESOLUTION FOUND (second-wave priority check, 2026-07-23)
 
 - **Kumar, Pragada — "Energy and independence number", arXiv:2607.19817

@@ -28,6 +28,8 @@ def check(n, edges, which):
     npos = nneg = 0
     for fac, mult in poly.factor_list()[1]:
         fp = sp.Poly(fac, x)
+        if fp.degree() == 1 and fp.nth(0) == 0:
+            continue  # factor x: zero eigenvalues (count_roots includes endpoints)
         npos += mult * fp.count_roots(0, sp.oo)
         nneg += mult * fp.count_roots(-sp.oo, 0)
     # exact enclosure of sum of positive roots via rational root isolation
