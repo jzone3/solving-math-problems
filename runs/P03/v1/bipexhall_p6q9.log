@@ -1,0 +1,3 @@
+[bip-exhall p=6 q<=9] total=168252 checked=20000 t=42s
+[bip-exhall p=6 q<=9] total=251095 checked=40000 t=66s
+[bip-exhall p=6 q<=9] total=330413 checked=60000 t=89s
