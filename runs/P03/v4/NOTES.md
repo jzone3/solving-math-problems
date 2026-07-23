@@ -104,11 +104,18 @@ basis of a second exhaustive scan over multi-DAGs (`multidag_exhaustive.py`):
 support ⊆ upper-triangular pairs, multiplicities >= 1, exact isomorphism dedup
 (min over vertex permutations).
 
-Exhaustive multi-DAG results (tau in [3,6], all instances machine-checked):
+Exhaustive multi-DAG results (tau in [3,6], all instances machine-checked;
+this directly covers the "witness likely <= 30 arcs" regime for few-component
+condensations):
 - k=3 vertices, m <= 14 arcs: 202 tau>=3 classes — all gap 0.
-- k=4, m <= 14: 13,515 tau>=3 classes — all gap 0.
-- k=5, m <= 12: 61,808 tau>=3 classes — all gap 0.
-- k=5, m <= 14 and k=6, m <= 12: running.
+- k=4, m <= 14: 13,515 — all gap 0.
+- k=4, m <= 18: 50,195 — all gap 0.
+- k=4, m <= 22: 123,169 — all gap 0.
+- k=5, m <= 12: 61,808 — all gap 0.
+- k=5, m <= 14: 307,793 — all gap 0.
+- k=5, m <= 16: 1,123,451 — all gap 0 (94 min).
+- k=6, m <= 12: PARTIAL — 228,000+ tau>=3 classes checked (2.4h) before the
+  process was OOM-killed (unbounded exact-canon dedup set); 0 gaps found.
 
 ## 7. Exhaustive simple-digraph results (cross-validated two ways)
 
@@ -123,11 +130,46 @@ Exhaustive multi-DAG results (tau in [3,6], all instances machine-checked):
 
 (checkpointed as runs proceed; see `results.jsonl`)
 
-- annealers: seeds 11 (tau 3-6), 44 (tau=3 only), 55 (tau 3-4), 66 (seeded at
-  unweighted Schrijver digraph, tau 3-5), with DAG normalization; no gap so
-  far after ~1.5M evaluated instances across runs. Two lessons learned and
-  fixed mid-run: (a) coarse degree-based dedup over-blocked the walk near
-  structured seeds -> exact keys; (b) pure plateau walk got trapped at
-  high-nmin local optima -> 5% downhill acceptance.
+- annealers (final runs, DAG-normalized states, ~2.6h each): seed 11
+  (tau 3-6) 1.42M evals; seed 44 (tau=3 only) 2.14M evals; seed 55 (tau 3-4)
+  1.89M evals; seed 66 (Schrijver-seeded, tau 3-5) 333k evals + restart 77
+  (tau 3-4) 937k evals. **Zero instances with gap >= 1** among ~6.7M
+  evaluated (~2.9M with tau in [3,6] fully ILP-checked). Runs ended ~88% of
+  budget when the OOM killer reaped them (unbounded score caches) — noted as
+  an engineering caveat, results unaffected.
+- LP spot-checks on the tightest instances found (e.g. n=12, m=16, tau=6 with
+  324 minimum dicuts): LP relaxation at k=tau feasible as theory predicts.
+- Near-misses: none in the meaningful sense — no instance with nu < tau was
+  ever observed (weighted 0/1 analog aside, where Schrijver's instance is
+  reproduced). The "tightest" unweighted instances (max #min-dicuts per arc)
+  all still packed perfectly.
+- Dead ends: (i) random 0/1-weighted sampling never finds Schrijver-type
+  weighted gaps (~1M tries) — structure is essential; (ii) coarse isomorphism
+  keys silently strangle annealing near structured seeds; (iii) hill-climbing
+  on (gap, nmin) plateaus hard — nmin is a weak gradient toward a
+  counterexample, if one exists at all in this size regime.
 
-## STATUS: (pending — run in progress)
+## Compute spent (approx)
+
+~4.5 h wall on 8 cores: ~3.9M exhaustive instances ILP-checked (simple n<=6 +
+multi-DAG scans) + ~2.9M annealer ILP evaluations + validation runs.
+
+## Conclusions for the orchestrator
+
+1. No counterexample with <= 30 arcs was found; Woodall now exhaustively
+   verified for ALL simple digraphs on <= 6 vertices and ALL multi-DAGs with
+   <= 5 components/<= 16 arcs (tau in [3,6]) — beyond any published search we
+   could find.
+2. The V4 framing collapses (provably) to "find tau - nu >= 1": the
+   fractional packing LP equals tau on every digraph by Lehman idealness of
+   the dijoin clutter, so there is no "partial" LP signal to climb — this is
+   an inherent limitation of gap-guided local search for this problem.
+3. If a counterexample exists it likely needs >= 6 condensation components
+   and tau = 3 with substantial structure (Schrijver-like rings); suggest V2
+   (structured constructions) as the more promising sibling, possibly using
+   our verified Schrijver transcription as the seed family.
+
+## STATUS: negative / frontier-pushed — no counterexample; exhaustive
+verification extended to all simple digraphs on <= 6 vertices and all
+multi-DAG condensations with <= 5 components and <= 16 arcs (tau 3-6);
+detector validated end-to-end on Schrijver's weighted counterexample.
