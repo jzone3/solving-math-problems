@@ -1,1 +1,1 @@
-exhaustive wide=>Latin verified for all |lambda| <= 72
+exhaustive wide=>Latin verified for all |lambda| <= 78

@@ -1,0 +1,6 @@
+n=73: 245807 wide partitions, all Latin-checked (2953.1s, total 2953.1s)
+n=74: 275371 wide partitions, all Latin-checked (3396.8s, total 6349.9s)
+n=75: 308393 wide partitions, all Latin-checked (5192.4s, total 11542.3s)
+n=76: 345043 wide partitions, all Latin-checked (4879.9s, total 16422.2s)
+n=77: 385983 wide partitions, all Latin-checked (5258.0s, total 21680.3s)
+n=78: 431244 wide partitions, all Latin-checked (5921.2s, total 27601.4s)

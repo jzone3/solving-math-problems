@@ -83,23 +83,30 @@ Searched 2026-07-23:
   forward check; (13,1) already thrashed (12! backtracks: the bottom cell forces 1, but
   the conflict is only seen after row 1 completes). MRV ordering fixed it instantly.
 
-## Results (final)
+## Results (final, after coordinator-requested extension)
 
 - **No counterexample found. Exhaustive frontier: wide ⇒ Latin verified for all
-  |λ| ≤ 72** (1,920,529 wide partitions tested in total; per-size counts in
-  `search_log.txt` match OEIS A070830 for every n = 1..72, e.g. a(72) = 219223).
-- Sizes **66..72 are new territory** beyond the published |λ| ≤ 65 frontier (CFGV 2003);
-  in particular this includes all wide λ of size ≤ 72 with λ₁ ≥ 13 or ℓ(λ) ≥ 13, which
+  |λ| ≤ 78** (3,912,370 wide partitions tested in total; per-size counts in
+  `search_log.txt` + `search_log_73up.txt` match OEIS A070830 for every n = 1..78,
+  e.g. a(78) = 431244).
+- Sizes **66..78 are new territory** beyond the published |λ| ≤ 65 frontier (CFGV 2003);
+  in particular this includes all wide λ of size ≤ 78 with λ₁ ≥ 13 or ℓ(λ) ≥ 13, which
   are not covered by the 12×12-box check of Chow–Tiefenbruck 2025 either.
+- **Targeted deep search beyond the frontier** (`deep_search.py`, `deep_log.txt`):
+  near-tight-biased hill-climb over wide partitions at each size n = 79..120, seeded
+  with padded staircases (self-conjugate ⇒ maximally tight dominance) and random wide
+  partitions; 150 distinct wide partitions CP-SAT-tested per size (6,300 additional
+  instances, all SAT with exact tableau re-check). No candidate, no timeout.
 - Every CP-SAT model was SAT (Latin tableau found) and every returned tableau re-checked
   with exact integer arithmetic; `candidates.txt` / `unknown.txt` were never created
   (no UNSAT, no timeout at 300 s cap).
 - Independent cross-check: `verify.py --frontier` (pure Python, MRV DFS, no OR-Tools,
   no floats) independently re-verified the entire frontier for **n ≤ 62** with identical
-  wide counts and all-Latin outcomes (`verify_frontier_log3.txt`; stopped there — single
+  wide counts and all-Latin outcomes (`verify_frontier_log.txt`; stopped there — single
   core, is_wide enumeration dominates).
 - Negative result, but the frontier extension is itself citable per the problem file.
-- Wall time: 18,002 s (~5 h) for the CP-SAT sweep on 8 cores.
+- Wall time: 18,002 s for the n ≤ 72 CP-SAT sweep + 27,601 s for n = 73..78
+  (concurrent with the deep search, ~25,700 s), 8 cores.
 
 ## Dead ends / notes
 
