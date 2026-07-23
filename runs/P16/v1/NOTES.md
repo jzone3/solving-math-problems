@@ -180,9 +180,9 @@ Qualitatively new coverage; still **no counterexample** anywhere.
    isomorphism class of connected cell graphs on 4 and 5 cells × every loop subset
    (6×16 and 21×32 supports), multi-start Nelder–Mead maximization of margin with all
    realizability floors (b_ij ≥ 1 on support, b_ii ≥ 2, n_i b_ij = n_j b_ji, b_ij ≤ n_j,
-   n ≤ 500). Result (k=4 complete; k=5 running, all supports so far identical): feasible
-   supremum = **exactly 0** for both bounds on every support — attained only on the
-   regular-bipartite equality manifold. `sweep{44,46}_k{4,5}.log`.
+   n ≤ 500). Result (k=4 and k=5 both complete): feasible supremum = **exactly 0** for both
+   bounds on every one of the 96 + 672 supports — attained only on the regular-bipartite
+   equality manifold. `sweep{44,46}_k{4,5}.log`.
 4. **Artifact cross-check**: cloned `Ivan-Damnjanovic/bhs-bounds` (official DHS
    arXiv:2606.14550 code) — `bound_refutation.py` refutes 11/13/18/19/20/21/22/24/30/40/47/56,
    `bound_confirmation.py` proves 25/26/27; 44/46 in neither. Cloned
@@ -190,6 +190,10 @@ Qualitatively new coverage; still **no counterexample** anywhere.
    explicitly classifies **44 and 46 as "Safe"** (closest structural gaps +0.098 and +0.302).
    Two independent refutation campaigns with the same quotient machinery failed on exactly
    these two bounds.
+5. **Exhaustive bipartite n = 14, 15** (`fast_exhaustive.py -b`): all 31,193,324 connected
+   bipartite graphs on 14 vertices (max margin exactly 0, equality on 7+7 regular bipartite)
+   and all 575,252,112 on 15 vertices (best −0.0226 / −0.0483, strictly negative).
+   Logs: `fastb14.log`, `fastb15.log`.
 
 Combined with rounds 1–2, the search space prescribed in the run brief (equitable-partition
 quotients + annealing) provably contains no counterexample for k ≤ 5 supports at any scale,

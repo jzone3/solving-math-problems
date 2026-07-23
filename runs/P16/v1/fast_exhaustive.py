@@ -57,9 +57,11 @@ def screen(A, which_report):
 
 
 def main():
-    n = int(sys.argv[1])
-    resmod = sys.argv[2] + "/" + sys.argv[3] if len(sys.argv) > 3 else None
-    cmd = ["nauty-geng", "-c", "-q", str(n)] + ([resmod] if resmod else [])
+    args = [a for a in sys.argv[1:] if a != "-b"]
+    bip = "-b" in sys.argv
+    n = int(args[0])
+    resmod = args[1] + "/" + args[2] if len(args) > 2 else None
+    cmd = ["nauty-geng", "-c", "-q"] + (["-b"] if bip else []) + [str(n)] + ([resmod] if resmod else [])
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True, bufsize=1 << 22)
     best = {44: -1e18, 46: -1e18}
     bestperm46 = -1e18
