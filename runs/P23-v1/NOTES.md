@@ -117,6 +117,29 @@ A second work phase re-attacked the problem from every remaining angle:
   - 1 chain seeded at the distinct 586-vertex graph (union pool) ground down
     586 → 572 and asymptoted, never approaching 509.
 
+### New-geometry phase: Minkowski-sum pool (also negative — `minkowski.py`, `scan508m.py`, `scan_alt.py`)
+Following the problem file's "Minkowski sums" lever, we generated genuinely new geometry
+(vertices *outside* every Parts family):
+- **Pool**: all exact sums p+q (p,q ∈ V509), clipped to 1.02× the record's radius (2.524),
+  deduped exactly → 47,130 new points; union with V509 and iterative degree-≥5 filtering
+  (all candidate edges confirmed with exact `norm2 == 1`) → **47,621 vertices,
+  431,720 exact unit edges** (`pool_mink.pkl`) — 80× richer than the enriched Parts pool.
+- **Annealing** (6 chains, `anneal.py`, seeded at the record): chains climbed to n≈540–580
+  and re-converged to 511–520 with best exactly **509**. Same floor.
+- **508-swap scan** (`scan508m.py`): all 195 pool vertices w with ≥6 record neighbours,
+  testing 509 − v + w for every record vertex v within radius 2.05 of w. Found **8 new
+  swap-deletable pairs** — i.e. 8 *alternative* 509-vertex 5-chromatic UDGs each using one
+  genuinely new Minkowski vertex: (w,v) = (47264,413), (620,347), (1674,300), (2731,220),
+  (47058,415), (1666,301), (2472,217), (3452,356). No w admitted two independent swaps.
+- **Alternative-record criticality** (`scan_alt.py`): for each of the 8 alternative records
+  A = G509 − v + w, tested **every** single-vertex deletion A − u (≈4,080 SAT instances).
+  All SAT ⇒ **all 8 alternative records are themselves vertex-critical**. No 508 graph.
+
+The striking outcome: the record's size is invariant under substitution of new Minkowski
+geometry — every reachable 509-vertex variant is again vertex-critical. This strongly
+suggests 509 sits at the bottom of a wide structural basin, and beating it needs a
+construction over new rings (different Loeschian t / apex angles), not vertex surgery.
+
 ## Why 509 was not beaten
 - The record is vertex-critical, so no subgraph of it works; a smaller graph needs a new
   Minkowski-sum / ring construction, not local surgery on the 509 graph.
@@ -133,6 +156,7 @@ A second work phase re-attacked the problem from every remaining angle:
 - `sat.py` 4-colouring CNF encoding + kissat driver.
 - `verify.py` standalone independent verifier (also copied to `solutions/P23/`).
 - `coremin.py` / `greedy.py` / `plateau.py` / `scan508.py` / `addcore.py` / `anneal.py` /
+  `minkowski.py` / `scan508m.py` / `scan_alt.py` /
   `test_all.py` the minimization attack.
 - `best586.vtx` / `best586.edges` a fresh, fully re-verified 586-vertex 5-chromatic UDG
   (a distinct graph produced by our pipeline; demonstrates the toolchain end-to-end, > record).
