@@ -199,6 +199,32 @@ pool over geng slices 12–399/400, ~19h wall on 8 cores, ~1200 core-s/slice):
   cores for the sweep; plateau at min-decomp 4, far below bounds 7).
 - Full slice log: logs/sweep15_full.log.
 
+## 8. Session extension (Jul 24): complement-based exhaustion of DENSE Eulerian layers
+
+Fundamentally different encoding: dense Eulerian graphs are unreachable by direct geng,
+but complements are sparse. On odd n, even degrees ⟺ even complement degrees; degree d
+⟺ complement degree n−1−d. Pipeline: `geng -dLO -DHI n` → `evenfilt.c` (C filter: keep
+graphs whose complement is all-even-degree) → Python complement + connectivity +
+δ≥6 filter → RLC greedy (validated) → CP-SAT on survivors. Connectivity/δ filters are
+provably no-ops for n=13 sparse-max-degree-6 (two δ≥6 components need ≥14 vertices).
+Code: sweep_complement.py, evenfilt.c, comp13_driver.py.
+
+- **10-regular n=13**: complements of the 10 2-regular graphs — all pass (0 escalations).
+- **12-regular n=13** (= K13): passes (1 CP-SAT escalation, decomposition found).
+- **8-regular n=13**: complements of all 10,786 4-regular graphs on 13 vertices
+  (incl. disconnected sparse side) — ALL pass, 0 escalations, 2 s.
+- **8-regular n=14**: complements of all 3,459,386 5-regular graphs on 14 vertices —
+  ALL pass, 0 escalations, 36 min (comp14_8reg.log).
+- **10-regular n=14**: complements of all 540 3-regular graphs — all pass (0 esc.).
+- **12-regular n=14**: complement of the perfect matching (= K14 minus a 1-factor,
+  the cocktail-party graph on 14 vertices) — passes (1 CP-SAT escalation, decomp found).
+  With 6-regular n=14 done earlier, ALL regular Eulerian graphs on n=14 are exhausted.
+- **THE BIG ONE (in progress): ALL connected Eulerian n=13 graphs with δ ≥ 6** via
+  sparse side geng -d2 -D6 13, 2000 slices, 7 workers (comp13_driver.py →
+  comp13_full.log). Estimated ~500M graphs, ~19h wall. Combined with HNS structural
+  lemma (i) (≤1 vertex of degree 2/4 in a minimum counterexample), this exhausts the
+  entire n=13 minimum-counterexample space except the one-low-degree-vertex case.
+
 STATUS: negative / frontier-pushed — no counterexample found; NEW EXHAUSTIVE FRONTIER:
 Hajós' conjecture verified for ALL connected 6-regular graphs on n ≤ 15
 (1.49 billion graphs; previous exhaustive knowledge was all Eulerian graphs n ≤ 12),
