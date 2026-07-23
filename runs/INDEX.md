@@ -10,7 +10,7 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P04 | queued | queued | queued | queued | queued |
 | P05 | queued | queued | queued | queued | queued |
 | P06 | queued | queued | queued | queued | **698 PROVED TRUE; 129 frontier n=11 exhaustive** |
-| P07 | queued | queued | queued | queued | queued |
+| P07 | queued | queued | queued | queued | **154 & 143 refuted — SCOOPED by demonstrandum-research (public 2026-06-12); see handoff/P07 priority notice** |
 | P08 | queued | queued | queued | queued | queued |
 | P09 | queued | queued | queued | queued | queued |
 | P10 | queued | queued | queued | queued | queued |
