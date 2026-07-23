@@ -328,3 +328,31 @@ STATUS: negative (no witness with min modulus >= 43; automated frontier of
 this run remains L=16 greedy + L=6 structural-with-inheritance; the concrete
 open engineering problem is now precisely: recipe algebra of Engine G +
 partial-cover recipes with x-marks + per-tower budgeting).
+
+## 15. Waste-aware tails + stall-abort: Engine E pushed to its limit at L=10
+
+Executing Section 14's conclusion (inheritance is load-bearing; chains must be
+nearly lossless).  Two upgrades to engine_e.py:
+  - waste-aware tail selection: finitizing prime p and depth K are chosen so
+    the tail's ABSOLUTE measure sum_j 1/(p q^{K+1-j}) / M is below --eps;
+    fat cells get deep nearly-lossless tails, thin cells cheap ones
+    (this was the fix that also revived Engine G at L=3);
+  - stall-abort restarts: a restart is killed once 2e6 recursive calls pass
+    without the class count improving (prevents terminal DFS thrash).
+
+Engine H (engine_h.py) prototypes the same as a transactional planner; its
+runs confirmed the sibling-modulus observation: the q-1 level cells of a
+chain share the modulus M*q^k, so only one can take it directly and the rest
+must chain or inherit -- restating tower-packing at the residue level.
+
+Compute: 6 parallel L=10 searches (eps in {0.002..0.1}, max_mod 1e15..1e18,
+two caps palettes up to prime 199), ~2.5 h wall each thread.  Result: still
+NO complete L=10 structural cover, but penetration is far deeper than any
+prior engine: partial covers now reach 12,700+ placed classes (vs instant
+starvation pre-patch), always crawling at depth 12-13 where the residual
+subtree's modulus supply (caps) is exhausted.  Diagnosis unchanged and now
+quantified: without per-subtree budgeting the DFS spends its cheap moduli
+greedily and leaves late subtrees bankrupt.
+
+STATUS: negative (min modulus >= 43 not achieved; structural frontier
+deepened at L=10 but not closed).
