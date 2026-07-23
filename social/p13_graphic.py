@@ -36,7 +36,7 @@ lines = [
     ("Lean 4 formalization: no_pmd_9_6_1 ✓", "#58a6ff"),
 ]
 for k, (t, c) in enumerate(lines):
-    ax2.text(0.06, 0.68 - 0.115 * k, "•", color=c, fontsize=14)
+    ax2.text(0.06, 0.68 - 0.115 * k, "•", color=c, fontsize=14, va="center")
     ax2.text(0.11, 0.68 - 0.115 * k, t, color="white", fontsize=12.5, va="center")
 
 fig.suptitle("no (9,6,1)-perfect Mendelsohn design exists — smallest open case, settled",
