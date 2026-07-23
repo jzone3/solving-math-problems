@@ -1,0 +1,25 @@
+n=19 models=1 clauses=19 t=0s best_hc_count=NA
+n=19 models=500 clauses=74670 t=2s best_hc_count=NA
+n=19 models=1000 clauses=150176 t=29s best_hc_count=NA
+n=19 models=1143 clauses=171855 t=159s best_hc_count=NA
+n=19 models=1192 clauses=179246 t=285s best_hc_count=NA
+n=19 models=1232 clauses=185326 t=413s best_hc_count=NA
+n=19 models=1239 clauses=186390 t=541s best_hc_count=NA
+n=19 models=1272 clauses=191330 t=661s best_hc_count=NA
+n=19 models=1329 clauses=199994 t=792s best_hc_count=NA
+n=19 models=1361 clauses=204820 t=918s best_hc_count=NA
+n=19 models=1385 clauses=208468 t=1041s best_hc_count=NA
+n=19 models=1402 clauses=211052 t=1164s best_hc_count=NA
+n=19 models=1406 clauses=211641 t=1326s best_hc_count=NA
+n=19 models=1409 clauses=212097 t=1475s best_hc_count=NA
+n=19 models=1415 clauses=213009 t=1597s best_hc_count=NA
+n=19 models=1419 clauses=213617 t=1786s best_hc_count=NA
+n=19 solver stall -> rebuild #1 (models=1422, blocking=214073)
+n=19 models=1423 clauses=214225 t=2132s best_hc_count=NA
+n=19 solver stall -> rebuild #2 (models=1423, blocking=214225)
+n=19 models=1424 clauses=214377 t=2417s best_hc_count=NA
+n=19 solver stall -> rebuild #3 (models=1425, blocking=214529)
+n=19 models=1426 clauses=214681 t=2952s best_hc_count=NA
+n=19 solver stall -> rebuild #4 (models=1426, blocking=214681)
+n=19 models=1427 clauses=214833 t=4204s best_hc_count=NA
+n=19 solver stall -> rebuild #5 (models=1427, blocking=214833)

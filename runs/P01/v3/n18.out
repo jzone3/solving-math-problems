@@ -1,1 +1,6 @@
-n=18 models=500 clauses=70785 t=6s best_hc_count=NA
+n=18 models=1 clauses=54 t=0s best_hc_count=NA
+n=18 models=500 clauses=70623 t=3s best_hc_count=NA
+n=18 models=698 clauses=98523 t=141s best_hc_count=NA
+n=18 models=708 clauses=99909 t=312s best_hc_count=NA
+n=18 solver stall -> rebuild #1 (models=709, blocking=100053)
+{"n": 18, "min_dist": 2, "status": "exhausted-unsat", "models": 709, "clauses": 100053, "seconds": 1243.8, "best_hc_count": null, "best_chords": null, "witness": null}
