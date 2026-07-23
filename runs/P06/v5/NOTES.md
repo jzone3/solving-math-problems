@@ -79,24 +79,30 @@ bipartite). Machine checks: exhaustive all graphs n ≤ 9 (E* = λ1²+R²−2m �
 min 0 at complete bipartite) and the final inequality on n ≤ 10 / annealing to
 n = 80 — no violation, equality exactly as characterized.
 
-## 4. Conjecture 129: reduction program (sharp lemmas isolated; proof gap remains)
+## 4. Conjecture 129: partial theorems + all product reductions refuted
 
+**Proved (see solutions/P06/PROOF-129-partial.md):**
+- 129 holds for all REGULAR graphs (trivial from dev_L² = d, R = n/2).
+- 129 holds for all TREES: the star's degree sequence majorizes every tree's
+  (forest prefix-sum bound Σ_S d ≤ (n−1)+(k−1)), Var is Schur-convex, and
+  Bollobás–Erdős 1998 gives R(T) ≥ R(star) = √(n−1) ≥ dev_L(star).
+- Unicyclic case reduced computationally to S_n+e (max dev_L AND min R among
+  unicyclic, verified n ≤ 10), where the gap is >1 and growing (~√n).
+
+**Reduction program (all refuted — 129 defeats every product relaxation):**
 With R ≥ m/λ1 (steps 1–2 of the 698 proof) and R ≥ m²/S (Cauchy–Schwarz),
-129 follows from ANY of:
-
-- **G\*: λ1 · dev_L ≤ m** (λ1 adjacency spectral radius);
-- **I\*: s⁺ · dev_L ≤ m** (stronger: s⁺ ≥ λ1);
-- **M\*: S · dev_L ≤ m²**, S = Σ_{uv∈E} √(d_u d_v) — eigenvalue-free!
-
-All three verified with NO violation: exhaustive n ≤ 9 (G\*, I\*), n ≤ 8/9
-(M\*), annealing to n = 120 (G\*, I\*) / n = 60 (M\*) always saturating at
-exactly 0, tight precisely at K_k ∪ (k−2)K_1 and asymptotically at stars.
-Since √(xy) is supermodular, S is maximized among realizations of a degree
-sequence by switch-stable (threshold-like) graphs, and dev_L is degree-only,
-so threshold graphs are the natural extremal candidates for M\*: exhaustive
-over ALL 2^(n−1) threshold creation sequences for n ≤ 21 (`threshold_scan.py`)
-— max exactly 0 at the same family. Proving M\* for threshold graphs (a
-2-parameter-per-block analysis) is the isolated remaining gap for 129.
+129 would follow from any of G\*: λ1·dev_L ≤ m, I\*: s⁺·dev_L ≤ m,
+M\*: S·dev_L ≤ m². Each holds exhaustively for n ≤ 9–11 and saturates at 0
+in annealing to n = 120, tight at K_k ∪ (k−2)K_1 — yet ALL are FALSE at
+scale: symbolic analysis of the complete-split family CS(a,b) (b dominating,
+a independent vertices; `mstar_symbolic.py`) shows M\* fails for a ≫ b
+(CS(100,2): +422.9), and numerically G\* fails there too (CS(100,2): +2.19),
+hence I\* as well. The sandwich structure: along CS(a,b), a → ∞,
+R² − dev_L² → b(b+1) > 0 (2nd-order expansion), so CS(a, small b) are
+asymptotically near-tight for 129 while violating every product surrogate.
+This is strong structural evidence 129 is *sharp in two independent regimes*
+(K_k ∪ (k−2)K_1 exactly; stars/CS(a,b) asymptotically) and needs a proof
+that tracks both.
 
 Refuted intermediate routes (dead ends, all machine-refuted):
 - **H\*** (Hong composite): (2m − n′ + 1)·dev_L² ≤ m² is FALSE as a pure
@@ -110,6 +116,10 @@ Refuted intermediate routes (dead ends, all machine-refuted):
 - **K\***: (max_{uv∈E} m_u m_v) · dev_L² ≤ m² (m_u = avg neighbor degree):
   FALSE already at n = 7 exhaustive.
 - **D\*** (AM–GM via M1): FALSE at stars.
+- **G\*, I\*, M\*** (see above): FALSE at CS(a,2), a ≳ 40–100.
+- **W** (route via Bollobás–Erdős for all connected graphs):
+  Var(d)+d̄ ≤ n−1 is FALSE for connected graphs (CS(2,4), n = 6, +0.22);
+  works only for trees where majorization saves it.
 
 ## 5. Searches (all negative = conjectures supported)
 
@@ -117,8 +127,20 @@ Refuted intermediate routes (dead ends, all machine-refuted):
   and MAD readings) and 698A; n = 10 COMPLETE (all 12,005,168 graphs): max
   score 0 for both, attained only by the equality families
   (129: K_6 ∪ 4K_1; 698A: complete bipartite + isolated).
+- **n = 11 COMPLETE for 129: all 1,018,997,864 graphs** (C scanner
+  `scan129.c`, degree-identity dev_L + exact R accumulation, 8-way geng
+  res/mod split, ~30 min wall). NO violation; worst gap −0.01243 at
+  J?ACKMF`{N_ (K_6 ∪ 5K_1). This extends the Brewster–Dinneen–Faber n ≤ 10
+  computational frontier for 129. (M\* also ≤ 0 for all n ≤ 11.)
 - Exhaustive over all threshold graphs n ≤ 21 (2^20 creation sequences) for
-  the M\* reduction: max exactly 0 at K_k ∪ (k−2)K_1.
+  the M\* reduction: max exactly 0 at K_k ∪ (k−2)K_1 (M\* fails only later,
+  n ≳ 40).
+- Block-threshold scan of 129 itself (`threshold_blocks.py`): all 1- and
+  2-block-pair threshold graphs with block sizes on a log grid up to 12000
+  (n up to 24002, 195k graphs, exact O(1) formulas): max score 0 (K_2),
+  near-misses only at huge stars (−0.009 at n = 12001).
+- All trees n ≤ 14 and all connected unicyclic graphs n ≤ 10 (networkx/geng):
+  extremal-structure checks for the partial theorems.
 - Parameterized families: stars, stars+matchings/cliques, double stars,
   complete split, K_{a,b} ± edges/matchings, complete multipartite, up to
   n = 400. All ≤ 0; K_{a,b} exactly 0 for 698A.
@@ -129,9 +151,11 @@ Refuted intermediate routes (dead ends, all machine-refuted):
 ## 6. Compute spent
 
 ~10 min exhaustive n ≤ 9 (both conjectures, three readings) ×2, n = 10 full
-scan (12.0M graphs, ~25 min), threshold scan n ≤ 21 (~2 min, vectorized),
-annealing ~3 core-h total (conjectures + 6 reduction scores, n up to 120),
-degree-sequence annealing for H\*, family scans ~2 min. Single VM, numpy.
+scan (12.0M graphs, ~25 min), **n = 11 full scan (1.019B graphs, 8 cores ×
+~30 min, C)**, threshold scan n ≤ 21 (~2 min, vectorized), block-threshold
+scans to n = 24002, annealing ~4 core-h total (conjectures + 7 reduction
+scores, n up to 120), degree-sequence annealing for H\*, sympy symbolic
+analysis of CS(a,b), family scans. Single 8-core VM.
 
 ## 7. Files
 
@@ -145,7 +169,14 @@ degree-sequence annealing for H\*, family scans ~2 min. Single VM, numpy.
 - `hstar_search.py` — degree-sequence annealing refuting H\*.
 - `reduction_anneal.py` — graph annealing refuting C\*, supporting G\*/I\*.
 - `mstar_anneal.py`, `threshold_scan.py` — the eigenvalue-free M\* reduction.
+- `mstar_symbolic.py` — symbolic refutation of M\* on CS(a,b,c) + ray
+  asymptotics (also yields the R²−dev² → b(b+1) near-tightness result).
+- `scan129.c` — fast exhaustive C scanner (used for the full n = 11 run;
+  logs in `logs/n11_*.log`).
+- `threshold_blocks.py` — block-threshold closed-form scan to n ≈ 24000.
 - `../../solutions/P06/PROOF-698.md` — full proof writeup for 698.
+- `../../solutions/P06/PROOF-129-partial.md` — 129 proved for trees and
+  regular graphs; unicyclic reduction; dead-end table.
 - `../../solutions/P06/verify.py` — independent verifier (exact arithmetic)
   for the claimed results: the 698A proof-chain inequalities, the equality
   families, and the refutationGBR-698 vacuity claim. Prints PASS.
@@ -157,7 +188,10 @@ adjacency reading) PROVED TRUE (elementary proof via λ1R ≥ m ⇒ λ1²+R² �
 s⁻ ≤ R; equality iff complete bipartite + isolated; machine-checked, verify.py
 PASS, exhaustive to n = 10); its refutationGBR encoding shown vacuous
 (definitional bug: Laplacian has no negative eigenvalues). Conjecture 129 NOT
-refuted: exhaustive n ≤ 10 (12M graphs), threshold graphs n ≤ 21, annealing to
-n = 120, families to n = 400 all negative; 129 reduced to the sharp
-eigenvalue-free inequality M\*: S·dev_L ≤ m² (tight at K_k ∪ (k−2)K_1 and
-stars), with Hong/M2/neighbor-sum composites machine-refuted as dead ends.**
+refuted but frontier pushed hard: PROVED for trees and regular graphs;
+exhaustively verified for ALL graphs n ≤ 11 (1.019B graphs, beyond the n ≤ 10
+literature frontier); block-threshold graphs to n = 24002; annealing to
+n = 120; two independent asymptotically-tight families identified
+(K_k ∪ (k−2)K_1 exact, CS(a,b) with R²−dev² → b(b+1)); ALL eight product
+relaxations (Hong/M2/S/λ1/s⁺/neighbor-sum composites) machine-refuted,
+explaining why the conjecture resists simple spectral proofs.**

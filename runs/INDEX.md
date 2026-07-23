@@ -1,30 +1,21 @@
 # Run Index
 
-All 75 ultra-mode solve sessions launched 2026-07-22 (5 prompt variants per problem; see context/METHODOLOGY.md).
-Result branches: runs/<Pxx>-v<k>; settled runs are folded into runs/<Pxx>/v<k>/ + solutions/<Pxx>/ here.
-
-Headlines so far:
-- **P08 formalized in Lean 4 + mathlib** — both theorems `P08.graffiti_conjecture_39/40` proved end-to-end in `formalization/P08/`; no `sorry`, no added axioms, no `native_decide`; `lake build` + `#print axioms` = `[propext, Classical.choice, Quot.sound]` independently re-verified by the orchestrator. Session: https://app.devin.ai/sessions/a42ac73fd25c44559c3d499ad3c8f5a4
-- **P02 (Brandt regular supergraph, West's >= n/3 statement): REFUTED** — minimal counterexample n=9 (g6 `H?q`qjo`), infinite family n=9t; Brandt's original strict (> n/3) version is the Brandt-Thomasse theorem and stands. Exact-LP/Farkas certificates, `solutions/P02/verify.py`.
-- **P08 proof adversarially CONFIRMED** — independent hostile review + from-scratch exact verifier (runs/P08/adversarial-review/REPORT.md); novelty verdict: correct, first resolution of Graffiti 39/40, though the spectral half (diam <= 2*min(n+,n-)) was published by Geng-Wu-Wang 2020.
-- **P07 (Graffiti/WoW 154 & 143): REFUTED** — minimal witnesses lollipop L(K_50,P_70) (n=120) for 154 and dumbbell(20,13,7) (n=39) for 143; independently re-verified (`solutions/P07/verify.py`, `verify143.py`).
-- **P08 (Graffiti 39/40): PROVED TRUE** — elementary proof dev(D) <= diam/2 <= floor((d+1)/2) <= min(n+, n-) via Popoviciu + induced geodesic + Cauchy interlacing (`solutions/P08/PROOF.md`).
-- **P10 (Brouwer): closed in literature** — proved by Kothari-Tudose, arXiv:2606.12197 (Jun 2026); catalog miss.
+Matrix of solve runs: problem x variant. Status: queued / running / negative / near-miss / SOLVED.
 
 | Problem | V1 | V2 | V3 | V4 | V5 |
 |---|---|---|---|---|---|
-| P01 | [running](https://app.devin.ai/sessions/89c804aff3e8446ba044c5bfcd5651f6) | [running](https://app.devin.ai/sessions/fd8f5201312a48f193ac2401d115edc1) | [running](https://app.devin.ai/sessions/93cec269c002482d9b6c7bf18aff8f4b) | [running](https://app.devin.ai/sessions/92f2c8440e37424cb4c072fab3b61aa6) | [running](https://app.devin.ai/sessions/99dad6f2feb447aaa6c9248967c720be) |
-| P02 | [running](https://app.devin.ai/sessions/1f64b267fc8b41efa25a6e78cdf59a25) | [running](https://app.devin.ai/sessions/4c8647eedcf24d03b3b7a300491fb7a0) | [running](https://app.devin.ai/sessions/d227cdd5e9b842f2b14dd16de513a768) | [**REFUTED-as-stated**](https://app.devin.ai/sessions/9b35548998e144a4ade97b3c30b6fb0e) | [running](https://app.devin.ai/sessions/ef5c64cb0ee4423390675106364f385e) |
-| P03 | [running](https://app.devin.ai/sessions/d4cbcbc2be0d49e59cd58b01946b4d3d) | [running](https://app.devin.ai/sessions/553d6c066bc14973953aa90cc3d84d2b) | [running](https://app.devin.ai/sessions/d9627b2d22344bbf8de500ab861b6d53) | [running](https://app.devin.ai/sessions/8a7d60acb9254725911be76a463881e2) | [running](https://app.devin.ai/sessions/7aa363207b174207af62780e6f2cc8fb) |
-| P04 | [running](https://app.devin.ai/sessions/2dceb8f9358d4f9da583e6848c6e06ff) | [running](https://app.devin.ai/sessions/76fa0e132bc14103937eb292bcf30f9e) | [running](https://app.devin.ai/sessions/38bad722a5aa466695abfbf7e6bb63d5) | [running](https://app.devin.ai/sessions/2b4567ec32f343ed852ee39ad5cdecb9) | [running](https://app.devin.ai/sessions/1447e76bb26f4e5082c5e41f436a26b8) |
-| P05 | [running](https://app.devin.ai/sessions/094c48c3c4c7439883a0a78c619b717d) | [running](https://app.devin.ai/sessions/e6b21649dbbf465d94ec40ca4b4ffc54) | [running](https://app.devin.ai/sessions/dfba62094b7c408f9bdb3a678420f6e6) | [running](https://app.devin.ai/sessions/3f614e26fb144a988c10964fde4e8884) | [running](https://app.devin.ai/sessions/8c6b97581e2b430bb0896f4acd910f0c) |
-| P06 | [running](https://app.devin.ai/sessions/2b85f822733548aeb2190d08b5b7bb7f) | [running](https://app.devin.ai/sessions/925ab3b6622842418603b730a198be53) | [running](https://app.devin.ai/sessions/c476f264ed76476e90bd2aa97ee05c0c) | [running](https://app.devin.ai/sessions/acdf24f11bc14365b5932de55915cb7e) | [frontier-pushed](https://app.devin.ai/sessions/9deb68e98d174f6da7a5147877859d94) |
-| P07 | [**REFUTED**](https://app.devin.ai/sessions/358b7aa461984ac2a7461393b1db2540) | [**REFUTED**](https://app.devin.ai/sessions/59dd7504264e49519cec37751851f8fc) | [**REFUTED**](https://app.devin.ai/sessions/1f7b189e828243af83cc3797beca148b) | [**REFUTED**](https://app.devin.ai/sessions/2c3ab0a8cf1848769f3d20184a275af7) | [**REFUTED**](https://app.devin.ai/sessions/d4e120cb42b143b19f33b6bb5e781586) |
-| P08 | [**PROVED TRUE**](https://app.devin.ai/sessions/32bdf6a5e2bb4ae08622622607be81f3) | [**PROVED TRUE**](https://app.devin.ai/sessions/943e52ee90aa41e3baeb8fb0c0a9f3a1) | [settled](https://app.devin.ai/sessions/367e42c28fb34f739207a2c9eacafb94) | [**PROVED TRUE**](https://app.devin.ai/sessions/9ad07c31e13a4f059b95fccb734a449e) | [**PROVED TRUE**](https://app.devin.ai/sessions/c0a267d469344409824c27fea96d1595) |
-| P09 | [running](https://app.devin.ai/sessions/1d89a8862d154f23b76d15b47022bd01) | [running](https://app.devin.ai/sessions/00bbfc32f7bf4cc68f8ae50996b738a4) | [running](https://app.devin.ai/sessions/39f7938d82d744ec91d21ac1ee636804) | [running](https://app.devin.ai/sessions/3bec412feb19407cbf683132877f8929) | [negative](https://app.devin.ai/sessions/f14d36ed797d4ce1bd993e57698d51b9) |
-| P10 | [running](https://app.devin.ai/sessions/bbcab6049937490fa6660ffa0f590089) | [closed-in-lit](https://app.devin.ai/sessions/1b8eb43d0656466a92c42e6a31568e20) | [running](https://app.devin.ai/sessions/738e8176361f4894bc2aa550222ba4de) | [closed-in-lit](https://app.devin.ai/sessions/d6ef4422ca9840f09c11fc76eb494e7f) | [closed-in-lit](https://app.devin.ai/sessions/9a0b5e0756804d1dade30ae429a27826) |
-| P11 | [running](https://app.devin.ai/sessions/30ae852a65ed4cd78c68c4db088ad4f2) | [running](https://app.devin.ai/sessions/1047da1f588546e7a4910065000621d8) | [running](https://app.devin.ai/sessions/6832b5364f1e481489c60297f71541ef) | [running](https://app.devin.ai/sessions/63aee44f35f5482db3b0b30b77783bb2) | [running](https://app.devin.ai/sessions/4001e628e5c34da6860fe5380d5c0cec) |
-| P12 | [running](https://app.devin.ai/sessions/cd7edb524ca541928b367d2ebc799a7e) | [running](https://app.devin.ai/sessions/ff73f474ceca40689ceedd732ff1ead0) | [running](https://app.devin.ai/sessions/2331d587924a4e71a65cf9edf95ef05c) | [running](https://app.devin.ai/sessions/aa3de7863ea14897a6097b8364979edc) | [running](https://app.devin.ai/sessions/6382e82d9822463084bdbaaaf4846fad) |
-| P13 | [running](https://app.devin.ai/sessions/b2821ce226bd40c6a87ff29def013d23) | [running](https://app.devin.ai/sessions/d0105a2e11c94006bd318ac1a1566207) | [running](https://app.devin.ai/sessions/b812022361e74034814c567e327a58cb) | [running](https://app.devin.ai/sessions/b55d1415b5d64d16bb300e553e786555) | [running](https://app.devin.ai/sessions/e08185f9d0e64de5ae36451b173d1484) |
-| P14 | [running](https://app.devin.ai/sessions/a3c4bd5a99684570aaff53cdb0582cba) | [running](https://app.devin.ai/sessions/29588999c23f4cdd817f8804e56ebac8) | [running](https://app.devin.ai/sessions/742f2b6ef2bf49f0a1703cb0a32c4870) | [running](https://app.devin.ai/sessions/59c4245d486b450cb78a3c35dbe3f0de) | [running](https://app.devin.ai/sessions/edba29d88f024bee9027b77c70d9b87a) |
-| P15 | [running](https://app.devin.ai/sessions/e02b8f92bcf84a168bc4e5304e7d4547) | [running](https://app.devin.ai/sessions/290f12edb31a48feb78042038ffd568e) | [running](https://app.devin.ai/sessions/0ad9a586fd2a4844851a6a7b4d2a20a6) | [running](https://app.devin.ai/sessions/da7ba5bd517c40518a9c80f1714c0433) | [running](https://app.devin.ai/sessions/63d681e694694b4fb0b4f846eca6da53) |
+| P01 | queued | queued | queued | queued | queued |
+| P02 | queued | queued | queued | queued | queued |
+| P03 | queued | queued | queued | queued | queued |
+| P04 | queued | queued | queued | queued | queued |
+| P05 | queued | queued | queued | queued | queued |
+| P06 | queued | queued | queued | queued | **698 PROVED TRUE; 129 frontier n=11 exhaustive** |
+| P07 | queued | queued | queued | queued | queued |
+| P08 | queued | queued | queued | queued | queued |
+| P09 | queued | queued | queued | queued | queued |
+| P10 | queued | queued | queued | queued | queued |
+| P11 | queued | queued | queued | queued | queued |
+| P12 | queued | queued | queued | queued | queued |
+| P13 | queued | queued | queued | queued | queued |
+| P14 | queued | queued | queued | queued | queued |
+| P15 | queued | queued | queued | queued | queued |

@@ -1,0 +1,13 @@
+graphs=143004566 n=11
+top 129 (dev_L - R, violation if >0):
+  -0.1275438844  J??EEFBo}F_
+  -0.2195495463  J??CEFBo}F_
+  -0.3131296245  J?AEMNFp}N_
+  -0.3758115865  J??CEFAo}F_
+  -0.4142639168  J??EEFBo~F_
+top M* (S*dev_L - m^2, violation if >0):
+  -13.8068949027  J??EEFBo}F_
+  -20.8680678371  J??CEFBo}F_
+  -33.3173477940  J??CEFAo}F_
+  -34.7126643066  J??EEFBo~F_
+  -39.6393175986  J??CEFBo~F_

@@ -1,0 +1,13 @@
+graphs=134239743 n=11
+top 129 (dev_L - R, violation if >0):
+  -0.1516344566  J?aK[]Nb{^_
+  -0.2418123532  J?BEMNFp}N_
+  -0.4729510351  J?aK[]Nb}^_
+  -0.5013811256  J?AEEJFp}N_
+  -0.5536053483  J?BEMNFp~N_
+top M* (S*dev_L - m^2, violation if >0):
+  -29.7203535001  J?aK[]Nb{^_
+  -43.1259360819  J?BEMNFp}N_
+  -65.7187285795  J?AEEJBo}F_
+  -69.0651536078  J?AEEJFp}N_
+  -69.3570404923  J?aK[]Nb}^_
