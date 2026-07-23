@@ -14,3 +14,16 @@ CW(384,49): inconclusive; ['m=128,d=3:TIMEOUT', 'm=64,d=6:COUNT 32', 'm=48,d=8:T
 CW(387,49): NONEXISTENT (fold m=129, d=3); ['m=129,d=3:COUNT 0']
 CW(399,49): mult thm n/a
 CW(400,49): inconclusive; ['m=50,d=8:COUNT 4', 'm=100,d=4:TIMEOUT', 'm=80,d=5:TIMEOUT', 'm=200,d=2:TIMEOUT']
+CW(432,49): inconclusive; ['m=54,d=8:COUNT 324', 'm=108,d=4:TIMEOUT', 'm=216,d=2:TIMEOUT', 'm=72,d=6:TIMEOUT', 'm=144,d=3:TIMEOUT']
+CW(450,49): inconclusive; ['m=90,d=5:TIMEOUT', 'm=75,d=6:TIMEOUT', 'm=225,d=2:TIMEOUT', 'm=150,d=3:TIMEOUT']
+CW(456,49): inconclusive; ['m=76,d=6:TIMEOUT', 'm=57,d=8:TIMEOUT', 'm=152,d=3:TIMEOUT', 'm=114,d=4:TIMEOUT', 'm=228,d=2:TIMEOUT']
+CW(480,49): inconclusive; ['m=60,d=8:TIMEOUT', 'm=80,d=6:TIMEOUT', 'm=120,d=4:TIMEOUT', 'm=160,d=3:TIMEOUT', 'm=96,d=5:TIMEOUT', 'm=240,d=2:TIMEOUT']
+CW(513,49): inconclusive; ['m=171,d=3:TIMEOUT']
+CW(522,49): inconclusive; ['m=87,d=6:COUNT 204', 'm=261,d=2:COUNT 96', 'm=174,d=3:TIMEOUT']
+CW(570,49): inconclusive; ['m=95,d=6:COUNT 52', 'm=190,d=3:TIMEOUT', 'm=285,d=2:TIMEOUT', 'm=114,d=5:TIMEOUT']
+CW(576,49): inconclusive; ['m=72,d=8:TIMEOUT', 'm=144,d=4:TIMEOUT', 'm=192,d=3:TIMEOUT', 'm=96,d=6:TIMEOUT', 'm=288,d=2:TIMEOUT']
+CW(600,49): inconclusive; ['m=75,d=8:TIMEOUT', 'm=100,d=6:TIMEOUT', 'm=150,d=4:TIMEOUT', 'm=120,d=5:TIMEOUT', 'm=200,d=3:TIMEOUT', 'm=300,d=2:TIMEOUT']
+CW(608,49): inconclusive; ['m=76,d=8:TIMEOUT', 'm=152,d=4:TIMEOUT', 'm=304,d=2:TIMEOUT']
+CW(609,49): mult thm n/a
+CW(624,49): NONEXISTENT (fold m=104, d=6); ['m=104,d=6:COUNT 0']
+CW(627,49): inconclusive; ['m=209,d=3:COUNT 28']

@@ -17,3 +17,7 @@ CW(305,169): inconclusive; ['m=61,d=5:TIMEOUT']
 CW(312,169): mult thm n/a
 CW(315,169): inconclusive; ['m=45,d=7:COUNT 48', 'm=63,d=5:TIMEOUT', 'm=105,d=3:TIMEOUT']
 CW(320,169): NONEXISTENT (fold m=64, d=5); ['m=64,d=5:COUNT 0']
+CW(336,169): inconclusive; ['m=48,d=7:TIMEOUT', 'm=42,d=8:TIMEOUT', 'm=56,d=6:TIMEOUT', 'm=112,d=3:TIMEOUT', 'm=84,d=4:TIMEOUT', 'm=168,d=2:TIMEOUT']
+CW(351,169): mult thm n/a
+CW(357,169): inconclusive; ['m=51,d=7:TIMEOUT', 'm=119,d=3:TIMEOUT']
+CW(360,169): inconclusive; ['m=45,d=8:COUNT 48', 'm=90,d=4:TIMEOUT', 'm=60,d=6:TIMEOUT', 'm=180,d=2:TIMEOUT', 'm=72,d=5:TIMEOUT', 'm=120,d=3:TIMEOUT']
