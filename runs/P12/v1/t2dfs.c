@@ -14,6 +14,10 @@
  *   mode 0 = exhaustive DFS
  *   mode 1 = randomized restarts (shuffled lists, restart on exhaust of
  *            first-level subtree; runs forever until witness or SIGTERM)
+ *   mode 2 = sliced exhaustive: ./t2dfs n 2 slice_id stride — fixes each
+ *            group-1 candidate with index ≡ slice_id (mod stride) and
+ *            exhausts its subtree; prints one line per completed subtree
+ *            (checkpointable/parallelizable).
  * Prints the square and "WITNESS" if found (verify with solutions/P12/verify.py).
  */
 #include <stdio.h>
@@ -170,6 +174,57 @@ int main(int argc, char **argv) {
                 long t = doms[r].idx[k]; doms[r].idx[k] = doms[r].idx[j]; doms[r].idx[j] = t;
             }
         }
+    }
+    if (mode == 2) {
+        long slice = strtol(argv[3], 0, 10), stride = strtol(argv[4], 0, 10);
+        report_every = 1LL << 62;
+        Dom *g1 = NULL;
+        for (int i = 0; i < ngroups; i++) if (doms[i].grp == 1) g1 = &doms[i];
+        for (long k = slice; k < g1->cnt; k += stride) {
+            long ri = g1->idx[k];
+            const Row *r = &R[ri];
+            for (int j = 0; j < 4; j++) { ud1[j] = r->d1[j]; ud2[j] = r->d2[j]; }
+            for (int i = 0; i + 1 < N; i++) setbit(ud1, i, i + 1);
+            for (int i = 0; i + 2 < N; i++) setbit(ud2, i, i + 2);
+            ulast = (1 << (N - 1)) | (1 << r->last);
+            chosen[1] = ri;
+            Dom nds[NMAX];
+            int nd2 = 0, ok = 1;
+            long poolsz = 0;
+            for (int i = 0; i < ngroups; i++) if (doms[i].grp != 1) poolsz += doms[i].cnt;
+            long *pool = malloc(poolsz * sizeof(long));
+            long off = 0;
+            for (int i = 0; i < ngroups && ok; i++) {
+                if (doms[i].grp == 1) continue;
+                long c = 0; long *dst = pool + off;
+                for (long t = 0; t < doms[i].cnt; t++) {
+                    long q = doms[i].idx[t];
+                    if (disj(ud1, R[q].d1) && disj(ud2, R[q].d2) && !(ulast >> R[q].last & 1)) dst[c++] = q;
+                }
+                nds[nd2].idx = dst; nds[nd2].cnt = c; nds[nd2].grp = doms[i].grp; nd2++;
+                off += c;
+                if (c == 0) ok = 0;
+            }
+            long long n0 = nodes;
+            maxdepth = 0;
+            int f = ok ? dfs(nds, nd2, 1) : 0;
+            free(pool);
+            printf("g1cand %ld done nodes %lld maxdepth %d found %d\n", k, nodes - n0, maxdepth, f);
+            fflush(stdout);
+            if (f) {
+                printf("WITNESS\n");
+                for (int c = 0; c < N; c++) printf("%d ", c);
+                printf("\n");
+                for (int rr = 1; rr < N; rr++) {
+                    const Row *w = &R[chosen[rr]];
+                    for (int c = 0; c < N; c++) printf("%d ", w->perm[c]);
+                    printf("\n");
+                }
+                return 0;
+            }
+        }
+        fprintf(stderr, "slice %ld/%ld complete: nodes %lld found 0\n", slice, stride, nodes);
+        return 20;
     }
     int found = dfs(doms, ngroups, 0);
     fprintf(stderr, "nodes %lld maxdepth %d found %d\n", nodes, maxdepth, found);

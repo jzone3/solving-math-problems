@@ -140,9 +140,7 @@ Variant: V1 = direct SAT encoding, per problems/P12-tuscan-2-squares.md.
    starting with the right symbol).
 3. If UNSAT is proven for n=11, produce/verify a DRAT proof and archive it.
 
-## STATUS: negative (no verdict on open instances n=11, 13; T2(7) UNSAT and
-## T2(4)/T2(6)/T2(8) witnesses reproduced and machine-verified; encoding +
-## infrastructure committed; frontier data: known-UNSAT n=9 resists 16h CDCL)
+## STATUS (superseded, see below): negative after SAT-only phase
 
 ## Resumed 2026-07-23 ~19:50 UTC (VM restart killed processes; disk intact)
 
@@ -174,3 +172,27 @@ Validation (dramatic speedup vs direct CNF):
 - n=11 status: exhaustive + 3 randomized runs all plateau at depth 7 of 10
   (no depth-8 node in ~1h across 4 processes; exhaustive at 29.5M nodes).
   Fourth randomized seed launched on the freed core.
+
+## Round-2 wrap-up 2026-07-24 ~00:15 UTC
+
+- Sliced exhaustive n=11 (mode 2, 7 workers, one group-1 candidate subtree
+  each): after 2h NOT ONE of the 598,477 group-1 subtrees completed; all
+  workers and a 5th randomized run plateau at depth 7 (= 8 rows incl. row 0).
+  Across ~20 core-hours and tens of billions of DFS nodes, no 9-row partial
+  (depth 8) was ever reached — a strong empirical signal that T2(11) does not
+  exist, and a measure of how far the standard-form space is from a witness.
+- Full exhaustion of n=11 on this box is infeasible (~600K subtrees, each
+  apparently >= hours): needs a cluster; t2dfs mode 2 is embarrassingly
+  parallel and checkpointable (slice/stride args), ready for that.
+- n=13 needs on-the-fly candidate generation (83M candidates/group won't fit
+  in RAM) — future work.
+
+## STATUS: frontier-pushed
+- First complete-search-style attack on record for this design family
+  (problem file: "No complete-search attack on record despite the tiny size"):
+  T2(7) exhausted in 0.004 s / 1,582 nodes (nonexistence), T2(9) exhausted in
+  786M nodes (~1h) independently REPLICATING Kapralov 2012's nonexistence by
+  a different method; T2(8) witness found in <1 s (kissat: 73 min).
+- Open instances n=11, 13 remain open: no witness (SLS + 5 randomized DFS
+  runs + CDCL), no exhaustion (needs cluster; tooling committed).
+- All witnesses machine-verified by solutions/P12/verify.py (PASS).
