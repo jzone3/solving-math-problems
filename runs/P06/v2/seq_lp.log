@@ -9,3 +9,4 @@ n=  9: 4360 graphical seqs, worst dev-LP = -0.015480025 at (4, 4, 4, 4, 4), viol
 n= 10: 16015 graphical seqs, worst dev-LP = +0.000000000 at (5, 5, 5, 5, 5, 5), violations = 0
 n= 11: 59347 graphical seqs, worst dev-LP = -0.012422414 at (5, 5, 5, 5, 5, 5), violations = 0
 n= 12: 222116 graphical seqs, worst dev-LP = +0.000000000 at (6, 6, 6, 6, 6, 6, 6), violations = 0
+n= 13: 836314 graphical seqs, worst dev-LP = -0.010370393 at (6, 6, 6, 6, 6, 6, 6), violations = 0

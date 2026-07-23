@@ -154,8 +154,12 @@ n = |H|..400 (whitelisting the known equality graphs).
   ⇒ **Conjecture 129 holds for every graph with ≤ 11 non-isolated vertices and
   ANY total number of vertices** — strictly beyond the 1995 exhaustive n ≤ 10
   frontier (which fixed total n).
-- n = 12: same scan over all ~152×10^9 min-degree-≥1 graphs — [scan11_n12_*.err]
-  (running; results recorded below when complete).
+- n = 12: **complete** — all 164,072,174,728 min-degree-≥1 graphs scanned
+  (8-way, ~2.7 h wall). Envelope failures: 2 (K_12, K_12−e); near-hits/positives:
+  NONE. [scan11_n12_*.err]
+  ⇒ **Conjecture 129 holds for every graph with ≤ 12 non-isolated vertices and
+  ANY total number of vertices** — two orders past the 1995 n ≤ 10 frontier,
+  and covering infinitely many graphs per core via the envelope/padding logic.
 
 ## 11. Second encoding — degree-sequence LP relaxation (new reduction)
 
@@ -172,7 +176,8 @@ follows.** Findings (`seq_lp.py`, `seq_sample.py`):
 - With EG + capacities: exhaustive over ALL graphical sequences (with isolated
   vertices allowed) n ≤ 11 (59,347 seqs at n=11, ~81k total): **zero
   violations**; worst case exactly 0 at the clique sequence (q−1)^q padded to
-  n = 2q−2 — the equality family again. n = 12, 13 running.
+  n = 2q−2 — the equality family again. Completed n = 12 (222,116 seqs) and
+  n = 13 (836,314 seqs): zero violations.
 - Sequence-space annealing with the LP score at n ∈ {14..200}: max = 0, always
   exactly at the equality-family sequence; never positive.
 
@@ -181,7 +186,13 @@ So the capacity-LP relaxation appears EXACTLY tight: conjectured reduction
 a clean finite-dimensional inequality per degree multiset — promising proof
 route (LP duality gives explicit certificates per sequence).
 
-## STATUS: negative (no counterexample; conjecture tight on K_q ∪ (q−2)K_1)
+## STATUS: frontier-pushed (no counterexample; conjecture tight on K_q ∪ (q−2)K_1)
+
+Frontier results: (a) 129 verified for ALL graphs with ≤ 12 non-isolated
+vertices at ANY total size (164×10^9 cores + padding analysis; previous record
+was plain n ≤ 10); (b) new degree-sequence LP reduction, exhaustively tight
+and violation-free for all graphical sequences n ≤ 13 and by annealing to
+n = 200.
 
 Summary: re-verified the exact WoW-129 definition from refutationGBR source;
 discovered dev² is a pure degree-sequence invariant (trace(L²) identity),
