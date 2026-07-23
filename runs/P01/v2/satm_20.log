@@ -23,3 +23,4 @@ n=20 it=4400 t=528s last_clause_len=6
 n=20 it=4600 t=766s last_clause_len=7
 n=20 it=4800 t=1276s last_clause_len=6
 n=20 it=5000 t=2139s last_clause_len=6
+n=20 it=5200 t=4101s last_clause_len=6

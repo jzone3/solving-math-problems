@@ -1,0 +1,242 @@
+n=18 it=200 t=2s last_clause_len=4
+n=18 it=200 t=2s last_clause_len=4
+n=18 it=200 t=2s last_clause_len=7
+n=18 it=200 t=2s last_clause_len=5
+n=18 it=200 t=2s last_clause_len=6
+n=18 it=200 t=2s last_clause_len=4
+n=18 it=400 t=4s last_clause_len=4
+n=18 it=400 t=4s last_clause_len=4
+n=18 it=400 t=4s last_clause_len=5
+n=18 it=400 t=4s last_clause_len=5
+n=18 it=400 t=4s last_clause_len=5
+n=18 it=400 t=4s last_clause_len=6
+n=18 it=600 t=6s last_clause_len=4
+n=18 it=600 t=7s last_clause_len=5
+n=18 it=600 t=7s last_clause_len=5
+n=18 it=600 t=7s last_clause_len=5
+n=18 it=600 t=7s last_clause_len=5
+n=18 it=600 t=7s last_clause_len=4
+n=18 it=800 t=9s last_clause_len=4
+n=18 it=800 t=10s last_clause_len=4
+n=18 it=800 t=10s last_clause_len=5
+n=18 it=800 t=11s last_clause_len=5
+n=18 it=800 t=11s last_clause_len=4
+n=18 it=800 t=11s last_clause_len=7
+n=18 it=1000 t=15s last_clause_len=7
+n=18 it=1000 t=15s last_clause_len=6
+n=18 it=1000 t=16s last_clause_len=5
+n=18 it=1000 t=16s last_clause_len=6
+n=18 it=1000 t=18s last_clause_len=4
+n=18 it=1000 t=18s last_clause_len=6
+Terminated
+n=18 it=1200 t=28s last_clause_len=5
+n=18 it=1200 t=28s last_clause_len=6
+n=18 it=1200 t=32s last_clause_len=6
+n=18 it=200 t=11s last_clause_len=4
+n=18 it=1200 t=39s last_clause_len=4
+n=18 it=200 t=12s last_clause_len=4
+n=18 it=1200 t=43s last_clause_len=5
+n=18 it=400 t=28s last_clause_len=5
+n=18 it=1400 t=56s last_clause_len=6
+n=18 it=400 t=32s last_clause_len=6
+n=18 it=600 t=52s last_clause_len=4
+n=18 it=600 t=58s last_clause_len=4
+n=18 it=800 t=81s last_clause_len=6
+n=18 it=800 t=86s last_clause_len=4
+UNSAT n=18 case=(2, 2) after 1469 refinements, t=124s
+n=18 it=1400 t=136s last_clause_len=6
+n=18 it=1000 t=114s last_clause_len=6
+n=18 it=1000 t=122s last_clause_len=6
+n=18 it=200 t=23s last_clause_len=4
+UNSAT n=18 case=(2, 7) after 1276 refinements, t=159s
+UNSAT n=18 case=(2, 5) after 1352 refinements, t=164s
+UNSAT n=18 case=(2, 6) after 1342 refinements, t=168s
+n=18 it=400 t=47s last_clause_len=5
+n=18 it=1200 t=143s last_clause_len=5
+n=18 it=200 t=18s last_clause_len=5
+n=18 it=200 t=16s last_clause_len=4
+n=18 it=200 t=16s last_clause_len=4
+n=18 it=600 t=68s last_clause_len=6
+n=18 it=400 t=39s last_clause_len=5
+n=18 it=400 t=37s last_clause_len=4
+n=18 it=400 t=36s last_clause_len=5
+n=18 it=800 t=94s last_clause_len=4
+n=18 it=600 t=62s last_clause_len=6
+n=18 it=600 t=58s last_clause_len=4
+UNSAT n=18 case=(2, 4) after 1412 refinements, t=227s
+n=18 it=600 t=60s last_clause_len=5
+n=18 it=1400 t=201s last_clause_len=5
+n=18 it=200 t=17s last_clause_len=4
+n=18 it=800 t=81s last_clause_len=6
+n=18 it=800 t=86s last_clause_len=5
+n=18 it=800 t=82s last_clause_len=4
+n=18 it=400 t=37s last_clause_len=5
+n=18 it=1000 t=141s last_clause_len=4
+UNSAT n=18 case=(2, 8) after 1178 refinements, t=248s
+n=18 it=1000 t=108s last_clause_len=5
+n=18 it=1000 t=113s last_clause_len=4
+n=18 it=1000 t=109s last_clause_len=5
+n=18 it=600 t=58s last_clause_len=6
+n=18 it=200 t=19s last_clause_len=5
+UNSAT n=18 case=(2, 9) after 1020 refinements, t=171s
+n=18 it=1200 t=138s last_clause_len=4
+n=18 it=1200 t=138s last_clause_len=5
+n=18 it=800 t=80s last_clause_len=5
+n=18 it=200 t=13s last_clause_len=3
+n=18 it=400 t=38s last_clause_len=4
+UNSAT n=18 case=(3, 3) after 1194 refinements, t=170s
+n=18 it=400 t=35s last_clause_len=5
+n=18 it=600 t=61s last_clause_len=5
+n=18 it=1000 t=106s last_clause_len=5
+n=18 it=200 t=16s last_clause_len=4
+n=18 it=600 t=56s last_clause_len=5
+n=18 it=800 t=82s last_clause_len=5
+n=18 it=1200 t=139s last_clause_len=6
+n=18 it=400 t=37s last_clause_len=4
+n=18 it=1400 t=199s last_clause_len=6
+n=18 it=800 t=80s last_clause_len=5
+n=18 it=1000 t=112s last_clause_len=5
+n=18 it=600 t=61s last_clause_len=5
+n=18 it=1400 t=234s last_clause_len=4
+n=18 it=1000 t=112s last_clause_len=7
+n=18 it=800 t=88s last_clause_len=5
+n=18 it=1200 t=152s last_clause_len=6
+n=18 it=1000 t=122s last_clause_len=5
+n=18 it=1200 t=160s last_clause_len=5
+UNSAT n=18 case=(2, 3) after 1475 refinements, t=465s
+UNSAT n=18 case=(3, 4) after 1407 refinements, t=366s
+UNSAT n=18 case=(3, 5) after 1447 refinements, t=364s
+n=18 it=200 t=5s last_clause_len=4
+UNSAT n=18 case=(3, 6) after 1382 refinements, t=318s
+UNSAT n=18 case=(3, 9) after 1146 refinements, t=216s
+n=18 it=200 t=19s last_clause_len=4
+n=18 it=400 t=23s last_clause_len=5
+n=18 it=200 t=21s last_clause_len=4
+n=18 it=200 t=21s last_clause_len=4
+n=18 it=400 t=42s last_clause_len=4
+n=18 it=600 t=49s last_clause_len=6
+n=18 it=400 t=45s last_clause_len=4
+n=18 it=400 t=47s last_clause_len=4
+UNSAT n=18 case=(3, 7) after 1376 refinements, t=324s
+n=18 it=600 t=63s last_clause_len=5
+n=18 it=800 t=67s last_clause_len=6
+n=18 it=200 t=6s last_clause_len=4
+n=18 it=600 t=55s last_clause_len=5
+n=18 it=600 t=55s last_clause_len=6
+n=18 it=800 t=71s last_clause_len=5
+UNSAT n=18 case=(3, 8) after 1340 refinements, t=314s
+n=18 it=400 t=16s last_clause_len=5
+n=18 it=800 t=66s last_clause_len=5
+n=18 it=800 t=67s last_clause_len=5
+n=18 it=200 t=5s last_clause_len=6
+n=18 it=1000 t=83s last_clause_len=4
+n=18 it=600 t=24s last_clause_len=5
+UNSAT n=18 case=(4, 4) after 967 refinements, t=90s
+n=18 it=1000 t=76s last_clause_len=4
+n=18 it=1000 t=77s last_clause_len=5
+n=18 it=400 t=13s last_clause_len=5
+n=18 it=200 t=6s last_clause_len=4
+n=18 it=800 t=32s last_clause_len=4
+n=18 it=1200 t=98s last_clause_len=6
+n=18 it=600 t=23s last_clause_len=5
+n=18 it=1200 t=90s last_clause_len=5
+n=18 it=400 t=16s last_clause_len=6
+n=18 it=1000 t=45s last_clause_len=7
+n=18 it=800 t=38s last_clause_len=4
+n=18 it=600 t=36s last_clause_len=4
+n=18 it=1200 t=111s last_clause_len=5
+n=18 it=1000 t=70s last_clause_len=4
+n=18 it=800 t=66s last_clause_len=4
+n=18 it=1200 t=93s last_clause_len=5
+n=18 it=1400 t=146s last_clause_len=5
+UNSAT n=18 case=(5, 5) after 928 refinements, t=109s
+n=18 it=200 t=13s last_clause_len=4
+n=18 it=400 t=27s last_clause_len=4
+UNSAT n=18 case=(4, 9) after 1101 refinements, t=151s
+UNSAT n=18 case=(4, 7) after 1243 refinements, t=228s
+n=18 it=600 t=49s last_clause_len=4
+UNSAT n=18 case=(4, 5) after 1373 refinements, t=245s
+n=18 it=200 t=18s last_clause_len=4
+UNSAT n=18 case=(4, 6) after 1430 refinements, t=240s
+n=18 it=200 t=13s last_clause_len=4
+n=18 it=200 t=10s last_clause_len=4
+n=18 it=400 t=28s last_clause_len=3
+n=18 it=800 t=60s last_clause_len=5
+n=18 it=200 t=3s last_clause_len=5
+n=18 it=400 t=17s last_clause_len=5
+n=18 it=400 t=14s last_clause_len=4
+n=18 it=600 t=32s last_clause_len=4
+n=18 it=400 t=8s last_clause_len=4
+n=18 it=1000 t=66s last_clause_len=5
+n=18 it=600 t=20s last_clause_len=5
+n=18 it=600 t=25s last_clause_len=4
+n=18 it=800 t=42s last_clause_len=7
+UNSAT n=18 case=(4, 8) after 1281 refinements, t=210s
+n=18 it=600 t=18s last_clause_len=6
+n=18 it=800 t=29s last_clause_len=6
+n=18 it=1200 t=79s last_clause_len=5
+n=18 it=200 t=4s last_clause_len=3
+n=18 it=800 t=34s last_clause_len=5
+n=18 it=1000 t=51s last_clause_len=4
+n=18 it=800 t=26s last_clause_len=5
+n=18 it=400 t=12s last_clause_len=5
+n=18 it=1000 t=47s last_clause_len=5
+n=18 it=1000 t=43s last_clause_len=4
+n=18 it=600 t=31s last_clause_len=5
+n=18 it=1200 t=76s last_clause_len=6
+UNSAT n=18 case=(6, 6) after 939 refinements, t=53s
+n=18 it=800 t=55s last_clause_len=5
+n=18 it=200 t=20s last_clause_len=3
+n=18 it=1200 t=86s last_clause_len=4
+UNSAT n=18 case=(5, 9) after 1104 refinements, t=91s
+n=18 it=400 t=40s last_clause_len=4
+n=18 it=200 t=18s last_clause_len=5
+n=18 it=1000 t=84s last_clause_len=5
+n=18 it=600 t=64s last_clause_len=5
+n=18 it=400 t=41s last_clause_len=6
+n=18 it=800 t=90s last_clause_len=6
+n=18 it=600 t=65s last_clause_len=4
+n=18 it=1200 t=132s last_clause_len=6
+UNSAT n=18 case=(5, 6) after 1373 refinements, t=207s
+n=18 it=200 t=18s last_clause_len=6
+n=18 it=1000 t=119s last_clause_len=5
+n=18 it=800 t=94s last_clause_len=6
+UNSAT n=18 case=(5, 7) after 1386 refinements, t=215s
+n=18 it=400 t=44s last_clause_len=4
+n=18 it=200 t=23s last_clause_len=4
+n=18 it=1000 t=131s last_clause_len=5
+UNSAT n=18 case=(5, 8) after 1351 refinements, t=228s
+n=18 it=1200 t=164s last_clause_len=4
+n=18 it=600 t=68s last_clause_len=4
+n=18 it=400 t=43s last_clause_len=4
+n=18 it=200 t=20s last_clause_len=4
+n=18 it=800 t=95s last_clause_len=4
+n=18 it=600 t=69s last_clause_len=5
+n=18 it=400 t=46s last_clause_len=4
+UNSAT n=18 case=(6, 7) after 1342 refinements, t=263s
+UNSAT n=18 case=(6, 9) after 1091 refinements, t=198s
+n=18 it=800 t=92s last_clause_len=4
+n=18 it=600 t=70s last_clause_len=5
+UNSAT n=18 case=(7, 7) after 940 refinements, t=142s
+UNSAT n=18 case=(9, 9) (trivially: not enough distinct chords)
+n=18 it=200 t=12s last_clause_len=4
+n=18 it=200 t=12s last_clause_len=5
+n=18 it=1000 t=106s last_clause_len=4
+n=18 it=800 t=81s last_clause_len=4
+n=18 it=400 t=18s last_clause_len=6
+n=18 it=400 t=18s last_clause_len=5
+n=18 it=1000 t=93s last_clause_len=4
+n=18 it=600 t=29s last_clause_len=5
+n=18 it=600 t=30s last_clause_len=5
+n=18 it=1200 t=122s last_clause_len=6
+n=18 it=800 t=51s last_clause_len=4
+n=18 it=800 t=52s last_clause_len=6
+n=18 it=1000 t=84s last_clause_len=7
+n=18 it=1000 t=84s last_clause_len=7
+n=18 it=1200 t=152s last_clause_len=5
+UNSAT n=18 case=(6, 8) after 1300 refinements, t=315s
+UNSAT n=18 case=(7, 9) after 1202 refinements, t=181s
+UNSAT n=18 case=(8, 8) after 1069 refinements, t=121s
+n=18 it=1200 t=135s last_clause_len=5
+UNSAT n=18 case=(8, 9) after 1244 refinements, t=184s
+UNSAT n=18 case=(7, 8) after 1367 refinements, t=288s

@@ -55,3 +55,7 @@ n=22 it=10800 t=2222s last_clause_len=4
 n=22 it=11000 t=2512s last_clause_len=7
 n=22 it=11200 t=2985s last_clause_len=5
 n=22 it=11400 t=3441s last_clause_len=5
+n=22 it=11600 t=3986s last_clause_len=4
+n=22 it=11800 t=4642s last_clause_len=7
+n=22 it=12000 t=5320s last_clause_len=6
+n=22 it=12200 t=6229s last_clause_len=6

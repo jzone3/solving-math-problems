@@ -37,7 +37,12 @@ def second_hc(n, chords):
             return [tuple(sorted(e)) for e in used_chords]
     return None
 
-def main(n, budget):
+def main(n, budget, case=None):
+    """case=(d1,d2): restrict to vertex 0 having chords of cycle-lengths d1 and d2
+    (2 <= d1 <= d2 <= n//2). The <=C(n/2-1,2)+n/2-1 cases partition the search space
+    (every 4-regular completion gives vertex 0 exactly two chords, whose lengths are
+    some such pair), so per-n UNSAT for all cases = UNSAT overall. Enables parallel
+    cube-and-conquer."""
     pool = IDPool()
     var = {}
     for u in range(n):
@@ -51,6 +56,24 @@ def main(n, budget):
         lits = [var[e] for e in var if w in e]
         cnf.extend(CardEnc.equals(lits=lits, bound=2, vpool=pool,
                                   encoding=EncType.seqcounter).clauses)
+    if case:
+        d1, d2 = case
+        def len_chords(d):
+            out = [var[e] for e in ((0, d), (0, n - d)) if e in var]
+            return list(set(out))
+        if d1 == d2:
+            for e in len_chords(d1):
+                pass
+            # both chords of vertex 0 have length d1: (0,d1) and (0,n-d1) both present
+            if len(len_chords(d1)) < 2:
+                print(f"UNSAT n={n} case={case} (trivially: not enough distinct chords)",
+                      flush=True)
+                return "unsat"
+            for l in len_chords(d1):
+                cnf.append([l])
+        else:
+            cnf.append(len_chords(d1))
+            cnf.append(len_chords(d2))
     solver = Cadical153(bootstrap_with=cnf)
     t0 = time.time()
     it = 0
@@ -70,8 +93,7 @@ def main(n, budget):
         return out
     while time.time() - t0 < budget:
         if not solver.solve():
-            print(f"UNSAT n={n} after {it} refinements, t={time.time()-t0:.0f}s "
-                  f"-- exhaustively no simple 4-regular 1H graph on {n} vertices",
+            print(f"UNSAT n={n} case={case} after {it} refinements, t={time.time()-t0:.0f}s",
                   flush=True)
             return "unsat"
         model = set(l for l in solver.get_model() if l > 0)
@@ -104,4 +126,9 @@ def main(n, budget):
     return "timeout"
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]), float(sys.argv[2]) if len(sys.argv) > 2 else 3600)
+    n_ = int(sys.argv[1])
+    b_ = float(sys.argv[2]) if len(sys.argv) > 2 else 3600
+    if len(sys.argv) > 4:
+        main(n_, b_, case=(int(sys.argv[3]), int(sys.argv[4])))
+    else:
+        main(n_, b_)
