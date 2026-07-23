@@ -2,7 +2,10 @@
 
 **Statement.** A (v,k)-PMD is a set of cyclically ordered k-tuples of a v-set such that every
 ordered pair (x,y) appears at cyclic distance i in exactly one block, for every i = 1..k−1.
-Open: k = 6 with v ∈ {9, 10, 12, 15, 16, 18} (and k = 7 with v ∈ {14, 15}).
+Open: k = 6 with v ∈ {9, 12, 15, 16, 18} (and k = 7 with v ∈ {14, 15}).
+CORRECTIONS (2026-07-23): v = 10 was wrongly listed as open — Abel–Bennett 2006 Thm 1.3 already
+records it as a proven exception. **v = 9 is now SETTLED negatively by this project** (CP-SAT +
+kissat/DRAT + exhaustive DFS, adversarially confirmed; see solutions/P13/).
 (Handbook ch. VI.35; CPro1 repo perfect-mendelsohn-design/problem_def.py.)
 
 **Why it matters.** The k = 5 spectrum was completed only in 2020 (Griggs–Kozlik, J. Combin.

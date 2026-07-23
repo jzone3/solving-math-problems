@@ -1,0 +1,2 @@
+v=15 soft-packing deviation=232 (0 would be a PMD)
+v=15 exact-with-hint result=UNKNOWN wall=1500.8s
