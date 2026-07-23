@@ -1,0 +1,24 @@
+{"generated": 168854, "region": 701, "distinct": 524, "dup": 177}
+{"generated": 338263, "region": 1454, "distinct": 894, "dup": 560}
+{"generated": 508351, "region": 2159, "distinct": 1177, "dup": 982}
+{"generated": 675051, "region": 2885, "distinct": 1406, "dup": 1479}
+{"generated": 845183, "region": 3605, "distinct": 1592, "dup": 2013}
+{"generated": 1012917, "region": 4328, "distinct": 1761, "dup": 2567}
+{"generated": 1182609, "region": 5067, "distinct": 1919, "dup": 3148}
+{"generated": 1350785, "region": 5766, "distinct": 2079, "dup": 3687}
+{"generated": 1518154, "region": 6471, "distinct": 2176, "dup": 4295}
+{"generated": 1687147, "region": 7152, "distinct": 2271, "dup": 4881}
+{"generated": 1858154, "region": 7876, "distinct": 2362, "dup": 5514}
+{"generated": 2025171, "region": 8633, "distinct": 2456, "dup": 6177}
+{"generated": 2196037, "region": 9346, "distinct": 2540, "dup": 6806}
+{"generated": 2364909, "region": 10086, "distinct": 2616, "dup": 7470}
+{"generated": 2537115, "region": 10772, "distinct": 2712, "dup": 8060}
+{"generated": 2705833, "region": 11513, "distinct": 2784, "dup": 8729}
+{"generated": 2875855, "region": 12236, "distinct": 2850, "dup": 9386}
+{"generated": 3046982, "region": 12957, "distinct": 2913, "dup": 10044}
+{"generated": 3218497, "region": 13689, "distinct": 2964, "dup": 10725}
+{"generated": 3382414, "region": 14400, "distinct": 3022, "dup": 11378}
+{"generated": 3550164, "region": 15077, "distinct": 3073, "dup": 12004}
+{"generated": 3725559, "region": 15830, "distinct": 3117, "dup": 12713}
+{"generated": 3887729, "region": 16561, "distinct": 3169, "dup": 13392}
+FINAL {"generated": 4056381, "region": 17313, "distinct": 3226, "dup": 14087, "wall_seconds": 7200}

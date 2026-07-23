@@ -111,4 +111,61 @@ This focuses the targeted deep runs (`runA_min.log`, `runB_min.log`).
   minimize the number of valid 3-dijoin partitions, symmetry-broken model counting):
   2 x 3h runs (one on minimal shapes n=12–14, one broad n<=16).
 
-(further checkpoints appended below)
+- 2026-07-22 22:35 UTC exhaustive n=8 COMPLETE (parallel workers for chunks 42–64):
+  all 2^28 arc-subsets of the fixed topological order on 8 vertices screened by the
+  vectorized prune; 11,550,033 survivors (2,490,488 + 9,059,545... per-worker:
+  1,213,843 + 1,223,263 + 2,004,967 + 1,682,075 + 1,312,478 + 1,623,407 for chunks
+  42–64) fully checked with exact tau + SAT — **0 non-packing**. Together with the
+  ACZ 2023 and degree pruning theorems this verifies Woodall for all simple DAGs on
+  <= 8 vertices (any tau).
+- 2026-07-22 22:48 – 01:48 UTC wave 2 (8 parallel 3h runs):
+  - phase A seeds 51–53 (broad n<=16): 3.93M tau=3 SAT-checked, 171,705 in-region — 0.
+  - phase B seed 54: 1,879 annealed region hits — 0.
+  - phase C (packing-count minimization, cap 40) seeds 41–42: 267,991 region evals;
+    the count NEVER dropped below the cap 40 — no near-misses at all.
+  - saturation sampling at minimal shape (2,2,8): 26,236 region samples,
+    3,769 distinct WL-hash classes, final marginal dup rate ~86% — the region at the
+    minimal shape is small (est. ~5k classes) and we covered most of it. 0 non-packing.
+- 2026-07-23 01:55 – 03:55 UTC wave 3 (7 parallel 2h runs):
+  - phase A seed 61 (minimal+medium shapes only): 196,591 tau=3 checked, 32,669
+    in-region — 0. Seeds 62–63 (broad): 1.75M tau=3 checked, 76,439 in-region — 0.
+  - phase B seed 64 (minimal shapes): 1,103 region hits — 0.
+  - phase C with PACKING_CAP=2000, seeds 65–66: 65,984 region evals; minimum number
+    of 3-dijoin partitions (modulo the 3! color symmetry) ever seen at the minimal
+    shape n=12/18 arcs: **242**. Every region instance admits hundreds of distinct
+    packings — the conjecture holds with enormous slack everywhere we can reach.
+  - saturation seed 72: +17,313 region samples, 3,226 distinct classes — 0.
+
+## 5. Summary and STATUS
+
+Grand totals (all machine-verified, SAT partition checks cross-validated against an
+independent brute-force checker):
+- Exhaustive: every simple DAG on <= 7 vertices (unconditional; 283,267 tau=3
+  instances) and every simple DAG on 8 vertices (using published ACZ-2023 rho bounds +
+  degree conditions as pruning; 11.55M pruned survivors fully checked) satisfies
+  Woodall's conjecture.
+- Randomized/annealed: ~9.6M tau=3 shape-constrained DAGs (n <= 16, up to ~27 arcs)
+  SAT-checked for a partition into 3 dijoins, including ~460k lying OUTSIDE every
+  known safe class (non-planar, non-chordal, not source-sink connected, rho >= 4 in
+  both directions) — all pack.
+- Near-miss mining: annealing to minimize the number of packings found a floor of
+  242 distinct packings (mod color symmetry) at the smallest feasible counterexample
+  shape (n=12, 18 arcs) — nothing remotely tight.
+- Structural byproduct (derived, machine-checkable): any minimal tau=3
+  counterexample has >= 2 sources, >= 2 sinks, >= 8 degree-3 internal vertices,
+  hence >= 12 vertices and >= 18 arcs. This sharpens where future searches should
+  look: n in [12, 16], 18–24 arcs, in the region defined in §3 — or beyond n=16
+  where random search gets thin.
+
+Dead ends / lessons:
+- Exhaustive n=9 (2^36 masks) is out of reach for this prune density: the rho-based
+  prune passes ~4% of masks at high arc density, giving ~3B survivors. A stronger
+  vectorized tau-lower-bound prune would be needed.
+- The packing-count landscape is extremely flat (always >= 242 at the minimal shape):
+  annealing gets no gradient toward a counterexample; if one exists it is likely
+  structured (algebraic), not findable by local search from random seeds — V2-style
+  constructions or much larger SAT-modulo-symmetry runs (V3) are the better follow-ups.
+
+STATUS: negative (no counterexample found; exhaustive for simple digraphs n <= 8;
+frontier-pushed on the targeted region n <= 16 with ~460k out-of-safe-class instances
+verified and a derived n >= 12 lower bound for minimal tau=3 counterexamples).

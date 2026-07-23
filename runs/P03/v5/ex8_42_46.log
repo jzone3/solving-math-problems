@@ -1,0 +1,5 @@
+chunk 43/64 survivors=183819 full_checked=183819 nonpack=0 t=83s
+chunk 44/64 survivors=349961 full_checked=349961 nonpack=0 t=155s
+chunk 45/64 survivors=790513 full_checked=790513 nonpack=0 t=369s
+chunk 46/64 survivors=1213843 full_checked=1213843 nonpack=0 t=560s
+DONE chunks[42,46) survivors=1213843 nonpacking=0 wall=560s
