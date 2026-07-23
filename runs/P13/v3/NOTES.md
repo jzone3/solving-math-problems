@@ -118,5 +118,37 @@ Soft-LNS sweep (5 workers, pack 3000 s + exact-with-hint 1500 s, seed 2):
 The relative deviation grows with v (24%, 22%, 25%, 27%) — CP-SAT's LNS gets stuck far
 from a perfect design on all of v = 12–18; no near-perfect packings (single-digit
 deviation) were ever observed. SAT-side kissat on the v=12 CNF (5.99 M clauses) also ran
->7 h CPU without finding a model. These sizes look out of reach for generic CP/SAT
-search without stronger structure (prescribed automorphisms — variant V2's territory).
+>8 h CPU without finding a model or refutation. These sizes look out of reach for generic
+CP/SAT search without stronger structure (prescribed automorphisms — variant V2's
+territory).
+
+## 7. Third independent confirmation of v=9 nonexistence: exhaustive DFS
+
+`pmd_dfs.py`: Algorithm-X-style exact-cover backtracking, written independently of both
+solver encodings. Blocks canonicalized (min element first); branch on the lexicographically
+first uncovered distance-1 ordered pair; a block is admissible iff all 30 of its
+(pair, distance) slots are uncovered (bitmask AND). WLOG block (0,1,2,3,4,5) forced.
+Sanity: v=7 finds a design instantly (verified PASS); v=6 exhausts instantly.
+
+**v=9: search space exhausted after 581,650 nodes (~10 min pure Python): NO design.**
+
+The kissat weak-symmetry run (only block 0 fixed — exactly the DFS's assumption) was
+killed after 9 h CPU without finishing; it is superseded by the DFS, which exhausts the
+same quotient space combinatorially.
+
+## 8. Conclusions
+
+1. **(9,6,1)-PMD does not exist.** Established by three independent methods that all
+   agree: CP-SAT (UNSAT, 5.7 s), kissat on an independently written CNF (UNSAT, 7.3 s,
+   DRAT proof verified by drat-trim), and exhaustive exact-cover backtracking (581,650
+   nodes). This settles the smallest open case of the k=6 PMD spectrum negatively.
+2. v=10: kissat reproduced the known nonexistence (UNSAT, 4.7 h) — method benchmark.
+   NOTE: the problem file lists v=10 as open, but Abel–Bennett 2006 Thm 1.4 already
+   records it as a proven exception; the problem file should be corrected.
+3. v=12, 15, 16, 18: no design found and no refutation — hours of CP-SAT (incl. soft-LNS
+   packing with hint hand-off) and kissat; best soft-packing deviations 160/232/304/412.
+   Genuinely hard; recommend prescribed-automorphism search (V2) or massive SAT effort.
+
+STATUS: SOLVED (sub-case) — (9,6,1)-PMD proven nonexistent with DRAT-verified proof +
+two independent confirmations; v=10 known nonexistence reproduced; v=12/15/16/18 negative
+(no design found, still open).
