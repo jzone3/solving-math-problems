@@ -80,4 +80,29 @@ needed; used as hint source rather than standalone solver).
 - Final phase: (a) exact decision model n=11 hinted with cost-7 incumbent (no symmetry
   breaking), 4 workers × 4 h; (b) row-LNS on n=13 from cost-13 incumbent, 4 workers × 4 h.
 
-STATUS: running
+- Final phase results: hinted exact n=11 (4 workers × 4 h) → UNKNOWN (no witness, no
+  refutation). Row-LNS n=13 (4 h) improved anneal's 13 → **12 violations** then stalled.
+
+## Summary of best-known min-violation values (this run, machine-verified via t2_common.cost)
+
+| n | existence | best violation count found | methods agreeing |
+|---|---|---|---|
+| 4, 6, 8 | exists | 0 (witnesses verified PASS by solutions/P12/verify.py) | exact CP-SAT |
+| 9 | nonexistent (known) | 4 | anneal ×2, cpsat_opt 2 h (bound stuck at 0) |
+| 11 | **open** | **7** | anneal ×5, row-LNS k=3/5/7, symbol-LNS, diversified LNS, cpsat_opt |
+| 13 | **open** | **12** | anneal + row-LNS 4 h |
+
+Total compute: ~30 core-hours CP-SAT + ~8 core-hours annealing (8-core VM, ~14 h wall).
+
+## Dead ends / negative findings
+
+1. Exact CP-SAT decision model: solves n≤8, cannot decide n=10 (600 s) nor re-prove the
+   known T2(9) nonexistence in 4 h — UNSAT for n=11 via CP is hopeless with this encoding.
+2. CP-SAT default LNS on the soft model: accepts hints but never improves them (n=9 and 11).
+3. Row-, symbol-, and diversified-LNS all bottom out at exactly 7 violations for n=11 from
+   every start — a remarkably robust floor. Best partials kept in best_T2_11_seed*.txt for
+   seeding other variants (e.g. V1/V3 SAT runs can use them).
+4. Optimality-bound route (prove min-violation > 0): bound never left 0 even for n=9.
+
+STATUS: negative (no T2(11)/T2(13) witness, no nonexistence proof; frontier data: robust
+min-violation floors 7 @ n=11 and 12 @ n=13, cost-7 partials published for seeding).
