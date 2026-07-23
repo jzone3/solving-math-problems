@@ -230,3 +230,8 @@ the best published-style constructions at those orders. The full-space annealer 
 reached 360 at n=22 in 40 min — the literature-derived construction wins, vindicating V5.
 (Caveat: w=14 min-t=30 was computed within the C4-free subspace; C4 configs have a
 2-switch second path so plausibly not minimizers, but rows using w=14 are avoided above.)
+
+Seeded annealing (anneal2, ring seeds, 90 min, T from e/40): n=22/24/26 remained at the
+ring values 144/216/324 — the ring graphs are strong local minima under chord 2-swaps;
+no full-space state below them was found. Consistent with (but not proof of) these being
+the true minima at those orders.
