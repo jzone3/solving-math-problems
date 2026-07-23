@@ -1,0 +1,5 @@
+>A nauty-geng -Cd2D10 n=11 e=11-16
+n=11 new min t=5 g6=J????B?nr}? L=7v paths=90
+n=11 new min t=3 g6=J????B_fr}? L=7v paths=190
+>Z 114418 graphs generated in 0.12 sec
+n=11: 114418 biconnected graphs, min t=3, hist=[(3, 4), (4, 9), (5, 407), (6, 367), (7, 496), (8, 8197), (9, 2420), (10, 466), (11, 102052)]

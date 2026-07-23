@@ -1,0 +1,4 @@
+>A nauty-geng -Cd2D9 n=10 e=10-18
+n=10 new min t=2 g6=I????B~~o L=5v paths=336
+>Z 579559 graphs generated in 0.27 sec
+n=10: 579559 biconnected graphs, min t=2, hist=[(2, 2), (3, 96), (4, 56), (5, 1013), (6, 295), (7, 15659), (8, 1776), (9, 299), (10, 560363)]
