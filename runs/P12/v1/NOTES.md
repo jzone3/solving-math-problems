@@ -233,3 +233,29 @@ Validation (dramatic speedup vs direct CNF):
   cache-hostile at this density — negative result worth recording.
 - n=12 full DLX build needs ~31GB (71.5M usable rows) -> OOM; added
   candidate sampling (mode 1 arg4 = keep %) as a SAT-hunting fallback.
+
+### Round 3: circular-array + cut attack (new structural route)
+
+- THEOREM (cut characterization, this run): an n x n Tuscan-2 square whose
+  first n-1 rows are one-cut openings of a circular (n-1) x n Tuscan-2 array
+  exists iff the array has cut positions (one per row) whose lost d1 edges
+  form a directed Hamiltonian path with all its distance-2 pairs among the
+  2(n-1) lost d2 pairs. (Both directions elementary; d1/d2 exactness of the
+  circular array forces the last row to consist exactly of the lost edges.)
+- cyclic.py: single-orbit cyclic construction solves T2(12) instantly
+  (base row 0 1 4 2 9 5 11 3 8 10 7 6; verify PASS) but is IMPOSSIBLE for
+  odd n (telescoping-sum obstruction: n-1 distinct nonzero diffs mod odd n
+  sum to 0 = b_end - b_start, contradiction).
+- mult_circ.py: multiplicative construction rows = u*b (u in Zn*) yields
+  circular (n-1) x n Tuscan-2 arrays iff base b has distinct nonzero d1 and
+  d2 ratios. Found: n=11 -> 80 bases, n=13 -> 48 bases (first explicit
+  constructions we know of for 12x13). EXHAUSTIVE cut-conversion search
+  (exact incremental pruning): NONE of the 80+48 arrays convert to squares.
+- circ.c: general circular-array DFS + cut conversion; canonical row
+  ordering (row second-symbols increasing) kills the (n-2)! row-order
+  symmetry (~360000x for n=11). n=7: exactly 1 circular 6x7 array (up to
+  symmetry), no conversion (consistent: T2(7) nonexistent). n=9: ZERO
+  circular 8x9 arrays (119M nodes) — matches EGT 1989 "none for n=8".
+- Running: sliced exhaustive circ 11 (4 slices: 3 child Devin sessions +
+  1 local) and circ 13 (6 local slices); any SQUARE hit = open-problem
+  witness, full exhaustion = "no circular-structured T2(11)" theorem.
