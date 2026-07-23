@@ -88,3 +88,14 @@ multiplicity counts, column sums, all pairwise inner products = L; prints PASS/F
   known-SAT siblings, decoded+PASS), (b) symmetry-break soundness (row-0 WLOG +
   double-lex, Flener et al. 2002), (c) independent cross-checks: nosym kissat (12h)
   and OR-Tools CP-SAT integer model on (12,15) — both still running.
+
+- 12:45 UTC: 12h budgets expired: nosym kissat runs (all 3) and monolithic i14-28 sym
+  run TIMEOUT without verdicts; CP-SAT single-shot on (12,15) returned UNKNOWN at 12h.
+  So the no-symmetry cross-checks are inconclusive by brute force — expected, the
+  unbroken search space is enormous.
+- Cross-check strategy replaced by cpsat_cubes.py: CP-SAT per row-1 cube, using ONLY
+  elementary WLOG symmetry (row 0 fixed; row 1 canonical per segment given its
+  per-segment counts) — no lex/double-lex assumptions. All cubes INFEASIBLE would
+  independently confirm nonexistence. Launched on (12,15): 11 cubes, 4h/cube cap.
+- Cube-and-conquer on (14,28) (13 row-1 cubes, kissat): cube0 UNSAT (~10 min);
+  remaining cubes running (some >5h each).
