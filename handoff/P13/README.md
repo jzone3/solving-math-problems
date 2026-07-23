@@ -45,9 +45,13 @@ resolution of (9,6,1) found; this appears to be the first.
 
 ## Honest limitations
 
-- The certificate is a DRAT proof checked by drat-trim (and reproduced by a hostile
-  reviewer with a different encoding), not a Lean-kernel proof. A Lean/LRAT formalization
-  attempt is in progress; until it lands, trust = {encoding audit} + {drat-trim}.
+- **Lean formalization (formalization/P13/)**: `theorem no_pmd_9_6_1 : ¬ PMD1Exists 9 6` —
+  the PMD definition, 12-block count, all five symmetry-breaking WLOG steps, and the
+  design⇒CNF reduction are kernel-checked (standard three axioms only, no sorry). The
+  UNSAT certificate is checked inside Lean by Std's verified LRAT checker; the one extra
+  trusted component is `native_decide` (ofReduceBool) to evaluate the checker on the
+  1M-clause instance — kernel-only evaluation is infeasible. Independently, the same
+  certificate chain is validated externally by drat-trim.
 - Paywalled sources not directly inspected: printed CRC Handbook table VI.35 and
   Hantao Zhang's Handbook-of-SAT chapter (both derive from / report the same literature;
   nothing suggests either settles (9,6,1)). The Abel–Bennett 2006 PDF is paywalled

@@ -21,7 +21,11 @@ Repo: https://github.com/jzone3/solving-math-problems (handoff/P13)
 
 ---
 
-NOTE BEFORE POSTING: this one is DRAT-certified + adversarially confirmed, but the Lean
-formalization (LRAT route) is still in progress — do not claim "Lean-verified" for P13 yet.
+NOTE BEFORE POSTING: Lean status — the theorem `no_pmd_9_6_1` IS formalized in Lean 4
+(formalization/P13/): definition, symmetry-breaking WLOG, and design⇒CNF reduction are
+kernel-checked; the UNSAT certificate is checked inside Lean by the verified LRAT checker
+but its evaluation uses native_decide (plus external drat-trim validation). Safe wording:
+"machine-checked in Lean (LRAT certificate checked by Lean's verified checker via
+native compilation)" — do NOT say "kernel-only Lean proof".
 Priority checked per the widened gate (literature + GitHub/Zenodo): appears to be the first
 resolution.
