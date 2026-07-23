@@ -17,7 +17,7 @@ static int reps[1024][1024];      /* orbit -> elements */
 static long long suffix[1030];
 static int cs[1030];
 static int w[1024];
-static long long cnt = 0, leaves = 0;
+static long long cnt = 0, leaves = 0, nodes = 0;
 static time_t deadline;
 static int timed_out = 0;
 
@@ -32,6 +32,7 @@ static int flat(void) {
 
 static void dfs(int pos, long long norm) {
     if (timed_out) return;
+    if ((++nodes & 0xFFFFF) == 0 && time(NULL) > deadline) { timed_out = 1; return; }
     if (norm > k || norm + suffix[pos] < k) return;
     if (pos == no) {
         if (norm != k) return;

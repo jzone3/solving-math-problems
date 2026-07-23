@@ -39,8 +39,19 @@ cells = sorted((int(mm.group(1)), int(mm.group(2)) ** 2)
                for key, v in db.items()
                if (mm := re.match(r"CW\((\d+),(\d+)\)", key))
                and v.get("status") == "Open" and int(mm.group(2)) ** 2 in ks)
-print(f"{len(cells)} open cells, k in {ks}", flush=True)
+import os
+done = set()
+resume = os.environ.get("RESUME")
+if resume and os.path.exists(resume):
+    for line in open(resume):
+        mm = re.match(r"CW\((\d+),(\d+)\):", line)
+        if mm:
+            done.add((int(mm.group(1)), int(mm.group(2))))
+print(f"{len(cells)} open cells, k in {ks}; resuming past {len(done)}",
+      flush=True)
 for n, k in cells:
+    if (n, k) in done:
+        continue
     p = prime_power_root(k)
     if p is None or n % p == 0:
         print(f"CW({n},{k}): mult thm n/a", flush=True)
