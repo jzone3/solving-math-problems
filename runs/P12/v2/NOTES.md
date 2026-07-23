@@ -116,7 +116,32 @@ n=11, ≈10 core-hours on n=13):
   fundamentally different method (SMS/clique with strong isomorph rejection,
   cf. V1/V3) is needed for full n=11 exhaustion.
 
-## 7. STATUS
+## 7. Phase 2 (resumed session): complete-solver attack (CP-SAT / kissat)
+
+After V2 DFS was exhausted, escalated to untried complete-search machinery:
+- `t2cpsat.py`: OR-Tools CP-SAT model (integer cells + boolean channeling,
+  exactly-one over the 110 dist-1 pair-occurrence literals, at-most-one for
+  dist-2, standard-form units, redundant last-column alldifferent).
+- `t2cnf.py`: DIMACS CNF (direct encoding + Tseitin pair vars, pairwise AMO)
+  for kissat 4.0.4 (built from source); supports cubes fixing row 1.
+- `cubes11.txt`: all **549 012** standard-form second rows for n=11
+  (row 0 = identity, row 1 starts with 1, compatible at dist 1 and 2)
+  — the top-level cube set for cube-and-conquer.
+
+Calibration results:
+- n=8: CP-SAT finds a valid T2(8) in seconds (verified PASS); kissat SAT in
+  ~7 min single-thread.
+- n=9 (known UNSAT): **CP-SAT failed to prove UNSAT in 4h × 8 workers
+  (status UNKNOWN, ~90k det-time)** — vs. 3.4 core-hours for the dedicated
+  DFS exhaustion. kissat on n=9 UNSAT: >4h, still running at write-up.
+  Generic complete solvers are ~10×+ SLOWER than the specialized DFS here,
+  so a SAT-based decision of T2(11) needs ≳10^5 core-hours with these
+  encodings — out of reach on this box; would need SMS/clique-style global
+  isomorph rejection beyond the standard form to become feasible.
+- n=11 witness hunt via CP-SAT (6 workers, 12h): running; no feasible
+  solution so far.
+
+## 8. STATUS
 
 STATUS: negative (frontier-pushed on n=9). Summary:
 - T2(9) nonexistence INDEPENDENTLY RE-PROVED by full exhaustion (0 solutions,
