@@ -81,6 +81,9 @@ CP-SAT hit UNKNOWN at 250 s — CP-SAT is much weaker than kissat on the UNSAT s
 | 13 | CP-SAT | full | UNKNOWN (SAT-side hard) | 180 s limit |
 | 10 | CP-SAT | full, no first-occ | UNKNOWN | 250 s limit |
 | 12 | CP-SAT | full, no first-occ | UNKNOWN (no design, no refutation) | 7200 s limit |
+| 10 | kissat | full | **UNSAT** (reproduces known nonexistence — method benchmark) | 16919 s |
+| 12 | CP-SAT (seed 1, via broken LNS phase 2) | full, no first-occ | UNKNOWN | 3600 s |
+| 12 | CP-SAT exact hinted by dev-160 packing | full, no first-occ | UNKNOWN | 1500 s |
 
 (Additional rows appended below as longer runs finish.)
 
@@ -107,6 +110,6 @@ Soft-LNS sweep (5 workers, pack 3000 s + exact-with-hint 1500 s, seed 2):
 
 | v | best soft-packing deviation (of 5·v·(v−1) slots) | exact-with-hint |
 |---|---|---|
-| 12 | 160 / 660 after 3000 s | (below) |
+| 12 | 160 / 660 after 3000 s | UNKNOWN (1500 s) |
 
 Rows appended as the sweep progresses.
