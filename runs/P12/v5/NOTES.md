@@ -186,7 +186,8 @@ Cost = Σ max(0, pair-count − 1) over dist-1 and dist-2 pair counts; moves: in
 segment reversals; geometric cooling with restarts (6 CPU-hours each order).
 - n=8 (control, solutions exist): reaches cost 3 quickly but does NOT find a perfect square in
   minutes — corroborates CPro1's finding that local search is ineffective on this design type.
-- n=11: best ever = 13 violated constraints (plateau); n=13: best ever = 23 (plateau).
+- n=11: best ever = 12 violated constraints (18.5 G iterations, 6 CPU-h); n=13: best ever = 22
+  (17.8 G iterations, 6 CPU-h). Deep plateaus far from 0.
 Local search alone shows no sign of a nearby witness at either open order (weak evidence for
 nonexistence, consistent with the odd conjecture).
 
@@ -203,9 +204,9 @@ containing the identity row: mirror.c (candidate lists + 128-bit arc masks) and 
 
 ### D6. T2(11) frontier run (dfs2 with coverage pruning) — cost estimate
 Long-running partial exhaustion over class-1 seeds. Honest negative: individual class-1 seed
-subtrees each cost on the order of 1+ CPU-hour (none of the first seeds completed within
-30+ CPU-minutes each across several attempts). Extrapolation: ≥ 549,012 CPU-hours ≈ 60+
-CPU-years for full exhaustion with this searcher — T2(11) is ~10⁵× harder than T2(9)
+subtrees each cost multiple CPU-hours (none of the first seeds completed within 4+ CPU-hours
+of cumulative running across several attempts). Extrapolation: ≫ 10⁶ CPU-hours ≈ 100+
+CPU-years for full exhaustion with this searcher — T2(11) is ~10⁵⁻⁶× harder than T2(9)
 (which takes ~1 CPU-hour today). A cluster-scale SAT/parallel effort is the right next step;
 a single-VM complete search is out of reach.
 
@@ -217,4 +218,30 @@ These are the two computational ingredients of theorem C6.
 ### D5b. Mirror exhaustion results at the open orders
 - mirror2 11 (direct DFS, T2 mode): **full exhaustion, solutions = 0**, 10,717,468,881 nodes,
   805 s × 2 threads. Machine-verifies theorem C6 at order 11: no mirror-symmetric T2(11).
-- mirror2 13: same search at order 13 (result line appended when the run completes).
+- mirror2 13: same search at order 13; still running at report time (14+ CPU-hours). The n=13
+  case is already settled mathematically by theorem C6; the run is a redundancy check only.
+
+## STATUS: negative (structural results + independent reproduction; no witness; frontier quantified)
+
+Summary of contributions this run:
+1. Definition re-verified against Kapralov/Golomb–Taylor and CPro1 verifier source; problem
+   confirmed still open as of July 2026 (also: the 1985 citation is Ars Combinatoria, not IEEE-IT).
+2. NEW theorem (C6): for odd prime n — in particular both open orders 11 and 13 — any Tuscan-k
+   square has TRIVIAL automorphism group (no symbol relabeling, no reverse-relabel symmetry);
+   proof via sequenceability of Z_n + a self-mirror-arc parity argument; all computational
+   ingredients machine-checked (lemma_check.py: ALL PASS), and the mirror subspace exhausted by
+   two independent programs at n ≤ 11 (0 solutions, matching the theorem; mirror-symmetric T2(4),
+   T2(6) exist and verify PASS, confirming the parity mechanism is odd-specific).
+   Consequence: T2(11)/T2(13) cannot be found by any symmetric/algebraic construction — only
+   brute search or a new nonexistence proof can close the cell.
+3. Kapralov's T2(9) = 0 (ACCT-2012) independently reproduced by two differently-written complete
+   searchers (786M and 601G nodes; both 0 solutions).
+4. T2(11) complete-search cost quantified: ~100+ CPU-years with our best pruning (candidate
+   lists + arc-coverage forward checking) — out of single-machine range, plausibly cluster/SAT
+   range. 6,026,973-candidate clique reformulation documented for a future SAT/cluster attack.
+5. 12 CPU-hours of annealing found nothing below 12 (n=11) / 22 (n=13) violated constraints —
+   local search is ineffective on this design type (consistent with CPro1's failure).
+
+Recommended next attack: cube-and-conquer SAT (V1's framing) with the C6 rigidity result
+justifying pure normalization-only symmetry breaking, or Kapralov-style clique search with
+modern parallel maximum-clique solvers on the 6M-vertex compatibility graph.

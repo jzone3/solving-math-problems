@@ -1,0 +1,1 @@
+NOSOLUTION n=13 bestever=22 iters=17760406673

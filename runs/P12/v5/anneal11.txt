@@ -1,0 +1,1 @@
+NOSOLUTION n=11 bestever=12 iters=18456539561
