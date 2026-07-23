@@ -110,10 +110,49 @@ k=5: 5 gadgets, 50 rings, no count-1; k=6 running.
 - 2026-07-22 21:1x: dfs3 exhaustions (multi 15/16/17, simple 12..18), symm sweep n=22..60.
 - 2026-07-22 21:4x: dfs4 sweep n=22..32 (12h, nearmiss dumping), gadget rings k=5,6.
 
-## 4. Results so far
+### Attack 6 — near-miss blowup by vertex insertion (expand_nearmiss.py)
+Inserting a cycle vertex into a near-miss state provably preserves unique hamiltonicity
+(the new degree-2 vertex forces its two cycle edges; contraction maps HCs to HCs of the
+old graph through a cycle edge, and the old graph was 1H). Applied to all rem=8 states at
+n=22 → n=23, every insertion point, seeded DFS: no improvement below rem=10 (60 s /
+insertion). The extra stubs do not unlock the wall.
 
-- Seeds found & verified 1H: nearly cubic n=18 (2), n=22 (9), n=24 (1); all saturated.
-- New exhaustive bound: minimum order of a 4-regular 1H multigraph ≥ 15.
-- No witness. Best near-miss (Attack 3): 8 unfilled chord-stubs at n=22.
+## 4. Near-miss structure (observation for V5-style follow-up)
 
-STATUS: running
+All 11 recorded rem≤8 dead-ends at n=22 have their deficient vertices strongly
+**parity-clustered**: e.g. deficient = {5,7,9,11,15,19} (all odd), {3,5,7,9,19} (all
+odd), {12,14,16,18,21} (4 even + 1 odd). Same-parity vertices have even cycle-distance;
+the search dies precisely when only same-parity pairs remain deficient. This suggests a
+parity obstruction on chord completions (Thomassen-flavored) worth formalizing: chords
+between vertices at odd cycle-distance appear systematically "safer" but get exhausted,
+leaving an even-distance residue in which every pair already carries a hamiltonian path.
+
+## 5. Final results (2026-07-23 ~00:30 UTC)
+
+- Infrastructure, all independently cross-checked against brute force: exact multigraph
+  HC counter (hc.c, 300 random instances), ham-path tester (dfs.c hptest, 400 instances).
+- **New exhaustive bound: no 4-regular uniquely hamiltonian multigraph on ≤ 14 vertices**
+  (complete completion-DFS in HC-normal form; n=15,16,17 still running at session end).
+  Complements Fleischner 1994 (existence) — minimum order ≥ 15.
+- Simple mode re-verification (independent of GMZ): n = 10, 12 exhausted, no witness
+  (n = 14–18 running).
+- Nearly cubic 1H graphs (Entringer–Swart-type; we generated & verified 12 of them at
+  n = 18/22/24 by annealing) are **completion-saturated**: no chord (simple or doubled)
+  can be added at all — gadget-free growth to 4-regularity is impossible from them.
+- Rotation-symmetric chord families (period k ∈ {2..6}): exhausted for most n ≤ 40 and
+  many up to 50 (see symm.log); all strongly obstructed (best_rem large). No symmetric
+  witness in these families.
+- Gadget rings: exhaustive k ≤ 6 (29 iso-classes of gadgets), sampled k = 7–8: no ring
+  with HC count 1 (simple or multigraph) found.
+- Randomized chord-completion DFS, n = 22–32, ~12 core-hours: wall at 8 unfilled stubs
+  (n=22), 10 (n=24/26); never below.
+- No counterexample found; no claimed witness (hence no solutions/P01/verify.py — per
+  methodology it is required only for claimed witnesses).
+
+Reproduction commands are in this directory's scripts; every positive intermediate
+artifact (seeds in nc_*.txt) re-verifies with hc.c in seconds.
+
+STATUS: negative / frontier-pushed (multigraph minimum order ≥ 15 new; simple-graph
+near-miss wall quantified at rem=8 for n=22 with parity-clustered dead-ends; multiple
+structured families — symmetric, gadget rings, seed completions — ruled out or
+saturated).

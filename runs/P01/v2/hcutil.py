@@ -3,9 +3,16 @@ import subprocess, itertools, os
 
 HC_BIN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hc")
 
-def hc_count(n, edges, cutoff=10**9):
+def hc_count(n, edges, cutoff=10**9, timeout=120):
+    """Exact HC count up to cutoff. On timeout returns `cutoff` (i.e. treats the
+    graph as having at least `cutoff` HCs -- safe-negative for uniqueness tests,
+    since a hard-to-count graph is never accepted as a witness)."""
     inp = f"{n} {len(edges)} {cutoff}\n" + "\n".join(f"{u} {v}" for u, v in edges)
-    out = subprocess.run([HC_BIN], input=inp, capture_output=True, text=True, check=True)
+    try:
+        out = subprocess.run([HC_BIN], input=inp, capture_output=True, text=True,
+                             check=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return cutoff
     return int(out.stdout.strip())
 
 def hc_count_brute(n, edges):
