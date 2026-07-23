@@ -185,6 +185,19 @@ def run(n, L, max_iters, time_limit, log):
     witness = None
     blocked = set()
     nclauses = 0
+    # persistence: reload previously-derived blocking clauses (sound: each blocks a
+    # length-(L+1) path, forbidden in any witness at this (n,L))
+    pfile = os.path.join(HERE, f"blocked_n{n}_L{L}.txt")
+    if os.path.exists(pfile):
+        with open(pfile) as f:
+            for line in f:
+                nums = [int(z) for z in line.split()]
+                pe = frozenset((nums[i], nums[i + 1]) for i in range(0, len(nums), 2))
+                if pe not in blocked:
+                    blocked.add(pe)
+                    solver.add_clause([-enc.evar(u, v) for (u, v) in pe])
+        print(f"resumed with {len(blocked)} persisted blocking clauses", flush=True)
+    pout = open(pfile, "a", buffering=1)
     while True:
         if time.time() - t0 > time_limit:
             status = "TIMEOUT"; break
@@ -231,6 +244,7 @@ def run(n, L, max_iters, time_limit, log):
                 continue
             blocked.add(key)
             solver.add_clause([-enc.evar(u, v) for (u, v) in pe])
+            pout.write(" ".join(f"{u} {v}" for (u, v) in pe) + "\n")
             added += 1
         nclauses += added
         if added == 0:
