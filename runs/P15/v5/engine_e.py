@@ -34,6 +34,10 @@ class Fail(Exception):
     pass
 
 
+class Stall(Exception):
+    pass
+
+
 class Builder:
     def __init__(self, L, caps, max_mod=10**13, max_depth=40,
                  q_tries=10, p_tries=8, rng=None, eps=0.02):
@@ -49,6 +53,9 @@ class Builder:
         self.out = []
         self.calls = 0
         self.by_mod = {}  # m -> residue r (moduli are distinct)
+        self.best_out = 0
+        self.best_calls = 0
+        self.stall_limit = 2_000_000
 
     def _divisors(self, n):
         divs = [1]
@@ -131,6 +138,11 @@ class Builder:
 
     def cover_cell(self, a, M, depth=0):
         self.calls += 1
+        if len(self.out) > self.best_out:
+            self.best_out = len(self.out)
+            self.best_calls = self.calls
+        elif self.calls - self.best_calls > self.stall_limit:
+            raise Stall(f"stalled at {self.best_out} classes")
         if self.calls % 20000 == 0:
             print(f"  calls {self.calls}, out {len(self.out)}, cell {a} mod {M} "
                   f"depth {depth}", flush=True)
@@ -261,7 +273,7 @@ def main():
         try:
             b.cover_cell(0, 1)
             break
-        except Fail as e:
+        except (Fail, Stall) as e:
             print(f"restart {it} FAILED: {e} ({len(b.out)} classes, "
                   f"{b.calls} calls, {time.time()-t0:.1f}s)", flush=True)
             b = None
