@@ -96,3 +96,10 @@ row/col lex symmetry breaking (sound: only removes isomorphic copies).
 Sanity: finds known BTD(8,20;8,1,10;4,4) in 0.4 s (witness re-verified by
 validate_model.py identities).
 Runs (4h budget each, in progress): I1 full, I2 full, I1-reduced (b2=14 sector).
+
+## 7. CP-SAT run results (8-core box, 4 workers each)
+- I1 full  (14,18;7,1,9;7,4): UNKNOWN after 14400 s (no design found, no UNSAT).
+- I2 full  (12,15;6,2,10;8,6): UNKNOWN after 14400 s.
+- I1 reduced b2=14 sector (T,Q matrix equation, 252 booleans): UNKNOWN after
+  14400 s — even the collapsed algebraic form resists a complete decision.
+- I3, I4: launched 4 h runs (results below).
