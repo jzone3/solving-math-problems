@@ -230,16 +230,27 @@ symmetric witness needs an arm gadget where the longest path through the arm avo
 arm's own bottleneck AND one hub; no such gadget appeared in ~4×10⁶ scored realizations
 or the exhaustive spur grid.
 
-Also extended: n=13 biconnected, 23–24 edges (dense band) sweep — running; min t so far
-3 apart from K₂,₁₁+e (t=2, the expected extremal), consistent with the ≥2 mini-conjecture.
+- `voltage3.py` — Z3 **voltage-graph** search: quotient graph with edges labeled by
+  voltages in Z3 lifts to the general graph with a free Z3 action (strictly generalizes
+  the hub-triangle family — no distinguished hubs). ~660 restarts × 40k iters (realized
+  n ≤ 57, weights ≤ 8): **plateau exactly t = 3 again**, never 0. The unavoidable-orbit
+  obstruction is not an artifact of the hub-triangle shape.
+
+Also extended the exhaustive frontier: n=13 biconnected 23–24 edge band,
+**7 357 483 568 graphs**: min t = 2, attained by exactly 22 graphs — K₂,₁₁+e (L=5) and
+21 more doubled-hub graphs (L=8), `t2_n13_dense.txt`. Combined with the ≤22-edge sweep,
+**all 8.15 × 10⁹ 2-connected n=13 graphs with ≤ 24 edges have t ≥ 2** (57 extremal
+graphs total), consistent with the ≥2 mini-conjecture.
 
 ## STATUS: negative / frontier-pushed
 
 No counterexample found (t never 0 anywhere: ~10⁶ annealed graphs to n = 40, 30 k+
 hypotraceable-piece hybrids, ~2 × 10⁷ weighted-skeleton realizations to n = 58, ~2 × 10⁹
-exhaustive biconnected graphs incl. all n ≤ 11, sparse n = 12–13, subcubic n ≤ 18, cubic
-n ≤ 22). New frontier: min triple intersection = 2 over ALL 2-connected graphs with
-n ≤ 11 + sparse n = 12/13; extremal families K₂,ₘ(±e) and a persistent doubled-hub L=8
+exhaustive biconnected graphs incl. all n ≤ 11, sparse n = 12, n = 13 through 24 edges
+(8.15 × 10⁹), subcubic n ≤ 18, cubic n ≤ 22; ~10⁷ Z3-symmetric/voltage realizations to
+n ≤ 58 where symmetric triples are quantized to t ∈ 3Z yet never leave t = 3). New
+frontier: min triple intersection = 2 over ALL 2-connected graphs with n ≤ 11 + sparse
+n = 12 + n = 13 ≤ 24 edges; extremal families K₂,ₘ(±e) and a persistent doubled-hub L=8
 family; cubic 2-connected graphs traceable to n = 22 (t = n); general-graph plateau t = 1
 always via a single inherited hub. Machinery (exact C scanner, hybridizer,
 weighted-skeleton annealer) committed for follow-up runs.

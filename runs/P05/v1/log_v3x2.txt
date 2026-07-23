@@ -1,0 +1,16 @@
+[v3x2r9] it=4 best t=24 L=31v realn=45 masks=3 ovf=0
+[v3x2r9] it=6 best t=18 L=25v realn=39 masks=3 ovf=0
+[v3x2r9] it=7 best t=3 L=31v realn=54 masks=3 ovf=0
+[v3x2r9] done best t=3 L=31
+[v3x2r63] it=3 best t=30 L=44v realn=51 masks=3 ovf=0
+[v3x2r63] it=5 best t=18 L=28v realn=54 masks=3 ovf=0
+[v3x2r63] it=6 best t=3 L=29v realn=57 masks=6 ovf=0
+[v3x2r63] done best t=3 L=29
+[v3x2r103] it=3 best t=36 L=41v realn=51 masks=3 ovf=0
+[v3x2r103] it=22 best t=30 L=36v realn=48 masks=3 ovf=0
+[v3x2r103] it=30 best t=24 L=40v realn=48 masks=6 ovf=0
+[v3x2r103] it=51 best t=21 L=45v realn=57 masks=18 ovf=0
+[v3x2r103] it=92 best t=18 L=24v realn=36 masks=3 ovf=0
+[v3x2r103] it=94 best t=3 L=25v realn=51 masks=6 ovf=0
+[v3x2r103] done best t=3 L=25
+[v3x2r105] done best t=3 L=29

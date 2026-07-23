@@ -1,0 +1,3 @@
+[v3x3r162] it=4 best t=18 L=38v realn=51 masks=3 ovf=0
+[v3x3r162] it=8 best t=3 L=33v realn=48 masks=3 ovf=0
+[v3x3r162] done best t=3 L=33

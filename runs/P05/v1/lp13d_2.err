@@ -1,0 +1,5 @@
+new min t=6 L=8 masks=21 g6=L??????oE?V{~} (graph 1)
+new min t=5 L=8 masks=20 g6=L??????o@_@~~~ (graph 141)
+new min t=4 L=8 masks=36 g6=L??????o@o?~~~ (graph 888)
+new min t=3 L=9 masks=10 g6=L???C@?K?WWR~~ (graph 2014173)
+done: 1556991952 graphs, min t=3, hist: 3->32 4->71 5->3797 6->208484 7->1497541 8->2229534 9->636489 10->53210773 11->6518099 12->332763 13->1492354369
