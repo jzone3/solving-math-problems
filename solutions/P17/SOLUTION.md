@@ -43,6 +43,9 @@ then induction on n using α(G − N[v]) ≤ α(G) − 1:
   n⁺ ≤ S and n⁻ ≤ S by Sturm root counting and rational root isolation
   (sympy over ℤ), and checks n−α ≥ max{n⁺,n⁻} with exact α by
   branch-and-bound. Run on a corpus of graphs incl. all equality cases.
+- `exhaustive_exact_n7.py` (this directory): exact certification of
+  max{n⁺,n⁻} ≤ S for ALL 1252 graphs with n ≤ 7 (nauty-geng), no floats on
+  the accept path — PASS.
 - Consistency: the extensive counterexample search in `runs/P17/v1/`
   (exhaustive n ≤ 9 and connected n = 10, annealing to n = 60, closed-form
   families incl. Kneser ≤ 200, circulants ≤ 300, W_k ≤ 200, trees ≤ 18)
