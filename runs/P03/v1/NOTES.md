@@ -169,6 +169,46 @@ Zero UNSAT instances; SAT solver almost never even hits a conflict.
   steps, ~850 SAT checks (most candidates exceeded cut/ideal caps) — zero
   UNSAT.
 
+## Phase 4: the exact smallest open case, via ACZ's theorems (bipsearch.py)
+
+ACZ's Decompose-Lift-Reduce (arXiv:2202.00392, Thm ~DnL) reduces unweighted
+Woodall for tau>=3 to sink-regular (tau,tau+1)-bipartite digraphs: all arcs
+source->sink, sinks in-degree exactly tau, sources out-degree tau or tau+1.
+tau=2 is folklore-true, so tau=3 in this class is the frontier. Their results
+P2 (rho<=1), P3 (rho=2), P4 (rho=3, tau=3, unweighted) settle rho<=3, where
+rho = #sinks - #sources and #deg-4 sources = 3*rho. Therefore:
+
+  THE SMALLEST OPEN CASE of Woodall's Conjecture is tau=3, rho>=4:
+  (4,3)-biregular bipartite digraphs with p>=12 sources (rho=4 forces
+  3*rho=12 <= p; p=12 makes ALL sources out-degree 4), q=p+4>=16 sinks of
+  in-degree 3, >= 48 arcs.
+
+Dedicated harness (bipsearch.py): an instance is a list of in-neighbour
+triples; every dicut delta^+(U) is determined by S = U cap sources plus the
+covered sinks, so full dicut enumeration is a 2^p bitmask sweep, plus the
+always-present single-sink dicuts in(t) (so tau <= 3 automatically in this
+class). Cross-validated against the general enumerator (fastcuts.py +
+2^n reference) on D27 (311 minimal dicuts, exact match) and 2000 random
+instances (exact match on all weakly-connected ones). One real bug caught by
+this cross-check: the first version missed the dicuts delta^+(V - {t}).
+
+Searches (all tau=3 instances SAT-checked for 3-dijoin-partition):
+- exhaustive, no isomorph rejection: ALL in-degree-3 bipartite instances with
+  p<=4 sources q<=13 sinks; p=5, q<=11 (253k tau=3 checks); p=6, q<=9
+  (10.0M multisets, 2.95M tau=3 checks) - all pack. (By the reduction this
+  covers every digraph whose DLR factors are this small; note p<=8 sink-regular
+  is closed by theory anyway since rho>=4 forces p>=12 - the exhaustive layer
+  is an independent correctness belt for the harness.)
+- random sampling p=10/q=13, p=12/q=15: ~50k tau=3 instances - all pack.
+- D27-seeded structural annealing (rewire/add/delete sinks, q<=24): ~60k
+  SAT checks - all pack.
+- open-class annealing: (4,3)-biregular p=12/q=16 (3 workers) and p=15/q=20
+  (1 worker), degree-preserving double-swaps, tightness+cut-count score:
+  >130k open-case instances checked - all pack. Notably tight nontrivial
+  3-cuts NEVER appear at p=12/q=16 in hill-climbing - the only tight minimal
+  dicuts in the biregular class seen so far are the single-sink triples,
+  suggesting packing slack is structural here too.
+
 ## STATUS
 
 STATUS: negative / frontier-pushed — no counterexample. Exhaustive: all
