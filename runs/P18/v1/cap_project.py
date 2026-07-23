@@ -75,21 +75,31 @@ def decide(residual, B, tl):
     chosen = []
     t0 = time.time()
     nodes = [0]
+    last = [t0]
     recip = {n: Fraction(1, n) for n in residual}
+    slack = sum(recip.values()) - 1
+    slackL = int(slack * L) + 1  # congruence overlapping > slack*L is dead
 
     def rec(budget):
         nodes[0] += 1
         if cnt[0] == 0:
             return True
-        if time.time() - t0 > tl:
+        now = time.time()
+        if now - t0 > tl:
             raise TimeoutError
+        if now - last[0] > 60:
+            last[0] = now
+            print("... nodes=%d depth=%d unc=%d %.1fs"
+                  % (nodes[0], len(chosen), cnt[0], now - t0), flush=True)
         if budget < Fraction(cnt[0], L):
             return False
         r = int(np.argmax(unc))
         cands = []
         for n in list(unused):
             a = r % n
-            cands.append((-int(unc[a::n].sum()), n, a))
+            g = int(unc[a::n].sum())
+            if g >= L // n - slackL:  # otherwise immediate waste overflow
+                cands.append((-g, n, a))
         cands.sort()
         for _, n, a in cands:
             view = unc[a::n]
@@ -108,8 +118,20 @@ def decide(residual, B, tl):
             cnt[0] += k
         return False
 
+    # WLOG normalization: every cover must use ALL moduli (slack < 1/max n),
+    # in particular the smallest modulus n0; translating x -> x - a0 puts its
+    # congruence at residue 0. So fix (0 mod n0) at the root.
+    budget0 = sum(recip.values())
+    if Fraction(1, max(residual)) > slack:
+        n0 = unused[0]
+        unc[0::n0] = False
+        cnt[0] -= L // n0
+        chosen.append((0, n0))
+        unused.remove(n0)
+        budget0 -= recip[n0]
+        print("normalized: fixed (0 mod %d) at root" % n0, flush=True)
     try:
-        ok = rec(sum(recip.values()))
+        ok = rec(budget0)
     except TimeoutError:
         print("B=%d TIMEOUT (undecided) nodes=%d %.1fs"
               % (B, nodes[0], time.time() - t0), flush=True)
