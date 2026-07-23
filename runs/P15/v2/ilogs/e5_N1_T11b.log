@@ -1,1 +1,27 @@
 N=2205403200 (2^6,3^4,5^2,7,11,13,17) T=11: 1670 divisor values, recip=2.297
+ sample sweep 0 (gate=0.99): placed=375 sample_uncov=22864191/39638574 t=245s
+ sample sweep 1 (gate=0.95): placed=13 sample_uncov=22856956/39638574 t=351s
+ sample sweep 2 (gate=0.85): placed=86 sample_uncov=22461084/39638574 t=465s
+ sample sweep 3 (gate=0.6): placed=187 sample_uncov=9203847/39638574 t=523s
+ sample sweep 4 (gate=0.3): placed=126 sample_uncov=3317782/39638574 t=534s
+ sample sweep 5 (gate=0.1): placed=125 sample_uncov=998847/39638574 t=536s
+ sample sweep 6 (gate=0.0): placed=59 sample_uncov=340931/39638574 t=536s
+ sample sweep 7 (gate=0.0): placed=0 sample_uncov=340931/39638574 t=536s
+phase1 done: 971 placements
+  materialize 0%: holes so far 146591 t=0s
+phase2: exact holes = 19270439 (density 8.74e-03)
+ hole placement: 699 values, holes left 17760148 t=219s
+  one_opt pass 1: moved=736 holes=3179183 best=3179183 t=620s
+  one_opt pass 2: moved=1010 holes=1315860 best=1315860 t=822s
+  one_opt pass 3: moved=818 holes=748668 best=748668 t=965s
+  one_opt pass 4: moved=652 holes=507418 best=507418 t=1077s
+  one_opt pass 5: moved=504 holes=388294 best=388294 t=1183s
+  one_opt pass 6: moved=386 holes=304192 best=304192 t=1291s
+  one_opt pass 7: moved=228 holes=265241 best=265241 t=1394s
+  one_opt pass 8: moved=152 holes=261304 best=261304 t=1497s
+  one_opt pass 9: moved=125 holes=252028 best=252028 t=1597s
+  one_opt pass 10: moved=104 holes=241547 best=241547 t=1694s
+  one_opt pass 11: moved=71 holes=237459 best=237459 t=1790s
+  one_opt pass 12: moved=58 holes=234660 best=234660 t=1886s
+  one_opt pass 13: moved=35 holes=234108 best=234108 t=1991s
+  one_opt pass 14: moved=23 holes=233903 best=233903 t=2095s

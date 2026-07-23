@@ -28,3 +28,8 @@ phase2: exact holes = 19390867 (density 8.79e-03)
   one_opt pass 16: moved=31 holes=42869 best=42869 t=2014s
   one_opt pass 17: moved=21 holes=42818 best=42818 t=2097s
   one_opt pass 18: moved=22 holes=42812 best=42812 t=2187s
+  one_opt pass 19: moved=28 holes=42675 best=42675 t=2283s
+  one_opt pass 20: moved=26 holes=42635 best=42635 t=2374s
+  one_opt pass 21: moved=20 holes=42626 best=42626 t=2463s
+T=11 N=2205403200: INCOMPLETE congs=1670 holes=42626
+wrote 1670 -> covers/e5_T11_2.2e9.txt.part

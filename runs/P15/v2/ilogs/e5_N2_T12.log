@@ -1,0 +1,20 @@
+N=41902660800 (2^6,3^4,5^2,7,11,13,17,19) T=12: 3349 divisor values, recip=2.481
+ sample sweep 0 (gate=0.98): placed=571 sample_uncov=12037341/39980800 t=205s
+ sample sweep 1 (gate=0.9): placed=38 sample_uncov=11941628/39980800 t=288s
+ sample sweep 2 (gate=0.7): placed=140 sample_uncov=11024543/39980800 t=371s
+ sample sweep 3 (gate=0.4): placed=222 sample_uncov=5736904/39980800 t=414s
+ sample sweep 4 (gate=0.15): placed=202 sample_uncov=1778636/39980800 t=421s
+ sample sweep 5 (gate=0.0): placed=250 sample_uncov=283183/39980800 t=422s
+ sample sweep 6 (gate=0.0): placed=0 sample_uncov=283183/39980800 t=422s
+phase1 done: 1423 placements
+  materialize 0%: holes so far 122583 t=0s
+  materialize 10%: holes so far 31472439 t=26s
+  materialize 20%: holes so far 62822355 t=51s
+  materialize 31%: holes so far 94172331 t=78s
+  materialize 41%: holes so far 125522329 t=106s
+  materialize 51%: holes so far 156872376 t=133s
+  materialize 61%: holes so far 188222380 t=165s
+  materialize 72%: holes so far 219572167 t=198s
+  materialize 82%: holes so far 250922117 t=227s
+  materialize 92%: holes so far 282272078 t=256s
+phase2: exact holes = 305857373 (density 7.30e-03)

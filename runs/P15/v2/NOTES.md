@@ -136,3 +136,27 @@ Key structural observations recorded before computing:
 - Launched (bigrun.sh): N1=2.2e9 (2^6·3^4·5^2·7·11·13·17) at T=10,11,12,13 and
   N2=4.19e10 (…·19) at T=12,14,16,18. Reciprocal budgets at these T are 1.9-2.4 (ample);
   the binding constraint is placement alignment, not measure.
+
+### 2026-07-23 ~00:30-03:00 — big-N results, two engine5 bugs found and fixed
+
+- Bug 1 (OOM): np.bincount(minlength=v) for huge divisor values v ~ N allocated O(v) memory
+  (17GB) -> OOM-killed the first N1 T=10 run (and took the concurrently running scan.py and
+  ilp.py with it). Fix: best_class() uses np.unique on the residues of the hole list when
+  v >> |holes| (memory O(|holes|)).
+- Bug 2 (SOUNDNESS): the first "SUCCESS" T=10 cover at N=2.2e9 FAILED verify.py (class
+  34647439 mod 183783600 uncovered). Root cause: in the batched 1-opt, exclusive-point
+  snapshots go stale as moves are applied within a pass — two placements covering the same
+  point can both be moved away, leaving an untracked hole. Fix: after every pass, holes are
+  recomputed exactly by a full streaming re-materialization; incremental tracking is only used
+  to guide in-pass decisions. (Independent verification catching a search-engine soundness bug
+  is exactly why METHODOLOGY.md demands it.)
+- With fixes + elitist restore (revert to best-known placement when a diversification pass
+  doubles the holes):
+  - N=2.2e9, T=10: **SUCCESS, 1671 congruences, verify.py PASS** (covers/e5_T10_2.2e9.txt).
+  - N=1.3e8, T=10: SUCCESS 831 congs (dense scan, verified); T=11 fails (rem 85718).
+  - N=2.2e9, T=11: plateau at 42.6k holes (density 1.9e-5) after 2400s; a second attempt with
+    conservative gates + fresh seed plateaued WORSE (234k) — early-sweep conservatism starves
+    mid-size values. Dense finisher (finish_dense.py: engine4 repair/one_opt on the .part) also
+    cannot move the 42.6k plateau: ruin-and-recreate over 6% of 1670 placements never beats the
+    1-opt fixpoint. The plateau is a deep local optimum, not a shallow one.
+  - N=4.2e10, T=12: running (phase3 on 306M holes takes hours/attempt at this scale).

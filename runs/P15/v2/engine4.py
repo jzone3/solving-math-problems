@@ -39,6 +39,20 @@ def class_counts(U, v):
     return U.reshape(-1, v).sum(axis=0, dtype=np.int64)
 
 
+def best_class(pts, v):
+    """argmax residue class of v over an index array, memory O(len(pts))."""
+    if pts.size == 0:
+        return 0, 0
+    r = pts % v
+    if v <= 4 * pts.size:
+        bc = np.bincount(r.astype(np.int64), minlength=v)
+        a = int(bc.argmax())
+        return a, int(bc[a])
+    vals, counts = np.unique(r, return_counts=True)
+    j = int(counts.argmax())
+    return int(vals[j]), int(counts[j])
+
+
 def cover(N_fac, T, gates=(0.99, 0.9, 0.7, 0.4, 0.15, 0.0, 0.0), verbose=True):
     N = 1
     for p, e in N_fac.items():
@@ -108,8 +122,7 @@ def repair(N, divs, congs, U, rounds=200, frac=0.06, seed=0, t_budget=600,
         newc = list(kept)
         for a_old, v in sorted(dropped, key=lambda t: t[1]):
             if uncov.size:
-                bc = np.bincount(uncov % v, minlength=v)
-                a = int(bc.argmax())
+                a, _ = best_class(uncov, v)
             else:
                 a = int(rng.integers(v))
             cnt_cover[a::v] += 1
@@ -152,9 +165,8 @@ def one_opt(N, congs, t_budget=600, seed=0, verbose=True):
                 break
             idx = np.arange(a, N, v)
             excl = int((cnt[idx] == 1).sum())
-            bc = np.bincount(uncov % v, minlength=v)
-            a2 = int(bc.argmax())
-            gain = int(bc[a2]) - excl
+            a2, kills = best_class(uncov, v)
+            gain = kills - excl
             if gain > 0 or (gain == 0 and excl > 0 and rng.random() < 0.1):
                 cnt[idx] -= 1
                 cnt[a2::v] += 1
