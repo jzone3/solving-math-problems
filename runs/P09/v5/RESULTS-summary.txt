@@ -37,4 +37,25 @@ ROUND2 GLOBAL BEST n=44 w=4: -1.179284
 ROUND2 GLOBAL BEST n=46 w=3: -0.986790
 ROUND2 GLOBAL BEST n=50 w=4: -3.854084
 ROUND2 GLOBAL BEST n=60 w=4: -6.575633
+SUMMARY blowup n=6 0/1: total=112 optimized=92 max_f=+0.000000 at ET~w
+SUMMARY blowup n=7 0/1: total=853 optimized=793 max_f=+0.000000 at FEvvW
+SUMMARY blowup n=8 0/4: total=1021 optimized=910 max_f=+0.000000 at G?~v~{
+SUMMARY blowup n=8 1/4: total=4830 optimized=4728 max_f=+0.000000 at GTn~~{
+SUMMARY blowup n=8 2/4: total=3614 optimized=3566 max_f=+0.000000 at GFz~v{
+SUMMARY blowup n=8 3/4: total=1652 optimized=1645 max_f=+0.000000 at GF~~~{
+SUMMARY n=10 part 0/8: total=1276749 candidates=0 worst_score=+0.000000
+SUMMARY n=10 part 1/8: total=1331812 candidates=0 worst_score=+0.000000
+SUMMARY n=10 part 2/8: total=1373011 candidates=0 worst_score=+0.000000
+SUMMARY n=10 part 3/8: total=1686434 candidates=0 worst_score=+0.000000
+SUMMARY n=10 part 4/8: total=1654975 candidates=0 worst_score=+0.000000
+SUMMARY n=10 part 5/8: total=1376331 candidates=0 worst_score=+0.000000
+SUMMARY n=10 part 6/8: total=1644213 candidates=0 worst_score=+0.000000
+SUMMARY n=10 part 7/8: total=1373046 candidates=0 worst_score=-0.444597
+SUMMARY n=11 part 0/7: total=156785943 candidates=0 worst_score=+0.000000
+SUMMARY n=11 part 1/7: total=142890246 candidates=0 worst_score=+0.000000
+SUMMARY n=11 part 2/7: total=136546861 candidates=0 worst_score=+0.000000
+SUMMARY n=11 part 3/7: total=146767198 candidates=0 worst_score=+0.000000
+SUMMARY n=11 part 4/7: total=130070200 candidates=0 worst_score=+0.000000
+SUMMARY n=11 part 5/7: total=158786153 candidates=0 worst_score=+0.000000
+SUMMARY n=11 part 6/7: total=134853964 candidates=0 worst_score=+0.000000
 WHEEL BEST: (np.float64(-0.9847844080391006), (2, (1, 1, 1, 1, 1)))

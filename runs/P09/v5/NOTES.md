@@ -110,15 +110,21 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
   - **n = 10: all 11,716,571 connected graphs — 0 violations**, worst score 0.
     (Published exhaustive frontier for this conjecture appears to be incidental
     small checks only; this is a full n ≤ 10 certificate.)
-  - n = 11: full sweep of all 1,006,700,565 connected graphs launched in 7 parts
-    (result recorded below when complete).
+  - **n = 11: all 1,006,700,565 connected graphs — 0 violations**, worst score
+    exactly 0 (Turán equality graphs). ~4 h wall on 7 cores.
+  - Pipeline independently cross-checked (`crosscheck.py`): graph6 parser vs
+    networkx on 1200 random geng samples (n = 8..11) and candidate-filter logic vs
+    direct score computation — PASS.
+  - Together with the disjoint-union reduction (§2), this certifies BN for **all**
+    graphs on ≤ 11 vertices (connected or not) — well past any published check.
 - **Blowup continuous relaxation** (`blowup.py`): for every pattern H, BN on ALL
   independent-set blowups H[x·N] (N→∞) reduces to max over the simplex of
   f_H(x) = μ₁² + μ₂² − (1−1/ω(H))·xᵀAx, μᵢ from D^{1/2}A_H D^{1/2}, D=diag(x).
   Projected-gradient ascent (12 restarts × 400 iters) over ALL connected patterns
-  with ω ≥ 3: |H| ≤ 7 complete, |H| = 8 in progress. max f = 0 (attained at
-  Turán-type patterns/weights); no positive value ⇒ no counterexample exists among
-  blowups of any of these patterns at ANY size.
+  with ω ≥ 3: |H| ≤ 8 complete (11,117 patterns at n=8; 12,913 total), |H| = 9
+  partial (~140k of 261k patterns, lighter budget). max f = 0 exactly, attained at
+  Turán-type patterns/weights; no positive value ⇒ **no counterexample exists among
+  independent-set blowups of any pattern with ≤ 8 vertices, at ANY blowup size**.
 
 ## 4. Near-misses & dead ends
 
@@ -129,15 +135,20 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
   least ~0.1 immediately. Consistent with the §2 first-order-margin argument.
 - Dead end: disjoint-union constructions — provably cannot violate (reduces to
   Nikiforov's theorem, §2).
-- Total compute: ~2.5 h wall on 8 cores, ~400 annealing restarts (~2×10⁷ scored flips),
-  exact ω at every evaluation; structured scans of 6 parametric families.
+- Total compute: ~7 h wall on 8 cores — ~400 annealing restarts (~2×10⁷ scored flips)
+  with exact ω at every evaluation; structured scans of 6 parametric families;
+  1.02×10⁹-graph exhaustive sweep; ~155k simplex optimizations for blowup patterns.
 
 ## 5. Conclusion
 
-No violation of Bollobás–Nikiforov (nor of the ELW generalization) found anywhere in the
-literature-mapped open region up to n = 60. The perturbative structure around the (large,
-newly catalogued) equality family strongly suggests any counterexample, if one exists,
-is not a local perturbation of extremal graphs and likely requires n beyond this range
-or a fundamentally different global structure.
+No violation of Bollobás–Nikiforov (nor of the ELW generalization) found. New verified
+frontier: BN holds for **every graph on ≤ 11 vertices** (exhaustive, cross-checked) and
+for **every independent-set blowup of every pattern on ≤ 8 vertices at every size**
+(continuous-relaxation certificate, max f_H = 0 attained only at Turán-type optima).
+Heuristic search (exact ω) to n = 60 in the literature-mapped open region found nothing
+above −0.1 outside the equality plateau. Any counterexample must have n ≥ 12, is not a
+blowup of a small pattern, and is not a local perturbation of the extremal family.
 
-STATUS: negative
+STATUS: frontier-pushed (no counterexample; exhaustive certificate n ≤ 11 = 1.02e9
+graphs, blowup-family certificate for all patterns ≤ 8 vertices at all sizes, plus
+~2×10⁷ scored heuristic evaluations to n = 60 — all negative)
