@@ -81,6 +81,26 @@ static void rec(int i, int maxd, long long sum) {
 
 int main(int argc, char **argv) {
     n = atoi(argv[1]);
+    if (argc > 2) { /* shard: fix d[0] (and optionally d[1]) for parallel runs */
+        int D = atoi(argv[2]);
+        d[0] = D;
+        if (argc > 3) {
+            int D1 = atoi(argv[3]);
+            if (D1 > D) return 0;
+            d[1] = D1;
+            rec(2, D1, D + D1);
+            printf("DONE-SHARD n=%d d0=%d d1=%d graphical=%lld floatmax=%.17g at:",
+                   n, D, D1, cnt, best);
+            for (int j = 0; j < n; j++) printf(" %d", bestseq[j]);
+            printf("\n");
+            return 0;
+        }
+        rec(1, D, D);
+        printf("DONE-SHARD n=%d d0=%d graphical=%lld floatmax=%.17g at:", n, D, cnt, best);
+        for (int j = 0; j < n; j++) printf(" %d", bestseq[j]);
+        printf("\n");
+        return 0;
+    }
     rec(0, n - 1, 0);
     printf("DONE n=%d graphical=%lld floatmax=%.17g at:", n, cnt, best);
     for (int j = 0; j < n; j++) printf(" %d", bestseq[j]);
