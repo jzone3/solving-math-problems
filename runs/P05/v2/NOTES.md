@@ -55,9 +55,11 @@ block ALL length-(L+1) simple paths of each candidate graph (candidates are spar
 
 ## Soundness cross-checks (sanity_check.py)
 
-- Exhaustive brute force over ALL connected graphs on n <= 7 vertices (all edge subsets of K_n):
-  every triple of longest paths intersects — independent confirmation that small-n UNSATs are
-  expected, and a differently-written longest-path enumerator agreeing with the C oracle's world.
+- Exhaustive brute force over ALL connected graphs on n <= 6 vertices (all edge subsets of K_n;
+  26704 connected graphs at n=6): every triple of longest paths intersects — PASS (sanity.out).
+  Independent, differently-written longest-path enumerator (pure Python DFS vs. the C bitmask
+  DP oracle). The n=7 run (~2M graphs, pure Python) was still running at session end and was
+  cut; n <= 6 completed.
 - SAT layer positively tested: first solver call at each (n,L) IS satisfiable (iters > 0 before
   UNSAT), i.e. three length-L paths with empty common intersection exist as combinatorial
   objects; only the "no longer path" CEGAR condition kills them.
@@ -74,5 +76,29 @@ See results.log (machine-written, one RESULT line per completed (n,L)). Checkpoi
   (949s, 95960 blocking clauses). No counterexample on <= 14 vertices.
 - n = 15, L = 4..9 (full feasible range): **UNSAT**. Hardest cell L=9 (20450s, 272760
   blocking clauses). No counterexample on <= 15 vertices.
-- n = 16: L = 5, 6, 7 UNSAT; L = 8, 9 running.
-- n = 17: L = 7 UNSAT (3727s); L = 5, 6, 8, 9, 10 running.
+- n = 16: L = 5 (2316s), 6 (7797s), 7 (1207s) UNSAT; L = 8 and L = 9 TIMEOUT at the 36000s
+  (10h) per-cell limit with 331516 / 576344 blocking clauses accumulated and no counterexample
+  encountered (every SAT model up to that point was refuted by the longest-path oracle).
+- n = 17: L = 7 UNSAT (3727s); L = 5, 6, 8, 9, 10 killed unfinished at session end (~11h wall
+  each, no counterexample encountered).
+
+## Dead ends / lessons
+
+- One-path-per-iteration CEGAR blocking is hopeless (thousands of iterations even at n=11);
+  blocking all length-(L+1) paths of each candidate is the key accelerant (~100x).
+- Cost is dominated by the largest L cells (L near (2n-3)/3): candidate graphs are then unions
+  of three nearly-spanning paths with rich long-path structure, so both the SAT instances and
+  the number of CEGAR refutations blow up. Per-n cost grows roughly ~5-10x per vertex; n=16
+  full closure needs > 10h/cell single-threaded, n=17+ needs either much stronger symmetry
+  breaking (orbit breaking on the off-path vertices), clause-set persistence across restarts
+  (resume), a compiled path enumerator, or a cluster.
+- No near-miss was ever observed: every candidate model died to a strictly longer path; the
+  CEGAR loop never produced a graph whose longest path length was even close to L at the
+  moment of refutation being non-trivial (lengths > L always found immediately).
+
+## Final status
+
+STATUS: negative / frontier-pushed — complete refutation of any counterexample on n <= 15
+vertices (all graphs, via minimality reductions R1/R2), plus n=16 for L in {5,6,7} and n=17
+for L = 7; no counterexample or near-miss found anywhere. Conjecture verified exhaustively
+three vertices beyond the literature frontier (n <= 12).

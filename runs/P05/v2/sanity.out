@@ -1,0 +1,5 @@
+brute n=3: 4 connected graphs, all 3-triples of longest paths intersect
+brute n=4: 38 connected graphs, all 3-triples of longest paths intersect
+brute n=5: 728 connected graphs, all 3-triples of longest paths intersect
+brute n=6: 26704 connected graphs, all 3-triples of longest paths intersect
+PASS
