@@ -148,7 +148,12 @@ sets) and T(8,4)∪T(8,4) (234,344): max ratio exactly 1.0, never exceeded —
 the λ₂>0 equality family is a strict local max to flip-distance 3.
 
 ### Phase 6: large-n annealing (n ∈ [80,150], ω ∈ {3,4,5},
-random + turan2 inits, 40×25000) — results below.
+random + turan2 inits, 40×25000, ~2.5 h)
+Best ratios: turan2 inits 0.9848 (ω=3, n=134), 0.9993 (ω=4, n=127),
+0.9953 (ω=5, n=127); random inits only 0.53–0.60 (annealing budget too small
+to organize large sparse graphs — the equality structure is hard to reach
+from random at this scale). No violation; large-n regime shows no upward
+drift of the maximum.
 
 ## STATUS: negative — no counterexample found. Frontier pushed:
 conjecture exhaustively machine-verified for ALL graphs n ≤ 11
