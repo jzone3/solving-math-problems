@@ -131,6 +131,53 @@ minimum at every order where exhaustive data exists. Nothing remotely close to a
 counterexample (would need count 1; nothing below 144 observed). Strongly consistent with
 the conjecture being TRUE.
 
-## STATUS: negative (no counterexample; near-miss floor = 144 HCs for n = 22–32, matching
-   the known minimum curve; side product: constant-144 family n = 19–32 beating published
-   few-HC constructions for n ≥ 25)
+---
+
+# Continuation run (frontier push, 2026-07-23)
+
+## New encoding: multigraph relaxation (msearch.c)
+
+- State space enlarged to 4-regular loopless MULTIgraphs (multiplicity ≤ 2). Weighted HC
+  count (product of multiplicities of used edges — the convention under which Fleischner's
+  uniquely hamiltonian 4-regular multigraphs have exactly one HC). Counter validated:
+  doubled triangle = 8 HCs; agrees with the simple counter on best22/h16.
+- Objective log(#HC) + λ·(#extra parallel copies), λ ramped 0.1 → 2.0 within each anneal
+  round: search descends in the relaxed multigraph space, then is pressed toward simple
+  graphs. A simple state with #HC = 1 would be a Sheehan counterexample.
+- Rationale: uniquely hamiltonian 4-regular multigraphs EXIST (Fleischner 1994), so the
+  relaxed space contains count-1 states; the question is whether annealing can carry
+  low counts back into simple territory.
+- Results (4 h × 6 workers, exact re-verification of final states with `msearch count`):
+  - n=14: multigraph with **16 HCs** using 3 extra parallel copies (multigraph/m14-s71-best.txt)
+  - n=16: multigraph with **16 HCs** using 4 extra copies (m16-s72-best.txt)
+  - n=22: multigraph with **96 HCs** using ONE doubled edge (m22-s74-best.txt) — a single
+    parallel edge already beats the simple minimum 144; the doubled edge is 9–21.
+  - λ=0 floor probes (n=10, 12): never below 16 HCs even with unrestricted parallel edges;
+    the anneal NEVER approached count 1 anywhere in multigraph space (consistent with
+    Fleischner's examples being large/very rigid — his simple min-degree-4 versions have
+    338+ vertices).
+  - Caveat logged: the in-run `best_simple_hc` counters (68 at n=14/16) are artifacts of
+    the dynamic counting cap and were NOT confirmed by exact recounts (the recorded value
+    can be a capped undercount); only exactly re-verified numbers are reported above.
+
+## Frontier push: constant-144 family extended to n = 45, floor checks to n = 44
+
+- Grow chain extended g33…g45: greedy min-count vertex insertion keeps the HC count at
+  EXACTLY 144 for every n = 33…45 (seed/g33.txt … g45.txt). Insertion pattern stabilizes
+  into a ladder between two hub vertices (new vertex takes over an edge at hub 0 and one
+  at hub 12).
+- Double-verified with the independent weighted counter (`msearch count`): g36, g40, g44,
+  g45 all give exactly 144 (python verifier confirms g36; it times out beyond n≈36).
+- Seeded anneals at n = 36 / 40 / 44 (2.5 h each, basin-hopping from the 144-HC seeds):
+  best_ever remained 144 (6749 / 5361 / 3729 accepted-move evaluations — counting cost
+  grows steeply with n) — no descent below 144 anywhere up to n=44.
+- Beyond n=45 the exact-count-per-candidate grow step becomes expensive (~2 h/vertex);
+  stopped at n=45. Restricting insertions to hub-incident edge pairs fails past n=45
+  (min over that subset jumps to 432), so a smarter incremental counter would be needed
+  to push further.
+
+## STATUS: negative (no counterexample; frontier pushed: constant-144-HC simple family
+   verified for all n = 19–45 with anneal floor checks to n = 44, beating published
+   few-HC constructions [GMZ 36·2^⌊n/5⌋−2, TZ constant-216] for n ≥ 25; multigraph
+   relaxation adds 96-HC @ n=22 with one doubled edge and 16-HC multigraphs @ n=14/16;
+   no state below 16 HCs ever observed in any space searched)
