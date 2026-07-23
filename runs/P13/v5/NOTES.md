@@ -72,8 +72,11 @@ All searches EXHAUSTIVE within ansatz, all NEGATIVE:
 Engine: `semireg.py` (full block-orbits only; requires m | b). Controls
 (7,6)/(13,6) PASS.
 - (9,6): H=Z4, c=2 + ∞ — NEGATIVE (exhaustive). H=Z3, c=3 — NEGATIVE (exhaustive).
-- (15,6): H=Z7 c=2+∞, H=Z5 c=3 — running (see logs).
-- (16,6): H=Z8 c=2 — NEGATIVE (exhaustive). H=Z5 c=3+∞ — running.
+- (15,6): H=Z7 c=2+∞ — NEGATIVE (exhaustive, 800k nodes, xcover).
+  H=Z5 c=3 — INCOMPLETE (xcover ran ~5.5h, 32M+ nodes, timeboxed out).
+- (16,6): H=Z8 c=2 — NEGATIVE (exhaustive). H=Z5 c=3+∞ — INCOMPLETE (~5.5h,
+  10M+ nodes).
+- (15,7): H=Z5 c=3 — INCOMPLETE (~4h, 1M+ nodes).
 Not covered: short-orbit variants in the semiregular setting, |H|=2 ansatzes,
 nonabelian groups, ≥2 fixed points (multiple ∞) — noted as gaps.
 
@@ -87,6 +90,13 @@ cyclic 6-tuples of 9 points, WLOG one block = (0,1,2,3,4,5) by relabeling):
 
 Controls through the same code path: (7,6) found+PASS, (9,4) found+PASS,
 (6,6) correctly reported nonexistent (known).
+
+Additionally, the fully symmetry-free search (no WLOG fixed block,
+`xcover < export_xc.py full 9 6 nofix`) also terminated:
+
+    UNSAT, nodes=30247561 (~2.5 h)
+
+so the nonexistence needs no relabelling argument at all.
 
 Independent second verification with a different search paradigm (CDCL SAT,
 CaDiCaL via pysat) and encoding: `satcheck2.py` (candidate-block variables,
@@ -112,24 +122,34 @@ PMD. So (9,6) required the full Mendelsohn (cyclic-order) structure — a
 genuinely new-level negative. Similarly NBIBD (12;22,44;11;6,3) exists (row
 18), so no shortcut for v=12 either (dead end for that angle).
 
-## 5. (10,6) independent confirmation
+## 5. (10,6) independent confirmation attempt
 
 Literature says nonexistent (via nested BIBDs). Our own full exhaustive
-search (`fullsearch.py 10 6`): RESULT_PLACEHOLDER_FULL10
+search (xcover, fixed first block) ran ~5.5 h / 18M+ nodes without
+terminating — INCOMPLETE (timeboxed); the literature result stands on its
+own. Same for (12,6) full search (3M+ nodes) and the CDCL runs
+satcheck2 10/12 (no verdict after ~5 h). These are the natural next
+frontier: (12,6) is now the smallest open k=6 case.
 
-## 6. Compute log
+## 6. Compute log (8-core VM, ~6 h wall)
 
 - calibration + small ansatz sweeps: seconds each.
 - mitm large sweeps ((18,6)/Z17+∞ etc.): seconds to ~1 min each.
-- fullsearch (9,6): 107 s, 36k nodes.
-- satcheck (9,6): see logs/sat9.log.
-- semireg (15,6)/(16,6) heavy cases: minutes–hours (logs/sr_*.log).
-- fullsearch (10,6): hours-scale attempt (logs/full10.log).
+- fullsearch (9,6) Python: 107 s / 36019 nodes; xcover C: 8 s, same count.
+- satcheck2 (9,6): UNSAT in 147 s (CaDiCaL).
+- xcover (9,6) symmetry-free: UNSAT, 30,247,561 nodes, ~2.5 h.
+- xcover (15,6)/Z7c2+∞: UNSAT (exhaustive negative), 799,470 nodes.
+- incomplete (killed at wrap-up, ~4–5.5 h each): xcover full (10,6) 18M+
+  nodes, full (12,6) 3M+, semireg (15,6)/Z5c3 32M+, (16,6)/Z5c3+∞ 10M+,
+  (15,7)/Z5c3 1M+; satcheck2 (10,6) and (12,6); satcheck.py (9,6) cell
+  encoding (superseded by satcheck2's UNSAT).
 
 ## STATUS
 
 STATUS: frontier-pushed — (9,6,1)-PMD proven nonexistent by exhaustive search
-(exact-cover DFS in two implementations with matching node counts, plus an
-independent CaDiCaL UNSAT with a different encoding); all other open
-instances: exhaustive negatives for every standard difference-method ansatz;
-rigorous argument that no known recursion can reach any open case.
+(exact-cover DFS in two implementations with matching node counts, an
+independent CaDiCaL UNSAT with a different encoding, and a symmetry-free
+exhaustive rerun); all other open instances: exhaustive negatives for every
+standard difference-method ansatz tried; rigorous argument that no known
+recursion can reach any open case; (10,6) confirmed stale (already settled
+in the literature).

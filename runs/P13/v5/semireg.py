@@ -163,6 +163,7 @@ CASES = {
     "15_6_Z5c3":    (5, 3, False, 6),
     "16_6_Z8c2":    (8, 2, False, 6),
     "16_6_Z5c3inf": (5, 3, True, 6),
+    "15_7_Z5c3":    (5, 3, False, 7),
     # controls (known-existing):
     "7_6_Z7c1":     (7, 1, False, 6),
     "13_6_Z13c1":   (13, 1, False, 6),
