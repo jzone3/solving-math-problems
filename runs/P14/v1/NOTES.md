@@ -94,4 +94,14 @@ independently in each of the three encodings.
 - Pass 3 launched: CP-SAT 25000 s / 4 workers, and kissat 25000 s on encode_sat.py CNF
   (301392 vars / 618438 clauses) in parallel. This is the largest instance (14×28).
 
+### Overnight results (2026-07-23 morning)
+- alt-model confirmations for (14,18) and (12,15): **UNKNOWN at 28800 s** (2 workers each —
+  the alt model is much weaker; ran only as belt-and-braces). Not a problem: the
+  independent verification standard is met by the kissat+drat-trim DRAT certificates,
+  which are machine-checked proofs on a fully independent encoding.
+- (14,28;8,3,14;7,6) CP-SAT pass 3: **UNKNOWN at 25000 s** (4 workers).
+- (14,28) kissat first attempt died: DRAT proof filled the 16 GB tmpfs /tmp at 13.4 GB.
+  Restarted on persistent disk (106 GB free) at 01:21 UTC, --time=25000.
+- Launched CP-SAT pass 4 on (14,28): 14400 s, 7 workers.
+
 (log continues)

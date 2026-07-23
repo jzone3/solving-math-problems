@@ -181,3 +181,175 @@ Starting search at 0.94s with 4 workers.
 #Model   7.95s var:9488/9567 constraints:24572/24693
 #Model   8.03s var:9487/9567 constraints:24572/24693
 #Model  13.34s var:9485/9567 constraints:24572/24693
+#Model 134.80s var:9484/9567 constraints:24572/24693
+#Model 142.97s var:9483/9567 constraints:24570/24693
+#Model 398.73s var:9482/9567 constraints:24570/24693
+#Model 775.97s var:9481/9567 constraints:24570/24693
+#Model 1242.31s var:9480/9567 constraints:24570/24693
+#Model 2296.00s var:9479/9567 constraints:24569/24693
+#Model 2790.30s var:9478/9567 constraints:24569/24693
+#Model 4863.39s var:9458/9567 constraints:24534/24693
+#Model 4884.11s var:9443/9567 constraints:24516/24693
+#Model 6198.67s var:9442/9567 constraints:24516/24693
+#Model 13210.13s var:9441/9567 constraints:24515/24693
+
+Task timing                   n [     min,      max]      avg      dev     time         n [     min,      max]      avg      dev    dtime
+        'default_lp':         1 [   6.94h,    6.94h]    6.94h   0.00ns    6.94h         2 [158.09ms,    5.30h]    2.65h    2.65h    5.30h
+  'feasibility_pump':    136531 [  1.90ms, 440.59ms]   4.08ms   1.57ms    9.29m    136530 [691.08us, 503.91ms] 723.14us   1.48ms    1.65m
+                'fj':    136531 [ 44.58ms, 472.52ms]  76.19ms  24.04ms    2.89h    136531 [100.01ms, 100.52ms] 100.08ms  89.23us    3.80h
+            'max_lp':         1 [   6.94h,    6.94h]    6.94h   0.00ns    6.94h         2 [   1.28s,    6.05h]    3.02h    3.02h    6.05h
+             'no_lp':         1 [   6.94h,    6.94h]    6.94h   0.00ns    6.94h         2 [157.16ms,   13.72h]    6.86h    6.86h   13.72h
+         'rins/rens':     62130 [  1.41ms, 965.38ms] 219.75ms 129.32ms    3.79h     47549 [  6.50us, 100.94ms]  66.00ms  42.65ms   52.31m
+
+Search stats     Bools    Conflicts     Branches  Restarts  BacktrackToRoot    Backtrack      BoolPropag   IntegerPropag
+  'default_lp':  9'254      134'757   20'903'396       820        6'615'386   14'153'761   1'875'134'245   1'731'618'785
+      'max_lp':  9'254    1'344'012   33'244'344     5'080        9'844'662   21'811'343   3'258'954'045   3'080'793'835
+       'no_lp':  9'254  213'882'269  367'788'285   340'200       12'615'917  240'441'944  76'252'783'123  23'888'737'868
+
+SAT formula      Fixed  Equiv  Total  VarLeft  BinaryClauses  PermanentClauses  TemporaryClauses
+  'default_lp':    126     93  9'254    9'035         54'406           526'064            10'982
+      'max_lp':    126     93  9'254    9'035         54'406           525'032            18'406
+       'no_lp':    126     93  9'254    9'035         54'406           778'693            10'124
+
+SAT stats        ClassicMinim     LitRemoved  LitRemovedBinary      LitLearned    LitForgotten    Subsumed
+  'default_lp':        98'198     13'544'358         8'113'727      25'162'934      12'275'786      52'870
+      'max_lp':     1'106'778     46'002'308        26'200'868     213'112'171     177'517'789     120'918
+       'no_lp':   187'205'361  8'702'511'632     4'754'081'445  29'263'593'867  27'952'251'737  15'338'559
+
+Vivification       Clauses   Decisions  LitTrue  Subsumed  LitRemoved  DecisionReused  Conflicts
+  'default_lp':  2'009'540   8'654'585        1    79'037     841'265         409'491      3'479
+      'max_lp':  3'432'111  13'493'846        0    83'490     922'082         698'226      4'207
+       'no_lp':  2'872'963  17'808'615        0   137'918   2'150'974       1'059'229     11'511
+
+Clause deletion    at_true  l_and_not(l)  to_binary  sub_conflict  sub_extra  sub_decisions  sub_eager  sub_vivify  sub_probing  sub_inpro  blocked  eliminated    forgotten     promoted    conflicts
+    'default_lp':      361           102         43        52'662        229            585        208      79'037        1'789     24'195        0           0       49'428      141'411      134'757
+        'max_lp':      933            98        115       118'541      6'492          1'118      2'377      83'490        5'743     31'912        0           0    1'146'064    3'211'298    1'344'012
+         'no_lp':      526            14        135    14'957'338  1'008'980         69'893    381'221     137'918        1'986     99'075        0           0  196'569'699  583'338'561  213'882'269
+
+Lp stats         Component  Iterations  AddedCuts  OPTIMAL    DUAL_F.  DUAL_U.
+  'default_lp':          1  50'449'568  1'572'712  266'772     19'764   20'508
+      'max_lp':          1  28'156'887    170'039      348  2'010'524    1'333
+
+Lp dimension          Final dimension of first component
+  'default_lp':   5823 rows, 8095 columns, 26825 entries
+      'max_lp':  14564 rows, 9567 columns, 49939 entries
+
+Lp debug         CutPropag  CutEqPropag  Adjust  Overflow         Bad  BadScaling
+  'default_lp':          0           28  20'332         0  20'591'335           0
+      'max_lp':          0            2   1'149         0   2'417'823           0
+
+Lp pool          Constraints  Updates  Simplif  Merged  Shortened  Split  Strengthened            Cuts/Call
+  'default_lp':       18'390   62'458        0      35     27'949      0        11'026  1'572'712/3'712'549
+      'max_lp':       62'924    2'210        0     319      5'492      0         2'383      170'039/488'549
+
+Lp Cut            max_lp  default_lp
+          CG_FF:     754       3'969
+           CG_K:     223       1'895
+          CG_KL:      48         300
+           CG_R:     499       3'280
+          CG_RB:     448       3'836
+         CG_RBP:     110       1'595
+         Clique:     655           -
+             IB:   5'892     993'169
+       MIR_1_FF:   7'017      87'331
+        MIR_1_K:   3'288      26'581
+       MIR_1_KL:      79      12'688
+        MIR_1_R:   1'964      19'211
+       MIR_1_RB:   1'157       7'368
+      MIR_1_RBP:     129       1'082
+      MIR_1_RLT:  54'022           -
+       MIR_2_FF:   5'961      46'265
+        MIR_2_K:   2'204      16'576
+       MIR_2_KL:     246       3'128
+        MIR_2_R:   3'390      31'519
+       MIR_2_RB:   1'971      19'099
+      MIR_2_RBP:     664       4'546
+       MIR_3_FF:   4'441      18'472
+        MIR_3_K:   1'420       8'843
+       MIR_3_KL:     142       1'418
+        MIR_3_R:   4'302      29'266
+       MIR_3_RB:   1'312      13'925
+      MIR_3_RBP:     635       4'530
+       MIR_4_FF:   2'443       8'960
+        MIR_4_K:     807       3'645
+       MIR_4_KL:     108         519
+        MIR_4_R:   3'551      20'057
+       MIR_4_RB:     953       8'694
+      MIR_4_RBP:     463       3'385
+       MIR_5_FF:   1'258       5'262
+        MIR_5_K:     433       1'652
+       MIR_5_KL:      46         223
+        MIR_5_R:   2'706      17'020
+       MIR_5_RB:     719       6'159
+      MIR_5_RBP:     390       2'968
+       MIR_6_FF:     753       3'104
+        MIR_6_K:     292         801
+       MIR_6_KL:      42         109
+        MIR_6_R:   2'103      14'100
+       MIR_6_RB:     585       4'573
+      MIR_6_RBP:     364       2'642
+   ZERO_HALF_FF:  11'710      23'891
+    ZERO_HALF_K:   1'548       2'413
+   ZERO_HALF_KL:     203         521
+    ZERO_HALF_R:  34'177      80'405
+   ZERO_HALF_RB:     663       1'068
+  ZERO_HALF_RBP:     749         649
+
+LNS stats       Improv/Calls  Closed  Difficulty  TimeLimit
+  'rins/rens':   55142/55142     50%    8.85e-01       0.10
+
+LS stats                                    Batches  Restarts/Perturbs     LinMoves     GenMoves  CompoundMoves    Bactracks  WeightUpdates  ScoreComputed
+                             'fj_restart':    8'198              1'360  252'402'537            0              0            0     11'730'759    893'830'768
+                    'fj_restart_compound':    7'106              1'291            0  141'565'225     10'058'664   65'750'757         70'709  1'952'559'031
+                'fj_restart_compound_obj':   10'901              1'345            0  229'283'812     12'323'311  108'477'656        182'886  2'963'298'327
+            'fj_restart_compound_perturb':    6'689              1'318            0  128'613'142     10'370'611   59'118'872         47'189  1'848'933'949
+        'fj_restart_compound_perturb_obj':    7'345              1'344            0  142'613'020     10'998'224   65'804'757         55'483  2'023'049'889
+                       'fj_restart_decay':    6'253              1'363  230'307'940            0              0            0        794'682    332'666'646
+              'fj_restart_decay_compound':    8'262              1'298            0  179'929'609     30'132'064   74'896'232         16'101  2'323'187'916
+          'fj_restart_decay_compound_obj':   10'830              1'327            0  251'851'456     41'276'088  105'284'947         20'135  3'039'387'568
+      'fj_restart_decay_compound_perturb':    6'979              1'359            0  144'801'950     24'457'910   60'169'130         14'270  1'967'907'012
+  'fj_restart_decay_compound_perturb_obj':    8'504              1'280            0  187'656'154     31'283'455   78'183'481         16'585  2'393'453'766
+                   'fj_restart_decay_obj':   13'410              1'340  496'832'166            0              0            0      1'693'084    715'419'277
+               'fj_restart_decay_perturb':    6'211              1'233  228'944'427            0              0            0        788'550    330'429'379
+           'fj_restart_decay_perturb_obj':    6'332              1'358  233'132'324            0              0            0        804'691    336'717'470
+                         'fj_restart_obj':    9'015              1'294  276'352'172            0              0            0     13'363'516    981'961'536
+                     'fj_restart_perturb':   12'038              1'291  365'717'768            0              0            0     18'866'243  1'319'143'811
+                 'fj_restart_perturb_obj':    8'458              1'289  260'041'387            0              0            0     12'455'378    913'367'504
+
+Solution repositories     Added  Queried  Synchro
+    'alternative_path':       0        0        0
+      'best_solutions':       0        0        0
+   'fj solution hints':  21'082        0   21'082
+        'lp solutions':  26'744   62'130   26'742
+                'pump':       0        0
+
+Improving bounds shared    Num  Sym
+            'default_lp':    2    0
+                'max_lp':   47    0
+                 'no_lp':   80    0
+
+Clauses shared    #Exported  #Imported  #BinaryRead  #BinaryTotal
+   'default_lp':     23'465    597'841       14'555        14'555
+       'max_lp':     41'738    583'246       14'555        14'555
+        'no_lp':    592'335    120'483       14'555        14'555
+
+LRAT_status: NA
+CpSolverResponse summary:
+status: UNKNOWN
+objective: NA
+best_bound: NA
+integers: 9567
+booleans: 9254
+conflicts: 1344012
+branches: 33244344
+propagations: 3258954045
+integer_propagations: 3080793835
+restarts: 5080
+lp_iterations: 28156887
+walltime: 25000.2
+usertime: 25000.2
+deterministic_time: 107124
+gap_integral: 0
+
+status: UNKNOWN wall: 25000.2 s
+UNKNOWN
