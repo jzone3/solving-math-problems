@@ -112,6 +112,33 @@ congruences to make the witness explicit and machine-verifiable; that
 transcription (hundreds of set descriptions, residues only partially
 pinned down by the prose) did not fit in this session.
 
+## 5b. Second push (session resumed): new encodings past the M=6 stop
+
+Instruction: try fundamentally different encodings and push the frontier
+past where we stopped (our machine frontier was M=6; literature is 42).
+
+* `sat_cover.py` — SAT encoding (vars x_{n,a}, coverage clauses per cell of
+  Z_N, at-most-one per modulus, CaDiCaL 1.9.5). DEAD END: even M=6 at
+  N=10080 (78k vars / 128k clauses), which greedy solves in 0.5 s, did not
+  finish in 300 s; M=7 at N=1680/2520 got neither SAT nor UNSAT in 900 s.
+  Covering/counting structure with massive symmetry is hostile to CDCL.
+* `finite_cover_np.py` — numpy-accelerated deterministic backtracker,
+  scanning candidate LCMs N (2^a 3^b 5^c 7^d 11^e 13^f <= 3e7). M=7
+  exhausted/timed out on all N <= 15120 at branch width 3.
+* `fc_restart.py` — the breakthrough for mid-M: randomized-restart
+  backtracking (choose modulus randomly among near-best gain-density
+  within a jitter band, shuffle residue order, short per-restart budget)
+  on RICH LCMs (recip sum ~1.7-2.1, N up to 5e6). Results, all PASS by
+  solutions/P15/verify.py and stored in witnesses_small/:
+  - M=7: N=831600, 197 congruences (24 restarts, ~8 min).
+  - M=8: N=1663200, 205 congruences (90 s/restart, jitter 0.3: 3 restarts,
+    ~4 min; the 20 s/0.15 config also found one at N=831600, 210 congs,
+    108 restarts). Larger per-restart budget + more jitter wins.
+  - M=9+: see log below (runs continued to end of session).
+  Key lesson vs the 600s M=7 failure at N=10080: feasibility needs SLACK
+  (recip >= ~1.7), i.e. much larger N than minimal — the earlier fixed
+  small-N attempts were starved, not the search algorithm.
+
 ## 6. Compute spent (approx)
 
 * finite_cover: ~25 min CPU total (M=3..7).
