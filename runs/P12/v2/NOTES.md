@@ -93,4 +93,38 @@ distinct seed ranges. 6 workers on n=11, 1 worker on n=13, alongside the n=9
 exhaustion (8 cores saturated). Any solution found is copied to
 `FOUND_n<k>_seed<s>.txt` and must pass `solutions/P12/verify.py`.
 
-(Compute log and outcomes appended below as the run progresses.)
+Hunt outcome (final, ~11h wall, 8 cores; ≈90 core-hours ≈ 3.5·10^12 nodes on
+n=11, ≈10 core-hours on n=13):
+- **T2(11): no witness found.** 1504 randomized restarts (mix of t2dfs4
+  fail-first/L=1e9–2e9 and t2dfs3 in-order/L=5e9). Deep restarts routinely
+  complete 9 of 11 rows (maxrow=9 in all 229 t2dfs3 restarts; one early run
+  completed 10 rows and died in the last row). The last 1–2 rows are massively
+  overconstrained — consistent with (but of course not proving) nonexistence.
+- **T2(13): no witness found.** 193 restarts; searches routinely reach rows
+  10–11 of 13 (maxrow=10: 32×, maxrow=11: 161×), never row 12.
+
+## 6. Dead ends / structural notes
+
+- **Cyclic construction impossible for odd n**: rows = translates row_i =
+  row_0 + i (mod n) would need row_0's consecutive differences to be all n−1
+  nonzero residues; these telescope to row_0[n−1] − row_0[0] = Σ(all nonzero
+  residues) = n(n−1)/2 ≡ 0 (mod n) for odd n, forcing first = last symbol —
+  contradiction. So no Z_11/Z_13-translate T2 exists; any witness must be
+  non-cyclic. (Matches why n+1 prime constructions use Z_{n+1}^* instead.)
+- Pruning lever was weak: degree + reachability pair-availability pruning cut
+  only ~30% of nodes (n=8: 134M→95M) — the DFS tree size is intrinsic; a
+  fundamentally different method (SMS/clique with strong isomorph rejection,
+  cf. V1/V3) is needed for full n=11 exhaustion.
+
+## 7. STATUS
+
+STATUS: negative (frontier-pushed on n=9). Summary:
+- T2(9) nonexistence INDEPENDENTLY RE-PROVED by full exhaustion (0 solutions,
+  4.33·10^11 nodes) — first non-clique verification of Kapralov 2012; method
+  end-to-end validated on exact counts n=4..8 (incl. the six T2(8)).
+- T2(11): full standard-form exhaustion estimated ~3·10^16 nodes (≈years on
+  this box) — infeasible here; ~90 core-hours of randomized-restart exhaustive
+  DFS found no witness, best partials 10/11 complete rows.
+- T2(13): no witness in ~10 core-hours; best partials 11/13 rows.
+Both open cells remain open; recommend V3-style SAT-modulo-symmetries or
+Kapralov-style clique search with modern hardware for a decision at n=11.
