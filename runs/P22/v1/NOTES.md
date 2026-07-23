@@ -128,5 +128,23 @@ generality** as a Σ₂ (∃∀) problem over ALL spanning subgraphs of H₃ (10
 Note this space strictly contains the clique-replacement space of experiments 1–2 (any
 K₄-free subgraph is admitted, incl. those with triangles inside C₃-cliques).
 
-Status at commit time: loop running; see `logs/cegar.log` for progress (candidates ~150–250
-edges, all colorable so far; every counterexample kills a 192-orbit of colorings).
+Two CEGAR strata were run for ~2h each (both still negative at wrap-up):
+
+- **core-conditions stratum** (`cegar.py`): 2,176 counterexample colorings accumulated
+  (each blocked as a full 192-orbit ⇒ ~418k colorings excluded); candidates drift to small
+  sparse graphs (~130–250 edges), all colorable.
+- **maximality stratum** (`cegar_max.py`): WLOG restriction to MAXIMAL K₄-free subgraphs
+  (sound: any K₄-free arrowing subgraph extends to a maximal one, and arrowing is
+  edge-monotone). Candidates are dense (~525–540 edges, ~600–670 kept triangles); 3,040
+  counterexamples accumulated (~584k colorings excluded with orbits). All colorable.
+- **Direct 2QBF** (`qbf_gen.py` → `out/p51.qdimacs`, 75,600 vars / 409,081 clauses,
+  ∃ subgraph ∀ coloring ∃ witness): DepQBF 6.03 ran >1.5h without deciding; left as an
+  artifact for a longer dedicated run (TRUE ⇒ Folkman graph ≤63 / Graham prize;
+  FALSE ⇒ Problem 5.1 answered NO).
+
+Counterexample pools are persisted (`out/cegar_cex.txt.gz`, `out/cegar_max_cex.txt.gz`)
+and both loops resume from them, so a follow-up session can continue where this stopped.
+No Folkman graph found; no synthesis-UNSAT proof reached either — Problem 5.1 remains open,
+but the maximality stratum + orbit blocking is a substantially stronger attack than the
+paper's random sampling and is the recommended continuation (possibly with the full
+12,096-element PΓU(3,3) instead of the 192-element subgroup in `aut.py`).
