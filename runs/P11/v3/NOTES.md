@@ -159,6 +159,25 @@ The four AGZ-open cells (105,36), (112,36), (117,36), (120,49) therefore REMAIN 
 - ICW-lift and multiplier-orbit CP-SAT attacks on (105,36)/(112,36)/(117,36)/(120,49):
   inconclusive (UNKNOWN at 20min–2h budgets).
 
+### Second campaign: kissat/cadical CNF (fundamentally different encoding)
+
+After the CP-SAT budget was exhausted, all instances were re-encoded to pure CNF
+(runs/P11/v3/cnf_cw.py): ternary vars as pos/neg boolean pairs, product aux with full Tseitin
+equivalences, and each weighted-PB autocorrelation equality as a cardinality-equals over
+duplicated literals (totalizer): sum c·pp + sum c·(¬pn) = sum c. Encoder validated end-to-end
+on a known-SAT case (test_cnf.py: CW(13,9) via multiplier-3 orbits → SAT → witness verified).
+
+Overnight solver campaign (~30 CPU-hours total):
+- (120,49) complete multiplier-orbit decision CNF (232766 vars / 3.64M clauses):
+  kissat 4.0.4, 10h → UNKNOWN; cadical 3.0.1, 8.3h → UNKNOWN. The cell remains undecided;
+  the CNF (regenerable via orbit120_kissat.py) is a well-defined open SAT challenge whose
+  UNSAT would be a new theorem (no CW(120,49)).
+- (105,36) lift CNFs: all 4 fixed contractions, kissat 2h each → UNKNOWN.
+- (112,36) lift CNFs: all 6 fixed contractions, kissat 1.5h each → UNKNOWN.
+- (117,36) lift CNFs: contractions #0–#9 of 18, kissat 1h each → UNKNOWN (remaining
+  instances are equivalent-difficulty images; campaign stopped).
+Logs: orbit120_kissat.log, orbit120_cadical.log, lift{105,112,117}_kissat.log.
+
 STATUS: SOLVED (target cell CW(96,36): explicit proper witness, dual-verified) + frontier-pushed
 (7 more DB-open cells settled via literature + mechanical re-verification); remaining 4 cells
 negative/inconclusive (searches documented above).
