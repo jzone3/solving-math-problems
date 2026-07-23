@@ -161,3 +161,40 @@ STATUS: negative — V2 (subdivision/parallelization of Schrijver and
 Cornuéjols–Guenin seeds + deletion variants + annealing, ~1.5M instances,
 232,692 ILP-certified) found no Woodall counterexample; the pure subdivision
 family is additionally proven fruitless via the domination lemma.
+
+---
+
+## Phase 2 (frontier push past the negative)
+
+Orchestrator directive: pick a fundamentally different encoding/family and
+push decisively past the phase-1 stopping point. Three new attacks (all
+outside the phase-1 "seed blow-up" neighborhood):
+
+### 2.1 General multi-digraph random search (`search_general.py`)
+- Family: arbitrary digraphs, n ≤ 16, m ≤ 32+chain; cycles allowed,
+  PARALLEL ARCS allowed (multigraph Woodall — phase 1 was simple-DAG only),
+  2-cycles allowed; 40% DAG-oriented samples for rich dicut lattices;
+  40% sparse regime.
+- Encoding: bitmask dicut masks from lower sets of the condensation;
+  τ∈[3,6] filter; ACZ ρ filter (drop ρ≤2, and ρ=3 when τ=3 — provably
+  pack); 25 randomized greedy packing attempts; exact CBC ILP only on
+  greedy-resistant instances. Throughput ≈ 20k gen/s/worker.
+- 5 workers × 3h.
+
+### 2.2 Hardness-guided annealing (`anneal2.py`)
+- LP gap gives no gradient (ν* = τ always, by LP duality), so hardness
+  proxy = (greedy-failure fraction over 30 tries, ρ, CBC time),
+  lexicographic; mutations reroute/add/delete/subdivide/smooth; restarts
+  from random general instances and phase-1 seed transforms; n ≤ 20,
+  m ≤ 32, τ∈[3,6].
+- Finds pockets where 100% of greedy tries fail yet ILP packs — that is
+  the boundary a counterexample would sit on. 4 workers × 3h.
+
+### 2.3 Weighted EG-fix conjecture (`search_acz.py`)
+- Adjacent OPEN target, DGG-shaped: the proposed fix of Edmonds–Giles
+  (stated in ACZ 2023 p.6): τ(D,w)=ν(D,w) whenever the support of w is a
+  spanning connected subdigraph. Random (50% DAG) digraphs n ≤ 14,
+  w ∈ {0,1,2}, spanning tree forced into the support, τ ≥ 2; exact
+  weighted packing ILP on every instance. 2 workers × 3h.
+
+(Results appended below when the fleet finishes.)
