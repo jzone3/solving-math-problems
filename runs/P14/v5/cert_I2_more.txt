@@ -1,0 +1,4 @@
+I2 Z6 ILP: Infeasible
+I2 Z6 LP: Optimal
+I2 Z12 ILP: Infeasible
+I2 Z12 LP: Optimal

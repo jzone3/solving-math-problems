@@ -69,6 +69,18 @@ if t >= 0:
     for j in range(14):
         clauses.append([Qv[1][j]] if j in row1 else [-Qv[1][j]])
 
+# optional deeper cube: fix Q row 2 by intersection counts (a,b,c,d) with the
+# 4 column classes C1={0..t-1}, C2={t..6}, C3={7..13-t}, C4={14-t..13}
+# (residual symmetry permutes within each class, so first-a/first-b/... is WLOG)
+if len(sys.argv) >= 6:
+    a, b, c, d = map(int, sys.argv[2:6])
+    C1 = list(range(t)); C2 = list(range(t, 7))
+    C3 = list(range(7, 14 - t)); C4 = list(range(14 - t, 14))
+    row2 = set(C1[:a]) | set(C2[:b]) | set(C3[:c]) | set(C4[:d])
+    assert len(row2) == 7
+    for j in range(14):
+        clauses.append([Qv[2][j]] if j in row2 else [-Qv[2][j]])
+
 print(f"p cnf {pool.top} {len(clauses)}")
 for c in clauses:
     print(" ".join(map(str, c)) + " 0")

@@ -1,0 +1,5 @@
+I2 Z3: UNKNOWN wall=1800.2s #orbits=9438
+I2 Z2: UNKNOWN wall=1800.3s #orbits=14202
+I2 Z4: UNKNOWN wall=1801.0s #orbits=7104
+I2 Z6: INFEASIBLE wall=16.6s #orbits=4734
+I2 Z12: INFEASIBLE wall=0.0s #orbits=2368
