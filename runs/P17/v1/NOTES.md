@@ -4,9 +4,18 @@ Session: runs/P17-v1 (V1: direct search — closed-form spectral families scanne
 analytically + simulated annealing on n⁺−E/2 and n⁻−E/2; exact rational
 certification path ready).
 
-**Outcome: NEGATIVE (no counterexample found). Both conjectures survive all
-scans here; new structural observations + a near-equality family for WoW 21
-approaching the bound at rate Θ(1/a²).**
+**OUTCOME (updated after second priority-check wave): WoW 20 and 21 are now
+THEOREMS — resolved in the literature the day before this run. Kumar &
+Pragada, "Energy and independence number", arXiv:2607.19817 (posted
+2026-07-22), prove Fajtlowicz's 1980s conjecture E(G) ≥ 2(n − α(G));
+combined with the Cvetković inertia bound α ≤ min{n−n⁺, n−n⁻} this gives
+E(G) ≥ 2·max{n⁺, n⁻}, i.e. both WoW 20 and WoW 21. Their paper states the
+resolution of "[Aouchiche–Hansen, Conjectures #20, #21, Table 6]" explicitly.
+So the correct search direction was "true", and our (independent, earlier)
+search evidence below is fully consistent: no counterexample exists.**
+
+See §10 for the resolution details and our verification. Sections 1–9 record
+the original counterexample-search run, all negative.
 
 ## 1. Statement fidelity (checked against primary source)
 
@@ -184,3 +193,36 @@ interlacing against a clique partition (Σ|λ|≥ … per clique), cf. the
 E/2 ≥ n−α SDP program of arXiv:2509.05814 (which implies both). V3/V4 SAT/ILP
 variants seem less natural here than for other problems; a V2 structured
 attack could target quadratic-conjugate spectra (x²+ax−b families) directly.
+
+## 10. RESOLUTION FOUND (second-wave priority check, 2026-07-23)
+
+- **Kumar, Pragada — "Energy and independence number", arXiv:2607.19817
+  (submitted 2026-07-22)**, copy at `kumar-pragada-2607.19817.pdf`:
+  - Theorem 1.2: E(G) ≥ 2(n − α(G)) for every graph (Fajtlowicz's Graffiti
+    conjecture from the 1980s; the one arXiv:2509.05814 attacked via SDP).
+  - Proof: 2 pages — SDP formulation of energy (E = 2 min{tr M : M ⪰ 0,
+    M − A ⪰ 0}, Abiad et al.), a "neighbourhood deletion inequality"
+    n·E(G) ≥ 4m + Σ_v E(G − N[v]) (Lemma 2.2), then induction on n using
+    α(G − N[v]) ≤ α(G) − 1.
+  - Corollary stated in the paper: E(G) ≥ 2·max{n⁺(G), n⁻(G)}, "which
+    resolves [Aouchiche–Hansen survey, Conjectures #20, #21, Table 6]" —
+    exactly WoW 20 and 21 (≡ P17). Implication chain: Cvetković inertia
+    bound α ≤ min{n − n⁺, n − n⁻} ⇒ n − α ≥ max{n⁺, n⁻}; combine with
+    Theorem 1.2 and E/2 = Σ_{λ>0}λ.
+  - Our verification (`check_kumar_pragada.py`): numerically spot-checked
+    Lemma 2.2, Theorem 1.2, and the corollary on 400 random graphs
+    (n ≤ 15, exact α via complement clique): 0 failures. The induction step
+    from Lemma 2.2 to Theorem 1.2 is elementary and was checked by hand
+    (§3 of the paper reproduced above is 10 lines).
+  - Historical note: Favaron–Mahéo–Saclé 1993 (Discrete Math 111, "Some
+    eigenvalue properties in graphs (Conjectures of Graffiti — II)") already
+    discussed "Conjecture 20" by this numbering, proving the partial results
+    Σpos ≥ n − χ̄ (clique cover; Theorem 2.30/Cor. 2.31) and n⁺ ≤ ν + ν̄
+    (Theorem 2.32, Conjecture 258). Gap cases χ̄ > α stayed open until now.
+- **Status for INDEX**: P17 = RESOLVED IN LITERATURE (proved true), not by
+  us — scooped by one day. Priority-check discipline worked: the refutation
+  search (negative) is consistent with the theorem; no wasted "solved" claim.
+- Second-wave negative results also logged: exhaustive trees n ≤ 18 for
+  score21(L(T)) (max exactly 0 at stars/spiders → L = clique equality);
+  cycle powers C_n^k (n ≤ 1200): best score21 = −1.236 (C₅); corona G∘K_r
+  second-order analysis (score21 ≈ −(r/(r+1)³)·2m < 0 for any edges).
