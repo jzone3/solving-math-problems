@@ -1,0 +1,10 @@
+n=  2: 1 graphical seqs, worst dev-LP = +0.000000000 at (1, 1), violations = 0
+n=  3: 3 graphical seqs, worst dev-LP = -0.057190958 at (1, 1), violations = 0
+n=  4: 10 graphical seqs, worst dev-LP = +0.000000000 at (2, 2, 2), violations = 0
+n=  5: 30 graphical seqs, worst dev-LP = -0.030306154 at (2, 2, 2), violations = 0
+n=  6: 101 graphical seqs, worst dev-LP = +0.000000000 at (3, 3, 3, 3), violations = 0
+n=  7: 341 graphical seqs, worst dev-LP = -0.020513363 at (3, 3, 3, 3), violations = 0
+n=  8: 1212 graphical seqs, worst dev-LP = +0.000000000 at (4, 4, 4, 4, 4), violations = 0
+n=  9: 4360 graphical seqs, worst dev-LP = -0.015480025 at (4, 4, 4, 4, 4), violations = 0
+n= 10: 16015 graphical seqs, worst dev-LP = +0.000000000 at (5, 5, 5, 5, 5, 5), violations = 0
+n= 11: 59347 graphical seqs, worst dev-LP = -0.012422414 at (5, 5, 5, 5, 5, 5), violations = 0

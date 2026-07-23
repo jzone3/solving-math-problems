@@ -1,0 +1,9 @@
+n0=  10 best dev-R_LP = -0.000000000 at n=10 degs={5: 6}
+n0=  20 best dev-R_LP = +3.249945628 at n=11 degs={10: 3}
+RELAXATION VIOLATION (candidate degree sequence)
+n0=  40 best dev-R_LP = +6.345958419 at n=21 degs={20: 6}
+RELAXATION VIOLATION (candidate degree sequence)
+n0=  80 best dev-R_LP = +12.523053517 at n=41 degs={40: 11}
+RELAXATION VIOLATION (candidate degree sequence)
+n0= 160 best dev-R_LP = +24.887001101 at n=81 degs={80: 22}
+RELAXATION VIOLATION (candidate degree sequence)
