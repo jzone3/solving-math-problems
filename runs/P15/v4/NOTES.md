@@ -65,11 +65,28 @@ CRT-layered level framework (`cover.py`):
 | 10 | 2^7,3^4,5^2,7^2,11,13 | 1002 | witness_T10.json (survivor) |
 | 12 | 2^7,3^4,5^3,7^2,11,13,17 | 2064 | witness_T12.json (survivor) |
 
-## 4. Status
+## 4. Scaling analysis (why explicit lists cap out)
 
-(in progress — escalation to T=14/16/18 running)
+Hole growth per level is intrinsic: at the first level 2^e only moduli
+2^j ≥ T are usable, total density 2^{floor(log2 T)-e+1}-ish << 1, so almost
+all 2^e cells survive as holes; the construction only wins because hole
+*density* shrinks while hole *count* multiplies. Observed (T=14 run,
+levels 2^8,3^5,5^3,7^2,11,...): holes 225 → 36k → 1.8M → 22M. This is the
+same explosion that makes Nielsen's T=40 system >10^50 congruences and
+Owens's T=42 >10^86. An explicit machine-verifiable congruence list is
+therefore fundamentally limited to T ≈ mid-teens on a 32 GB machine;
+T=43 REQUIRES a compressed recursive witness format + a verifier that
+checks the recipe (hole-class counting), not a list. That compressed-
+witness pipeline is the real frontier for machine work on this problem.
 
 Engineering notes:
 - OOM bug fixed: np.bincount(minlength=d) allocated O(d) for divisors up to
   ~7·10^8; replaced with np.unique grouping (bounded by #holes).
-- Perf: cache active-cell matrix per phase instead of recomputing per score.
+- Perf: cache active-cell matrix per phase instead of recomputing per score;
+  LRU-bounded residue caches (10 GB); relaxed lazy greedy (accept within 20%
+  of stale upper bound) to avoid 20M-element re-sorts per heap ping-pong.
+- Bottleneck at 20M+ holes: np.unique sort per divisor (~650 divisors/level).
+
+## 5. Status
+
+(in progress — T=14 running: levels 2^8,3^5,5^3,7^2,11,13,17,19)

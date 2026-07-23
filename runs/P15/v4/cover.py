@@ -90,7 +90,7 @@ class Builder:
             return True
         T = self.T
         self.log(f"LEVEL p^e={p}^{e} q={q}  M={self.M}  holes={H}")
-        if H * q > 200_000_000:
+        if H * q > 1_200_000_000:
             self.log("  abort: level too large")
             return False
         # uncovered branches: H x q boolean
@@ -102,11 +102,17 @@ class Builder:
         # Precompute holes % d lazily
         mod_cache = {}
 
+        cache_budget = 10_000_000_000 // max(1, 5 * H)  # ~10GB of int32 arrays
+
         def hole_res(d):
             # returns (unique residues, inverse index) for holes % d
             if d not in mod_cache:
+                if len(mod_cache) >= max(4, cache_budget):
+                    mod_cache.pop(next(iter(mod_cache)))
                 vals, inv = np.unique(holes % d, return_inverse=True)
-                mod_cache[d] = (vals, inv.astype(np.int64))
+                mod_cache[d] = (vals, inv.astype(np.int32))
+            else:
+                mod_cache[d] = mod_cache.pop(d)  # LRU refresh
             return mod_cache[d]
 
         MQ = float(self.M) * q
@@ -156,8 +162,9 @@ class Builder:
                 eff, gain, a, b = best_assignment(d, j)
                 if gain <= 0:
                     continue
-                if heap and (-heap[0][0], -heap[0][1]) > (eff + 1e-12,
-                                                          gain + 1e-9):
+                # relaxed lazy acceptance: tolerate 20% suboptimality to
+                # avoid heap ping-pong (each re-eval costs a 20M-elem sort)
+                if heap and -heap[0][0] > (eff + 1e-12) / 0.8:
                     heapq.heappush(heap, (-eff, -gain, self.rng.random(), d, j))
                     continue
                 pj = p**j
