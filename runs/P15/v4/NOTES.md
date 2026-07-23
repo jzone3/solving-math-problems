@@ -289,3 +289,39 @@ each reuse 7-up-arrow savings and have slack <= 3, several with slack 0).
 Next session: implement explicit modulus-set tracking in branchgame.py
 (replace counts by actual modulus multisets) and re-run the repair search
 end-to-end across all 12 ledgers simultaneously.
+
+## 13. Phase 4 (2026-07-23): the complete 43-patch reduction chain (`reduce43.py`)
+
+Pushed the hole-42 idea to its logical end. Chain (R1-R4, details in file):
+remove Owens's unique modulus-42 congruence -> cover one class mod 42 with
+distinct unused moduli >= 43 -> provably-safe moduli = those with a prime
+factor >= 97 (O is 89-smooth) -> inner modulus n has mu(n) = 2^(3-w) safe
+realizations (w = #{2,3,7} dividing n) -> build the patch as a p-tower
+(p >= 97): budgets refresh every level; mu(p^k) = 8 inputs come free (bare
+realizations); every other input needs a full budget-packed cover of Z.
+
+CRISP KERNEL:  patch closes  <=>  S >= p - 9  (>= 88 at p = 97), where
+S = max number of pairwise budget-disjoint covers of Z with modulus t used
+<= mu(t) times. Small tower primes give no bare inputs and circularity
+(their flat inputs need >= 97-divisible t = the original problem).
+
+MEASURED: LP upper bound sum mu(t)/t = 18.9 (t<=100), 29.5 (10^3), 40.2
+(10^4), 50.9 (10^5): even PERFECT covers with all moduli <= 10^5 cannot
+exceed S = 51 < 88; perfect efficiency needs moduli out to ~1.1e8. Exact
+greedy packing over smooth windows: S >= 8 (L=5040), S >= 9 (L=30240,
+302400) - real covers plateau near 9 while the bound climbs, the familiar
+efficiency decay of thin-density covering (BBMST regime).
+
+CONSEQUENCE (citable): patching Owens-42 to 43 with *provably-unused*
+moduli requires a budget-packing of ~88 disjoint covers, which is
+LP-infeasible below modulus 10^5 and efficiency-infeasible in practice far
+beyond; therefore any minimum-modulus-43 system must either (i) reconstruct
+Owens's exact modulus ledger to unlock sub-97-prime unused moduli (a finite
+but 10^86-scale bookkeeping problem - the compressed-witness machinery of
+Sections 8-10 is the right tool), or (ii) redesign the small-prime layers
+for +1 slack (Section 12's branch game is the right search space). These
+two now-precise subproblems replace the vague target "build a 43 system".
+
+STATUS: negative (no >= 43). Frontier-pushed: exact reduction chain +
+quantified infeasibility of the safe-patch route (S = 9 measured vs 88
+required, LP cap 51 at moduli <= 10^5).

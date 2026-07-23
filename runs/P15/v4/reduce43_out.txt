@@ -1,0 +1,20 @@
+mu(t) examples: {2: 4, 3: 4, 5: 8, 6: 2, 7: 4, 42: 1, 97: 8, 194: 4}
+
+LP upper-bound trajectory for S(B):
+  B=10      sum mu(t)/t =     8.18
+  B=100     sum mu(t)/t =    18.85
+  B=1000    sum mu(t)/t =    29.54
+  B=10000   sum mu(t)/t =    40.23
+  B=100000  sum mu(t)/t =    50.92
+  S>=88 needs (at perfect efficiency) B ~ 1.11e+08
+
+Exact greedy packing S(L) over Z/L, moduli t | L, budget mu(t):
+  L=5040     packed covers S >= 8
+  L=30240    packed covers S >= 9
+  L=302400   packed covers S >= 9
+
+Interpretation: tower closure needs S >= 88; the LP bound alone
+requires near-perfect covers with moduli out to ~2.4e7, and the
+greedy exact packing at smooth L shows the achievable S at small
+moduli. Gap S_measured vs 88 = the quantified distance to a 43
+patch of Owens by provably-safe moduli.
