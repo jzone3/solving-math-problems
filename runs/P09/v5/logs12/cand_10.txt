@@ -1,0 +1,4 @@
+CAND K???Frw}Fk]o
+ score=3.552713678801e-15 w=2
+CAND K???Frw}F{^o
+ score=3.552713678801e-15 w=2
