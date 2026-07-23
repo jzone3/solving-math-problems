@@ -15,7 +15,7 @@ theorem was established:**
 Proof: exhaustive + DRAT-certified case analysis over the subgroup lattice of
 Aut(G₁₂₇) = Z₁₂₇ ⋊ Z₄₂ (order 5334, confirmed exactly by nauty) — see §3b.
 All heuristic/structured SAT-side searches support Exoo's arrowing conjecture
-(no coloring below 243 mono triangles found). The unrestricted SAT instance
+(no coloring below 242 mono triangles found). The unrestricted SAT instance
 remains far beyond current solvers (§4).
 
 ## 1. Statement fidelity & priority
@@ -57,9 +57,9 @@ breaking cannot make this instance tractable by itself; it only removes a
   exhaustively: **none avoids a monochromatic triangle.** So any witness of
   G₁₂₇ ↛ (3,3)ᵉ, if it exists, is non-circulant. (Fast, exact, deterministic.)
 - **Focused random walk** (`walk.c`, WalkSAT-style on mono-triangle count,
-  6 seeds × noise ∈ {8,12,15,20,25,40}%, ~10⁹ flips total): best found
-  **243 monochromatic triangles** (random baseline ≈ 9779/4 ≈ 2445).
-  Plateau ~243–301 across all seeds; no downward trend after the first
+  8 seeds × noise ∈ {8,12,15,20,25,40}%, ~5×10⁹ flips total): best found
+  **242 monochromatic triangles** (random baseline ≈ 9779/4 ≈ 2445).
+  Plateau ~242–301 across all seeds; no downward trend after the first
   minutes. Simulated annealing (`anneal.c`) was weaker (best 655).
 - Consistent with LRX 2012's MAX-CUT heuristics never finding a good cut:
   the SAT side looks empty; evidence for the arrowing conjecture.
