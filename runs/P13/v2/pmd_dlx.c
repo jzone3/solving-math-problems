@@ -97,6 +97,7 @@ static void uncover2(int c){
 }
 
 static int solrows[4096]; static int depth_ = 0;
+static int rootlo = -1, roothi = -1, rootdepth = 0; /* restrict branch indices at depth_==rootdepth */
 
 static void print_solution(void){
     printf("SOLUTION BEGIN\n");
@@ -118,7 +119,9 @@ static void search(void){
     for(int j=Rc[0]; j!=0; j=Rc[j]) if(collen[j] < best){ best = collen[j]; c = j; if(best<=1) break; }
     if(best==0) return;
     cover2(c);
-    for(int i=D[c]; i!=c; i=D[i]){
+    int branch = 0;
+    for(int i=D[c]; i!=c; i=D[i], branch++){
+        if(rootlo >= 0 && depth_ == rootdepth && (branch < rootlo || branch >= roothi)) continue;
         nodes++;
         solrows[depth_++] = Rw[i];
         for(int j=NR[i]; j!=i; j=NR[j]) cover2(Cl[j]);
@@ -148,6 +151,7 @@ int main(int argc, char **argv){
     V=atoi(argv[1]); K=atoi(argv[2]); N=atoi(argv[3]); C=atoi(argv[4]); F=atoi(argv[5]);
     if(argc>6) maxsol=atoll(argv[6]);
     if(argc>7) fixfirst=atoi(argv[7]);
+    if(argc>9){ rootlo=atoi(argv[8]); roothi=atoi(argv[9]); }
     if(N*C+F != V){ fprintf(stderr,"bad cycle type: n*c+f != v\n"); return 2; }
     if((V*(V-1))%K){ fprintf(stderr,"k does not divide v(v-1)\n"); return 2; }
     B = V*(V-1)/K;
@@ -281,6 +285,7 @@ int main(int argc, char **argv){
         fprintf(stderr,"forced row %d (orbit len %d)\n", target, orblen[target]);
     }
 
+    rootdepth = depth_; /* first free level after forced rows */
     search();
     printf("SOLUTIONS %lld\nNODES %llu\n", nsol, nodes);
     return 0;

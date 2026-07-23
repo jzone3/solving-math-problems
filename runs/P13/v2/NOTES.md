@@ -69,7 +69,8 @@ Modulo replication, this settles the smallest open case: **there is no (9,6,1)-P
 ### (10,6)-PMD: DOES NOT EXIST (confirms Abel–Bennett 2006 Thm 1.3 computationally)
 
 - `pmd_dlx 10 6 1 10 0 0 1` (WLOG first block): SOLUTIONS 0.
-- `exhaust_indep 10 6 1`: running.
+- `exhaust_indep 10 6 1` (independent C backtracker, WLOG first block): **solutions=0**,
+  226,078,254,824 nodes (~1.5 h).
 
 ### Prescribed-automorphism sweeps (see sweep_results.tsv)
 
