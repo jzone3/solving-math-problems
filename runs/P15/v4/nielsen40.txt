@@ -1,0 +1,1176 @@
+JournalofNumberTheory129(2009)640–666
+ContentslistsavailableatScienceDirect
+Journal of Number Theory
+www.elsevier.com/locate/jnt
+A covering system whose smallest modulus is 40
+Pace P. Nielsen
+DepartmentofMathematics,UniversityofIowa,15MLH,IowaCity,IA52242,USA
+a r t i c l e i n f o a b s t r a c t
+Articlehistory: Text. Paul Erdo˝s, in 1950, asked whether for each positive
+Received11September2007 integer N there exists a finite set of congruence classes, with
+Revised8September2008 distinct moduli, covering the integers, whose smallest modulus
+Availableonline12December2008
+is N. In this vein, we construct a covering system of the integers
+CommunicatedbyC.Pomerance withsmallestmodulus N=40.
+Video. For a video summary of this paper, please visit http://
+MSC:
+primary11B25 www.youtube.com/watch?v=3ev1YjVl0RY.
+secondary11A07
+©2008ElsevierInc.Allrightsreserved.
+Keywords:
+Coveringsystem
+Minimummodulusproblem
+1. Introduction
+A set of congruence classes is said to cover the integers if each integer belongs to at least one
+congruence class. If, further, the moduli are all distinct (and greater than one) and the set is finite,
+then the set is called a (disjoint) coveringsystem. It is not difficult to construct covering systems. The
+simplest non-trivial exampleis
+0(mod2), 0(mod 3), 1(mod 4), 1(mod6), 11(mod 12).
+Covering systems arise in many different applications. For example, P. Erdo˝s [3] used them to
+prove that there are odd arithmetic progressions none of whose entries can be written as the sum
+of a prime and a power of two, while M. Filaseta [4] has applied information about covering systems
+to questions concerning irreducibility of certain polynomials. Given(cid:2)a covering system with distinct
+moduli 1<m1 <m2 <···<mn, it is not difficult to prove that n i=1 1/mi >1. It is known that
+E-mailaddress:pace_nielsen@hotmail.com.
+0022-314X/$–seefrontmatter ©2008ElsevierInc.Allrightsreserved.
+doi:10.1016/j.jnt.2008.09.016
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 641
+if m1 =2, 3, or 4 then the sum can be arbitrarily close to 1. Filaseta et al. [5] have shown that
+as m1 →∞ the sum also approaches infinity. For more information about covering systems, open
+problems, andresults,thereaderisencouraged toconsult [10].
+Therearetwoclassicalquestionsconcerningcoveringsets.In1950,Erdo˝saskedwhetherthemin-
+imum modulus of a covering system can be arbitrarily large. He and Selfridge also asked whether
+there exists a covering system where all moduli are odd. Both of these questions are open, despite
+numerous attempts at solving them. Churchhouse [2] in 1968 constructed a covering system with
+minimum modulus N =9. Krukenberg [7] in 1971 improved the result to N =18, while nearly at
+the same time Choi [1] improved it to N=20. About ten years later Morikawa [8,9] improved the
+record to N=24. Finally, in 2006, Gibson [6] constructed a covering system with minimum modulus
+N=25.
+We will construct a covering system with minimum modulus N=40, significantly improving pre-
+vious results. The method further demonstrates some of the difficulty in answering Erdo˝s’ minimum
+modulus problem,andleads theauthor tobelievethat ithasanegativesolution.
+2. Basicnotation
+BytheChineseRemainderTheorem,weknowthatacongruenceclass,whosemodulusisapositive
+integern, is uniquely determined by the intersection of congruence classes modulo the prime-power
+componentsofn.Wewishtotakeadvantageofthisadditionalstructure,andtosavethereaderfrom
+extensivecomputations,bydevelopinganotationwhichexpressescongruenceclassesswiftlyinterms
+of the prime components. Further, the notation will reflect a graph-theoretic way of visualizing these
+congruence classes.
+Tostart,let p beaprime.Wethinkofthe p distinctcosetsinZ/pZ asbranchesofatree,labeled
+fromleft toright.Forexample,when p=7,consider thegraph:
+Thenumbersnexttoeachcirclearerepresentativesofeachofthesevencosetsin Z/7Z.Supposewe
+wantourcovertocontainthecongruence3(mod7).Inotherwords,thinkinggraphtheoretically,we
+wish to cover the third branch. In that case we write 7( , ,1, , , , ). Notice that the number of
+inputsmatchestheprime.Weleavetheinputsblank wheretherearenocongruenceclasses, andthe
+1 means wearetakingacongruenceclass modulo 7·1=7.Visually,
+The white circles are the uncovered branches, while the black circle represents a covered branch. If
+we wish to cover 2 (mod 5) we write 5( ,1, , , ), and similarly 2(1, ) represents 1 (mod 2). We
+leaveitto thereadertodrawtheappropriategraphsandblack outthe correctbranch.
+642 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+Complicating the situation slightly, suppose we wish to take the congruence class 4 (mod 9). The
+graphisasfollows:
+First,noticethatourgraphhastwo“levels.”Thefirstlevelcorrespondstothethreeclassesmodulo3,
+and each of these classes breaks into three classes modulo 9, giving a total of nine classes modulo 9
+(as expected!). Second, notice that the numberings on the congruence classes modulo 9 are not en-
+tirely sequential, because the congruence must match the class modulo 3 to which it belongs. So, for
+example 1(mod9), 4(mod9) and 7(mod9) arethethreeclassesmodulo 9 whicharecontainedin
+thecoset1(mod3).Wechoseourorderingsothatthesmallestpositiverepresentativesoftheclasses
+modulo9areinascendingorder,asmuchaspossible.Otherchoicesfororderingsarepossible,andas
+long as one is consistent, no confusion should arise. Throughout this paper we will use this ordering
+although itwill become unimportant later. Third,the notation we willuse forthis branchwill reflect
+how one reaches the black dot. Starting at the top of the graph, the tree splits into three paths and
+one travels down the far left path (to the congruence 1 (mod 3)), and then the tree again splits into
+three paths and we travel down the middle path. Our notation is 3(3( ,1, ), , ). The “outer”num-
+ber 3 representsthefirstsplitintothreepaths.Wethenrestrictourselvestothefirstinput,andhere
+we have 3( ,1, ),which means we again split the tree into three paths and follow the middle path.
+One mightalso notice that weleft thelast two inputsoftheouter 3 empty,instead ofwriting
+(cid:3) (cid:4)
+3 3( ,1, ),3( , , ),3( , , ) .
+This is because there is no need to follow the two right-hand paths on the first level down to the
+second level,sinceno branchesarebeing coveredonthesepaths.
+Usingthemethodsabovewecanrepresentanycongruenceclasswhosemodulusisaprimepower.
+For example, we leave it to the reader to show that 2( ,2(2( ,1), )) represents 6 (mod 8). Notice
+thatthemoduluscanbereadoffbysimplymultiplyingthenumbersalongwhicheverpathonetakes.
+The next complication comes from the fact that more than one prime power may be involved
+in a congruence class. For example, suppose we wish to cover 5 (mod 6). This congruence class
+consists of the integerscoveredby the intersectionofthe cosets 1(mod 2) and 2 (mod 3). We write
+3( ,2(1, ), ),signifyingthatweareonthesecondbranchmodulo 3 andthefirstbranchmodulo 2.
+One might ask why we put the smaller prime (in this case 2) on the inside, rather than writing
+2(3( ,1, ), ). The reasons are difficult to articulate at this stage. But ultimately it boils down to
+two factors. First, one must make some choice, and this choice seems more natural. Second, in our
+construction we will usually (but not always) work with the primes in increasing order. By putting 3
+on the outside, we signify that we have already dealt with the prime 2; and keeping this in mind
+allows us to avoid repeating moduli. However, note that ultimately both notations express the same
+congruence class.
+Justasthereareanumberofnotationsforthecongruenceclass5(mod6)therearealsoanumber
+of graphs. The author prefers to picture the congruence classes with the prime powers on “separate”
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 643
+trees,asinthefollowing diagram:
+Thegraycirclemeansthatthecongruenceclassis(atleast partially)filledbythecongruencesbelow
+it. The unfortunate feature of this graph is that we put the tree with two branches above the tree
+with three branches; while on the other hand the notation 3( ,2(1, ), ) seems to suggest that we
+considertheprime3first,andthentheprime2.Thereasonforthisdiscrepancywillbecomeclearat
+alaterstage.
+In practice, if we have an ordered set of distinct primes P ={p1 ,p2 ,...,p
+k
+} (the o(cid:5)rdering will
+often be the usual ordering in Z), and we wish to take a congruence class modulo k i=1 pn i i, we
+will start with the prime p and all its powers on the outside, and work inwards with primes in
+k
+descendingorder.Workingoneprime-poweratatimeinthismannerhelpsusavoidusingamodulus
+twice. So, for example, if we wish to cover 3 (mod 12), using the usual ordering on primes, our
+notation is 3( , ,2(2( ,1), )). We leave it to the reader to work out the actual congruence class
+representedby
+(cid:3) (cid:3) (cid:4)(cid:4)
+5 , , , ,3 ,3( , ,1), .
+Findingtheactualclassmaybenon-trivial,butpicturingthegraphisnotdifficult.Inthismostrecent
+example, we are on the fifth branch modulo 5, and with regards to the prime 3 we first travel down
+the second branch modulo 3, and then take the third subbranch, and the modulus is simply the
+productoftheentries(hence equals 45).
+To save room, and avoid numerous blank spaces, we will often write many congruences at once
+and drop empty spots. For instance, suppose we are covering 3 (mod 12) (as in a previous example).
+Further suppose we know from the context which branch is covered modulo 4. In that case we will
+simply write 3( , ,4) instead of 3( , ,2(2( ,1), )). In other words, if we know which branch a
+primepowerbelongstowewilldroptheextraspacesandsimplywritetheprimepower.Asanother
+example, suppose we wish to use the three classes 1 (mod 5), 1 (mod 10), and 2 (mod 15). We
+could write all three 5(1, , , , ), 5(2(1, ), , , , ) and 5( ,3( ,1, ), , , ), but in practice we
+willcombine themtogetherbywriting
+(cid:3) (cid:4)
+5 1+2(1, ),3( ,1, ), , , .
+Theaddition signismeant toinformthereaderthat weremaininthesame input spot.
+When referring to a single input (which is specified by context), we will often dispense with
+parentheses entirely, and use multiplicative notation. For example, if we are restricted by design to
+the branch 1 (mod 3) then instead of writing 3(1, , ) we will write 3·1. Abusing terminology, by
+saying“weneedtofilljustoneinputof p”wewillmeanthatonthebranchweareconsideringthere
+is exactly one congruence class modulo p that needs covering. Or, in other words, only one input
+in p( ,..., ) needs filling in the given context. Also, when adding two sets together, we may take
+644 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+advantage of the fact that the first set covers some branches in the second set. We will either put
+an x over a covered spot, or drop the input entirely. For example, if we add the set 2(1, ) with the
+set 3(2( ,1), , ),wemay writeeither
+(cid:3) (cid:4)
+2(1, )+3 2(x,1), ,
+or
+2(1, )+3(2·1, , ).
+In any case, it is clear what we mean from context. In this case we are covering both 1 (mod 2) and
+4(mod6),andinthe process 1(mod3) isalso “filled in.”
+3. Acoveringprinciple
+Is it possible to cover the integers using a finite number of congruence classes, when the moduli
+consist of distinct, positive powers of a single prime? The answer is no,(cid:2)simply becau(cid:2)se the sum of
+the reciprocals of the moduli must be at least 1 for density reasons, but n i=1 1/pi< ∞ i=1 1/2i=1.
+Eventhoughthisanswer isstraightforward, itisstill instructiveto workoutaspecificexample.
+We start by working with the prime 2, and we choose one of the two congruence classes mod-
+ulo 2, say 1 (mod 2). At this point it would be pointless to add to our system either 1 (mod 4) or
+3 (mod 4), since these are already covered by 1 (mod 2), so we choose one of the two remaining
+congruence classes modulo 4, say 2 (mod 4). Similarly, we can choose the class 4 (mod 8). In our
+notation, we have 2(1,2(1,2(1, ))).Pictorially,wedisplay ourchoicesasfollows:
+Note: In the diagram above, a number next to a branch is the moduli of the respective congruence
+classneededtocoverthebranch.Fromnowonallnumbersingraphswillrefertothemodulineeded
+to cover the branch, and not representatives of congruence classes. The actual congruence class can
+be recoveredbyorderingthe branchesasintheprevioussection.
+In our example above, suppose we repeat this picking process until we have chosen a congruence
+class modulo 2n. There will still be exactly one congruence class modulo 2n which is not covered.
+Subsequently, we have two non-trivial options for the class we could pick modulo
+2n+1,
+and the
+processcontinues.
+While this system (at any finite step) does not cover the integers, we can make it as dense as
+we like. Further, it would be an honest covering system if we could just cover the one remaining
+congruenceclass2n (mod2n),forsomelargen.Thisiseasilydone,ifweintroduceonemorenumber,
+as follows: Fix a prime number p, relatively prime to 2, force n(cid:2)p−1 by increasing n if necessary,
+andforeach i intherange1(cid:3)i(cid:3)p takethecongruenceclassgivenbytheintersectionof i (mod p)
+and
+2n+1−i (mod2n+1−i).Inournotation
+(cid:3) (cid:4)
+p
+2n,2n−1,2n−2,...,2n−(p−1)
+.
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 645
+Noticethatwehavedroppedalloftheemptyinputsamongthepowersof 2.Theseemptyinputsare
+unnecessary because it is clear which branch we are on in each case (namely, 2n+1−i (mod 2n+1−i)).
+By the Chinese Remainder Theorem these classes have distinct moduli
+2n+1−ip,
+and taken together
+theyclearlycover 2n (mod2n).
+There are a few things we should note. First, while choosing n=p−1 will suffice, we will in
+practice choose n much larger. This forces all of the congruence classes involving p to have moduli
+divisible by a large power of 2, which will prevent duplication of moduli when we use p later in
+another context. Second, more generally we can replace p by any number relatively prime to 2, and
+the same argument still works.
+The filling method described above is fundamental to the paper, and so we introduce notation to
+denote it. When we write
+(2m)↑
+, we mean that we take a prime p (or, more generally, a positive
+integer),relativelyprimeto 2,andformasystemofcongruenceclasses withmoduli
+2m,2m+1,...,2n
+(togettoa“lowerlevel,”ifnecessary)andmoduli
+2np,2n−1p,...,2n−(p−1)p
+withn(cid:2)p−1,tocoverthelasthole.Ultimately,(2m)↑ coversasinglecongruenceclassmodulo2m−1.
+As above, the choices for the congruence classes will usually be forced by the context, but if not we
+canalways clarify.Forexample,to fillinthepreviousdiagram, wecanwrite
+Due to the familiarity we have with actual congruence classes, let us convert our notation back to
+specifiedcosets.Onecouldlet p=3andn=2,andthenthecoveringinthepreviousdiagramcanbe
+givenby
+1(mod2), 2(mod4), 4(mod8), 4(mod12), 2(mod 6), 3(mod3).
+Noticethatthelastthreecongruenceclassesareexactlyi(mod3)∩2n+1−i (mod2n+1−i)for1(cid:3)i(cid:3)3,
+and they cover 8 (mod 8). (In fact, they cover 4 (mod 4), so in hindsight we could have simplified
+our system slightly.) It can be helpful to increase n in some situations. For example, if n=3 the
+congruencesinthiscase become
+1(mod2), 2(mod4), 4(mod8), 16(mod24), 8(mod12), 6(mod6).
+Notice that when we artificially increase n in this manner, the moduli of all congruences involving
+p=3aredivisibleby2.Increasingnfurtherwillsimilarlyincreasethe2-adicvaluation.Asmentioned
+previously,wheneverweusethisarrownotation,wewillartificiallyincreasen whenneededtoavoid
+repeatingmoduli. (Aspecific example ofwhat can go wrongwillbegiven later.)
+646 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+↑
+Since we will need it in an example below, we also work out what the covering 2 looks like in
+the case p=5 andn=5.Inthiscase ourcoveris
+(cid:6)
+C= 1(mod 2), 2(mod4), 4(mod8), 8(mod16), 16(mod32)
+(cid:7)
+96(mod160), 32(mod80), 8(mod40), 4(mod20), 0(mod10) . (1)
+Not surprisingly, the situation changes slightly when one tries to define the arrow notation for
+primesotherthanq=2.Forexample,ifweworkwithq=3,andwechoosecongruenceclasseswith
+moduli {3,32,...,3n} we do not get a dense cover. For a specific example, if we choose 1 (mod 3),
+3(mod9),and 9(mod27) the picturelookslike:
+Continuing theprocess,using increasingpowersof 3,wecoverapproximatelyhalfofthebranches.
+Thinkingaboutitanotherway,ifwecovertwocongruenceclasses(ratherthanone)oneachlevel
+then we are left with only one white hole on the lowest level. Furthermore, we can fill this last
+white hole as we did for the prime 2, by introducing a large prime p. Our notation for this situation
+must take into account the fact that we now need two classes at each level, and so we use 3 ↑( , ).
+Similarreasoningworksforanyotherprimeq,andwehaveq−1inputsforq ↑ .Thegeneralprinciple,
+stated veryloosely, isthat using the higher powersofq (along withan unspecified prime p which is
+relatively prime to q) one can cover the last congruence classes modulo q, if the other q−1 classes
+arecovered.
+Alternatively,onecandefinethearrownotationintermsofaninfiniterecursion,similartocontin-
+ued fractions. The recursion is just q ↑(α 1 ,...,α q−1 )=q(α 1 ,...,α q−1 ,q ↑(α 1 ,...,α q−1 )). Technically
+speaking, when written this way the recursion proceeds forever, and the resulting system is not fi-
+nite.However,asmentionedpreviously,bychoosingalargeandasyetunnamedprime,wecanforce
+↑
+the process to terminate eventually. The reason for the upwards arrow in the notation q is that we
+picture our choices passing to higher and higher powers of q (or, in terms of the graphs, lower and
+lowerlevels).
+Example1. To give a concrete example of this notation in action, consider the set of congruences
+given by S=3 ↑(1,2 ↑). We take p=5, which is the smallest number which is relatively prime to all
+primesinvolving arrows.
+↑
+First we need to understand the congruences, which we will call C, involved in 2 . We wrote
+these out previously with the set labeled (1) above. Hereafter, when we write a (mod m)∩C we
+will mean the set of congruence classes given by intersecting each element of C with a (mod m),
+individually.
+Now, by the recurrence relation we have 3
+↑(1,2 ↑)=3(1,2 ↑,3 ↑(1,2 ↑)).
+The first input is 1,
+which implies that 1 (mod 3) belongs to our system S. The second input is 2 ↑ , which implies that
+2(mod3)∩C belongs to S.Iterating therecurrencerelation
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 647
+(cid:3) (cid:4) (cid:3) (cid:3) (cid:4)(cid:4) (cid:3) (cid:3) (cid:3) (cid:4)(cid:4)(cid:4)
+3 ↑ 1,2 ↑ =3 1,2 ↑ ,3 ↑ 1,2 ↑ =3 1,2 ↑ ,3 1,2 ↑ ,3 ↑ 1,2 ↑
+implies that we also have 3 (mod 9) and 6 (mod 9)∩C in our system. Continuing in this way, we
+have
+(cid:3) (cid:4) (cid:3) (cid:4)
+3k−1 mod3k , 2·3k−1 mod3k ∩C
+in S, for each k in the range 1(cid:3)k(cid:3)4. We stop with k=4 because we can fill the last un-
+covered congruence class 34 (mod 34) again using the prime p = 5. To do this, we take the
+classes
+(cid:3) (cid:4)
+j
+(mod5)∩35−j mod35−j
+foreach j inthe range 1(cid:3) j(cid:3)5.
+In total, there are ten cosets in C. Under our construction, there are forty-nine cosets in S =
+3
+↑(1,2 ↑),whichhopefullydemonstratestheutilityofournotation.Choosing
+pdifferently,ortraveling
+toevendeeperlevels(i.e.higherpowersontheprimes2or3),increasesthenumberofcosetsinthe
+cover.Considernowwhathappensif,whenconstructingC,wehadtakenn=4.Inthatcase,C would
+haveonly9elements(animprovement).ButC wouldalsocontainacongruenceclasswithmodulus5,
+which is decidedly not divisible by 2. Subsequently, when trying to cover the arrow on the prime 3,
+we would repeat the modulus 3·5. This is one reason we artificially travel to deeper levels, so as to
+avoidrepeatingmoduli.
+Only going one level deeper when constructing C avoided repeating moduli, but there are other
+situations where this will not suffice. However, there are many ways around this obstruction. Obvi-
+ously,foreacharrowwecouldfixanewlargeprime p (whichhasnotappearedinthecover)todeal
+with that specific arrow, but this seems wasteful since our cover will contain many arrows. Better,
+since one is not restricted to using primes to deal with the arrows, we could fix a prime p and use
+different powersof p (whennecessary)totakecareofeacharrow.Itdoesturnoutthatwecaneven
+make the process work just using a fixed large prime p, by going to deep enough levels whenever
+necessary.Wewillnotprovethisasittakesustoofarafield,andifthereaderisuncomfortablewith
+thisideafeelfreetouse different powersof p whenevernecessary.
+Thereareafewmorecommentsandimprovementswhichneedtobemaderegardingournotation.
+Occasionally, we will be restricted to a specified branch modulo
+qk−1.
+Recall how we previously de-
+fined
+(2k)↑
+.Itwassimply
+2k−1·2 ↑
+;thatis,werestrictedtoabranchmodulo
+2k−1
+andthenfollowed
+↑ ↑
+it with 2 . (So, for example, 16 simply meant we were restricted to a certain branch modulo 8, and
+we followed the pattern for 2
+↑
+at this point.) Similarly, we can also define
+(qm)↑
+to mean
+qm−1·q ↑
+.
+Note that (qm)↑ again has q−1 inputs, since the congruence class modulo qm−1 is fixed. More ex-
+plicitly, suppose we are restricted to the congruence class a (mod qm−1). By the jth input of (qm)↑ ,
+where 1(cid:3) j(cid:3)q−1,we meanthecongruenceclasses
+(cid:3) (cid:4)
+a+ jqk−1−qm−1 modqk , withk(cid:2)m.
+Tomakethismoreclearwe workout thefollowing example:
+Example 2. Consider 3( ,3 ↑(1, ), ). Supposing we know from context that we are restricted to
+the branch 2 (mod 3) we write this system using the abbreviated notation 9 ↑(1, ). Pictorially, this
+is
+648 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+Intermsofcongruenceclasses, theblack circlesareexactly thecongruenceclasses
+(cid:3) (cid:4)
+2+1·3k−1−3 mod3k ,
+forallk(cid:2)2 (exceptthat we canstop at some point,using ourprime p).
+There is another possible point of confusion in the fact that when we chose the classes modulo 9
+and 27 two diagrams ago, we did not necessarily have to choose them within the same class mod-
+ulo 3. But by doing so, we kept our partial cover as densely packed as possible. Hereafter, we will
+↑
+continue touse thisstrategy,whichisforcedbytherecurrencerelationdefinition ofq .
+Example3. As stated previously there are examples of covering systems with least modulus 2, 3,
+and 4, where the sum of the reciprocals of the moduli are arbitrarily close to 1. Examples are easily
+expressedinournotation.
+Forsuchacoveringsystemwithleastmodulus2,justtake2
+↑(1).Togetthesumofthereciprocals
+of the moduli close to 1, first fix p=3 (to make the system finite). Second, go to a very deep level
+onthetreearisingfromthepowersof2,beforeusing p tofillthelastemptyhole(orinotherwords
+↑
+choosen large,wheren isasinthedefinitionof 2 ).
+Forasystemwithleastmodulus3,take3
+↑(1,2 ↑),asinExample1.Tomakethesumofreciprocals
+close to 1, go to deep levels on both the tree coming from the powers of 2 and the tree from the
+powersof 3 (andtake p=5).
+Forleast modulus 4,one canuse 2( ,2 ↑)+3 ↑(2(1,x),2(2 ↑,x)). Pictorially:
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 649
+↑
+Note that the arrow pointing towards the right just captures the fact that the 3 propagates to the
+lowerlevels,thus coveringthelast hole.
+Ineachofthesesystems,thereareeithernoemptyinputsorallemptyinputsareeventuallyfilled.
+This ties directly into the fact that these systems truly cover all of the integers. All that is left to the
+readeristoverifythat therearenorepeatedmoduli.
+Some of the ideas in this section, although not stated in this form, are found in [6–8]. Gibson has
+some nice generalizations of the machinery behind the arrow notation, while Krukenberg is credited
+withtheoriginalidea.Unfortunately, noneofthese papersarereadilyavailable.
+4. Thecover,primebyprime
+Wearenowreadytoconstructacoveringsystemwithminimummodulus N=40,workingprime
+by prime. When checking that the set of congruences we construct is a disjoint covering system, the
+reader should keep track of two pieces of data. First, note which moduli are used, by multiplying the
+entries in our notation, and thinking of any arrow as using all higher powers of the prime (even if
+thisisnottechnicallywhathappens).Forexample,ifweweretousetheset5
+↑(1,2,4,3 ↑(1,2 ↑)),the
+moduli involved are exactly numbers of the form 5a, 5a2, 5a4, 5a3b, and 5a3b2c, with a,b,c>0. (Of
+course,wewouldeventuallychoosealargenumber relativelyprimeto 2, 3,and 5 toaccount forthe
+arrows and to make the system finite.) Second, when it is claimed that a hole is covered, the reader
+shoulddouble-checkthattherearenoemptyinputs.Forexample,itwouldbeincorrecttoclaimthat
+the set 3(1,2 ↑,3(1, ,2 ↑)) coversahole, because thereisoneclass modulo 9 whichisleft unfilled.
+4.1. Theprime2
+↑
+Westartwiththecongruencesgivenby2 (wheretheimplicitlargeprime p willbemadeexplicit
+at a later stage). Since the moduli in our cover are all at least 40, we must remove the congruence
+classes withmoduli 2, 4, 8, 16,and 32. Wecanpicturethe situationasfollows:
+4.2. Theprime3
+We will partially cover the hole labeled with a 2 in the previous graph; so we restrict to the
+branch 1 (mod 2). In particular, in our notation, when we use 2 and 4 ↑ it should be clear which
+branch we are on. We again start with a set of congruences and remove those with small moduli.
+Namely, start with 3
+↑(2,4 ↑),
+and remove the congruences with moduli 6, 12, 18, 24, and 36. More
+specifically, weareleftwith
+(cid:3) (cid:3) (cid:3) (cid:3) (cid:4)(cid:4) (cid:4) (cid:3) (cid:3) (cid:3) (cid:4) (cid:4) (cid:3) (cid:3) (cid:4)(cid:4)(cid:4)(cid:4)
+↑ ↑ ↑ ↑
+3 ,2 2 ,2 ,2 , ,3 ,2 2 ,2 , ,3 2(1, ),2 2 , .
+650 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+Wecanpicturethisasfollows (withafewwordsofexplanationbelow):
+As before, any gray circle means that the circle is partially filled by the congruence relations we are
+currentlyconsidering.Theuppergraycircleimpliesthatwearerestrictingourselvestothatbranchfor
+theprime2,andthenpassingtoanewtree(inthiscasearisingfromthepowersof3).Thetwowhite
+spots(onthebottomtree)occurwhenweremovetheclasseswithmoduli6and18,respectively.The
+upper gray spot on the bottom tree occurs when we remove the classes with moduli 12=3·4 and
+24=3·8 leaving behind 3·16 ↑ ; while the lowest gray hole occurs when we remove the class with
+modulus 36=9·4. If we wish to be completely technical, we can specify which 16 ↑ we are talking
+about (as we did above), by writing 2(2( ,2( ,2 ↑)), ). However, it is clear from context that this
+16 ↑ is what is left over after taking away the classes with moduli 4 and 8 from 4 ↑=2(2 ↑, ) (which
+coversthetop-most graycircle).Similarremarksapplyto theotherentries.
+Notice that we have not, as yet, made use of congruences with moduli of the form 3n withn(cid:2)4.
+In other words, there is an extra 81 ↑(1, ) which has not been used. We restrict ourselves to the
+congruence class 21 (mod 27) and use this extra 81 ↑(1, ). (Notice that these congruences fall into
+the lowest white hole, which is the spot coming from when we removed the congruence with mod-
+ulus 18). Moretechnically, weaddtooursystemthe congruences
+(cid:3) (cid:3) (cid:3) (cid:4) (cid:4)(cid:4)
+↑
+3 , ,3 3 , ,3 (1, ) , , . (2)
+↑
+Working intuitively, it is better to think of these congruences as a copy of 81 with one input filled,
+and we only need to cover one input in a 27 (to fill the third empty input in (2)) and one input in
+↑
+a 27 (to fill the fourth and fifth empty inputs in (2)) to finish covering the hole arising from the
+modulus 18.Inotherwords, just tobe moreclear,the needed 27·1 and 27 ↑·1 arethe sets
+(cid:3) (cid:3) (cid:4)(cid:4) (cid:3) (cid:3) (cid:4)(cid:4)
+↑
+3 , ,3 3(1, , ), , , 3 , ,3 3 ( ,1), ,
+and ifthese arecoveredsoisthebottom-most white holeinthe previousdiagram.
+4.3. Theprime5
+We used the prime 3 to partially cover the spot left over when we removed the congruence class
+withmodulus2.Intheprocess,weintroducedfivenewholes.So,intotal,wehaveholescomingfrom
+the (removed) moduli 4, 6, 8, 12, 16, 18, 24, 32, and 36. The next hole we attempt to fill is the one
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 651
+coming from 8. The reason we choose this hole, rather than a hole arising from a smaller modulus
+(such as 4) is that we introduce fewer new holes that must eventually be filled. On the other hand,
+we do not fill a hole arising from a larger modulus (such as 32) because it would waste the fact that
+5isasmallprime,andhasfewbranches.(Thisisalsowhyweusedtheprime3topartiallycoverthe
+holefromthemodulus 2,ratherthananyoftheotherholes.)Thecongruencesweaddtooursystem
+are(withsome wordofexplanationabout thefinal entriestofollow):
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:4) (cid:3) (cid:3) (cid:4)(cid:4)(cid:4)
+↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
+5 8,16 ,3 4,3 (4, ),3 (1,2) ,3 8,16 ,5 2,4 ,3 (1,2),3 4,8 .
+Pictorially:
+↑
+Thelowergrayholeonlyneedsonemoreinputina9 .Wenotenow,andwilluselater,thatthecon-
+gruencesherecover3(mod9)inthethirdinputof5oneverylevel;inotherwords,thecongruences
+inthissubsection cover 5 ↑( , ,3( , ,3(1, , )), ).
+↑
+The secondandfourthentriesinthe 25 aremeant toconveythe congruences
+(cid:3) (cid:4) (cid:3) (cid:4) (cid:3) (cid:3) (cid:4) (cid:3) (cid:3) (cid:4)(cid:4)(cid:4)
+4 ↑=2 ,2 ↑ and 3 ↑ 4,8 ↑ =3 ↑ 2 ,2( ,1) ,2 ,2 ,2 ↑ ,
+respectively,whichinsomewaysgoesagainstconvention.However,thesetwosetsnotonlycoverthe
+class 4 (mod 8) which we have restricted to, but even larger classes. In fact, among the 25 ↑ entries,
+only one of them does not apply to the entire congruence class 2 (mod 2); namely, 25 ↑·3 ↑(4,8 ↑),
+whichdoesapplytotheentirecongruenceclass 4(mod4).Sincewehaveanextra125 ↑·1 toutilize,
+we place it to cover the higher powers of 5 in the set 25
+↑·3 ↑(4,8 ↑).
+In other words, on the entirety
+of 2 (mod2) we havethefollowing partialcoverbyourcongruenceclasses:
+652 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+Similarly, the same diagram but with the lowest gray circle made black holds on the entirety of
+4 (mod 4). Note however that on the hole we were trying to fill in the first place (coming from
+removingtheclasswithmodulus8,namely4(mod8))wehaveanevenmorecompletecover.There,
+only one new hole was introduced, which is the partially filled lower gray hole from two diagrams
+previous.Thereasonwechosesomeofthecongruencestocovermorethanwasneededwillbecome
+apparent in later subsections. We also remark that in the next subsection we need to know that the
+lowest graycircleinthepreviousdiagramrepresentstheclass 20(mod 25).
+4.4. Theprime7
+Wenowbegintoplugtheholewhicharosefromremovingthecongruenceclass withmodulus 4.
+Sowerestricttothebranch2(mod4).Onthisbranch,weonlyneedtocoverfourcongruenceclasses
+modulo 5, and one modulo 25, as depicted by the five gray spots in the bottom half of the previous
+diagram. When we use the number 25 (without any arrow) in the diagram below, it will refer to
+the single class 20 (mod 25) (and we will drop the fifth input in 5). Also note that the third class
+modulo 5 only needs twoclasses modulo 3.
+Westart withthe congruencesgivenby
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:3) (cid:4) (cid:3) (cid:4)(cid:4)
+↑ ↑ ↑ ↑ ↑
+7 ,8 ,3 2,4,3 (1,2) ,5 5 1,2,4,8 ,2,3(1,2,x),4,5 x,x,x,3 (1,2),x ,
+(cid:3) (cid:3) (cid:4) (cid:4) (cid:3) (cid:3) (cid:4) (cid:3) (cid:3) (cid:4) (cid:4)(cid:4)
+3 8 ↑ ,3 ↑ 4,8 ↑ , +5 3·4,9 ↑ (1,2),x,9 ↑ 4,8 ↑ ,5 x,x,x,5 ↑ 3·1,3·2,3·4,3·8 ↑ ,x ,
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:3) (cid:4) (cid:4)(cid:4) (cid:4)
+↑ ↑ ↑ ↑
+5 8 , ,3 8 , ,x , ,5 x,x,x,3 4,8 ,x , .
+Once again, it is easier to visualize what is going on. We will suppress the fact we are restricted to
+the branch 2(mod4),andtakeafewliberties insimplifying howwewritethe congruences:
+Noticethatonthefifthbranch,the 3·8 ↑ and9 ↑(4,8 ↑)arechosentocoverthetwoclassesmodulo 3
+needed on the third branch of 5. This is why an x appears there. Also notice that we have concen-
+tratedmanyofthesmallpowersof 2 onthethirdandfourthbranches. Thisfact willbeusefulwhen
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 653
+working with the prime 17 in a later subsection. Some of the choices in this set may seem haphaz-
+ard or out of order. This is a consequence of some congruences being chosen to work together with
+congruenceswehave yettochoose.Eventually, moreregularitywillemergeinthecover.
+Next, consider the set A={2,4,3 ↑(1,2),1,8 ↑,3 ↑(4,8 ↑)}, in this order. We can fill in the right-
+mostwhiteholebytaking49 ↑ appliedtoeachelementin A.Wecanfillintheemptyclass4(mod5)
+on the gray hole of the previous diagram, by taking 49
+↑·5
+times each element in A. Finally, for the
+left-mostwhitehole,wecanfillintheclass20(mod25)bytaking49 ↑·25timeseachelementin A.
+Note that we ordered A so that 3 (mod 9) is covered on the third input of a 7 ↑ . In other words, the
+congruences of this subsection cover 7 ↑( , ,3( , ,3(1, , )), , , ), with the arrow portion coming
+from the ordering on A. Similarly, on the fourth input of 7 ↑ , both 1 (mod 3) and 3 (mod 9) are
+covered in the third input of a 5 ↑ (recalling the fact that 5 ↑( , ,3( , ,3(1, , )), ) was already
+coveredintheprevioussubsection). These facts willbecome important inthe nextsubsection.
+Summing up, we have introduced two more holes which need to be filled. The one on the left is
+completely empty except that the class 20 (mod 25) is filled, while the gray one on the right needs
+oneclass modulo 5 filled andanother classmodulo 5·3.
+Whenworkingoutthatthemoduliusedabovearealldistinct,thereadermightnoticethatmoduli
+of the form 7a+15b+332+c2d or of the form 7a+25b+33c2d (with a,b,c,d(cid:2)0) are not being used.
+However, these few remaining classes seem to give little benefit at this point, and only make the
+coveringsystemmorecomplicated; eveniftheytechnically do strengthenthecover.
+4.5. Theprime11
+We are now ready to actually fill an entire hole, without creating any new holes in the process.
+Travel back to the branch we were trying to cover with the prime 3. Recall that we introduced five
+new holes here, arising from the moduli 6, 12, 18, 24, and 36. We will attempt to fill both of the
+holes coming from 6 and 18 simultaneously, rather than separately. But, at the same time, we are
+going to split this case in half, by working on the two branches 1 (mod 4) and 3 (mod 4) separately.
+We willusethe prime 11 tocoverthe left half, and 13 tocovertherighthalf.
+Inotherwords, forthe prime 11 wearerestrictedtothe following branches:
+Recall that we only need to cover one input each in a 3, 27, and 27
+↑
+, because of the extra 81
+↑·1
+that partially fills the bottom gray hole.1 Alternatively, we occasionally will ignore the contribution
+1 Wealsohavetheaddedbenefitthatweonlyhavetofillonecongruenceclassmodulo4.However,fromtime-to-timewe
+willrestrictourconsiderationstooneprimepower,leavingitunderstoodthatotherconsiderationsmightapplyforotherprime
+powers.
+654 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+fromtheextra81
+↑·1,andcoveroneinputina3
+andoneinputina9.Wenotethatthislatterinput
+correspondsto 3(mod9).
+Starting with the prime q=11, and for (almost) all new primes hereafter, we will be filling the
+branches of q ↑ , and hence will only need to fill q−1 inputs. We will list them, one at a time,
+discussing anyquirks along theway.
+↑ ↑
+Thefirsttwoinputsin11 areeasilyfilledby4and 8 ,respectively.(Noticethatwecannotuse 1
+or2,because11and22arebothlessthan40.)Thenexttwospotsarecoveredby3·2+27·1+27 ↑·2
+and 3·4+27·4+27 ↑·8 ↑ .Thefifthspotiscoveredby 3·8 ↑+9·8 ↑ .Notethatthethirdinputin 5 ↑ ,
+as constructed in Section 4.3, already has 3 (mod 9) covered. So, we can fill the next two inputs
+in 11 ↑ using 5 ↑(1,2,3·1,4) and 5 ↑(8 ↑,3·2+9·2,3·4,3·8 ↑+9·8 ↑). Further, using 3·3(1,2,4)
+to cover 1 (mod 3) and 81 ↑(1,4) to cover the needed class modulo 27, we can add these with
+5
+↑(27 ↑·1,27 ↑·2,27 ↑·4,27 ↑·8 ↑)
+tofilltheeighthinputin 11
+↑
+.
+Forthe ninth,use
+(cid:3) (cid:4)
+7 ↑ 1,2,3·1,5 ↑ (1,2,x,4),4,8 ↑
+whereinthethirdinput,theneededclassmodulo9isalreadycovered,asmentionedintheprevious
+subsection, and similar remarks apply to the fourth input. On the tenth and final hole, we will add
+two sets together. The first set is 5 ↑(3(3(1,4, ), , ), , , ). The second set we add to finish the
+tenthinputis
+(cid:3)
+7 ↑ 3·2+27·1+27 ↑·2,3·4+27·4+27 ↑·8 ↑ ,3·8 ↑ ,
+(cid:3) (cid:4)
+5 ↑ 3·3(x,x,1)+9·2,8 ↑ ,x,3·1+9·4 ,
+(cid:3) (cid:4)
+3·3(1,2,4)+81 ↑ (1,4)+5 ↑ 27 ↑·1,27 ↑·2,27 ↑·4,27 ↑·8 ↑ ,
+(cid:3) (cid:3) (cid:4) (cid:4) (cid:4)
+5 ↑ 3·3 x,x,8 ↑ ,3·2,3·4,3·8 ↑ +9·8 ↑ .
+At this point I encourage the reader to draw a graph with ten branches, and write the set of congru-
+encesused tocovereachbranch.
+4.6. Theprime13
+The classes we use will look like those for the prime 11. The branch we work on is the same as
+forthe prime 11,exceptwetakethe otherclass modulo 4:
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 655
+↑
+We fill the first ten of the twelve branches in 13 , by using the same sets that were constructed
+↑
+in the previous subsection, except that each 4 and 8 now refers to the branch pictured above. The
+↑
+remaining two inputs in 13 will be covered by using the prime 11. For the first of the two inputs,
+↑ ↑
+takean 11 withexactlythesameinputsasinSection4.5,exceptthatnowwhenoneseesa 4 or 8
+it covers 3 (mod 4) rather than 1 (mod 4). Also, replace each 20 and 21 by an x (since these were
+↑ ↑
+coveredintheprevioussubsection)! Thismodified 11 nowfillsthe eleventhinput of 13 .
+Similarly,takean11 ↑ withentriesexactlyasbefore,andagainputan xonanyentryendingin20
+or 21. Next, replace each 4 by 1, and each 8 ↑ by 2. None of these classes were used in the previous
+input,andso thisgivesusthe twelfth input.
+↑
+Intuitively,wecanthinkoftheargumentofthepreviousparagraphsasfollows:Halfofthe11 we
+constructedintheprevioussubsectionremainsfilledwhenwepasstothebranchweareconsidering
+currently, and so we only have to refill half of it. But, we were able to fill all of it on the previous
+branch. Inasimilar manner wecanfillthe halfwe needtoo,twice,onthisbranch.
+4.7. Theprime17
+We partially plugthe holescoming fromboththe moduli 16 and 32. Visually,
+Onbothofthesebranches,weonlyneedtocoverthefirstfourclassesmodulo5,withonlyoneinput
+↑
+in a 9 on the third branch. In other words, we already have a partial cover from our work with the
+prime 5 aspicturedbelow:
+↑
+Similarly,onthelastbranchfortheprime 7,onlythreeinputsina 49 needfilling.Thethirdbranch
+for the prime 7 only requires one class modulo 3 to complete, and the fourth branch needs only one
+class modulo 5 (namely, 4(mod5))andtwo inputsina 25 ↑ (sittinginside the class 1(mod 5)).
+↑
+Recallthatweneedtofillsixteenbranchesfor17 .Wewillonlybeabletocompletelyfillthirteen
+branches. In the first seven inputs use 1, 2, 4, 8, 16+32, 3(4,2,1), 3(8,3 ↑(8,4),3 ↑(2,1)). (Note
+that we will have to drop the congruences with moduli 17 and 34 at the end of our construction.)
+The reader might wonder why we used 3(4,2,1) and 3(8,3 ↑(8,4),3 ↑(2,1)) instead of 3 ↑(1,2) and
+3
+↑(4,8),
+which admittedly are much simpler while using the same moduli. The reason is we will
+needtocoverthecongruenceclass 6(mod9) asmuchaspossiblewhenweworkwiththeprime 37
+inalatersubsection.
+For the eighth input in 17
+↑
+use 3
+↑(16,32 ↑)+64 ↑
+; the 64
+↑
+fills the hole coming from the mod-
+ulus 32, while the 3
+↑(16,32 ↑)
+fills the hole coming from the modulus 16, so one must interpret
+656 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+the powers of 2 correctly. This set, 3
+↑(16,32 ↑)+64 ↑
+, will have the same meaning throughout this
+subsection.
+Thenextthreebranches arefilled by
+(cid:3) (cid:4) (cid:3) (cid:3) (cid:4) (cid:4)
+5 1,2,9 ↑·1,4,x , 5 8,16+32,9 ↑·2,3 ↑ 16,32 ↑ +64 ↑ ,x
+and
+(cid:3) (cid:3) (cid:4) (cid:4)
+5 5 ↑ (1,2,4,8),3(1,2,4),9 ↑·4,3 ↑ (8, )+5 ↑ 3 ↑·1,3 ↑·2,3 ↑·4,3 ↑·8 ,x . (3)
+↑
+Recall that the third entry of each outer 5 only needs one input in a 9 filled, and the fifth entry is
+alreadyfilled.(Wecouldplacetheappropriate x’sinthethirdinput,butitcomplicatesnotation.)We
+keepthepartialset
+(cid:3) (cid:3) (cid:3) (cid:4) (cid:4) (cid:4)
+5 5 ↑ , ,16+32,3 ↑ 16,32 ↑ +64 ↑ , , , ,x
+ofcongruenceswithunusedmoduli inreserve.
+Atthispointwewilldepartfrompreviousconvention,andworkwiththeprimes11and13before
+we work with 7. Using the first ten of the eleven sets we have constructed to this point, we can fill
+↑ ↑
+up an entire 11 . We now have twelve complete sets, which can then be used to fill up one 13 . To
+save space,wewill refertothese setsas 11
+↑(∗)
+and 13
+↑(∗),respectively.
+The fourteenth and fifteenth sets are 7(1,2,3·1,5·1+25 ↑(1,2),4,8,7 ↑(x,1,x,x,2,4)) and
+7(16+32,3 ↑(16,32 ↑)+64 ↑,3·2,5·2+25 ↑(4,8),3 ↑(4,8),11 ↑(∗),7 ↑(8,16+32,3 ↑(16,32 ↑)+64 ↑)).
+The sixteenth and final set is quite complicated. We begin with the partial set we kept in reserve.
+↑
+Notice that it covers the needed entries in 25 occurring in the fourth entry of any 7. We finish by
+adding in
+(cid:3) (cid:3) (cid:4)
+7 13 ↑ (∗),5 ,4,9 ↑·1,8,x ,9 ↑ (1,2),5·3(1,2,4)+25 ↑ (x,x),
+(cid:3) (cid:3) (cid:3) (cid:4) (cid:4) (cid:3) (cid:4) (cid:4)
+5 5 ↑ 16+32,3 ↑ 16,32 ↑ +64 ↑ ,x,x ,16+32,9 ↑·2,3 ↑ 16,32 ↑ +64 ↑ ,x ,
+(cid:3) (cid:3) (cid:4) (cid:4)
+5 5
+↑
+3
+↑
+(1,2),3
+↑
+(4,8),x,x ,3
+↑
+(8, ),9
+↑·4,
+,x
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:4) (cid:3) (cid:4)
++7 ↑ 5 x,3 ↑ (x,1),x,1,x ,5 x,3 ↑ (x,2),x,2,x ,5 x,3 ↑ (x,4),x,4,x ,
+(cid:3) (cid:4) (cid:3) (cid:3) (cid:4) (cid:4) (cid:4)
+5 x,3 ↑ (x,8),x,8,x ,5 x,16+32,x,3 ↑ 16,32 ↑ +64 ↑ ,x ,3 ↑ (1,2) ,
+(cid:3) (cid:4)(cid:4)
+7 ↑ x,3 ↑ (4,8),x,x,11 ↑ (∗),13 ↑ (∗) .
+We note that there is still one small hole on this branch, in the second input of the 7 (in the first
+input in 5).
+Recall that we must now remove the two classes with moduli 17 and 34. Summing up, we have
+↑
+twocompletelyemptybranchesin17 (namely,thefirsttwobranches)exceptthatthearrowportions
+are filled by
+(172)↑·1
+and
+(172)↑·2,
+respectively. The last branch is partially, but almost completely,
+filled. The thirteenotherbranches arecompletely filled.
+4.8. Theprime19
+Wenextattempttocovertheholearisingfromremovalofthecongruenceclasswithmodulus 12.
+Inotherwords, wearerestrictedonthebranch
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 657
+The first ten inputs of 19 ↑ are filled by: 4, 8 ↑ , 3·1, 3·2, 3·4, 3·8 ↑ , 9 ↑(1,2), 9 ↑(4,8 ↑),
+5
+↑(1,2,4,8 ↑),
+and 5
+↑(3·1,3·2,3·4,3·8 ↑).
+These, along with 1 and 2, give twelve sets, which
+↑ ↑
+wecandivide among two 7 ’s,filling two moreinputsin 19 .
+Since we are restricted to the class 1 (mod 4), some congruences from the prime 11 are valid on
+thisbranch. Inparticular,wealready havethe partialcover:
+↑
+On the first gray spot one needs only to fill the third input in a 5 , while on the second gray hole
+↑
+one needs only fill the second, third, and fourth inputs in a 5 . On the third gray spot we only need
+↑ ↑
+tofilltwo inputsina 7 .Thus, wefilltwo moreinputsofour 19 byfirst taking
+(cid:3) (cid:4)
+11 ↑ x,x,1,2,3·1,5 ↑ (x,x,1,x),5 ↑ (x,2,3·1,3·2),3·2,7 ↑ (x,x,1,2,x,x),9 ↑ (1,2)
+↑
+andthentaking thesame congruences, exceptwereplaceeach 1 by 4,andeach 2 by 8 .
+↑ ↑
+Forthenexttwospots,wefilla 13 anda 17 ,usingthesets 1, 2,andasmanyofthepreviously
+↑ ↑ ↑
+constructed sets as we need. In the 13 , avoid using any sets starting with 5 or 11 . We are now
+↑
+readytofilltheseventeenthinput of 19 ,byadding togetherfoursets. We beginwith
+(cid:3) (cid:3) (cid:4) (cid:4)
+↑ ↑ ↑ ↑
+5 ,9 (1,2),9 4,8 , .
+↑
+Notice that this set covers the sixth input in an 11 on the branch we are restricted to. Next we add
+in
+(cid:3) (cid:3) (cid:3) (cid:4)(cid:4) (cid:4)
+↑ ↑ ↑ ↑ ↑
+7 , , ,5 9 (1,2),x,x,9 4,8 , ,
+↑
+whichfillsinthe fourthinputofa 7 .Add in
+(cid:3) (cid:3) (cid:3) (cid:4)(cid:4) (cid:3) (cid:4)
+11 ↑ x,x,5 ↑ 9 ↑ (1,2),x,x,9 ↑ 4,8 ↑ ,7 ↑ 3·1,3·2,3·4,x,3·8 ↑ ,9 ↑ (1,2) ,
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:4) (cid:3) (cid:4)(cid:4)
+7 ↑ 9 ↑ 4,8 ↑ ,5 ↑ (1,x,x,2),5 ↑ 4,x,x,8 ↑ ,x,5 ↑ (3·1,x,x,3·2),5 ↑ 3·4,x,x,3·8 ↑ ,
+(cid:3) (cid:3) (cid:3) (cid:4)(cid:4) (cid:4) (cid:4)
+↑ ↑ ↑ ↑ ↑
+x, , ,7 x,x,5 9 (1,2),x,x,9 4,8 ,x,x,x , .
+658 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+↑ ↑ ↑ ↑
+Now, we are able to use the 5 and 11 inside a 13 to greater advantage. Writing 11 with only
+↑
+threeinputstosaveroom,andwherethefirst input onlyneeds asingle inputof 5 filled, weadd
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:4)
+13 ↑ 5 ↑ (1,x,x,2),5 ↑ 4,x,x,8 ↑ ,5 ↑ (3·1,x,x,3·2),5 ↑ 3·4,x,x,3·8 ↑ ,
+(cid:3) (cid:3) (cid:4)(cid:4) (cid:3) (cid:4) (cid:3) (cid:4)
+5
+↑
+9
+↑
+(1,2),x,x,9
+↑
+4,8
+↑
+,11
+↑
+5
+↑·1,1,2
+,11
+↑
+5
+↑·2,4,8 ↑
+,
+(cid:3) (cid:4) (cid:3) (cid:4) (cid:3) (cid:3) (cid:4)(cid:4)
+11 ↑ 5 ↑·4,3·1,3·2 ,11 ↑ 5 ↑·8 ↑ ,3·4,3·8 ↑ ,11 ↑ 5 ↑·3·1,9 ↑ (1,2),9 ↑ 4,8 ↑ ,
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:4)(cid:4)
+11 ↑ 5 ↑·3·2,5 ↑ 3·4,x,x,3·8 ↑ ,7 ↑ 1,2,4,x,8 ↑ ,3·1 ,
+(cid:3) (cid:3) (cid:3) (cid:4)(cid:4)
+11 ↑ 5 ↑·9 ↑ (1,2),7 ↑ 3·2,3·4,3·8 ↑ ,x,9 ↑ (1,2),9 ↑ 4,8 ↑ ,
+(cid:3) (cid:3) (cid:4)
+7 ↑ 5 ↑ (1,x,x,2),5 ↑ 4,x,x,8 ↑ ,5 ↑ (3·1,x,x,3·2),x,
+(cid:3) (cid:4) (cid:3) (cid:3) (cid:4)(cid:4)(cid:4)(cid:4)(cid:4)
+5 ↑ 3·4,x,x,3·8 ↑ ,5 ↑ 9 ↑ (1,2),x,x,9 ↑ 4,8 ↑ .
+↑
+We have one empty input in 19 . We can account for the “arrow portion” of the input by using
+(192)↑·1.Thisfinishes
+ourconstruction fortheprime 19.
+4.9. Theprime23
+Weuse thisprimetofillthe holecoming fromthe modulus 24:
+The first sixteen branches of 23 ↑ are completed by using 2, 4, 8, 16 ↑ , 3·1, 3·2, 3·4, 3·8,
+3·16 ↑ , 9 ↑(1,2), 9 ↑(4,8), 5 ↑(1,2,4,8), 5 ↑(16 ↑,3·1,3·2,3·4), 5 ↑(3·8,3·16 ↑,9 ↑(1,2),9 ↑(4,8)),
+7
+↑(1,2,4,8,16 ↑,3·1),and
+(cid:3) (cid:3) (cid:4)(cid:4)
+7 ↑ 3·2,3·4,3·8,3·16 ↑ ,5 ↑ (1,2,4,8),5 ↑ 16 ↑ ,3·1,3·2,3·4 .
+We kept 9 ↑(16 ↑, ) inreserve,anduse itnowinconjunction with
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:4)(cid:4)
+↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
+7 9 (x,1),9 (x,2),9 (x,4),9 (x,8),9 x,16 ,5 9 (x,1),9 (x,2),9 (x,4),9 (x,8)
+tocoverone morebranch.
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 659
+↑ ↑ ↑
+Nextusetheprevioussets(with 1 ifneeded)tofilltheinputsinoneeachofa 13 , 17 ,and 19 .
+Notice that none of the previous twenty congruence sets we have used involve the prime eleven.
+↑
+Thus, we can use them as inputs to fill two copies of 11 . This gives us all twenty-two inputs for
+↑
+our 23 .
+4.10. Theprime29
+The congruence class 1 (mod 2) is nearly filled. So, we move back to 2 (mod 4), and attempt to
+coverthefirstholearisingfromtheprime7.However,weneedtobreakthiscaseinhalf,andsopass
+to 2(mod8). Werestricttothe markedbranchesbelow:
+Recall that on this branch we need to cover only four congruence classes modulo 5, since the fifth
+class is covered by work done in Sections 4.3 and 4.4. Further, on the third class modulo 5, we only
+needtocovertwo classes modulo 3.
+↑
+We now construct twenty-eight sets of congruences to use as inputs in 29 . We have seven sets
+givenby1,2,4,8,16 ↑ ,3(4,2,1),3(8,3 ↑(8,4),3 ↑(2,1)).(Asbefore,weusetheselasttwosetsinstead
+of the simpler sets 3
+↑(1,2)
+and 3
+↑(4,8)
+to help us when we work with the prime 37 in a later
+subsection.) Threemoresetsaregivenby 5(1,2,3(1,2,x),4,x),
+(cid:3) (cid:4)
+↑ ↑
+5 8,16 ,3(4,8,x),5 (1,2,4,8),x
+and
+(cid:3) (cid:3) (cid:4) (cid:4)
+↑ ↑ ↑
+3 16 ,3 16 , ,
+(cid:3) (cid:3) (cid:3) (cid:4) (cid:4) (cid:3) (cid:3) (cid:4) (cid:3) (cid:4) (cid:3) (cid:4) (cid:3) (cid:4)(cid:4)
++5 3 x,3 ↑ x,16 ↑ ,16 ↑ ,5 ↑ 3 x,3 ↑ (x,1),1 ,3 x,3 ↑ (x,2),2 ,3 x,3 ↑ (x,4),4 ,3 x,3 ↑ (x,8),8 ,
+(cid:3) (cid:4) (cid:3) (cid:4) (cid:4)
+↑ ↑ ↑
+3 x,3 (x,1),x ,3 x,3 (x,2),3 (4,8) ,x .
+↑
+Using these sets we can fill one 11 . None of these sets, so far, has involved the prime 7. We can
+take 7timesthepreviouselevencongruencesets(individually),togetelevenmoresets.Wecanthen
+↑ ↑
+easily fillone 19 andone 23 .
+↑
+We next split these twenty-four sets into two groups, and fill two copies of 13 . Next, using the
+↑
+last sixteen of the twenty-six sets constructed so far, fill one copy of 17 . Use the first ten sets to
+↑
+partially fillanother 17 whichwe willkeepinreserve.
+We have two more sets to construct (because we must drop the set 1, since 29<40). So far, we
+↑
+havenotusedhigherpowersof7.Wecanfillone49 usingthefirstsixsetsconstructed.Wecanfill
+660 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+↑
+fivemoreinputsinanother49 usingthenextfivesets(sincethefirstelevensetsdidnotinvolvethe
+↑ ↑
+prime 7),andusingthepartiallyfilled 17 wekeptinreserve,wefilltheremainingsixinputsin 17
+↑
+with 49 timesthefirst sixsetsofcongruencesindividually.
+4.11. Theprime31
+We now consider the same case as in the previous subsection, except that we are now on the
+branch 6(mod 8).
+We may use the same twenty-eight congruence sets as constructed in the previous subsection,
+to fill twenty-eight inputs of 31 ↑ , except that now each instance of 8 and 16 ↑ covers 6 (mod 8).
+Furthermore, by the same reasoning as used at the end of Section 4.6 we can fill the last two inputs
+↑ ↑
+of 31 withtwo 29 ’s.
+4.12. Theprime37
+Weuse thisprimetopartially fillthe holecoming fromthemodulus 36:
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 661
+↑
+Wewillrestrictourselvestofillingthefirst,second,andfourthinputsin 5 ,andwillleavefillingthe
+thirdinputforalatersubsection.
+Westartwiththefourteensets1,2,4,8 ↑ ,3·1,3·2,3·4,3·8 ↑ ,9·1,9·2,9·4,9·8 ↑ ,27 ↑(1,2),and
+27
+↑(4,8 ↑).
+On the branch we are considering, the sixth and seventh inputs in 17
+↑
+are already filled,
+↑ ↑
+leavingonlyfourteeninputs.Thus,wecanfillone17 .Similarly,threeinputsin19 arealreadyfilled
+onthebranchwearerestrictedto,andweusethecongruencesetswehaveconstructed sofartofill
+theremainingentries.Inthissection,wheneverwefillemptyspacesusingthepreviouslyconstructed
+sets, we will do so in the order the sets were constructed (unless explicitly stated otherwise) for
+simplicity later (specifically, in reference to the claim about “untouched” sets, in the last sentence
+two paragraphsfromnow).
+↑
+With the sixteen complete sets constructed we can fill the three inputs we need to in 5 five
+↑
+timesover.Wecanalsofillone-thirdofanother5 ,creatingapartialsetwewillkeepinreserve.We
+↑
+have twenty-onesets, whichareenoughto filla 23 (since thefirst input iscoveredonthisbranch).
+↑
+Using the first twelve sets we can cover an entire 13 , and then taking advantage of the partial set
+↑
+we kept in reserve we can easily fill another 13 using the techniques of previous subsections. We
+↑ ↑ ↑
+havetwenty-foursets,whichallowustofillfour7 ’s.Wethenfillone29 andthenone31 (noting
+that two inputsineacharealreadyfilled onthisbranch). Wehave thirtysetsat thispoint.
+↑
+Wehaveyettouse11 .Thefirst,second,andsixthinputsarecompletelycoveredwhenrestricted
+↑
+tothisbranch.Ontheseventhinputweonlyneedtofillthesecondandfourthinputina 5 .Onthe
+↑ ↑
+ninthinputweonlyneedtofillthethirdinputina7 .Wewillcompletelyfillupfivecopiesof11 as
+follows: We can fill the seventh input in 11
+↑
+, five times over, using 5
+↑(1,2),
+5
+↑(4,8 ↑),
+5
+↑(3·1,3·2),
+5
+↑(3·4,3·8 ↑),
+and 5
+↑(9·1,9·2).
+We can fill the ninth input in 11
+↑
+, five times over, using 7
+↑
+times
+{1,2,4,8 ↑,3·1}individually.Amongourinitialthirtysets,twenty-fivehavebeenleftuntouched,and
+weuse these tofilltheremainder ofthe entries.
+At this point, we remove the set 1. We have filled thirty-four of the needed thirty-six inputs,
+leaving two holes.
+4.13. Theprime41
+We will partially fill the first empty branch arising from our work with the prime 17. Specifically,
+we restrict to the hole that arose when we removed the congruence class with modulus 17. The
+same congruencerestrictionsthereapplyhere,along withthefact that weonlyneedtofilloneclass
+modulo 17.
+We start with the fifteen complete sets constructed in Section 4.7 (where we are including 1
+↑
+and 2).Wecantake 17 timesthesefifteenclasses,tofillanotherfifteeninputsin 41 .Usingthefirst
+↑
+elevensetsand 17 timesthefirst elevensets(none ofwhichinvolvestheprime 7),we fillone 23 .
+Consider the set which partially filled the sixteenth hole in Section 4.7; call it S. To complete S
+one only has to fill one input in a 7 (or one input in a 5, among other restrictions), so for the next
+inputin 41 ↑ onecantake S+23 ↑(7·T) where T isthesame setusedtofillthe 23 ↑ oftheprevious
+paragraph.
+↑
+Next, take the first thirteen sets in this subsection, 17 times those thirteen sets, and the first 23
+(cid:7) ↑
+above.Callthiscollection T .Noneofthesesetsinvolves7,andsinceoneentryin29 isalreadyfilled
+onthebranchweareconsidering,wegettwomoreinputsin41
+↑
+using29
+↑(T (cid:7))and17·S+29 ↑(7·T (cid:7)).
+↑
+Take the first fifteen sets and 17 times those fifteen sets to fill one 31 . Another complicated (but
+complete)setisconstructedasfollows.Fillthefirstfifteenentriesin
+(172)↑
+withthefirstfifteensets
+above, and partially fill the last input with S. To finish, add 31
+↑(T (cid:7)(cid:7))
+where T
+(cid:7)(cid:7)
+is any collection of
+thirtysetsfromamong thethirty-twosets (172)↑·{1,5,7,7·5}·{first eightsets}.
+↑ ↑
+At this point we can fill two 19 ’s and one 37 , giving us thirty-nine sets. We are left with one
+emptybranch.
+4.14. Theprime43
+Now, partially fill the other empty branch arising from the prime 17. Specifically, restrict now to
+the hole that came from removing the class with modulus 34. Use exactly the same congruence sets
+662 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+as in the previous subsection except that now each instance of 17 in the present context refers to a
+different class modulo 17 than was meant in the previous context. We obtain one more set coming
+↑
+fromafilled41 ,whichcaneasilybedonesincemanyofthebranchesremainfilledonthishole.We
+↑
+have exactlytwo unfilled inputsinour 43 .
+4.15. Theprime47
+We now completely fill the hole we tried to fill with the prime 19. We begin by taking 1, 2, and
+↑
+the seventeen sets constructed in Section 4.8. The first, fifth, sixth and tenth branches of 23 are
+↑
+covered on the hole we are considering, so we can fill an entire 23 with the previous sets. Next,
+sinceonlyoneholein19needsfilling,wecantake19timesthetwentyprevioussets,individually,to
+obtain another twenty. Similarly, we can also fill one (192)↑ . We then fill one each of q ↑ for q=29,
+31, 37, 41,and 43.Wehave exactlyforty-sixsets, asneeded.
+4.16. Theprime53
+We return to the hole created when we removed the congruence class with modulus 36. We will
+↑
+restrictourselvestothe thirdinputin 5 ,the oppositeofwhat wasdone inSection4.12.
+↑
+We begin with the sixteen sets initially constructed in Section 4.12. We can take 5 times these
+↑ ↑
+sixteensetsindividually,toconstructanothersixteen.Wethen(sequentially)fillfive7 ’s,three13 ’s,
+↑ ↑ ↑ ↑ ↑ ↑
+one 31 ,one 37 ,one 41 ,one 43 ,two 23 ’s,andone 47 .Wehaveatotalofforty-sevensets.The
+↑
+first two inputs of 11 are covered on the branch we are considering, so we can easily fill five copies
+↑
+of 11 . This gives us the needed fifty-two sets. Furthermore, we could use the prime 29 to complete
+another set (ortwo!)ifwedo not want touseanarrowforthe prime 53.
+4.17. Theprime59
+We travel back to the hole which was partially filled by our work in Section 4.12. We will again
+only partially fillthe hole,andwillneedanother prime,alittle later,tofinishthiscase.
+↑
+Start with the thirty-five sets (including 1) constructed in Section 4.12. Only two inputs in 37
+need filling, so we can fill them seventeen times over. We next fill one each of q ↑ for q=41, 43, 47,
+and 53.Thisgivesusfifty-sixsets, leaving twoemptyinputs.
+4.18. Theprime61
+We fill the hole which was only partially filled in Section 4.14. We begin with the same forty sets
+↑
+constructedthere,andobtainanothertwentybyusing43 (whichhadonlytwoinputsleftopen).We
+are then done, although we can construct more sets (if we wish to avoid arrows) using the primes
+47, 53,and 59.
+4.19. Theprime67
+LookingattheworkdoneinSection4.3,therewasoneclassleftpartiallyfilled.Wecompletelyfill
+↑ ↑ ↑
+it now. We can cover a single input in either a 16 , a 9 , or a 5, to fill an input in 67 on the hole
+we arerestrictedto.
+↑ ↑
+We have 1, 2, 4, 8, 16 , 3 times each of these five classes separately, and then 9 times each of
+theoriginalfiveclasses separately.Wecanplugthesefifteensetsinto 5 (separately),andgetanother
+↑
+fifteensets.Also,theoriginalfifteensetscanbeusedtofillthree25 ’s,andmostofafourth.Weuse
+thisfourth(almost full) set,inconjunction with
+7 ↑·25 ↑·{thefirst six sets}
+↑
+togetonemoreclass.Wecanalsousethefirstthirtyclassesconstructedabove,tofillfivemore7 ’s.
+Thirty-ninesetshave beenconstructed atthispoint.
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 663
+↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
+Wesequentiallyfillone37 ,one41 ,four11 ’s,one43 ,one47 ,two23 ’s,four13 ’s,one53 ,
+↑
+andthree 19 ’s.Onthebranchwearerestrictedto,thethird,sixth,ninth,tenth,andeleventhinputs
+↑ ↑ ↑
+in 17 are filled, leaving only eleven empty inputs. Thus, we can fill five 17 ’s. Finally, fill two 29 ’s,
+↑
+and two 31 ’s. (If we do not want to use the arrow on 67 we can also complete another set using
+eitherofthe primes 59 or 61.)
+4.20. Theprimes71,73,79,and83
+Consider the congruence class 2 (mod 4). It is almost entirely covered, except that on 6 (mod 7)
+we must fill 2 (mod 5) and 3 (mod 5)∩2 (mod 3) (coming from the gray spot in the diagram in
+Section 4.4). We break these two holes into four holes, by breaking 2 (mod 5) into the three classes
+2(mod5)∩i (mod3)fori=1,2,3.Wewillfilleachofthesefourholes,individually,withtheprimes
+71, 73, 79,and 83,respectively.
+For each hole, start with 1, 2, 4, 8 ↑ , 3·1, 3·2, 3·4, 3·8 ↑ , 9 ↑(1,2), 9 ↑(4,8 ↑) (where the class
+modulo 3 depends on which of the four holes we are restricted to). Take 5 times these ten sets to
+construct another ten (where, again, the class modulo 5 depends on which of the four holes we are
+covering). We can also fill up two
+(52)↑
+’s. Take 7 times these twenty-two sets separately, and also
+fill three
+(72)↑
+’s. We now have forty-seven sets. Sequentially fill one 47
+↑
+, four 13
+↑
+’s, five 11
+↑
+’s, one
+↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
+53 ,two29 ’s,two31 ’s,one59 ,one61 ,four17 ’s,three23 ’s,one41 ,one43 ,two37 ’s,and
+↑
+four19 ’s.Thisgivesusseventy-ninesets,whichismorethanenoughinthefirstthreecases.Forthe
+↑ ↑ ↑ ↑
+last case, wecanalso filloneeachof 71 , 73 ,and 79 (aswellasone 67 ifwe wish).
+4.21. Theprime89
+We finish the work done in Section 4.17. In that subsection we constructed fifty-six sets, leaving
+↑
+two unfilled entriesin 59 .We willfinishcoveringtheentirehole now.
+First we start with the same fifty-six sets as in Section 4.17. We can use these to fill twenty-eight
+copies of 59 ↑ (since only two inputs are unfilled). We fill one q ↑ for q=61, 67, 71, 73, and 79. This
+yieldseight-nine sets.
+4.22. Theprimes97and101
+↑
+We work on the empty branch in Section 4.13. We begin filling a 97 by taking the thirty-nine
+↑ ↑
+sets constructed in Section 4.13, 41 times each of these sets individually, and then one each of q
+forq=53,59,61,67,71,73,79.Wethenfilltwo43 ↑ ’s,one 83 ↑ ,one89 ↑ ,andone47 ↑ (withalittle
+↑
+repositioning of congruences, we could fill two 47 ’s if needed). This fills ninety of the ninety-six
+needed branches.
+We now work to fill a 101 (without the arrow). Repeat the process above to again obtain ninety
+↑
+sets.Dividingthemamongthesixemptyinputsin97 togetanotherfifteensets,whichismorethan
+enoughtofinishthishole.
+4.23. Theprime103
+There is only one more hole left to fill, which is the hole coming from the partial set constructed
+in Section4.7. We have quite afew restrictions available to us. For example, we only need to fill two
+↑
+inputs in a 25 (both sitting inside the same class modulo 5; see the work in Section 4.7), one input
+↑
+ina 7,orone inputina 17 .
+Thus,beginwiththefirsteightsetsconstructedinthatsection(including1and2),whichonlyin-
+volvetheprimes2and3.Next,wecanconstructanothereightsetsbyusing5,andthenanotherfour
+↑ ↑
+sets using 25 , applied to the first eight sets. With the twenty sets now available, using 7 and 49 ,
+↑ ↑ ↑
+we can construct another twenty-three. Then fill (sequentially) four 11 ’s, one 41 , four 13 ’s, one
+↑ ↑ ↑
+43 , and one 47 . This yields fifty-four sets. Using 17 we get another fifty-four, yielding more than
+enoughsetsalready.
+664 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+5. Commentsonthecover
+While the primes 2 through 103 were used explicitly, we also need another number to account
+for all of the arrows. We can use p=107 since it is relatively prime to all numbers appearing in our
+cover. Alternatively, since we do not technically need to use primes, we can use 1032 since it never
+occurs in our cover (and is relatively prime to all moduli; except those appearing in Section 4.23
+whichneedtobedealtwithseparately2).Thebenefitofthefirstchoiceisthatweoftenonlyhaveto
+go 109 levels deep to cover our arrows. The benefit of the second choice is that the cover uses less
+primes.(Thereare,ofcourse,othersimplifications available.)
+To put the cover we constructed in perspective, the covering system constructed by Krukenberg
+with minimum modulus 18 utilized only the primes up to 19, while the covering system constructed
+by Gibson with minimum modulus 25 used primes up to 2017. By using congruences more frugally,
+or not using arrows in certain cases, it is apparent that we could have used a few less congruence
+classes. On the other hand, we were very conservative with the initial primes. There is very little
+“wiggleroom”lefttoworkwith,withoutsomechangeinthechoiceofwhichholestofillwithwhich
+primes.We canviewourchoicesasfollows:
+The graph hints at the process used to find this cover in the first place. One starts with a cover,
+such as 2
+↑(1),
+removes small moduli, and starts filling in the holes, trying to keep the distribution
+(and density) of primes among the branches as symmetric and balanced as possible. One might ask
+if the minimum modulus of the cover we just constructed could be improved further. To do so, we
+would need to remove the congruence class with modulus 40, and try to fill in the resulting hole.
+Attempting to do so, one can construct around 33 sets to use as inputs (counting generously), but
+↑
+this is still too small a number to fill up an entireq (let alone a good portion of the inputs) for any
+free prime q. Furthermore, all primes up to 37 seem to be needed where they currently reside. On
+the other hand, there are some gains that could potentially be made if one is willing to make the
+congruence system quite complicated. For example, in Section 4.3, we did not take advantage of the
+factthatsomeofthecongruenceclassesinSection4.2applytothisbranch;namely,theextra81
+↑·1.
+It should also be pointed out that the “trick” of splitting a case in half, by passing to a lower-level
+2 Onecoulduse1032 tocoverallarrowsarisinginallsubsectionsexcept4.23.Then,using1012,whichhasnotoccurredin
+thecover,onecouldtakecareofthearrowsinSection4.23.
+P.P.Nielsen/JournalofNumberTheory129(2009)640–666 665
+(e.g. instead of covering 1 (mod 4), one covers the two classes modulo 8 underneath it separately)
+seemstolose information ifitisappliedtoooften.
+It is also natural to ask which congruence classes actually live in the cover we have constructed.
+Is it possible to list them? Using the prime p=107 to cover all of the arrows, it appears that the
+growthisapproximatelyexponentialintermsofthenumberofiterationsofarrows.Forexample,the
+set 2 ↑ , contains more than p−1 congruence classes, the set 3 ↑(1,2 ↑) involves more than (p−1)2
+congruence classes, and so forth. Estimating in this manner, but being very conservative, the cover
+weconstructedintheprevioussectioncontainsmanymorethan(p−1)25>1050 congruenceclasses.
+While this is unfortunately too many for humans to grasp concretely, or list (even in factored form)
+withmoderncomputing power,itdoesdemonstrate the utilityofournotation.
+On the other hand, clearly a computer program could be written to double check that the set
+we constructed covers all the integers. The most straightforward method seems to be: (1) checking
+that no modulus is repeated, by listing all used moduli (treating the upwards arrow as exhausting
+all higher powers), and (2) checking that each empty input is eventually filled by later (or earlier)
+congruence classes. To save run-time, one should be able to specify which order the holes should be
+consideredin.
+6. Anoddcoveringsystem?
+One might ask what happens when these ideas are used and try and construct an odd covering
+system. While all straightforward attempts fail to produce any results, they are nevertheless enlight-
+ening.
+First, to simplify some computations we will assume that all odd numbers actlikeprimes. More
+↑ ↑ ↑
+precisely,wewillignoreforamomentproblemswithpluggingthingslike 3 ’sinto 9 ’s,andgive 9
+eightinputsinsteadoftwo.Tostarttheattempt,take3 ↑(1, ).Nexttake5 ↑(1,3 ↑(x,1), , ).Similarly,
+the nexttwo setsare
+(cid:3) (cid:3) (cid:4) (cid:4)
+↑ ↑ ↑ ↑
+7 1,3 (x,1),5 x,x,1,3 (x,1) , , ,
+and
+(cid:3) (cid:3) (cid:4) (cid:3) (cid:3) (cid:4)(cid:4) (cid:4)
+↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
+9 1,3 (x,1),5 x,x,1,3 (x,1) ,7 x,x,x,1,3 (x,1),5 x,x,1,3 (x,1) , , , , .
+Continuing in this fashion, one fills exactly half of the inputs at each step. However, this steady-state
+systemonlyworkswhenonetreatsalloddnumbersalike.Inreality,9isnotaprime,andthemoduli
+↑
+divisible by 9 are already accounted for in the 3 . So, in fact, when working with only primes this
+system is slowly losing ground. The methodology utilized in constructing this system is encapsulated
+intheideathateachnewprimeshouldbeusedtocoverasmanyofthespotsleftemptyaspossible.
+The (non-odd) cover we constructed in Section 4 was created with the opposite modusoperandi
+enforced. For each new prime we focused on a single branch, and used the new prime to partially
+fill it. We spread the primes evenly among the branches, but concentrated each individual prime on
+a specific branch. The author’s attempts in this direction have also failed, as the number of holes
+increases faster than the number filled. The interested reader is encouraged to explore these ideas
+further.
+Acknowledgments
+The author was partially supported by the University of Iowa Department of Mathematics NSF
+VIGRE grant DMS-0602242. I thank Carl Pomerance for introducing me to this problem and Jason
+Gibson for providing me with a copy of his thesis. I also thank the referee who pointed out to me
+that the primes need not always be taken in order of magnitude, which has greatly simplified the
+presentationofthe coverand ledtoanimprovement ofthe mainresult.
+666 P.P.Nielsen/JournalofNumberTheory129(2009)640–666
+Supplementarymaterial
+Theonline versionofthisarticle containsadditional supplementarymaterial.
+Pleasevisit doi:10.1016/j.jnt.2008.09.016.
+References
+[1]S.L.G. Choi, Covering the set of integers by congruence classes of distinct moduli, Math. Comp. 25 (1971) 885–895.
+MR0297692(45#6744).
+[2]R.F.Churchhouse,Coveringsetsandsystemsofcongruences,in:ComputersinMathematicalResearch,North-Holland,Am-
+sterdam,1968,pp.20–36.MR0240045(39#1399).
+[3]P.Erdo˝s,Onintegersoftheform2k+pandsomerelatedproblems,SummaBrasil.Math.2(1950)113–123.MR0044558
+(13,437i).
+[4] MichaelFilaseta,CoveringsoftheintegersassociatedwithanirreducibilitytheoremofA.Schinzel,in:NumberTheoryfor
+theMillennium,II,Urbana,IL,2000,A.K.Peters,Natick,MA,2002,pp.1–24.MR1956242(2003k:11015).
+[5]MichaelFilaseta,KevinFord,SergeiKonyagin,CarlPomerance,GangYu,Sievingbylargeintegersandcoveringsystemsof
+congruences,J.Amer.Math.Soc.20(2)(2007)495–517(electronic).MR2276778.
+[6]D.J.Gibson,Coveringsystems,PhDthesis,UniversityofIllinoisatUrbana-Champaign,2006.
+[7]C.E.Krukenberg,Coveringsetsoftheintegers,PhDthesis,UniversityofIllinoisatUrbana-Champaign,1971.
+[8]Ryozo Morikawa, On a method to construct covering sets, Bull. Fac. Liberal Arts Nagasaki Univ. 22 (1) (1981) 1–11.
+MR639636(84i:10057).
+[9]Ryozo Morikawa, Some examples of covering sets, Bull. Fac. Liberal Arts Nagasaki Univ. 21 (2) (1981) 1–4. MR 639635
+(84j:10064).
+[10]Š.Porubský,J.Schönheim,CoveringsystemsofPaulErdo˝s.Past,presentandfuture,in:PaulErdo˝sandHisMathematics,I,
+Budapest, 1999, in: Bolyai Soc. Math. Stud., vol. 11, János Bolyai Math. Soc., Budapest, 2002, pp. 581–627. MR 1954716
+(2004d:11006).

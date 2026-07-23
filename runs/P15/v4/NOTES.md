@@ -360,3 +360,82 @@ ledger's actual congruences and machine-check global distinctness + cover).
 
 STATUS: near-miss (counting-level T=43 blueprint passes all 13 ledgers;
 explicit-modulus validation outstanding).
+
+## 15. Phase 6 — faithful §3.1–3.4 modulus enumeration; hole-patch corrected (2026-07-23)
+
+Goal: begin explicit-modulus validation of the T=43 blueprint, starting with
+the one self-contained piece — the 42-hole patch ("cover one class mod 42
+with distinct unused moduli ≥ 43").
+
+### 15a. A first explicit patch — and its refutation
+
+`emit42hole.py` builds an explicit 14-congruence cover of the class 2 mod 42
+(machine-verified over lcm 5880: coverage, distinctness, min modulus 49 —
+prints PASS on the *internal* checks). Realization rule: inner class
+k≡r (mod n) ↔ actual modulus M=n·g, g|42, gcd(M,42)=g, M≥43.
+
+But clearance vs Owens's own moduli exposed that `hole42.py`'s
+OWENS_SMALL_MODULI list (7-layer values only) was badly incomplete.
+`owens_smooth.py` now enumerates, faithfully from the thesis text, the full
+{2,3,5,7}-smooth modulus set of sections 3.1–3.4 (conservatively marking ALL
+{2,3,5}-smooth numbers used; the 7-layer entries e1..e6 + 125^8^ + 9^4
+transcribed exactly). Key soundness fact: every congruence of sections
+3.5–3.20 (incl. Nielsen imports for 11,13,17,23) has modulus divisible by
+its prime ≥ 11, so a 7-smooth patch modulus can only collide with 3.1–3.4.
+
+Result: **11 of the 14 patch moduli collide with Owens's own system**
+(60, 70, 105, 140, 210, 294, 420, 980, 1960, 2940, 5880 are all used —
+e.g. 70 = 7·5·2 is the fourth entry of e4, 294 = 49·6 is e3 at level 2).
+The 14-congruence patch is INVALID as a T=43 completion. Negative result,
+machine-derived; it also invalidates the "free lists" used in §12–13.
+
+### 15b. The corrected free-modulus budget
+
+From the faithful enumeration, the only free 7-smooth moduli ≥43 are
+
+    M = 7^k · t,  t ∈ {1,2,3,4,5},  k ≥ 2      (49, 98, 147, 196, 245, 343, …)
+
+giving inner budgets per 7-level j = k−1 ≥ 1: n=7^j ×3, n=2·7^j ×1,
+n=5·7^j ×1. Total free 7-adic density: Σ_j 3.7/7^j = 3.7/6 = 0.6167 < 1.
+So the patch CANNOT close on 7-smooth moduli alone; it must draw on safe
+new-prime moduli (any M with a prime factor ≥ 97 — Owens is 89-smooth —
+with μ(n) ≤ 8 realizations by the gcd rule). Moduli with largest prime in
+[11,89] have UNKNOWN clearance (needs the Nielsen-import reconstruction;
+Nielsen's paper downloaded to nielsen40.pdf/.txt for that future step).
+
+### 15c. Reduction and feasibility calculus (patch43.py)
+
+The patch route now reads: cover Z (inner coords) with
+  (A) the 7-adic freebies (≤ 0.6167 density, remainder ≥ (33/70)-type
+      factors per level: after J levels remainder ∈ [(33/70)^J, (4/7)^J]);
+  (B) inner moduli n = d·q (q prime ≥ 97, d 7-smooth) with multiplicity
+      μ(n) ∈ {1,2,4,8} — μ collapses to 2 when 2·7 | n, which is the binding
+      constraint inside deep cells.
+
+Per-cell relative density from one prime q inside a cell mod 7:
+Σ_d μ(7dq)/(dq) ≈ 9.5/q; remainder after level 1 ≈ 4 cells mod 7 (measure
+4/7). Needed: Σ_q 9.5/q ≥ 4 → all primes 97…~1100 at perfect efficiency;
+with realistic 2–3× overhead, primes up to 10^4–10^5 (Σ 1/q ≈ 0.92 from 97
+to 10^5 → ≈ 2.2× margin). So the corrected patch is *density-feasible but
+structurally deep*: each cell is itself a covering problem with effective
+min modulus 97 and multiplicity 2–4 — comparable in difficulty to the
+Krukenberg-era records, i.e. a genuine construction project, not a greedy
+run (patchcover.py, a budgeted counting-greedy, stalls exactly as the
+budget analysis predicts: 1.7M hole classes after the small levels).
+
+### 15d. Where this leaves T=43
+
+The blueprint's 13th section (NEW 42-hole via 97) survives at the counting
+level but §15a shows its concrete tower supports (11^…89^ inside the hole)
+carry unknown-clearance moduli, and §15b shows the known-free budget is
+0.6167 + safe-prime structure. Two precise routes remain, in order of
+promise:
+ 1. Reconstruct the Nielsen-import ledger (nielsen40.txt, sections for
+    11,13,17,23) to unlock the [11,89]-prime moduli inside the hole — the
+    blueprint's own section then becomes checkable.
+ 2. Build the min-modulus-97/multiplicity-≤8 inner cover directly from the
+    (B)-budget (density margin ≈ 2.2× with primes to 10^5).
+
+STATUS: near-miss (T=43 counting blueprint stands; first explicit patch
+REFUTED by faithful clearance — corrected free-modulus budget derived and
+density-feasible; explicit construction of the hole cover outstanding).
