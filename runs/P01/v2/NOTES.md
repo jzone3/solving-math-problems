@@ -152,7 +152,46 @@ leaving an even-distance residue in which every pair already carries a hamiltoni
 Reproduction commands are in this directory's scripts; every positive intermediate
 artifact (seeds in nc_*.txt) re-verifies with hc.c in seconds.
 
-STATUS: negative / frontier-pushed (multigraph minimum order ≥ 15 new; simple-graph
-near-miss wall quantified at rem=8 for n=22 with parity-clustered dead-ends; multiple
-structured families — symmetric, gadget rings, seed completions — ruled out or
-saturated).
+## 6. Second phase — SAT-CEGAR encoding (fundamentally different engine)
+
+Per follow-up instruction, built a second, independent exhaustive engine (sat_cegar.py):
+
+- **Encoding**: WLOG the unique HC is C_n (relabeling). Vars x_(u,v) per chord; CardEnc
+  seqcounter forces exactly 2 chords per vertex. CEGAR loop: CaDiCaL model -> exact HC
+  enumeration (hc.c, cycle-printing mode) -> if a 2nd HC exists, its chord set S gives a
+  sound blocking clause OR(-x_e : e in S) (HC presence is edge-monotone); clause is
+  greedily minimized (subset-minimal S still forcing a 2nd HC) and added together with
+  all 2n dihedral images. UNSAT => no witness with |V| = n, at all.
+- **Multigraph mode**: extra y_e (doubled chord), y_e -> x_e, degree sum x+y = 2.
+  Soundness: the unique HC uses every cycle edge so cycle edges cannot be doubled;
+  chord multiplicity >= 3 is degree-impossible; blocking clauses live on x only.
+- **Cube-and-conquer**: cases = unordered pair of chord lengths at vertex 0 (d1 <= d2,
+  2 <= d <= n/2); cases partition the space; validated against monolithic runs at n=14
+  (all 21 cases UNSAT, matching).
+- **Precomputed blocking**: gen_blocking.py enumerates all minimal 2nd-HC-forcing chord
+  sets of size <= 3 up to dihedral symmetry, seeded as clauses (blocking_<n>.txt).
+- Engine cross-validation: SAT UNSAT results agree with the independent C DFS
+  exhaustion everywhere both ran (simple n=10..14; multigraph n=8..15).
+
+### SAT results — simple graphs (Sheehan proper)
+UNSAT (exhaustive, no witness): n = 10..19 (n=17: 769 refinements/30 min monolithic;
+n=18: 36/36 cube cases; n=19: 36/36 cube cases, hardest case 2680 refinements/28 min).
+n=20 partial (1/45 cases) — abandoned as redundant with the published GMZ frontier
+(n <= 21); compute reallocated to the novel multigraph frontier.
+
+### SAT results — 4-regular loopless multigraphs (NEW frontier)
+Fleischner (1994/2014) proved such uniquely hamiltonian multigraphs EXIST; no minimum
+order was known. Our results, machine-exhaustive:
+- DFS engine: none on n <= 15 (n=15: 955,042,794 nodes, full tree).
+- SAT engine: UNSAT n = 15, 16, 17 (monolithic; 148 s / 430 s / 1990 s),
+  n = 18 (36/36 cube cases), n = 19 (36/36 cube cases).
+- **Theorem (computational): every 4-regular loopless uniquely hamiltonian multigraph
+  has at least 20 vertices.** (Two independent engines overlap and agree on n <= 15.)
+- n=20 multigraph cube sweep launched (45 cases, running at session end).
+
+STATUS: negative / frontier-pushed (NEW: multigraph minimum order >= 20, proved by two
+independent exhaustive engines — SAT-CEGAR with dihedral-symmetrized minimized blocking
+clauses + cube-and-conquer, and memoized completion DFS; simple case independently
+re-exhausted through n = 19; plus phase-1 results: nearly cubic seeds saturated,
+symmetric families and gadget rings ruled out, near-miss wall rem=8 at n=22 with
+parity-clustered dead-ends).

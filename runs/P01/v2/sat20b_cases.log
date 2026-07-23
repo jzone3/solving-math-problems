@@ -174,3 +174,5 @@ UNSAT n=20 case=(2, 7) after 4567 refinements, t=7707s
 UNSAT n=20 case=(2, 6) after 4774 refinements, t=9166s
 n=20 it=4400 t=3622s last_clause_len=6
 UNSAT n=20 case=(2, 5) after 4766 refinements, t=10232s
+UNSAT n=20 case=(2, 8) after 4449 refinements, t=7872s
+UNSAT n=20 case=(2, 4) after 4986 refinements, t=17158s
