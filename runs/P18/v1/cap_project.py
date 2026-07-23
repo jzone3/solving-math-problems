@@ -61,7 +61,7 @@ def project(pool):
     return sorted(S), cur
 
 
-def decide(residual, B, tl):
+def decide(residual, B, tl, l1=None):
     L = lcm(*residual)
     mass = sum(Fraction(1, n) for n in residual)
     print("B=%d residual=%d moduli L=%d mass=%s (%.6f)"
@@ -93,14 +93,27 @@ def decide(residual, B, tl):
                   % (nodes[0], len(chosen), cnt[0], now - t0), flush=True)
         if budget < Fraction(cnt[0], L):
             return False
+        # lookahead: each large unused modulus still needs a residue class
+        # that is almost entirely fresh (within the remaining waste budget)
+        remL = int((budget - Fraction(cnt[0], L)) * L) + 1
+        deficit = 0
+        cnts = {}
+        for n in unused[::-1]:
+            counts = unc.reshape(L // n, n).sum(axis=0, dtype=np.int64)
+            cnts[n] = counts
+            deficit += max(0, L // n - int(counts.max()))
+            if deficit > remL:
+                return False
         r = int(np.argmax(unc))
         cands = []
         for n in list(unused):
             a = r % n
-            g = int(unc[a::n].sum())
-            if g >= L // n - slackL:  # otherwise immediate waste overflow
+            g = int(cnts[n][a])
+            if g >= L // n - remL:  # otherwise immediate waste overflow
                 cands.append((-g, n, a))
         cands.sort()
+        if l1 is not None and len(chosen) == 1:
+            cands = [c for c in cands if c[1] == l1]
         for _, n, a in cands:
             view = unc[a::n]
             mask = view.copy()
@@ -151,13 +164,16 @@ def decide(residual, B, tl):
 def main():
     B = int(sys.argv[1])
     tl = float(sys.argv[2]) if len(sys.argv) > 2 else 86400.0
+    l1 = int(sys.argv[3]) if len(sys.argv) > 3 else None
     pool = [n for n in range(4, B + 1) if is_prime(n + 1)]
     mass = sum(Fraction(1, n) for n in pool)
     S, residual = project(pool)
     print("B=%d pool=%d mass=%.6f projected primes S=%s"
           % (B, len(pool), float(mass), S), flush=True)
     print("residual pool: %s" % residual, flush=True)
-    decide(residual, B, tl)
+    if l1 is not None:
+        print("level-1 branch restricted to modulus %d" % l1, flush=True)
+    decide(residual, B, tl, l1)
 
 
 if __name__ == "__main__":
