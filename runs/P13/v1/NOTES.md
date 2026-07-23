@@ -77,3 +77,12 @@ found no later resolution. To our knowledge this nonexistence is NEW.
   assumption-free proof; the STS route already suffices logically.
 - (12,6): 22 blocks, 120648 vars / 259848 clauses, kissat running in background.
 - (15,6) encoded (305970 vars / 658146 clauses); queued.
+- Strengthened encodings (encode_pmd_strong.py) add implied membership vars,
+  replication-per-symbol and pair-co-occurrence-exactly-5 cardinality constraints
+  (both are counting theorems for any (v,6,1)-PMD). kissat running on v=12,15,16,18;
+  extra kissat --sat and cadical instances on v=12.
+- Simulated annealing (anneal.c / cooled variant anneal2): sanity-checked by finding a
+  (7,6,1)-PMD in seconds (verified PASS by solutions/P13/verify.py). For v=12:
+  5 runs × 2–8 G iterations plateau at cost 76–80 (out of 660 pair-slots), nowhere near
+  a design — consistent with CPro1's report that generic heuristics fail on this type.
+  Annealing looks hopeless here; SAT is the right hammer.
