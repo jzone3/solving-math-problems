@@ -1,0 +1,44 @@
+=== L 1441440
+moduli dividing L=1441440: |pool|=96 budget=1.12350
+float-search eta ~ 0.90028263; EXACT eta = 238528844839688946867198399/264948860880388835194330000 = 0.90028258
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=1441440]
+=== L 2162160
+moduli dividing L=2162160: |pool|=107 budget=1.12936
+float-search eta ~ 0.91651938; EXACT eta = 69420308669602803716130285/75743412301908059320310204 = 0.91651942
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=2162160]
+=== L 4324320
+moduli dividing L=4324320: |pool|=132 budget=1.14723
+float-search eta ~ 0.94594233; EXACT eta = 13038400489701339138127/13783502917095273570780 = 0.94594245
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=4324320]
+=== L 8648640
+moduli dividing L=8648640: |pool|=149 budget=1.15755
+float-search eta ~ 0.96199409; EXACT eta = 125618383127860803689675845/130581249289409103278354118 = 0.96199404
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=8648640]
+=== L 12252240
+moduli dividing L=12252240: |pool|=146 budget=1.14695
+float-search eta ~ 0.89763543; EXACT eta = 70879146789552491475875410513445/78962052402620766473270196793344 = 0.89763557
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=12252240]
+=== L 21621600
+moduli dividing L=21621600: |pool|=190 budget=1.17588
+float-search eta ~ 1.00754751; EXACT eta = 39854238445747422009883/39555691425157590540000 = 1.00754751
+NOT certified: eta >= 1 (undecided by this sieve / these deltas)
+=== L 36756720
+moduli dividing L=36756720: |pool|=200 budget=1.17278
+float-search eta ~ 0.94639208; EXACT eta = 13882289779594082132095302089/14668643964002727086920823148 = 0.94639217
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=36756720]
+=== L 61261200
+moduli dividing L=61261200: |pool|=212 budget=1.17627
+float-search eta ~ 0.95890620; EXACT eta = 35944685822458358284642543868539/37485089867496625990274719080000 = 0.95890622
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=61261200]
+=== L 73513440
+moduli dividing L=73513440: |pool|=243 budget=1.19094
+float-search eta ~ 0.97698869; EXACT eta = 914737084843466105470956279889019725/936282060384462895830214056563453888 = 0.97698880
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=73513440]
+=== L 122522400
+moduli dividing L=122522400: |pool|=257 budget=1.19440
+float-search eta ~ 0.98912331; EXACT eta = 2714819498728866939628066033/2744672541169064099413248000 = 0.98912328
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=122522400]
+=== L 232792560
+moduli dividing L=232792560: |pool|=250 budget=1.17164
+float-search eta ~ 0.91180436; EXACT eta = 3289905772742284680020363782465670326135/3608126743770843985416730559245323185124 = 0.91180438
+CERTIFIED (exact rationals): eta < 1 -> no covering system of Z uses only moduli from this pool (each at most once, any residues). [moduli dividing L=232792560]

@@ -144,9 +144,77 @@ with p prime ≥ 3, covers ℤ (verified exhaustively mod 360).
 See OBSTRUCTIONS.md (parity reduction re-derived; Mirsky–Newman forced overlap; density
 prefilters; external Theorem A/B partial bounds with reproduced certificates).
 
-## 7. Bottom line of run v2
+## 7. Round 2 (same session, resumed): independent distortion sieve + strengthened encodings
 
-- **No new verified mathematical result.** Erdős #273 remains OPEN in both directions.
+Direction (a) from §8 of round 1 was executed: `bbmst_independent.py` is a from-first-principles
+implementation of the BBMST distortion sieve (Balister–Bollobás–Morris–Sahasrabudhe–Tiba,
+arXiv:1811.03547), written directly from the statements of **Theorem 3.1** (η < 1 ⇒ no covering)
+and **Theorem 3.2** (computable moment bounds M_i^(1) ≤ Σ_{d=m·p_i^j∈N_i} p_i^{-j}ν(m)/m and
+M_i^(2) ≤ Σ_{pairs in N_i} p_i^{-(j1+j2)}ν(lcm(m1,m2))/lcm(m1,m2)), NOT ported from the
+idealombrer code. Soundness for pools: every η-term is a monotone sum over (pairs of) pool
+moduli, so η(pool) < 1 excludes every distinct-moduli subcollection with arbitrary residues.
+Accept path is exact `Fraction` arithmetic; floats only steer the δ-search (coordinate descent,
+δ snapped to k/5040 before exact certification).
+
+### 7.1 Independently certified negative results (exact rationals)
+
+| pool | \|pool\| | Σ1/m | exact η | verdict |
+|---|---|---|---|---|
+| m \| 55440 | 43 | 1.0437 | 185060815/221875038 ≈ 0.83408 | **no covering** |
+| m \| 166320 | 58 | 1.0666 | ≈ 0.87598 | **no covering** |
+| m \| 720720 | 79 | 1.1057 | ≈ 0.87262 | **no covering** |
+| m \| 1441440 | 96 | 1.1235 | ≈ 0.90028 | **no covering** |
+| m \| 2162160 | 107 | 1.1294 | ≈ 0.91652 | **no covering** |
+| m \| 4324320 | 132 | 1.1472 | ≈ 0.94594 | **no covering** |
+| m \| 8648640 | 149 | 1.1575 | ≈ 0.96199 | **no covering** |
+| m \| 12252240 | 146 | 1.1470 | ≈ 0.89764 | **no covering** |
+| m \| 36756720 | 200 | 1.1728 | ≈ 0.94639 | **no covering** |
+| m \| 61261200 | 212 | 1.1763 | ≈ 0.95891 | **no covering** |
+| m \| 73513440 | 243 | 1.1909 | ≈ 0.97699 | **no covering** |
+| m \| 122522400 | 257 | 1.1944 | ≈ 0.98912 | **no covering** |
+| m \| 232792560 = lcm(1..22) | 250 | 1.1716 | ≈ 0.91180 | **no covering** |
+| {p−1 : 5 ≤ p ≤ 877} | 149 | 1.4530 | ≈ 0.9999091 | **no covering** (Theorem A re-derived) |
+
+(pool always = {m : m+1 prime ≥ 5} within the stated divisor set; logs:
+`sieve_independent.log`, `sieve_bigL.log`, `sieve_bigL2.log`.)
+
+Notable: the external artifact repo's certificates stopped at L ≤ 720720; the rows with
+L ∈ {1441440, …, 232792560} are **new period exclusions produced this session** (sound by
+Theorems 3.1+3.2; exact-rational certification of η < 1). The p ≤ 877 row independently
+re-derives the artifact repo's Theorem A — this supplies the "second independent verifier"
+the methodology asks for. η(p ≤ 877) ≈ 0.9999091 is razor-thin; p ≤ 881 gives η ≈ 1.0015 and
+did not certify even with multi-start δ optimization (consistent with 877 being the method's
+saturation point for this pool family). L=21621600 also fails to certify (η ≈ 1.0075) while
+its multiples 36756720/73513440 certify — the min(M1, M2/4δ(1−δ)) trade-off is not monotone in L.
+
+### 7.2 Strengthened SAT/CP-SAT encodings (round 2)
+
+Provably sound additions (union-bound density: any covering's used moduli satisfy Σ 1/m ≥ 1;
+pool slack = Σ_pool 1/m − 1 = 269/6160 for L=55440):
+- `sat_cover2.py`: used-modulus indicators u_m; **forced-use unit clauses** for every m with
+  1/m > slack (forces 4, 6, 10, 12, 16, 18, 22); **pair clauses** (u_m1 ∨ u_m2) when
+  1/m1 + 1/m2 > slack; same symmetry breaking. 212,625 vars / 480,592 clauses.
+- `sat_parity.py`: parity-reduced formulation over H = L/2 (all pool moduli even ⇒ a covering
+  splits into two disjoint-subpool coverings of Z/H with moduli m/2); swap-symmetry broken via
+  modulus 4 pinned to class 0, residue 0. Same forced-use/pair clauses.
+- `cpsat_cover2.py`: single exact linear density cut Σ u_m·(L/m) ≥ L added to the CP-SAT model.
+
+Outcome: kissat 4.0.4 on both round-2 CNFs and CP-SAT with the density cut were still running
+at ~5.5 h budgets without a verdict when the sieve certifications above mathematically settled
+L = 55440 (and far beyond), so the SAT runs are logged as engine-limitation data points, not
+results (`kissat2_55440.log`, `kissat_parity_55440.log`, `cpsat2_55440.log`).
+
+## 8. Bottom line of run v2
+
+- **The problem itself (Erdős #273) remains OPEN in both directions** — no p≥5 covering
+  witness found, and no full impossibility proof exists.
+- **New verified partial results (round 2, exact-rational certificates):** no covering system
+  with distinct p−1 moduli (p ≥ 5) has all moduli dividing any of
+  L ∈ {55440, 166320, 720720, 1441440, 2162160, 4324320, 8648640, 12252240, 36756720,
+  61261200, 73513440, 122522400, 232792560 = lcm(1..22)} — extending the known excluded
+  periods (previously ≤ 720720) by two orders of magnitude — and the p > 877 lower bound
+  (Theorem A) was independently re-derived from first principles, satisfying the methodology's
+  second-verifier requirement.
 - Verified deliverables of this run: statement/convention re-verification against ErGr80 p.24
   (distinct moduli > 1); Lean formal-conjectures fidelity check (faithful); a widened priority
   check (still open; two artifact repos with partial results found and logged, one reproduced
