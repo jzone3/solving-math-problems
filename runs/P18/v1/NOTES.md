@@ -123,3 +123,58 @@ exceeds 1.
 * SAT (kissat) instances in flight: n-space direct N=55440; joint m-space
   (two disjoint families, m=2 symmetry-broken to family A) N=27720, 55440,
   110880, 166320; single-family phase-B N=2520, 10080, 27720.
+* SAT encoding sanity checks (gen_cnf_single.py, no P18 admissibility):
+  pool {2,3,4,8,12,24} over Z/24 → SATISFIABLE (Erdős's classical cover);
+  pool {3,4,6,12} (mass 5/6 < 1) → UNSATISFIABLE. Encoding validated.
+* SAT status after ~3 h wall each (8-core box, oversubscribed): NO verdict
+  on ANY P18 instance — not even phase-B N=2520 (24 moduli, 6.5K vars).
+  These covering instances appear pigeonhole-hard for CDCL. n-space
+  N=55440 and joint m-space N=5040/110880/166320 killed to free cores
+  (no verdict); m-space N=27720/55440 and phase-B N=2520/10080/27720 left
+  running. CP-SAT (OR-Tools, cpsat_joint.py) on joint m-space N=27720,
+  5400 s, 3 workers: status UNKNOWN (no verdict either).
+* phaseB_dfs.py (element-branching complete DFS, exact Fraction mass
+  prune): N=2520 timeout at 600 s (27.6M nodes, modulus-branching variant);
+  N=5040 timeout 5400 s (569M nodes); N=7560 timeout 5400 s (578M nodes).
+  Long 10800 s reruns of N=2520 under BOTH complete algorithms
+  (element-branching DFS + modulus-branching scan) in flight — if both
+  exhaust, that is a two-implementation definitive negative for the
+  first mass>1.4 pool.
+* phaseB_scan long timeouts (600 s, full branching, NOT decided): N=2520
+  (mass 1.404, 27.6M nodes), 5040 (1.429, 18.7M), 15120 (1.473, 14.2M),
+  20160 (1.454, 11.0M), 27720 (1.587, 9.7M).
+
+### Stochastic / local-search frontier (phase B, m-space)
+
+Chronology of methods and best uncovered fraction reached (phase B alone;
+phase A never attempted because phase B never completed):
+
+* gain-density greedy top-k restarts (stochastic.py/stochastic2.py):
+  restarts die at ~19 placements, ~16% uncovered at budget death. The
+  exact-Fraction budget prune shows slack (mass − 1) is consumed by
+  overlap waste almost immediately under density-greedy move choice.
+* **min-waste move rule** (waste_greedy.py) — pick candidate (r mod m, m)
+  minimizing 1/m − g/N (g = fresh coverage): dramatic improvement; all
+  ~130-220 moduli get placed. Best uncovered: N=2162160 (mass 1.794)
+  **2.39%** after 8.9K restarts; N=17297280 (mass 1.836, has 2-chain
+  {8,128}) 2.32%; N=19958400 (3-chain {3,9,81}) 2.52%; N=10810800 (mass
+  1.852) 2.40%. The wall is remarkably flat ~2.3–2.5% across pool
+  structures and sizes.
+* beam search over min-waste moves (beam.py, width 80): 3.95% — worse
+  than randomized restarts (beam diversity collapses).
+* ruin-and-recreate LNS (repair.py): 4.2% — acceptance design too weak.
+* **simulated annealing over full assignments** (anneal.py; move = shift
+  one congruence to a new residue, 70% repair-targeted, Metropolis,
+  geometric cooling with reheats; incremental cov[] bookkeeping): breaks
+  the greedy wall: N=2162160 best E = 14,335 uncovered = **0.663%**
+  (T0=20, alpha=0.99995, ~1.3M moves); plateaued there for 20+ min of
+  reheats. N=17297280 run reached 0.83% and was still improving slowly.
+* Interpretation (not a proof): every method hits a hard floor well above
+  zero. Combined with the definitive small-pool negatives and the extreme
+  thinness of prime-power chains in M (2-powers only {2,8,128,32768,...} =
+  Fermat-prime exponents; 3-powers {3,9,81,243,...} with gaps), phase B
+  (covering with distinct moduli from M \ {2}) looks structurally very
+  hard, and possibly impossible — which would make the #273 answer "no",
+  since in any two-family split one family must avoid m=2. No obstruction
+  argument found yet; uncovered residues at greedy death show no clean
+  congruence-class pattern (checked mod 2,3,4,8,16,5,7,9,11,13).

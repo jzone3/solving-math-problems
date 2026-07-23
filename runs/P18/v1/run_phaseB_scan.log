@@ -3,3 +3,13 @@ N=720    mass=1.2097 |mods|=13 exhausted nodes=9076
 N=1080   mass=1.2241 |mods|=17 exhausted nodes=29236
 N=1440   mass=1.2236 |mods|=15 exhausted nodes=29236
 N=2160   mass=1.2449 |mods|=18 exhausted nodes=377716
+N=2520   mass=1.4036 |mods|=24 timeout nodes=27648641
+N=3600   mass=1.2542 |mods|=19 exhausted nodes=478516
+N=4320   mass=1.2590 |mods|=21 exhausted nodes=596596
+N=5040   mass=1.4290 |mods|=28 timeout nodes=18686113
+N=7560   mass=1.4471 |mods|=33 timeout nodes=15288919
+N=10080  mass=1.4474 |mods|=32 timeout nodes=15635090
+N=15120  mass=1.4726 |mods|=38 timeout nodes=14245908
+N=20160  mass=1.4536 |mods|=37 timeout nodes=11016782
+N=25200  mass=1.4798 |mods|=40 timeout nodes=9545610
+N=27720  mass=1.5873 |mods|=42 timeout nodes=9657726

@@ -1,0 +1,11 @@
+phase B: NB=2162160 |mods|=131 mass=1.7945
+phase B: it=21 best_left=0.067892 (2.2s)
+phase B: it=71 best_left=0.066292 (5.3s)
+phase B: it=216 best_left=0.066253 (15.0s)
+phase B: it=355 best_left=0.058257 (23.0s)
+phase B: it=2385 best_left=0.055192 (146.1s)
+phase B: it=2410 best_left=0.055086 (147.6s)
+phase B: it=2420 best_left=0.054959 (148.3s)
+phase B: it=2776 best_left=0.047966 (170.1s)
+phase B: it=2901 best_left=0.044564 (178.2s)
+phase B: it=3023 best_left=0.042418 (184.3s)
