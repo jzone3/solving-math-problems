@@ -42,3 +42,27 @@ t=25,r=72: 36 orbits -> UNKNOWN
 t=25,r=84: 36 orbits -> UNKNOWN
 t=25,r=96: 36 orbits -> UNKNOWN
 t=25,r=108: 36 orbits -> UNKNOWN
+t=25,r=120: 36 orbits -> UNKNOWN
+t=31,r=0: 27 orbits -> UNSAT
+t=31,r=6: 27 orbits -> UNSAT
+t=31,r=12: 27 orbits -> UNSAT
+t=31,r=18: 27 orbits -> UNSAT
+t=31,r=24: 27 orbits -> UNSAT
+t=31,r=30: 27 orbits -> UNSAT
+t=31,r=36: 27 orbits -> UNSAT
+t=31,r=42: 27 orbits -> UNSAT
+t=31,r=48: 27 orbits -> UNSAT
+t=31,r=54: 27 orbits -> UNSAT
+t=31,r=60: 27 orbits -> UNSAT
+t=31,r=66: 27 orbits -> UNSAT
+t=31,r=72: 27 orbits -> UNSAT
+t=31,r=78: 27 orbits -> UNSAT
+t=31,r=84: 27 orbits -> UNSAT
+t=31,r=90: 27 orbits -> UNSAT
+t=31,r=96: 27 orbits -> UNSAT
+t=31,r=102: 27 orbits -> UNSAT
+t=31,r=108: 27 orbits -> UNSAT
+t=31,r=114: 27 orbits -> UNSAT
+t=31,r=120: 27 orbits -> UNSAT
+t=31,r=126: 27 orbits -> UNSAT
+RETRY DONE {'UNSAT': 55, 'UNKNOWN': 11}

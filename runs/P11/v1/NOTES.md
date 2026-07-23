@@ -160,3 +160,44 @@ pipelines; joint cyclic/negacyclic bijective SAT; exhaustive affine-orbit CP-SAT
 sweeps). New citable exclusions: 2/8 mod-6 fold classes eliminated for CW(96,36);
 no affine-invariant (≤48 orbits) witness exists for CW(96,36)/CW(132,81) (complete
 sweeps) and none found in 950+/550+/1070+/760+ decided classes for CW(105/112/117/120).
+
+## Attack 4 (resumed session 3): literature re-check → CW(96,36) SOLVED
+
+Coordinator push ("it's been done before") prompted a deeper literature pass.
+arXiv search for "circulant weighing" (2026-07) surfaced Gordon, "Cyclic relative
+difference sets and circulant weighing matrices" (arXiv:2501.14924v2, J. Alg. Comb.
+2026). Its Table 7 of KNOWN proper CW(n,36) lists "48m" — i.e. all multiples of 48,
+citing Schmidt & Smith, "Circulant weighing matrices whose order and weight are
+products of powers of 2 and 3", JCTA 120 (2013) 275-287. Retrieved the paper
+(personal.ntu.edu.sg/bernhard/Publications/pub/weighing23.pdf); its abstract states
+verbatim: "we show that proper CW(v,36)'s exist for all v ≡ 0 (mod 48), all of
+which are new", with the explicit construction in Theorem 6.8 / Corollary 6.9:
+  D = (1+γ⁸)B + (1-γ⁸)(c·A_i + d·C3) in Z[C_v], γ of order 16, α of order 3,
+  A1=(1+γ²+γ⁶)(α-α²), A2=(1-γ²-γ⁶)(α-α²), B=-1+(1-γ⁴)(γ+γ³)+(α+α²)(1+γ⁴),
+  with (c,d) satisfying one of disjointness conditions (i)-(v).
+So the La Jolla table entry "CW(96,6): Open" contradicts the published record —
+the cell is settled affirmatively (data omission in cwm.json: 96 is the ONLY
+multiple of 48 < 1000 not marked Yes/Schmidt-Smith there).
+
+Implemented the construction (ss_construct96.py) with γ=6, α=32 in Z_96; brute-
+forced (i,c,d); many witnesses, e.g. i=1, c=1, d=3 (condition (i)). The witness
+row is in witness_ss_96_36.json and hardcoded in solutions/P11/verify.py, which
+now also checks PROPERNESS (support not inside any residue class mod 2 or 3):
+
+  CW(96,36): PASS (proper)
+
+This is a proper CW(96,36): length 96, ternary, weight 36, all 95 nontrivial
+periodic autocorrelations zero, support meets both classes mod 2 and all mod 3.
+It is NOT a zero-padded CW(48,36).
+
+Caveat (honest framing): this is a reconstruction of a published 2013 result, not
+new mathematics; the "open" status of the CW(96,6) cell in the La Jolla table is
+evidently a database error. The other five cells (105, 112, 117 @36; 120 @49;
+132 @81) are NOT covered by Schmidt-Smith (orders not of the form 2^a·3^b·48-mult
+within scope) nor by Gordon 2026 Table 7, and remain genuinely open; our negative
+sweeps (Attacks 1-3) stand for them. Extended 64-orbit affine sweeps + 1800 s
+retries left running (launch_stage2.sh).
+
+STATUS: SOLVED (CW(96,36): explicit machine-verified proper witness via
+Schmidt-Smith 2013 Thm 6.8; La Jolla "Open" status shown to be a data error) —
+remaining five cells negative/frontier-pushed as documented above.

@@ -9,7 +9,7 @@ CP-SAT decides each (t,r) completely in seconds (<= ~34 ternary vars).
 
 Usage: mult_cpsat.py n k max_orbits [--affine]
 """
-import json, os, sys
+import json, os, re, sys
 from math import gcd, isqrt
 from ortools.sat.python import cp_model
 
@@ -79,6 +79,16 @@ def main():
     n, k = int(sys.argv[1]), int(sys.argv[2])
     mo = int(sys.argv[3])
     affine = "--affine" in sys.argv
+    done = set()
+    for a in sys.argv:
+        if a.startswith("--resume="):
+            path = a.split("=", 1)[1]
+            if os.path.exists(path):
+                for line in open(path):
+                    m = re.match(r"t=(\d+),r=(\d+): \d+ orbits -> (UNSAT|UNKNOWN)", line)
+                    if m:
+                        done.add((int(m.group(1)), int(m.group(2))))
+            print(f"resume: {len(done)} decided pairs skipped", flush=True)
     tried = set()
     stats = {"UNSAT": 0, "UNKNOWN": 0, "skipped": 0}
     for t in range(2, n):
@@ -90,6 +100,8 @@ def main():
             if key in tried:
                 continue
             tried.add(key)
+            if (t, r) in done:
+                continue
             if len(orbs) > mo:
                 stats["skipped"] += 1
                 continue

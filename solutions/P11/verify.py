@@ -14,7 +14,18 @@ No dependencies beyond the standard library.
 import json, sys
 
 # Fill in as witnesses are found: list of (n, k, first_row)
-WITNESSES = []
+# CW(96,36), PROPER (support not contained in any coset of a proper subgroup).
+# Constructed via Schmidt & Smith, JCTA 120 (2013) 275-287, Theorem 6.8 with
+# gamma=6 (order 16), alpha=32 (order 3), i=1, c=1, d=3 (condition (i)).
+# The La Jolla table lists CW(96,6) as Open, but Corollary 6.9 of that paper
+# states proper CW(v,36) exist for ALL v = 0 mod 48; this is an explicit one.
+WITNESSES = [
+    (96, 36, [-1, 0, 0, 1, 0, -1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, -1,
+              0, -1, 0, 0, 0, 0, 0, 0, 0, 1, -1, 0, 1, 1, 0, 1, 0, 0, 0, 0,
+              1, 0, -1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 1, 1, 0, 1, 0, 0, 0,
+              0, 0, 0, 0, 1, -1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0,
+              1, -1, 0, -1, 0, 0, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0]),
+]
 
 
 def check(n, k, a):
@@ -27,6 +38,24 @@ def check(n, k, a):
         assert paf == 0, f"PAF at shift {s} is {paf}, not 0"
 
 
+def check_proper(n, a):
+    """Proper: support not contained in a coset of Z_t for any proper t|n.
+    It suffices to check subgroups of prime index p|n (index-p subgroup is
+    the multiples of p; cosets are residue classes mod p)."""
+    sup = [i for i in range(n) if a[i]]
+    p = 2
+    m = n
+    primes = set()
+    while m > 1:
+        while m % p == 0:
+            primes.add(p)
+            m //= p
+        p += 1
+    for p in sorted(primes):
+        classes = {i % p for i in sup}
+        assert len(classes) > 1, f"support inside one residue class mod {p} (improper)"
+
+
 def main():
     items = list(WITNESSES)
     if len(sys.argv) > 1:
@@ -37,7 +66,8 @@ def main():
         return
     for n, k, a in items:
         check(n, k, a)
-        print(f"CW({n},{k}): PASS")
+        check_proper(n, a)
+        print(f"CW({n},{k}): PASS (proper)")
     print("PASS")
 
 
