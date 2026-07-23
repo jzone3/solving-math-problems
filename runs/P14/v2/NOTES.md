@@ -99,3 +99,11 @@ multiplicity counts, column sums, all pairwise inner products = L; prints PASS/F
   independently confirm nonexistence. Launched on (12,15): 11 cubes, 4h/cube cap.
 - Cube-and-conquer on (14,28) (13 row-1 cubes, kissat): cube0 UNSAT (~10 min);
   remaining cubes running (some >5h each).
+
+- 19:55 UTC: literature-consistency test: sym encoding of (12,26;3,5,13;6,5) — the
+  instance Greig PROVED nonexistent — returns s UNSATISFIABLE in <10 min. Encoding+
+  symmetry-breaking now reproduces literature in both directions (5 known-existing
+  siblings SAT with verified witnesses; 1 known-nonexistent instance UNSAT).
+- Lex-free cross-check cubes (xcheck/, 23 CNFs: 11+7+5 for (12,15)/(12,20)/(14,18),
+  row0+row1 fixed only, no lex) running since 17:11; none finished after ~2.7h —
+  much harder without double-lex pruning, as expected.
