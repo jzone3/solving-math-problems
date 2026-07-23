@@ -6,7 +6,7 @@ Like finite_cover_np.py, but each restart perturbs the greedy choice of
 modulus and residue (choose randomly among near-best), with a short time
 budget per restart. Rich-N candidates only.
 
-Usage: fc_restart.py M [total_seconds]
+Usage: fc_restart.py M [total_seconds] [per_restart] [jitter] [seed]
 """
 import json
 import sys
@@ -99,7 +99,10 @@ def search(M, N, rng, time_limit=20.0, branch=3, jitter=0.15):
 def main():
     M = int(sys.argv[1])
     total = int(sys.argv[2]) if len(sys.argv) > 2 else 3600
-    rng = np.random.default_rng(12345)
+    per = float(sys.argv[3]) if len(sys.argv) > 3 else 20.0
+    jit = float(sys.argv[4]) if len(sys.argv) > 4 else 0.15
+    seed = int(sys.argv[5]) if len(sys.argv) > 5 else 12345
+    rng = np.random.default_rng(seed)
     # richest Ns first
     cands = []
     for a in range(3, 11):
@@ -122,7 +125,7 @@ def main():
     while time.time() - t0 < total:
         for r, N in cands:
             restarts += 1
-            res = search(M, N, rng)
+            res = search(M, N, rng, time_limit=per, jitter=jit)
             if res:
                 fn = "/tmp/fcr_M%d.json" % M
                 json.dump({"minmod": M,
