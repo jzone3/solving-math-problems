@@ -1,1 +1,2 @@
 cube00004 UNSAT
+cube00020 UNSAT
