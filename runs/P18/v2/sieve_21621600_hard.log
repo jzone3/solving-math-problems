@@ -1,0 +1,4 @@
+moduli dividing L=21621600: |pool|=190 budget=1.17588
+deltas: {2: '0', 3: '0', 5: '47/126', 7: '359/840', 11: '151/336', 13: '1/2'}
+float-search eta ~ 1.00754751; EXACT eta = 39854238445747422009883/39555691425157590540000 = 1.00754751
+NOT certified: eta >= 1 (undecided by this sieve / these deltas)

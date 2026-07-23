@@ -1,0 +1,12 @@
+=== L 32432400
+moduli dividing L=32432400: |pool|=189 budget=1.16874
+float-search eta ~ 1.00020337; EXACT eta = 40663958727118664626493/40655690848956114360000 = 1.00020336
+NOT certified: eta >= 1 (undecided by this sieve / these deltas)
+=== L 33264000
+moduli dividing L=33264000: |pool|=172 budget=1.13236
+float-search eta ~ 1.00098743; EXACT eta = 7721746504531043683/7714129388114160000 = 1.00098742
+NOT certified: eta >= 1 (undecided by this sieve / these deltas)
+=== L 144144000
+moduli dividing L=144144000: |pool|=243 budget=1.17505
+float-search eta ~ 1.00252735; EXACT eta = 991730784680596319250452501/989230647282454484742120000 = 1.00252736
+NOT certified: eta >= 1 (undecided by this sieve / these deltas)

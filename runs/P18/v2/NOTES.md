@@ -208,7 +208,32 @@ at ~5.5 h budgets without a verdict when the sieve certifications above mathemat
 L = 55440 (and far beyond), so the SAT runs are logged as engine-limitation data points, not
 results (`kissat2_55440.log`, `kissat_parity_55440.log`, `cpsat2_55440.log`).
 
-## 8. Bottom line of run v2
+## 8. Round 3 (same session, resumed again): positive-direction attempts + frontier map
+
+- **Witness search on undecided periods** (`greedy_cover.py`): randomized greedy max-coverage +
+  patching on L=21621600 (the richest sieve-undecided pool) leaves ≥ 8.8% uncovered — far from
+  a cover; consistent with P18-v1's independent findings (their annealer's hard floor at the
+  same period was 0.402% uncovered after 2.2 h; all their methods plateau well above zero).
+- **Frame constructions are structurally blocked** for p ≥ 5 (OBSTRUCTIONS.md §O6): the known
+  flexible covering family (Morris et al., arXiv:1904.04806) needs modulus 2 = 3−1 at its first
+  layer; any p ≥ 5 witness must deviate from the tree/frame shape at layer 1.
+- **Sieve frontier map** (`scan_undecided.py`, float-only δ-optimized η over 219 smooth pools
+  with density ≥ 1, L < 3·10^8): 207 EXCLUDED, only 12 UNDECIDED —
+  L ∈ {19958400, 21621600, 32432400, 33264000, 43243200, 49896000, 64864800, 86486400,
+  99792000, 108108000, 144144000, 162162000} (all with high powers of 2/3 and 5²; η between
+  1.0002 and 1.034). Any covering whose lcm is ≤3·10^8-smooth of the scanned shapes must have
+  its lcm-divisor pool among these. Heavy-restart exact certification attempts on the
+  borderline cases (32432400 η≈1.00020, 33264000, 144144000, 21621600 with 40 restarts) all
+  stay ≥ 1 — genuine saturation of the Thm 3.2 bound, not an optimizer artifact
+  (`sieve_borderline.log`, `sieve_21621600_hard.log`).
+- Round-2's kissat/CP-SAT reruns were killed by two infrastructure restarts before their
+  budgets elapsed (logs empty; no verdict either way — consistent with all previous attempts).
+- Cross-check with sibling run P18-v1 (branch `runs/P18-v1`): they proved definitive
+  small-pool negatives (phase-B pools N ≤ 4320), hit the same CDCL wall (no verdict even at
+  N=2520), and their stochastic frontier stalls at 0.4–0.7% uncovered. Both directions remain
+  blocked by fundamentally new mathematics, not compute.
+
+## 9. Bottom line of run v2
 
 - **The problem itself (Erdős #273) remains OPEN in both directions** — no p≥5 covering
   witness found, and no full impossibility proof exists.

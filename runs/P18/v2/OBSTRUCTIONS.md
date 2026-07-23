@@ -53,3 +53,24 @@ combinatorial (integrality/overlap on smooth periods), not density. A constructi
 exists, likely lives on a period with several large primes p > 877 — beyond residue-level
 exhaustive search; a structured (tree/frame-based, à la BBMST constructions) approach is the
 plausible route. Left open in this run.
+
+## O6. Frame constructions are structurally blocked at level 1 (round 3)
+
+The flexible "frame" family behind the known lower-bound constructions (Morris et al.,
+arXiv:1904.04806 §1/§5: progressions a·Q_{i−1} (mod m) with p_i | m | Q_i covering the classes
+a·Q_{i−1} + Q_i·Z level by level, closed by 0 (mod Q_r)) cannot produce a p ≥ 5 witness
+directly: the first layer must cover q_1 − 1 nonzero classes with distinct moduli dividing q_1
+(a prime), so q_1 = 2 and the only available modulus is 2 = 3 − 1 — inadmissible for p ≥ 5.
+Equivalently (parity reduction): one of the two halved subsystems must cover Z with distinct
+moduli from M \ {2} = {3, 5, 6, 8, 9, 11, 14, ...} (2m+1 prime), i.e. with minimum modulus 3 and
+no density-1/2 congruence. Any positive construction must therefore deviate from the greedy
+tree/frame shape at the very first layer — covering the m=2-side classes with several deferred
+congruences instead of one. This is where P18-v1's phase-B searches also localized all the
+difficulty (their exhaustive per-pool scans failed for all N tried).
+
+## O7. Sieve frontier map (round 3)
+
+`scan_undecided.py` (float-only δ-optimized η over smooth L with pool density ≥ 1) maps which
+smooth periods are excluded by the distortion sieve vs undecided (η ≥ 1). Undecided pools —
+e.g. L = 21621600 = 2^5·3^3·5^2·7·11·13 (η ≈ 1.0075) and L = 2327925600 (η ≈ 1.0061) — are the
+only smooth-period shapes where a covering could still hide; see `scan_undecided.log`.
