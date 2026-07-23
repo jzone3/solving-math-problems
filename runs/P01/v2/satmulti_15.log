@@ -1,0 +1,6 @@
+n=15 it=200 t=18s last_clause_len=5
+n=15 it=400 t=43s last_clause_len=5
+n=15 it=600 t=65s last_clause_len=4
+n=15 it=800 t=86s last_clause_len=5
+n=15 it=1000 t=109s last_clause_len=6
+UNSAT n=15 case=None after 1092 refinements, t=148s

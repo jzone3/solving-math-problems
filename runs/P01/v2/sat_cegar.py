@@ -37,7 +37,14 @@ def second_hc(n, chords):
             return [tuple(sorted(e)) for e in used_chords]
     return None
 
-def main(n, budget, case=None):
+def main(n, budget, case=None, multi=False):
+    """multi=True: allow doubled chords (loopless 4-regular multigraph target).
+    Soundness notes: (i) the unique HC = C_n uses every cycle edge, so cycle edges
+    cannot be doubled (using the other copy would give a 2nd HC); (ii) chord
+    multiplicity >= 3 is impossible degree-wise; hence vars x_e (chord present)
+    plus y_e (second copy), y_e -> x_e, vertex degree sum x+y == 2, cover ALL
+    loopless 4-regular uniquely hamiltonian multigraphs. Blocking clauses stay
+    on x only (a 2nd HC is determined by its chord set)."""
     """case=(d1,d2): restrict to vertex 0 having chords of cycle-lengths d1 and d2
     (2 <= d1 <= d2 <= n//2). The <=C(n/2-1,2)+n/2-1 cases partition the search space
     (every 4-regular completion gives vertex 0 exactly two chords, whose lengths are
@@ -45,15 +52,23 @@ def main(n, budget, case=None):
     cube-and-conquer."""
     pool = IDPool()
     var = {}
+    yvar = {}
     for u in range(n):
         for v in range(u + 2, n):
             if u == 0 and v == n - 1:
                 continue
             var[(u, v)] = pool.id(("x", u, v))
+            if multi:
+                yvar[(u, v)] = pool.id(("y", u, v))
     inv = {i: e for e, i in var.items()}
     cnf = []
+    if multi:
+        for e in yvar:
+            cnf.append([-yvar[e], var[e]])
     for w in range(n):
         lits = [var[e] for e in var if w in e]
+        if multi:
+            lits += [yvar[e] for e in yvar if w in e]
         cnf.extend(CardEnc.equals(lits=lits, bound=2, vpool=pool,
                                   encoding=EncType.seqcounter).clauses)
     if case:
@@ -77,6 +92,18 @@ def main(n, budget, case=None):
     solver = Cadical153(bootstrap_with=cnf)
     t0 = time.time()
     it = 0
+    bf = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"blocking_{n}.txt")
+    if os.path.exists(bf):
+        nb = 0
+        for line in open(bf):
+            S = [tuple(map(int, p.split(","))) for p in line.split()]
+            for r in range(n):
+                for sgn in (1, -1):
+                    T = [tuple(sorted(((sgn*u+r) % n, (sgn*v+r) % n))) for u, v in S]
+                    if all(e in var for e in T):
+                        solver.add_clause([-var[e] for e in T])
+                        nb += 1
+        print(f"seeded {nb} precomputed blocking clauses", flush=True)
     def images(S):
         out = set()
         for r in range(n):
@@ -113,9 +140,11 @@ def main(n, budget, case=None):
                         changed = True
                         break
         if S is None:
-            with open("WITNESS.txt", "a") as f:
-                f.write(f"SAT-CEGAR WITNESS n={n} chords={sorted(chords)}\n")
-            print(f"WITNESS n={n} chords={sorted(chords)}", flush=True)
+            doubled = [e for e, i in yvar.items() if i in model] if multi else []
+            fname = "MULTI_WITNESS.txt" if doubled else "WITNESS.txt"
+            with open(fname, "a") as f:
+                f.write(f"SAT-CEGAR WITNESS n={n} chords={sorted(chords)} doubled={sorted(doubled)}\n")
+            print(f"WITNESS n={n} chords={sorted(chords)} doubled={sorted(doubled)}", flush=True)
             return "witness"
         for T in images(S):
             solver.add_clause([-var[e] for e in T])
@@ -126,9 +155,11 @@ def main(n, budget, case=None):
     return "timeout"
 
 if __name__ == "__main__":
-    n_ = int(sys.argv[1])
-    b_ = float(sys.argv[2]) if len(sys.argv) > 2 else 3600
-    if len(sys.argv) > 4:
-        main(n_, b_, case=(int(sys.argv[3]), int(sys.argv[4])))
+    args = [a for a in sys.argv[1:] if a != "multi"]
+    multi_ = "multi" in sys.argv
+    n_ = int(args[0])
+    b_ = float(args[1]) if len(args) > 1 else 3600
+    if len(args) > 3:
+        main(n_, b_, case=(int(args[2]), int(args[3])), multi=multi_)
     else:
-        main(n_, b_)
+        main(n_, b_, multi=multi_)

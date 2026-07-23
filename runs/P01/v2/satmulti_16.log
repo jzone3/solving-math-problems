@@ -1,0 +1,14 @@
+n=16 it=200 t=17s last_clause_len=5
+n=16 it=400 t=38s last_clause_len=5
+n=16 it=600 t=60s last_clause_len=7
+n=16 it=800 t=80s last_clause_len=6
+n=16 it=1000 t=102s last_clause_len=5
+n=16 it=1200 t=124s last_clause_len=5
+n=16 it=1400 t=149s last_clause_len=8
+n=16 it=1600 t=165s last_clause_len=6
+n=16 it=1800 t=186s last_clause_len=6
+n=16 it=2000 t=208s last_clause_len=6
+n=16 it=2200 t=233s last_clause_len=5
+n=16 it=2400 t=262s last_clause_len=8
+n=16 it=2600 t=299s last_clause_len=6
+UNSAT n=16 case=None after 2658 refinements, t=430s
