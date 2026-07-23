@@ -154,6 +154,18 @@ km_z7.py / km_z7_exhaustive.py (full Kramer–Mesner reduction for sigma = two 7
   z2-seven-14x2, z3-8x3-4f, z3-7x3-7f, z3-6x3-10f, z6-4x6-2x2, z6-3x6-1x6-2x2 given
   14400 s follow-up runs.
 
-## STATUS: SOLVED (nonexistence) for 3 of 4 instances — BTD(14,18;7,1,9;7,4),
-## BTD(12,15;6,2,10;8,6), BTD(12,20;4,3,10;6,4) do not exist (CP-SAT INFEASIBLE +
-## kissat/drat-trim DRAT-certified UNSAT each); (14,28;8,3,14;7,6) negative (no verdict).
+### BREAKTHROUGH: BTD(14,28;8,3,14;7,6) EXISTS
+Continuing the automorphism-class sweep to the smaller order-3 classes,
+config **z3c3-6x3-10f** (sigma = three 3-cycles (0 1 2)(3 4 5)(6 7 8), points 9–13 fixed;
+6 block orbits of size 3 + 10 fixed blocks) returned **OPTIMAL in 17.2 s** — a witness!
+- verify.py: **PASS**
+- CPro1's original problem_def.v(): **True** (independent second verifier — methodology met)
+- Witness + writeup copied to solutions/P14/ (EXISTENCE.md, witness-14-28-8-3-14-7-6.txt).
+Order-3/5 class sweep also gave: z3c3 splits 0..4x3 INFEASIBLE, 5x3-13f UNKNOWN(600 s),
+then the hit at 6x3-10f. Structure beat brute force: 19 h of unstructured search failed;
+the right prescribed symmetry found it in seconds.
+
+## STATUS: SOLVED — ALL FOUR instances closed. BTD(14,18;7,1,9;7,4),
+## BTD(12,15;6,2,10;8,6), BTD(12,20;4,3,10;6,4) do NOT exist (CP-SAT INFEASIBLE +
+## kissat/drat-trim DRAT-certified UNSAT each); BTD(14,28;8,3,14;7,6) EXISTS
+## (explicit witness, PASS by verify.py and by CPro1's original verifier).

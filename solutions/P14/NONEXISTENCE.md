@@ -6,8 +6,8 @@
 - BTD(12,20; 4,3,10; 6,4)
 
 These were the three instances that survived CPro1 (arXiv:2501.17725, arXiv:2505.23881).
-The fourth P14 instance, BTD(14,28; 8,3,14; 7,6), remains **undecided** (~19 h of solver
-time, no verdict).
+The fourth P14 instance, BTD(14,28; 8,3,14; 7,6), **EXISTS** — see EXISTENCE.md and
+`witness-14-28-8-3-14-7-6.txt` in this directory.
 
 ## Evidence (each instance, two independent methods)
 1. OR-Tools CP-SAT INFEASIBLE on the model in `runs/P14/v1/solve_cpsat.py`

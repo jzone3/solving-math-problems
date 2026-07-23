@@ -1,0 +1,7 @@
+z3c3-0x3-28f status: INFEASIBLE wall: 0.0 s
+z3c3-1x3-25f status: INFEASIBLE wall: 0.3 s
+z3c3-2x3-22f status: INFEASIBLE wall: 0.3 s
+z3c3-3x3-19f status: INFEASIBLE wall: 0.4 s
+z3c3-4x3-16f status: INFEASIBLE wall: 223.8 s
+z3c3-5x3-13f status: UNKNOWN wall: 600.0 s
+z3c3-6x3-10f status: OPTIMAL wall: 17.2 s

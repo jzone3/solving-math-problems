@@ -77,11 +77,36 @@ CONFIGS.update({
     "z2-seven-10f-9x2": (Z2_seven, 2, [1]*10+[2]*9),
     "z2-seven-12f-8x2": (Z2_seven, 2, [1]*12+[2]*8),
     "z3-6x3-10f": (Z3_four, 3, [3]*6+[1]*10),
+    "z3-5x3-13f": (Z3_four, 3, [3]*5+[1]*13),
+    "z3-4x3-16f": (Z3_four, 3, [3]*4+[1]*16),
+    "z3-3x3-19f": (Z3_four, 3, [3]*3+[1]*19),
+    "z3-2x3-22f": (Z3_four, 3, [3]*2+[1]*22),
+    "z3-1x3-25f": (Z3_four, 3, [3]*1+[1]*25),
+    "z3-28f": (Z3_four, 3, [1]*28),
+    "z5-2x5-18f": (Z5_two, 5, [5]*2+[1]*18),
+    "z5-1x5-23f": (Z5_two, 5, [5]*1+[1]*23),
+    "z5-28f": (Z5_two, 5, [1]*28),
     "z6-4x6-2x2": (Z6, 6, [6]*4+[2,2]),
     "z6-4x6-1x3-1f": (Z6, 6, [6]*4+[3,1]),
     "z6-3x6-1x6-2x2": (Z6, 6, [6,6,6,6,2,2]),
     "z6-2x6-2x6-4f": (Z6, 6, [6]*4+[1]*4),
 })
+
+
+Z3_three = cyc(*[[3*i,3*i+1,3*i+2] for i in range(3)])
+Z3_two = cyc(*[[3*i,3*i+1,3*i+2] for i in range(2)])
+Z3_one = cyc([0,1,2])
+Z5_one = cyc(list(range(5)))
+
+for _k,_sig in (("z3c3",Z3_three),("z3c2",Z3_two),("z3c1",Z3_one)):
+    for _t in range(10):
+        _f = 28-3*_t
+        if _f>=0:
+            CONFIGS[f"{_k}-{_t}x3-{_f}f"] = (_sig,3,[3]*_t+[1]*_f)
+for _t in range(6):
+    _f = 28-5*_t
+    if _f>=0:
+        CONFIGS[f"z5c1-{_t}x5-{_f}f"] = (Z5_one,5,[5]*_t+[1]*_f)
 
 def perm_pow(p, k):
     q = list(range(len(p)))
