@@ -1,0 +1,78 @@
+[c3w3r4] it=14 best t=51 L=51v realn=51 masks=1 ovf=0
+[c3w3r4] it=21 best t=39 L=39v realn=39 masks=1 ovf=0
+[c3w3r4] it=22 best t=36 L=36v realn=36 masks=1 ovf=0
+[c3w3r4] it=24 best t=30 L=30v realn=30 masks=1 ovf=0
+[c3w3r4] it=43 best t=27 L=42v realn=51 masks=3 ovf=0
+[c3w3r4] it=44 best t=21 L=36v realn=45 masks=3 ovf=0
+[c3w3r4] it=60 best t=17 L=38v realn=57 masks=18 ovf=0
+[c3w3r4] it=80 best t=9 L=33v realn=48 masks=6 ovf=0
+[c3w3r4] it=187 best t=3 L=23v realn=54 masks=6 ovf=0
+[c3w3r4] done best t=3 L=23
+[c3w3r7] done best t=3 L=31
+[c3w3r23] it=3 best t=39 L=49v realn=54 masks=3 ovf=0
+[c3w3r23] it=6 best t=18 L=28v realn=45 masks=3 ovf=0
+[c3w3r23] it=11 best t=3 L=31v realn=48 masks=3 ovf=0
+[c3w3r23] done best t=3 L=31
+[c3w3r50] it=2 best t=36 L=37v realn=39 masks=3 ovf=0
+[c3w3r50] it=5 best t=33 L=34v realn=36 masks=3 ovf=0
+[c3w3r50] it=10 best t=27 L=37v realn=42 masks=6 ovf=0
+[c3w3r50] it=13 best t=15 L=39v realn=51 masks=27 ovf=0
+[c3w3r50] it=30 best t=12 L=35v realn=57 masks=54 ovf=0
+[c3w3r50] it=182 best t=9 L=31v realn=57 masks=24 ovf=0
+[c3w3r50] it=183 best t=6 L=29v realn=54 masks=45 ovf=0
+[c3w3r50] it=198 best t=3 L=29v realn=51 masks=3 ovf=0
+[c3w3r50] done best t=3 L=29
+[c3w3r65] it=23 best t=27 L=33v realn=45 masks=3 ovf=0
+[c3w3r65] it=29 best t=21 L=25v realn=42 masks=12 ovf=0
+[c3w3r65] it=32 best t=3 L=27v realn=51 masks=6 ovf=0
+[c3w3r65] done best t=3 L=27
+[c3w3r83] it=4 best t=27 L=35v realn=48 masks=6 ovf=0
+[c3w3r83] it=25 best t=24 L=29v realn=48 masks=3 ovf=0
+[c3w3r83] it=30 best t=9 L=29v realn=48 masks=18 ovf=0
+[c3w3r83] it=32 best t=6 L=29v realn=51 masks=90 ovf=0
+[c3w3r83] it=94 best t=3 L=31v realn=51 masks=3 ovf=0
+[c3w3r83] done best t=3 L=31
+[c3w3r114] it=1 best t=30 L=43v realn=54 masks=12 ovf=0
+[c3w3r114] it=5 best t=27 L=34v realn=51 masks=3 ovf=0
+[c3w3r114] it=6 best t=3 L=35v realn=54 masks=6 ovf=0
+[c3w3r114] done best t=3 L=35
+[c3w3r137] it=23 best t=24 L=39v realn=54 masks=12 ovf=0
+[c3w3r137] it=45 best t=21 L=35v realn=45 masks=12 ovf=0
+[c3w3r137] it=51 best t=9 L=37v realn=57 masks=18 ovf=0
+[c3w3r137] it=69 best t=3 L=39v realn=57 masks=3 ovf=0
+[c3w3r137] done best t=3 L=39
+[c3w3r173] it=22 best t=21 L=32v realn=54 masks=3 ovf=0
+[c3w3r173] it=26 best t=3 L=21v realn=42 masks=3 ovf=0
+[c3w3r173] done best t=3 L=21
+[c3w3r187] it=3 best t=39 L=40v realn=45 masks=6 ovf=0
+[c3w3r187] it=5 best t=36 L=37v realn=42 masks=6 ovf=0
+[c3w3r187] it=6 best t=33 L=34v realn=39 masks=6 ovf=0
+[c3w3r187] it=17 best t=27 L=32v realn=42 masks=3 ovf=0
+[c3w3r187] it=18 best t=18 L=33v realn=54 masks=3 ovf=0
+[c3w3r187] it=30 best t=15 L=30v realn=51 masks=6 ovf=0
+[c3w3r187] it=112 best t=9 L=33v realn=54 masks=3 ovf=0
+[c3w3r187] it=174 best t=3 L=29v realn=57 masks=3 ovf=0
+[c3w3r187] done best t=3 L=29
+[c3w3r209] it=0 best t=30 L=38v realn=51 masks=3 ovf=0
+[c3w3r209] it=11 best t=27 L=34v realn=45 masks=48 ovf=0
+[c3w3r209] it=14 best t=15 L=24v realn=48 masks=3 ovf=0
+[c3w3r209] it=19 best t=12 L=24v realn=51 masks=9 ovf=0
+[c3w3r209] it=28 best t=9 L=23v realn=48 masks=72 ovf=0
+[c3w3r209] it=63 best t=3 L=27v realn=54 masks=3 ovf=0
+[c3w3r209] done best t=3 L=27
+[c3w3r216] it=0 best t=33 L=38v realn=51 masks=3 ovf=0
+[c3w3r216] it=3 best t=27 L=32v realn=45 masks=3 ovf=0
+[c3w3r216] it=4 best t=24 L=29v realn=42 masks=3 ovf=0
+[c3w3r216] it=5 best t=3 L=23v realn=36 masks=6 ovf=0
+[c3w3r216] done best t=3 L=23
+[c3w3r251] it=3 best t=21 L=33v realn=48 masks=3 ovf=0
+[c3w3r251] it=30 best t=18 L=38v realn=54 masks=3 ovf=0
+[c3w3r251] it=36 best t=9 L=37v realn=57 masks=3 ovf=0
+[c3w3r251] it=151 best t=3 L=25v realn=48 masks=6 ovf=0
+[c3w3r251] done best t=3 L=25
+[c3w3r285] it=0 best t=30 L=35v realn=42 masks=24 ovf=0
+[c3w3r285] it=12 best t=21 L=37v realn=54 masks=54 ovf=0
+[c3w3r285] it=16 best t=15 L=32v realn=48 masks=36 ovf=0
+[c3w3r285] it=99 best t=9 L=29v realn=54 masks=6 ovf=0
+[c3w3r285] it=144 best t=3 L=23v realn=57 masks=3 ovf=0
+[c3w3r285] done best t=3 L=23
