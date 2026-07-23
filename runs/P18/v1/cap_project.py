@@ -135,7 +135,7 @@ def decide(residual, B, tl, l1=None):
     # in particular the smallest modulus n0; translating x -> x - a0 puts its
     # congruence at residue 0. So fix (0 mod n0) at the root.
     budget0 = sum(recip.values())
-    if Fraction(1, max(residual)) > slack:
+    if Fraction(1, min(residual)) > slack:  # smallest modulus is forced
         n0 = unused[0]
         unc[0::n0] = False
         cnt[0] -= L // n0

@@ -256,8 +256,39 @@ arithmetic. First survivor: B = 256, residual pool = 28
 {2,3,5,7}-smooth moduli {4,6,10,12,16,18,28,30,36,40,42,60,70,72,96,
 100,108,112,126,150,162,180,192,196,210,240,250,256}, L = 127,008,000,
 residual mass 127085857/127008000 ≈ 1.000613 — waste budget only
-6.1·10⁻⁴, decided by complete DFS (cap_project.py, exact prune):
-see run_cap256.log.
+6.1·10⁻⁴.
+
+**B = 256 KILLED (definitive, complete DFS).** A first exact
+element-branching DFS over Z/127008000 with only the Fraction mass
+prune timed out (undecided, 180K nodes / 3000 s, run_cap256.log). Two
+additions made it tractable:
+
+1. *Root normalization*: dropping any residual modulus n loses mass
+   1/n; when 1/n₀ (smallest, here 4) exceeds the slack, the modulus-4
+   congruence is forced, and translating x ↦ x−a puts it at 0 mod 4.
+2. *Deficit-sum lookahead*: for each unused modulus n, its eventual
+   congruence overlaps the already-covered set by at least
+   L/n − max_a |{fresh in a mod n}| (freshness only decreases), and
+   these deficits are additive against the remaining exact waste
+   budget (remL = (budget − uncovered/L)·L). One reshape-sum per
+   unused modulus per node computes them exactly (integer counts).
+
+The lookahead is devastating at slack 6.1·10⁻⁴: e.g. after placing
+(0 mod 4) and (1 mod 6), EVERY class mod 250 overlaps one of them by
+≥ L/750 > slack·L, so the branch dies at node 2 (this is the typical
+kill pattern). All 27 level-1 branches (choice of the modulus covering
+the first uncovered point after normalization) were run to exhaustion
+in parallel (run_cap256_l1_*.log): every one reports
+"KILLED by complete DFS", largest branch 977 nodes / 1124 s; 22 of 27
+died at node 2 in < 5 s. No witness.
+
+⇒ **Definitive: no #273 covering with all moduli p−1 ≤ 256.**
+(Extends the published frontier 50 → 256; distinctness not needed.)
+
+Continuing upward (cap_sweep.py + per-B branch fleets): B = 257…269
+inherit (residual pool a subset of the killed 256-pool); B = 270 is
+the next new residual pool (29 moduli, adds 270, mass ≈ 1.004317,
+same L) — fleet running, see run_cap270_l1_*.log.
 
 ## 5. Final status
 

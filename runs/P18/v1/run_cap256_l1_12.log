@@ -1,0 +1,6 @@
+B=256 pool=53 mass=1.260103 projected primes S=[11, 13, 17, 19, 23, 29, 37, 41, 43, 53, 83, 89, 113]
+residual pool: [4, 6, 10, 12, 16, 18, 28, 30, 36, 40, 42, 60, 70, 72, 96, 100, 108, 112, 126, 150, 162, 180, 192, 196, 210, 240, 250, 256]
+level-1 branch restricted to modulus 12
+B=256 residual=28 moduli L=127008000 mass=127085857/127008000 (1.000613)
+normalized: fixed (0 mod 4) at root
+B=256 KILLED by complete DFS (residual pool cannot cover). Definitive. nodes=2 2.8s

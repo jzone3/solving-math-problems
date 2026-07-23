@@ -1,0 +1,54 @@
+B=256 pool=53 mass=1.260103 projected primes S=[11, 13, 17, 19, 23, 29, 37, 41, 43, 53, 83, 89, 113]
+residual pool: [4, 6, 10, 12, 16, 18, 28, 30, 36, 40, 42, 60, 70, 72, 96, 100, 108, 112, 126, 150, 162, 180, 192, 196, 210, 240, 250, 256]
+B=256 residual=28 moduli L=127008000 mass=127085857/127008000 (1.000613)
+normalized: fixed (0 mod 4) at root
+... nodes=57 depth=5 unc=67873680 62.4s
+... nodes=115 depth=5 unc=87519600 123.4s
+... nodes=162 depth=3 unc=82555200 184.5s
+... nodes=224 depth=5 unc=83758320 245.4s
+... nodes=277 depth=4 unc=87819200 306.7s
+... nodes=337 depth=4 unc=79380000 367.1s
+... nodes=394 depth=5 unc=88653600 427.5s
+... nodes=455 depth=5 unc=88956000 488.2s
+... nodes=511 depth=4 unc=91032200 548.7s
+... nodes=564 depth=4 unc=91339920 610.0s
+... nodes=626 depth=4 unc=90241200 670.4s
+... nodes=679 depth=4 unc=91357200 732.2s
+... nodes=730 depth=4 unc=79732800 792.2s
+... nodes=790 depth=5 unc=91034820 852.2s
+... nodes=842 depth=4 unc=91707200 913.3s
+... nodes=902 depth=5 unc=90587280 973.6s
+... nodes=954 depth=4 unc=91372995 1033.7s
+... nodes=1008 depth=4 unc=92135043 1095.0s
+... nodes=1062 depth=5 unc=64597680 1155.2s
+... nodes=1126 depth=5 unc=84619080 1215.7s
+... nodes=1184 depth=5 unc=69360480 1277.7s
+... nodes=1246 depth=5 unc=89434800 1338.5s
+... nodes=1310 depth=5 unc=88915680 1398.5s
+... nodes=1370 depth=5 unc=91454580 1459.1s
+... nodes=1435 depth=5 unc=91596680 1519.3s
+... nodes=1493 depth=4 unc=92596770 1580.3s
+... nodes=1555 depth=4 unc=92005200 1642.2s
+... nodes=1605 depth=5 unc=92031120 1703.4s
+... nodes=1667 depth=5 unc=91101780 1764.0s
+... nodes=1724 depth=5 unc=92613780 1825.0s
+... nodes=1787 depth=5 unc=91273770 1885.7s
+... nodes=1841 depth=5 unc=92569680 1946.7s
+... nodes=1903 depth=5 unc=91884555 2007.5s
+... nodes=1962 depth=5 unc=92779155 2067.9s
+... nodes=2020 depth=5 unc=83648880 2128.1s
+... nodes=2066 depth=4 unc=68846400 2188.3s
+... nodes=2128 depth=4 unc=89752320 2249.4s
+... nodes=2182 depth=4 unc=90713700 2309.8s
+... nodes=2232 depth=4 unc=91828800 2370.5s
+... nodes=2291 depth=5 unc=90858600 2431.3s
+... nodes=2344 depth=5 unc=91851480 2493.2s
+... nodes=2395 depth=4 unc=92496320 2553.3s
+... nodes=2454 depth=5 unc=88592400 2614.3s
+... nodes=2506 depth=5 unc=91785680 2675.3s
+... nodes=2549 depth=5 unc=91072800 2737.2s
+... nodes=2603 depth=5 unc=92512980 2797.8s
+... nodes=2651 depth=4 unc=92768400 2857.9s
+... nodes=2708 depth=5 unc=89999280 2918.3s
+... nodes=2755 depth=4 unc=83470275 2978.6s
+B=256 TIMEOUT (undecided) nodes=2777 3000.4s

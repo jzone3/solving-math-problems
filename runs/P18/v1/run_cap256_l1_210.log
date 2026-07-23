@@ -1,0 +1,24 @@
+B=256 pool=53 mass=1.260103 projected primes S=[11, 13, 17, 19, 23, 29, 37, 41, 43, 53, 83, 89, 113]
+residual pool: [4, 6, 10, 12, 16, 18, 28, 30, 36, 40, 42, 60, 70, 72, 96, 100, 108, 112, 126, 150, 162, 180, 192, 196, 210, 240, 250, 256]
+level-1 branch restricted to modulus 210
+B=256 residual=28 moduli L=127008000 mass=127085857/127008000 (1.000613)
+normalized: fixed (0 mod 4) at root
+... nodes=57 depth=5 unc=84052080 61.2s
+... nodes=110 depth=5 unc=84369600 122.5s
+... nodes=163 depth=4 unc=89661600 182.7s
+... nodes=215 depth=5 unc=90108900 243.9s
+... nodes=276 depth=5 unc=89636400 305.2s
+... nodes=329 depth=5 unc=90367200 365.3s
+... nodes=382 depth=4 unc=91211400 426.0s
+... nodes=435 depth=5 unc=91973448 486.2s
+... nodes=488 depth=5 unc=92290968 546.4s
+... nodes=543 depth=5 unc=90392400 608.0s
+... nodes=585 depth=5 unc=80110800 668.1s
+... nodes=631 depth=5 unc=92326500 730.1s
+... nodes=682 depth=5 unc=71974980 791.6s
+... nodes=740 depth=5 unc=89932500 852.5s
+... nodes=794 depth=5 unc=91497168 913.2s
+... nodes=845 depth=5 unc=92282400 973.9s
+... nodes=898 depth=4 unc=93021075 1036.0s
+... nodes=952 depth=4 unc=93625875 1097.1s
+B=256 KILLED by complete DFS (residual pool cannot cover). Definitive. nodes=977 1123.9s
