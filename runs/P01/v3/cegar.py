@@ -50,8 +50,8 @@ def dihedral_images(n, edge):
             yield (min(a, b), max(a, b))
 
 
-def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True,
-        min_dist=2):
+def build_encoding(n, min_dist=2):
+    """Returns (chords, var, base_clauses). Deterministic."""
     chords = chords_of(n, min_dist)
     pool = IDPool()
     var = {e: pool.id(("x", e)) for e in chords}
@@ -62,7 +62,6 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
         lits = [var[e] for e in chords if v in e]
         cnf = CardEnc.equals(lits=lits, bound=2, vpool=pool, encoding=EncType.seqcounter)
         base_clauses.extend(cnf.clauses)
-    blocking = []  # all learned blocking clauses, for solver rebuilds
 
     # Rotation/reflection symmetry breaking: some dihedral image maps a
     # minimum-distance chord to (0, d) with d = global min chord distance.
@@ -84,6 +83,36 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
                 base_clauses.append([-z, -var[e]])
     base_clauses.append([pool.id(("z", d)) for d in range(min_dist, n // 2 + 1)
                          if (0, d) in var])
+    return chords, var, base_clauses
+
+
+def blocking_clauses_for(n, cyc, chordset, var):
+    """All dihedral-image blocking clauses (as literal lists) for a second HC
+    `cyc` found in a candidate whose chord set is `chordset`."""
+    cedges = set()
+    for k in range(n):
+        a, b = cyc[k], cyc[(k + 1) % n]
+        e = (min(a, b), max(a, b))
+        if e in chordset:
+            cedges.add(e)
+    assert cedges
+    out = set()
+    for r in range(n):
+        for refl in (False, True):
+            img = []
+            for (i, j) in cedges:
+                a, b = (i + r) % n, (j + r) % n
+                if refl:
+                    a, b = (-a) % n, (-b) % n
+                img.append((min(a, b), max(a, b)))
+            out.add(tuple(sorted(img)))
+    return [[-var[e] for e in cl] for cl in out]
+
+
+def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True,
+        min_dist=2, dump_on_stall=0, dump_on_stall_path="residual.cnf"):
+    chords, var, base_clauses = build_encoding(n, min_dist)
+    blocking = []  # all learned blocking clauses, for solver rebuilds
 
     def fresh_solver(shuffle=False):
         cls = list(blocking)
@@ -123,6 +152,12 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
             solver.delete()
             solver = fresh_solver(shuffle=restarts > 1)
             budget = min(budget * 2, 64_000_000)
+            if dump_on_stall and restarts == dump_on_stall:
+                import json as _json
+                with open(dump_on_stall_path, "w") as f:
+                    _json.dump({"n": n, "min_dist": min_dist,
+                                "blocking": blocking}, f)
+                print(f"n={n} dumped blocking set to {dump_on_stall_path}", flush=True)
             msg = (f"n={n} solver stall -> rebuild #{restarts} "
                    f"(models={models}, blocking={len(blocking)}, next_budget={budget})")
             print(msg, flush=True)
@@ -171,33 +206,17 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
                 with open(notes, "a") as f:
                     f.write(msg + "\n")
 
-        newcl = set()
         chordset = set(X)
+        seencl = set()
         for cyc in second:
-            cedges = set()
-            for k in range(n):
-                a, b = cyc[k], cyc[(k + 1) % n]
-                e = (min(a, b), max(a, b))
-                if e in chordset:
-                    cedges.add(e)
-            assert cedges
-            # dihedral images of the blocking clause
-            for r in range(n):
-                for refl in (False, True):
-                    img = []
-                    ok = True
-                    for (i, j) in cedges:
-                        a, b = (i + r) % n, (j + r) % n
-                        if refl:
-                            a, b = (-a) % n, (-b) % n
-                        img.append((min(a, b), max(a, b)))
-                    img = tuple(sorted(img))
-                    newcl.add(img)
-        for cl in newcl:
-            lits = [-var[e] for e in cl]
-            blocking.append(lits)
-            solver.add_clause(lits)
-            clauses_added += 1
+            for lits in blocking_clauses_for(n, cyc, chordset, var):
+                key = tuple(sorted(lits))
+                if key in seencl:
+                    continue
+                seencl.add(key)
+                blocking.append(lits)
+                solver.add_clause(lits)
+                clauses_added += 1
 
         if models % log_every == 0 or time.time() - t0 > getattr(run, "_next_log", 0):
             run._next_log = time.time() - t0 + 120
@@ -231,7 +250,11 @@ if __name__ == "__main__":
     ap.add_argument("--no-nearmiss", action="store_true")
     ap.add_argument("--min-dist", type=int, default=2,
                     help="minimum cyclic distance of allowed chords (subfamily restriction)")
+    ap.add_argument("--dump-on-stall", type=int, default=0,
+                    help="dump residual CNF to --dump-path at this rebuild count")
+    ap.add_argument("--dump-path", type=str, default="residual.cnf")
     a = ap.parse_args()
     r = run(a.n, a.seconds, notes=a.notes, nearmiss=not a.no_nearmiss,
-            min_dist=a.min_dist)
+            min_dist=a.min_dist, dump_on_stall=a.dump_on_stall,
+            dump_on_stall_path=a.dump_path)
     sys.exit(0 if r["status"] in ("exhausted-unsat", "FOUND") else 2)
