@@ -4,3 +4,4 @@ log_*.err
 *.g6
 zout_*
 zerr_*
+zscan
