@@ -195,3 +195,30 @@ n = 120; two independent asymptotically-tight families identified
 (K_k ∪ (k−2)K_1 exact, CS(a,b) with R²−dev² → b(b+1)); ALL eight product
 relaxations (Hong/M2/S/λ1/s⁺/neighbor-sum composites) machine-refuted,
 explaining why the conjecture resists simple spectral proofs.**
+
+## Round 4: new encoding — degree-sequence transportation bound N*, and n = 12
+
+**N\* (new reduction, realization-free).** For degree sequence d (all ≥ 1)
+let e be the 2m endpoint multiset (vertex of degree k contributes k copies of
+k). Since 1/√(xy) is symmetric supermodular, every perfect matching of e
+(in particular the edge set of ANY realization) has weight ≥ the antitone
+pairing:  LB(d) = Σ_{i=1..m} (e_(i) e_(2m+1−i))^{−1/2} ≤ R(G).
+LB is EXACT for stars, cliques, complete split CS(a,b), complete bipartite.
+N\*: dev_max(d) ≤ LB(d), where dev_max maximizes dev_L over isolated-vertex
+padding (optimal n = clamp(8m²/(M1+2m), ≥ n′)). N\* ⟹ 129 for every graph
+with non-isolated degree sequence d, ANY padding, ANY realization.
+
+Machine results (`nstar_check.py`, `nstar_blocks.py`):
+- ALL graphical degree sequences with n′ ≤ 12 (all ~163k sequences at
+  n′ = 12): N\* holds; max = 0 exactly at regular K_k sequences.
+  NOTE: this is stronger than graph-by-graph search — it certifies 129 for
+  all graphs with support ≤ 12 REGARDLESS of realization and padding.
+- All 2-class degree sequences (a^p b^q) with values/counts on a log grid to
+  3000 (n′ ≤ 6000, 57.8k graphical class-tuples): max −0.018 (stars).
+- 3-class sequences on a log grid to 800: running (see logs/nstar_mode3.log).
+- Sequence annealing (n′ ≤ 250): all negative.
+- LB tightness at every near-tight family means there is NO LP-integrality
+  gap to exploit at the known extremal structures.
+
+**n = 12 exhaustive sweep of 129** (all ~165.6 billion graphs, 1000-way geng
+split × 8 cores, C scanner): running, logs/n12/chunk_*.log.
