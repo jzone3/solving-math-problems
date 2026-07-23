@@ -89,17 +89,28 @@ Groups tried (natural subgroups of Aut(HoSi) = PSU(3,5):2 with semiregular-ish a
 
 | group | k | orbits | vars | clauses | result | time |
 |---|---|---|---|---|---|---|
+| C5×C5 | 5 | 49 | 8735 | 133460 | **SAT** — verified 5-packing (w_c5xc5_k5.txt, verify.py PASS) | 3.0 s |
 | C5×C5 | 7 | 49 | 8323 | 166852 | **UNSAT** | 2.5 s |
-| C5×C5 | 6 | 49 | 7134 | 142827 | (running) | |
+| C5×C5 | 6 | 49 | 7134 | 142827 | **UNSAT** | 14505 s (4.0 CPU-h) |
+| C25   | 6 | 49 | | | **UNSAT** | 2.6 s |
+| C25   | 7 | 49 | | | **UNSAT** | 2.8 s |
 | F21 twisted | 6 | 175 | 44040 | 933619 | **UNSAT** | 4.2 s |
 | F21 twisted | 7 | 175 | 51380 | 1089996 | **UNSAT** | 4.2 s |
-| C7    | 7 | 175 | 51380 | 1087548 | (running) | |
-| C7    | 6 | 175 | 44040 | 931509 | (running) | |
-| C7 fixed-copy | 7 | 175 | 51380 | 1087723 | (running) | |
-| C7 fixed-copy | 6 (×6 miss classes) | 175 | 44040 | 931684 | (running) | |
-| C5fpf | 7 | 245 | 40915 | 1196335 | (running) | |
+| C7    | 7 | 175 | 51380 | 1087548 | open (CaDiCaL >5 h, then kissat >2 h, no answer) | |
+| C7    | 6 | 175 | 44040 | 931509 | open (killed after ~5 h; subsumed by fixed-copy family) | |
+| C7 fixed-copy | 7 | 175 | 51380 | 1087723 | open (kissat --target=2 still running at wrap-up) | |
+| C7 fixed-copy | 6 (×6 miss classes) | 175 | 44040 | 931684 | open (kissat, 6 instances, still running at wrap-up) | |
+| C5fpf | 7 | 245 | 40915 | 1196335 | open (CaDiCaL >8 h, no answer) | |
 
-(to be updated as runs finish)
+DIMACS exports of the seven open fixed-copy instances: cnf_c7fix_k6_m{1..6}.cnf,
+cnf_c7fix_k7.cnf (regenerate with `DIMACS=<file> python3 search_sat.py c7fix <k> /dev/null [miss]`;
+H₀'s 25 orbit indices are in copy0_orbits.txt). By the fixed-copy reduction + Mačaj's
+existence result, at least one of the six k=6 instances is satisfiable — solving any of them
+would reproduce a 6-packing; SAT on the k=7 instance would settle P21 positively for the
+C7-invariant case (Mačaj's classification implies it should be UNSAT).
+
+A simulated-annealing local search (anneal.c over the same orbit coloring space) stalled
+around energy ≈85/387 and was abandoned; CDCL is the better tool here.
 
 ### F21 twisted search (build_and_solve_twisted)
 
@@ -137,6 +148,18 @@ fixed-copy SAT.
   Šiagiová–Meszka/Wilsch–Mačaj finding only 5-packings in this class.
 - No F21-symmetric 6-packing or 7-decomposition in the unique fixed-point-compatible action,
   even with the order-3 element permuting the copies (UNSAT, ≈4 s each).
+- No 6-packing with full C5×C5 (elementary abelian order-25) symmetry, and none with C25
+  symmetry — new negatives complementing Wilsch–Mačaj's order-25 quintuple classification
+  (UNSAT above).
 - Mačaj's 2018 classification implies no 7-decomposition where all copies share an order-7
   automorphism (all 1602 six-packing remainders have girth < 5); our C7 k=7 SAT run aims to
-  re-derive this independently.
+  re-derive this independently — still open at wrap-up.
+- Simulated annealing over C7-orbit colorings plateaued far from a solution (dead end).
+
+## 6. Status at wrap-up
+
+No verified new mathematical result. Verified artifacts: a 5-packing witness reproducing the
+Meszka–Šiagiová record (verify.py PASS, exact integer checks only). The seven C7 fixed-copy
+SAT instances (six k=6 + one k=7) remain running/exported; they are the concrete next step.
+All UNSAT statements above are relative to the exact stated symmetry class and encoding; they
+say nothing about unrestricted 6-packings/7-decompositions.

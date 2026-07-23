@@ -1,0 +1,4 @@
+[C7fix] group order 7, 175 edge orbits, k=6
+[C7fix] 2793 triangle reps, 95508 C4 reps (4.5s)
+[C7fix] freezing copy of 25 orbits as color 0
+[C7fix] CNF: 44040 vars, 931684 clauses (6.6s)

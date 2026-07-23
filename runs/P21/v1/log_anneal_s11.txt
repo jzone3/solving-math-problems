@@ -1,0 +1,4 @@
+start energy 324
+iter 8388608 T=1.6911 energy 123 best 93
+iter 16777216 T=1.4299 energy 112 best 92
+iter 25165824 T=1.2090 energy 118 best 86
