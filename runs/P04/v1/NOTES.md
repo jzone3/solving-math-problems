@@ -109,7 +109,45 @@ Direct random sampling with exact CP-SAT check on every sample, 12 600 s each:
   not reachable by random/annealed search at these sizes.
 - No near-misses found: nothing with exact min = k+1; nothing even survived heuristics.
 
+## Phase 2 (resumed, 2026-07-23): exhaustive regular-class sweeps + tight-family probes
+
+Random/annealed search exhausted (above) ⇒ switched to **exhaustive enumeration** of the
+structured classes where a minimum counterexample must live (δ ≥ 6, hence regular Eulerian
+classes are the natural finite slices), via nauty-geng + heuristic-first pipeline
+(`regular_sweep.py`): each graph gets up to 300 Euler-split/greedy-peel restarts with early
+exit at ≤ k; only survivors go to the exact CP-SAT oracle.
+
+Exhaustive results (0 escalations = every single graph got an explicit ≤ k decomposition):
+
+| class | count | escalated to exact | counterexamples |
+|---|---|---|---|
+| 6-regular connected, n=13 (k=6) | 367 860 | 0 | 0 |
+| 8-regular connected, n=13 | 10 786 | 0 | 0 |
+| 10-regular connected, n=13 | 10 | 0 | 0 |
+| K13 (12-regular) | 1 | 0 | 0 |
+| 6-regular connected, n=14 (k=6) | 21 609 300 | 0 | 0 |
+| 8-regular connected, n=14 | 3 459 386 | 0 | 0 |
+| 10-regular connected, n=14 | 540 | 0 | 0 |
+| K14 minus perfect matching (12-regular) | 1 | 0 | 0 |
+| 10-regular connected, n=15 (k=7) | 805 579 | 0 | 0 |
+| 12-regular connected, n=15 | 17 | 0 | 0 |
+| K15 (14-regular) | 1 | 0 | 0 |
+
+⇒ **Hajós' conjecture holds for every connected regular Eulerian graph of degree ≥ 6 on
+n ≤ 14 vertices** (a new exhaustive slice beyond the published n ≤ 12 verification), plus
+the dense regular classes at n = 15.
+
+In progress: exhaustive sweep of all ~733 M connected 6-regular graphs on n = 15 (k = 7),
+8 geng slices in parallel (~13–17 h estimated).
+
+Tight-family perturbation probe (`perturb_tight.py`): K_n minus random even subgraphs
+(unions of short cycles, δ ≥ 6 kept), every instance **exact CP-SAT checked** at k:
+n=13 / 15 / 17, 2 h each — thousands of near-extremal instances, all FEASIBLE (counts in
+logs; final numbers below when runs complete).
+
 ## STATUS
 
-STATUS: negative — no counterexample, no near-miss; V1 random/annealed gap search at
-n = 13–22 (exact checks n = 13–16, ~255k graphs) found the bound ⌊(n−1)/2⌋ never exceeded.
+STATUS: negative / frontier-pushed (in progress) — no counterexample anywhere; exhaustive
+verification pushed beyond the literature's n ≤ 12 for all degree-≥6 regular Eulerian
+classes at n = 13, 14 (+ dense classes n = 15); random/annealed search n = 13–22 and
+~255k exact-checked random graphs n = 13–16 all conform to the ⌊(n−1)/2⌋ bound.
