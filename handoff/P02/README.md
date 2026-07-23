@@ -42,9 +42,12 @@ certificate. No `sorry`, no `native_decide`, no added axioms (`#print axioms` =
 
 ## Important nuance (statement provenance)
 
-Brandt's original paper (`brandt2002.pdf`, Discrete Math. 251 (2002) 33–46, Conjecture 4.1)
-requires minimum degree **strictly greater than** n/3; that version is now a THEOREM
-(Brandt–Thomassé, regular weight functions). What is refuted here is precisely the ≥ n/3
+Brandt's original paper (`brandt2002.pdf`, Discrete Math. 251 (2002) 33–46) requires minimum
+degree **strictly greater than** n/3 — confirmed against the primary source: Section 1 defines
+"the class G of triangle-free graphs with minimum degree exceeding n/3", and Conjecture 4.1
+reads "Every maximal triangle-free graph G ∈ G has a regular supergraph G' obtained from G by
+vertex multiplications." That strict version is now a THEOREM (Brandt–Thomassé, regular weight
+functions). What is refuted here is precisely the ≥ n/3
 version recorded on West's page — the boundary δ = n/3 — which is the statement the community
 has been tracking as open. Brandt's in-paper Conjecture 5.1 (d_f < 3 ⇒ Ax = 1 has a rational
 solution x ≥ 0) is untouched: our witnesses have d_f = 3 exactly.
