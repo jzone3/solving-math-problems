@@ -21,6 +21,14 @@ the statement, status, attack plan, and 5 prompt variants for parallel ultra-mod
 | P13 | Perfect Mendelsohn designs, block size 6 | designs | 4 | 5 | tiny block array |
 | P14 | Balanced ternary designs, 4 open instances | designs | 5 | 4 | small {0,1,2} matrix |
 | P15 | Covering system with min modulus ≥ 43 | number theory | 5 | 4 | finite congruence list |
+| P16 | BHS Laplacian bounds #44/#46 (last 2 of 68) | spectral | 4 | 5 | one graph, eigensolve |
+| P17 | WoW 20/21 (inertia ≤ energy/2) | spectral | 4 | 5 | one graph, eigensolve |
+| P18 | Erdős #273 (covering, moduli p−1, p≥5) | number theory | 4 | 4 | finite congruence list |
+| P19 | Wide Partition Conjecture (Chow–Taylor) | comb. designs | 4 | 4 | partition + UNSAT tableau cert |
+| P20 | Grünbaum 4-regular 4-chromatic girth ≥ 6 | graph theory | 4 | 4 | one graph + DRAT 3-col UNSAT |
+| P21 | Hoffman–Singleton decomposition of K₅₀ | designs | 4 | 3 | 7 edge-disjoint HoSi copies |
+
+Wave-2 additions (2026-07-23) sourced from research/wave2-*.md.
 
 Notable exclusions (researched, rejected): Costas 32/33 (decades of prior compute), Hadamard-668
 (active dedicated project), S(2,6,46) (picked-over), lonely runner k=9 / no-three-in-line D(61) /
