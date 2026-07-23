@@ -25,3 +25,4 @@ n=17 it=4800 t=463s last_clause_len=6
 n=17 it=5000 t=479s last_clause_len=5
 n=17 it=5200 t=504s last_clause_len=6
 n=17 it=5400 t=543s last_clause_len=5
+UNSAT n=17 case=None after 5500 refinements, t=1990s

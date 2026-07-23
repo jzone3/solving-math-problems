@@ -142,3 +142,7 @@ n=20 it=4400 t=1107s last_clause_len=6
 n=20 it=4400 t=1200s last_clause_len=5
 n=20 it=5200 t=1723s last_clause_len=5
 n=20 it=4800 t=1816s last_clause_len=6
+n=20 it=4400 t=2054s last_clause_len=7
+n=20 it=4800 t=2106s last_clause_len=5
+n=20 it=4600 t=2185s last_clause_len=6
+n=20 it=4600 t=2475s last_clause_len=5
