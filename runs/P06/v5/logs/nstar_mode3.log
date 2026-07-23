@@ -1,0 +1,6 @@
+mode3 gridmax=800: graphical class-sequences tried=5079684
+  -0.17843211  degrees=(8, 7, 6) counts=(6, 2, 1) n'=9
+  -0.19477343  degrees=(7, 6, 5) counts=(5, 2, 1) n'=8
+  -0.21384081  degrees=(6, 5, 4) counts=(4, 2, 1) n'=7
+  -0.23581471  degrees=(5, 4, 3) counts=(3, 2, 1) n'=6
+  -0.24577708  degrees=(8, 7, 5) counts=(5, 3, 1) n'=9

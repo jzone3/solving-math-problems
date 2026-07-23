@@ -1,0 +1,17 @@
+n=12 full exhaustive sweep (1000 geng chunks, scan129.c)
+total graphs = 165091172592 (matches # graphs on 12 vertices exactly)
+worst (max) scores over all chunks:
+129 (dev_L - R):
+  +0.0000000000  K??CCEB_{Fo^
+  -0.0419601085  K???CA@_[BoN
+  -0.0559468113  K?ACKMF`{No~
+  -0.1176657365  K???EB@o]BwN
+  -0.1429773960  K????A?_K@oF
+  -0.1539244685  K??EEFBo}Fw^
+  -0.1801377909  K????B?oM@wF
+  -0.2153591025  K???CB@o]BwN
+M* (S*dev_L - m^2):
+  +0.0000000000  K??CCEB_{Fo^
+  -0.4472292016  K?????????O?
+  -1.5962991497  K?????????W?
+  -2.2917960675  K???????C?O@

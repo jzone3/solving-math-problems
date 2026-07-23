@@ -222,3 +222,17 @@ Machine results (`nstar_check.py`, `nstar_blocks.py`):
 
 **n = 12 exhaustive sweep of 129** (all ~165.6 billion graphs, 1000-way geng
 split × 8 cores, C scanner): running, logs/n12/chunk_*.log.
+
+### Round 4 results (final)
+- **n = 12 COMPLETE for 129: all 165,091,172,592 graphs** (1000-way geng
+  split, C scanner, ~3.5h on 8 cores; chunk count cross-checked against the
+  exact number of n=12 graphs). NO violation: max score exactly 0, attained
+  ONLY by the equality graph K_7 ∪ 5K_1 (degrees 6^7 0^5). M* likewise ≤ 0
+  at n = 12. Summary: logs/n12_summary.txt (chunks: logs/n12_chunks.tar.gz).
+  Computational frontier for 129 now n ≤ 12 (literature: n ≤ 10).
+- 3-class N* scan complete: 5,079,684 graphical class-tuples (values/counts
+  log grid to 800, n′ up to ~2400): N* holds, worst −0.178 (quasi-complete
+  sequences), no LP-integrality gap found anywhere near tightness.
+- Combined with N* for all sequences with n′ ≤ 12: conjecture 129 is now
+  verified realization-free for every graph whose non-isolated part has at
+  most 12 vertices, with ANY number of isolated vertices (any total n).
