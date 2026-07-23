@@ -126,10 +126,44 @@ Dead ends:
 - Circulants are useless as counterexample candidates: only K_n-like extremes are even
   tight; all vertex-transitive candidates decompose comfortably.
 
-## STATUS: negative
+## 5. Wave 3 — exhaustive dense-band frontier (citable negative result)
 
-No counterexample to Hajós' conjecture found among ≈152k SAT-decided Eulerian graphs at
-n = 13–21 (random dense δ≥6, exhaustive circulants, exhaustive densest K_n−H families,
-tightness-guided hill-climbing). ~58k graphs verified extremal (min = ⌊(n−1)/2⌋ exactly);
-none exceeded the bound. No `solutions/P04/verify.py` is provided since no witness is
-claimed.
+New attack after coordinator restart: convert the dense-family searches into fully
+exhaustive verification of a *complement-density band*, via `exhaustive_band.py`:
+enumerate ALL defect graphs H on n labeled vertices with ≤ E edges via nauty geng
+(sharded with geng's res/mod), filter by the parity condition that makes
+G = K_n − H Eulerian (odd n: all degrees of H even; even n: all degrees odd),
+then SAT-decide every complement at k = ⌊(n−1)/2⌋.
+Fast graph6-native parity filter; shard "seen" totals were cross-checked against
+independent `geng -u` counts and match exactly (no graphs dropped).
+
+| n | defect budget E | defects enumerated (geng, exact) | Eulerian complements SAT-decided | CE |
+|---|---|---|---|---|
+| 13 | ≤ 20 | 650,474,122 | 238,908 | 0 |
+| 14 | ≤ 18 | 63,806,907 | 38,794 | 0 |
+| 15 | ≤ 18 | 205,634,393 | 43,919 | 0 |
+| 16 | ≤ 18 | 48,591,469 | 26,137 | 0 |
+
+**Result (machine-verified, exhaustive within the band):** Hajós' conjecture holds for
+every simple connected Eulerian graph G with
+- n = 13 and m(G) ≥ 58  (complement ≤ 20 edges),
+- n = 14 and m(G) ≥ 73  (complement ≤ 18 edges),
+- n = 15 and m(G) ≥ 87  (complement ≤ 18 edges),
+- n = 16 and m(G) ≥ 102 (complement ≤ 18 edges).
+
+This is a new frontier beyond the published exhaustive verification (all Eulerian
+graphs, n ≤ 12, arXiv:1705.08724): at n = 13–16 the *entire dense band* — precisely
+the regime where the bound is tight (K_{2k+1} etc.) and where every decomposition is
+forced into near-Hamiltonian cycles — is now verified. Wave-3 compute ≈ 34 core-hours
+(≈ 80 core-hours total for the session). Extending E further is pure compute
+(enumeration cost grows ~8× per +2 edges; SAT cost stays ~0.1–1.5 s/graph).
+
+## STATUS: negative / frontier-pushed
+
+No counterexample to Hajós' conjecture found among ≈500k SAT-decided Eulerian graphs at
+n = 13–21 (random dense δ≥6, exhaustive circulants, tightness-guided hill-climbing, and
+the wave-3 exhaustive dense band). Frontier pushed: the conjecture is now exhaustively
+verified for all Eulerian graphs on 13–16 vertices whose complement has ≤ 20 (n=13)
+resp. ≤ 18 (n=14,15,16) edges — beyond the published n ≤ 12 frontier. ~58k graphs
+verified extremal (min = ⌊(n−1)/2⌋ exactly); none exceeded the bound.
+No `solutions/P04/verify.py` is provided since no counterexample witness is claimed.
