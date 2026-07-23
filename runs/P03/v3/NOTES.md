@@ -219,4 +219,38 @@ Not pursued (documented dead ends): Z2-free at minimal shape (6.3×10¹⁵ raw �
 Z3 (order-3, 1–7 fixed sinks: ~10⁸ candidates per case ≈ days); shape (12,4) under Z4
 (3.9×10⁹ candidates).
 
-## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under any order-4 automorphism free on sources — 676,378 SAT decisions, 0 UNSAT.
+## 9. Fourth wave: C engine — exhaustive order-3 symmetry closure (zscan.c)
+
+zscan.c (bitmask dicut sweep + WalkSAT 3-coloring with full-verification CEGAR loop;
+WalkSAT success is a rigorous positive certificate since the final coloring is verified
+against ALL dicuts; unresolved candidates dumped for exact SAT in Python — zverify.py).
+Cross-validated against the Python bip.py pipeline on 367 sampled candidates (τ flags and
+packing certificates: 0 mismatches).
+
+Scope: minimal ACZ shape (12×16, 48 arcs) with an order-3 automorphism free on sources
+(4 orbits of 3). Sinks: k orbits of size 3 + f fixed sinks (3k+f=16, f∈{1,4,7,10,13,16});
+a fixed sink's 3 in-arcs are exactly one full source orbit ("owner"). Owners canonical
+non-decreasing (exact dedup of fixed-sink permutations); offset columns rotation-minimal
+(exact dedup of the 3^k rotation subgroup).
+
+Results (≈6 h wall, 8 cores, ~1.1k candidates/s/core):
+
+| f  | candidates  | τ<3 rejected | packed (certified) | dumped/UNSAT |
+|----|-------------|--------------|--------------------|--------------|
+| 1  | 178,704,900 | 6,480        | 178,698,420        | 0            |
+| 4  | 15,039,240  | 0            | 15,039,240         | 0            |
+| 7  | 369,384     | 0            | 369,384            | 0            |
+| 10 | 5,700       | 0            | 5,700              | 0            |
+| 13 | 76          | 0            | 76                 | 0            |
+| Σ  | 194,119,300 | 6,480        | 194,112,820        | **0**        |
+
+f=16 (σ fixes every sink) forces disjoint unions of complete K_{3,4} components
+(identical neighborhoods within each source orbit); K_{3,4} has τ=3 and packs (checked),
+so the whole f=16 family packs componentwise — no scan needed.
+
+Combined with wave 3: **no τ=3 counterexample exists in the minimal ACZ shape (the
+smallest possible shape of any τ=3 counterexample after the ACZ reduction) admitting ANY
+automorphism of order 3 or 4 acting freely on the sources** — 194.8M candidates
+exhaustively decided, 0 unpackable.
+
+## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under ANY automorphism of order 3 or 4 acting freely on sources — 194.8M candidates decided (676,378 SAT + 194.1M certified colorings), 0 UNSAT.
