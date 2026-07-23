@@ -120,6 +120,26 @@ periodic autocorrelations; DFT/fold pruning; polish near-solutions).
   neighbourhood exhaustion (stronger than SAT within the same radius), and the
   full-space SAT encoding is V1's lane.
 
+### Phase 6 — orbit-reduction SAT (Kramer–Mesner style), session resumed
+- orbit_sat.py: same orbit space as exhaust.c, but encoded to CNF and decided
+  by CaDiCaL. Vars P_o/M_o per orbit (at-most-one), Tseitin AND product vars
+  per orbit pair; weight / DC(+s) / every R(t)=0 (t=1..n/2) as pseudo-Boolean
+  equalities via pblib **adder** encoding (BDD encoding blows up — do not use).
+  UNSAT is a definitive proof that no H-fixed CW(n,k) exists.
+- Validation both directions: re-finds CW(13,9) (t=3, 0.1 s) and CW(104,36)
+  (t=3, 23 s adder / 3.6 min bdd), and reproduces DFS UNSAT on n=105 gens=(8,52).
+- sat_driver.py swept ALL subgroups per cell (m <= 45), skipping the 186
+  DFS-decided ones (parsed from asub_*/cexh_* logs), 3600 s/subgroup.
+- **All three DFS-timeout subgroups from Phase 5 are now decided UNSAT**:
+  n=105 gens=(11) m=30, n=112 gens=(27,29) m=29, n=132 gens=(31) m=27.
+- 48+ additional subgroups decided UNSAT, extending the frontier well past the
+  DFS limits — e.g. n=117 to m<=39 complete (plus m=33,35,36 non-cyclic),
+  n=120 through m<=36 largely complete, n=112 m<=32 plus m=36..44 partial.
+  Full per-subgroup records in logs/satdrv_*.log, logs/sat_*.log.
+- Remaining hard instances (multi-hour CaDiCaL runs, still open at session
+  checkpoints): n=105 m=35..45 (4), n=112 m=36..44 (4), n=117 m=41,41,45,
+  n=120 gens=(23) m=37, n=132 m=36..42 (3); subgroups with m>45 not attempted.
+
 ## 5. Final results (after ~8 h wall / 8 cores)
 
 ### Witness found

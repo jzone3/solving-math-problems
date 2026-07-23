@@ -159,3 +159,15 @@ UNSAT n=120 k=49 gens=[49, 79, 109] m=36: no H-fixed CW exists
 --- gens=(49, 101, 109) |H|=8 m=36 timeout=3600s
 TIMEOUT gens=(49, 101, 109) m=36 after 3600s
 --- gens=(71, 79) |H|=4 m=36 timeout=3600s
+TIMEOUT gens=(71, 79) m=36 after 3600s
+--- gens=(71, 109) |H|=4 m=36 timeout=3600s
+n=120 k=49 gens=[71, 109] |H|=4 m=36 sizes=[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+pairs=630 base_vars=2592
+CNF: vars=35846 clauses=337391
+UNSAT n=120 k=49 gens=[71, 109] m=36: no H-fixed CW exists
+--- gens=(19, 101) |H|=4 m=37 timeout=3600s
+n=120 k=49 gens=[19, 101] |H|=4 m=37 sizes=[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+pairs=666 base_vars=2738
+CNF: vars=28084 clauses=259044
+UNSAT n=120 k=49 gens=[19, 101] m=37: no H-fixed CW exists
+--- gens=(23,) |H|=4 m=37 timeout=3600s
