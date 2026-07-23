@@ -5,7 +5,7 @@
 cd "$(dirname "$0")"
 # wait for current sweeps
 while pgrep -f "mult_cpsat.py (112|117|120)" > /dev/null; do sleep 60; done
-for spec in "96 36" "132 81" "105 36" "112 36" "117 36" "120 49"; do
+for spec in "132 81" "105 36" "112 36" "117 36" "120 49"; do
   set -- $spec
   setsid nohup python3 mult_cpsat.py $1 $2 64 --affine --resume=multcp_$1_$2.log \
     >> multcp_$1_$2.log 2>&1 < /dev/null &
