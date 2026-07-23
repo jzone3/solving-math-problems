@@ -108,3 +108,38 @@ Variant: V1 = direct SAT encoding, per problems/P12-tuscan-2-squares.md.
 - Standard-form encoding validation: n=4/6 SAT (s), n=7 UNSAT (min), n=8 SAT
   in 73.5 min (sq8_sf.txt PASS). n=10 running.
 - t9/t11(kissat+cadical)/t13 + yalsat t11/t13: running, no verdicts yet.
+
+## Final checkpoint 2026-07-23 ~12:20 UTC (t+16h)
+
+- No verdicts from any long CDCL run:
+  - kissat t9 (KNOWN UNSAT, Kapralov 2012): 8h old encoding + 8h standard
+    form, unresolved. This is the key calibration datum: if a known-UNSAT
+    n=9 instance resists 8h of kissat, an n=11 UNSAT proof via this direct
+    encoding is far beyond one-box/one-day compute.
+  - kissat + cadical on t11 (open), kissat + cadical on t13 (open):
+    unresolved after 8h (standard form) each.
+- SLS (yalsat, multiple seeds): plateaued around 25-26 falsified clauses of
+  ~151k on t11 and 43-50 on t13 for hours; no witness found. Weak evidence
+  toward nonexistence (consistent with the odd-n pattern T2(5)=T2(7)=T2(9)=0),
+  not proof.
+- Dead ends tried: depth-2 manual cubes (66 cubes, no per-cube speedup);
+  march_cu depth-12 lookahead cubes (4096 cubes; n=8 probe: 85/256 UNSAT
+  <20s, 171 timeouts — splitting does not pay on 8 cores).
+- SAT-side positives (machine-verified with solutions/P12/verify.py):
+  T2(4), T2(6), T2(8) witnesses reproduced (sq8_sf.txt PASS in 73.5 min);
+  T2(7) UNSAT reproduced in minutes with both encodings — encoding validated
+  in both directions.
+- Compute spent: ~8 cores saturated for ~16h (~128 core-hours total).
+
+## What a follow-up should do
+1. Massive cube-and-conquer on a big machine (100s of cores): march_cu
+   depth ~16-20 on the standard-form t11.cnf; per-cube kissat with DRAT.
+2. Kapralov-style clique formulation (compatible-row graph + cliquer or
+   modern MCS solvers) likely dominates the direct SAT encoding for n=11;
+   combine with the col-0 standard form to shrink the vertex set (only rows
+   starting with the right symbol).
+3. If UNSAT is proven for n=11, produce/verify a DRAT proof and archive it.
+
+## STATUS: negative (no verdict on open instances n=11, 13; T2(7) UNSAT and
+## T2(4)/T2(6)/T2(8) witnesses reproduced and machine-verified; encoding +
+## infrastructure committed; frontier data: known-UNSAT n=9 resists 16h CDCL)
