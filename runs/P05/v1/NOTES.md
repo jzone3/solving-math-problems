@@ -174,11 +174,34 @@ appears (55 doubled-hub graphs with longest paths of 8 vertices, catalogued in
 `t2_n12.txt` and used as annealing seeds — `t2n12*` runs stayed at t = 2). No SAT/exhaustive result of this shape appears in the literature (the known
 exhaustive Gallai-3 frontier is over all connected graphs, ~n ≤ 12, checking t ≥ 1 only).
 
+## 9. Wave 3 (third phase, same session)
+
+Coordinator asked to keep going. Full n = 12 was timed (slice benchmark: 9.7 M graphs /
+72 s / core → ~97 B graphs ≈ 25 core-hours just to enumerate) and skipped in favour of
+targeted families:
+
+| family | #graphs | min t | attained by |
+|---|---|---|---|
+| biconnected n = 13, ≤ 22 edges | 795 017 849 | 2 | 35 graphs: K₂,₁₁ (L=5, its +e sibling has 23 edges, outside cap) + 34 doubled-hub graphs (L=8), `t2_n13.txt`; 1 061 t=3 graphs in `t3_n13.txt` |
+| subcubic (2 ≤ deg ≤ 3) biconnected n = 13…18 | 11 679 / 43 418 / 166 k / 667 k / 2.76 M / 11.78 M | 10 / 11 / 9 / 10 / 11 / 12 | min t grows ≈ n−1 … n−6; subcubic 2-connected graphs are a dead end for small t (no hubs possible) |
+| cubic biconnected n = 18 / 20 / 22 | 39 866 / 497 818 / 7 141 027 | 18 / 20 / 22 | every cubic 2-connected graph on ≤ 22 vertices is traceable → t = n |
+| weighted-skeleton wave 2 (`wsk18`, n_s ≤ 18, w ≤ 6, realized n ≤ 58) | 400 restarts × 30 k iters | 1 | plateau t = 1 again; parallel-edge/multigraph skeletons are subsumed by simple skeletons one size up (a parallel edge = a weighted 2-path through a fresh deg-2 vertex), so this also covers the multigraph variant |
+| t2-seeded biconn anneal wave 2 (`t2n12c`) | 200 restarts × 30 k iters | 2 | never below 2 |
+
+Interpretation: the doubled-hub t=2 family persists at n = 13 (34 graphs, same L=8
+shape) — it is a genuine infinite-looking family, not an n = 12 artifact. Sub-/cubic
+sweeps show small t requires high-degree hubs; hypotraceable graphs (cubic-ish) can only
+contribute as *pieces* hanging off hubs, which is exactly the t = 1 plateau the annealer
+finds. Any counterexample must break TWO hubs simultaneously in a 2-connected core, or
+live at n well beyond 13 with a cut-vertex structure no search here reached.
+
 ## STATUS: negative / frontier-pushed
 
 No counterexample found (t never 0 anywhere: ~10⁶ annealed graphs to n = 40, 30 k+
-hypotraceable-piece hybrids, 8 × 10⁶ weighted-skeleton realizations to n = 52, ~10⁹
-exhaustive biconnected graphs). New frontier: min triple intersection = 2 over ALL
-2-connected graphs with n ≤ 11, extremal family exactly K₂,ₘ / K₂,ₘ+e; general-graph
-plateau t = 1 always via a single inherited hub. Machinery (exact C scanner, hybridizer,
+hypotraceable-piece hybrids, ~2 × 10⁷ weighted-skeleton realizations to n = 58, ~2 × 10⁹
+exhaustive biconnected graphs incl. all n ≤ 11, sparse n = 12–13, subcubic n ≤ 18, cubic
+n ≤ 22). New frontier: min triple intersection = 2 over ALL 2-connected graphs with
+n ≤ 11 + sparse n = 12/13; extremal families K₂,ₘ(±e) and a persistent doubled-hub L=8
+family; cubic 2-connected graphs traceable to n = 22 (t = n); general-graph plateau t = 1
+always via a single inherited hub. Machinery (exact C scanner, hybridizer,
 weighted-skeleton annealer) committed for follow-up runs.
