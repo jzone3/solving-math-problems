@@ -77,9 +77,50 @@ pair whose x has maximum distance-1 deficiency) for cross-verification per METHO
   no sharding, single process): UNSAT, 649,639,981 nodes, ~11 min. Two disjoint complete
   enumerations agree: **no (10,6)-PMD exists.**
 
-### (12,6)-PMD: escalation
+- Third complete traversal (pmd6_maxpack, single process, no sharding): 655,292,029 nodes,
+  UNSAT. Sharded total was 655,292,036 = 655,292,029 + 7: exactly the 7 duplicate root
+  nodes from 8 shards each counting the root once. Perfect node-count consistency between
+  the sharded and unsharded traversals — strong evidence the partitioning is airtight.
 
-- 22 blocks; exhaustive tree expected to be enormously larger. 8-way sharded run launched;
-  progress lines every 2^30 nodes. Outcome recorded below.
+### Near-miss quantification (exact maximum partial packings)
 
-## STATUS: (to be finalized at end of run)
+`pmd6_truemax.c`: complete branch-and-bound for the MAXIMUM number of pairwise-compatible
+blocks (no (t, x, y) slot covered twice). Branches: cover the minimal free distance-1 pair
+with each possible block, or exclude that pair permanently; bound
+placed + floor(free_d1/6) <= best. Validated on v=7 (returns 7 = perfect).
+
+- v=9: **maximum partial (9,6)-PMD packing = 10 blocks** (of the 12 a perfect design needs;
+  deficiency 2). Complete run: 360,490,847 nodes, ~40 min (niced). Witness:
+  runs/P13/v4/witness_v9_maxpack10.txt, verified PASS by
+  `solutions/P13/verify.py --packing`. So a (9,6)-PMD fails by a margin of 2 blocks — not 1.
+- v=10: packing of 11 blocks (of 15) found; maximality not proven within budget
+  (branch-and-bound stopped at ~1.1 B nodes). So max packing for v=10 is in [11, 14].
+
+### SAT-side note
+
+- DFS did not find a (13,6)-PMD (known to exist) within a 30-min single-core probe — the
+  MRV DFS is tuned for exhaustion, not for solution-finding at larger v; not a correctness
+  concern (v=7 SAT + v=6 UNSAT + all known-status checks agree).
+
+### (12,6)-PMD: escalation — infeasible for pure exhaustive search
+
+- 22 blocks. 8-way sharded run: ~5.4 h wall on 8 cores, ≈ 43 B nodes total
+  (5.37 B/shard at ~280 K nodes/s/shard), search depth still oscillating around
+  blocks 9–12 of 22, no shard near completion. Terminated: complete search is beyond
+  reach at v=12 without prescribed automorphisms (that is V2's territory).
+
+## Compute summary
+
+~60 core-hours total: v=9 (3 complete traversals incl. unrestricted no-symmetry run),
+v=10 (3 complete traversals: sharded MRV, lex-first, single-process MRV), v=9/v=10 exact
+max-packing B&B, v=12 partial (~43 B nodes, inconclusive).
+
+## STATUS: frontier-pushed (two open cases SOLVED as nonexistence)
+
+- **(9,6)-PMD does not exist** — settled by complete search, triple-verified.
+- **(10,6)-PMD does not exist** — settled by complete search, triple-verified.
+- Exact near-miss: max partial packing at v=9 is 10/12 blocks.
+- v=12: exhaustive search infeasible; remaining open k=6 cases v ∈ {12, 15, 16, 18}.
+- The Abel–Bennett–Zhang / Handbook VI.35 table's "possible exceptions" list for
+  (v,6)-PMDs shrinks from {9,10,12,15,16,18} to {12,15,16,18}, and gains its first
+  proven nonexistence entries beyond v=6.

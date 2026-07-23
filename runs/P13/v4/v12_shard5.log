@@ -1,3 +1,5 @@
 progress v=12 mod 5/8: nodes=1073741824 depth=7 elapsed=3733s
 progress v=12 mod 5/8: nodes=2147483648 depth=10 elapsed=7509s
 progress v=12 mod 5/8: nodes=3221225472 depth=11 elapsed=11393s
+progress v=12 mod 5/8: nodes=4294967296 depth=10 elapsed=15599s
+progress v=12 mod 5/8: nodes=5368709120 depth=10 elapsed=19514s

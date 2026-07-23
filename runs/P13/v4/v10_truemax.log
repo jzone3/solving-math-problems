@@ -1,0 +1,15 @@
+new best packing: 2 blocks (nodes=2)
+new best packing: 3 blocks (nodes=3)
+new best packing: 4 blocks (nodes=4)
+new best packing: 5 blocks (nodes=5)
+new best packing: 6 blocks (nodes=7)
+new best packing: 7 blocks (nodes=8)
+new best packing: 8 blocks (nodes=9)
+new best packing: 9 blocks (nodes=12)
+new best packing: 10 blocks (nodes=12461)
+new best packing: 11 blocks (nodes=189365)
+truemax v=10: nodes=268435456 best=11 elapsed=1260s
+truemax v=10: nodes=536870912 best=11 elapsed=2604s
+truemax v=10: nodes=805306368 best=11 elapsed=3862s
+truemax v=10: nodes=1073741824 best=11 elapsed=5162s
+truemax v=10: nodes=1342177280 best=11 elapsed=6200s

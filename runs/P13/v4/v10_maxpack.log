@@ -9,3 +9,5 @@ new max blocks: 8 (nodes=21)
 new max blocks: 9 (nodes=337)
 new max blocks: 10 (nodes=993417)
 new max blocks: 11 (nodes=297342252)
+UNSAT v=10 k=6 b=15 (exhaustive, first block fixed WLOG) mod 0/1
+nodes=655292029 solutions=0 topbranches=548
