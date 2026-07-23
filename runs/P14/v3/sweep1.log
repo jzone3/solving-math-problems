@@ -1,0 +1,206 @@
+inst1 group=D14 |G|=28 blocks=45474 borbs=1660 eorbs=1 porbs=7 enum=0.9s
+inst1 group=D14 status=INFEASIBLE time=0.0s
+inst4 group=D14 |G|=28 blocks=45474 borbs=1660 eorbs=1 porbs=7 enum=0.9s
+inst4 group=D14 status=INFEASIBLE time=0.0s
+inst2 group=D12 |G|=24 blocks=28314 borbs=1244 eorbs=1 porbs=6 enum=0.4s
+inst2 group=D12 status=INFEASIBLE time=0.0s
+inst3 group=D12 |G|=24 blocks=8074 borbs=372 eorbs=1 porbs=6 enum=0.1s
+inst3 group=D12 status=INFEASIBLE time=0.0s
+inst1 group=F21 |G|=21 blocks=45474 borbs=2182 eorbs=2 porbs=5 enum=0.7s
+inst1 group=F21 status=INFEASIBLE time=0.0s
+inst4 group=F21 |G|=21 blocks=45474 borbs=2182 eorbs=2 porbs=5 enum=0.7s
+inst4 group=F21 status=INFEASIBLE time=0.0s
+inst1 group=C14 |G|=14 blocks=45474 borbs=3249 eorbs=1 porbs=7 enum=0.5s
+inst1 group=C14 status=INFEASIBLE time=0.0s
+inst1 group=D7 |G|=14 blocks=45474 borbs=3320 eorbs=2 porbs=10 enum=0.5s
+inst1 group=D7 status=INFEASIBLE time=0.0s
+inst1 group=C7xC2 |G|=14 blocks=45474 borbs=3249 eorbs=1 porbs=7 enum=0.5s
+inst1 group=C7xC2 status=INFEASIBLE time=0.0s
+inst4 group=C14 |G|=14 blocks=45474 borbs=3249 eorbs=1 porbs=7 enum=0.5s
+inst4 group=C14 status=INFEASIBLE time=0.2s
+inst4 group=D7 |G|=14 blocks=45474 borbs=3320 eorbs=2 porbs=10 enum=0.5s
+inst4 group=D7 status=INFEASIBLE time=0.3s
+inst4 group=C7xC2 |G|=14 blocks=45474 borbs=3249 eorbs=1 porbs=7 enum=0.5s
+inst4 group=C7xC2 status=INFEASIBLE time=0.1s
+inst1 group=C13 |G|=13 blocks=45474 borbs=3498 eorbs=2 porbs=7 enum=0.4s
+inst1 group=C13 status=INFEASIBLE time=0.0s
+inst4 group=C13 |G|=13 blocks=45474 borbs=3498 eorbs=2 porbs=7 enum=0.4s
+inst4 group=C13 status=INFEASIBLE time=0.0s
+inst2 group=C12 |G|=12 blocks=28314 borbs=2368 eorbs=1 porbs=6 enum=0.2s
+inst2 group=C12 status=INFEASIBLE time=0.0s
+inst2 group=D6 |G|=12 blocks=28314 borbs=2492 eorbs=2 porbs=10 enum=0.2s
+inst2 group=D6 status=INFEASIBLE time=0.0s
+inst3 group=C12 |G|=12 blocks=8074 borbs=679 eorbs=1 porbs=6 enum=0.1s
+inst3 group=C12 status=INFEASIBLE time=0.0s
+inst3 group=D6 |G|=12 blocks=8074 borbs=742 eorbs=2 porbs=10 enum=0.1s
+inst3 group=D6 status=INFEASIBLE time=0.0s
+inst2 group=C11 |G|=11 blocks=28314 borbs=2574 eorbs=2 porbs=6 enum=0.2s
+inst2 group=C11 status=INFEASIBLE time=0.0s
+inst3 group=C11 |G|=11 blocks=8074 borbs=734 eorbs=2 porbs=6 enum=0.1s
+inst3 group=C11 status=INFEASIBLE time=0.0s
+inst1 group=C7 |G|=7 blocks=45474 borbs=6498 eorbs=2 porbs=13 enum=0.3s
+inst1 group=C7 status=INFEASIBLE time=0.4s
+inst1 group=C7f |G|=7 blocks=45474 borbs=6834 eorbs=8 porbs=31 enum=0.3s
+inst1 group=C7f status=INFEASIBLE time=0.0s
+inst4 group=C7 |G|=7 blocks=45474 borbs=6498 eorbs=2 porbs=13 enum=0.3s
+inst4 group=C7 status=UNKNOWN time=600.7s
+inst4 group=C7f |G|=7 blocks=45474 borbs=6834 eorbs=8 porbs=31 enum=0.3s
+inst4 group=C7f status=INFEASIBLE time=0.0s
+inst1 group=C6a |G|=6 blocks=45474 borbs=7612 eorbs=4 porbs=17 enum=0.2s
+inst1 group=C6a status=INFEASIBLE time=0.0s
+inst2 group=C6 |G|=6 blocks=28314 borbs=4734 eorbs=2 porbs=12 enum=0.1s
+inst2 group=C6 status=INFEASIBLE time=11.8s
+inst2 group=C6+1 |G|=6 blocks=28314 borbs=4734 eorbs=2 porbs=12 enum=0.1s
+inst2 group=C6+1 status=INFEASIBLE time=11.3s
+inst2 group=G12 |G|=6 blocks=28314 borbs=4734 eorbs=2 porbs=12 enum=0.1s
+inst2 group=G12 status=INFEASIBLE time=11.8s
+inst2 group=C6b |G|=6 blocks=28314 borbs=5092 eorbs=7 porbs=24 enum=0.1s
+inst2 group=C6b status=INFEASIBLE time=0.2s
+inst3 group=C6 |G|=6 blocks=8074 borbs=1358 eorbs=2 porbs=12 enum=0.0s
+inst3 group=C6 status=INFEASIBLE time=1.8s
+inst3 group=C6+1 |G|=6 blocks=8074 borbs=1358 eorbs=2 porbs=12 enum=0.0s
+inst3 group=C6+1 status=INFEASIBLE time=1.6s
+inst3 group=G12 |G|=6 blocks=8074 borbs=1358 eorbs=2 porbs=12 enum=0.0s
+inst3 group=G12 status=INFEASIBLE time=1.6s
+inst3 group=C6b |G|=6 blocks=8074 borbs=1565 eorbs=7 porbs=24 enum=0.0s
+inst3 group=C6b status=INFEASIBLE time=0.0s
+inst4 group=C6a |G|=6 blocks=45474 borbs=7612 eorbs=4 porbs=17 enum=0.2s
+inst4 group=C6a status=INFEASIBLE time=0.1s
+inst2 group=C5 |G|=5 blocks=28314 borbs=5666 eorbs=4 porbs=14 enum=0.1s
+inst2 group=C5 status=INFEASIBLE time=0.0s
+inst3 group=C5 |G|=5 blocks=8074 borbs=1618 eorbs=4 porbs=14 enum=0.0s
+inst3 group=C5 status=INFEASIBLE time=0.0s
+inst1 group=C4a |G|=4 blocks=45474 borbs=11407 eorbs=5 porbs=25 enum=0.2s
+inst1 group=C4a status=INFEASIBLE time=13.2s
+inst2 group=C4 |G|=4 blocks=28314 borbs=7104 eorbs=3 porbs=18 enum=0.1s
+inst2 group=C4 status=UNKNOWN time=600.5s
+inst2 group=C4b |G|=4 blocks=28314 borbs=7202 eorbs=6 porbs=22 enum=0.1s
+inst2 group=C4b status=INFEASIBLE time=14.4s
+inst3 group=C4 |G|=4 blocks=8074 borbs=2031 eorbs=3 porbs=18 enum=0.0s
+inst3 group=C4 status=INFEASIBLE time=14.8s
+inst3 group=C4b |G|=4 blocks=8074 borbs=2084 eorbs=6 porbs=22 enum=0.0s
+inst3 group=C4b status=INFEASIBLE time=0.5s
+inst4 group=C4a |G|=4 blocks=45474 borbs=11407 eorbs=5 porbs=25 enum=0.2s
+inst4 group=C4a status=INFEASIBLE time=2.7s
+inst1 group=C3a |G|=3 blocks=45474 borbs=15174 eorbs=6 porbs=31 enum=0.2s
+inst1 group=C3a status=INFEASIBLE time=37.7s
+inst1 group=C3b |G|=3 blocks=45474 borbs=15288 eorbs=8 porbs=37 enum=0.2s
+inst1 group=C3b status=INFEASIBLE time=74.5s
+inst2 group=C3 |G|=3 blocks=28314 borbs=9438 eorbs=4 porbs=22 enum=0.1s
+inst2 group=C3 status=UNKNOWN time=600.3s
+inst2 group=C3a |G|=3 blocks=28314 borbs=9468 eorbs=6 porbs=24 enum=0.1s
+inst2 group=C3a status=INFEASIBLE time=159.2s
+inst2 group=C3b |G|=3 blocks=28314 borbs=9708 eorbs=8 porbs=32 enum=0.1s
+inst2 group=C3b status=UNKNOWN time=600.2s
+inst3 group=C3 |G|=3 blocks=8074 borbs=2698 eorbs=4 porbs=22 enum=0.0s
+inst3 group=C3 status=INFEASIBLE time=401.4s
+inst3 group=C3a |G|=3 blocks=8074 borbs=2710 eorbs=6 porbs=24 enum=0.0s
+inst3 group=C3a status=INFEASIBLE time=7.2s
+inst3 group=C3b |G|=3 blocks=8074 borbs=2854 eorbs=8 porbs=32 enum=0.0s
+inst3 group=C3b status=INFEASIBLE time=4.4s
+inst4 group=C3a |G|=3 blocks=45474 borbs=15174 eorbs=6 porbs=31 enum=0.2s
+inst4 group=C3a status=UNKNOWN time=601.0s
+inst4 group=C3b |G|=3 blocks=45474 borbs=15288 eorbs=8 porbs=37 enum=0.2s
+inst4 group=C3b status=UNKNOWN time=600.5s
+inst1 group=C2 |G|=2 blocks=45474 borbs=22737 eorbs=7 porbs=49 enum=0.2s
+inst1 group=C2 status=UNKNOWN time=602.3s
+inst1 group=C2a |G|=2 blocks=45474 borbs=22808 eorbs=8 porbs=49 enum=0.1s
+inst1 group=C2a status=UNKNOWN time=600.6s
+inst1 group=C2b |G|=2 blocks=45474 borbs=22959 eorbs=9 porbs=51 enum=0.1s
+inst1 group=C2b status=UNKNOWN time=601.2s
+inst1 group=C2c |G|=2 blocks=45474 borbs=23350 eorbs=10 porbs=55 enum=0.1s
+inst1 group=C2c status=UNKNOWN time=600.2s
+inst2 group=C2 |G|=2 blocks=28314 borbs=14202 eorbs=6 porbs=36 enum=0.1s
+inst2 group=C2 status=UNKNOWN time=600.8s
+inst2 group=C2a |G|=2 blocks=28314 borbs=14232 eorbs=7 porbs=36 enum=0.1s
+inst2 group=C2a status=UNKNOWN time=600.8s
+inst2 group=C2b |G|=2 blocks=28314 borbs=14362 eorbs=8 porbs=38 enum=0.1s
+inst2 group=C2b status=UNKNOWN time=602.4s
+inst2 group=C2c |G|=2 blocks=28314 borbs=14760 eorbs=9 porbs=42 enum=0.1s
+inst2 group=C2c status=UNKNOWN time=600.8s
+inst3 group=C2 |G|=2 blocks=8074 borbs=4062 eorbs=6 porbs=36 enum=0.0s
+inst3 group=C2 status=UNKNOWN time=600.1s
+inst3 group=C2a |G|=2 blocks=8074 borbs=4077 eorbs=7 porbs=36 enum=0.0s
+inst3 group=C2a status=UNKNOWN time=600.1s
+inst3 group=C2b |G|=2 blocks=8074 borbs=4138 eorbs=8 porbs=38 enum=0.0s
+inst3 group=C2b status=UNKNOWN time=600.4s
+inst3 group=C2c |G|=2 blocks=8074 borbs=4309 eorbs=9 porbs=42 enum=0.0s
+inst3 group=C2c status=UNKNOWN time=600.1s
+inst4 group=C2 |G|=2 blocks=45474 borbs=22737 eorbs=7 porbs=49 enum=0.1s
+inst4 group=C2 status=UNKNOWN time=600.4s
+inst4 group=C2a |G|=2 blocks=45474 borbs=22808 eorbs=8 porbs=49 enum=0.1s
+inst4 group=C2a status=UNKNOWN time=601.5s
+inst4 group=C2b |G|=2 blocks=45474 borbs=22959 eorbs=9 porbs=51 enum=0.1s
+inst4 group=C2b status=UNKNOWN time=600.2s
+inst4 group=C2c |G|=2 blocks=45474 borbs=23350 eorbs=10 porbs=55 enum=0.1s
+inst4 group=C2c status=UNKNOWN time=600.5s
+
+=== SUMMARY ===
+1 C13 INFEASIBLE
+1 C14 INFEASIBLE
+1 C2 UNKNOWN
+1 C2a UNKNOWN
+1 C2b UNKNOWN
+1 C2c UNKNOWN
+1 C3a INFEASIBLE
+1 C3b INFEASIBLE
+1 C4a INFEASIBLE
+1 C6a INFEASIBLE
+1 C7 INFEASIBLE
+1 C7f INFEASIBLE
+1 C7xC2 INFEASIBLE
+1 D14 INFEASIBLE
+1 D7 INFEASIBLE
+1 F21 INFEASIBLE
+2 C11 INFEASIBLE
+2 C12 INFEASIBLE
+2 C2 UNKNOWN
+2 C2a UNKNOWN
+2 C2b UNKNOWN
+2 C2c UNKNOWN
+2 C3 UNKNOWN
+2 C3a INFEASIBLE
+2 C3b UNKNOWN
+2 C4 UNKNOWN
+2 C4b INFEASIBLE
+2 C5 INFEASIBLE
+2 C6 INFEASIBLE
+2 C6+1 INFEASIBLE
+2 C6b INFEASIBLE
+2 D12 INFEASIBLE
+2 D6 INFEASIBLE
+2 G12 INFEASIBLE
+3 C11 INFEASIBLE
+3 C12 INFEASIBLE
+3 C2 UNKNOWN
+3 C2a UNKNOWN
+3 C2b UNKNOWN
+3 C2c UNKNOWN
+3 C3 INFEASIBLE
+3 C3a INFEASIBLE
+3 C3b INFEASIBLE
+3 C4 INFEASIBLE
+3 C4b INFEASIBLE
+3 C5 INFEASIBLE
+3 C6 INFEASIBLE
+3 C6+1 INFEASIBLE
+3 C6b INFEASIBLE
+3 D12 INFEASIBLE
+3 D6 INFEASIBLE
+3 G12 INFEASIBLE
+4 C13 INFEASIBLE
+4 C14 INFEASIBLE
+4 C2 UNKNOWN
+4 C2a UNKNOWN
+4 C2b UNKNOWN
+4 C2c UNKNOWN
+4 C3a UNKNOWN
+4 C3b UNKNOWN
+4 C4a INFEASIBLE
+4 C6a INFEASIBLE
+4 C7 UNKNOWN
+4 C7f INFEASIBLE
+4 C7xC2 INFEASIBLE
+4 D14 INFEASIBLE
+4 D7 INFEASIBLE
+4 F21 INFEASIBLE
