@@ -196,3 +196,18 @@ Validation (dramatic speedup vs direct CNF):
 - Open instances n=11, 13 remain open: no witness (SLS + 5 randomized DFS
   runs + CDCL), no exhaustion (needs cluster; tooling committed).
 - All witnesses machine-verified by solutions/P12/verify.py (PASS).
+
+## Round 3 (resumed 2026-07-23 ~19:10 UTC)
+
+- Checked CPro1 designs/ folder: no tuscan-2-square directory (florentine
+  rectangles 7x20..7x27 only) — T2(11)/T2(13) NOT solved by CPro1; still open.
+- Retrieved Etzion–Golomb–Taylor, "Tuscan-K squares", Adv. Appl. Math 10
+  (1989) 164-174 (scanned; read page images). Key context:
+  - Q2: "For odd n > 7, do any n×n Tuscan-2 squares exist? We conjecture
+    YES, although none are known." (n=9 case since refuted by Kapralov 2012.)
+    So a T2(11) witness would settle the first open instance of EGT Q2.
+  - Q5/Q1: circular n×(n+1) Tuscan-2 arrays exist for all even 8<n<=50;
+    for odd n none known; add-zero transformation links circular arrays to
+    (non-Latin) Tuscan-2 squares.
+- New mode 3 in t2dfs.c: rapid randomized restarts with per-restart node
+  budget (2M / 20M variants); 8 workers hunting a T2(11) witness.

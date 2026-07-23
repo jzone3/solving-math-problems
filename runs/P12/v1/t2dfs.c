@@ -14,6 +14,8 @@
  *   mode 0 = exhaustive DFS
  *   mode 1 = randomized restarts (shuffled lists, restart on exhaust of
  *            first-level subtree; runs forever until witness or SIGTERM)
+ *   mode 3 = rapid randomized restarts: ./t2dfs n 3 seed budget — reshuffles
+ *            all domains and reruns DFS with a per-restart node budget.
  *   mode 2 = sliced exhaustive: ./t2dfs n 2 slice_id stride — fixes each
  *            group-1 candidate with index ≡ slice_id (mod stride) and
  *            exhausts its subtree; prints one line per completed subtree
@@ -92,8 +94,12 @@ typedef struct { long *idx; long cnt; int grp; } Dom;
 
 static const Row *R;
 
+static long long budget = 0; /* nonzero: abort restart when nodes exceed */
+static long long budget_limit = 0;
+
 static int dfs(Dom *doms, int nd, int depth) {
     nodes++;
+    if (budget_limit && nodes > budget_limit) return -1;
     if (nd == 0) return 1;
     /* pick smallest domain */
     int bi = 0;
@@ -128,7 +134,10 @@ static int dfs(Dom *doms, int nd, int depth) {
             off += c;
             if (c == 0) ok = 0;
         }
-        if (ok && dfs(nds, nd - 1, depth + 1)) { free(pool); return 1; }
+        if (ok) {
+            int f = dfs(nds, nd - 1, depth + 1);
+            if (f) { free(pool); return f; }
+        }
         free(pool);
         /* unchoose */
         for (int j = 0; j < 4; j++) { ud1[j] = s1[j]; ud2[j] = s2[j]; }
@@ -225,6 +234,36 @@ int main(int argc, char **argv) {
         }
         fprintf(stderr, "slice %ld/%ld complete: nodes %lld found 0\n", slice, stride, nodes);
         return 20;
+    }
+    if (mode == 3) {
+        budget = argc > 4 ? atoll(argv[4]) : 2000000;
+        long long restarts = 0;
+        for (;;) {
+            for (int r = 0; r < ngroups; r++)
+                for (long k = doms[r].cnt - 1; k > 0; k--) {
+                    long j = xrnd() % (k + 1);
+                    long t = doms[r].idx[k]; doms[r].idx[k] = doms[r].idx[j]; doms[r].idx[j] = t;
+                }
+            budget_limit = nodes + budget;
+            memset(ud1, 0, sizeof ud1); memset(ud2, 0, sizeof ud2);
+            ulast = 1 << (N - 1);
+            int f = dfs(doms, ngroups, 0);
+            restarts++;
+            if (f == 1) {
+                printf("WITNESS\n");
+                for (int c = 0; c < N; c++) printf("%d ", c);
+                printf("\n");
+                for (int rr = 1; rr < N; rr++) {
+                    const Row *w = &R[chosen[rr]];
+                    for (int c = 0; c < N; c++) printf("%d ", w->perm[c]);
+                    printf("\n");
+                }
+                fflush(stdout);
+                return 0;
+            }
+            if (restarts % 100 == 0)
+                fprintf(stderr, "restarts %lld nodes %lld maxdepth %d\n", restarts, nodes, maxdepth);
+        }
     }
     int found = dfs(doms, ngroups, 0);
     fprintf(stderr, "nodes %lld maxdepth %d found %d\n", nodes, maxdepth, found);
