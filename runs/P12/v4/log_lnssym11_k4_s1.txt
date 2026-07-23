@@ -1,0 +1,5 @@
+start cost 7
+[it 10] cur 7 best 7
+[it 20] cur 7 best 7
+[it 30] cur 7 best 7
+[it 40] cur 7 best 7

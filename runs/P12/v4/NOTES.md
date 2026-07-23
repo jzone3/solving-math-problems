@@ -56,6 +56,18 @@ needed; used as hint source rather than standalone solver).
   rest, CP-SAT re-optimize freed rows with obj ≤ incumbent, plateau random-walk accepts.
 - lns_rows k=3, iter_tl=20 s: 60 iterations, stuck at cost 7 (plateau moves accepted but no
   descent). Escalated to k=5, iter_tl=60 s.
-- n=9 exact (UNSAT calibration): still running at 1.5 h, no verdict yet.
+- n=9 exact (UNSAT calibration): **UNKNOWN after full 14400 s (4 h, 4 workers)** — CP-SAT
+  cannot re-prove the known nonexistence of T2(9) in 4 h with this encoding+symmetry
+  breaking. Implication: proving T2(11) UNSAT via CP-SAT is far out of reach; V4 value
+  concentrates on the search/repair side and min-violation data.
+- lns_rows k=5 (60 s/iter) and k=7 (180 s/iter): both stuck at cost 7 (20+ iterations each).
+- Wrote lns_symbols.py (orthogonal neighborhood: free k symbols across all rows, others
+  keep relative order per row). k=4, 120 s/iter: 40+ iterations, still cost 7.
+- Min-violation landscape data (anneal): n=9 (nonexistent) plateaus at cost 4 (2 seeds);
+  n=11 plateaus at cost 7 (5 seeds + 3 LNS variants); n=13 at ≤14 (running).
+  Reading: nonexistent instances have small nonzero floors; n=11's consistent floor of 7
+  across independent neighborhoods is weak evidence for nonexistence (not proof).
+- Started cpsat_opt on n=9 (2 h) to see how far the optimization bound gets on a known
+  nonexistent instance (best bound > 0 would be an optimality-style nonexistence re-proof).
 
 STATUS: running
