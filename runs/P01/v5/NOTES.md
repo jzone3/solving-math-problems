@@ -179,7 +179,7 @@ correspondence is exact in both directions.
 every shard the monotone prune killed all branches before any complete 2-factor was
 reached: leaves=0). Hence every 4-regular uniquely hamiltonian graph has NO 2-edge-cut
 with a side of ≤ 16 vertices; both sides of any 2-edge-cut have ≥ 17 vertices, so any
-counterexample to Sheehan's conjecture on n ≤ 34 vertices must be 3-edge-connected —
+counterexample to Sheehan’s conjecture on n ≤ 33 vertices must be 3-edge-connected —
 equivalently (edge cuts in 4-regular graphs are even) 4-EDGE-CONNECTED.
 (w=17 shards running; each +1 on w adds +2 to the n covered by the corollary.)
 
@@ -191,7 +191,7 @@ known bounded-HC families (Fleischner multigraphs, TZ 216-family: all are 2-cut 
 
 Parity upgrade: in a 4-regular graph every edge cut is EVEN (|cut(S)| ≡ 4|S| mod 2), so
 there are no 3-edge-cuts. Hence "no 2-edge-cut" already means **4-edge-connected**:
-any counterexample on n ≤ 34 vertices is 4-edge-connected, and for ALL n, every
+any counterexample on n ≤ 33 vertices is 4-edge-connected, and for ALL n, every
 2-edge-cut side must be a ≥17-vertex t=1 window (none exist up to the verified w).
 Next escalation of this axis would be 4-edge-cut (essentially-4-edge-connected) analysis,
 where h crosses 2 or 4 times and the gadget condition becomes a small system of path-count
