@@ -1,0 +1,1 @@
+DONE n=13 seed=113: iters=2427710, best heuristic=6, k=6

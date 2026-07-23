@@ -1,0 +1,3 @@
+[n=22 it=2808 t=43s] heuristic best=10 (k=10)
+[n=22 it=690332 t=12076s] heuristic best=11 (k=10)
+DONE n=22 seed=322: iters=708208, best heuristic=11, k=10

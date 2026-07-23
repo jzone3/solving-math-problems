@@ -1,0 +1,2 @@
+[n=21 it=15615 t=222s] heuristic best=10 (k=10)
+DONE n=21 seed=321: iters=756295, best heuristic=10, k=10

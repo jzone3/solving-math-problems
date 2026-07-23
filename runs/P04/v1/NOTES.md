@@ -43,7 +43,13 @@ to ~0: the heuristic then sits exactly on the k plateau.
 
 ## Runs
 
-(checkpointed below as they complete)
+### Pilot runs (2026-07-22)
+- n=13, 60 s, weak heuristic: ~340 candidates, **all exact-checked FEASIBLE at k=6** —
+  i.e. hundreds of distinct dense δ≥6 Eulerian 13-vertex graphs each decompose into ≤ 6
+  cycles. No near-miss.
+- n=13, 60 s, strong heuristic: 12 975 anneal iterations, heuristic best = 6 = k (never
+  exceeded the bound).
+- n=15, 80 s: 8 270 iterations, heuristic best = 7 = k.
 
 ### Batch 1 (2026-07-22, ~3.5 h wall each, 8 processes in parallel)
 
@@ -69,18 +75,41 @@ Direct random sampling with **exact CP-SAT check on every sample** (p ∈ [0.55,
 
 ### Batch 2 (escalation, 2026-07-22/23, 12 600 s each)
 
-- Anneal n = 19, 20, 21, 22 (seeds 319/320/321/322).
-- sample_exact n = 15, 16 (seeds 415/416).
-(results below when complete)
+Annealed gap search, 12 600 s per n:
 
-### Pilot runs (2026-07-22)
-- n=13, 60 s, weak heuristic: ~340 candidates, **all exact-checked FEASIBLE at k=6** —
-  i.e. hundreds of distinct dense δ≥6 Eulerian 13-vertex graphs each decompose into ≤ 6
-  cycles. No near-miss.
-- n=13, 60 s, strong heuristic: 12 975 anneal iterations, heuristic best = 6 = k (never
-  exceeded the bound).
-- n=15, 80 s: 8 270 iterations, heuristic best = 7 = k.
+| n | k | anneal iterations | best quick-min heuristic | candidates surviving deep restarts | counterexamples |
+|---|---|---|---|---|---|
+| 19 | 9 | 976 563 | 9 (= k) | 0 | 0 |
+| 20 | 9 | 836 511 | 10 | 0 | 0 |
+| 21 | 10 | 756 295 | 10 (= k) | 0 | 0 |
+| 22 | 10 | 708 208 | 11 | 0 | 0 |
+
+Direct random sampling with exact CP-SAT check on every sample, 12 600 s each:
+
+- n=15 (k=7): **56 331 graphs tested, all FEASIBLE at ≤ 7 cycles.**
+- n=16 (k=7): **38 998 graphs tested, all FEASIBLE at ≤ 7 cycles.**
+
+## Summary of compute
+
+- ~255 000 distinct random dense δ≥6 connected Eulerian graphs at n = 13–16, each given
+  the **exact** CP-SAT decision at k = ⌊(n−1)/2⌋: all FEASIBLE (decompose into ≤ k cycles).
+- ~12.7 million simulated-annealing iterations at n = 13–22 driving graphs toward large
+  heuristic min-decomposition; not a single state survived 400-restart deep heuristics
+  above k, i.e. the annealer never found even a *plausible* candidate beyond the pilot
+  false positives (all exact-refuted).
+- ~28 CPU-hours total (8 cores, two 3.5 h batches).
+
+## Dead ends / lessons
+
+- Euler-circuit stack-splitting alone is far too weak an upper bound on dense graphs;
+  greedy Pósa-rotation long-cycle peeling is essential and near-optimal in this regime.
+- Dense random Eulerian graphs are extremely far from tight: typical exact min
+  decompositions sit at or below k with huge slack (long cycles abundant). If a
+  counterexample exists it is almost certainly highly structured (V2/V4 territory),
+  not reachable by random/annealed search at these sizes.
+- No near-misses found: nothing with exact min = k+1; nothing even survived heuristics.
 
 ## STATUS
 
-STATUS: running (long runs in progress; will update)
+STATUS: negative — no counterexample, no near-miss; V1 random/annealed gap search at
+n = 13–22 (exact checks n = 13–16, ~255k graphs) found the bound ⌊(n−1)/2⌋ never exceeded.

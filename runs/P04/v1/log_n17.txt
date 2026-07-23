@@ -1,0 +1,2 @@
+[n=17 it=219 t=2s] heuristic best=8 (k=8)
+DONE n=17 seed=117: iters=1147829, best heuristic=8, k=8

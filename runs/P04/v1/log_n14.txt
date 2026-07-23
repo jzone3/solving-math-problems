@@ -1,0 +1,3 @@
+[n=14 it=217 t=1s] heuristic best=6 (k=6)
+[n=14 it=4939 t=28s] heuristic best=7 (k=6)
+DONE n=14 seed=114: iters=1937648, best heuristic=7, k=6

@@ -1,0 +1,3 @@
+[n=15 it=955 t=7s] heuristic best=7 (k=7)
+[n=15 it=1325179 t=10458s] heuristic best=8 (k=7)
+DONE n=15 seed=115: iters=1583478, best heuristic=8, k=7
