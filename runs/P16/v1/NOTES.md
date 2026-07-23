@@ -118,6 +118,13 @@ Hardware: 8-core VM, pure Python/NumPy; total ≈ 2–3 CPU-hours.
    no "vacuous" violation either. Worth flagging to DHS as a well-definedness footnote.
 4. No near-misses with margin in (−0.01, 0) other than exact-0 tight states drifting via
    float noise; the landscape around the tight manifold slopes strictly downward.
+5. The wide annealing runs' final "best" states with float margin ≈ +1.4e-14 (e.g.
+   n = (52,13,13,13,13) with B giving a 40-regular bipartite structure, and
+   n = (10,10,5,5,5,5) giving a 20-regular bipartite structure) were fed to the exact
+   verifier and correctly REJECTED (`FAIL: could not certify rho(L_B) > RHS`) —
+   they are equality cases, not violations. Final run totals: 80 annealing seeds
+   (2×40 wide @ 400k iters) over quotients, graph annealer up to n = 40, exhaustive
+   n ≤ 10 complete (11,716,571 connected graphs at n = 10, matching the known count).
 
 ## Suggested next steps (other variants)
 
