@@ -257,6 +257,22 @@ as unweighted — every run floors at |AND of max-weight path sets| = 1–2 and 
 the AND = 0 regime; edge weights make maximum-weight ties sparse (few distinct optimal
 vertex sets), which if anything strengthens the shared-vertex basin.
 
+## Round 4: girth-targeted full exhausts
+
+Rationale: all known extremal constructions for longest-path phenomena (hypotraceable
+graphs, Walther/Zamfirescu graphs) have girth ≥ 4–5; dense/triangulated classes are the
+proven-true ones. So exhaust the high-girth side completely at sizes where general
+exhaustion is impossible.
+
+| Class | graphs checked | hits |
+|---|---|---|
+| triangle-free connected n = 13 (complete) | 19,425,052 | 0 |
+| triangle-free connected n = 14 (complete) | 445,781,050 | 0 |
+| squarefree (C4-free) connected n = 15 (complete) | 93,762,704 | 0 |
+| squarefree (C4-free) connected n = 16 (complete) | (running) | |
+
+(geng -t / -f slices; counts match geng -u exactly.)
+
 ## 7. Conclusions
 
 1. Confirmed still open as of 2026-07 (arXiv claim 2006.16245 self-retracted).
