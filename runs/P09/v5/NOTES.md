@@ -143,6 +143,23 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
   hypercube-like}; 120 graphs, all irregular and triangle-rich (open region).
   All negative; best −0.618 (small co-cycle cone). No near-misses.
 
+### Round 7 — relaxation-guided hybrid attack (coordinator push #3)
+
+- `hybrid.py`: used the blowup relaxation as a LOCATOR: ranked every connected
+  non-complete-multipartite pattern (|H| ≤ 8, ω ≥ 3) by tightness of max f_H, then
+  attacked integer roundings of the tightest patterns' optimal weights at N ∈
+  {24,36,48} with exhaustive 1-flips + 3000 sampled 2/3-flips each (regime where the
+  continuous certificate does not apply). ~500 rounded blowups attacked. Finding:
+  every seemingly-tight non-multipartite pattern optimum collapses onto a Turán
+  sub-blowup (optimal weights vanish outside a max clique — e.g. pattern FU~~w =
+  K₇ minus P₄ optimizes to weights 1/5 on an internal K₅); all flip attacks negative,
+  best exactly 0 on the plateau. No new equality graphs, no violations.
+- `gap_analysis.py`: maximized f_H restricted to interior/non-collapsing weights
+  (support inducing a non-CM subgraph): sup approaches 0 (e.g. −7×10⁻⁵ at floor
+  ~10⁻³·⁵) but is never attained — equality is a boundary phenomenon reachable only
+  by degenerating to Turán weights. Non-Turán directions approach but never touch
+  or cross 0.
+
 ## 4. Near-misses & dead ends
 
 - Best genuinely non-tight score found anywhere: ≈ **−0.105** (T(9,3)-blobs overlapping
