@@ -78,8 +78,22 @@ genuinely non-4-colorable unit-distance graph.
    found a valid deletion — consistent with vertex-criticality.
 4. **Targeted 508 search** (`scan508.py`): for each enriched-pool vertex w (≥ 4 neighbours in
    the record), test swaps 509 − v + w for v near w; collect swap-deletable v's and test pair
-   deletions 509 − v₁ − v₂ + w for a 508-vertex UNSAT graph. Ran over all 697 candidate w's:
-   **zero swap-deletable vertices, no 508 graph.**
+   deletions 509 − v₁ − v₂ + w for a 508-vertex UNSAT graph. Ran over all 697 candidate w's
+   (details + the 6 alternative-509 swaps it found in the "Extended targeted searches" section
+   below): **no candidate admitted two independent swaps, so no 508 graph.**
+
+### Extended targeted searches (also negative — `scan508.py`, `addcore.py`)
+Run to completion within this session's compute budget:
+- **508-swap scan** (`scan508.py`) over all 697 enriched-pool candidates w with ≥4 record
+  neighbours: found 6 "swap-deletable" vertices (w, v) where 509 − v + w is still UNSAT — i.e.
+  *alternative* 509-vertex 5-chromatic graphs (w substitutes for v) — but **no candidate w
+  admitted two independent swaps**, so no 508 graph. (w,v) hits:
+  (1073,1302),(1063,1088),(1064,1089),(1337,1082),(1338,1087),(1066,1303).
+- **Add-then-core** (`addcore.py`): for candidate w, start from the 510-vertex superset
+  509 ∪ {w} (trivially UNSAT) and greedily delete with drat-trim core jumps. **Every run
+  bottomed out at exactly 509** — the greedy basin around the record returns to a 509-type
+  minimum, independent confirmation that 509 is a robust (vertex-critical) local optimum for
+  this vertex pool.
 
 ## Why 509 was not beaten
 - The record is vertex-critical, so no subgraph of it works; a smaller graph needs a new
