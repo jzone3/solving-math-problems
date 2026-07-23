@@ -121,6 +121,37 @@ k ∈ {4,5,8} for p=13, ~3h each on 8 cores.
   plateaued at exactly k·d rows (10/11, 12/13) — exactly as Claim D predicts (r=1 < d).
   Killed once the obstruction was proven; relaunched sub-maximal configs with r ≥ d:
   (p,d,k) = (11,5,1), (11,2,4), (13,6,1), (13,4,2), (13,3,3), (13,2,5), 6h budget each.
-- hybrid runs (k∈{3,4,5,8,10} p=11; {4,5,8} p=13): plateaued at 9/11 and 10/13 within
-  minutes; still running.
-- `dfs11_baseline.out`: plain randomized DFS from identity row, 4h budget: (running)
+- hybrid runs (k∈{3,4,5,8,10} p=11; {4,5,8} p=13, ~3–6h): small-k plateaued at 9/11 and
+  10/13; k=8 runs reached **10/11** (549 seeds, 3h) and **12/13** (1080 seeds, 6h) — the
+  n−1 wall again, never n.
+- Sub-maximal orbit runs, 6h each ((11,5,1), (11,2,4), (13,6,1), (13,4,2), (13,3,3),
+  (13,2,5)): all timed out at best **10/11 / 11–12/13**. None exhausted their space.
+- `dfs_baseline.py` p=11 (plain randomized DFS, no seed, 4h): best **9/11** — algebraic
+  seeding demonstrably reaches deeper (10/11) than naive DFS.
+- `count8.py` calibration: exhaustive counting DFS at n=8 found **0 solutions in 3h**
+  even though T2(8) exists (Kapralov's example machine-verified True by our checker, and
+  our DFS completes it instantly from 5 or even 2 fixed rows). Moral: naive DFS cannot
+  even locate n=8 witnesses in hours, so the n−1 plateaus at 11/13 carry NO evidence of
+  nonexistence — deciding T2(11) needs complete search technology (SAT/clique, variants
+  V1/V2) rather than heuristics.
+
+## 6. Conclusions
+
+1. **Rigidity theorem (new, machine-checked at small orders):** any Tuscan-2 square of
+   order 11 or 13 has trivial stabilizer in the full axiom-symmetry group S_n × ⟨rev⟩;
+   moreover full-orbit-plus-few-free-rows constructions under any subgroup of AGL(1,p)
+   need ≥ d free rows (Claim D), killing all maximal-orbit designs. Every classical
+   algebraic mechanism (terraces/sequencings, Vatican/near-field, relative difference
+   sets, multiplicative/affine orbits) is thereby **provably incapable** of producing
+   T2(11) or T2(13). This explains *why* 40 years of construction attempts failed: if
+   these squares exist they are totally irregular.
+2. Best explicit partials produced (all verified): 10/11 rows and 12/13 rows; the
+   canonical circulant (p−1)-row partials are provably non-completable (star obstruction).
+3. The remaining decidable route is complete search on the ~56k-vertex compatibility
+   clique problem (Kapralov's n=9 method scaled up) or SAT with symmetry breaking —
+   V1/V2 territory. The rigidity theorem at least removes any hope that symmetry
+   reduction can shrink the complete search: there is no symmetry to exploit.
+
+STATUS: negative / frontier-pushed — no witness found (searches hit the n−1 wall);
+new structural theorems close off ALL algebraic/symmetric construction routes for
+T2(11) and T2(13); problem remains open.
