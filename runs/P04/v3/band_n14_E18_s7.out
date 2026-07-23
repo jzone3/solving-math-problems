@@ -1,0 +1,4 @@
+[seen=754678 cand=500] {'OK': 500, 'CE': 0} 144s
+[seen=1882775 cand=1000] {'OK': 1000, 'CE': 0} 302s
+[seen=2738214 cand=1500] {'OK': 1500, 'CE': 0} 451s
+DONE band n=14 maxE=18 shard=7/8 seen=3700902 cand=1935 {'OK': 1935, 'CE': 0} time=581s
