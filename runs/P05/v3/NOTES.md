@@ -122,6 +122,15 @@ center).
   hypotraceable-like behavior (V1's territory), not achievable with blocks of
   ≤ 8 vertices.
 
+### Stage E: targeted hunt for the necessary block structure (`blockhunt.py`)
+- Reduction: if a 2-connected B has vertices a,b,c with equal max crossing
+  lengths L_ab=L_bc=L_ca=M and optimal crossings Q_ab∌c, Q_bc∌a, Q_ca∌b with
+  Q_ab∩Q_bc∩Q_ca=∅, then B + three equal pendant arms of length D>|V(B)| is a
+  **counterexample** (longest = 2D+M, only two arms usable per path).
+  This is exactly the property the A1–A3 dead-end analysis said is required.
+- Exhaustive over all 2-connected graphs: n=4..8 (7,721 blocks): NO block has
+  the property. n=9 (194,066) and n=10 (9,743,542, 7 workers) running.
+
 ## STATUS: negative
 
 No counterexample; no near-miss below triple-intersection 1 (the conjectured
