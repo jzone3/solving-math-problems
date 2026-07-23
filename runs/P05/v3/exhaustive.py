@@ -2,7 +2,7 @@
 (nauty-geng -c). Conjecture predicts score >= 1 everywhere. Also serves as an
 independent verifier of the V3 pipeline against the known exhaustive frontier.
 
-Usage: pypy3 exhaustive.py <n>
+Usage: pypy3 exhaustive.py <n> [res/mod]
 """
 import subprocess
 import sys
@@ -14,7 +14,8 @@ from families import graph6_to_edges
 
 def main():
     n = int(sys.argv[1])
-    proc = subprocess.Popen(["nauty-geng", "-q", "-c", str(n)],
+    extra = [sys.argv[2]] if len(sys.argv) > 2 else []
+    proc = subprocess.Popen(["nauty-geng", "-q", "-c", str(n)] + extra,
                             stdout=subprocess.PIPE, text=True)
     t0 = time.time()
     cnt = 0

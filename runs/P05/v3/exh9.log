@@ -1,2 +1,14 @@
 n=9 cnt=20000 best=1 elapsed=12s
 n=9 cnt=40000 best=1 elapsed=22s
+n=9 cnt=60000 best=1 elapsed=39s
+n=9 cnt=80000 best=1 elapsed=58s
+n=9 cnt=100000 best=1 elapsed=100s
+n=9 cnt=120000 best=1 elapsed=135s
+n=9 cnt=140000 best=1 elapsed=206s
+n=9 cnt=160000 best=1 elapsed=261s
+n=9 cnt=180000 best=1 elapsed=306s
+n=9 cnt=200000 best=1 elapsed=377s
+n=9 cnt=220000 best=1 elapsed=494s
+n=9 cnt=240000 best=1 elapsed=623s
+n=9 cnt=260000 best=1 elapsed=771s
+DONE n=9 graphs=261080 best=1 elapsed=777s

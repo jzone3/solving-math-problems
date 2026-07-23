@@ -62,13 +62,17 @@ center).
 
 ### Stage A1: blocks n=4–6 (69 blocks), arms ≤6 vertices (lib 30), total n ≤ 18
 - 4,606,160 configurations, random order, pypy3, ~1.2k cfg/s.
-- Checkpoint @1.34M configs (~29%): best score = 2, zero graphs with score ≤ 1
-  logged. Single-block + 3-arm graphs appear to always funnel longest paths
-  through ≥2 shared vertices.
+- FINAL (all 4.6M configs, 1.1 core-hours): best score = 2, zero graphs with
+  score ≤ 1 logged. Single-block + 3-arm graphs always funnel longest paths
+  through ≥ 2 shared vertices.
 
 ### Stage A2: two-block cores (blocks n=4–7 glued at cut vertex) + 3 arms, n ≤ 20
-- `search2.py`, 1.5M random samples of the (≈10^8) config space.
-- Checkpoint @82k: best score = 2, no near-misses logged.
+- `search2.py`, 1.5M random samples of the (≈10^8) config space, 3.8 core-hours.
+- FINAL: best score = 2, zero near-misses (score ≤ 1) logged.
+
+### Stage A3: single larger block (n=7–8, 10,908 blocks) + 3 arms ≤ 7 vtcs, n ≤ 22
+- `search3.py`, 800k random samples, 1.2 core-hours.
+- FINAL: best score = 2, zero near-misses.
 
 ### Stage B: simulated annealing on unconstrained graphs (n = 14–26)
 - `anneal.py`: edge add/remove/swap, objective = min triple intersection of
@@ -88,6 +92,7 @@ center).
   no score-0 graph adjacent (within 2 edge moves) to any optimum.
 
 ### Stage D: exhaustive cross-check of the pipeline (all connected graphs)
-- `exhaustive.py` over nauty-geng -c: n=7 (853 graphs) best=1;
-  n=8, n=9 running. Confirms analyzer semantics against the known exhaustive
-  frontier (conjecture verified up to n~12 in the literature).
+- `exhaustive.py` over nauty-geng -c: n=7 (853 graphs) best=1; n=8 (11,117)
+  best=1; n=9 (261,080) best=1; n=10 (11,716,571; 6 parallel workers) running.
+  Confirms analyzer semantics against the known exhaustive frontier
+  (conjecture verified up to n~12 in the literature).
