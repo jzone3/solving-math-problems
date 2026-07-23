@@ -5,7 +5,20 @@ import json
 import re
 import subprocess
 
-TMO = 600
+TMO = 240
+
+
+def norbits(t, m):
+    seen, c = set(), 0
+    for x in range(m):
+        if x in seen:
+            continue
+        y = x
+        while y not in seen:
+            seen.add(y)
+            y = y * t % m
+        c += 1
+    return c
 
 
 def prime_power_root(k):
@@ -32,11 +45,12 @@ for n, k in cells:
     if p is None or n % p == 0:
         print(f"CW({n},{k}): mult thm n/a", flush=True)
         continue
+    import math
+    folds = [(x, n // x) for x in range(2, n)
+             if n % x == 0 and n // x <= 8]
+    folds.sort(key=lambda md: norbits(p, md[0]) * math.log(2 * md[1] + 1))
     info, settled = [], False
-    for m in sorted((x for x in range(2, n) if n % x == 0), reverse=True):
-        d = n // m
-        if d > 8 or m > 1000:
-            continue
+    for m, d in folds:
         r = subprocess.run(["./cw_fold", str(m), str(d), str(k), str(p),
                             str(TMO)], capture_output=True, text=True)
         out = r.stdout.strip().splitlines()[-1] if r.stdout.strip() else "ERR"
