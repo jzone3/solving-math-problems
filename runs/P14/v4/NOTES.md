@@ -101,4 +101,12 @@ products change), depth ≤ D, pruning prefixes with E > E0 + slack.
 ⇒ These near-misses sit in deep, wide-barrier local minima; they are ≥5 compound trades away
 from any solution even allowing +12 uphill. Consistent with CPro1's 48 h heuristic failure.
 
+- Round 2 results (3 h basin hopping, 300 s legs, kick=8, ~36 legs/worker): floors UNCHANGED —
+  i1: 10 (also 11 from an independent 2 h random-restart worker), i2: 4 (both workers),
+  i3: 6 (both), i4: 8 (improved from 10 → 8). Best matrices in `round2/`.
+  The same L1 floors are reached from independent random starts, LP-rounded starts, and
+  survive 36+ kicks each — the plateaus look like the global optima of this move space.
+- Round 3 (started ~01:30 UTC, 3 h): per instance 1 hop worker with KICK=24, 600 s legs from
+  round-2 bests + 1 fresh anneal3 worker with 3 h of random restarts.
+
 ## STATUS: running

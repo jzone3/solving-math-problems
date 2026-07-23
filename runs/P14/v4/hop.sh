@@ -20,6 +20,6 @@ while [ $(date +%s) -lt $end ]; do
     bestv=$v; tail -n +2 $work/out_$leg_i.txt > $work/best.txt
   fi
   echo "leg $leg_i viol=$v best=$bestv"
-  python3 perturb.py $work/best.txt $work/cur.txt 8 $((seed+leg_i*7))
+  python3 perturb.py $work/best.txt $work/cur.txt ${KICK:-8} $((seed+leg_i*7))
 done
 echo "DONE best=$bestv"
