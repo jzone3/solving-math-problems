@@ -157,3 +157,33 @@ L=15/16 sweeps running (2^7 and 2^8 profiles).
 Compute spent (approx): ~3.5 h of single-core numpy greedy sweeps across
 N up to 1.8e9, plus ~20 min local-search repair experiments, plus Engine B/C
 backtracking runs (~15 min). All exact, no sampling.
+
+## 10. L=16 SUCCESS; L=18 out of reach for this method
+
+- **L=16**: 2^7·3^4·5^2·7^2·11·13 universe (N=1,816,214,400), seed 950 restart 1 →
+  **COVER, 1327 congruences, distinct moduli, min modulus 16**
+  (`witness_L16_N1816214400.json`). PASS on both independent verifiers
+  (direct lcm sweep + CRT-tree DFS, 12,898,054 cells). Copied to `solutions/P15/`.
+  Restart variance at L=16 was enormous: uncovered counts across 12 restarts ranged
+  0, 974, 11,605, 25,801, ..., up to 1.8e6.
+- **L=17** is equivalent to L=18 on any 17-free palette (17 is not a divisor), so we
+  went straight to L=18.
+- **L=18**: 8 restarts on the L=16-winning profile: best 3,536,368 uncovered (1.9e-3);
+  bigger universe 2^7·3^5·5^2·7^2·11·13 (N=5.4e9, 59 min/restart): 16.7e6 uncovered
+  (3.1e-3). The loss of modulus 16 (=2^4) is qualitative: the 2-adic tail can no longer
+  be packed, and greedy cannot compensate. L=18 needs structural (arrow-calculus) search,
+  not restarts.
+
+## FINAL
+
+Verified artifact chain: L=3, 6, 9, 12, 14, 15, **16** — all with two independent
+verifiers passing. Standing hand record is 42 (Owens); target 43 not approached.
+The V5 premise (extract a >42 construction from BBMST) is unfixable: BBMST's method
+bounds obstructions to coverings and is intrinsically non-constructive (Section 2 of
+their paper; confirmed against the original). The constructive frontier is exactly the
+Nielsen/Owens arrow calculus, whose mechanization requires inherited-coverage
+bookkeeping (Section 7) — recommended as the follow-up (V1-style) program.
+
+STATUS: negative (no progress on min modulus >= 43; byproduct: verified fully-automated
+coverings up to min modulus 16, plus a precise diagnosis of what a mechanized
+arrow-calculus search must implement).
