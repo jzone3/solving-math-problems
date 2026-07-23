@@ -11,3 +11,4 @@ n=19 it=2000 t=29s last_clause_len=5
 n=19 it=2200 t=48s last_clause_len=5
 n=19 it=2400 t=90s last_clause_len=4
 n=19 it=2600 t=222s last_clause_len=4
+n=19 it=2800 t=995s last_clause_len=6

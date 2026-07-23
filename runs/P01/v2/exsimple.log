@@ -5,3 +5,7 @@ rem=6 nodes=10567
 new best rem=6 (restart 1)
 EXHAUSTED n=14 (multi=0): no witness; tree fully explored, nodes=63289704
 rem=6 nodes=1286833
+rem=6 nodes=10567
+new best rem=6 (restart 1)
+EXHAUSTED n=14 (multi=0): no witness; tree fully explored, nodes=63289704
+rem=6 nodes=1286833

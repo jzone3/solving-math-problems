@@ -42,3 +42,16 @@ n=22 it=8200 t=345s last_clause_len=7
 n=22 it=8400 t=411s last_clause_len=5
 n=22 it=8600 t=488s last_clause_len=6
 n=22 it=8800 t=576s last_clause_len=6
+n=22 it=9000 t=665s last_clause_len=5
+n=22 it=9200 t=722s last_clause_len=5
+n=22 it=9400 t=827s last_clause_len=6
+n=22 it=9600 t=944s last_clause_len=5
+n=22 it=9800 t=1099s last_clause_len=7
+n=22 it=10000 t=1280s last_clause_len=4
+n=22 it=10200 t=1532s last_clause_len=8
+n=22 it=10400 t=1777s last_clause_len=8
+n=22 it=10600 t=2006s last_clause_len=7
+n=22 it=10800 t=2222s last_clause_len=4
+n=22 it=11000 t=2512s last_clause_len=7
+n=22 it=11200 t=2985s last_clause_len=5
+n=22 it=11400 t=3441s last_clause_len=5

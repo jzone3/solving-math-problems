@@ -30,3 +30,10 @@ n=21 it=5800 t=271s last_clause_len=5
 n=21 it=6000 t=342s last_clause_len=6
 n=21 it=6200 t=421s last_clause_len=8
 n=21 it=6400 t=508s last_clause_len=7
+n=21 it=6600 t=646s last_clause_len=5
+n=21 it=6800 t=795s last_clause_len=6
+n=21 it=7000 t=971s last_clause_len=6
+n=21 it=7200 t=1265s last_clause_len=5
+n=21 it=7400 t=1605s last_clause_len=6
+n=21 it=7600 t=2040s last_clause_len=6
+n=21 it=7800 t=2588s last_clause_len=5
