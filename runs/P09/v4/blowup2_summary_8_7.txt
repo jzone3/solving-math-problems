@@ -1,0 +1,1 @@
+BLOWUP2-SUMMARY patterns=1379 global_best_F=2.470246e-15 g6=GCZM[{

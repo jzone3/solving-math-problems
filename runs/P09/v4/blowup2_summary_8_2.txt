@@ -1,0 +1,1 @@
+BLOWUP2-SUMMARY patterns=2141 global_best_F=2.553513e-15 g6=G?qv\{

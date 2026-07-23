@@ -1,0 +1,1 @@
+BLOWUP2-SUMMARY patterns=924 global_best_F=2.517986e-15 g6=GEnvnk

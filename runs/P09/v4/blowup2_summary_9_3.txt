@@ -1,0 +1,1 @@
+BLOWUP2-SUMMARY patterns=18939 global_best_F=3.386180e-15 g6=H?Bfnz|
