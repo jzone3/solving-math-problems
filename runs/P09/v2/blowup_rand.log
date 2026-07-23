@@ -1,0 +1,11 @@
+random blow-up sampler: 191568 (pattern,type) combos, k=8..10, MAX_N=400
+score=+0.000000 k=9 types=IIIIIIIII wts=(1, 11, 11, 11, 10, 11, 11, 11, 11) l1=77.0000 l2=0.0000 m=3388 w=8
+score=+0.000000 k=9 types=IIIKIIIIK wts=(8, 8, 7, 1, 8, 8, 8, 7, 1) l1=48.0000 l2=0.0000 m=1344 w=7
+score=+0.000000 k=9 types=IIIIIIIII wts=(15, 3, 15, 12, 8, 7, 15, 5, 10) l1=75.0000 l2=0.0000 m=3375 w=6
+score=+0.000000 k=8 types=IIIIIIII wts=(5, 5, 4, 9, 9, 4, 9, 9) l1=45.0000 l2=0.0000 m=1215 w=6
+score=+0.000000 k=8 types=IIIIIIII wts=(7, 6, 7, 1, 7, 7, 7, 7) l1=42.0000 l2=0.0000 m=1029 w=7
+score=+0.000000 k=9 types=IIIIIIIII wts=(6, 8, 4, 4, 2, 8, 8, 8, 8) l1=48.0000 l2=0.0000 m=1344 w=7
+score=+0.000000 k=8 types=IIIIIIII wts=(8, 11, 11, 3, 11, 6, 11, 5) l1=55.0000 l2=0.0000 m=1815 w=6
+score=+0.000000 k=8 types=IIIIIIII wts=(3, 12, 11, 11, 15, 15, 10, 11) l1=27.1964 l2=9.6102 m=832 w=2
+score=+0.000000 k=8 types=IIIKIIKI wts=(2, 15, 8, 1, 12, 1, 1, 15) l1=25.0883 l2=2.5647 m=636 w=2
+score=+0.000000 k=9 types=IIIIIIIIK wts=(1, 4, 8, 6, 10, 10, 9, 1, 1) l1=40.0000 l2=0.0000 m=1000 w=5

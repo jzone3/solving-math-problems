@@ -90,4 +90,43 @@ tiny dense eigenproblems:
   therefore dense connected two-cluster graphs — exactly the blow-up class we
   swept exhaustively for k ≤ 7.
 
-## STATUS: (interim) negative — see final line at end of file.
+## Results (checkpoint 3, final)
+
+- **Random blow-up sampler k = 8–10** (`search_blowup_rand.py`, blowup_rand.log):
+  191,568 additional (pattern,type) combos, random patterns at densities
+  0.2–0.8, integer weights hill-climbed, n ≤ 400, 90 CPU-min × 8 cores.
+  ZERO violations; max score exactly 0 (same equality classes: λ₂ = 0
+  Nikiforov-extremal blow-ups, bipartite with two positive eigenvalues,
+  unions of matched-λ₁ extremal graphs).
+- **Annealing wave 2** (`search_localseed2.py`, localseed2.log): edge-flip
+  annealing seeded at double-Turán unions (ω=3..6) and complete split graphs,
+  80 min × 4 workers, exact ω per step. Never exceeded 0; best runs converge
+  back onto the equality manifold.
+
+## Compute summary
+
+≈ 6 CPU-hours total. Graphs/configurations scored:
+- 144,914 exhaustive blow-up (pattern ≤ 7 vertices) weight-optimized configs (n ≤ 300);
+- 191,568 random blow-up configs on 8–10-vertex patterns (n ≤ 400);
+- 17,106 bridged-clique graphs; 315 double-Turán graphs; ~2h edge-flip
+  annealing at/near equality manifolds; Kneser family; multipartite ± e; apex cones.
+
+## Dead ends / lessons
+
+- Regular/vertex-transitive families (Kneser, Paley) are hopeless for this
+  conjecture: violations need λ₁ ≈ λ₂ ≈ Θ(n), i.e. two dense near-cliques.
+- The equality manifold is much richer than K_a ⊔ K_a: any union of two
+  Nikiforov-extremal graphs with equal λ₁ and equal ω, all complete split
+  graphs, all complete multipartite graphs, bipartite graphs with exactly two
+  positive eigenvalues. Every direction we probed off this manifold moves
+  strictly negative — the inequality behaves locally tight but uncrossable.
+- Continuous weight relaxations of blow-ups produce spurious positives at
+  fractional weights near K_n; do not trust them without integer rounding.
+- No witness found ⇒ no solutions/P09/verify.py (per methodology, verifier is
+  only required for a claimed result).
+
+## STATUS: negative — no counterexample in the structured (V2) two-eigenvalue
+design class: exhaustive blow-ups (≤7-vertex patterns, n ≤ 300), sampled
+blow-ups (8–10-vertex patterns, n ≤ 400), bridged/overlapping clique pairs,
+double-Turán unions, seeded annealing. Conjecture holds with equality on a
+large manifold; all perturbations strictly negative.
