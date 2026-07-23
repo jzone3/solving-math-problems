@@ -1,6 +1,6 @@
 # Curated Problem Catalog
 
-15 problems selected from `research/` (see `context/PLAN.md` for criteria). Each file contains
+21 problems selected from `research/` (see `context/PLAN.md` for criteria). Each file contains
 the statement, status, attack plan, and 5 prompt variants for parallel ultra-mode solve runs
 (see `context/METHODOLOGY.md`).
 
