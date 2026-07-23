@@ -78,13 +78,19 @@ Machine: 8 cores, 31 GB RAM. Timings single-core unless noted.
 | g5 n=24 | leaves=0 (nodes 9.0e7) | ~10 min |
 | g5 n=25 | **leaves=0** (nodes 8.4e8, hc_calls 2.9e9, 16/16 residues) | ~35 min on 8 cores |
 | g5 n=26 | preempted at 4/32 residues, leaves=0 so far (already covered by GMZ ≤26) | |
-| g5 n=27 | **main push**, 256-way mod split on 8 cores (running) | est. ~2–3 days |
+| g5 n=27 | paused at 5/256 residues (1.06e9 nodes, leaves=0); measured rate ⇒ ~7 days on 8 cores | resumable |
+| g4 n=22 | **main push**, 64-way mod split on 8 cores (running) | est. ~9 h |
 | g5 count n=19 | min=2688 over 417 labeled leaves — matches GMZ Table 3 ✔ | 4 min |
 
 Growth ≈ ×7–11 per vertex. Revised projections from measured nodes: full n=22 ≈ 10–20 days
 on 8 cores — out of reach; g5 n=26 ≈ 50 h core (published already; deprioritised); g5 n=27
 ≈ 530 h core ≈ 2–3 days on 8 cores. **Strategy pivot (22:15 UTC): all 8 cores on g5 n=27**,
 the cheapest genuinely-new frontier order, since GMZ already covers all-girth ≤21 and g5 ≤26.
+**Second pivot (00:30 UTC):** measured n27 rate implies ~7 days on 8 cores — not completable
+here. Girth≥4 scaling measured at ×~6.8/vertex (n=18 g4: 3.8e6 nodes) ⇒ n=22 g4 ≈ 8e9 nodes
+≈ 9 h on 8 cores, n=23 g4 ≈ 2.5 days. New primary target: **exhaust girth≥4 n=22** (a new,
+completable frontier order in the girth≥4 class, complementing GMZ's all-girth ≤21), then
+n=23 g4 if session time permits; g5 n=27 kept resumable (5/256 done).
 A failed optimization attempt (connected-component prune inside the HC DFS) was ~3× slower
 than the availability-degree pruning alone and was reverted.
 
