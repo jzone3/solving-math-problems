@@ -6,6 +6,7 @@ with weight k = s²) track **proper** CWMs. The following DB-"Open" cells are in
 | DB cell | (n, k) | Verdict | Provenance |
 |---|---|---|---|
 | CW(96,6) | (96, 36) | **EXISTS (proper)** | Schmidt–Smith JCTA 120 (2013), Thm 6.7/6.8, Cor 6.9 (proper CW(v,36) for all v ≡ 0 mod 48). Explicit witness: `CW96_36_proper.json`, dual-verified (`verify.py`, `verify2.py`). |
+| CW(120,7) | (120, 49) | **DOES NOT EXIST — NEW THEOREM (this run)** | AGZ Thm 2.4 (7 is a multiplier, gcd(120,49)=1) + exhaustive mod-40 fold: zero ⟨7⟩-fixed ICW_3(40,49). Verifier: `verify_no_cw120_49.py` (PASS, with positive/negative controls); independent re-check `../../runs/P11/v3/check120_indep.py`. Cell listed OPEN in AGZ 2021 Table 10 and current DB. |
 | CW(132,9) | (132, 81) | **DOES NOT EXIST** | Arasu–Gordon–Zhang, Crypt. Commun. 13 (2021), Prop 4.2; independently re-verified by orbit exhaust `../../runs/P11/v3/icw132.py` (no ⟨3⟩-fixed ICW_3(44,81)). |
 | CW(648,6) | (648, 36) | **DOES NOT EXIST (proper)** | Schmidt–Smith Thm 6.10(c): proper CW(v,36) with v = 2^a·3^b needs an order-16 element; 16 ∤ 648. |
 | CW(288,9) | (288, 81) | **DOES NOT EXIST (proper)** | Schmidt–Smith Thm 6.10: for v,k both products of powers of 2 and 3, proper CW(v,k) forces k ∈ {4, 9, 36}; 81 excluded. |
