@@ -121,10 +121,12 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
   independent-set blowups H[x·N] (N→∞) reduces to max over the simplex of
   f_H(x) = μ₁² + μ₂² − (1−1/ω(H))·xᵀAx, μᵢ from D^{1/2}A_H D^{1/2}, D=diag(x).
   Projected-gradient ascent (12 restarts × 400 iters) over ALL connected patterns
-  with ω ≥ 3: |H| ≤ 8 complete (11,117 patterns at n=8; 12,913 total), |H| = 9
-  partial (~140k of 261k patterns, lighter budget). max f = 0 exactly, attained at
-  Turán-type patterns/weights; no positive value ⇒ **no counterexample exists among
-  independent-set blowups of any pattern with ≤ 8 vertices, at ANY blowup size**.
+  with ω ≥ 3: |H| ≤ 8 complete (12,913 patterns, 12 restarts × 400 iters), and
+  |H| = 9 complete (all 261,080 connected patterns, 259,699 optimized; lighter
+  budget 4 restarts × 250 iters). max f = 0 exactly, attained at Turán-type
+  patterns/weights; no positive value ⇒ **no counterexample exists among
+  independent-set blowups of any pattern with ≤ 9 vertices, at ANY blowup size**
+  (≤ 8 with the heavier optimization budget; ≤ 9 with the lighter one).
 
 ## 4. Near-misses & dead ends
 
@@ -143,12 +145,15 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
 
 No violation of Bollobás–Nikiforov (nor of the ELW generalization) found. New verified
 frontier: BN holds for **every graph on ≤ 11 vertices** (exhaustive, cross-checked) and
-for **every independent-set blowup of every pattern on ≤ 8 vertices at every size**
+for **every independent-set blowup of every pattern on ≤ 9 vertices at every size**
 (continuous-relaxation certificate, max f_H = 0 attained only at Turán-type optima).
-Heuristic search (exact ω) to n = 60 in the literature-mapped open region found nothing
+Heuristic search (exact ω) to n = 90 in the literature-mapped open region found nothing
 above −0.1 outside the equality plateau. Any counterexample must have n ≥ 12, is not a
 blowup of a small pattern, and is not a local perturbation of the extremal family.
 
+Late additions: fixed-ω anneals at n = 70–90 (19 restarts × 60k steps, ω ∈ {3..6}):
+all negative (best −3.78 at n=70 ω=6).
+
 STATUS: frontier-pushed (no counterexample; exhaustive certificate n ≤ 11 = 1.02e9
-graphs, blowup-family certificate for all patterns ≤ 8 vertices at all sizes, plus
-~2×10⁷ scored heuristic evaluations to n = 60 — all negative)
+graphs, blowup-family certificate for all patterns ≤ 9 vertices at all sizes, plus
+~2×10⁷ scored heuristic evaluations to n = 90 — all negative)

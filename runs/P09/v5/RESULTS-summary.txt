@@ -37,12 +37,19 @@ ROUND2 GLOBAL BEST n=44 w=4: -1.179284
 ROUND2 GLOBAL BEST n=46 w=3: -0.986790
 ROUND2 GLOBAL BEST n=50 w=4: -3.854084
 ROUND2 GLOBAL BEST n=60 w=4: -6.575633
+ROUND2 GLOBAL BEST n=70 w=4: -8.485689
+ROUND2 GLOBAL BEST n=70 w=5: -15.726088
+ROUND2 GLOBAL BEST n=70 w=6: -3.775780
+ROUND2 GLOBAL BEST n=80 w=3: -4.854058
+ROUND2 GLOBAL BEST n=80 w=4: -16.958909
+ROUND2 GLOBAL BEST n=90 w=4: -30.007163
 SUMMARY blowup n=6 0/1: total=112 optimized=92 max_f=+0.000000 at ET~w
 SUMMARY blowup n=7 0/1: total=853 optimized=793 max_f=+0.000000 at FEvvW
 SUMMARY blowup n=8 0/4: total=1021 optimized=910 max_f=+0.000000 at G?~v~{
 SUMMARY blowup n=8 1/4: total=4830 optimized=4728 max_f=+0.000000 at GTn~~{
 SUMMARY blowup n=8 2/4: total=3614 optimized=3566 max_f=+0.000000 at GFz~v{
 SUMMARY blowup n=8 3/4: total=1652 optimized=1645 max_f=+0.000000 at GF~~~{
+SUMMARY blowup n=9 0/1: total=261080 optimized=259699 max_f=+0.000000 at HEvv]~}
 SUMMARY n=10 part 0/8: total=1276749 candidates=0 worst_score=+0.000000
 SUMMARY n=10 part 1/8: total=1331812 candidates=0 worst_score=+0.000000
 SUMMARY n=10 part 2/8: total=1373011 candidates=0 worst_score=+0.000000
