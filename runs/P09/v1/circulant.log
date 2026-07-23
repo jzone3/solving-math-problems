@@ -23,3 +23,9 @@ circulant n=42: subsets=2097152 violations_checked=0 best=-1.000e+18 S=None
 circulant n=43: subsets=2097152 violations_checked=0 best=-1.000e+18 S=None
 circulant n=44: subsets=4194304 violations_checked=0 best=-1.000e+18 S=None
 circulant n=45: subsets=4194304 violations_checked=0 best=-1.000e+18 S=None
+circulant n=45: subsets=4194304 violations_checked=0 best=-1.000e+18 S=None
+circulant n=46: subsets=8388608 violations_checked=0 best=-1.000e+18 S=None
+circulant n=47: subsets=8388608 violations_checked=0 best=-1.000e+18 S=None
+circulant n=48: subsets=16777216 violations_checked=0 best=-1.000e+18 S=None
+circulant n=49: subsets=16777216 violations_checked=0 best=-1.000e+18 S=None
+circulant n=50: subsets=33554432 violations_checked=0 best=-1.000e+18 S=None

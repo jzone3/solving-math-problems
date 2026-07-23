@@ -62,6 +62,40 @@ cases; triangle-free case was Lin–Ning–Wu 2021).
 - All 2-flip neighbors for n ≤ 18: same conclusion. **The equality surface is locally strictly
   optimal** — no ascent direction out of the known extremal families.
 
+## Frontier extension (post-resume, second campaign)
+
+### Exhaustive verification: ALL graphs on n ≤ 11 vertices — NO violation
+- `exhaust.py`: geng stream → vectorized graph6 decode → batched `eigvalsh` → prune
+  (violation ⟺ ω·r < 2m with r = 2m − λ₁² − λ₂² ≥ 0; ω ≥ 2 gives necessary condition
+  r < m) → greedy clique lower bound → exact MaxClique on the rest.
+- n = 8: 12,346; n = 9: 274,668; n = 10: 12,005,168; n = 11: **1,018,997,864 graphs**
+  (24-way geng res/mod split on 8 cores, ~2 h wall). Totals match the known counts of
+  graphs on n vertices exactly. Zero graphs even reached the exact-score stage
+  (`clique_checked=0`): no non-complete graph on ≤ 11 vertices comes within the pruning
+  tolerance of violating the inequality. Logs: `exhaust_n10.log`, `exhaust_n11.log`.
+- Independent cross-check (`crosscheck.py`): 2,000 random n=9 + 500 random n=11 graphs
+  re-evaluated through a fully separate code path (networkx `adjacency_spectrum` +
+  `find_cliques`) — PASS, zero mismatches.
+- To our knowledge no exhaustive n ≤ 11 check has been published for this conjecture
+  (the problem file notes n ≤ 12 as "beyond any published check"); n = 12 (~1.65×10¹¹
+  graphs) would need ~160× more compute — left as the natural next step.
+
+### Exhaustive circulant sweep: ALL C_n(S) for n ≤ 50 — NO violation
+- `circulant.py`: closed-form spectra (λ_j = Σ_{s∈S} 2cos(2πjs/n)), all 2^⌊n/2⌋
+  connection sets per n (up to 33.5M subsets at n = 50; ~2.1×10⁸ circulants total),
+  same prune + exact ω on survivors. Zero violations, zero survivors even reaching the
+  clique stage. Log: `circulant.log`.
+
+### Structured families (`families.py`) — NO violation
+- Kneser/Johnson (n ≤ 12), Paley (q ≤ 149), books K_p+I_q, two cliques sharing s vertices,
+  joins K_p + (K_a ∪ K_b [∪ K_c]) — all safe. Noted equality family beyond Turán:
+  **K_a ∪ K_a** (λ₁ = λ₂ = a−1) gives ratio exactly 1, as do padded/union variants.
+
+### Basin-hopping seeded anneal (`seeded.py`)
+- 700+ re-anneals (30k steps each, low temperature) seeded from the 120 best near-miss
+  endpoints of phases 1–3, perturbed by 3–10 random flips. Best ratio again exactly 1
+  (equality cases only); no violation. Log: `results_seeded.jsonl`.
+
 ## Near-misses & structure observed
 
 - The ratio landscape has a single dominant attractor: complete multipartite (Turán) graphs and
@@ -80,10 +114,16 @@ cases; triangle-free case was Lin–Ning–Wu 2021).
 - n ≥ 60 dense anneals are compute-bound by MaxClique (ω ≈ 20 at p = 0.8, ~0.4 s/eval) and
   would need incremental eigen/clique updates to converge; not pursued further under V1.
 
-## STATUS: negative
+## STATUS: negative / frontier-pushed
 
-No counterexample found. ~1951 annealed restarts (~49 core-hours) over n = 15–80 across
-densities 0.15–0.9 and ω = 2–22, plus exhaustive 1-/2-edge perturbation scans of the known
-equality families. Maximum ratio ever observed: exactly 1 (known equality cases only);
-maximum strictly-inside ratio 0.99864. Consistent with the conjecture being TRUE, with the
-extremal surface exactly the complete-multipartite class already proved safe.
+No counterexample found. Campaign totals:
+- **Exhaustive: every graph on ≤ 11 vertices (1.03×10⁹ graphs) satisfies the conjecture**
+  (believed to exceed any published verification), independently cross-checked.
+- Exhaustive: every circulant C_n(S), n ≤ 50 (~2.1×10⁸ graphs) satisfies it.
+- ~2,700 annealed/basin-hopped restarts (~60 core-h) over n = 15–80, ω = 2–22; exhaustive
+  1-/2-flip scans of equality families; Kneser/Johnson/Paley/book/kite/join scans.
+Maximum ratio ever observed: exactly 1, only at known equality classes (complete multipartite,
+disjoint unions like K_{a,b} ∪ K_{c,d} and K_a ∪ K_a, plus isolated-vertex paddings). Maximum
+strictly-inside ratio 0.99864. Strong computational evidence the conjecture is TRUE with
+extremal surface exactly these classes. Natural next frontier: exhaustive n = 12 (~1.65×10¹¹
+graphs, ~160× this compute) or SAT/SMS-driven search in the ω = 3,4 sparse regime.
