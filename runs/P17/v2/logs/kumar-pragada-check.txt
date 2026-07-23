@@ -1,0 +1,10 @@
+n=2: lemma2.2 min slack=0.000000  thm1.2 min slack=0.000000  inertia-bound min slack=0
+n=3: lemma2.2 min slack=-0.000000  thm1.2 min slack=-0.000000  inertia-bound min slack=0
+n=4: lemma2.2 min slack=-0.000000  thm1.2 min slack=-0.000000  inertia-bound min slack=0
+n=5: lemma2.2 min slack=-0.000000  thm1.2 min slack=-0.000000  inertia-bound min slack=0
+n=6: lemma2.2 min slack=-0.000000  thm1.2 min slack=-0.000000  inertia-bound min slack=0
+n=7: lemma2.2 min slack=-0.000000  thm1.2 min slack=-0.000000  inertia-bound min slack=0
+n=8: lemma2.2 min slack=-0.000000  thm1.2 min slack=-0.000000  inertia-bound min slack=0
+n=9: lemma2.2 min slack=-0.000000  thm1.2 min slack=-0.000000  inertia-bound min slack=0
+graphs checked: 273192
+All >= 0 (up to fp) => Lemma 2.2, Thm 1.2, and Cvetkovic chain confirmed numerically for all connected graphs n<=9

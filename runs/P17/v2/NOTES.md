@@ -4,11 +4,26 @@ Session: devin-40d8b3031e384508ae5b0dad8f30fc41. Branch: `runs/P17-v2`. Date: 20
 Approach assigned: attempt a PROOF of n⁺ ≤ Σ_{λ>0}λ using square-energy machinery
 (arXiv:2607.18031) + exhaustive n ≤ 11 for confidence.
 
-**Bottom line: NO counterexample and NO complete proof. Both conjectures verified
+**Bottom line (UPDATED 2026-07-23, second pass): BOTH CONJECTURES ARE NOW THEOREMS.**
+Kumar & Pragada, *Energy and independence number*, arXiv:2607.19817 (posted 2026-07-22,
+i.e. the day before this run) prove Fajtlowicz's WoW conjecture #543:
+  E(G) ≥ 2(n − α(G))    for every graph G.
+Combined with the classical Cvetković inertia bound
+  α(G) ≤ min{n − n⁺(G), n − n⁻(G)}  ⟺  max{n⁺, n⁻} ≤ n − α = τ,
+this yields  n⁺(G) ≤ E/2 = Σ_{λ>0}λ  and  n⁻(G) ≤ E/2, i.e. **WoW 20 and WoW 21 hold for
+all graphs**. The paper states this corollary explicitly ("which resolves [4, Conjectures
+#20, #21, Table 6]"). See §9 below for our independent verification of their proof
+(line-by-line logical check + numerical check of every lemma over all 273,192 connected
+graphs n ≤ 9) and for the full corollary derivation. Priority: the result is theirs
+(2026-07-22); this run's contribution is independent confirmation, the n ≤ 11 exhaustive
+verification (consistent with the theorem), and the exact verifier.
+
+Earlier bottom line from the first pass of this run (before 2607.19817 was found):
+NO counterexample and NO complete proof; both conjectures verified
 exhaustively for ALL graphs on ≤ 11 vertices (1,006,700,565 connected graphs; disconnected
 cases reduce to connected by additivity). Hard-case reduction proved: a counterexample to
 WoW 20 must have n⁺ > n⁻, one to WoW 21 must have n⁻ > n⁺. Equality manifolds
-characterized. Both conjectures remain OPEN.**
+characterized.
 
 Note on setup: `problems/P17-wow-20-21.md` does not exist on `master` (it lives on
 `origin/catalog-wave2`); it was restored onto this branch from that ref, unmodified.
@@ -210,16 +225,57 @@ n±/score for every graph checked.
   the runs/P08 derivation). Run: `python3 decode_wow.py handoff/P07/wow-july2004.pdf`.
 - Total compute: ≈ 100 core-minutes (n≤11 exhaustive ≈ 85 core-min; scans/anneal ≈ 15).
 
-## 8. Status & handoff
+## 8. Status of the first pass (superseded by §9)
 
 - **Negative result (search): no counterexample to WoW 20 or 21 exists with n ≤ 11 vertices**;
   none found in structured families to n = 100 or by annealing to n = 20.
 - **Partial results (proof): Propositions 1–2 (§5) reduce both conjectures to the
   signature-vs-(E − rank) inequality |n⁺ − n⁻| ≤ Σ_{λ≠0}(|λ|−1)**; both directions of this
   reduction are tight on the respective equality manifolds.
-- Both conjectures remain **OPEN**. Recommended next: (a) prove the equality
-  characterization for 21 and try a stability/perturbation argument off the
-  union-of-cliques manifold; (b) for 20, bound the number of positive eigenvalues in (0,1)
-  against Σ_{λ≥1}(λ−1) via the per-irreducible-factor AM–GM (each integer factor f with
-  f(0)≠0 has Σ_{roots}|λ| ≥ deg f); the obstruction is factors mixing signs (C5's factor
-  x²−x−1 has roots φ, −1/φ).
+- First-pass conclusion "both conjectures remain OPEN" is superseded by §9.
+
+## 9. RESOLUTION: WoW 20 & 21 are theorems (Kumar–Pragada, arXiv:2607.19817)
+
+Second pass, 2026-07-23. Re-ran the priority search targeting the τ/α route after
+noticing numerically (all connected graphs n ≤ 9) that **S⁺ = E/2 ≥ τ = n − α with
+equality exactly at complete graphs** — a strictly stronger statement than both WoW
+conjectures via the Cvetković inertia bound. That statement is Fajtlowicz's WoW
+conjecture **#543**, E(G) ≥ 2(n − α(G)), and it was **proved the day before this run**:
+
+- Hitesh Kumar, Shivaramakrishna Pragada, *Energy and independence number*,
+  arXiv:2607.19817v1 [math.CO], posted 2026-07-22. Copy archived at
+  `handoff/P17/kumar-pragada-2026-energy-independence.pdf`.
+- The paper explicitly notes the corollary: with the inertia bound
+  α ≤ min{n − n⁺, n − n⁻}, Theorem 1.2 gives E ≥ 2·max{n⁺, n⁻}, "which resolves
+  [4, Conjectures #20, #21, Table 6]". So WoW 20 and WoW 21 are **CLOSED (proved)**.
+
+Corollary derivation in full (for the record):
+1. (Cvetković) If S is independent, |S| = α, then A[S] = 0; by Cauchy interlacing
+   λ_α(A) ≥ λ_α(A[S]) = 0 and λ_{n−α+1}(A) ≤ λ_1... i.e. the α-th largest eigenvalue
+   is ≥ 0 and the α-th smallest is ≤ 0, hence n⁻ ≤ n − α and n⁺ ≤ n − α.
+2. (Kumar–Pragada Thm 1.2) E ≥ 2(n − α).
+3. Therefore Σ_{λ>0}λ = E/2 ≥ n − α ≥ max{n⁺, n⁻} ⇒ WoW 20 and WoW 21. ∎
+
+Independent verification of the Kumar–Pragada proof performed here:
+- Logical line-by-line check (§2–3 of the paper). Structure: (i) SDP formulation
+  E/2 = min{tr M : M ⪰ 0, M − A ⪰ 0} (Abiad–Coutinho–Juliano–Reijnders, arXiv:2509.05814);
+  (ii) with A = P − Q (spectral positive/negative parts), B = P + Q = |A|, the Schur
+  complement P_v = P[S(v)] − x_v x_vᵀ/P_vv (S(v) = non-neighbours of v) is PSD and
+  P_v − A(G − N[v]) = Q_v ⪰ 0, so 2 tr P_v ≥ E(G − N[v]); (iii) the edge inequality
+  ((B_uu−1)² − B_uv²)/B_uu + ((B_vv−1)² − B_uv²)/B_vv ≥ 0, from the 2×2 PSD minors of
+  2P and 2Q (xy ≥ (z±1)²) + AM–GM; (iv) summing gives the neighbourhood-deletion
+  inequality 4m + Σ_v E(G − N[v]) ≤ n E(G); (v) induction on n with
+  α(G − N[v]) ≤ α(G) − 1. Every step checks out; no gaps found.
+- Numerical check (`logs/kumar-pragada-check.txt`): for ALL 273,192 connected graphs
+  n ≤ 9, minimum slack of Lemma 2.2 (n·E − 4m − Σ_v E(G−N[v])), of Theorem 1.2
+  (E − 2(n−α)), and of the inertia bound ((n−α) − max{n⁺,n⁻}) is ≥ 0 (equality attained,
+  e.g. complete graphs). Consistent with our independent exhaustive n ≤ 11 verification
+  of WoW 20/21 themselves (§4).
+
+Priority: the theorem is Kumar–Pragada's (2026-07-22), found via web search
+("energy and independence number") on 2026-07-23; it postdates the priority search of
+the first pass of this run by hours, which is why the first pass missed it (the first
+pass searched WoW 20/21 phrasings, not #543/τ phrasings — methodology lesson: search
+for STRONGER known conjectures implying the target, not just the target itself).
+This run's standing contributions: independent confirmation of the proof, the n ≤ 11
+exhaustive frontier, the exact rational verifier, and the equality characterizations.
