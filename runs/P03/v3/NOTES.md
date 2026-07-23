@@ -195,4 +195,28 @@ Exhaustion of the class is impossible (nauty-genbg count of just the minimal sha
 12+16, (4,3)-biregular, did not terminate in 120s → astronomically many), so annealing
 coverage is the practical frontier here.
 
-## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; NEW: ~11.3k SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT.
+## 8. Third wave: orbit-reduction (Kramer–Mesner style) exhaustive closure (bipsym4.py)
+
+Target: the MINIMAL shape of the ACZ-complete class — 12 degree-4 sources × 16 degree-3
+sinks, 48 arcs (minimum possible size of a τ=3 counterexample within the class). Assume
+an automorphism σ of order 4 acting freely on the sources; freeness on sources FORCES
+freeness on all of V (a σ-fixed or 2-orbit sink would need in-degree divisible by 4 or
+with pair-sum divisible by 4; in-degree is 3, pair-sum 6 — impossible), so the scan
+covers ALL members of the minimal shape admitting an order-4 automorphism free on sources.
+
+Orbit encoding: sources (a,i), a∈{0,1,2}; sinks (b,i), b∈{0..3}; i∈Z4; graph determined
+by 3 representative neighborhoods. Sink-regularity ⟺ 3×4 contingency table c (rows sum
+4, cols sum 3): 415 tables, 189,399,040 raw offset assignments. Exact dedup of the 4⁴
+sink-rotation subgroup (rotation-minimal columns) + row-sort + hash dedup → 686,660
+candidates (remaining group not deduped — harmless overcounting; exhaustiveness intact).
+
+Result (8 shards, ~55 min each): 686,660 candidates, 685,334 with τ=3, 676,378
+non-planar → full SAT 3-dijoin-packing decision: **0 UNSAT**. Combined with waves 1–2:
+**no τ=3 counterexample exists in the minimal ACZ shape with any order-4 automorphism
+acting freely on sources** — an exhaustive, citable closure of the symmetric subclass.
+
+Not pursued (documented dead ends): Z2-free at minimal shape (6.3×10¹⁵ raw — hopeless);
+Z3 (order-3, 1–7 fixed sinks: ~10⁸ candidates per case ≈ days); shape (12,4) under Z4
+(3.9×10⁹ candidates).
+
+## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under any order-4 automorphism free on sources — 676,378 SAT decisions, 0 UNSAT.
