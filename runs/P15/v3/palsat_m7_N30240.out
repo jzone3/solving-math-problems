@@ -25,3 +25,18 @@ c created thread 0
 c created thread 1
 c created thread 2
 c created thread 3
+c
+c UNKNOWN
+c 
+c 00 final worker 0 minimum of 10 unsatisfied clauses
+c 
+c 01 final worker 1 minimum of 11 unsatisfied clauses
+c 
+c 02 final worker 2 minimum of 11 unsatisfied clauses
+c 
+c 03 final worker 3 minimum of 51 unsatisfied clauses
+c 
+c total wall clock time of 1842.88 seconds
+c total process time of 7325.78 seconds
+c utilization 99.4% for 4 threads
+c maximally allocated 240.8 MB
