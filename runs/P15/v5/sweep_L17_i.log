@@ -1,0 +1,3 @@
+N=2806876800 (1440 divisors, 1425 usable >= 17, budget 1.605)
+restart 0: 1425 classes, uncovered 51653128, 1421.4s
+restart 1: 1425 classes, uncovered 41893833, 1418.9s

@@ -187,3 +187,32 @@ bookkeeping (Section 7) — recommended as the follow-up (V1-style) program.
 STATUS: negative (no progress on min modulus >= 43; byproduct: verified fully-automated
 coverings up to min modulus 16, plus a precise diagnosis of what a mechanized
 arrow-calculus search must implement).
+
+## 11. Continuation push: new encodings and L=17/18 frontier
+
+Orchestrator requested a further push with different encodings. What was done:
+
+**Engine D (`engine_d.py`) — cell-tree encoding.** Uncovered set represented as
+disjoint CRT cells (a mod M), M | N, instead of a flat bit array; per-modulus
+residue choice via beam search (width 48) over partial CRT constraints on the
+weight tables weight[g][a mod g], g = gcd(M, d). Removes the memory wall
+(N ~ 1e13 feasible). Result: NEGATIVE for greedy quality — the beam
+approximation of argmax loses to the flat array's exact argmax (L=12: residual
+6.1e-2 vs 0 for flat). Fragmentation also explodes (250k+ cells at N=2.2e7).
+Kept as documentation; exact argmax over the divisor lattice would need
+branch-and-bound (recommended follow-up).
+
+**17-in-palette flat sweeps (new target family).** Previous L>=17 attempts had
+no modulus 17 available. New palettes (2 GB - 4.4 GB bool arrays, dtype-adaptive
+counting fix from Section 9's OOM diagnosis):
+- 2^7·3^4·5^2·7·11·13·17 (N=4.41e9, budget 1.865 @ L=17): best restart
+  L=17: 15,547,207 uncovered (3.5e-3); L=18: 10,602,192 (2.4e-3).
+- 2^7·3^4·5^2·7^2·11·17 (N=2.38e9, budget 1.655): L=17 best 19.3e6 (8.1e-3).
+- 2^7·3^4·5^2·7^2·13·17 (N=2.81e9, budget 1.605): L=17 best 51.7e6 (1.8e-2).
+Feasible richer palettes plateau at budget ~1.69 (vs 1.725 for the L=16 win):
+within the flat-array memory envelope (~5e9), the L=17 budget ceiling is
+structurally below what greedy needed for L=16. The 16 -> 17 step is a cliff
+for this method family, not a tuning problem: L=16's win leaned on the dense
+small moduli 14, 15, 16 (all lost at 17) and on 2^4 alignment.
+
+Compute this push: ~4 h of parallel sweeps (restarts of 20-52 min each).
