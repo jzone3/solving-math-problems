@@ -85,9 +85,13 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
     base_clauses.append([pool.id(("z", d)) for d in range(min_dist, n // 2 + 1)
                          if (0, d) in var])
 
-    def fresh_solver():
+    def fresh_solver(shuffle=False):
+        cls = list(blocking)
+        if shuffle:
+            import random
+            random.shuffle(cls)
         s = Cadical153(bootstrap_with=base_clauses)
-        for cl in blocking:
+        for cl in cls:
             s.add_clause(cl)
         return s
 
@@ -107,18 +111,27 @@ def run(n, max_seconds, hc_per_model=4, log_every=500, notes=None, nearmiss=True
             break
         # budgeted solve; on stall, rebuild solver fresh (re-preprocessing the
         # accumulated clause DB is often far faster than grinding on)
-        solver.conf_budget(2_000_000)
-        res = solver.solve_limited()
-        if res is None:
+        budget = 2_000_000
+        while True:
+            solver.conf_budget(budget)
+            res = solver.solve_limited()
+            if res is not None:
+                break
+            if time.time() - t0 > max_seconds:
+                break
             restarts += 1
             solver.delete()
-            solver = fresh_solver()
-            msg = f"n={n} solver stall -> rebuild #{restarts} (models={models}, blocking={len(blocking)})"
+            solver = fresh_solver(shuffle=restarts > 1)
+            budget = min(budget * 2, 64_000_000)
+            msg = (f"n={n} solver stall -> rebuild #{restarts} "
+                   f"(models={models}, blocking={len(blocking)}, next_budget={budget})")
             print(msg, flush=True)
             if notes:
                 with open(notes, "a") as f:
                     f.write(msg + "\n")
-            res = solver.solve()
+        if res is None:
+            status = "timeout"
+            break
         if not res:
             status = "exhausted-unsat"
             break
