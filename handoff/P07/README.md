@@ -2,6 +2,20 @@
 
 Self-contained verification package for a math researcher.
 
+## PRIORITY NOTICE (added 2026-07-23)
+
+Both refutations were **independently found first** by the demonstrandum-research
+project: public GitHub artifacts dated **2026-06-12** (initial commit; DOI
+10.5281/zenodo.20673865), six weeks before this work —
+https://github.com/demonstrandum-research/artifacts (RESULTS.md §3–4). Their 154
+witnesses include the same lollipop(50,70) (plus n = 118 first violations); their
+143 witnesses are dumbbells incl. n = 39 and an n = 37 instance under the
+distinct-pairs convention. Neither project knew of the other; their artifacts are
+not indexed in arXiv/Semantic Scholar, which is why this project's priority
+searches (and, symmetrically, theirs, dated 2026-06-11) missed the overlap.
+This package's independent value-add: the full Lean-kernel formalization of the
+154 refutation (theirs is dual-checker, no Lean for these items).
+
 ## The claims (both false)
 
 From Fajtlowicz, *Written on the Wall* (`wow-july2004.pdf`, July 2004 revision):

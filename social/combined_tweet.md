@@ -34,3 +34,15 @@ notes:
   formalization is deliberately partial (irrational eigenvalues), so this copy
   only claims Lean verification for 154, 39/40, and the Brandt witness.
 - add the repo link where "the repo below" points.
+
+---
+
+## CORRECTION (2026-07-23)
+
+Graffiti 154 (and 143) were independently refuted FIRST by the
+demonstrandum-research project — public GitHub/Zenodo artifacts dated 2026-06-12
+(https://github.com/demonstrandum-research/artifacts, DOI 10.5281/zenodo.20673865),
+including the same lollipop(50,70) witness. Our discovery was independent and adds
+the Lean-kernel formalization, but priority for the 154/143 refutations is theirs.
+Graffiti 39/40, WoW 698, and the Brandt/West refutation are not in their catalog
+and stand as apparently first. See solutions/P07/PRIORITY.md.

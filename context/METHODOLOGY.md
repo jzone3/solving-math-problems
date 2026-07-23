@@ -51,6 +51,11 @@ Before any result is presented as settled, all three checks must be completed an
 2. **Priority check** — a dedicated literature search that nobody has already resolved the problem
    (and that key lemmas are credited if previously published). Record the searches performed, what
    was found, and any unread/paywalled sources as explicit residual risks.
+   **MANDATORY scope beyond the published literature** (lesson from the P07 scoop, 2026-07-23:
+   Graffiti 154/143 had been refuted six weeks earlier in a public GitHub/Zenodo artifact repo
+   invisible to arXiv/Semantic Scholar): search GitHub (code + repo search for the conjecture
+   name/number and key invariant terms), Zenodo, OpenReview, and general web for AI-research
+   artifact repositories claiming resolutions. Amateur/agentic projects publish outside journals.
 3. **Survey of efforts (bonus but expected)** — a short survey of prior attacks on the specific
    problem: exhaustive-search frontiers, partial results, related theorems, who worked on it.
 
