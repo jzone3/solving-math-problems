@@ -13,7 +13,9 @@
  * row is rotated to start with symbol 0; rows ordered by their second symbol.
  *
  * Usage: ./circ n mode [seed] [budget]
- *   n = square order (= m+1, odd); mode 0 exhaustive, 1 randomized restarts.
+ *   n = square order (= m+1, odd); mode 0 exhaustive, 1 randomized restarts,
+ *   mode 2 sliced exhaustive: ./circ n 2 slice stride — partitions the
+ *   exhaustive search by row-1 completion index (embarrassingly parallel).
  * Prints any Tuscan-2 square found (verify with solutions/P12/verify.py).
  */
 #include <stdio.h>
@@ -27,6 +29,7 @@ static uint64_t ud1[4], ud2[4];      /* used pair bitmaps */
 static uint8_t rowsv[NMAX][NMAX];    /* rows 0..M-1, each length N */
 static long long nodes, budget_limit, budget;
 static int mode, maxrow_seen;
+static long slice = 0, stride = 1, r1count = 0;
 static long long arrays_found;
 
 static uint64_t rng = 999331;
@@ -122,6 +125,7 @@ static int fillrow(int r, int pos, int used) {
         int a = row[N - 1], b = row[N - 2];
         if (pget(ud1, a, 0)) return 0;
         if (pget(ud2, b, 0) || pget(ud2, a, row[1])) return 0;
+        if (mode == 2 && r == 1 && (r1count++ % stride) != slice) return 0;
         pset(ud1, a, 0); pset(ud2, b, 0); pset(ud2, a, row[1]);
         int f = placerow(r + 1);
         pclr(ud1, a, 0); pclr(ud2, b, 0); pclr(ud2, a, row[1]);
@@ -154,8 +158,9 @@ int main(int argc, char **argv) {
     N = atoi(argv[1]);
     M = N - 1;
     mode = argc > 2 ? atoi(argv[2]) : 0;
-    if (argc > 3) { rng = strtoull(argv[3], 0, 10); if (!rng) rng = 1; }
-    budget = argc > 4 ? atoll(argv[4]) : 50000000;
+    if (mode == 2) { slice = argc > 3 ? atol(argv[3]) : 0; stride = argc > 4 ? atol(argv[4]) : 1; }
+    else if (argc > 3) { rng = strtoull(argv[3], 0, 10); if (!rng) rng = 1; }
+    budget = argc > 4 && mode == 1 ? atoll(argv[4]) : 50000000;
     /* row 0 = circular identity 0,1,...,N-1 */
     for (int c = 0; c < N; c++) rowsv[0][c] = c;
     long long restarts = 0;
@@ -169,7 +174,7 @@ int main(int argc, char **argv) {
         budget_limit = mode == 1 ? nodes + budget : (1LL << 62);
         maxrow_seen = 0;
         placerow(1);
-        if (mode == 0) {
+        if (mode != 1) {
             fprintf(stderr, "EXHAUSTED: arrays %lld nodes %lld\n", arrays_found, nodes);
             return 1;
         }
