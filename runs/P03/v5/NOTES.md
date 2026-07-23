@@ -213,7 +213,17 @@ Results:
   12 vertices exists; combined with §7, any counterexample digraph (minimal ones
   being reduced) needs n >= 14. This is a decisive exhaustive settlement of the
   minimal cell, not a sampled result.
-- n=14: [in progress, see below]
+- n=14: COMPLETE. 291 kept graphs (of 509), 161.9M DAG orientations enumerated,
+  151.1M profile-matching; after ss-connected skip (118.0M) and reduced min-dicut
+  structure skip (13.46M), 19.86M instances were packing-tested exactly
+  (0.45M by the rainbow-star heuristic, 19.42M by exact backtracking):
+  ALL pack 3 disjoint dijoins, zero candidates emitted. Wall ~16 min on
+  8 PyPy shards. => NO reduced tau=3 counterexample on 14 vertices.
+  Combined with n=12: any minimal tau=3 counterexample needs n >= 16.
+- n=16: 4060 cubic graphs, 2595 kept (681 planar, 784 not 3EC dropped);
+  9 allowed role profiles (listed above); enumeration running on 8 shards
+  (~2^24 orientations per graph before pruning; ETA ~1 day).
 
-STATUS: negative / frontier-pushed (phase 2 exhausted the n=12 minimal cell
-completely; n=14 cell enumeration running).
+STATUS: negative / frontier-pushed (phase 2 exhausted the n=12 and n=14 minimal
+cells completely — the two smallest possible sizes for a minimal tau=3
+counterexample — with zero non-packing instances; n=16 cell running).

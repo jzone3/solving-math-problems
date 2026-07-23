@@ -308,7 +308,7 @@ def search_graph(n, g6, edges, profiles, out, stats):
         if not dicut_structure_ok(n, arcs):
             stats['dicut_skip'] += 1
             return
-        if try_pack(n, arcs, rng, tries=5):
+        if try_pack(n, arcs, rng, tries=1):
             stats['packed_heur'] += 1
             return
         if exact_pack(n, arcs):
