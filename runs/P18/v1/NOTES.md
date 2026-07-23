@@ -136,10 +136,10 @@ exceeds 1.
 * phaseB_dfs.py (element-branching complete DFS, exact Fraction mass
   prune): N=2520 timeout at 600 s (27.6M nodes, modulus-branching variant);
   N=5040 timeout 5400 s (569M nodes); N=7560 timeout 5400 s (578M nodes).
-  Long 10800 s reruns of N=2520 under BOTH complete algorithms
-  (element-branching DFS + modulus-branching scan) in flight — if both
-  exhaust, that is a two-implementation definitive negative for the
-  first mass>1.4 pool.
+  Long 10800 s reruns of N=2520 under BOTH complete algorithms: both
+  TIMED OUT undecided — element-branching DFS 1.20B nodes, modulus-
+  branching scan 368M nodes. The definitive-negative frontier therefore
+  stays at pools N ≤ 4320 (mass ≤ 1.259); N=2520 (mass 1.404) undecided.
 * phaseB_scan long timeouts (600 s, full branching, NOT decided): N=2520
   (mass 1.404, 27.6M nodes), 5040 (1.429, 18.7M), 15120 (1.473, 14.2M),
   20160 (1.454, 11.0M), 27720 (1.587, 9.7M).
@@ -178,3 +178,26 @@ phase A never attempted because phase B never completed):
   since in any two-family split one family must avoid m=2. No obstruction
   argument found yet; uncovered residues at greedy death show no clean
   congruence-class pattern (checked mod 2,3,4,8,16,5,7,9,11,13).
+* Final annealing figures at session end: N=21621600 (mass 1.874, the
+  richest pool ≤ 3·10^7): best **0.402%** uncovered (86,860 residues,
+  2.2 h); N=17297280: 0.757%; N=2162160: 0.663% (plateaued > 1 h).
+
+## 5. Final status
+
+**NO verified result.** Erdős #273 remains open in both directions here.
+
+* No witness: best-ever assignment leaves 0.40% of Z/N uncovered
+  (phase B, N=21621600); no phase-A attempt ever started.
+* No new definitive negative beyond pools of mass ≤ 1.259 (N ≤ 4320):
+  N=360/720/1080/1440/2160/3600/4320 pools exhausted (no phase-B cover,
+  hence no two-family cover with both lcms dividing 2N for those N).
+* SAT gave zero verdicts after ~6 h/instance (kissat, 5 instances,
+  including one with only 6.5K vars) — these covering instances behave
+  like counting-hard (pigeonhole-like) formulas for CDCL. CP-SAT: UNKNOWN.
+* Future work: (a) DRAT/LRAT-certified UNSAT for the N=2520 phase-B pool
+  (needs days of CPU or a counting-aware solver / pseudo-Boolean or
+  symmetry-breaking-by-orbit encoding); (b) extend Shulgin's cap-based
+  bound past p−1 ≤ 57 with his encoding; (c) theory: obstruction for
+  covering with distinct moduli from M \ {2} (thin prime-power chains:
+  2-powers in M are Fermat-prime exponents {2,8,128,32768}, 3-powers
+  {3,9,81,243}); a proof would answer #273 negatively.
