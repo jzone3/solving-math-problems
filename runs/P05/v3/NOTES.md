@@ -129,7 +129,7 @@ center).
   **counterexample** (longest = 2D+M, only two arms usable per path).
   This is exactly the property the A1–A3 dead-end analysis said is required.
 - Exhaustive over all 2-connected graphs: n=4..8 (7,721 blocks): NO block has
-  the property. n=9 (194,066): NO hit. n=10 (9,743,542, 7 workers) ~33% done, no hit; n=11 1/500 sample slice running, no hit.
+  the property. n=9 (194,066): NO hit. n=10: COMPLETE, all 9,743,542 2-connected graphs scanned (7 workers, ~2.9 core-hours after a 4x fast-filter rewrite), NO hit. n=11 (~317M blocks, 8 workers) launched.
 
 ## STATUS: negative
 

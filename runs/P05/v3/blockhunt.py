@@ -21,17 +21,16 @@ from families import graph6_to_edges
 from lp_core import edges_to_adj, _comp_mask
 
 
-def uv_longest(n, adj, u, v):
-    """Longest u-v path length (edges), exact DFS with reach pruning."""
+def uv_longest(n, adj, u, v, forbidden=0):
+    """Longest u-v path length (edges) avoiding `forbidden`, exact DFS."""
     best = [-1]
 
     def dfs(x, used, ln):
         if x == v:
             if ln > best[0]:
                 best[0] = ln
-            # keep going? path must end at v -> stop here (v used once)
             return
-        rem = ~used & ((1 << n) - 1)
+        rem = ~used & ((1 << n) - 1) & ~forbidden
         reach = _comp_mask(adj, 1 << x, rem | (1 << x))
         if not (reach >> v) & 1:
             return
@@ -47,8 +46,8 @@ def uv_longest(n, adj, u, v):
     return best[0]
 
 
-def uv_optimal_paths(n, adj, u, v, L, cap=4000):
-    """All u-v paths of length exactly L, as vertex bitmasks."""
+def uv_optimal_paths(n, adj, u, v, L, cap=4000, forbidden=0):
+    """All u-v paths of length exactly L avoiding `forbidden`, as bitmasks."""
     out = []
 
     def dfs(x, used, ln):
@@ -60,7 +59,7 @@ def uv_optimal_paths(n, adj, u, v, L, cap=4000):
             return
         if ln >= L:
             return
-        rem = ~used & ((1 << n) - 1)
+        rem = ~used & ((1 << n) - 1) & ~forbidden
         reach = _comp_mask(adj, 1 << x, rem | (1 << x))
         if not (reach >> v) & 1:
             return
@@ -85,24 +84,26 @@ def check_block(n, adj, g6):
         M = L[(a, b)]
         if L[(b, c)] != M or L[(a, c)] != M:
             continue
-        Qab = uv_optimal_paths(n, adj, a, b, M)
-        Qab = [q for q in Qab if not (q >> c) & 1]
-        if not Qab:
+        # cheap necessary tests: an optimal crossing avoiding the third vertex
+        if uv_longest(n, adj, a, b, forbidden=1 << c) != M:
             continue
-        Qbc = uv_optimal_paths(n, adj, b, c, M)
-        Qbc = [q for q in Qbc if not (q >> a) & 1]
-        if not Qbc:
+        if uv_longest(n, adj, b, c, forbidden=1 << a) != M:
             continue
-        Qca = uv_optimal_paths(n, adj, c, a, M)
-        Qca = [q for q in Qca if not (q >> b) & 1]
-        if not Qca:
+        if uv_longest(n, adj, c, a, forbidden=1 << b) != M:
             continue
+        Qab = uv_optimal_paths(n, adj, a, b, M, cap=1500, forbidden=1 << c)
+        Qbc = uv_optimal_paths(n, adj, b, c, M, cap=1500, forbidden=1 << a)
+        seen = set()
         for q1 in Qab:
             for q2 in Qbc:
                 s = q1 & q2
-                for q3 in Qca:
-                    if s & q3 == 0:
-                        return (a, b, c, M, q1, q2, q3)
+                if s in seen:
+                    continue
+                seen.add(s)
+                # need optimal c-a crossing disjoint from s (s contains b)
+                if uv_longest(n, adj, c, a, forbidden=s) == M:
+                    q3s = uv_optimal_paths(n, adj, c, a, M, cap=1, forbidden=s)
+                    return (a, b, c, M, q1, q2, q3s[0])
     return None
 
 
