@@ -125,8 +125,36 @@ tiny dense eigenproblems:
 - No witness found ⇒ no solutions/P09/verify.py (per methodology, verifier is
   only required for a claimed result).
 
+## Frontier push (second wave, after orchestrator request)
+
+- **High-precision recheck** (`recheck_mpmath.py`): every top near-equality
+  config from the k≤6 and k=7 sweeps rescored at 50 decimal digits. All are
+  EXACTLY 0 (|score| < 1e-47) or strictly negative — no float-masked violation.
+- **Blow-up sampler k = 8–14, n ≤ 1000** (`search_blowup_rand2.py`,
+  blowup_rand2.log): 192,373 further (pattern,type) combos with weights up to
+  hundreds (2.5 h × 4 cores). ZERO violations; max exactly 0 (λ₂=0
+  Nikiforov-extremal class again, now at n up to ~400 per config).
+- **Large-n exact-ω annealing** (`search_anneal_big.py`, 4 workers × 4.4 h):
+  edge-flip annealing at n = 50–90 with igraph's C clique solver for exact ω
+  per flip, seeded at two-blob unions, double-Turán (ω=3..8) and dense random
+  graphs (p ∈ {0.5,0.7,0.85}), multiple temperatures. NO violation ever
+  observed (violations print immediately; none did). Job overran its budget on
+  slow dense-ω instances and was killed before the final per-worker summary,
+  so flip-count totals are approximate (order 10⁵–10⁶ scored flips per worker).
+- **Edge-weighted variant — reduction, no search needed**: for a fixed support
+  graph G (which fixes ω), score(W) = λ₁(W)²+λ₂(W)² − 2(Σwₑ)(1−1/ω) is (where
+  λ₂ ≥ 0, the only regime relevant to violations) a maximum of convex functions
+  of W, hence convex on the box [0,1]^E; its maximum is attained at a 0/1
+  vertex, i.e. at a subgraph of G — whose clique number is ≤ ω, only shrinking
+  the RHS credit. So an edge-weighted counterexample (with ω taken from the
+  support) would imply an unweighted one: the weighted relaxation adds no
+  power, and we did not spend compute on it.
+
 ## STATUS: negative — no counterexample in the structured (V2) two-eigenvalue
-design class: exhaustive blow-ups (≤7-vertex patterns, n ≤ 300), sampled
-blow-ups (8–10-vertex patterns, n ≤ 400), bridged/overlapping clique pairs,
-double-Turán unions, seeded annealing. Conjecture holds with equality on a
-large manifold; all perturbations strictly negative.
+design class after two waves: exhaustive blow-ups (≤7-vertex patterns, n ≤ 300),
+sampled blow-ups (8–14-vertex patterns, n ≤ 1000; ~384k weight-optimized configs
+total), bridged/overlapping clique pairs, double-Turán unions, ~20 CPU-hours of
+exact-ω annealing at n up to 90, 50-digit recheck of every near-equality top,
+and a convexity reduction closing off the edge-weighted variant. Conjecture
+holds with equality on a large manifold; all probed perturbations strictly
+negative.
