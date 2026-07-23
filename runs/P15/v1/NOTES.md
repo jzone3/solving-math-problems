@@ -134,7 +134,27 @@ past where we stopped (our machine frontier was M=6; literature is 42).
   - M=8: N=1663200, 205 congruences (90 s/restart, jitter 0.3: 3 restarts,
     ~4 min; the 20 s/0.15 config also found one at N=831600, 210 congs,
     108 restarts). Larger per-restart budget + more jitter wins.
-  - M=9+: see log below (runs continued to end of session).
+  - M=9: N=3326400, 268 congs (150 s/restart, jitter 0.1; 2 restarts).
+* `fc_anneal.py` — ruin-and-recreate local search (the strongest engine):
+  state = partial assignment n->a with coverage-multiplicity array; recreate
+  = LAZY greedy (max-heap of stale gain-densities, rescore on pop — valid
+  since gains only decrease; jitter = random residue among near-max ones);
+  ruin = drop the k lowest-unique-coverage classes plus k random. Seed
+  variance is huge (initial uncovered 8k-600k at the same M,N), so running
+  several seeds in parallel and keeping the lucky ones is part of the
+  method. Verified witnesses (all PASS verify.py, in witnesses_small/):
+  - M=10: N=4989600,   165 congs (first recreate already complete).
+  - M=11: N=9979200,   402 congs (1 iteration).
+  - M=12: N=23284800,  477 congs (329 iterations, ~25 min).
+  - M=13: N=129729600, 610 congs (lucky seed, 1 iteration, 70 s).
+  - M=14: N=129729600, 616 congs (lucky seed, 1 iteration, 111 s).
+  - M=15/16: NOT reached. At N=129729600 every seed plateaus at ~23,000
+    uncovered cells (0.018%) and ruin-recreate does not escape (identical
+    plateau across seeds suggests a structural residue obstruction, not
+    bad luck); at N=908107200 (recip 1.77) iterations take ~10 min each
+    (0.9-1.8 GB arrays) and runs ended at 220k-275k uncovered. The next
+    lever would be an incremental-gain data structure (avoid full O(N)
+    rescans) plus targeted repair of the plateau residue classes.
   Key lesson vs the 600s M=7 failure at N=10080: feasibility needs SLACK
   (recip >= ~1.7), i.e. much larger N than minimal — the earlier fixed
   small-N attempts were starved, not the search algorithm.
@@ -145,12 +165,18 @@ past where we stopped (our machine frontier was M=6; literature is 42).
 * engine/greedy: ~1 h CPU (terminated, no output artifacts).
 * builder iterations: ~2.5 h CPU across ~8 runs (cong-cap 3M hit twice,
   depth-cap hit twice, several 600s timeouts).
+* second push: SAT ~30 min; fc_restart fleets (M=7-9) ~6 h CPU across up
+  to 6 parallel processes; fc_anneal fleets (M=10-16) ~20 h CPU across
+  up to 10 parallel processes over ~5 h wall.
 
 ## 7. STATUS
 
-STATUS: negative (for min modulus >= 43); verified explicit covers with
-min modulus 3,4,5,6 produced by the machine (finite-LCM search, all
-PASS verify.py); the recursive registry-greedy builder does not converge
-(documented dead end); best documented path to 43 is the Owens-42-class
-surgery with fresh primes 97/101 (Section 5), which needs a faithful
-Owens Ch.3 transcription as its remaining step.
+STATUS: negative (for min modulus >= 43); machine frontier pushed from
+min modulus 6 to min modulus 14: verified explicit covers (PASS by
+solutions/P15/verify.py) for every M in 3..14, culminating in M=14 with
+616 congruences over N=129729600 via ruin-and-recreate lazy-greedy local
+search with parallel seed fleets. M=15/16 plateau (~23k cells at
+N=129729600) documented; SAT encoding documented dead end; recursive
+registry-greedy builder documented dead end; best path to 43 remains the
+Owens-42-class surgery with fresh primes 97/101 (Section 5), which needs
+a faithful Owens Ch.3 transcription as its remaining step.

@@ -116,7 +116,7 @@ def main():
     it = 0
     while time.time() - t0 < total:
         it += 1
-        frac = float(rng.uniform(0.03, 0.15))
+        frac = float(rng.uniform(0.05, 0.4))
         jit = float(rng.uniform(0.0, 0.3))
         ruin(st, rng, frac)
         recreate(st, rng, jit)
