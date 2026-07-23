@@ -475,3 +475,36 @@ witness.
 
 STATUS: near-miss (T=43 counting blueprint stands; patch budget now fully
 quantified; explicit hole-cover construction is the single remaining gap).
+
+## 17. Phase 6c — synthesis: why the patch route (and the 13th ledger) is blocked
+
+Reconciling phases 4-6: density was never the obstruction — FINISHING is.
+Every covering system terminates through towers (infinite descending
+chains where p-1 of p children are covered at each level). The patch's
+free budget supplies only ~9.5 class-equivalents per safe prime q (and 3.7
+per 7-level), while a q-tower needs q-1 ~ 96 full covers per level;
+phase 4 measured exactly this (exact packing S = 9 budget-disjoint covers
+vs S >= 88 required; LP <= 51 even with perfect covers on all moduli
+<= 1e5). The 7-adic freebies cannot finish either: 3 classes per level
+globally vs 4^j remaining branches.
+
+So: the 42-hole CANNOT be closed by moduli that are provably free
+(7^k*{1..5} + safe primes >= 97), rigorously below modulus 1e5 and
+decisively in practice; and section 15/16 showed the [11,89] scraps add
+only ~0.05-0.3 density with the same finishing defect (squares/cross
+products, no tower structure). The counting-level 13th ledger of the
+blueprint PASSes only because ledger arithmetic abstracts realizability -
+its "96 sets for the 97^" are set counts, not clearance-checked towers.
+
+DECISIVE FINDING of this campaign: minimal patching of Owens's system
+cannot reach T=43. Any minimum-modulus-43 covering system requires
+redesigning the small-prime (2/3/5/7) layers themselves so that the
+42-slot saving is never needed - which is precisely Owens's own closing
+conjecture, now backed by machine-checked budget arithmetic (owens_smooth
++ reduce43 + setexpr) rather than intuition. The repaired 12 Owens ledgers
+(blueprint43.py sections 3.8-3.20) remain valid counting-level building
+blocks for such a redesign.
+
+STATUS: frontier-pushed (patch route to T=43 refuted at explicit-modulus
+level below 1e5; T=43 reduced to a small-prime-layer redesign with the
+12 repaired ledgers as reusable components).
