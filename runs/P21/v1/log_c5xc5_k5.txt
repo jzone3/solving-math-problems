@@ -1,0 +1,5 @@
+[C5xC5] group order 25, 49 edge orbits, k=5
+[C5xC5] 704 triangle reps, 17106 C4 reps (2.4s)
+[C5xC5] CNF: 8735 vars, 133460 clauses (2.6s)
+[C5xC5] k=5: SAT (3.0s)
+witness written to w_c5xc5_k5.txt
