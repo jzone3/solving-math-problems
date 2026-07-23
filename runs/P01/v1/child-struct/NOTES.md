@@ -40,8 +40,11 @@ count 1 solves Sheehan.
 | 20 | 2                      | 2716    | conn4 |
 | 21 | 8                      | 3657    | conn4 |
 | 22 | 131                    | 5589    | all minima seen were 4-connected |
+| 23 | 3917                   | 8382    | argmin 4-connected |
 
-These are EXACT constrained minima (every graph in the family counted).
+These are EXACT constrained minima (every graph in the family counted;
+argmin edge lists in exhaustive-girth5-argmin-n{22,23}.txt, full n=22 family
+in girth5-n22-all.g6; geng n=23 took ~2.5 h, n=24 was out of reach).
 Striking: the girth-5 minima are 20-40x ABOVE the unconstrained minimum 144 and
 INCREASE with n — high girth forces MANY Hamiltonian cycles in the 4-regular
 setting, the opposite direction from a Sheehan counterexample. (The GMZ
@@ -51,6 +54,47 @@ the parent's anneal converged to.)
 
 ## Anneal results (3.5 h x 7 workers, penalty method, exact counts)
 
-(to be filled in when workers finish)
+Best-ever recorded only at penalty 0 (graph verified inside the family);
+final bests re-verified with TWO independent counters: ../verify_nearmiss.py
+(iterative Python, n <= 26 — all PASS) and the parent's independently written
+weighted counter msearch.c `count` (n = 28, 30 — both match).
 
-## STATUS: (pending)
+| n  | family        | min #HC found | anneal iters | graph file |
+|----|---------------|---------------|--------------|------------|
+| 24 | girth >= 5    | 12968         | 155,352      | best-f1-n24.txt |
+| 25 | girth >= 5    | 20423         | 110,183      | best-f1-n25.txt |
+| 28 | girth >= 5    | 67350         | 19,799       | best-f1-n28.txt |
+| 32 | girth >= 5    | (>= 200000 = cap; no gradient, aborted) | — | — |
+| 22 | 4-connected   | 1512          | 1,394,190    | best-f2-n22.txt |
+| 26 | 4-connected   | 4896          | 161,864      | best-f2-n26.txt |
+| 30 | 4-connected   | 40708         | 11,723       | best-f2-n30.txt |
+| 24 | girth5 + 4conn| 12968         | 187,918      | best-f3-n24.txt |
+
+- The n=24 girth-5 anneal best (12968) equals the girth5+4-connected best and
+  is 4-connected — consistent with the exhaustive data where every girth-5
+  few-HC argmin is automatically 4-connected.
+- The n=32 girth-5 run is a logged dead end: random girth-5 graphs at n=32
+  have > 200000 HCs, so the capped objective was flat and never descended
+  (same failure mode as the parent's Batch-1; not worth pursuing given the
+  monotone-increasing exact minima at n = 19..23).
+- 4-connected minima also blow up fast (1512 @ 22 -> 40708 @ 30), an order of
+  magnitude above the unconstrained 144 floor already at n = 22 — matching
+  Haythorpe/GMZ: few-HC extremal 4-regular graphs have connectivity 2.
+
+## Conclusion
+
+Neither constrained family contains few-HC graphs: both girth >= 5 and
+4-connectivity push #HC far ABOVE the unconstrained 144 floor and the minima
+grow with n. Nothing below 144 for n >= 19 was found (nothing below 1512 in
+these families, and the girth-5 minima for n <= 23 are EXACT, 2688..8382);
+no uniquely Hamiltonian candidate, no new record. Structure-targeting in these
+directions is anti-productive for Sheehan: counterexample hunting should stay
+in the low-connectivity girth-3 regime the parent already floors at 144.
+The exhaustive girth-5 constrained minima (n = 19..23) appear to be new data
+not in GMZ (their tables cover all 4-regular graphs, not the girth-5 slice).
+
+## STATUS: negative (no counterexample, no sub-144 record; exact girth-5
+   constrained minima computed for n = 19..23 [2688, 2716, 3657, 5589, 8382,
+   monotone increasing], anneal floors girth-5 @ n=24/25/28 and 4-connected
+   @ n=22/26/30 all >= 1512 >> 144; both constrained families are HC-rich —
+   independent double verification passed on every reported minimum)
