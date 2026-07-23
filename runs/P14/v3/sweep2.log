@@ -1,0 +1,33 @@
+inst4 group=C7 |G|=7 blocks=45474 borbs=6498 eorbs=2 porbs=13 enum=0.3s
+inst4 group=C7 status=INFEASIBLE time=3491.4s
+inst2 group=C3 |G|=3 blocks=28314 borbs=9438 eorbs=4 porbs=22 enum=0.1s
+inst2 group=C3 status=UNKNOWN time=3600.2s
+inst2 group=C3b |G|=3 blocks=28314 borbs=9708 eorbs=8 porbs=32 enum=0.1s
+inst2 group=C3b status=INFEASIBLE time=543.0s
+inst2 group=C4 |G|=4 blocks=28314 borbs=7104 eorbs=3 porbs=18 enum=0.1s
+inst2 group=C4 status=INFEASIBLE time=723.1s
+inst4 group=C3a |G|=3 blocks=45474 borbs=15174 eorbs=6 porbs=31 enum=0.2s
+inst4 group=C3a status=OPTIMAL time=1786.1s
+WITNESS -> witness_inst4_C3a.json
+*** SAT inst4 C3a ***
+inst4 group=C3b |G|=3 blocks=45474 borbs=15288 eorbs=8 porbs=37 enum=0.2s
+inst4 group=C3b status=OPTIMAL time=926.5s
+WITNESS -> witness_inst4_C3b.json
+*** SAT inst4 C3b ***
+inst1 group=C11a |G|=11 blocks=45474 borbs=4134 eorbs=4 porbs=11 enum=0.4s
+inst1 group=C11a status=INFEASIBLE time=0.0s
+inst1 group=C5a |G|=5 blocks=45474 borbs=9114 eorbs=6 porbs=23 enum=0.2s
+inst1 group=C5a status=INFEASIBLE time=0.1s
+inst1 group=C5b |G|=5 blocks=45474 borbs=10974 eorbs=10 porbs=47 enum=0.2s
+inst1 group=C5b status=INFEASIBLE time=0.0s
+inst1 group=C3c |G|=3 blocks=45474 borbs=16206 eorbs=10 porbs=49 enum=0.1s
+inst1 group=C3c status=INFEASIBLE time=13.6s
+inst1 group=C3d |G|=3 blocks=45474 borbs=21780 eorbs=12 porbs=67 enum=0.1s
+inst1 group=C3d status=INFEASIBLE time=42.3s
+inst4 group=C11a |G|=11 blocks=45474 borbs=4134 eorbs=4 porbs=11 enum=0.4s
+inst4 group=C11a status=INFEASIBLE time=0.0s
+inst4 group=C5a |G|=5 blocks=45474 borbs=9114 eorbs=6 porbs=23 enum=0.2s
+inst4 group=C5a status=INFEASIBLE time=10.6s
+inst4 group=C5b |G|=5 blocks=45474 borbs=10974 eorbs=10 porbs=47 enum=0.2s
+inst4 group=C5b status=INFEASIBLE time=8.9s
+inst4 group=C3c |G|=3 blocks=45474 borbs=16206 eorbs=10 porbs=49 enum=0.2s
