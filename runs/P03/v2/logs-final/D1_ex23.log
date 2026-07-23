@@ -1,0 +1,1 @@
+[D1 exhaustive] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 500, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 500, 'dup': 124, 'tau4': 500} t=659s

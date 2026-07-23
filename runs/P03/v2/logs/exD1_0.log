@@ -1,0 +1,26 @@
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 2000, 'dup': 97, 'disconnected': 77, 'tau1': 1923} t=9s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 4000, 'dup': 205, 'disconnected': 80, 'tau1': 3920} t=18s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 6000, 'dup': 313, 'disconnected': 80, 'tau1': 5920} t=28s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 8000, 'dup': 421, 'disconnected': 80, 'tau1': 7920} t=38s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 10000, 'dup': 529, 'disconnected': 80, 'tau1': 9920} t=45s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 12000, 'dup': 637, 'disconnected': 80, 'tau1': 11920} t=54s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 14000, 'dup': 745, 'disconnected': 80, 'tau1': 13920} t=70s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 16000, 'dup': 853, 'disconnected': 80, 'tau1': 15920} t=84s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 18000, 'dup': 934, 'disconnected': 80, 'tau1': 17920} t=95s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 0, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 20000, 'dup': 1723, 'disconnected': 80, 'tau1': 19920} t=105s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 935, 'ilp_tested': 9, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 9, 'seen': 22000, 'dup': 2003, 'disconnected': 80, 'tau1': 20976, 'tau2': 944} t=112s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 1901, 'ilp_tested': 19, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 19, 'seen': 24000, 'dup': 2192, 'disconnected': 80, 'tau1': 22000, 'tau2': 1920} t=121s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 2866, 'ilp_tested': 30, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 30, 'seen': 26000, 'dup': 2381, 'disconnected': 80, 'tau1': 23024, 'tau2': 2896} t=128s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 3830, 'ilp_tested': 42, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 42, 'seen': 28000, 'dup': 2570, 'disconnected': 80, 'tau1': 24048, 'tau2': 3872} t=135s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 4800, 'ilp_tested': 48, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 48, 'seen': 30000, 'dup': 2759, 'disconnected': 80, 'tau1': 25072, 'tau2': 4848} t=142s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 5767, 'ilp_tested': 58, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 58, 'seen': 32000, 'dup': 2948, 'disconnected': 80, 'tau1': 26095, 'tau2': 5825} t=153s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 6737, 'ilp_tested': 66, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 66, 'seen': 34000, 'dup': 3137, 'disconnected': 80, 'tau1': 27117, 'tau2': 6803} t=164s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 7710, 'ilp_tested': 71, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 71, 'seen': 36000, 'dup': 3326, 'disconnected': 80, 'tau1': 28139, 'tau2': 7781} t=175s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 8158, 'ilp_tested': 72, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 72, 'seen': 38000, 'dup': 5089, 'disconnected': 80, 'tau1': 29690, 'tau2': 8230} t=185s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 9169, 'ilp_tested': 83, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 83, 'seen': 40000, 'dup': 5978, 'disconnected': 80, 'tau1': 30668, 'tau2': 9252} t=199s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 10091, 'ilp_tested': 97, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 97, 'seen': 42000, 'dup': 6604, 'disconnected': 80, 'tau1': 31732, 'tau2': 10188} t=209s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 11020, 'ilp_tested': 110, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 110, 'seen': 44000, 'dup': 7222, 'disconnected': 80, 'tau1': 32790, 'tau2': 11130} t=220s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 12017, 'ilp_tested': 119, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 119, 'seen': 46000, 'dup': 7776, 'disconnected': 80, 'tau1': 33784, 'tau2': 12136} t=235s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 12990, 'ilp_tested': 126, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 126, 'seen': 48000, 'dup': 8412, 'disconnected': 80, 'tau1': 34804, 'tau2': 13116} t=250s
+[exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 13986, 'ilp_tested': 138, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 138, 'seen': 50000, 'dup': 8949, 'disconnected': 80, 'tau1': 35796, 'tau2': 14124} t=268s
+FINAL [exhaustD1 shard=0] {'tau0': 0, 'rho_filtered': 14045, 'ilp_tested': 139, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 139, 'seen': 50091, 'dup': 8958, 'disconnected': 80, 'tau1': 35827, 'tau2': 14184} t=270s

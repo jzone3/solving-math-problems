@@ -1,0 +1,7 @@
+[tau3 mult=3 exhaustive] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 200, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 200, 'dup': 28, 'tau6': 200} t=10s
+[tau3 mult=3 exhaustive] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 400, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 400, 'dup': 56, 'tau6': 400} t=22s
+[tau3 mult=3 exhaustive] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 600, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 600, 'dup': 168, 'tau6': 600} t=38s
+[tau3 mult=3 exhaustive] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 800, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 800, 'dup': 256, 'tau6': 800} t=57s
+[tau3 mult=3 exhaustive] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 1000, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 1000, 'dup': 480, 'tau6': 1000} t=72s
+[tau3 mult=3 exhaustive] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 1200, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 1200, 'dup': 848, 'tau6': 1200} t=106s
+FINAL [tau3 mult=3 exhaustive choices=(1, 2) subdiv_solid=False] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 1376, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 1376, 'dup': 2720, 'tau6': 1376} t=140s

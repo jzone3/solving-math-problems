@@ -126,4 +126,38 @@ The searches that remain meaningful are those NOT dominated:
 Deletion searches launched: D1/D2 exhaustive over {delete, keep}^nulls and
 random over {0,1,2}.
 
-STATUS: running (checkpoint; final status at bottom when done)
+## 5. Compute spent & final tallies
+
+~4.5 hours of wall time on an 8-core box with 9–13 parallel workers
+(CBC/PuLP ILPs, exact dicut enumeration). Final totals across all searches:
+**~1,500,000 instances evaluated**, of which **232,692 ILP-certified**
+(the rest: τ≤1 trivial, ρ-filtered provably-packing per ACZ with 1% ILP
+spot-checks — all spot-checks agreed, 100+ `filter_sanity_ok`),
+**0 packing failures, 0 unresolved ILP timeouts**.
+Annealing: 4 workers × 4h wall, 1,338,783 steps / 840,480 evaluations,
+plateau at ρ=12 (τ up to 8, ≤34 arcs), every instance packed.
+
+## 6. Conclusions (negative results are results)
+
+1. Seeds reconstructed *exactly* and machine-verified against the published
+   facts (τ=2, ν=1, special-joins fractional packing) — reusable artifact for
+   the other P03 variants (`seeds.py`, `rings.py`).
+2. **The literal V2 attack is provably dead**: by the domination lemma (§4),
+   any "weights → subdivided arcs" instance packs whenever the all-plain-arc
+   base instance packs, and all base instances (D1, D2, ring(5), ring(7),
+   τ≥3 middle-multiplied extensions) pack. The weighted counterexamples die
+   unweighted because former 0-arcs contribute exactly the capacity that
+   restores Woodall; subdividing them never removes that capacity.
+3. The non-dominated enlargements (deleting null arcs — 3^12 FULL exhaustive
+   for D1; parallel-path gadgets; free annealing around the seeds at ≤34
+   arcs, τ up to 8, ρ up to 12) also produced zero failures.
+4. Near-miss note: nothing came close — no instance even required a nontrivial
+   branch-and-bound effort (max ILP time ≈ 0.1s). The ACZ ρ-parameter never
+   certified a gap. If a counterexample exists, this strongly suggests it does
+   NOT live in the "blown-up weighted counterexample" neighborhood at ≤~35
+   arcs; V1 random search / V3 SAT over general digraphs are the better bets.
+
+STATUS: negative — V2 (subdivision/parallelization of Schrijver and
+Cornuéjols–Guenin seeds + deletion variants + annealing, ~1.5M instances,
+232,692 ILP-certified) found no Woodall counterexample; the pure subdivision
+family is additionally proven fruitless via the domination lemma.

@@ -1,0 +1,2 @@
+[gadgets D1 seed=0] {'tau0': 0, 'rho_filtered': 1, 'ilp_tested': 199, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 200, 'dup': 0, 'tau4': 173, 'tau5': 26, 'tau6': 1} t=534s
+[gadgets D1 seed=0] {'tau0': 0, 'rho_filtered': 3, 'ilp_tested': 397, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 400, 'dup': 0, 'tau4': 339, 'tau5': 60, 'tau6': 1} t=1400s

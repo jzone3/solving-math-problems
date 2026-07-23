@@ -1,0 +1,4 @@
+[D2 random] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 500, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 500, 'dup': 0, 'tau3': 500} t=210s
+[D2 random] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 1000, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 1000, 'dup': 0, 'tau3': 1000} t=470s
+[D2 random] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 1500, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 1500, 'dup': 0, 'tau3': 1500} t=828s
+[D2 random] {'tau0': 0, 'rho_filtered': 0, 'ilp_tested': 2000, 'ilp_timeout': 0, 'FAILURES': 0, 'filter_sanity_ok': 0, 'seen': 2000, 'dup': 0, 'tau3': 2000} t=1183s
