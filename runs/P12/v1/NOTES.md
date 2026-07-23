@@ -71,3 +71,16 @@ Variant: V1 = direct SAT encoding, per problems/P12-tuscan-2-squares.md.
 - Observation: even the SAT dev instance n=8 needs ~1h — this encoding /
   solver combo finds the T2 landscape genuinely hard; n=11 raw CDCL verdict
   within one session unlikely; treating run as frontier-push + calibration.
+
+## Checkpoint 2026-07-23 ~01:20 UTC (t+5h)
+- n=10 (dev, SAT per Kapralov table >=1): kissat TIMED OUT at 2h without
+  finding a solution — CDCL is weak at *finding* T2 witnesses; n=12 running.
+- Cube pilot killed at t+4h: zero of 66 depth-2 cubes finished in ~2h each;
+  depth-2 splitting doesn't reduce per-cube difficulty. (Dead end for this
+  cube depth; deeper cubes would need >>8 cores to pay off.)
+- Added SLS attack (still V1/SAT framing): yalsat seeds 1 & 42 on t11.cnf,
+  seed 7 on t13.cnf. After ~20 min: best = 26 unsat clauses of ~151k (t11),
+  50 (t13); plateaued across thousands of restarts — consistent with
+  T2(11) being UNSAT (odd-n pattern: T2(5)=T2(7)=T2(9)=0) but not evidence.
+- kissat t9 (UNSAT calibration), kissat+cadical t11, kissat t13 still
+  running (5h wall each, no verdicts).
