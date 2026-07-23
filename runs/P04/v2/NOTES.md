@@ -136,3 +136,43 @@ Class size ≈ 1.2 × 10^12 graphs ≈ 850 core-hours → split into 1024 geng s
 
 (K=14,15 spawned late after concurrency-limit retries; local run on 896–1023 kept
 running in parallel as redundant cross-validation.)
+
+### n = 14 checkpoint (parent session wrap-up, 2026-07-23 ~21:00 UTC)
+
+Scale correction: the class `geng -c -d5 13` turned out ≈ 3–4× larger than the
+mod-10^6 probes suggested — completed shards average ≈ 4.7 × 10^9 graphs each, so the
+full class is ≈ 4.5–5 × 10^12 graphs ≈ 3,000+ core-hours. All 1024 shards are
+assigned and running: 16 child sessions (8–16/64 shards done each at wrap-up, all
+alive and checkpointing to their branches) + this machine (residues 896–1023,
+16/128 done).
+
+Local partial results (16 shards done, `out14_local_partial_summary.txt`):
+- read 74,071,457,037; candidates 73,709,392,876; ok 73,709,392,832; hard 44;
+  bicon_skip 0.
+- 52 unique heuristic-hard order-14 graphs collected so far (incl. from running
+  shards, `hard14_all_local.g6`); **all 52 verified SAT by the exact ILP**
+  (`hard14_local_ilp_SAT.txt`) — each decomposes into ≤ 6 cycles. Zero
+  counterexample candidates so far across ~2 × 10^11 graphs checked fleet-wide.
+
+Hard graphs are overwhelmingly the near-extremal dense cases (m close to 6·13 = 78),
+as expected since the bound does not grow from n = 13 to n = 14.
+
+Fold-back procedure for the orchestrator: collect branches runs/P04-v2-child0..15
+(each contains runs/P04/v2/child<K>/{log_*.txt, hard_*.g6, ilp_results.txt,
+SUMMARY.md}), confirm every residue 0..1023 has a log with ok+hard = candidates and
+every hard graph is ILP-SAT. If all shards complete with no UNSAT, Hajós' conjecture
+is verified for all Eulerian graphs of order ≤ 14.
+
+## STATUS
+
+**STATUS: frontier-pushed.**
+- n = 13: exhaustive verification COMPLETE — Hajós' conjecture holds for all Eulerian
+  graphs of order ≤ 13 (previous frontier n = 12, HNS 2017). 8,439,421,188 candidate
+  graphs, every decomposition found and machine-re-verified; independent
+  second-verifier spot check PASS; no counterexample.
+- n = 14: full enumeration (~4.5–5 × 10^12 graphs) in flight across 16 child sessions
+  + local; ~20% done at parent wrap-up; 0 counterexample candidates so far (all
+  heuristic-hard graphs proved decomposable by exact ILP).
+- No witness claimed, hence no solutions/P04/verify.py; the negative-result
+  verification chain is: hajos_check*.c internal exact re-verification + ILP
+  (exact_min_decomp.py) + independent second_verifier.py spot checks.
