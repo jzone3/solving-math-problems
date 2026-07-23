@@ -154,6 +154,68 @@ Scaling summary: m=43 needs recip slack ≈1.8+ over divisors ≥43, i.e. lcm ~1
 and ~10^4-10^5 congruences — outside explicit-array methods entirely; a recursive/
 symbolic construction (Nielsen/Owens style) is the only plausible route.
 
-STATUS: frontier-pushed (verified covering systems built automatically for every
-m ≤ 12 — previous automatic frontier here was m=4-6; no m≥43 witness — explicit
-enumeration cannot reach it, see calibration)
+## Phase 3: symbolic coset engine (Nielsen/Owens-style, unbounded lcm)
+
+Read the ORIGINAL Nielsen (min mod 40) and Owens (min mod 42) texts
+(/tmp/nielsen40.pdf, /tmp/owens42.pdf via pypdf). Their method: start from 2↑,
+delete all classes with moduli < target, then fill the structured holes prime
+by prime using nested tuple branches (p↑ tails), carefully rationing unused
+moduli for later primes. Nielsen's m=40 system has >10^50 congruences; the
+constructions are deeply hand-tuned resource-allocation arguments.
+
+Automated analogue implemented here — coset_cover.py / coset_cover.c:
+- Uncovered set tracked EXACTLY as a set of disjoint cosets (a mod M), u64 M —
+  no explicit Z_N array, so lcm is unbounded (this removes the m≈13 wall of
+  phase 2 in principle).
+- Moduli: all P97-smooth integers >= m, ascending, each used once. For each d
+  the residue b is chosen by weighted CRT greedy over the holes it can hit
+  (weight M^alpha / lcm(M,d)); hits split holes into cosets mod lcm(M,d).
+- Soundness trick: SKIPPING a hit only under-credits coverage (region stays
+  marked uncovered), so fragmentation caps and per-class hit caps are safe.
+  Success criterion is hole-set empty; verify.py re-checks every witness.
+- Fragmentation control: split cap for bootstrap hole (M=1) vs. incidental
+  holes; per-class hit cap (keep smallest-L hits); full sibling families
+  (all p cosets over one parent) merged back to the parent coset.
+- Multi-pass: moduli rejected in the ascending pass are retried in later
+  passes until no progress (single-pass greedy wastes small moduli).
+
+### Results (all verified PASS with solutions/P15/verify.py)
+| m | #congr | max modulus | note |
+|---|--------|-------------|------|
+| 3 | 28     | ~small      | python engine |
+| 5 | 90     | <200000     | C engine, <1 s |
+| 6 | 139    | 390         | 260 s budget |
+| 7 | 209    | 792         | |
+| 8 | 194    | 702         | (hit_cap=512 variant: 1182 congr) |
+
+### Negative findings
+- coset_cover2.py (pure hole-driven tree: always attack largest hole with its
+  smallest unused multiple) telescopes forever — density stalls ~0.2. This is
+  the Davenport–Mirsky–Newman–Rado obstruction in action: an exact/disjoint
+  cover with distinct moduli cannot exist, so cross-coverage (one class hitting
+  many holes) is mathematically essential, not an optimization.
+- Small incidental caps (2-8) starve: pool exhausts with a few stubborn holes
+  whose usable multiples were consumed (the same resource crunch Nielsen/Owens
+  solve by hand-rationing).
+- Large caps (16+) explode the hole count (millions by n~500): every accepted
+  class fragments up to 65k holes. Per-class hit caps (512-4096) tame growth
+  (~1M holes) at the cost of coverage efficiency; throughput ~1.5 class/s.
+- m=10..20 runs reach density ~1e-3..1e-4 with ~1M holes; the residual tail
+  needs ~#holes more classes — hours-to-days per m at current throughput.
+  m=20 variant stalled at density 0.23 (bootstrap misalignment).
+
+Honest assessment: the symbolic coset engine removes the lcm wall but not the
+resource-allocation wall. Reaching m=43 the Nielsen/Owens way needs their
+recursive p↑ bookkeeping (holes as symbolic branch families, not enumerated
+cosets) — enumerated-coset greedy fragments into ~10^6+ cosets long before
+minimum modulus 43 territory (their systems have 10^50+ classes; enumeration
+of individual cosets is impossible by design). Next step for a future session:
+implement branch-family compression (store hole families as (base coset,
+recursive p↑ tail) pairs and fill them wholesale), which is exactly the
+structure of the published record constructions.
+
+STATUS: frontier-pushed (verified covering systems for every m ≤ 12 via
+explicit engines, plus a new symbolic-coset engine with unbounded lcm verified
+at m=5-8 in seconds-minutes; no m≥43 witness — greedy variants documented
+above hit the resource-allocation wall that the record constructions solve by
+hand-tuned recursive rationing)
