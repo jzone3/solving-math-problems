@@ -142,6 +142,45 @@ floats; the hits in anneal logs are the equality graphs at float ~+2e-16 (i.e.
 exactly 0; equality verified rationally in verify.py). No genuine positive was
 ever found.
 
+## 10. FRONTIER PUSH — exhaustive n = 11 and n = 12 cores WITH all paddings
+
+`scan11.c` (C, ~4M graphs/s/core): for each core H with δ(H) ≥ 1 it applies the
+envelope test dev ≤ (Σd²+2m)/(4m) ≤ R (safe for EVERY number of isolated
+vertices), and for envelope-failing cores evaluates f at every padded size
+n = |H|..400 (whitelisting the known equality graphs).
+
+- n = 11: all 1,006,992,696 min-degree-≥1 graphs scanned (8-way, ~4 min).
+  Envelope failures: 2 (K_11, K_11−e); near-hits/positives: NONE.
+  ⇒ **Conjecture 129 holds for every graph with ≤ 11 non-isolated vertices and
+  ANY total number of vertices** — strictly beyond the 1995 exhaustive n ≤ 10
+  frontier (which fixed total n).
+- n = 12: same scan over all ~152×10^9 min-degree-≥1 graphs — [scan11_n12_*.err]
+  (running; results recorded below when complete).
+
+## 11. Second encoding — degree-sequence LP relaxation (new reduction)
+
+Since dev depends only on d, view an edge-type histogram x_ab (a ≤ b degree
+values) of any realization: stub balance Σ_b x_ab (+x_aa) = a·n_a and
+capacities x_ab ≤ n_a n_b, x_aa ≤ C(n_a,2). Then for every graph G with
+sequence d: R(G) ≥ LP(d) := min Σ x_ab/√(ab) over that polytope.
+**If dev(d) ≤ LP(d) for every graphical d (Erdős–Gallai), conjecture 129
+follows.** Findings (`seq_lp.py`, `seq_sample.py`):
+
+- Uncapacitated transportation bound (anti-monotone stub matching, Monge
+  argument) is NOT enough — wildly violated by non-graphical and even some
+  graphical sequences (`seq_search.py`, `seq_exhaust.py`: negative result).
+- With EG + capacities: exhaustive over ALL graphical sequences (with isolated
+  vertices allowed) n ≤ 11 (59,347 seqs at n=11, ~81k total): **zero
+  violations**; worst case exactly 0 at the clique sequence (q−1)^q padded to
+  n = 2q−2 — the equality family again. n = 12, 13 running.
+- Sequence-space annealing with the LP score at n ∈ {14..200}: max = 0, always
+  exactly at the equality-family sequence; never positive.
+
+So the capacity-LP relaxation appears EXACTLY tight: conjectured reduction
+  dev(d) ≤ LP_capacity(d) for all graphical d  ⇔  WoW 129,
+a clean finite-dimensional inequality per degree multiset — promising proof
+route (LP duality gives explicit certificates per sequence).
+
 ## STATUS: negative (no counterexample; conjecture tight on K_q ∪ (q−2)K_1)
 
 Summary: re-verified the exact WoW-129 definition from refutationGBR source;

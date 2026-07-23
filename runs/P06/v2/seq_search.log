@@ -7,3 +7,5 @@ n0=  80 best dev-R_LP = +12.523053517 at n=41 degs={40: 11}
 RELAXATION VIOLATION (candidate degree sequence)
 n0= 160 best dev-R_LP = +24.887001101 at n=81 degs={80: 22}
 RELAXATION VIOLATION (candidate degree sequence)
+n0= 320 best dev-R_LP = +49.553844619 at n=161 degs={160: 42}
+RELAXATION VIOLATION (candidate degree sequence)
