@@ -103,3 +103,8 @@ Variant: V1 = direct SAT encoding, per problems/P12-tuscan-2-squares.md.
 - Killed everything; regenerated ALL CNFs with standard-form encoding
   (verified unit 733 present in new t11.cnf); relaunched: kissat t9/t11/t13,
   cadical t11, yalsat t11+t13, smalls loop {4,6,7,8,10}.
+
+## Checkpoint 2026-07-23 ~07:20 UTC (t+11h; standard-form runs t+3h)
+- Standard-form encoding validation: n=4/6 SAT (s), n=7 UNSAT (min), n=8 SAT
+  in 73.5 min (sq8_sf.txt PASS). n=10 running.
+- t9/t11(kissat+cadical)/t13 + yalsat t11/t13: running, no verdicts yet.
