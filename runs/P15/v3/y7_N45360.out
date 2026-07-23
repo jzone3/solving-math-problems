@@ -1,0 +1,18 @@
+c YalSAT Yet Another Local Search Solver
+c Sequential Standalone Version
+c Version 1.0.1 a0fd39f072f2d4693dd5a1977de3c3d3f69c8850
+c Copyright (C) 2021-2022 Armin Biere University of Freiburg
+c Copyright (C) 2013-2021 Armin Biere, Johannes Kepler University Linz
+c Released Wed Jul 22 23:42:09 UTC 2026
+c Compiled Wed Jul 22 23:42:09 UTC 2026
+c Linux devin-box 5.15.200 x86_64
+c CC gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+c CFLAGS -Wall -DNDEBUG -O3
+c using specified seed 34
+c no flips limit set (by default)
+c no mems limit set (by default)
+c parsing 'ycover_45360_7.cnf'
+c parsed header 'p cnf 359247 597134'
+c clause variable ratio 1.66
+c finished parsing after 0.16 seconds
+c allocated 32.5 MB after parsing
