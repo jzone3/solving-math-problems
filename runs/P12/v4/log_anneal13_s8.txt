@@ -72,3 +72,5 @@
 [seed 8 restart 1] cost 16
 [seed 8 restart 7] cost 15
 [seed 8 restart 11] cost 14
+[seed 8 restart 147] cost 13
+FINAL n=13 seed=8 best_cost=13 -> best_T2_13_seed8.txt

@@ -1,11 +1,9 @@
 start cost 7
-[it 10] cur 7 best 7
 [it 20] cur 7 best 7
-[it 30] cur 7 best 7
 [it 40] cur 7 best 7
-[it 50] cur 7 best 7
 [it 60] cur 7 best 7
-[it 70] cur 7 best 7
 [it 80] cur 7 best 7
-[it 90] cur 7 best 7
 [it 100] cur 7 best 7
+[it 120] cur 7 best 7
+[it 140] cur 7 best 7
+[it 160] cur 7 best 7

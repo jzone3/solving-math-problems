@@ -128,12 +128,13 @@ def main():
         free = set(bad[:max(1, k - 1)])
         while len(free) < k:
             free.add(rng.randrange(n))
-        # allow equal-cost moves (plateau walk)
-        new = solve_neighborhood(arr, free, iter_tl, target=cur)
+        # allow equal-cost moves (plateau walk) and rare uphill (+1) diversification
+        uphill = rng.random() < 0.15
+        new = solve_neighborhood(arr, free, iter_tl, target=cur + (1 if uphill else 0))
         if new is None:
             continue
         nc = cost(new)
-        if nc < cur or (nc == cur and rng.random() < 0.7):
+        if nc < cur or (nc == cur and rng.random() < 0.7) or (uphill and nc == cur + 1 and rng.random() < 0.5):
             arr = new
             cur = nc
             if nc < best:

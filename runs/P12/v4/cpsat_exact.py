@@ -11,7 +11,8 @@ Symmetry breaking (valid up to symbol relabeling + row permutation):
 (first column of any T2(n) is a permutation: each symbol has in-degree n-1
 at distance 1, appears n times, hence is row-initial exactly once.)
 
-Usage: cpsat_exact.py n [time_limit_s] [workers]
+Usage: cpsat_exact.py n [time_limit_s] [workers] [hint_file]
+(hint_file disables symmetry breaking so near-solutions can seed the search)
 Exit prints SAT + witness file, UNSAT (proved), or UNKNOWN.
 """
 import sys
@@ -60,7 +61,14 @@ def main():
     n = int(sys.argv[1])
     tl = float(sys.argv[2]) if len(sys.argv) > 2 else 3600
     workers = int(sys.argv[3]) if len(sys.argv) > 3 else 8
-    m, pos = build(n)
+    hint_file = sys.argv[4] if len(sys.argv) > 4 else None
+    m, pos = build(n, sym_break=hint_file is None)
+    if hint_file:
+        with open(hint_file) as f:
+            arr = [[int(x) for x in line.split()] for line in f if line.strip()]
+        for r in range(n):
+            for c in range(n):
+                m.AddHint(pos[r][arr[r][c]], c)
     s = cp_model.CpSolver()
     s.parameters.max_time_in_seconds = tl
     s.parameters.num_workers = workers

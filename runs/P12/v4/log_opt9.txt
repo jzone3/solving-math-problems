@@ -164,3 +164,105 @@ Starting search at 0.61s with 2 workers.
 
 #1       0.62s best:31    next:[0,30]     fj_restart(batch:1 lin{mvs:231 evals:761} #w_updates:6 #perturb:0)
 #2       0.63s best:4     next:[0,3]      default_lp [hint]
+
+Task timing                   n [     min,      max]      avg      dev     time         n [     min,      max]      avg      dev    dtime
+        'default_lp':         1 [   2.00h,    2.00h]    2.00h   0.00ns    2.00h         2 [ 12.47ms,    3.21h]    1.61h    1.61h    3.21h
+  'feasibility_pump':      8988 [ 61.64us,   8.68ms] 182.39us  94.98us    1.64s      8985 [ 14.69us,  14.69us]  14.69us   0.00ns 131.97ms
+                'fj':         1 [  5.05ms,   5.05ms]   5.05ms   0.00ns   5.05ms         1 [576.49us, 576.49us] 576.49us   0.00ns 576.49us
+     'graph_arc_lns':      3376 [ 33.54ms,    1.56s] 266.29ms 158.05ms   14.98m      3376 [495.77us, 369.64ms] 128.76ms 102.83ms    7.24m
+     'graph_cst_lns':      3667 [ 18.94ms,    1.07s] 245.13ms  90.62ms   14.98m      3667 [222.75us, 100.40ms]  52.29ms  47.88ms    3.20m
+     'graph_dec_lns':      2587 [ 14.56ms,    1.75s] 347.48ms 193.37ms   14.98m      2587 [  9.53us, 269.41ms] 107.18ms  79.19ms    4.62m
+     'graph_var_lns':      3693 [ 18.87ms,    1.09s] 243.44ms 127.76ms   14.98m      3693 [ 32.85us, 362.52ms] 135.52ms  92.73ms    8.34m
+                'ls':      8988 [ 53.47ms, 416.53ms]  91.20ms  31.98ms   13.66m      8988 [100.00ms, 100.09ms] 100.01ms   5.90us   14.98m
+         'rins/rens':      5110 [  7.41ms, 823.37ms] 175.91ms 114.31ms   14.98m      3853 [  1.10us, 100.39ms]  86.92ms  22.43ms    5.58m
+       'rnd_cst_lns':      3468 [  6.09ms, 902.82ms] 259.22ms  91.59ms   14.98m      3467 [ 10.00ns, 100.79ms]  52.15ms  47.76ms    3.01m
+       'rnd_var_lns':      2808 [  3.40ms,    1.39s] 320.35ms 236.23ms   14.99m      2808 [ 10.00ns, 297.20ms] 108.44ms  87.73ms    5.08m
+
+Search stats     Bools   Conflicts    Branches  Restarts  BacktrackToRoot   Backtrack     BoolPropag  IntegerPropag
+  'default_lp':  2'173  12'750'487  30'267'086    23'476        1'080'077  14'232'867  1'747'419'906  1'167'535'255
+
+SAT formula      Fixed  Equiv  Total  VarLeft  BinaryClauses  PermanentClauses  TemporaryClauses
+  'default_lp':      0      0  2'173    2'173          9'134           377'149            11'090
+
+SAT stats        ClassicMinim   LitRemoved  LitRemovedBinary     LitLearned   LitForgotten   Subsumed
+  'default_lp':    10'094'417  231'161'529        74'968'250  1'733'908'133  1'409'435'692  1'273'714
+
+Vivification     Clauses  Decisions  LitTrue  Subsumed  LitRemoved  DecisionReused  Conflicts
+  'default_lp':  489'638  7'598'637        0   155'746   2'386'894         225'781      9'132
+
+Clause deletion    at_true  l_and_not(l)  to_binary  sub_conflict  sub_extra  sub_decisions  sub_eager  sub_vivify  sub_probing  sub_inpro  blocked  eliminated   forgotten    promoted   conflicts
+    'default_lp':        0             0          2     1'246'382    117'445          2'707     27'332     155'746          601      4'108        0           0  10'836'559  35'916'438  12'750'487
+
+Lp stats         Component  Iterations  AddedCuts     OPTIMAL  DUAL_F.  DUAL_U.
+  'default_lp':        144           0          0  92'010'974        0        0
+
+Lp dimension     Final dimension of first component
+  'default_lp':       0 rows, 10 columns, 0 entries
+
+Lp debug         CutPropag  CutEqPropag  Adjust  Overflow  Bad  BadScaling
+  'default_lp':          0            0       0         0    0           0
+
+Lp pool          Constraints  Updates  Simplif  Merged  Shortened  Split  Strengthened  Cuts/Call
+  'default_lp':          144        0        0       0          0      0             0        0/0
+
+LNS stats           Improv/Calls  Closed  Difficulty  TimeLimit
+  'graph_arc_lns':       72/3376     50%    8.07e-01       0.37
+  'graph_cst_lns':      325/3667     50%    9.10e-01       0.10
+  'graph_dec_lns':       50/2587     50%    8.45e-01       0.27
+  'graph_var_lns':       98/3693     50%    7.31e-01       0.36
+      'rins/rens':     2418/5110     50%    5.34e-01       0.10
+    'rnd_cst_lns':      295/3467     50%    9.31e-01       0.10
+    'rnd_var_lns':       60/2808     50%    8.55e-01       0.30
+
+LS stats                                Batches  Restarts/Perturbs    LinMoves    GenMoves  CompoundMoves   Bactracks  WeightUpdates  ScoreComputed
+                         'fj_restart':        1                  1         231           0              0           0              6            894
+                         'ls_restart':      885                219  46'476'652           0              0           0     13'352'435     47'084'250
+                'ls_restart_compound':    1'160                256           0  22'444'507      1'599'982  10'421'581         38'926    196'542'715
+        'ls_restart_compound_perturb':    1'034                249           0  19'920'304      1'429'140   9'244'942         35'653    175'189'266
+                   'ls_restart_decay':    1'180                236  65'429'261           0              0           0        668'991     30'823'381
+          'ls_restart_decay_compound':    1'047                255           0  23'990'348      5'879'103   9'055'079         17'865    178'724'194
+  'ls_restart_decay_compound_perturb':    1'023                250           0  23'760'951      5'925'954   8'916'951         17'561    174'511'348
+           'ls_restart_decay_perturb':    1'680                245  93'283'604           0              0           0        944'550     43'606'259
+                 'ls_restart_perturb':      979                275  51'434'313           0              0           0     14'298'033     51'146'493
+
+Solutions (2)    Num   Rank
+  'default_lp':    2  [1,2]
+  'fj_restart':    2  [0,1]
+
+Objective bounds     Num
+  'initial_domain':    1
+
+Solution repositories    Added  Queried  Synchro
+    'alternative_path':  3'834   15'288    3'834
+      'best_solutions':  7'607   15'240    7'142
+   'fj solution hints':      0        0        0
+        'lp solutions':      0        0        0
+                'pump':  8'987    5'110
+
+Improving bounds shared    Num  Sym
+            'default_lp':    2  142
+
+Clauses shared    #Exported  #Imported  #BinaryRead  #BinaryTotal
+   'default_lp':    148'223          0          669           669
+
+LRAT_status: NA
+CpSolverResponse summary:
+status: FEASIBLE
+objective: 4
+best_bound: 0
+integers: 1453
+booleans: 2173
+conflicts: 12750487
+branches: 30267086
+propagations: 1747419906
+integer_propagations: 1167535255
+restarts: 23476
+lp_iterations: 0
+walltime: 7200.07
+usertime: 7200.07
+deterministic_time: 14692.7
+gap_integral: 20368.3
+solution_fingerprint: 0xf365730f1b2e9303
+
+status: FEASIBLE obj: 4.0 bound: 0.0 walltime: 7200.067321511
+best array written to opt_T2_9_obj4.txt

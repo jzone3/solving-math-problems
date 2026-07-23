@@ -70,4 +70,14 @@ needed; used as hint source rather than standalone solver).
 - Started cpsat_opt on n=9 (2 h) to see how far the optimization bound gets on a known
   nonexistent instance (best bound > 0 would be an optimality-style nonexistence re-proof).
 
+- cpsat_opt n=9 (2 h, hint 4): final obj 4, **best bound 0.0** — CP-SAT cannot lift the
+  min-violation lower bound above 0 even for the known-nonexistent n=9. Optimality-style
+  nonexistence proofs are out of reach with this encoding.
+- Diversified row-LNS (equal-cost walk + 15% uphill(+1) moves, k=4, 40 s/iter): 160
+  iterations, best still 7. Symbol-LNS full 4 h: best still 7.
+- 2 h anneal n=11 (seed 7): 7 again (now 5/5 seeds land exactly on 7).
+  2 h anneal n=13 (seed 8): best 13.
+- Final phase: (a) exact decision model n=11 hinted with cost-7 incumbent (no symmetry
+  breaking), 4 workers × 4 h; (b) row-LNS on n=13 from cost-13 incumbent, 4 workers × 4 h.
+
 STATUS: running
