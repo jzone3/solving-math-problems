@@ -1,0 +1,21 @@
+computing symbolic mu series (3-cell, params p,q,h)...
+mu = eps**2*h*p**2 - 2*eps**2*h*p*q + eps**2*h*q**2 - eps*h*p + eps*h*q + p + 2/eps
+
+Bound 44: edge gap coefficients
+  edge (0, 2) eps^0: 0
+  edge (0, 2) eps^1: (2*h*p - 2*h*q + p**2)/4
+  edge (0, 2) eps^2: -(6*h*p**2 - 14*h*p*q + 4*h*p + 8*h*q**2 - 4*h*q + p**3 - 2*p**2)/8
+  edge (1, 2) eps^0: -(p - q)/2
+  edge (1, 2) eps^1: -(-8*h*p + 8*h*q + p**2 + 2*p*q - 8*p - 7*q**2 + 8*q)/16
+  edge (1, 2) eps^2: (-56*h*p**2 + 128*h*p*q - 32*h*p - 72*h*q**2 + 32*h*q + p**3 + 3*p**2*q - 12*p**2 - 5*p*q**2 - 8*p*q + 32*p - 7*q**3 + 36*q**2 - 32*q)/64
+
+Bound 46: edge gap coefficients
+  edge (0, 2) eps^0: 0
+  edge (0, 2) eps^1: (4*h*p - 4*h*q + p**2)/4
+  edge (0, 2) eps^2: -(8*h*p**2 - 16*h*p*q + 8*h*p + 8*h*q**2 - 8*h*q + p**3 - 6*p**2)/8
+  edge (1, 2) eps^0: -p + q
+  edge (1, 2) eps^1: (4*h*p - 4*h*q + 4*p + q**2 - 4*q)/4
+  edge (1, 2) eps^2: -(8*h*p**2 - 16*h*p*q + 8*h*p + 8*h*q**2 - 8*h*q + 4*p**2 - 4*p*q - 8*p + q**3 - 6*q**2 + 8*q)/8
+
+integer scan: p,q in -4..4, h in 1..8
+  no configuration with negative leading max-edge gap found
