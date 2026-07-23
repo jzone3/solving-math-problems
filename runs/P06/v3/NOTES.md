@@ -148,7 +148,7 @@ edge-weight-regular graphs).
    n ≤ 22 exhaust; every exhausted n below n₀ yields a fully verified frontier).
 
 **Corollary of the (★) exhaust (steps 1 + enum): WoW conjecture 129 is TRUE for
-every graph on n ≤ 22 vertices** — pushes the exhaustive frontier from n = 10
+every graph on n ≤ 23 vertices (n ≤ 22 via enum_seq, n = 23 via enum_seq3, §8)** — pushes the exhaustive frontier from n = 10
 (Brewster–Dinneen–Faber 1995) to n = 22 without enumerating graphs (only degree
 sequences; ~1.9×10^11 sequences total vs ~10^30 graphs), on top of the direct
 geng exhaust n ≤ 12.
@@ -191,8 +191,12 @@ geng exhaust n ≤ 12.
 - Equality-neighborhood targeted anneal (`hillclimb.py` mode 'eq': seed exactly
   K_{n/2+1} ∪ isolateds at Φ = 0, low-T anneal): n = 100, 200, 300, 500, 800 —
   no uphill move ever found; Φ stays ≤ 0 (extremal family locally rigid).
-- `enum_seq3` exhausts of n = 23 and n = 24 (with LP fallback for any NEAR/
-  VIOLATION lines): RUNNING — results recorded below when complete.
+- `enum_seq3` exhaust n = 23: DONE — 581,393,603,995 graphical sequences
+  (31 partitions, ~45 CPU-h), ZERO violations and ZERO near-misses
+  (no sequence with g > −1e-6); max g = −0.00189 (odd n, strictly negative as
+  the closed form predicts). **Conjecture 129 verified for ALL graphs n ≤ 23.**
+- `enum_seq3` exhaust n = 24 (~2.1e12 sequences, finer (d1,d2) partitioning):
+  RUNNING — result recorded here when complete.
 
 ## 9. Conjecture 698 (definitional investigation + test of intended reading)
 

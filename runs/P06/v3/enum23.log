@@ -1,0 +1,2 @@
+./run_enum.sh: line 21: unexpected EOF while looking for matching `"'
+./run_enum.sh: line 22: syntax error: unexpected end of file
