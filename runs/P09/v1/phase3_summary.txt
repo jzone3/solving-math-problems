@@ -1,0 +1,44 @@
+385 restarts logged
+
+Top 12 overall:
+  ratio=1.00000000 n=20 m=135 w=6 l2=0.0000 mode=l2bias cm=False
+  ratio=1.00000000 n=22 m=189 w=7 l2=0.0000 mode=l2bias cm=False
+  ratio=1.00000000 n=24 m=252 w=8 l2=0.0000 mode=ratio cm=True
+  ratio=0.99863081 n=23 m=207 w=7 l2=0.0000 mode=ratio cm=False
+  ratio=0.99863081 n=22 m=207 w=7 l2=0.0000 mode=ratio cm=True
+  ratio=0.99863081 n=23 m=207 w=7 l2=0.0000 mode=l2bias cm=False
+  ratio=0.99846594 n=26 m=281 w=6 l2=0.0000 mode=l2bias cm=True
+  ratio=0.99832909 n=21 m=198 w=10 l2=0.0000 mode=l2bias cm=True
+  ratio=0.99818497 n=20 m=144 w=5 l2=0.0000 mode=l2bias cm=False
+  ratio=0.99817375 n=26 m=295 w=8 l2=0.0000 mode=ratio cm=True
+  ratio=0.99804682 n=21 m=171 w=7 l2=0.0000 mode=l2bias cm=False
+  ratio=0.99804682 n=21 m=171 w=7 l2=0.0000 mode=l2bias cm=False
+
+Best per omega:
+  w=4: ratio=0.99182310 n=20 m=104 l2=3.5364
+  w=5: ratio=0.99818497 n=20 m=144 l2=0.0000
+  w=6: ratio=1.00000000 n=20 m=135 l2=0.0000
+  w=7: ratio=1.00000000 n=22 m=189 l2=0.0000
+  w=8: ratio=1.00000000 n=24 m=252 l2=0.0000
+  w=9: ratio=0.99678284 n=21 m=177 l2=0.0000
+  w=10: ratio=0.99832909 n=21 m=198 l2=0.0000
+  w=13: ratio=0.87267665 n=40 m=625 l2=3.8791
+  w=14: ratio=0.89472290 n=39 m=619 l2=3.4568
+  w=15: ratio=0.91822814 n=35 m=515 l2=2.8279
+  w=16: ratio=0.91498895 n=42 m=745 l2=3.6733
+  w=17: ratio=0.93568923 n=39 m=662 l2=2.8175
+  w=18: ratio=0.92688772 n=42 m=759 l2=3.4312
+  w=19: ratio=0.90603104 n=44 m=817 l2=3.3708
+  w=20: ratio=0.92749527 n=40 m=696 l2=2.5756
+
+Top 10 non-complete-multipartite:
+  ratio=1.00000000 n=20 m=135 w=6 l2=0.0000 g6=S~^~|~n~W?^]}{v|~k~]nv|lvvw??D|nw
+  ratio=1.00000000 n=22 m=189 w=7 l2=0.0000 g6=U~mv^~l~~~Z~^~~~z~^|~^~^}~n~N~~|{???~~n_
+  ratio=0.99863081 n=23 m=207 w=7 l2=0.0000 g6=Vr~~~w?fv}~y~v~F~zn}f|v~z^z]~~m~nz^z~vV~u~u_
+  ratio=0.99863081 n=23 m=207 w=7 l2=0.0000 g6=Vn~~~}~~g?\}}|z{~s~znnt|^v~znY~nvvv~}|^~nn}_
+  ratio=0.99818497 n=20 m=144 w=5 l2=0.0000 g6=SvwFvvxw{v~Jwz}n~J^t|e|~y}jv~zv~w
+  ratio=0.99804682 n=21 m=171 w=7 l2=0.0000 g6=T}|zv~}|~{}|n~~~~~o??~~z~~f~~E^~]~|n
+  ratio=0.99804682 n=21 m=171 w=7 l2=0.0000 g6=Tz~~vrv~z^_?n}~}z~^~t~y~~jv~t\~r~^z^
+  ratio=0.99804682 n=21 m=171 w=7 l2=0.0000 g6=Tz|l~~~~}~z}|~~v}~lz~~z~}~~}|~|~s???
+  ratio=0.99744230 n=20 m=120 w=6 l2=0.0000 g6=Sn~wFzt}^x_?}Yz]vn\zuV]~tZ~Ztw???
+  ratio=0.99726375 n=22 m=190 w=7 l2=0.8530 g6=U~~|wR]nJ|~V~n~n\vz|n}m~u~}{~~|x~m~^|n}w

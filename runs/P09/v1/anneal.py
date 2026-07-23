@@ -4,7 +4,7 @@ Maximizes ratio = (l1^2+l2^2) / (2m(1-1/omega)); a counterexample has ratio > 1.
 Runs many restarts across n and edge density, in parallel worker processes.
 Each worker appends its best-found states to results.jsonl.
 
-Usage: python3 anneal.py <seed> <hours> [nmin nmax]
+Usage: python3 anneal.py <seed> <hours> [nmin nmax [steps]]
 """
 import json
 import math
@@ -74,13 +74,13 @@ def anneal_once(n, p, steps, rng, t0=0.02, t1=0.0005, mode="ratio"):
     return best, False
 
 
-def worker(wid, seed, hours, nmin, nmax):
+def worker(wid, seed, hours, nmin, nmax, fixed_steps=None):
     rng = random.Random(seed * 10007 + wid)
     deadline = time.time() + hours * 3600
     while time.time() < deadline:
         n = rng.randrange(nmin, nmax + 1)
         p = rng.uniform(0.15, 0.9)
-        steps = rng.choice([3000, 8000, 20000])
+        steps = fixed_steps or rng.choice([3000, 8000, 20000])
         mode = rng.choice(["ratio", "l2bias", "l2bias"])
         t_start = time.time()
         best, found = anneal_once(n, p, steps, rng, mode=mode)
@@ -102,8 +102,9 @@ def main():
     hours = float(sys.argv[2])
     nmin = int(sys.argv[3]) if len(sys.argv) > 3 else 15
     nmax = int(sys.argv[4]) if len(sys.argv) > 4 else 60
+    fixed_steps = int(sys.argv[5]) if len(sys.argv) > 5 else None
     nproc = os.cpu_count() or 4
-    procs = [Process(target=worker, args=(w, seed, hours, nmin, nmax)) for w in range(nproc)]
+    procs = [Process(target=worker, args=(w, seed, hours, nmin, nmax, fixed_steps)) for w in range(nproc)]
     for pr in procs:
         pr.start()
     for pr in procs:

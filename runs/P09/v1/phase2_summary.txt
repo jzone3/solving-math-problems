@@ -1,0 +1,49 @@
+204 restarts logged
+
+Top 12 overall:
+  ratio=0.93099713 n=76 m=2571 w=27 l2=4.1867 mode=ratio cm=False
+  ratio=0.93053543 n=57 m=1431 w=22 l2=3.2996 mode=ratio cm=False
+  ratio=0.92699699 n=79 m=2766 w=27 l2=4.4462 mode=ratio cm=False
+  ratio=0.92421010 n=80 m=2826 w=26 l2=4.2418 mode=ratio cm=False
+  ratio=0.92405118 n=55 m=1321 w=22 l2=3.5778 mode=ratio cm=False
+  ratio=0.92371633 n=59 m=1519 w=22 l2=3.9162 mode=ratio cm=False
+  ratio=0.91257465 n=57 m=1391 w=19 l2=3.8510 mode=l2bias cm=False
+  ratio=0.91020741 n=68 m=1990 w=22 l2=4.3094 mode=l2bias cm=False
+  ratio=0.90975522 n=76 m=2491 w=23 l2=4.6318 mode=ratio cm=False
+  ratio=0.90566320 n=80 m=2745 w=22 l2=4.7977 mode=l2bias cm=False
+  ratio=0.90157758 n=60 m=1524 w=20 l2=4.2590 mode=l2bias cm=False
+  ratio=0.90114601 n=73 m=2272 w=22 l2=4.5946 mode=ratio cm=False
+
+Best per omega:
+  w=6: ratio=0.65358587 n=59 m=886 l2=6.6165
+  w=7: ratio=0.73213144 n=57 m=951 l2=7.4203
+  w=8: ratio=0.75878677 n=55 m=941 l2=7.1596
+  w=9: ratio=0.77870772 n=57 m=1062 l2=7.3908
+  w=10: ratio=0.73356217 n=62 m=1213 l2=6.2764
+  w=11: ratio=0.80133235 n=59 m=1234 l2=5.8063
+  w=12: ratio=0.81840366 n=55 m=1100 l2=5.6961
+  w=13: ratio=0.80236056 n=65 m=1526 l2=5.5019
+  w=14: ratio=0.79969679 n=67 m=1616 l2=6.0952
+  w=15: ratio=0.82987559 n=72 m=1970 l2=5.8551
+  w=16: ratio=0.88164678 n=55 m=1232 l2=4.3185
+  w=17: ratio=0.88579677 n=57 m=1334 l2=4.3823
+  w=18: ratio=0.85736386 n=66 m=1729 l2=5.3464
+  w=19: ratio=0.91257465 n=57 m=1391 l2=3.8510
+  w=20: ratio=0.90157758 n=60 m=1524 l2=4.2590
+  w=21: ratio=0.88978769 n=66 m=1822 l2=4.6444
+  w=22: ratio=0.93053543 n=57 m=1431 l2=3.2996
+  w=23: ratio=0.90975522 n=76 m=2491 l2=4.6318
+  w=26: ratio=0.92421010 n=80 m=2826 l2=4.2418
+  w=27: ratio=0.93099713 n=76 m=2571 l2=4.1867
+
+Top 10 non-complete-multipartite:
+  ratio=0.93099713 n=76 m=2571 w=27 l2=4.1867 g6=~?@K~~^vv~nv~~~v~]V~nz~nn~tz~|~~~~~~~v~v~v~~~N^~~f~~~Nvv~}v~~~^|}z~~~~~~~v~~~]~~z~zr]y~~~~~^zVuf~~u~}~]|~~|~}~~y}|n^~m~rn~~~vnv|~~^~~~nz|~~v~f~~~~~^f~{~~~~~~~zmv}T~j~zVv~v~n~~~hz~z~~~m~~~~nv~~^~r|v~x~}~~~v~]~~N^z~~~~~y~~r~~v~~||~~k~~~x|z}~yV}~^~vf|~N~~~}z~w~|^z~~~Vzn~}~v~~~uv|~~n~~~~~~~r~|z~~~z}\v~~~~~yv~~~n~~~~~^nn^~~~^}n~^~\}~y~^~~j}|^~V|~v~~~nn~~~z|~~~r~~~^~~~~t|~~}~~~|~~^]}~~|~~~z{^n~~~~r~~nn~~~~~~^rv~}y~^~~~~m~~~~~u^~~N~~}~~}~~~~x~~~{n~{z~n~~~n~~~}z~|~~~u~}~~~uf~~~~~~w^
+  ratio=0.93053543 n=57 m=1431 w=22 l2=3.2996 g6=x~~|^n}~~~|n~~}~z^n|zz}~~v~}~v~~~~~~}v~~n|z~fl~|~~~n}~~~~v}~n~~t~|~~~~~~x~~|j~~n~^~v~~v~}~~|~~~U}^~~z~zztfz}n|^^~|v~~~~~~^~\v~~u{~}~v~^~|~~|~~|~|~z~v~y~~~~^~}z~~~|z~{~}~~|u|~|~~~}~z~~^~~|x}v}|n~fn~}v^|~qZ~nn^~~}z~}^~~v~|z~pv~}~~~~~~zn~|~~|{{|~nnzl|~~|b~~V~vN|n~|^n~~~
+  ratio=0.92699699 n=79 m=2766 w=27 l2=4.4462 g6=~?@N~~~~~m~|^~s~m~~N~~~~~Z~~z^f~~~~n[~z~}~v~~Nunv~vn}~zfZv~~nz~~~~~~~~~znvn~~~~~~~v~n]l~p~r^~~^~~~~^f~~~~~~~~~Nun~v~}z~|~}Zn}~~^z~~~~vx~^~}~~~}n~~v^v~Q^}~^N~{l~|~~~}v}~]z}~n~~z^z}|~\}~v~~~~~~f~z~~~vn~~}~f~~~~~~~{zn~~~~r}~~~~~z~}~~~zn}ftv^}n~v\~|^n^~^~^|~v|}~z~~~~l~~u~~~vn~n~}Vv~~^~~rn~u~~^z~~~~~~v~~z~jzn~~~~~~z~zi~~~Z~~v~~}~~^}~~~~~~Vf[~~~~~}znf~|~v~~~~~||~~~~n~~~nv~v~|~~~v~~zV~z]~~~~}|n~~~^~~y|~~nvj~vv~v~v^~}~v~v~^~^~\}~n||~^^|n^^~~|~~~~v~X~n~~~~j~~~~z}^~n~n~t}~N^v~~~]~~vyb~~Z~~}iu~~Zjnt~~~~~n{Nn~n~~~~Z~nz~N^^~w
+  ratio=0.92421010 n=80 m=2826 w=26 l2=4.2418 g6=~?@O~]~~~^~|~~vZZ~~|~~^xz~n|~^~~~~n~v~~\~~~v~^qv~~~z~N~~iN}X~~~nnz~n|v~^~~~}~~}z~~~|nz|~|~~~Z~v~y~~|~}~Nn~~|v|n~~~~~~Z~nu}~}R~nv~Nznz~^~~~z~v~~zz~~~ni~^nn}{~~f~~}y~~n~~~~~|~~N~{^~~n~{~~||~zr~nyn|}~|v~^|~~~~~~v}|n}~~n~^~~r^~^~~~~nn~~n}^~~z~~~vV~~v~x~n~r~~~~~~~n~~z~Z~vv~n~~~~\|c~~m^~~~~v^~v|^n~~~tnz~~~~n~\~y~^~|}~~\|~n|~~~n|}^~vNz~~~|~~}v~~n~z~|~n~|~z~~^~~~vnr~|~vn|~~~]zv~n~~~~~{~~~~V~{^n~v~~~n~v~~~~xvz~~N^~~m|\~~~zz~~^N~~|~r~~\~^~n}~~~}~~}~~{Vz~t~j~vn~|~~l~^y}~~~n~~~^|}J~^~~}n~n~v~n~m~~~~~vNqd~vv~~~~xnv~x|~`~~{v~~}Zm~~~mZ~z~|{
+  ratio=0.92405118 n=55 m=1321 w=22 l2=3.5778 g6=vv~~~~~~~~}}}{~|~~v~n~}~}~~~~v~z~~~^~~}rn~vzF|~~}Zp~v|~t|~[n~~~v~zd~~~Vn~}}m}n~^~|~~y~{~z~~~~|~n~~~Nvznx~Z~l~~~~~~~~~x^~~l~~~~~~^|~v~~}n~v~^~Uv}~~jRn~~n}~v~|}~v~~~~^}xvnnzz~t~z~~~~~~uj}n]~v~v~h~^|~|~m^n~^^~}}~~~qzvn~~u~}z~z~^~~t~~~~~^zz|~~~~vnzL~v^w
+  ratio=0.92371633 n=59 m=1519 w=22 l2=3.9162 g6=zz}v~~~~n~~~~~^uzv~~v}~x~}n|~~~r^zz~}~~j~~~~n~}~]zN~~~n~~~~z~~~~~n~}~^~z~Tf|}~~nF|Nz~z~^\N~~~t|~~|~v}|]~un~}~~v~v~~n{~^~~zu~~]}zn~~vf~~Z~}~z~f~}~~|R|L~|~}~~~vfvv~~n~uv~~~~~n^~~~nv~^}~~~}~Ln~v~~~}zmmnz~^y^}nnv~~~^zn~n^~~n~~nzjz~^~z~~~\t~~|}~~zZx~^zrv}~}^~~~v~~~~n~n~^~n~~~~t~|[}~~^~^~nfv_
+  ratio=0.91257465 n=57 m=1391 w=19 l2=3.8510 g6=x~~|~~v~~~v~p{z}~~^y~l~~yx|~~~vn~Z~unz}~W~|~~|~^|~^~{^Nn~Vr~~~v~H^~|vy~~~}l~~~~|~~~xn~T~|~v~^~|}z~~zn~~n}~T|a|}~nr~y~~~~~~}^vv~~^^~~~~~u~~z~vnz~m~tFv~~~~}}znVz~N~y~~]~~n^~z~~~~~m~~}v\~~}~zun}t~~~jx~~~v~zxw^tjv~v~vvj~F|~z^ntn~\v\^~~^~F^z~v~~vn}~|d~|}~~~~nz}~~~v}~n~v~n
+  ratio=0.91020741 n=68 m=1990 w=22 l2=4.3094 g6=~?@C~z^~~~~~nzN~v~~~\{~~mkn}~^~nz^|Zv|~v~~~~V~{~~~^~~~~v~e|v|T}~~v~nv~~z~~~V}~lvy}}~~}~^jv~^~z~]n|z}~^Vz~Zrf~~rv~zdn}~}v~~l~~~~~|~~v~|~~e~l~~N}y~~v~~}\zl^~~~^V~ln^{kM]~v~nnn~]|~~i~v^~x^vv|~|~~|v~~~~~~z~~~^~~}y^~|~z}n~~vz~|z|v~~ynv}~~v~v~x^~v~~~~~l|t~~}|^~~|~n~|^~~~}v}tL~z~~~~~zf~~~^]m~N~Mnn~~~~~|~w^~vtj~}zb~~~z~lz}uN|~~~~~|~n~vv|n~ztnnz~||}~~^^~j~v}~}v~f~~}r~x|~ZN~~v~^~~~Z|z}z\~~N{
+  ratio=0.90975522 n=76 m=2491 w=23 l2=4.6318 g6=~?@K^~~nZ~n~f\k~j~vz\~v~z~z}~~~v~~x~z~}}|V~v|y~nNn~^~|~~xyV}|y~xz~~~~~n~ml|~ynn]|n^n~z~~~b|tR~~y~v~}v~^v~]~~]|z|~~zr~q~~nv~^~pzl~l}^m~~vz|~~v|~\~b~~|v~z~l~~v~{xj~}~nN^~}|nvtzn~\zz~~~~|~v~^}~~v}~~}~N|}|}~yN}Y|~~~t~nnzn|^z~~^~~~}r~|v|^t\|F~|nn^z~~~~~~~vmx~~nz~|^^~r~V|n~~~n~^L~V~~~~v}tz|}t|~~~~{~~|~~~~~v^~~^]vzz}~n~}^V^u~~^~}|~l|~~|~n~}~~z~~~|m^~|~~~v~~~|~x~~v~z~~~~t~{z|}|~|z|n~~v~~^~~}~}^zx|zEjm~}~fz~z||~z^zZtn|~^~~~~~nz}~~^~~~~~~|L~{^^~~~~~~z|~~~~^v}nvn~v~~~~nz^~j~~~^nvvn~z~~
+  ratio=0.90566320 n=80 m=2745 w=22 l2=4.7977 g6=~?@O||]|~z~~~zn~n~~~~r~z^n~}~tq~^~Nzx~n~|~z}}i}~~~~~j~z~~~~~~||z~zWn~^~~d~~N~~~zN~V~l~n~vy~znx~|u|l~^v~rn~~~nl}zzlv~~|n~v~~~^nz~z~}n~|zz|~v~~D~~~^m{}|m}}^lv}~~~l^~n~~}~^~~^~}~~l~^}p~nn~uz~f~}}~|}nz}~^f~v|^n{~~~Z}{xl|}^~}~v~[u^~~^t~W~z~]n~~yu~n~~}}~~{|~}znv~~^~~yl~~}}vn|~x~}}j~~~zev~^~nznn~uN|nln~~~~yu~~~vy~]Nz}||~Z~z~~}M}v~n~~^~^l~v~~~Nl|}~~~~v~~v~RF~~}|n~~~r~~~~v~~~~~~}zNF~v~Fz~j|~~n~~r~~~}~z}n~~Nn~~v^~u~v~}~~x^R~znZvy~fz~~l^~v~~Nzn^zm~|^~|u~~~|r~^ml~e~~~~~^~z^~^^x~~~~^~zvnv~^|~y~~~z|~}{}zq~zM~^^^~~~~^Zz~~~nv~v|^v}|}|~n~~z~[
