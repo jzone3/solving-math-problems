@@ -1,0 +1,1 @@
+DONE n=9 seeds=6985 solutions=0 nodes=601421057591 time=7991.2s

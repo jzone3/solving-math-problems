@@ -161,6 +161,9 @@ T2(5), T2(7) nonexistent; T2(9) = 0). Both programs agree on n ≤ 8.
 786,244,822 search nodes, 753 s wall (54 min CPU), **solutions = 0**. This independently
 re-proves the nonexistence of Tuscan-2 squares of order 9 with a different method
 (forward-checked candidate lists vs Kapralov's Cliquer clique search). Pipeline validated.
+Second, independently written searcher (dfs.c, plain row-by-row DFS, no candidate lists):
+`dfs 9` full exhaustion, 6985 top-level seeds, 601,421,057,591 nodes, 7991 s × 2 threads,
+**solutions = 0** — the two differently-coded programs agree, meeting the two-verifier standard.
 
 ### D3-pre. Note on searcher speed
 dfs2's coverage prune (union of surviving candidates' dist-1 arcs must cover all unused arcs)
@@ -198,5 +201,15 @@ containing the identity row: mirror.c (candidate lists + 128-bit arc masks) and 
   huge numbers. Exactly matches the self-mirror-arc parity proof.
 - n=11 (T2 mode, mirror.c): full exhaustion run — see result line below.
 
-### D6. T2(11) frontier run (dfs2 with coverage pruning)
-Long-running partial exhaustion over class-1 seeds; results appended below.
+### D6. T2(11) frontier run (dfs2 with coverage pruning) — cost estimate
+Long-running partial exhaustion over class-1 seeds. Honest negative: individual class-1 seed
+subtrees each cost on the order of 1+ CPU-hour (none of the first seeds completed within
+30+ CPU-minutes each across several attempts). Extrapolation: ≥ 549,012 CPU-hours ≈ 60+
+CPU-years for full exhaustion with this searcher — T2(11) is ~10⁵× harder than T2(9)
+(which takes ~1 CPU-hour today). A cluster-scale SAT/parallel effort is the right next step;
+a single-VM complete search is out of reach.
+
+### D5b. Mirror exhaustion results at the open orders
+- mirror2 11 (direct DFS, T2 mode): **full exhaustion, solutions = 0**, 10,717,468,881 nodes,
+  805 s × 2 threads. Machine-verifies theorem C6 at order 11: no mirror-symmetric T2(11).
+- mirror2 13: same search at order 13 (result line appended when the run completes).

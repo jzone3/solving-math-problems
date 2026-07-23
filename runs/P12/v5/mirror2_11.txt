@@ -1,0 +1,1 @@
+MIRROR2 DONE n=11 solutions=0 nodes=10717468881 time=804.8s
