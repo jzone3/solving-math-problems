@@ -95,6 +95,28 @@ Run to completion within this session's compute budget:
   minimum, independent confirmation that 509 is a robust (vertex-critical) local optimum for
   this vertex pool.
 
+### Resumed-session extensions (all negative — `anneal.py`)
+A second work phase re-attacked the problem from every remaining angle:
+- **All 43 Parts graphs tested directly for 4-colorability** (`test_all.py`): only
+  `v509e2442` and `v510e2502` are non-4-colorable; every subgraph/H-graph family member
+  (136–451 vertices) is SAT. No overlooked smaller 5-chromatic graph exists in Parts' data.
+- **Voronov `dist-graphs` plane data checked**: all plane DIMACS graphs have 3877 or 64513
+  vertices (large parent graphs; series 2 lives in a different field ℚ(√2,√3,√6,…) via
+  truncated Minkowski sums M2=clip(M1+M1,1), M3=M2+M1). Nothing < 509.
+- **2026 literature re-check**: the recent arXiv:2606.03419 ("Optimizing Explicit
+  Unit-Distance Lower-Bound Certificates") concerns the Erdős unit-distance *maximization*
+  problem (u(n) > n^{1+δ}), not 5-chromatic minimization; the 2025 Aggarwal PRIMES paper
+  targets edge-density/quantum contextuality. Still no public sub-509 graph.
+- **Simulated annealing** (`anneal.py`): Metropolis search over the pools maintaining
+  non-4-colorability, with swap (del 1–2 + add 1), pure-delete, and pure-add moves;
+  uphill moves accepted with prob. e^(−Δ/T), T: 3.0 → 0.3, drat-trim core jumps on every
+  UNSAT. 8 parallel chains, hours of wall time, thousands of SAT calls per chain:
+  - 7 chains seeded at the 509 record (enriched 5825-pool) climbed to n≈550–620 at high T
+    and re-converged to 513–522 with **best exactly 509** — the record is the floor of the
+    reachable basin even with uphill escapes.
+  - 1 chain seeded at the distinct 586-vertex graph (union pool) ground down
+    586 → 572 and asymptoted, never approaching 509.
+
 ## Why 509 was not beaten
 - The record is vertex-critical, so no subgraph of it works; a smaller graph needs a new
   Minkowski-sum / ring construction, not local surgery on the 509 graph.
@@ -110,7 +132,8 @@ Run to completion within this session's compute budget:
 - `field.py` exact ℚ(√3,√5,√11) arithmetic + Mathematica `.vtx` parser + exact edge finder.
 - `sat.py` 4-colouring CNF encoding + kissat driver.
 - `verify.py` standalone independent verifier (also copied to `solutions/P23/`).
-- `coremin.py` / `greedy.py` / `plateau.py` / `scan508.py` the minimization attack.
+- `coremin.py` / `greedy.py` / `plateau.py` / `scan508.py` / `addcore.py` / `anneal.py` /
+  `test_all.py` the minimization attack.
 - `best586.vtx` / `best586.edges` a fresh, fully re-verified 586-vertex 5-chromatic UDG
   (a distinct graph produced by our pipeline; demonstrates the toolchain end-to-end, > record).
 
