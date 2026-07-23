@@ -668,3 +668,43 @@ STATUS: frontier-pushed / near-miss (phase 8: corrected budget 0.936,
 252 free, re-aim growth improved to 7/6, fuel-conservation law, virtual
 safe-prime cascade = measure->0 but class-count wall; fresh-prime
 full-split closure refuted consistently with Hough).
+
+## 20. Phase 9: explicit modulus-multiset validation of section 3.8 - repair REFUTED as written
+
+Semantics pinned down from the sources (Nielsen sec.2, Owens sec.3.8):
+towers are finite, closed by a per-tower fresh large prime chosen to
+avoid duplication, so only the smooth/structured parts q^j*(inputs) can
+collide; a section's twenty "sets" have concrete relative modulus
+multisets (transcribed in ledger38.py: s1..s4 = 1,2,4,8^; s5..s8 = 5x;
+s9 = 25^; s10 = 11^; s11..s15 = five 3^ copies over (s1,s2)..(s9,s10);
+s16 = 13^; s17 = 17^; s18..s20 = structured 7^ copies).
+
+Machine check (ledger38.py, cap 10^6):
+  * baseline sanity: Owens's own sets 1-18 are pairwise modulus-disjoint
+    -> PASS (validates the multiset model);
+  * the blueprint43 T=43 repair (two extra 3^ copies over sets 11-14,
+    flagged "needs explicit check" in phase 5): for EVERY input pair
+    (a,b) from the section's sets, the extra 3^ copy collides with
+    existing moduli (min collisions > 0 over all 136 pairs; worst
+    (s10,s17) = 965).  Root cause: sets 11-15 are already 3^-scalings,
+    and 13^/17^/11^ sets contain 3-scaled inputs, so any further
+    3-scaling reproduces existing values 3^(i+j)*m.
+
+VERDICT: the phase-5 counting-level repair of section 3.8 is NOT
+realizable with fresh moduli inside the section.  A valid T=43 repair
+of 3.8 must import supports from outside the section's 3-scalable pool
+(e.g. new 2/5-adic structure, or cross-branch imports whose smooth
+parts avoid 3^j*{1,2,4,5,8*2^i,...}) - or the deficit must be closed by
+a genuinely different small-prime design, as Owens conjectured.
+
+Combined phase 8-9 picture: (i) corrected free fuel 0.936 < 1 (smooth)
+with divergent safe-prime reservoir but a class-count wall (sec.19);
+(ii) fresh-prime full-split closure refuted (sec.19e); (iii) the
+counting-level blueprint's binding repair refuted at explicit modulus
+level (this section).  All three walls are now machine-checked and
+quantified.
+
+STATUS: frontier-pushed (T>=43 remains open in this session; the
+counting-level near-miss of phase 5 is downgraded for section 3.8 by
+explicit modulus tracking; remaining routes are cross-section support
+imports or a small-prime redesign).
