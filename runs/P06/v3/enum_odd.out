@@ -1,0 +1,6 @@
+n=9 graphical sequences=4360 max g=-0.0124225199986 seq: 5 5 5 5 5 5 0 0 0
+n=11 graphical sequences=59347 max g=-0.00829880281469 seq: 6 6 6 6 6 6 6 0 0 0 0
+n=13 graphical sequences=836314 max g=-0.00593473551981 seq: 7 7 7 7 7 7 7 7 0 0 0 0 0
+n=15 graphical sequences=12042619 max g=-0.00445435034938 seq: 7 7 7 7 7 7 7 7 0 0 0 0 0 0 0
+n=17 graphical sequences=176005708 max g=-0.00346620797649 seq: 9 9 9 9 9 9 9 9 9 9 0 0 0 0 0 0 0
+n=19 graphical sequences=2600672457 max g=-0.00277392688272 seq: 10 10 10 10 10 10 10 10 10 10 10 0 0 0 0 0 0 0 0

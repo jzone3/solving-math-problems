@@ -106,9 +106,13 @@ Evidence for (★):
   attained only at K_t ∪ (t−2)K_1 sequences.
 - Exhaustive over ALL graphical degree sequences (`enum_seq.c`):
   n = 8 (1,212 seqs), 10 (16,015), 12 (222,116), 14 (3,166,851),
-  n = 16 (45,967,478), n = 18 (675,759,563), n = 20 (10,029,832,753): max g = 0
-  (±2e-15), argmax = K_t ∪ (t−2)K_1 sequence every time. n = 22 running
-  (8-way partition by d₁).
+  every n ≤ 22 (odd and even): counts include n = 16 (45,967,478),
+  n = 18 (675,759,563), n = 19 (2,600,672,457), n = 20 (10,029,832,753),
+  n = 21 (38,753,710,485; 8-way partition by d₁),
+  n = 22 (149,990,133,773; 8-way partition by d₁).
+  Max g = 0 (±2e-15) for even n, attained ONLY at the K_t ∪ (t−2)K_1 sequence
+  (t = n/2+1); max g < 0 strictly for odd n (as predicted by the closed form:
+  equality needs t−1 = n/2). No violation anywhere.
 - Closed form on the equality family: for K_t ∪ zeros, (★) reduces to
   (t−1)(n−t+1) ≤ n²/4 — plain AM–GM, equality iff t−1 = n/2, i.e. exactly
   the K_t ∪ (t−2)K_1 padding. So (★) is sharp precisely at the equality family.
@@ -124,8 +128,8 @@ Block-threshold asymptotics (`blocks.py`) found integer counterexamples to (★)
 among complete split graphs CS(n,s) = K_s ∨ \bar K_{n−s}: the smallest in that
 family is **CS(723, 6)** (g ≈ +6.8e-07; g grows to ≈ +0.0034 as n → ∞ at
 s ≈ 0.007n). So the AM–GM lower bound on R is asymptotically insufficient:
-(★) is a valid *finite verification tool* (its exhaust below n = 19 is what
-gives the frontier) but NOT a proof route for all n. The true objective
+(★) is a valid *finite verification tool* (its per-n exhausts give the frontier)
+but NOT a proof route for all n. The true objective
 Φ (using exact R) remains ≤ 0 on all these graphs — CS graphs satisfy 129
 comfortably; it is only the GM relaxation that crosses zero. Any full proof
 needs an R lower bound tight for split-like graphs (GM is tight only for
@@ -140,28 +144,37 @@ edge-weight-regular graphs).
 4. (★) for threshold sequences — machine-verified g ≤ 0 for all 2^(n−1) threshold
    creation sequences n ≤ 28 (`threshold.c`, `threshold_g.out`), but FALSE for
    n ≥ 723 (CS(723,6) is a threshold sequence) — so this skeleton proves 129 only
-   up to the first (★)-violating sequence (somewhere in 19 ≤ n₀ ≤ 723; every
-   exhausted n below n₀ yields a fully verified frontier).
+   up to the first (★)-violating sequence (somewhere in 23 ≤ n₀ ≤ 723 given the
+   n ≤ 22 exhaust; every exhausted n below n₀ yields a fully verified frontier).
 
 **Corollary of the (★) exhaust (steps 1 + enum): WoW conjecture 129 is TRUE for
-every graph on n ≤ 20 vertices** — pushes the exhaustive frontier from n = 10
-(Brewster–Dinneen–Faber 1995) to n = 20 without enumerating graphs (only degree
-sequences), on top of the direct geng exhaust n ≤ 12. (n = 22 in progress.)
+every graph on n ≤ 22 vertices** — pushes the exhaustive frontier from n = 10
+(Brewster–Dinneen–Faber 1995) to n = 22 without enumerating graphs (only degree
+sequences; ~1.9×10^11 sequences total vs ~10^30 graphs), on top of the direct
+geng exhaust n ≤ 12.
 
-## 7. Status: (updated as runs finish)
+## 7. Status
 
-- geng n=12 exhaustive (direct + Φ): IN PROGRESS
-- enum_seq n=20 ((★) frontier): IN PROGRESS
+- geng n=12 exhaustive: DONE — all 165,091,172,592 graphs on 12 vertices scanned
+  in 8 partitions (`scan12_*.err`); best direct dev−R = 0 and best padded Φ = 0,
+  both attained only by the equality family (e.g. K??CCEB_{Fo^ = K_7 ∪ 5K_1);
+  NO violation. Direct frontier: all graphs n ≤ 12.
+- enum_seq ((★) frontier): DONE for every n ≤ 22 — see §6; frontier n ≤ 22.
 - block-threshold asymptotics: DONE — Φ ≤ 0 everywhere (max 0 at equality family);
   (★) fails for CS(n≥723, s≈0.007n) (see correction above)
 - `find_n0.py`: over all ≤4-block integer threshold configs, the FIRST (★)
   violation is exactly n = 723, CS(723,6) (searched every n on a grid 20..725 +
   exact step-back); so the GM/Schur verification method is sound for n ≤ 722
-  within this class, and 19 ≤ n₀ ≤ 723 overall
+  within this class, and 23 ≤ n₀ ≤ 723 overall
 - padded hill-climb n = 100, 150, 200 (120k annealed edge flips × 4 restarts):
   DONE — max Φ = 0, reached only from clique seeds (equality family); random
   seeds stay far below (Φ ≈ −60..−80)
-- STATUS (preliminary): negative / frontier-pushed
+- STATUS: frontier-pushed (negative: no counterexample; conjecture 129 verified
+  for ALL graphs on n ≤ 22 vertices — up from n ≤ 10 in the literature — via the
+  (★) degree-sequence exhaust, plus direct verification of all graphs n ≤ 12,
+  all threshold graphs n ≤ 30, block-threshold asymptotics to n = 10^6, and
+  annealed searches to n = 200; new exact equality family K_t ∪ (t−2)K_1;
+  GM proof route shown to fail first at CS(723,6))
 
 ## 8. Conjecture 698 (definitional investigation + test of intended reading)
 
