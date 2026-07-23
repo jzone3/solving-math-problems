@@ -1,0 +1,42 @@
+>A nauty-copyg -g
+>Z  1 graphs copied from stdin to stdout
+trees n=3: 1, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  2 graphs copied from stdin to stdout
+trees n=4: 2, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  3 graphs copied from stdin to stdout
+trees n=5: 3, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  6 graphs copied from stdin to stdout
+trees n=6: 6, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  11 graphs copied from stdin to stdout
+trees n=7: 11, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  23 graphs copied from stdin to stdout
+trees n=8: 23, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  47 graphs copied from stdin to stdout
+trees n=9: 47, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  106 graphs copied from stdin to stdout
+trees n=10: 106, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  235 graphs copied from stdin to stdout
+trees n=11: 235, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  551 graphs copied from stdin to stdout
+trees n=12: 551, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  1301 graphs copied from stdin to stdout
+trees n=13: 1301, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  3159 graphs copied from stdin to stdout
+trees n=14: 3159, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  7741 graphs copied from stdin to stdout
+trees n=15: 7741, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  19320 graphs copied from stdin to stdout
+trees n=16: 19320, ord2-sum fails=0

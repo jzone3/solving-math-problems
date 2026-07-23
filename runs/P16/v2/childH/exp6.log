@@ -1,0 +1,3 @@
+n9_sumfails.txt: 8 graphs, exact ord2-sum infeasible: 0 []
+../childE/n10_fails.txt: 190 graphs, exact ord2-sum infeasible: 0 []
+EXACT RECHECK PASSED

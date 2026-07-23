@@ -1,0 +1,6 @@
+>A nauty-copyg -g
+>Z  48629 graphs copied from stdin to stdout
+trees n=17: 48629, ord2-sum fails=0
+>A nauty-copyg -g
+>Z  123867 graphs copied from stdin to stdout
+trees n=18: 123867, ord2-sum fails=0
