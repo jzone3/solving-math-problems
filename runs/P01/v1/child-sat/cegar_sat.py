@@ -8,7 +8,7 @@ clauses persist across CEGAR iterations -- far cheaper than re-presolving CP-SAT
 
 Usage: python3 cegar_sat.py n [time_limit_s] [max_block_per_iter]
 """
-import sys, time, functools
+import os, sys, time, functools
 print = functools.partial(print, flush=True)
 from pysat.solvers import Cadical195
 from pysat.card import CardEnc, EncType
@@ -144,9 +144,10 @@ def main():
                 for (i, j) in chosen:
                     f.write(f"{i} {j}\n")
             return 1
+        maps_for_block = dmaps if not os.environ.get("NOIMG") else dmaps[:1]
         for ch in others:
             seen = set()
-            for m in dmaps:
+            for m in maps_for_block:
                 img = frozenset(canon(m[i], m[j]) for (i, j) in ch)
                 if img in seen:
                     continue
