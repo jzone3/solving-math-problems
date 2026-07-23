@@ -155,6 +155,46 @@ to organize large sparse graphs — the equality structure is hard to reach
 from random at this scale). No violation; large-n regime shows no upward
 drift of the maximum.
 
+## 5. Third pass (coordinator "keep grinding"): n = 12 exhaustive + VT census
+
+### Fast threshold checker (`check2.c` / 64-bit `check64.c`)
+Rewrote the exhaustive checker around the contrapositive threshold logic
+(same reduction as circulant.py):
+- Householder tridiagonalization + Sturm-sequence bisection for the top-2
+  eigenvalues only, returning rigorous UPPER bounds (hi end of the bisection
+  bracket, tol 1e-5) — ~3.4× faster than full cyclic Jacobi.
+- t := (λ₁²+λ₂²)/(2m). If t ≤ 2/3: skip — a violation would need ω ≤ 2,
+  and ω=2 (triangle-free) is a THEOREM (Lin–Ning–Wu 2021); ω=1 ⇒ m=0.
+- Else kmax := ⌈1/(1−t)⌉−1; single query has_clique(kmax+1): if a
+  (kmax+1)-clique exists the graph cannot violate; else print CANDIDATE for
+  exact offline recheck. False positives are only graphs within the
+  eigenvalue tolerance of exact equality.
+- Validated: n ≤ 10 exhaustively — candidates are exactly the known
+  equality graphs (all recheck to ratio = 1.0 exactly in numpy/networkx;
+  e.g. n=9: 12 candidates, all balanced complete multipartite, 0 violations).
+- Throughput ~407k graphs/s/core at n=10 (vs 120k/s for check.c).
+
+### Connectivity reduction (rigorous)
+For the n=12 sweep only CONNECTED graphs need checking: if G = C ⊔ D is
+disconnected, either (a) λ₁,λ₂ both come from one component C with ≤ 11
+vertices — then λ₁²+λ₂² ≤ 2m_C(1−1/ω(C)) ≤ 2m(1−1/ω(G)) by the completed
+n ≤ 11 exhaustive verification; or (b) λ₁(C), λ₁(D) from two components —
+then Nikiforov's theorem per component gives λ₁(C)²+λ₁(D)² ≤
+2m_C(1−1/ω(C)) + 2m_D(1−1/ω(D)) ≤ 2m(1−1/ω(G)). So disconnected n=12
+graphs cannot be minimal counterexamples given n ≤ 11 is verified.
+
+### n = 12 exhaustive sweep (running)
+`nauty-geng -c 12` (153,620,333,545 connected graphs), 16-way res/mod split
+through check2. Expected ~14 h wall on 8 cores.
+
+### Vertex-transitive census sweep (running)
+Downloaded the full Holt–Royle census of ALL vertex-transitive graphs on
+< 48 vertices (Zenodo record 4010122, ~11 GB) and ran check64 over every
+graph, n = 10..47. Results so far (graphs checked / candidates — all
+candidates are exact-equality complete multipartite graphs pending final
+exact recheck): n≤39 done, e.g. n=36: 1,963,202 graphs, 10 candidates;
+n=38: 814,216 graphs, 2 candidates. Big classes n=40,42,44,46 in progress.
+
 ## STATUS: negative — no counterexample found. Frontier pushed:
 conjecture exhaustively machine-verified for ALL graphs n ≤ 11
 (1.03 × 10⁹ graphs) and ALL circulants n ≤ 42; ~110M+ annealed samples
