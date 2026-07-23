@@ -642,3 +642,29 @@ remaining construction problem, now with quantified fuel slack.
 STATUS: frontier-pushed / near-miss (fuel obstruction of section 17
 removed; corrected budget 0.936 + divergent safe primes; exact-zero
 endgame is the single remaining constructive gap).
+
+### 19e. Phase 8b: refutation of the fresh-prime full-split closure (patchtest.py)
+
+The tempting endgame — per residual class B, pick a fresh prime q >= 97
+and cover B's q children by q congruences with distinct Owens-free
+moduli D*q, D | window — is SOUND per child (inclusion machine-checked)
+but has an architecture-independent capacity flaw: each class needs
+q <= tau(42C) distinct divisors, distinct classes need distinct primes,
+so patchable classes ~ pi(tau(42C)) = O(log C) while classes = C.
+Table (patchtest.py): C = 61,261,200 gives only 245 usable primes.  It
+never closes — reassuringly consistent with Hough's theorem (otherwise
+T -> T+1 would iterate unboundedly).
+
+Sharper synthesis of the true remaining gap: the virtual safe-prime
+cascade drives MEASURE to 0 geometrically (patchrun.log reached 0.051
+by prime 173, still ~x0.93/prime) but leaves hole CLASS COUNT at 2.16M;
+exact closure requires class-count concentration (Owens's towers confine
+each remainder to ONE chain), and that concentration is precisely what
+the corrected 0.936 < 1 smooth fuel cannot buy on its own.  The open
+constructive problem is therefore: a smooth-core design whose residual
+after the 0.936 fuel is confined to O(pool) classes — not more measure.
+
+STATUS: frontier-pushed / near-miss (phase 8: corrected budget 0.936,
+252 free, re-aim growth improved to 7/6, fuel-conservation law, virtual
+safe-prime cascade = measure->0 but class-count wall; fresh-prime
+full-split closure refuted consistently with Hough).
