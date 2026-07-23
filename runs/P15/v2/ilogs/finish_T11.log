@@ -115,3 +115,21 @@ cycle 5: uncovered=42538
   one_opt pass: uncovered=42538 t=891s
   one_opt pass: uncovered=42538 t=900s
 cycle 6: uncovered=42538
+  repair it=50: best uncovered=42538 t=576s
+  one_opt pass: uncovered=42538 t=96s
+  one_opt pass: uncovered=42538 t=159s
+  one_opt pass: uncovered=42538 t=220s
+  one_opt pass: uncovered=42538 t=280s
+  one_opt pass: uncovered=42538 t=340s
+  one_opt pass: uncovered=42538 t=401s
+  one_opt pass: uncovered=42538 t=466s
+  one_opt pass: uncovered=42538 t=528s
+  one_opt pass: uncovered=42538 t=604s
+  one_opt pass: uncovered=42538 t=670s
+  one_opt pass: uncovered=42538 t=733s
+  one_opt pass: uncovered=42538 t=799s
+  one_opt pass: uncovered=42538 t=861s
+  one_opt pass: uncovered=42538 t=900s
+cycle 7: uncovered=42538
+finish_dense: INCOMPLETE congs=1670 uncovered=42538
+wrote covers/T11_2.2e9.txt.part

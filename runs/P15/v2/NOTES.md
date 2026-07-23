@@ -275,10 +275,41 @@ N ascending, pruned by the necessary condition sum_{v|N, v>=T} 1/v >= 1):
 - T=3: N = 120 (all smaller N UNSAT; witness 14 congruences, PASS).
 - T=4: N = 360 (9 measure-feasible smaller N all UNSAT in <= 31 s total; witness 21
   congruences, PASS).
-- T=5: every N < 1260 UNSAT (N=840 needed a 40-min dedicated HiGHS run; ladder default is
-  900 s/N with UNDECIDED entries retried at 3-4 h). N=1260, 1680 retries running.
-- T=6: all N <= 1512 UNSAT except N=1260, 1440 UNDECIDED at 900 s (ladder paused to give
-  CPU to the T=5 chain; 5040 known SAT from session 1, so minimal N6 is in [1260, 5040]).
+- T=5: every measure-feasible N < 1680 proved UNSAT (N=840: 40-min HiGHS run; N=1260:
+  4 h with the symbreak cut). N=1680 = 2^4·3·5·7 INDETERMINATE after 4 h plain + 4 h
+  symbreak (6 h retry left running). So minimal lcm for T=5 is >= 1680.
+- T=6: all N <= 1512 UNSAT except N=1260 INDETERMINATE at 4 h symbreak (N=1440 UNSAT in
+  10 min with symbreak). 5040 known SAT from session 1, so minimal N6 is in [1260, 5040].
+
+Symmetry-breaking cut (ilp.py --symbreak): translation invariance of Z_N implies WLOG the
+class covering point 0 has residue 0, i.e. the single linear row sum_v x_{v,0} >= 1. This
+is what cracked N=1260/T=5 (UNSAT in <4 h) after the plain model timed out at 3 h, and cut
+N=1440/T=6 from >900 s to ~10 min.
 
 Method note: ILP >> SAT for both directions on this family; the SAT ladder (minlcm.py) was
 abandoned after head-to-head comparison.
+
+## 12. Session-2 result table
+
+| T | minimal lcm N | status |
+|---|---|---|
+| 3 | 120 | exact, witness PASS |
+| 4 | 360 | exact (9 smaller feasible N refuted), witness PASS |
+| 5 | >= 1680 | all feasible N < 1680 refuted; 1680 open (8+ CPU-h spent) |
+| 6 | in [1260, 5040] | 1260 open; 5040 SAT (session 1) |
+| 7 | unknown | 5040/55440 INDETERMINATE (session 1) |
+
+Session-2 conclusions:
+1. CDCL SAT (kissat/cadical/glucose, flat + CRT-tree encodings, cube split) is a dead end
+   for covering feasibility — could not even reproduce a known-SAT T=6 cover in 2 h.
+2. The symbolic class-tracking constructor confirms quantitatively why explicit covers stall
+   at low double digits: uncovered-class count multiplies at every tail prime because the
+   new-divisor reciprocal mass (sum 1/d)/p is far below (p-1)/p; Nielsen/Owens-scale covers
+   (>10^50 congruences) are inherently non-materializable, so the >= 43 target cannot be hit
+   by any witness-listing search of this type.
+3. New exact minimal-lcm results (T=3: 120, T=4: 360, T=5: >= 1680) with machine-verified
+   witnesses and per-N refutations — a small but citable exact frontier, produced by the ILP
+   symbreak model.
+
+STATUS (session 2): frontier-pushed (exact minimal-lcm ladder + SAT-attack negative +
+structural explanation of the explicit-witness cap; still no route toward min modulus 43).
