@@ -27,10 +27,14 @@ def run(N, m, budget, out=None, seed=1):
     rng = np.random.default_rng(seed)
     mods = [d for d in divisors(N) if d >= m and d > 1]
     idx = {n: i for i, n in enumerate(mods)}
-    res = np.array([rng.integers(0, n) for n in mods])
     cnt = np.zeros(N, dtype=np.int32)
     tmod = {n: np.arange(N) % n for n in mods}
+    # greedy init: smallest moduli first, each takes the residue hitting most holes
+    res = np.zeros(len(mods), dtype=np.int64)
     for i, n in enumerate(mods):
+        holes = cnt == 0
+        gain = np.bincount(tmod[n][holes], minlength=n)
+        res[i] = int(gain.argmax())
         cnt[res[i]::n] += 1
     w = np.ones(N)
     energy = int((cnt == 0).sum())
@@ -84,6 +88,48 @@ def run(N, m, budget, out=None, seed=1):
         if out:
             json.dump({"m": m, "N": N, "cover": sol}, open(out, "w"))
         return sol
+    # endgame repair: restore best state, strip moduli that cover nothing
+    # uniquely, and let kissat place them exactly onto the remaining holes
+    res = best_state
+    cnt[:] = 0
+    for i, n in enumerate(mods):
+        cnt[int(res[i])::n] += 1
+    uniq = []
+    for i, n in enumerate(mods):
+        sl = cnt[int(res[i])::n]
+        uniq.append((int((sl == 1).sum()), i))
+    uniq.sort()
+    freed = []
+    n_free = min(40, len(mods) // 2)
+    for _, i in uniq[:n_free]:
+        n = mods[i]
+        cnt[int(res[i])::n] -= 1
+        freed.append(n)
+    holes = np.flatnonzero(cnt == 0)
+    print(f"repair: {len(holes)} holes, {len(freed)} freed mods", flush=True)
+    if len(holes) and len(freed) and len(holes) < 100000:
+        from layered2 import sat_final
+        sol, status = sat_final([int(h) for h in holes], freed, 1800)
+        print(f"repair SAT: {status}", flush=True)
+        if sol is not None:
+            fixed = {n for _, n in sol}
+            cover = sol + [(int(res[i]), n) for i, n in enumerate(mods)
+                           if n not in freed]
+            cover += [(int(res[i]), n) for i, n in enumerate(mods)
+                      if n in freed and n not in fixed]
+            cov = bytearray(N)
+            ms = [n for _, n in cover]
+            assert len(ms) == len(set(ms)) and min(ms) >= m
+            for a, n in cover:
+                for t in range(a % n, N, n):
+                    cov[t] = 1
+            assert all(cov)
+            print(f"SOLVED-REPAIR size={len(cover)}", flush=True)
+            if out:
+                json.dump({"m": m, "N": N,
+                           "cover": sorted(cover, key=lambda x: x[1])},
+                          open(out, "w"))
+            return cover
     print(f"NOSOLUTION best={best} t={time.time()-t0:.1f}s it={it}", flush=True)
     return None
 

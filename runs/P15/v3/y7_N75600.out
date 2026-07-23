@@ -16,3 +16,9 @@ c parsed header 'p cnf 614098 1011018'
 c clause variable ratio 1.65
 c finished parsing after 0.32 seconds
 c allocated 65.0 MB after parsing
+c
+c UNKNOWN
+c 
+c final minimum of 15 unsatisfied clauses
+c total process time of 4422.42 seconds
+c maximally allocated 173.7 MB
