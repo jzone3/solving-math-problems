@@ -184,3 +184,32 @@ for the regular case; plus the
 arc-transitive census to 640 vertices and 2AT slice to 2000 vertices are clean.
 All 3-colorings are recorded as machine-checkable certificates and re-verified by the
 independent exact verifier (`verify.py`, PASS).
+
+## 10. V2 continuation (same branch, second wave)
+
+New attack lines launched after the frontier result (scripts in `scripts/`):
+
+1. **SMS (SAT Modulo Symmetries, Kirchweger–Szeider)** built from source
+   (smsg + cadical_sms). Sanity check: `--vertices 11 --girth 4 --chi-low 4
+   --all-graphs` returns exactly the Grötzsch graph (1 graph). Live runs:
+   exhaustive `--delta-low 4 --Delta-upp 4 --girth 6 --chi-low 4` at n=35, 36
+   (`--all-graphs`), existence-only at n=38, 40, and Δ≤4/δ≥3 (general-graph,
+   via ADAM Thm 3.3 reduction) at n=28, 30. Long-running.
+2. **Matching-CEGAR on known 4-chromatic girth-6 graphs** (`matching_cegar2.py`):
+   decide whether a known (5-regular) 4-chromatic girth-6 graph has a perfect
+   matching / an edge subset covering all degree-5 vertices whose removal keeps
+   χ = 4 (would give a Δ≤4 girth-6 witness ⇒ 4-regular witness by ADAM Thm 3.3).
+   Incremental relax-var coloring solver + greedy mono-set minimization.
+   **Result: EG66 (Exoo–Goedgebeur LCF(6,11), 66 vertices) — perfect-matching
+   variant is UNSAT after 1764 CEGAR iterations: no perfect matching of EG66
+   leaves a non-3-colorable graph.** Edge-cover variant on EG66, and both
+   variants on the EG 96-vertex Cayley graph (rebuilt from the three published
+   permutation generators; verified 5-regular, girth 6, χ≥4) and the EG171
+   girth-7 LCF(9,19) graph: running.
+3. **Random structured families** (all girth-6 filtered exactly, SAT 3-col):
+   ~600k 4-regular LCF(r,s) graphs (n=30..130), ~112k+ 4-regular Z_k-lifts of
+   Chvátal/Brinkmann (voltage assignments with all ≤5-closed-walks nonzero);
+   all 3-colorable so far.
+4. **Tabucol-hardness annealing over lift voltages**: objective = iterations
+   Tabucol needs to 3-color (budget-capped); shows real gradient (440→2900/3000
+   on Brinkmann Z_7 lifts, n=147) but plateaus below cap; no witness.
