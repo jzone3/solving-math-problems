@@ -49,25 +49,38 @@ class State:
 
 
 def recreate(st, rng, jitter):
+    """Lazy greedy: gains only decrease as coverage grows, so a stale-max
+    heap with on-pop rescoring is (near-)exact and ~|mods|x faster."""
+    import heapq
     N = st.N
     unc = st.cov == 0
-    free = [n for n in st.mods if n not in st.sel]
-    while unc.any() and free:
-        scored = []
-        for n in free:
-            c = unc.reshape(N // n, n).sum(axis=0)
-            a = int(c.argmax())
-            g = int(c[a])
-            if g:
-                scored.append((g / n, a, n))
-        if not scored:
-            break
-        scored.sort(key=lambda t: -t[0])
-        top = scored[0][0]
-        pool = [s for s in scored if s[0] >= top * (1 - jitter)][:4]
-        _, a, n = pool[rng.integers(len(pool))]
+
+    def score(n):
+        c = unc.reshape(N // n, n).sum(axis=0)
+        g = int(c.max())
+        if g == 0:
+            return 0.0, 0
+        near = np.flatnonzero(c >= max(1, int(g * (1 - jitter))))
+        a = int(near[rng.integers(len(near))])
+        return g / n, a
+
+    heap = []
+    for n in st.mods:
+        if n not in st.sel:
+            s, a = score(n)
+            if s > 0:
+                heap.append((-s, a, n))
+    heapq.heapify(heap)
+    while heap and unc.any():
+        neg, a_old, n = heapq.heappop(heap)
+        s, a = score(n)
+        if s == 0:
+            continue
+        # standard lazy greedy: accept if still at least the (stale) runner-up
+        if heap and -heap[0][0] > s:
+            heapq.heappush(heap, (-s, a, n))
+            continue
         st.add(n, a)
-        free.remove(n)
         unc = st.cov == 0
 
 
