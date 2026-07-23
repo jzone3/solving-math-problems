@@ -1,6 +1,6 @@
 # Curated Problem Catalog
 
-21 problems selected from `research/` (see `context/PLAN.md` for criteria). Each file contains
+25 problems selected from `research/` (see `context/PLAN.md` for criteria). Each file contains
 the statement, status, attack plan, and 5 prompt variants for parallel ultra-mode solve runs
 (see `context/METHODOLOGY.md`).
 
@@ -27,8 +27,14 @@ the statement, status, attack plan, and 5 prompt variants for parallel ultra-mod
 | P19 | Wide Partition Conjecture (Chow–Taylor) | comb. designs | 4 | 4 | partition + UNSAT tableau cert |
 | P20 | Grünbaum 4-regular 4-chromatic girth ≥ 6 | graph theory | 4 | 4 | one graph + DRAT 3-col UNSAT |
 | P21 | Hoffman–Singleton decomposition of K₅₀ | designs | 4 | 3 | 7 edge-disjoint HoSi copies |
+| P22 | Folkman Fe(3,3;4) — Graham's $100 (H₃/G₁₂₇ arrowing) | Ramsey | 5 | 4 | one SAT/DRAT arrowing cert |
+| P23 | 5-chromatic unit-distance graph < 509 vertices | geometry | 5 | 4 | exact-coordinate UDG + DRAT |
+| P24 | Biplane 2-(121,16,2): automorphism-cell eliminations | designs | 4 | 4 | per-cell DRAT certs |
+| P25 | Football pool K₃(6,1) ∈ [71,73] | covering codes | 4 | 4 | size-72 code or UNSAT |
 
 Wave-2 additions (2026-07-23) sourced from research/wave2-*.md.
+Wave-3 additions (2026-07-23, named/notable problems, no more automated-conjecture lists)
+sourced from research/wave3-*.md.
 
 Notable exclusions (researched, rejected): Costas 32/33 (decades of prior compute), Hadamard-668
 (active dedicated project), S(2,6,46) (picked-over), lonely runner k=9 / no-three-in-line D(61) /
