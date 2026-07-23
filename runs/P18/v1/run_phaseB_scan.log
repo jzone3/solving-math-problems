@@ -1,0 +1,5 @@
+N=360    mass=1.1889 |mods|=12 exhausted nodes=3316
+N=720    mass=1.2097 |mods|=13 exhausted nodes=9076
+N=1080   mass=1.2241 |mods|=17 exhausted nodes=29236
+N=1440   mass=1.2236 |mods|=15 exhausted nodes=29236
+N=2160   mass=1.2449 |mods|=18 exhausted nodes=377716
