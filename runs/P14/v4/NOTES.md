@@ -109,4 +109,35 @@ from any solution even allowing +12 uphill. Consistent with CPro1's 48 h heurist
 - Round 3 (started ~01:30 UTC, 3 h): per instance 1 hop worker with KICK=24, 600 s legs from
   round-2 bests + 1 fresh anneal3 worker with 3 h of random restarts.
 
-## STATUS: running
+- Round 3 results (3 h): KICK=24 / 600 s-leg hop workers AND fresh 3 h random-restart
+  workers, one each per instance — floors IDENTICAL again: i1: 10, i2: 4, i3: 6, i4: 8.
+  Best matrices in `round3/` (row-feasibility + L1 values independently re-verified in
+  Python before saving).
+
+## 7. Compute summary
+
+≈ 7 h wall × 8 cores ≈ 56 core-hours of local search (≈ 10¹¹–10¹² moves total), plus ≈ 160 M
+  nodes of exhaustive shallow escape search. Every reported number machine-computed; the
+  engine itself validated by solving a known-existing sibling BTD and BIBDs (witness passes
+  `solutions/P14/verify.py`).
+
+## 8. Conclusions
+
+- None of the 4 open instances was solved. Best (all-±1, exact-column) near-misses:
+  | instance | min L1 violation | defect shape |
+  |---|---|---|
+  | (14,18;7,1,9;7,4)  | 10 | ±1 10-cycle over 6 rows |
+  | (12,15;6,2,10;8,6) | 4  | ±1 4-cycle (2×2 alternating rectangle) |
+  | (12,20;4,3,10;6,4) | 6  | ±1 6-cycle over 6 rows |
+  | (14,28;8,3,14;7,6) | 8  | ±1 8-cycle |
+- The floors are reproducible from random starts, LP-rounded starts, and 100+ basin-hopping
+  kicks of two sizes; the L1=4 plateau of (12,15) has a verified energy gap (no compound
+  trade with 0<dE<8) and no exit within 6 trades at +8 slack. If these designs exist, their
+  basins are essentially invisible to violation-guided local search — consistent with all 4
+  surviving CPro1's 48 h heuristics while 7 siblings fell. Complete methods (V1 ILP / V2 SAT /
+  V3 Kramer–Mesner) or nonexistence proofs (V5) look like the right tools; the small, highly
+  structured defect cycles (esp. the isolated 4-cycle for (12,15;6,2,10;8,6)) may be useful
+  input for a V5 nonexistence attempt.
+
+## STATUS: negative / near-miss — no witness found; best near-misses L1 = 10/4/6/8 with
+   reproducible, energetically isolated defect-cycle structure; no nonexistence claim.
