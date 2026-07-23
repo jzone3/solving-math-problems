@@ -1,1 +1,154 @@
 TIGHT n=19 m=168 tag=Kn-cyc(3,) g6=RF~~~~~~~~~~~~~~~~~~~~~~~~~~~w t=6.3s
+TIGHT n=19 m=165 tag=Kn-cyc(3, 3) g6=RFzf~~~~~~~~~~~~~~~~~~~~~~~~~w t=12.6s
+TIGHT n=19 m=162 tag=Kn-cyc(3, 3, 3) g6=RFzf~z{~~~~~~~~~~~~~~~~~~~~~~w t=3.6s
+TIGHT n=19 m=159 tag=Kn-cyc(3, 3, 3, 3) g6=RFzf~z{~~~^{~~~~~~~~~~~~~~~~~w t=3.4s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 3, 3, 3, 3) g6=RFzf~z{~~~^{~~~~^~f~~~~~~~~~~w t=2.4s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 3, 3, 3, 3) g6=RFzf~z{~~~^{~~~~^~f~~~~z~~f~~w t=1.3s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 3, 3, 3, 4) g6=RFzf~z{~~~^{~~~~^~v~y~~~~~~~~w t=2.6s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 3, 3, 3, 5) g6=RFzf~z{~~~^{~~~~^~v~}~~Z~~~~~w t=2.7s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 3, 3, 6) g6=RFzf~z{~~~^{~~~~^~v~}~~z~|v~~w t=2.4s
+TIGHT n=19 m=158 tag=Kn-cyc(3, 3, 3, 4) g6=RFzf~z{~~~^}~y~~~~~~~~~~~~~~~w t=10.3s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 3, 3, 4, 4) g6=RFzf~z{~~~^}~y~~~~v~}~~j~~~~~w t=2.3s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 3, 4, 5) g6=RFzf~z{~~~^}~y~~~~v~}~~z~}v~~w t=2.4s
+TIGHT n=19 m=157 tag=Kn-cyc(3, 3, 3, 5) g6=RFzf~z{~~~^}~}~z^~~~~~~~~~~~~w t=3.4s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 3, 3, 6) g6=RFzf~z{~~~^}~}~~^|v~~~~~~~~~~w t=8.7s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 3, 3, 7) g6=RFzf~z{~~~^}~}~~^~v~]~~~~~~~~w t=2.5s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 3, 3, 8) g6=RFzf~z{~~~^}~}~~^~v~}~zz~~~~~w t=2.2s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 3, 9) g6=RFzf~z{~~~^}~}~~^~v~}~~z~nv~~w t=2.5s
+TIGHT n=19 m=161 tag=Kn-cyc(3, 3, 4) g6=RFzf~z}~V~~~~~~~~~~~~~~~~~~~~w t=3.4s
+TIGHT n=19 m=157 tag=Kn-cyc(3, 3, 4, 4) g6=RFzf~z}~V~~}~}~|^~~~~~~~~~~~~w t=3.7s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 4, 4, 4) g6=RFzf~z}~V~~}~}~|^~~~}~~z~~V~~w t=4.1s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 3, 4, 5) g6=RFzf~z}~V~~}~}~~^}v~~~~~~~~~~w t=4.0s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 3, 4, 6) g6=RFzf~z}~V~~}~}~~^~v~m~~~~~~~~w t=3.5s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 3, 4, 7) g6=RFzf~z}~V~~}~}~~^~v~}~|z~~~~~w t=3.1s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 4, 8) g6=RFzf~z}~V~~}~}~~^~v~}~~z~vv~~w t=2.8s
+TIGHT n=19 m=160 tag=Kn-cyc(3, 3, 5) g6=RFzf~z}~vz^~~~~~~~~~~~~~~~~~~w t=7.3s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 3, 5, 5) g6=RFzf~z}~vz^~~}~~^~v~u~~~~~~~~w t=2.6s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 3, 5, 6) g6=RFzf~z}~vz^~~}~~^~v~}~}z~~~~~w t=2.8s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 5, 7) g6=RFzf~z}~vz^~~}~~^~v~}~~z~zv~~w t=3.1s
+TIGHT n=19 m=159 tag=Kn-cyc(3, 3, 6) g6=RFzf~z}~v~^m~~~~~~~~~~~~~~~~~w t=3.3s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 6, 6) g6=RFzf~z}~v~^m~~~~^~v~}~~z~|v~~w t=1.2s
+TIGHT n=19 m=158 tag=Kn-cyc(3, 3, 7) g6=RFzf~z}~v~^}~]~~~~~~~~~~~~~~~w t=3.3s
+TIGHT n=19 m=157 tag=Kn-cyc(3, 3, 8) g6=RFzf~z}~v~^}~}~^^~~~~~~~~~~~~w t=2.7s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 3, 9) g6=RFzf~z}~v~^}~}~~^nv~~~~~~~~~~w t=3.2s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 3, 10) g6=RFzf~z}~v~^}~}~~^~vz}~~~~~~~~w t=2.5s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 3, 11) g6=RFzf~z}~v~^}~}~~^~v~}~^z~~~~~w t=3.1s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 3, 12) g6=RFzf~z}~v~^}~}~~^~v~}~~z|~v~~w t=2.5s
+TIGHT n=19 m=164 tag=Kn-cyc(3, 4) g6=RFzvV~~~~~~~~~~~~~~~~~~~~~~~~w t=9.5s
+TIGHT n=19 m=160 tag=Kn-cyc(3, 4, 4) g6=RFzvV~}~v|^~~~~~~~~~~~~~~~~~~w t=6.2s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 4, 4, 4) g6=RFzvV~}~v|^~~}~~^~V~~~~~~~~~~w t=3.2s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 4, 4, 5) g6=RFzvV~}~v|^~~}~~^~v~u~~~~~~~~w t=7.9s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 4, 4, 6) g6=RFzvV~}~v|^~~}~~^~v~}~}z~~~~~w t=4.3s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 4, 4, 7) g6=RFzvV~}~v|^~~}~~^~v~}~~z~zv~~w t=3.1s
+TIGHT n=19 m=159 tag=Kn-cyc(3, 4, 5) g6=RFzvV~}~v~^u~~~~~~~~~~~~~~~~~w t=3.3s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 4, 5, 5) g6=RFzvV~}~v~^u~~~~^~v~}~~Z~~~~~w t=2.2s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 4, 5, 6) g6=RFzvV~}~v~^u~~~~^~v~}~~z~|v~~w t=1.4s
+TIGHT n=19 m=158 tag=Kn-cyc(3, 4, 6) g6=RFzvV~}~v~^}~m~~~~~~~~~~~~~~~w t=12.9s
+TIGHT n=19 m=157 tag=Kn-cyc(3, 4, 7) g6=RFzvV~}~v~^}~}~n^~~~~~~~~~~~~w t=6.4s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 4, 8) g6=RFzvV~}~v~^}~}~~^vv~~~~~~~~~~w t=19.1s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 4, 9) g6=RFzvV~}~v~^}~}~~^~v|}~~~~~~~~w t=4.6s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 4, 10) g6=RFzvV~}~v~^}~}~~^~v~}~nz~~~~~w t=3.1s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 4, 11) g6=RFzvV~}~v~^}~}~~^~v~}~~z}~v~~w t=3.5s
+TIGHT n=19 m=163 tag=Kn-cyc(3, 5) g6=RFzvvZ~~~~~~~~~~~~~~~~~~~~~~~w t=31.8s
+TIGHT n=19 m=158 tag=Kn-cyc(3, 5, 5) g6=RFzvvZ~~v~^}~u~~~~~~~~~~~~~~~w t=3.3s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 5, 5, 5) g6=RFzvvZ~~v~^}~u~~~~v~}~~z~}v~~w t=4.0s
+TIGHT n=19 m=157 tag=Kn-cyc(3, 5, 6) g6=RFzvvZ~~v~^}~}~v^~~~~~~~~~~~~w t=14.9s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 5, 7) g6=RFzvvZ~~v~^}~}~~^zv~~~~~~~~~~w t=3.8s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 5, 8) g6=RFzvvZ~~v~^}~}~~^~v}}~~~~~~~~w t=4.1s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 5, 9) g6=RFzvvZ~~v~^}~}~~^~v~}~vz~~~~~w t=3.6s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 5, 10) g6=RFzvvZ~~v~^}~}~~^~v~}~~z~^v~~w t=2.8s
+TIGHT n=19 m=162 tag=Kn-cyc(3, 6) g6=RFzvvzm~~~~~~~~~~~~~~~~~~~~~~w t=10.1s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 6, 6) g6=RFzvvzm~~~^}~}~~^|v~~~~~~~~~~w t=4.2s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 6, 7) g6=RFzvvzm~~~^}~}~~^~v~]~~~~~~~~w t=3.7s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 6, 8) g6=RFzvvzm~~~^}~}~~^~v~}~zz~~~~~w t=6.1s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 6, 9) g6=RFzvvzm~~~^}~}~~^~v~}~~z~nv~~w t=1.6s
+TIGHT n=19 m=161 tag=Kn-cyc(3, 7) g6=RFzvvz}zv~~~~~~~~~~~~~~~~~~~~w t=12.4s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 7, 7) g6=RFzvvz}zv~~}~}~~^~v~}~|z~~~~~w t=5.8s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 7, 8) g6=RFzvvz}zv~~}~}~~^~v~}~~z~vv~~w t=3.2s
+TIGHT n=19 m=160 tag=Kn-cyc(3, 8) g6=RFzvvz}~v^^~~~~~~~~~~~~~~~~~~w t=2.9s
+TIGHT n=19 m=159 tag=Kn-cyc(3, 9) g6=RFzvvz}~v~\}~~~~~~~~~~~~~~~~~w t=3.3s
+TIGHT n=19 m=158 tag=Kn-cyc(3, 10) g6=RFzvvz}~v~^}z}~~~~~~~~~~~~~~~w t=3.3s
+TIGHT n=19 m=157 tag=Kn-cyc(3, 11) g6=RFzvvz}~v~^}~}z~^~~~~~~~~~~~~w t=4.0s
+TIGHT n=19 m=156 tag=Kn-cyc(3, 12) g6=RFzvvz}~v~^}~}~~\~v~~~~~~~~~~w t=2.7s
+TIGHT n=19 m=155 tag=Kn-cyc(3, 13) g6=RFzvvz}~v~^}~}~~^~v^}~~~~~~~~w t=3.4s
+TIGHT n=19 m=154 tag=Kn-cyc(3, 14) g6=RFzvvz}~v~^}~}~~^~v~}z~z~~~~~w t=2.5s
+TIGHT n=19 m=153 tag=Kn-cyc(3, 15) g6=RFzvvz}~v~^}~}~~^~v~}~~zn~v~~w t=6.4s
+TIGHT n=19 m=167 tag=Kn-cyc(4,) g6=RQ~~~~~~~~~~~~~~~~~~~~~~~~~~~w t=10.9s
+TIGHT n=19 m=163 tag=Kn-cyc(4, 4) g6=RQ~vvj~~~~~~~~~~~~~~~~~~~~~~~w t=10.8s
+TIGHT n=19 m=159 tag=Kn-cyc(4, 4, 4) g6=RQ~vvj~~v~^y~~~~~~~~~~~~~~~~~w t=8.6s
+TIGHT n=19 m=155 tag=Kn-cyc(4, 4, 4, 4) g6=RQ~vvj~~v~^y~~~~^~v~y~~~~~~~~w t=2.3s
+TIGHT n=19 m=154 tag=Kn-cyc(4, 4, 4, 5) g6=RQ~vvj~~v~^y~~~~^~v~}~~Z~~~~~w t=6.5s
+TIGHT n=19 m=153 tag=Kn-cyc(4, 4, 4, 6) g6=RQ~vvj~~v~^y~~~~^~v~}~~z~|v~~w t=3.0s
+TIGHT n=19 m=158 tag=Kn-cyc(4, 4, 5) g6=RQ~vvj~~v~^}~u~~~~~~~~~~~~~~~w t=2.6s
+TIGHT n=19 m=153 tag=Kn-cyc(4, 4, 5, 5) g6=RQ~vvj~~v~^}~u~~~~v~}~~z~}v~~w t=3.4s
+TIGHT n=19 m=157 tag=Kn-cyc(4, 4, 6) g6=RQ~vvj~~v~^}~}~v^~~~~~~~~~~~~w t=3.2s
+TIGHT n=19 m=156 tag=Kn-cyc(4, 4, 7) g6=RQ~vvj~~v~^}~}~~^zv~~~~~~~~~~w t=2.4s
+TIGHT n=19 m=155 tag=Kn-cyc(4, 4, 8) g6=RQ~vvj~~v~^}~}~~^~v}}~~~~~~~~w t=3.3s
+TIGHT n=19 m=154 tag=Kn-cyc(4, 4, 9) g6=RQ~vvj~~v~^}~}~~^~v~}~vz~~~~~w t=3.4s
+TIGHT n=19 m=153 tag=Kn-cyc(4, 4, 10) g6=RQ~vvj~~v~^}~}~~^~v~}~~z~^v~~w t=3.4s
+TIGHT n=19 m=162 tag=Kn-cyc(4, 5) g6=RQ~vvzu~~~~~~~~~~~~~~~~~~~~~~w t=7.2s
+TIGHT n=19 m=157 tag=Kn-cyc(4, 5, 5) g6=RQ~vvzu~~~^}~}~z^~~~~~~~~~~~~w t=10.4s
+TIGHT n=19 m=156 tag=Kn-cyc(4, 5, 6) g6=RQ~vvzu~~~^}~}~~^|v~~~~~~~~~~w t=3.4s
+TIGHT n=19 m=155 tag=Kn-cyc(4, 5, 7) g6=RQ~vvzu~~~^}~}~~^~v~]~~~~~~~~w t=2.8s
+TIGHT n=19 m=154 tag=Kn-cyc(4, 5, 8) g6=RQ~vvzu~~~^}~}~~^~v~}~zz~~~~~w t=2.9s
+TIGHT n=19 m=153 tag=Kn-cyc(4, 5, 9) g6=RQ~vvzu~~~^}~}~~^~v~}~~z~nv~~w t=2.5s
+TIGHT n=19 m=161 tag=Kn-cyc(4, 6) g6=RQ~vvz}|v~~~~~~~~~~~~~~~~~~~~w t=9.6s
+TIGHT n=19 m=155 tag=Kn-cyc(4, 6, 6) g6=RQ~vvz}|v~~}~}~~^~v~m~~~~~~~~w t=2.8s
+TIGHT n=19 m=154 tag=Kn-cyc(4, 6, 7) g6=RQ~vvz}|v~~}~}~~^~v~}~|z~~~~~w t=6.2s
+TIGHT n=19 m=153 tag=Kn-cyc(4, 6, 8) g6=RQ~vvz}|v~~}~}~~^~v~}~~z~vv~~w t=2.3s
+TIGHT n=19 m=160 tag=Kn-cyc(4, 7) g6=RQ~vvz}~vn^~~~~~~~~~~~~~~~~~~w t=3.1s
+TIGHT n=19 m=153 tag=Kn-cyc(4, 7, 7) g6=RQ~vvz}~vn^~~}~~^~v~}~~z~zv~~w t=2.8s
+TIGHT n=19 m=159 tag=Kn-cyc(4, 8) g6=RQ~vvz}~v~]}~~~~~~~~~~~~~~~~~w t=2.8s
+TIGHT n=19 m=158 tag=Kn-cyc(4, 9) g6=RQ~vvz}~v~^}|}~~~~~~~~~~~~~~~w t=8.7s
+TIGHT n=19 m=157 tag=Kn-cyc(4, 10) g6=RQ~vvz}~v~^}~}|~^~~~~~~~~~~~~w t=6.5s
+TIGHT n=19 m=156 tag=Kn-cyc(4, 11) g6=RQ~vvz}~v~^}~}~~]~v~~~~~~~~~~w t=2.4s
+TIGHT n=19 m=155 tag=Kn-cyc(4, 12) g6=RQ~vvz}~v~^}~}~~^~vn}~~~~~~~~w t=3.2s
+TIGHT n=19 m=154 tag=Kn-cyc(4, 13) g6=RQ~vvz}~v~^}~}~~^~v~}|~z~~~~~w t=7.2s
+TIGHT n=19 m=153 tag=Kn-cyc(4, 14) g6=RQ~vvz}~v~^}~}~~^~v~}~~zv~v~~w t=3.2s
+TIGHT n=19 m=166 tag=Kn-cyc(5,) g6=RUZ~~~~~~~~~~~~~~~~~~~~~~~~~~w t=3.4s
+TIGHT n=19 m=161 tag=Kn-cyc(5, 5) g6=RUZ~vz}}v~~~~~~~~~~~~~~~~~~~~w t=4.0s
+TIGHT n=19 m=156 tag=Kn-cyc(5, 5, 5) g6=RUZ~vz}}v~~}~}~~^}v~~~~~~~~~~w t=2.7s
+TIGHT n=19 m=155 tag=Kn-cyc(5, 5, 6) g6=RUZ~vz}}v~~}~}~~^~v~m~~~~~~~~w t=2.3s
+TIGHT n=19 m=154 tag=Kn-cyc(5, 5, 7) g6=RUZ~vz}}v~~}~}~~^~v~}~|z~~~~~w t=2.4s
+TIGHT n=19 m=153 tag=Kn-cyc(5, 5, 8) g6=RUZ~vz}}v~~}~}~~^~v~}~~z~vv~~w t=2.5s
+TIGHT n=19 m=160 tag=Kn-cyc(5, 6) g6=RUZ~vz}~vv^~~~~~~~~~~~~~~~~~~w t=2.8s
+TIGHT n=19 m=154 tag=Kn-cyc(5, 6, 6) g6=RUZ~vz}~vv^~~}~~^~v~}~}z~~~~~w t=2.8s
+TIGHT n=19 m=153 tag=Kn-cyc(5, 6, 7) g6=RUZ~vz}~vv^~~}~~^~v~}~~z~zv~~w t=1.4s
+TIGHT n=19 m=159 tag=Kn-cyc(5, 7) g6=RUZ~vz}~v~^]~~~~~~~~~~~~~~~~~w t=8.7s
+TIGHT n=19 m=158 tag=Kn-cyc(5, 8) g6=RUZ~vz}~v~^}}}~~~~~~~~~~~~~~~w t=3.6s
+TIGHT n=19 m=157 tag=Kn-cyc(5, 9) g6=RUZ~vz}~v~^}~}}~^~~~~~~~~~~~~w t=3.3s
+TIGHT n=19 m=156 tag=Kn-cyc(5, 10) g6=RUZ~vz}~v~^}~}~~^^v~~~~~~~~~~w t=3.3s
+TIGHT n=19 m=155 tag=Kn-cyc(5, 11) g6=RUZ~vz}~v~^}~}~~^~vv}~~~~~~~~w t=2.6s
+TIGHT n=19 m=154 tag=Kn-cyc(5, 12) g6=RUZ~vz}~v~^}~}~~^~v~}}~z~~~~~w t=1.1s
+TIGHT n=19 m=153 tag=Kn-cyc(5, 13) g6=RUZ~vz}~v~^}~}~~^~v~}~~zz~v~~w t=2.1s
+TIGHT n=19 m=165 tag=Kn-cyc(6,) g6=RUxv~~~~~~~~~~~~~~~~~~~~~~~~~w t=1.0s
+TIGHT n=19 m=159 tag=Kn-cyc(6, 6) g6=RUxv~z}~v~^m~~~~~~~~~~~~~~~~~w t=0.5s
+TIGHT n=19 m=153 tag=Kn-cyc(6, 6, 6) g6=RUxv~z}~v~^m~~~~^~v~}~~z~|v~~w t=3.5s
+TIGHT n=19 m=158 tag=Kn-cyc(6, 7) g6=RUxv~z}~v~^}~]~~~~~~~~~~~~~~~w t=6.1s
+TIGHT n=19 m=157 tag=Kn-cyc(6, 8) g6=RUxv~z}~v~^}~}~^^~~~~~~~~~~~~w t=3.1s
+TIGHT n=19 m=156 tag=Kn-cyc(6, 9) g6=RUxv~z}~v~^}~}~~^nv~~~~~~~~~~w t=0.5s
+TIGHT n=19 m=155 tag=Kn-cyc(6, 10) g6=RUxv~z}~v~^}~}~~^~vz}~~~~~~~~w t=10.4s
+TIGHT n=19 m=154 tag=Kn-cyc(6, 11) g6=RUxv~z}~v~^}~}~~^~v~}~^z~~~~~w t=3.0s
+TIGHT n=19 m=153 tag=Kn-cyc(6, 12) g6=RUxv~z}~v~^}~}~~^~v~}~~z|~v~~w t=2.6s
+TIGHT n=19 m=164 tag=Kn-cyc(7,) g6=RUzrv~~~~~~~~~~~~~~~~~~~~~~~~w t=10.2s
+TIGHT n=19 m=157 tag=Kn-cyc(7, 7) g6=RUzrv~}~v~^}~}~n^~~~~~~~~~~~~w t=2.5s
+TIGHT n=19 m=156 tag=Kn-cyc(7, 8) g6=RUzrv~}~v~^}~}~~^vv~~~~~~~~~~w t=2.9s
+TIGHT n=19 m=155 tag=Kn-cyc(7, 9) g6=RUzrv~}~v~^}~}~~^~v|}~~~~~~~~w t=3.2s
+TIGHT n=19 m=154 tag=Kn-cyc(7, 10) g6=RUzrv~}~v~^}~}~~^~v~}~nz~~~~~w t=2.3s
+TIGHT n=19 m=153 tag=Kn-cyc(7, 11) g6=RUzrv~}~v~^}~}~~^~v~}~~z}~v~~w t=1.4s
+TIGHT n=19 m=163 tag=Kn-cyc(8,) g6=RUzvrz~~~~~~~~~~~~~~~~~~~~~~~w t=3.1s
+TIGHT n=19 m=155 tag=Kn-cyc(8, 8) g6=RUzvrz~~v~^}~}~~^~v}}~~~~~~~~w t=0.4s
+TIGHT n=19 m=154 tag=Kn-cyc(8, 9) g6=RUzvrz~~v~^}~}~~^~v~}~vz~~~~~w t=2.4s
+TIGHT n=19 m=153 tag=Kn-cyc(8, 10) g6=RUzvrz~~v~^}~}~~^~v~}~~z~^v~~w t=2.2s
+TIGHT n=19 m=162 tag=Kn-cyc(9,) g6=RUzvvx}~~~~~~~~~~~~~~~~~~~~~~w t=8.3s
+TIGHT n=19 m=153 tag=Kn-cyc(9, 9) g6=RUzvvx}~~~^}~}~~^~v~}~~z~nv~~w t=3.3s
+TIGHT n=19 m=161 tag=Kn-cyc(10,) g6=RUzvvz}^v~~~~~~~~~~~~~~~~~~~~w t=2.9s
+TIGHT n=19 m=160 tag=Kn-cyc(11,) g6=RUzvvz}~r~^~~~~~~~~~~~~~~~~~~w t=3.2s
+TIGHT n=19 m=159 tag=Kn-cyc(12,) g6=RUzvvz}~v~N}~~~~~~~~~~~~~~~~~w t=25.0s
+TIGHT n=19 m=158 tag=Kn-cyc(13,) g6=RUzvvz}~v~^}^}~~~~~~~~~~~~~~~w t=2.2s
+TIGHT n=19 m=157 tag=Kn-cyc(14,) g6=RUzvvz}~v~^}~}^~^~~~~~~~~~~~~w t=3.5s
+TIGHT n=19 m=156 tag=Kn-cyc(15,) g6=RUzvvz}~v~^}~}~~N~v~~~~~~~~~~w t=0.9s
+TIGHT n=19 m=155 tag=Kn-cyc(16,) g6=RUzvvz}~v~^}~}~~^~r~}~~~~~~~~w t=0.6s
+TIGHT n=19 m=154 tag=Kn-cyc(17,) g6=RUzvvz}~v~^}~}~~^~v~}^~z~~~~~w t=2.8s
+TIGHT n=19 m=153 tag=Kn-cyc(18,) g6=RUzvvz}~v~^}~}~~^~v~}~~x~~v~~w t=1.4s
+SUMMARY n=19 mode=dense {'OK': 39, 'TIGHT': 153, 'CE': 0} time=1744s

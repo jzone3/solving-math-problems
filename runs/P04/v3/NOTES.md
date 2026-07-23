@@ -94,4 +94,42 @@ decomposition D of candidate G only excludes exactly G (any supergraph breaks D,
 subgraph changes E(G)), so the abstraction never compresses — hence the graph-outer-loop
 + SAT-inner-decider architecture used here.
 
-## STATUS: (running)
+## 4. Final results (~45 core-hours of SAT compute, 8-way parallel)
+
+Every candidate decided at k = ⌊(n−1)/2⌋; **UNSAT never occurred** ⇒ no counterexample.
+
+| campaign | n | graphs tested | TIGHT (min = bound) | CE |
+|---|---|---|---|---|
+| circulant (exhaustive, all Eulerian C_n(S)) | 13–21 | 2,867 | 1 per n | 0 |
+| random dense δ≥6 | 13 / 14 / 15 / 16 | 20,000 / 20,000 / 10,000 / 10,000 | 993 / 1,457 / 426 / 680 | 0 |
+| random dense δ≥6 | 17 / 18 / 19 / 20 | 5,000 / 5,000 / 4,000 / 4,000 | 171 / 303 / 129 / 210 | 0 |
+| dense K_n−H (exhaustive within defect class) | 13 / 14 / 15 / 16 / 17 / 19 | 795 / 4,637 / 838 / 17,125 / 884 / 192 | 753 / 4,097 / 821 / **17,125 (all!)** / 859 / 153 | 0 |
+| perturb-tight hill-climb walks | 13–18 | 8,000×4 + 5,000×2 | 4,376/5,753/4,513/5,488/4,061/3,362 | 0 |
+
+Totals: ≈ 152,000 Eulerian graphs decided, ≈ 58,000 found TIGHT, **0 counterexamples**.
+
+Key structural findings (near-miss landscape):
+- The extremal (TIGHT) set is enormous and flat: at n=16 *every single one* of the 17,125
+  densest Eulerian graphs (K16 minus an all-odd-degree defect with ≤21 edges) meets the
+  bound with equality but never exceeds it. Same pattern at all other n.
+- Tightness survives most parity-preserving 3–6-cycle toggles (hill-climb walks stayed
+  tight ~60–80% of steps yet never crossed the bound), so there is no local gradient
+  toward a counterexample anywhere we probed — consistent with the conjecture being true
+  with a large, rigid extremal family (K_{2k+1} and its dense Eulerian neighborhood).
+- UNSAT at k−1 (the tightness certificates) is fast (≤ ~1 s at n≤17), so the encoding
+  scales well past the published exhaustive frontier of n = 12; the bottleneck for a
+  frontier-push (V2-style) is graph enumeration, not the SAT decision.
+
+Dead ends:
+- Pure Σ2 SAT / CEGAR formulation (see §3 note): blocking clauses don't compress; QBF
+  would be required and is hopeless at these sizes.
+- Circulants are useless as counterexample candidates: only K_n-like extremes are even
+  tight; all vertex-transitive candidates decompose comfortably.
+
+## STATUS: negative
+
+No counterexample to Hajós' conjecture found among ≈152k SAT-decided Eulerian graphs at
+n = 13–21 (random dense δ≥6, exhaustive circulants, exhaustive densest K_n−H families,
+tightness-guided hill-climbing). ~58k graphs verified extremal (min = ⌊(n−1)/2⌋ exactly);
+none exceeded the bound. No `solutions/P04/verify.py` is provided since no witness is
+claimed.

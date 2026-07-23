@@ -1,1 +1,3 @@
 n=19: 192 dense candidates (shard 0/1)
+[100/192] {'OK': 21, 'TIGHT': 79, 'CE': 0} 955s
+DONE dense n=19 {'OK': 39, 'TIGHT': 153, 'CE': 0} total=1744s
