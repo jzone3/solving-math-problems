@@ -137,9 +137,46 @@ enumeration + triple scan), 781 k exhaustive biconnected graphs, 30 000+ hybrids
 - Hub-splitting on t=1 hybrids never produced t=0: the hub's role is always inherited by
   one of the split vertices.
 
-## STATUS: negative
+## 8. Escalation (second phase, same session)
 
-No counterexample found. Frontier data: min triple intersection is 1 over all searched
-general graphs (trivially attained; never 0), and 2 over all 2-connected graphs searched
-(exhaustive n ≤ 9, sparse n = 10; extremal family K₂,ₘ). Machinery + seeds committed for
-follow-up runs.
+Orchestrator asked to push decisively past the first stop. New machinery:
+
+- **`lp.c` — exact C scanner** (~2000× the Python throughput after a Hamiltonian-path
+  early-exit: traceable graphs have t = n). Validated: bit-identical histograms vs the
+  Python enumerator on all biconnected n = 7, 8, 9, and vs brute-force triple checks on
+  sampled graphs. Two scoring bugs were found and fixed during cross-validation (honest
+  logging): (a) Python `triple_score` counted degenerate triples (P_i,P_j,P_i), i.e.
+  min-pairwise leaked into the reported t; (b) both scorers had an unsound prune skipping
+  pairs with pairwise intersection ≥ current best (a triple can beat its own pairwise
+  intersections). Neither bug affects the headline min-t values (re-verified exactly), and
+  no claim was ever made off the buggy numbers alone.
+- **Weighted-skeleton (subdivision) encoding** (`weighted.py`): search small skeletons +
+  integer edge weights; realization subdivides each edge into w unit edges (Walther/
+  Zamfirescu extremal graphs are exactly such subdivisions). Exact scoring via `lp`.
+  400 restarts × 20 000 iters (skeletons n_s ≤ 15, realized n ≤ 52): plateau again t = 1,
+  never 0 — same single-hub inheritance as the hybrid family.
+
+### Exhaustive frontier, final (exact C scanner, nauty-geng -C, isomorph-free)
+
+| family | #graphs | min t | attained by |
+|---|---|---|---|
+| all biconnected n ≤ 9 | 201 k | 2 (n≥7) | K₂,ₙ₋₂ and K₂,ₙ₋₂+e only |
+| all biconnected n = 10 | 9 743 542 | 2 | K₂,₈, K₂,₈+e only (hist: 2→2, 3→150, 4→63, 5→1 534, 6→380, 7→31 325, 8→2 270, 9→352, 10→9 707 466) |
+| all biconnected n = 11 | 900 969 091 | 2 | K₂,₉, K₂,₉+e only (hist: 2→2, 3→217, 4→76, 5→36 451, 6→18 976, 7→18 880, 8→958 352, 9→72 942, 10→6 734, 11→899 856 461) |
+| biconnected n = 11, ≤ 22 edges (earlier partial) | 57 M | 2 | same two graphs |
+| biconnected n = 12, ≤ 22 edges | (see lp12s_*.err) | (see below) | |
+
+**Result:** the mini-conjecture "in a 2-connected graph any three longest paths share ≥ 2
+vertices" is now verified exhaustively for **all 2-connected graphs on ≤ 11 vertices**
+(0.9 × 10⁹ graphs) — and the extremal graphs are exactly K₂,ₘ (± hub edge) at every order
+7 ≤ n ≤ 11. No SAT/exhaustive result of this shape appears in the literature (the known
+exhaustive Gallai-3 frontier is over all connected graphs, ~n ≤ 12, checking t ≥ 1 only).
+
+## STATUS: negative / frontier-pushed
+
+No counterexample found (t never 0 anywhere: ~10⁶ annealed graphs to n = 40, 30 k+
+hypotraceable-piece hybrids, 8 × 10⁶ weighted-skeleton realizations to n = 52, ~10⁹
+exhaustive biconnected graphs). New frontier: min triple intersection = 2 over ALL
+2-connected graphs with n ≤ 11, extremal family exactly K₂,ₘ / K₂,ₘ+e; general-graph
+plateau t = 1 always via a single inherited hub. Machinery (exact C scanner, hybridizer,
+weighted-skeleton annealer) committed for follow-up runs.

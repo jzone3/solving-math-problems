@@ -60,8 +60,14 @@ static void add_mask2(uint64_t m) {
 
 static int path[MAXN];
 
+static int ham_found;
+
 static void dfs(int v, uint64_t used, int len, int start) {
-    if (len > bestL) { bestL = len; clear_masks(); cur_stamp_global++; }
+    if (ham_found) return;
+    if (len > bestL) {
+        bestL = len; clear_masks(); cur_stamp_global++;
+        if (len == n) { ham_found = 1; return; }  /* t = n, uninteresting */
+    }
     if (len == bestL && start <= path[len - 1]) add_mask2(used);
     uint64_t avail = adjm[v] & ~used;
     if (!avail) return;
@@ -134,12 +140,13 @@ int main(int argc, char **argv) {
         if (parse_g6(line) < 0) continue;
         cnt++;
         bestL = 0;
+        ham_found = 0;
         clear_masks();
-        for (int s = 0; s < n; s++) {
+        for (int s = 0; s < n && !ham_found; s++) {
             path[0] = s;
             dfs(s, 1ULL << s, 1, s);
         }
-        int t = triple_min();
+        int t = ham_found ? n : triple_min();
         hist[t]++;
         if (t < global_min) {
             global_min = t;
