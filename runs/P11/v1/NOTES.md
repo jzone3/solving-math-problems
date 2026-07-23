@@ -119,6 +119,44 @@ the x_0=+1 fixing; propriety clauses cover all residue classes):
   `pipeline105.py` CRT-specific), launch scripts included, state/logs in this directory.
 - Total compute: ~7 h wall, up to 8 cores (kissat 4.0.4, CP-SAT 9.14, python-sat).
 
-STATUS: negative — no new CW found; CW(96,36) search space partially pruned (2/8 top-level
-fold classes eliminated, hundreds of subtree UNSATs); lift/enumeration frontier precisely
-characterized (class-size-2 easy vs size-3/4 infeasible) for follow-up runs.
+## Resumed session (2026-07-23): two fundamentally different attacks
+
+### Attack 2 — joint cyclic/negacyclic (b,c) decomposition (`bc_sat.py`)
+For even n=2d: b_j=a_j+a_{j+d}, c_j=a_j−a_{j+d} is a bijection (no lift needed):
+b has cyclic PAF=0, c has *negacyclic* NAF=0, Σb=6, Σb²=Σc²=36, plus the ternary
+coupling |b_j|=2→c_j=0, |c_j|=2→b_j=0, |b_j|=1↔|c_j|=1. Encoded with shared product
+vars + totalizers (n=48: 79k vars/751k clauses). Result: on known-SAT CW(48,36),
+kissat TIMEOUT at 1800 s both plain AND with the correct mod-6 fold streamliner.
+→ the bijective reformulation does not help CDCL; dead end (logged bc48_*.log).
+
+### Attack 3 — multiplier/affine-orbit invariant search (`multiplier_search.py`, `mult_cpsat.py`)
+Assume the row is fixed by an affine bijection φ(j)=t·j+r (t a unit mod n): then a is
+constant on φ-orbits — one ternary variable per orbit. Complete CP-SAT decision per
+(t,r): orbit-size cardinalities (Σ sizes over support = k, signed = 6) + exact PAF
+as quadratics over ≤48 orbit vars. Validated: instantly finds classical CW(13,9)
+(multiplier 3). Exhaustive sweeps over ALL distinct affine-orbit partitions with
+≤48 orbits (120 s/class, then 600 s retries for UNKNOWNs):
+- CW(96,36):  complete sweep — 347 UNSAT, 80 UNKNOWN (all still UNKNOWN at 600 s;
+  all have ≥36 orbits), 139 skipped (>48 orbits). **No affine-invariant witness.**
+- CW(132,81): complete sweep — 861 UNSAT + 33 more UNSAT at 600 s, rest UNKNOWN,
+  286 skipped. No witness.
+- CW(105,36): 950+ classes decided (all UNSAT/UNKNOWN), sweep still running.
+- CW(112,36): 550+ decided; CW(117,36): 1070+ decided; CW(120,49): 760+ decided —
+  all UNSAT/UNKNOWN so far, no witness.
+Interpretation: none of the six open cells has a CW row invariant under any affine
+symmetry with ≤48 orbits (modulo the residual UNKNOWN classes listed in the logs) —
+consistent with AGZ's multiplier-based exhaustions; any witness must have small or
+trivial stabilizer, i.e. these cells are hard for structure-first searches too.
+
+### Residual open leads (for the next run)
+- Finish the UNKNOWN affine classes (multretry logs) with hours-scale budgets.
+- Kramer–Mesner style: relax invariance to a SUBGROUP of ⟨φ⟩ (fewer symmetries,
+  more orbits) with the same CP-SAT scheme — interpolates toward the full problem.
+- Field-descent (AGZ §3): enumerate z·z̄=36 in Z[ζ_m] per m|n via factorization of
+  (2) and (3) in cyclotomic fields; would either construct or possibly rule out cells.
+
+STATUS: negative — no new CW found across three attack families (fold-and-lift SAT
+pipelines; joint cyclic/negacyclic bijective SAT; exhaustive affine-orbit CP-SAT
+sweeps). New citable exclusions: 2/8 mod-6 fold classes eliminated for CW(96,36);
+no affine-invariant (≤48 orbits) witness exists for CW(96,36)/CW(132,81) (complete
+sweeps) and none found in 950+/550+/1070+/760+ decided classes for CW(105/112/117/120).
