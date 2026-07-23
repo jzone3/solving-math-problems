@@ -60,6 +60,9 @@ block ALL length-(L+1) simple paths of each candidate graph (candidates are spar
   Independent, differently-written longest-path enumerator (pure Python DFS vs. the C bitmask
   DP oracle). The n=7 run (~2M graphs, pure Python) was still running at session end and was
   cut; n <= 6 completed.
+- Second, C-language brute force (brute7.c, third independent longest-path implementation):
+  ALL connected labeled graphs on n=7 (1,866,256) and n=8 (251,548,592) — every triple of
+  longest paths intersects, PASS (brute7.out / brute8.out).
 - SAT layer positively tested: first solver call at each (n,L) IS satisfiable (iters > 0 before
   UNSAT), i.e. three length-L paths with empty common intersection exist as combinatorial
   objects; only the "no longer path" CEGAR condition kills them.
