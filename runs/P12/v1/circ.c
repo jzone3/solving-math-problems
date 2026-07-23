@@ -30,6 +30,9 @@ static uint8_t rowsv[NMAX][NMAX];    /* rows 0..M-1, each length N */
 static long long nodes, budget_limit, budget;
 static int mode, maxrow_seen;
 static long slice = 0, stride = 1, r1count = 0;
+/* degree counts of UNUSED pairs; circular rows need every symbol to have a
+ * successor/predecessor at distance 1 AND 2 in every remaining row */
+static int od1[NMAX], id1[NMAX], od2[NMAX], id2[NMAX];
 static long long arrays_found;
 
 static uint64_t rng = 999331;
@@ -102,6 +105,13 @@ static void try_cuts(void) {
 static int fillrow(int r, int pos, int used);
 
 static int placerow(int r) {
+    {
+        int rows_left = M - r;
+        if (rows_left > 0)
+            for (int a = 0; a < N; a++)
+                if (od1[a] < rows_left || id1[a] < rows_left ||
+                    od2[a] < rows_left || id2[a] < rows_left) return 0;
+    }
     if (r > maxrow_seen) {
         maxrow_seen = r;
         fprintf(stderr, "circ row %d nodes %lld\n", r, nodes);
@@ -117,6 +127,56 @@ static int placerow(int r) {
     return fillrow(r, 1, 1);
 }
 
+/* matching prune: symbols a1 (chain head) and all unplaced symbols need
+ * pairwise-distinct unused d1 successors within {unplaced} (one may use the
+ * wrap successor 0).  Kuhn's algorithm on <=13 vertices. */
+static int matchR[NMAX + 1];      /* successor symbol -> matched source (or -1) */
+static int try_kuhn(int src, int candmask, int *visited, const int *succ) {
+    int m = succ[src] & candmask;
+    while (m) {
+        int t = __builtin_ctz(m);
+        m &= m - 1;
+        if (*visited >> t & 1) continue;
+        *visited |= 1 << t;
+        if (matchR[t] < 0 || try_kuhn(matchR[t], candmask, visited, succ)) {
+            matchR[t] = src;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+static int hall_ok(int r, int pos, int used, int a1) {
+    int unplaced = ((1 << N) - 1) & ~used;   /* symbols not yet in row */
+    int nu = __builtin_popcount(unplaced);
+    if (nu > 7) return 1;                    /* only check near row end */
+    int succ[NMAX + 1];
+    /* candidates for successors: unplaced symbols, plus wrap target 0 (bit N) */
+    int candmask = unplaced | (1 << N);
+    for (int s = 0; s < N; s++) succ[s] = 0;
+    int srcs[NMAX], ns = 0;
+    srcs[ns++] = a1;
+    int tmp = unplaced;
+    while (tmp) { int s = __builtin_ctz(tmp); tmp &= tmp - 1; srcs[ns++] = s; }
+    for (int i = 0; i < ns; i++) {
+        int s = srcs[i];
+        int m = 0;
+        for (int t2 = unplaced & ~(1 << s); t2; t2 &= t2 - 1) {
+            int t = __builtin_ctz(t2);
+            if (!pget(ud1, s, t)) m |= 1 << t;
+        }
+        if (i > 0 && !pget(ud1, s, 0)) m |= 1 << N;  /* wrap: only unplaced can be last */
+        succ[s] = m;
+        if (!m) return 0;
+    }
+    for (int t = 0; t <= N; t++) matchR[t] = -1;
+    for (int i = 0; i < ns; i++) {
+        int visited = 0;
+        if (!try_kuhn(srcs[i], candmask, &visited, succ)) return 0;
+    }
+    return 1;
+}
+
 static int fillrow(int r, int pos, int used) {
     if (++nodes > budget_limit && mode == 1) return -1;
     uint8_t *row = rowsv[r];
@@ -127,8 +187,10 @@ static int fillrow(int r, int pos, int used) {
         if (pget(ud2, b, 0) || pget(ud2, a, row[1])) return 0;
         if (mode == 2 && r == 1 && (r1count++ % stride) != slice) return 0;
         pset(ud1, a, 0); pset(ud2, b, 0); pset(ud2, a, row[1]);
+        od1[a]--; id1[0]--; od2[b]--; id2[0]--; od2[a]--; id2[row[1]]--;
         int f = placerow(r + 1);
         pclr(ud1, a, 0); pclr(ud2, b, 0); pclr(ud2, a, row[1]);
+        od1[a]++; id1[0]++; od2[b]++; id2[0]++; od2[a]++; id2[row[1]]++;
         return f;
     }
     int ord[NMAX], cnt = 0;
@@ -144,11 +206,17 @@ static int fillrow(int r, int pos, int used) {
         if (pget(ud1, a1, s)) continue;
         if (a2 >= 0 && pget(ud2, a2, s)) continue;
         pset(ud1, a1, s);
-        if (a2 >= 0) pset(ud2, a2, s);
+        od1[a1]--; id1[s]--;
+        if (a2 >= 0) { pset(ud2, a2, s); od2[a2]--; id2[s]--; }
         row[pos] = s;
-        int f = fillrow(r, pos + 1, used | 1 << s);
+        int f;
+        /* Hall matching prune measured net-negative (n=9: 119M->86M nodes but
+         * 3x CPU); disabled. */
+        if (0 && pos + 1 < N && !hall_ok(r, pos + 1, used | 1 << s, s)) f = 0;
+        else f = fillrow(r, pos + 1, used | 1 << s);
         pclr(ud1, a1, s);
-        if (a2 >= 0) pclr(ud2, a2, s);
+        od1[a1]++; id1[s]++;
+        if (a2 >= 0) { pclr(ud2, a2, s); od2[a2]++; id2[s]++; }
         if (f) return f;
     }
     return 0;
@@ -167,9 +235,12 @@ int main(int argc, char **argv) {
     for (;;) {
         memset(ud1, 0, sizeof ud1);
         memset(ud2, 0, sizeof ud2);
+        for (int a = 0; a < N; a++) od1[a] = id1[a] = od2[a] = id2[a] = N - 1;
         for (int c = 0; c < N; c++) {
             pset(ud1, c, (c + 1) % N);
+            od1[c]--; id1[(c + 1) % N]--;
             pset(ud2, c, (c + 2) % N);
+            od2[c]--; id2[(c + 2) % N]--;
         }
         budget_limit = mode == 1 ? nodes + budget : (1LL << 62);
         maxrow_seen = 0;
