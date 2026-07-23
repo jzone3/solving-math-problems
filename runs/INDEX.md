@@ -16,6 +16,6 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P10 | queued | queued | queued | queued | queued |
 | P11 | queued | queued | queued | queued | queued |
 | P12 | queued | queued | queued | queued | queued |
-| P13 | queued | queued | queued | queued | queued |
+| P13 | queued | queued | **(9,6,1)-PMD proven nonexistent — DRAT-verified, adversarially CONFIRMED (see solutions/P13)** | queued | queued |
 | P14 | queued | queued | queued | queued | queued |
 | P15 | queued | queued | queued | queued | queued |
