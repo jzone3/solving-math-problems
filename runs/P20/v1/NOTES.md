@@ -97,14 +97,21 @@ published table (https://www.mathe2.uni-bayreuth.de/markus/reggraphs.html, GIRTH
 | 29 | 0                   | 0              | – |
 | 30 | 4                   | 4              | 0 |
 | 31 | 0                   | 0              | – |
-| 32 | RUNNING             | 19             | – |
-| 33 | QUEUED              | 0              | – |
-| 34 | QUEUED              | 1272           | – |
+| 32 | RUNNING (own gen); 19 via Meringer SCD | 19 | 0 |
+| 33 | QUEUED (own gen)    | 0              | – |
+| 34 | 1272 via Meringer SCD (own gen infeasible here) | 1272 | 0 |
 
 (EG 2019 already covers every graph — not just regular — with girth ≥ 6, Δ ≤ 6, on
 ≤ 25 vertices, so n starts at 26; the Moore bound for (4,6) is also 26.)
 
-RESULT so far: no 4-regular girth-≥6 graph on ≤ 31 vertices is 4-chromatic.
+RESULT so far: **no 4-regular girth-≥6 graph on ≤ 34 vertices is 4-chromatic** (n ≤ 31
+by our own exhaustive generation; n = 32, 34 by 3-coloring every graph in Meringer's
+published census SCD files, decoded with GENREG's readscd; n = 33: count 0 in the
+published table, own regeneration queued). All 19 + 1272 census graphs verified
+4-regular / connected / girth ≥ 6 / properly 3-colored by `verify.py` (PASS).
+Dependence on census completeness for n = 32 (being independently re-derived here),
+n = 33 and n = 34 (Kimberley/Meringer, GENREG on up to 250 cores) is an explicit
+assumption for the frontier beyond 31; flagged as residual risk.
 
 ## 5. Structured searches (negative)
 
