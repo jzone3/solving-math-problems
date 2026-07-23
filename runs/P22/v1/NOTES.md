@@ -1,5 +1,8 @@
 # P22 / v1 — H₃ arrowing test (Folkman Fe(3,3;4), Graham's $100 problem)
 
+**Catalog correction:** the current lower bound is **21 ≤ Fe(3,3;4)** (Bikov–Nenov 2017/2020,
+reconfirmed in arXiv:2605.16542, May 2026), not 20 as stated in `problems/P22-folkman-fe334.md`.
+
 Session: Devin ultra run, 2026-07-23. Branch `runs/P22-v1`. **Result: NEGATIVE (no Folkman
 graph found; bound Fe(3,3;4) ≤ 786 unimproved).** All paper-suggested K₄-destroying
 alterations of H₃ were tested at ~4× the authors' reported scale; every K₄-free candidate
@@ -103,3 +106,27 @@ The May-2026 survey-adjacent paper arXiv:2605.16542 still cites 21 ≤ Fe(3,3;4)
 - `core_analysis.py` — simplification/core analysis of candidates
 - `logs/` — per-experiment run logs; `out/` — CNFs, DRAT certs, JSON candidate logs
 - Toolchain: kissat (arminbiere/kissat master), drat-trim (marijnheule/drat-trim master)
+
+## 7. Escalation (1): structured 2-level CEGAR search (this session, phase 2)
+
+`cegar.py` + `aut.py`: instead of random sampling, we attack **Problem 5.1 in full
+generality** as a Σ₂ (∃∀) problem over ALL spanning subgraphs of H₃ (1008 edge booleans):
+
+- Synthesis SAT (incremental CaDiCaL via pysat): K₄-freeness exact (9576 clauses over the
+  K₄s of H₃); triangle indicator vars t_T ↔ "all 3 edges kept" (5376 triangles); WLOG core
+  conditions, sound by the removability arguments in Appendix A / Bikov–Nenov (each kept
+  edge in ≥2 kept triangles; every vertex degree 0 or ≥8; ≥1 triangle).
+- CEGAR loop: synthesis model → K₄-free candidate → kissat arrowing check. Colorable ⇒
+  the coloring (extended to E(H₃)) yields the blocking clause "some triangle monochromatic
+  under Δ must be kept", added for the whole 192-element orbit of Δ under a computed
+  subgroup of Aut(H₃) (`aut.py`: coordinate permutations × admissible diagonals × Frobenius,
+  acting on secants; graph-automorphism property asserted). UNSAT ⇒ Folkman graph found.
+- Synthesis-UNSAT terminates the loop with a PROOF that H₃ has no K₄-free arrowing subgraph
+  (negative resolution of Problem 5.1); counterexamples persisted (`out/cegar_cex.txt`)
+  so runs are resumable.
+
+Note this space strictly contains the clique-replacement space of experiments 1–2 (any
+K₄-free subgraph is admitted, incl. those with triangles inside C₃-cliques).
+
+Status at commit time: loop running; see `logs/cegar.log` for progress (candidates ~150–250
+edges, all colorable so far; every counterexample kills a 192-orbit of colorings).
