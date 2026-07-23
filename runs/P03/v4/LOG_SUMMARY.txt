@@ -103,3 +103,28 @@ DONE k=5 mmax=16 in 5629s: {'instances': 1852784, 'tau3+': 1123451, 'gap>0': 0}
 [     970s] evals=670200 stats={'tau_out_of_range': 514739, 'dupe': 12944824, 'tau4gap0': 55856, 'tau3gap0': 99605} best=(0, 60, -3.5)
 ===== run_s66_schrijver.log (last 2 lines)
 [       1s] evals=200 stats={'tau3gap0': 101, 'tau_out_of_range': 98, 'dupe': 64, 'tau4gap0': 1} best=(0, 24, -5.666666666666667)
+== phase2 final log lines ==
+-- k6m12.log
+DONE k=6 mmax=12 in 10092s: {'instances': 1663389, 'tau3+': 278860, 'gap>0': 0}
+-- k6m13.log
+DONE k=6 mmax=13 in 9131s: {'instances': 30169374, 'tau3+': 1006733, 'gap>0': 0}
+-- k6m14.log
+DONE k=6 mmax=14 in 27069s: {'instances': 65101104, 'tau3+': 3125969, 'gap>0': 0}
+-- k7m11.log
+DONE k=7 mmax=11 in 9043s: {'instances': 74320340, 'tau3+': 51782, 'gap>0': 0}
+-- k7m12.log
+DONE k=7 mmax=12 in 47430s: {'instances': 230189354, 'tau3+': 430741, 'gap>0': 0}
+-- ring_family.log
+ring-subdiv r=7 t=2: n=70 m=112 tau=6 nu=6 [0.6s] ok
+-- big_s101.log
+DONE 895494 {'tau_out_of_range': 502740, 'dupe': 297153, 'tau4gap0': 151450, 'tau3gap0': 241304}
+-- big_s202_ring5.log
+DONE 678154 {'tau4gap0': 108544, 'tau3gap0': 199724, 'tau_out_of_range': 369886, 'dupe': 212170}
+-- big_s303_ring7.log
+DONE 70228 {'tau4gap0': 10568, 'tau3gap0': 18724, 'tau_out_of_range': 35219, 'dupe': 12914, 'tau5gap0': 4369, 'tau6gap0': 1348}
+-- big_s404_schrijver.log
+DONE 836750 {'tau3gap0': 232905, 'dupe': 277228, 'tau_out_of_range': 463196, 'tau4gap0': 140649}
+-- big_s505_tau3.log
+DONE 77754 {'tau3gap0': 31533, 'tau_out_of_range': 46221, 'dupe': 17747}
+-- big_s606_ring5.log
+DONE 85615 {'tau4gap0': 13580, 'tau_out_of_range': 42389, 'tau3gap0': 29646, 'dupe': 15593}

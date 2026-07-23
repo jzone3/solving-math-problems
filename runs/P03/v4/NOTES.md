@@ -207,8 +207,10 @@ tau-in-range instances, making k=7 feasible):
 - k=6, m <= 13: COMPLETE — 1,006,733 tau>=3 classes, all gap 0 (2.5h).
 - k=7, m <= 11: COMPLETE — 51,782 tau>=3 classes (74.3M raw instances),
   all gap 0 (2.5h).
-- k=6 m <= 14 and k=7 m <= 12: launched as further escalation (see
-  k6m14.log / k7m12.log final lines).
+- k=6, m <= 14: COMPLETE — 3,125,969 tau>=3 classes (65.1M raw instances),
+  all gap 0 (7.5h).
+- k=7, m <= 12: COMPLETE — 430,741 tau>=3 classes (230.2M raw instances),
+  all gap 0 (13.2h).
 
 Bigger annealers (6h each, memory-bounded caches), ALL COMPLETED, zero
 gaps:
@@ -219,12 +221,22 @@ gaps:
 - seed 303 (ring7-seeded, tau 3-6, n<=30, m<=60, flow-tau path — no
   component ceiling): 70,228 evals (18.7k tau3 / 10.6k tau4 / 4.4k tau5 /
   1.3k tau6).
-=> phase-2 annealer total: ~2.48M evaluations, ~1.1M fully ILP-checked,
+Second annealer wave (6h each, both COMPLETED, zero gaps):
+- seed 505 (tau=3 ONLY, n<=20, m<=44): 77,754 evals, 31,533 tau=3
+  ILP-checked.
+- seed 606 (tau 3-4, n<=24, m<=50, ring5-seeded): 85,615 evals, 43,226
+  ILP-checked.
+=> phase-2 annealer total: ~2.64M evaluations, ~1.2M fully ILP-checked,
 no instance with nu < tau.
 
-## STATUS: negative / frontier-pushed — no counterexample; exhaustive
-verification extended to all simple digraphs on <= 6 vertices and all
-multi-DAG condensations with <= 5 components and <= 16 arcs (tau 3-6), plus
-phase-2 scans (k=6/k=7 multi-DAGs, unweighted Schrijver/ring family up to
-n=70/m=112, large annealers with no size ceiling); detector validated
+Phase-2 compute: ~30 h wall across 2-6 concurrent workers; ~4.7M exhaustive
+tau>=3 classes ILP-checked (k=6 m<=14, k=7 m<=12) + ~370M raw instances
+enumerated + ~1.2M annealer ILP checks + the ring-family batch.
+
+## STATUS: negative / frontier-pushed — no counterexample; Woodall now
+exhaustively verified (tau 3-6) for: all simple digraphs on <= 6 vertices,
+all multi-DAG condensations with <= 5 components / <= 16 arcs, <= 6
+components / <= 14 arcs, and <= 7 components / <= 12 arcs; the unweighted
+Schrijver/ring family packs perfectly up to n=70/m=112; ~9M annealer
+evaluations across 11 seeds found zero gap instances; detector validated
 end-to-end on Schrijver's weighted counterexample.
