@@ -291,3 +291,41 @@ exactly on regular bipartite graphs. The sharpest remaining targets after round 
 Hypothesis D into Lemma G1's diagonally-loaded problem for the leaf case;
 (ii) Conjecture H (union of first/second-order shifted-sum certificates) for
 Bound 44 — verified to n = 10 / trees n = 18 with zero failures.
+
+## 10. Round 5 (children I, J + local probes): attacking F2 and Conjecture H head-on
+
+Local probes (this session, `f2_ground.py`, `f2_hard_probe.py`, `f2_family_scan.py`,
+`f2_sdp_sigma.py`): smoothing iterates h=(diag(1/T)B)^K d shrink the h=d failure
+set (627 -> 75 -> 12 at n<=9 for K=0,1,2) but no fixed K suffices; linear families
+h = d + a*sigma + b*(m-2) are strictly worse than h = d; SDP optimization of the
+diagonal sigma on hard graphs finds strictly positive margins, with the optimal
+correction raising sigma on low-sigma vertices adjacent to high-sigma ones (no
+simple closed form emerged).
+
+- `runs/P16/v2/childI/` (Conjecture F2): **Theorem T1 PROVED** — F2 holds on all
+  connected regular graphs and all semiregular bipartite graphs (the entire
+  conjectured equality manifold of Bound 46), sympy-verified. **New resolvent
+  certificate** h_alpha = (I - alpha*P)^{-1} d with P = diag(T)^{-1}B: Lemmas
+  I4 (sufficiency), I5 (necessity), I6 (window monotonicity) all proved;
+  **Theorem I7: F2 <=> alpha*(G)*rho(G) < 1** (window nonemptiness) — an exact
+  reformulation. The sound certificate (Conjecture I1, alpha = 0.99/rho0)
+  passes exhaustively on ALL 10,013,006 connected delta>=2 graphs n <= 10 with
+  zero failures. Negative: ground-state locality regression R^2 ~ 0.53 (the
+  ground state is genuinely non-local), fixed-K power certificates, per-vertex/
+  per-edge splits, optimized-diagonal first-order certificates all fail.
+- `runs/P16/v2/childJ/` (Conjecture H): reduction sharpened to **Conjecture J**,
+  a pairwise statement about 2-ball data (z1, zs, s, rho0) of two edges over the
+  whole ray rho >= max(rho0(e), rho0(f)); J => H proved (PROOF_H.md §2); J
+  verified on all 273k graphs n<=9 (all pairs, all rho, exact quadratic
+  minimization), trees n<=16, the 198 hard graphs, 400 random n<=60 — zero
+  violations. **Decoupling refuted**: NO rule c = phi(R) can exist — trees
+  HkE?K?@ and Li_GS?@?S??@?A share R = 14 but have disjoint exact feasible
+  c-intervals [-21/10, inf) vs [-16/7, -11/5]; any proof must show the two
+  binding 2-ball configurations exclude each other within one graph. New
+  2-local identities (I0–I5, psi-form) make the whole criterion explicit.
+
+Status after round 5 (10 child sessions total): Bounds 44 and 46 remain OPEN —
+no proof, no counterexample. Sharpest targets now: (i) window nonemptiness
+alpha*(G)*rho(G) < 1 off the equality manifold (childI §8 route map) for 46;
+(ii) Conjecture J's binding-pair exclusion (childJ route map: V1/V2 case bash,
+T1/T2 coexistence contradiction, or ord4 certificates) for 44.
