@@ -242,6 +242,20 @@ Summary of contributions this run:
 5. 12 CPU-hours of annealing found nothing below 12 (n=11) / 22 (n=13) violated constraints —
    local search is ineffective on this design type (consistent with CPro1's failure).
 
+### D7. Cube-and-conquer SAT attack (gen_cnf.py + kissat, added on resume)
+Direct CNF encoding of the normalized square (cells one-hot; row-permutation; row 0 = identity;
+first column fixed 0..n-1; last column all-different; occurrence variables o_d(a,b,i,j) with
+sequential-counter exactly-one for distance 1 and at-most-one for distance 2).
+- n=8: SAT in ~10 min (loaded machine); witness decoded and verify.py PASS — encoding validated.
+- n=9 (UNSAT instance, 20169 vars / 64359 clauses): kissat had NOT finished after 2+ CPU-hours,
+  vs 20 CPU-min for our specialized dfs2 — the plain encoding is ~an order of magnitude weaker
+  than the candidate-list searcher.
+- n=11 cubes (fix full row 1 = one of the 549,012 class-1 candidates, i.e. the natural
+  cube-and-conquer split): sampled cubes each exceed a 3600 s kissat timeout. Consistent with
+  the dfs2 per-seed cost: no free lunch from off-the-shelf CDCL at this size. A competitive SAT
+  attack would need the clique/candidate reformulation inside the encoding (candidate selector
+  variables instead of cell variables) plus cluster-scale cubing — documented as future work.
+
 Recommended next attack: cube-and-conquer SAT (V1's framing) with the C6 rigidity result
 justifying pure normalization-only symmetry breaking, or Kapralov-style clique search with
 modern parallel maximum-clique solvers on the 6M-vertex compatibility graph.
