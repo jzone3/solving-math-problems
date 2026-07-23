@@ -182,6 +182,66 @@ phase A never attempted because phase B never completed):
   richest pool ≤ 3·10^7): best **0.402%** uncovered (86,860 residues,
   2.2 h); N=17297280: 0.757%; N=2162160: 0.663% (plateaued > 1 h).
 
+## 5b. Second push (session resumed on instruction to "keep going")
+
+Re-ran the priority check: erdosproblems.com/273 now explicitly notes
+"Selfridge has found an example using divisors of 360 if p=3 is allowed",
+and the DeepMind Lean file marks the p>=3 variant `research solved`
+(answer True) while p>=5 (#273 proper) stays `research open`. The p=3
+variant is easy in our parity decomposition: n=2 (p=3) covers a whole
+parity class by itself, so only ONE genuine cover is needed. For p>=5
+both parity families must be genuine covers — the problem "doubles".
+
+Mass accounting for the joint problem: both families need reciprocal
+mass >= 1 plus waste; Mirsky–Newman rules out zero waste for distinct
+moduli. Total waste budget = (pool mass + 1/2) − 2. Divisor pools max
+out around mass 1.89–1.94 for array-reachable N (best found:
+N=183783600 = 2^4·3^3·5^2·7·11·13·17, mass 1.9412, 348 moduli; searched
+compositions over primes ≤ 43 up to N ≤ 2.5·10^8), so TOTAL waste
+budget ≤ ~0.44 for both families combined. Best achieved phase-B waste
+alone: ~0.87. Gap ≈ 2x in waste terms.
+
+Anneal floor scaling (phase B, best uncovered count/fraction):
+N=2520: 96 (3.8%); 5040: 158 (3.1%); 27720: 744 (2.7%); 55440: 1259
+(2.3%); 2162160: 14,335 (0.663%); 21621600: 86,860 (0.402%);
+49729680 (mass 1.89) and 183783600 (mass 1.94) runs: see logs
+(~0.7–0.6% mid-run, still improving when stopped).
+
+Multi-stage (Krukenberg-style) architecture explored (stage2.py): fix a
+stage-1 near-cover over Z/N0, then cover the hole fibers over Z/(N0·Q)
+with fresh moduli m = d·q (d | N0, q | Q, gcd(Q,N0)=1, 2dq+1 prime) —
+tracking only the |H|·Q hole universe (sparse levels, unbounded lcm).
+Exact CAPACITY accounting (max coverable measure of the hole universe by
+the whole stage-2 pool) kills this for our hole counts:
+N0=27720, |H|=744: Q=13·17·19 ratio 0.831 (<1 ⇒ provably impossible);
+Q=13·17·19·23 ratio 1.094 (universe 72M, thinner than any pool we ever
+closed); adding 29 → ratio 1.25 but universe 2.1B (out of reach). The
+d-supply per q (#{d | N0 : 2dq+1 prime} ≈ 0.1·τ(N0)) is the binding
+constraint; per-hole fiber covers need ≥ q_min moduli per hole from a
+supply of ~15 shared across ALL holes. Conclusion: staged hole-closing
+becomes viable only if stage 1 leaves ≤ ~5–10 holes, i.e. ~100x better
+than the annealing floor — or with τ(N0) in the thousands (N0 ≥ 7·10^8,
+past array reach; would need a fundamentally sparser representation).
+
+## 5c. Cap-bound frontier extension (new definitive results)
+
+The published computational frontier (Shulgin's LRAT certificate) is
+"no covering with all moduli p−1 ≤ 50". We noticed every cap B < 70 is
+DENSITY-TRIVIAL: the exact reciprocal sum of the full admissible pool
+{n : 4 ≤ n ≤ B, n+1 prime} is < 1, so no covering exists regardless of
+residue choices (no SAT needed). Verified exactly (cap_dfs.py, Fraction
+arithmetic): B = 66 pool mass = 160107799/160240080 ≈ 0.999174 < 1.
+⇒ **Definitive: no #273 covering with all moduli ≤ 66.** (Extends the
+published 50 → 66 by a one-line exact computation.)
+
+B = 70 is the first nontrivial cap: pool of 18 moduli
+{4,6,10,12,16,18,22,28,30,36,40,42,46,52,58,60,66,70}, mass
+162396943/160240080 ≈ 1.013460, L = 480,720,240. cap_dfs.py runs a
+COMPLETE element-branching DFS over Z/L (bool array, exact Fraction
+mass prune, no floats on any decision path). B = 72 and B = 78 share
+the same L (masses 1.0273, 1.0403) and are queued next; B = 82
+introduces the prime 41 (L ≈ 2·10^10, past array reach).
+
 ## 5. Final status
 
 **NO verified result.** Erdős #273 remains open in both directions here.

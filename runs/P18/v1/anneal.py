@@ -63,6 +63,7 @@ def main():
     cov = energy_init(N, assign)
     E = int((cov == 0).sum())
     bestE = E
+    best_assign = dict(assign)
     print("init E=%d (%.5f)" % (E, E / N), flush=True)
     T = T0
     t0 = time.time()
@@ -93,6 +94,7 @@ def main():
             E += dE
             if E < bestE:
                 bestE = E
+                best_assign = dict(assign)
                 print("it=%d T=%.3f bestE=%d (%.6f) %.1fs"
                       % (it, T, bestE, bestE / N, time.time() - t0), flush=True)
         T *= alpha
@@ -102,13 +104,18 @@ def main():
             last_report = time.time()
             print("... it=%d T=%.3f E=%d best=%d (%.1fs)"
                   % (it, T, E, bestE, time.time() - t0), flush=True)
-    if E == 0:
-        fam = sorted((a, m) for m, a in assign.items())
-        fn = "phaseB_anneal_N%d.json" % N
-        json.dump({"N": N, "family": [[a, m] for a, m in fam]}, open(fn, "w"))
+            fam = sorted((a, m) for m, a in best_assign.items())
+            json.dump({"N": N, "bestE": bestE,
+                       "family": [[a, m] for a, m in fam]},
+                      open("phaseB_anneal_N%d_snapshot.json" % N, "w"))
+    fam = sorted((a, m) for m, a in best_assign.items())
+    fn = "phaseB_anneal_N%d_E%d.json" % (N, bestE)
+    json.dump({"N": N, "bestE": bestE, "family": [[a, m] for a, m in fam]},
+              open(fn, "w"))
+    if bestE == 0:
         print("PHASE-B SUCCESS -> %s" % fn, flush=True)
     else:
-        print("FAILED bestE=%d (%.6f) its=%d" % (bestE, bestE / N, it),
+        print("FAILED bestE=%d (%.6f) its=%d -> %s" % (bestE, bestE / N, it, fn),
               flush=True)
 
 
