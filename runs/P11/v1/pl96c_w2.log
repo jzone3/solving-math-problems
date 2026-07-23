@@ -1,2 +1,13 @@
 mod6: 72 raw -> 8 classes
 === top-level class 2: [4, 0, 4, 0, -2, 0] ===
+[c2] d=12 parent=6 -> 48 folds (exhausted)
+[c2.0] d=24 parent=12 -> 0 folds (exhausted)
+[c2.1] d=24 parent=12 -> 0 folds (exhausted)
+[c2.2] d=24 parent=12 -> 0 folds (exhausted)
+[c2.3] d=24 parent=12 -> 0 folds (exhausted)
+[c2.4] d=24 parent=12 -> 0 folds (exhausted)
+[c2.5] d=24 parent=12 -> 0 folds (exhausted)
+[c2.6] d=24 parent=12 -> 0 folds (exhausted)
+[c2.7] d=24 parent=12 -> 0 folds (exhausted)
+[c2.8] d=24 parent=12 -> 56 folds (budget)
+  LIFT[c2.8.0] d=24 b=[1, 0, -2, 0, -2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 4, 0, -2, 0, 1, 0, 1, 0, 1, 0] -> TIMEOUT
