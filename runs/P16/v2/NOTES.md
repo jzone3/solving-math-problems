@@ -213,9 +213,12 @@ Child sessions (branches merged here):
   every δ ≥ 2 graph n ≤ 9. No universal φ exists (pointwise proofs impossible; the
   max-vs-max slack is essential). Full writeup in childB/NOTES.md.
 - `runs/P16/v2/childC/` (branch runs/P16-v2-childC): large-scale search in new
-  regimes — bipartite n = 11, degree-restricted n = 11 sweeps (tens of millions of
-  graphs), CP-SAT quotient search k = 4..10 with eigenvector-certificate encoding,
-  bipartite overlays, continuous relaxation k = 4..8. See childC/ notes/logs.
+  regimes — ~86M graphs at n = 11 (all bipartite; degree windows [1,5], [2,5],
+  [3,6]) with min gap44 = 0.046; CP-SAT eigenvector-certificate (Collatz–Wielandt)
+  quotient search k = 4..10, entries ≤ 150, ~2h solver time, 0 feasible; bipartite
+  overlays n ≤ 120; continuous relaxation k = 4..8 with all 18 float-negative
+  points refuted at 60-digit precision (all cancellation noise at entry scales
+  1e9–5e16). No violation anywhere. See childC/NOTES.md.
 
 Bottom line after escalation: still **no counterexample and no complete proof**; the
 strengthened conjecture ρ(Q) ≤ RHS holds exhaustively to n = 10, positivity is proved
