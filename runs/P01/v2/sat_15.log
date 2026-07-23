@@ -1,0 +1,2 @@
+n=15 it=200 t=0s last_clause_len=4
+UNSAT n=15 after 229 refinements, t=16s -- exhaustively no simple 4-regular 1H graph on 15 vertices

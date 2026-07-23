@@ -1,0 +1,7 @@
+n=18 it=200 t=0s last_clause_len=4
+n=18 it=400 t=1s last_clause_len=4
+n=18 it=600 t=1s last_clause_len=4
+n=18 it=800 t=2s last_clause_len=4
+n=18 it=1000 t=4s last_clause_len=6
+n=18 it=1200 t=9s last_clause_len=5
+n=18 it=1400 t=24s last_clause_len=5

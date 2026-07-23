@@ -1,0 +1,3 @@
+n=16 it=200 t=0s last_clause_len=5
+n=16 it=400 t=1s last_clause_len=4
+UNSAT n=16 after 453 refinements, t=153s -- exhaustively no simple 4-regular 1H graph on 16 vertices

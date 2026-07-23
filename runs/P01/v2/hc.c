@@ -24,12 +24,21 @@ static int deg[128];
 static int visited[128];
 static int avail[128];  /* # neighbors that are unvisited (simple count incl. multiplicity) */
 static int a0[128];     /* adjacent to vertex 0? */
+static int path[130];
+static int printcyc;    /* if set, print each found directed cycle's vertex seq */
 
 static void dfs(int u, int depth) {
     if (cnt >= cutoff2) return;
     if (depth == n) {
         /* close cycle: count edges u->0 (multiplicity) */
-        for (int i = 0; i < deg[u]; i++) if (adj[u][i] == 0) cnt++;
+        for (int i = 0; i < deg[u]; i++) if (adj[u][i] == 0) {
+            cnt++;
+            if (printcyc) {
+                printf("CYC");
+                for (int k = 0; k < n; k++) printf(" %d", path[k]);
+                printf("\n");
+            }
+        }
         return;
     }
     /* pruning: every unvisited vertex w != anything must have avail>=2
@@ -37,7 +46,7 @@ static void dfs(int u, int depth) {
     for (int i = 0; i < deg[u]; i++) {
         int v = adj[u][i];
         if (visited[v]) continue;
-        visited[v] = 1;
+        visited[v] = 1; path[depth] = v;
         /* update avail for neighbors of v */
         int ok = 1;
         for (int j = 0; j < deg[v]; j++) avail[adj[v][j]]--;
@@ -57,6 +66,7 @@ static void dfs(int u, int depth) {
 int main(void) {
     long long cutoff;
     if (scanf("%d %d %lld", &n, &m, &cutoff) != 3) return 1;
+    if (cutoff < 0) { printcyc = 1; cutoff = -cutoff; }
     int *eu = malloc(m * sizeof(int)), *ev = malloc(m * sizeof(int));
     memset(deg, 0, sizeof(deg));
     for (int i = 0; i < m; i++) {
@@ -75,7 +85,7 @@ int main(void) {
     memset(visited, 0, sizeof(visited));
     visited[0] = 1;
     for (int j = 0; j < deg[0]; j++) avail[adj[0][j]]--;
-    cnt = 0;
+    cnt = 0; path[0] = 0;
     dfs(0, 1);
     long long und = cnt / 2;
     if (und > cutoff) und = cutoff;

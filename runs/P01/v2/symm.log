@@ -33,3 +33,6 @@ n=48 k=4 orbits=161 result=timeout best_rem=60 nodes=58184 t=900s
 n=48 k=6 orbits=209 result=timeout best_rem=24 nodes=1253 t=900s
 n=50 k=2 orbits=47 result=done best_rem=50 nodes=25 t=6s
 n=50 k=5 orbits=219 result=timeout best_rem=68 nodes=69141 t=900s
+n=52 k=2 orbits=74 result=timeout best_rem=26 nodes=119 t=900s
+n=52 k=4 orbits=98 result=timeout best_rem=26 nodes=67 t=903s
+n=54 k=2 orbits=51 result=done best_rem=54 nodes=27 t=7s
