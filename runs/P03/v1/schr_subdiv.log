@@ -1,0 +1,4 @@
+dash_path=2 ms=1 ext=None n=24 m=33 tau=4 cuts=1372 packs=True t=9s
+dash_path=2 ms=1 ext=3 n=24 m=36 tau=4 cuts=1372 packs=True t=10s
+dash_path=2 ms=2 ext=None n=24 m=42 tau=6 cuts=1372 packs=True t=14s
+dash_path=2 ms=2 ext=3 n=24 m=42 tau=6 cuts=1372 packs=True t=14s

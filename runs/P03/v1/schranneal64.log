@@ -1,0 +1,15 @@
+[schr-anneal seed=64] step=1 best=747 tau=8 m=43 cuts=38 tight=6 t=0s
+[schr-anneal seed=64] step=214 best=777 tau=3 m=18 cuts=19 tight=7 t=1s
+[schr-anneal seed=64] step=242 best=982 tau=3 m=18 cuts=20 tight=9 t=1s
+[schr-anneal seed=64] step=244 best=1072 tau=3 m=18 cuts=18 tight=10 t=1s
+[schr-anneal seed=64] step=256 best=1137 tau=3 m=18 cuts=11 tight=11 t=1s
+[schr-anneal seed=64] step=265 best=1387 tau=3 m=18 cuts=21 tight=13 t=1s
+[schr-anneal seed=64] step=284 best=1688 tau=3 m=17 cuts=21 tight=16 t=1s
+[schr-anneal seed=64] step=335 best=1913 tau=3 m=17 cuts=26 tight=18 t=1s
+[schr-anneal seed=64] step=374 best=3449 tau=3 m=16 cuts=33 tight=33 t=1s
+[schr-anneal seed=64] step=375 best=4710 tau=3 m=15 cuts=45 tight=45 t=1s
+[schr-anneal seed=64] step=7549 best=6405 tau=4 m=15 cuts=84 tight=60 t=14s
+[schr-anneal seed=64] step=26126 best=6706 tau=3 m=14 cuts=64 tight=64 t=29s
+[schr-anneal seed=64] step=173327 best=7547 tau=3 m=13 cuts=72 tight=72 t=238s
+[schr-anneal seed=64] step=239491 best=10486 tau=4 m=14 cuts=100 tight=100 t=330s
+[schr-anneal seed=64] step=323989 best=11324 tau=5 m=16 cuts=108 tight=108 t=446s
