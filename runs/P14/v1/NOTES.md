@@ -104,4 +104,25 @@ independently in each of the three encodings.
   Restarted on persistent disk (106 GB free) at 01:21 UTC, --time=25000.
 - Launched CP-SAT pass 4 on (14,28): 14400 s, 7 workers.
 
-(log continues)
+### Final (14,28;8,3,14;7,6) attempts
+- CP-SAT pass 4 (14400 s, 7 workers): UNKNOWN.
+- kissat (25000 s): s UNKNOWN at time limit (proof reached 39 GB before deletion).
+- Total compute on this instance: ~48,900 s CP-SAT + 25,000 s kissat ≈ 19 h. No verdict.
+  It is by far the largest instance (784 cells vs ≤ 240); recommend V2 (cube-and-conquer)
+  or V3 (Kramer–Mesner under Z_7 on V=14) for a future attack.
+
+## Compute summary
+- Machine: 8-core Linux VM, OR-Tools 9.15 CP-SAT, kissat (git master), drat-trim.
+- Total wall time of solver runs ≈ 26 h aggregate across instances/confirmations.
+
+## Dead ends / gotchas
+- pypblib would not install → weighted PB constraints done via literal duplication in
+  seqcounter cardinality encodings (exhaustively validated on small cases first).
+- /tmp is a 16 GB tmpfs: first kissat run on (14,28) died silently when its DRAT proof
+  filled it; rerun proofs on persistent disk.
+- The alt CP-SAT model (IntVar + AddMultiplicationEquality) is much weaker than the
+  boolean-expansion model: confirms (12,20) but times out at 8 h on (14,18)/(12,15).
+
+## STATUS: SOLVED (nonexistence) for 3 of 4 instances — BTD(14,18;7,1,9;7,4),
+## BTD(12,15;6,2,10;8,6), BTD(12,20;4,3,10;6,4) do not exist (CP-SAT INFEASIBLE +
+## kissat/drat-trim DRAT-certified UNSAT each); (14,28;8,3,14;7,6) negative (no verdict).

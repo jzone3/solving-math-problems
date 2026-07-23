@@ -17,5 +17,5 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P11 | queued | queued | queued | queued | queued |
 | P12 | queued | queued | queued | queued | queued |
 | P13 | queued | queued | queued | queued | queued |
-| P14 | queued | queued | queued | queued | queued |
+| P14 | SOLVED (3/4 nonexistent; 14-28 open) | queued | queued | queued | queued |
 | P15 | queued | queued | queued | queued | queued |
