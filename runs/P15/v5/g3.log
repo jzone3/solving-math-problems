@@ -1,0 +1,4 @@
+hole 1 mod 2: recipe support size 67, measure 1.3751
+hole 0 mod 256: recipe support size 5, measure 1.3333
+SUCCESS: 79 congruences, min modulus 4, max modulus 116640, 0.1s
+wrote witness_G_L3.json

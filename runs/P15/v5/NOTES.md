@@ -290,3 +290,41 @@ inheritance-mechanized covering at L=6 (Engine E, verified), L=10 structural
 still open for the mechanized calculus; three measured failure modes now
 scope exactly what a full Nielsen mechanization must add (recipe reuse +
 inheritance + DFS rollback + per-branch budgeting, simultaneously).
+
+## 14. Engine G: recipe/support algebra (Owens-transcription attempt collapsed
+into machinery) and the tower-packing wall
+
+Attempted next: mechanical transcription of Owens's thesis construction.
+Finding: the thesis is NOT transcribable directly — sections 3.5-3.7 import
+Nielsen's prime-11/13/19 tables "up to rearrangement" and sections 3.8-3.20
+are resource-counting prose ("fill three copies of 7-up ...") that do not
+specify residues; making them executable requires exactly the
+inheritance-aware search machinery identified in Sections 7/11/12.
+
+Built engine_g.py instead: a clean recipe algebra
+  Recipe := ONE | Split(q,[R..]) | Chain(q,[R..]; tail p, depth K),
+support(R) = exact set of relative moduli, chains reuse one recipe per level
+(q^k separates levels; this is Engine C's reuse done right), global registry
+of absolute moduli, per-hole prime palettes, waste-aware tail selection
+(large p / deep K make chains nearly lossless), and BFS deferral.
+
+Results: L=3 SUCCESS (79 congruences, verified PASS by verify_subtract);
+L=6 covers the fat hole (1 mod 2) at measure 1.375 but then cascades: every
+remaining hole's recipes are blocked and deferral diverges.
+
+Diagnosis (the crispest form of the obstruction yet): a q-chain input needs a
+2-power ladder {2^a} in its support; the q-1 inputs of the same chain, and
+recipes of different holes, therefore all compete for the same 2-power x
+q-power towers of moduli. Without inheritance there are only ~pi(113) towers,
+far fewer than Sum_i (q_i - 1) inputs needed. Tower-packing is the wall: the
+literature's 'x' entries let different inputs SHARE a tower by covering only
+the residues the other branch missed. Inheritance is not an optimization of
+the hand constructions -- it is what makes the modulus supply sufficient.
+This is consistent across five engine families (B, C, E, F, G), each removing
+a different candidate cause (backtracking, reuse, ordering, deferral,
+support-exactness).
+
+STATUS: negative (no witness with min modulus >= 43; automated frontier of
+this run remains L=16 greedy + L=6 structural-with-inheritance; the concrete
+open engineering problem is now precisely: recipe algebra of Engine G +
+partial-cover recipes with x-marks + per-tower budgeting).
