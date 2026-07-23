@@ -1,0 +1,4 @@
+*.cnf
+*.drat
+__pycache__/
+cubes/
