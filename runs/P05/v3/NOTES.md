@@ -93,6 +93,39 @@ center).
 
 ### Stage D: exhaustive cross-check of the pipeline (all connected graphs)
 - `exhaustive.py` over nauty-geng -c: n=7 (853 graphs) best=1; n=8 (11,117)
-  best=1; n=9 (261,080) best=1; n=10 (11,716,571; 6 parallel workers) running.
-  Confirms analyzer semantics against the known exhaustive frontier
-  (conjecture verified up to n~12 in the literature).
+  best=1; n=9 (261,080) best=1; n=10 (all 11,716,571 connected graphs, 6
+  parallel workers, ~28 core-hours) best=1. Worker counts sum exactly to
+  11,716,571 = #connected graphs on 10 vertices, so coverage is complete.
+- This independently re-verifies the conjecture for all n ≤ 10 with a
+  differently-written checker than the literature's (useful as the "second
+  verifier" required by METHODOLOGY.md for any V4 frontier claims).
+
+## 4. Dead ends / observations
+
+- Single-block + 3-arm graphs (Stage A1/A3): min triple intersection is always
+  ≥ 2 in ~5.4M configs — the three paths must traverse the block between two
+  attachment vertices, sharing that whole crossing. Arms alone cannot decouple
+  this; the block would itself need three pairwise-disjoint "long crossings"
+  of equal optimal length, which small blocks (n ≤ 8) never exhibited.
+- Two-block cores (Stage A2) never beat score 2 either: the glue cut vertex
+  plus one block-crossing vertex always end up on all three paths.
+- Unconstrained annealing invariably converges to the spider configuration
+  (score 1, triple meets in one cut vertex) and the score-1 plateau appears to
+  be a large connected region with no hole to 0: plateau random walks
+  (hundreds of thousands of accepted score-1 states across 20+ runs,
+  n = 13..30) and complete depth-2 neighborhood scans of 18 distinct optima
+  never found score 0.
+- Everything is consistent with the conjecture being TRUE (and with the
+  unrefereed arXiv:2006.16245 proof claim). For a counterexample, per this
+  data, one needs a block that is simultaneously (a) avoidable by a longest
+  path and (b) traversable in three essentially different ways — i.e.
+  hypotraceable-like behavior (V1's territory), not achievable with blocks of
+  ≤ 8 vertices.
+
+## STATUS: negative
+
+No counterexample; no near-miss below triple-intersection 1 (the conjectured
+optimum). Family sweeps (~7.9M block-structure configs, n ≤ 22), 20+ annealing
+runs (n ≤ 30) with plateau walks, depth-2 refinement of all score-1 optima,
+and a full independent exhaustive re-verification for all connected graphs
+n ≤ 10 — all negative. Total compute ≈ 45 core-hours (pypy3, 8 cores).
