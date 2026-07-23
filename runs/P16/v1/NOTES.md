@@ -265,6 +265,18 @@ on the maximizing edge, or a case analysis over the hard-edge configuration of L
 (The k=6 continuous support sweep was interrupted by infra restarts several times; all
 completed supports across every attempt gave feasible sup ≤ 0, identical to k=4/5.)
 
+## Escalation round 7 (coordinator push #6, 2026-07-23): near-miss family closed EXACTLY
+
+`nearmiss_lemma.py` (exact sympy, machine-checked): the search's persistent near-miss family
+F_a = K_{a,a} + one vertex joined to all of one side has a beautiful closed form —
+μ(G_a) = **2a+1 exactly** (quotient charpoly factors as x(x²−(3a+1)x+a(2a+1)) with perfect
+square discriminant (a+1)²; matches Anderson–Morley from above), while
+inner44 = (2a−1)² + 1 and inner46 − (2a−1)² = (2a+5)/(2a+1). Hence f44, f46 > 2a+1 = μ
+STRICTLY for every a, with margins → 0⁻ as a → ∞. **Lemma: the best known approach family
+never violates either bound at any scale** — the empirical −0.0025 near-misses at a = 100
+can never cross zero. This is the strongest single piece of evidence yet: the violation
+supremum over the most promising direction is exactly 0, attained only in the limit.
+
 ## Suggested next steps (other variants)
 
 - V5/proof direction looks promising: try Collatz–Wielandt on L or the signless
