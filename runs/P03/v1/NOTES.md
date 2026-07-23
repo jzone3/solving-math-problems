@@ -79,6 +79,58 @@ multiplicities) does => WLOG search acyclic multi-digraphs.
   literature: unweighted CE, if any, is expected to need special structure).
 - SAT-hardness annealing mostly inflates tau via parallel arcs; conflicts stay tiny.
 
+## Phase 3: seeding from known weighted counterexamples (schrijver_seed.py, d27search.py, fastcuts.py)
+
+Requested escalation: attack the >15-arc / >=6-vertex regime via known hard families.
+
+- **Extracted Schrijver's 1980 counterexample exactly** (12 vertices, 21 arcs,
+  9 weight-1 "solid" + 12 weight-0 "dashed") from the vector graphics of
+  arXiv:2202.00392 Fig 1 (D1.pdf). Machine-verified: min solid-weight over all
+  49 minimal dicuts = 2, and SAT says NO 2 disjoint weighted dijoins (UNSAT) —
+  exact match with Schrijver's claims. Seed is faithful.
+- **Unweighted expansions of Schrijver's example**: grid over solid-multiplicity
+  ms in 1..3, dashed-multiplicity md in 1..8, plus Harvey's tau>=2 extension
+  (middle solid arcs -> tau-1 copies) for tau in {3,4,5}: ALL pack (96 configs).
+  Subdivision variants (dashed arcs -> paths of length 2..4, each step
+  multiplicity 1..3, solid arcs optionally subdivided/doubled): ALL pack.
+  The weighted obstruction washes out under every parallel/subdivision
+  simulation of weight zero tried — a structural explanation attempt:
+  parallel copies inflate the dicuts through dashed arcs, giving the packing
+  enough slack exactly where weight-0 arcs used to make it tight.
+- **Extracted ACZ's D27** (Abdi-Cornuejols-Zlatin arXiv:2202.00392, Fig D27):
+  sink-regular (3,4)-bipartite digraph, 27 vertices, 45 arcs (30 solid + 15
+  dashed = minimal dijoin J*). Machine-verified all paper claims: bipartite,
+  all 15 sinks in-degree 3, tau=3 (311 minimal dicuts), J* is a dijoin, A-J*
+  is a 2-dijoin, and A-J* does NOT partition into 2 dijoins (SAT UNSAT) —
+  the strongest known unweighted near-miss. D27 itself still packs 3 dijoins.
+- **fastcuts.py**: dicut enumeration via order ideals of the condensation
+  poset (ancestor-closed sets), enabling n up to ~50 with bounded ideal count;
+  cross-validated against the 2^n enumerator on 3000 random digraphs.
+- **Annealing around seeds** (Schrijver expansions at n=12 m<=44; D27 and
+  random 2-copy vertex-gluings of D27 at n<=46 m<=100, tau>=3, tightness
+  score): tens of thousands of SAT checks, zero UNSAT. (One earlier worker
+  round OOM-killed by unbounded ideal enumeration on 52-vertex gluings;
+  fixed with max_ideals cap.)
+
+### Why the "LP integrality gap" objective degenerates
+
+The fractional dijoin-packing LP value is ALWAYS exactly tau: the clutter of
+minimal dicuts is ideal (Lucchesi-Younger), idealness is preserved under
+blocking (Lehman), so the dijoin clutter is ideal, and its fractional packing
+value equals the min cardinality of its blocker's members = min dicut size =
+tau (uniform y_J weights on tau "fractional dijoins" achieve it). Hence
+"maximize LP-vs-ILP gap of the packing LP" is identical to the direct search
+for an instance with integer packing < tau — there is no smooth gap signal to
+climb, only the 0/1 UNSAT signal, which is why tightness (number of
+cardinality-tau minimal dicuts) is used as the annealing proxy instead.
+
+### Why tau=2 gadgets can't give an unweighted CE
+
+Unweighted Woodall for tau=2 is folklore-TRUE (Schrijver's Combinatorial
+Optimization, Thm 56.3): any minimal dijoin J has A-J also a dijoin. So the
+dyadic/tau=2 weighted gadget literature cannot produce an unweighted witness;
+the minimum open case is tau=3, which is where the D27 seed lives.
+
 ## Coverage summary
 
 Exhaustively verified Woodall's conjecture (tau disjoint dijoins exist) for:

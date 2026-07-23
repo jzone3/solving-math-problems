@@ -23,7 +23,7 @@ N27 = 27
 
 def glue(rng):
     """Two copies of D27 with a random subset of vertices identified."""
-    k = rng.randint(2, 6)
+    k = rng.randint(8, 16)
     ids = rng.sample(range(N27), k)
     ids2 = rng.sample(range(N27), k)
     mapping = {}
@@ -73,8 +73,8 @@ def anneal(seconds, seed, mode):
         cand = mutate(rng, n, cur)
         if len(cand) > 100:
             continue
-        cuts, tau = min_dicuts(n, cand)
-        if cuts is None or tau < 3 or len(cuts) > 40000:
+        cuts, tau = min_dicuts(n, cand, max_ideals=120000)
+        if cuts is None or tau < 3 or len(cuts) > 12000:
             continue
         ok, _ = packs_into(len(cand), cuts, tau)
         checked += 1
@@ -83,7 +83,7 @@ def anneal(seconds, seed, mode):
             print("UNSAT FOUND tau=", tau, flush=True)
             continue
         tight = sum(1 for c in cuts if len(c) == tau)
-        s = 100 * tight + 5 * len(cuts) - len(cand)
+        s = 100 * tight + min(len(cuts), 2000) - len(cand)
         if s >= cur_s or rng.random() < 0.03:
             cur, cur_s = cand, s
         if s > best:

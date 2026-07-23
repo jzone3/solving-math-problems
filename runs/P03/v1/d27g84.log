@@ -1,0 +1,17 @@
+[d27-glue seed=84] step=2815 checked=1 best=1257 tau=3 m=91 cuts=48 tight=13 t=451s
+[d27-glue seed=84] step=2816 checked=2 best=1358 tau=3 m=90 cuts=48 tight=14 t=452s
+[d27-glue seed=84] step=2817 checked=3 best=1359 tau=3 m=89 cuts=48 tight=14 t=454s
+[d27-glue seed=84] step=2823 checked=7 best=1472 tau=3 m=89 cuts=61 tight=15 t=464s
+[d27-glue seed=84] step=2827 checked=10 best=1561 tau=3 m=88 cuts=49 tight=16 t=470s
+[d27-glue seed=84] step=2830 checked=11 best=1659 tau=3 m=88 cuts=47 tight=17 t=471s
+[d27-glue seed=84] step=2840 checked=14 best=1661 tau=3 m=87 cuts=48 tight=17 t=481s
+[d27-glue seed=84] step=2846 checked=19 best=1662 tau=3 m=86 cuts=48 tight=17 t=487s
+[d27-glue seed=84] step=2852 checked=23 best=1766 tau=3 m=85 cuts=51 tight=18 t=492s
+[d27-glue seed=84] step=2857 checked=25 best=1867 tau=3 m=84 cuts=51 tight=19 t=497s
+[d27-glue seed=84] step=2862 checked=28 best=1868 tau=3 m=83 cuts=51 tight=19 t=502s
+[d27-glue seed=84] step=2875 checked=37 best=1869 tau=3 m=83 cuts=52 tight=19 t=512s
+[d27-glue seed=84] step=2876 checked=38 best=1970 tau=3 m=82 cuts=52 tight=20 t=512s
+[d27-glue seed=84] step=2910 checked=58 best=2041 tau=3 m=78 cuts=219 tight=19 t=555s
+[d27-glue seed=84] step=2914 checked=60 best=2053 tau=3 m=79 cuts=232 tight=19 t=561s
+[d27-glue seed=84] step=3001 checked=108 best=2058 tau=3 m=71 cuts=129 tight=20 t=676s
+[d27-glue seed=84] step=3003 checked=109 best=2159 tau=3 m=70 cuts=129 tight=21 t=679s

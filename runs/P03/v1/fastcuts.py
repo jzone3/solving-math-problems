@@ -43,7 +43,7 @@ def strong_components(n, arcs):
     return comp, c
 
 
-def min_dicuts(n, arcs):
+def min_dicuts(n, arcs, max_ideals=500000):
     """Return (list of inclusion-minimal dicuts as frozensets of arc indices,
     tau) or (None, None) if no dicut / weakly disconnected."""
     # weak connectivity
@@ -97,6 +97,8 @@ def min_dicuts(n, arcs):
             J = I | ideal_of(c)
             newi.add(J)
         ideals |= newi
+        if len(ideals) > max_ideals:
+            return None, None
     for I in ideals:
         if I == 0 or I == full:
             continue

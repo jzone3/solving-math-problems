@@ -13,3 +13,11 @@ dp=2 dm=2 ms=1 ext=3 sp=2 n=33 m=72 tau=6 cuts=29312 packs=True t=48.5s
 dp=2 dm=2 ms=2 ext=None sp=1 n=24 m=66 tau=8 cuts=1372 packs=True t=0.2s
 dp=2 dm=2 ms=2 ext=None sp=2 n=33 m=84 tau=8 cuts=29312 packs=True t=59.7s
 dp=2 dm=2 ms=2 ext=3 sp=1 n=24 m=66 tau=8 cuts=1372 packs=True t=0.2s
+dp=2 dm=2 ms=2 ext=3 sp=2 n=33 m=84 tau=8 cuts=29312 packs=True t=68.8s
+dp=2 dm=3 ms=1 ext=None sp=1 n=24 m=81 tau=8 cuts=1372 packs=True t=0.2s
+dp=2 dm=3 ms=1 ext=None sp=2 n=33 m=90 tau=8 cuts=29312 packs=True t=70.4s
+dp=2 dm=3 ms=1 ext=3 sp=1 n=24 m=84 tau=8 cuts=1372 packs=True t=0.2s
+dp=2 dm=3 ms=1 ext=3 sp=2 n=33 m=96 tau=8 cuts=29312 packs=True t=67.6s
+dp=2 dm=3 ms=2 ext=None sp=1 n=24 m=90 tau=10 cuts=1372 packs=True t=0.2s
+dp=2 dm=3 ms=2 ext=None sp=2 n=33 m=108 tau=10 cuts=29312 packs=True t=75.0s
+dp=2 dm=3 ms=2 ext=3 sp=1 n=24 m=90 tau=10 cuts=1372 packs=True t=0.4s

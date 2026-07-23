@@ -13,3 +13,4 @@
 [schr-anneal seed=64] step=173327 best=7547 tau=3 m=13 cuts=72 tight=72 t=238s
 [schr-anneal seed=64] step=239491 best=10486 tau=4 m=14 cuts=100 tight=100 t=330s
 [schr-anneal seed=64] step=323989 best=11324 tau=5 m=16 cuts=108 tight=108 t=446s
+[schr-anneal seed=64] step=404224 best=15106 tau=4 m=14 cuts=144 tight=144 t=574s
