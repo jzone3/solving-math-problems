@@ -98,7 +98,7 @@ published table (https://www.mathe2.uni-bayreuth.de/markus/reggraphs.html, GIRTH
 | 30 | 4                   | 4              | 0 |
 | 31 | 0                   | 0              | – |
 | 32 | 19 (own gen, isomorphic 19/19 to Meringer SCD set) | 19 | 0 |
-| 33 | QUEUED (own gen)    | 0              | – |
+| 33 | 0 (own gen, ~3 h × 8 cores) | 0     | – |
 | 34 | 1272 via Meringer SCD (own gen infeasible here) | 1272 | 0 |
 
 (EG 2019 already covers every graph — not just regular — with girth ≥ 6, Δ ≤ 6, on
@@ -106,13 +106,15 @@ published table (https://www.mathe2.uni-bayreuth.de/markus/reggraphs.html, GIRTH
 
 RESULT so far: **no 4-regular girth-≥6 graph on ≤ 34 vertices is 4-chromatic** (n ≤ 31
 by our own exhaustive generation; n = 32, 34 by 3-coloring every graph in Meringer's
-published census SCD files, decoded with GENREG's readscd; n = 33: count 0 in the
-published table, own regeneration queued). All 19 + 1272 census graphs verified
+published census SCD files, decoded with GENREG's readscd; n = 33: zero graphs, proven
+independently by our own GENREG run AND stated in the published table). All 19 + 1272
+census graphs verified
 4-regular / connected / girth ≥ 6 / properly 3-colored by `verify.py` (PASS).
 For n = 32 we independently regenerated all graphs and matched them 1-to-1 (graph
 isomorphism, networkx) against the census SCD set — 19/19. Census completeness remains
-an assumption only for n = 33 (own regeneration running) and n = 34; flagged as residual
-risk (source: Kimberley/Meringer, GENREG on up to 250 cores).
+an assumption only for n = 34; flagged as residual risk (source: Kimberley/Meringer,
+GENREG on up to 250 cores). Own regeneration of n = 34 extrapolates to ~15–45 h × 8
+cores — left as the natural next step for a follow-up run (v2) with more compute.
 
 ## 5. Structured searches (negative)
 
@@ -150,22 +152,32 @@ n=20: 87 graphs (111 s) — ×10/vertex growth means n=26 (the first open order)
   GENREG with native girth-6 pruning.
 - Cay4valUpTo1025.zip download aborted at 13 GB (tmpfs pressure); switched to the
   640-vertex AT census.
+- Annealing on "number of 3-colorings" (attack (c)): prototyped, then dropped — the
+  landscape is flat (essentially every 4-regular girth-6 graph in reachable sizes is
+  3-colorable with astronomically many colorings; a count-with-cutoff objective gives
+  no gradient at feasible cutoffs). A fractional-chromatic LP objective is the right
+  next idea but needs column generation; left to a V4-style follow-up.
 - genreg background pipelines: two false starts (backgrounded jobs killed with the
   launching one-shot shell; a `pkill -f` that matched its own shell) before the setsid
   runner scripts in `scripts/`.
 
 ## 8. Compute spent (this box: 8 cores)
 
-- n ≤ 30 generation+filter: < 1 min total. n=31 (proof of zero): ~7 min single-core,
-  re-run 8-way. n=32+: see table above (updated as jobs finish).
+- n ≤ 30 generation+filter: < 1 min total. n=31 (proof of zero): ~7 min single-core.
+  n=32: ~50 min × 8 cores. n=33 (proof of zero): ~3 h × 8 cores. n=34 own gen not
+  attempted (est. 15–45 h × 8 cores); covered via census SCD + our 3-coloring.
 - AT census 3-coloring sweep (4820 graphs, ≤ 640 vertices): ~25 min single-core.
+- Circulant sweep n ≤ 1000 (34.5M pairs): ~25 min single-core.
+- GAP Cayley sweep orders 26–120 + coloring: ~30 min; orders 121–200 (excl. 128, 192)
+  run as bonus — results in cayley2 files if completed before session end.
 - EG girth-6 Δ≤4 growth measurements: ~3 min.
 
 ## 9. Verdict
 
-NO WITNESS FOUND; NO CLAIMED SOLUTION. Frontier pushed: every 4-regular girth-≥6 graph
-on ≤ N vertices is 3-colorable (N per table above, target N=34), extending the
-Exoo–Goedgebeur ≤ 25 general-graph frontier for the regular case; plus the
+NO WITNESS FOUND; NO CLAIMED SOLUTION. Frontier pushed: **every 4-regular girth-≥6
+graph on ≤ 34 vertices is 3-colorable** (independent generation ≤ 33; published census
++ our 3-coloring for 34), extending the Exoo–Goedgebeur ≤ 25 general-graph frontier
+for the regular case; plus the
 arc-transitive census to 640 vertices and 2AT slice to 2000 vertices are clean.
 All 3-colorings are recorded as machine-checkable certificates and re-verified by the
 independent exact verifier (`verify.py`, PASS).
