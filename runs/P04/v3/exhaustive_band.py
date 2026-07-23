@@ -9,8 +9,12 @@ with <= E edges and the parity condition making G = K_n - H Eulerian
 then SAT-decide "G decomposes into <= floor((n-1)/2) cycles" for each.
 UNSAT => counterexample. Sharding via geng's res/mod feature.
 
-Usage: exhaustive_band.py n maxE res mod
+Usage: exhaustive_band.py n maxE res mod [minE]
+Enumeration is piped through the compiled C parity filter (parity_filter.c,
+validated against the Python check) for speed.
 """
+
+import os
 
 import subprocess
 import sys
@@ -47,22 +51,22 @@ def main():
     n, maxE, res, mod = map(int, sys.argv[1:5])
     want_odd = (n % 2 == 0)
     k = (n - 1) // 2
-    minE = n // 2 if want_odd else 0
+    minE = int(sys.argv[5]) if len(sys.argv) > 5 else (n // 2 if want_odd else 0)
     cmd = ["nauty-geng", "-q", str(n), f"{minE}:{maxE}"]
     if want_odd:
         cmd.insert(2, "-d1")
     if mod > 1:
         cmd.append(f"{res}/{mod}")
-    log = f"band_n{n}_E{maxE}_s{res}.log"
+    here = os.path.dirname(os.path.abspath(__file__))
+    cmd = " ".join(cmd) + f" | {here}/parity_filter {n} {1 if want_odd else 0}"
+    log = f"band_n{n}_E{minE}-{maxE}_s{res}.log"
     Kn = nx.complete_graph(n)
     t0 = time.time()
     seen = cand = 0
     stats = {"OK": 0, "CE": 0}
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
     for line in proc.stdout:
         seen += 1
-        if not parity_ok_g6(line, n, want_odd):
-            continue
         H = nx.from_graph6_bytes(line.strip())
         Hf = nx.Graph()
         Hf.add_nodes_from(range(n))
