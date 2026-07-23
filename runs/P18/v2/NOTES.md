@@ -115,8 +115,48 @@ Prints PASS only on a genuine witness. Unit-tested on the p≥3 Selfridge witnes
 
 ## 5. Compute log & results
 
-(filled as runs complete — see result lines below)
+Machine: 8-core, 32 GB RAM (Devin box). Solvers: CaDiCaL 1.5.3 (pysat), OR-Tools CP-SAT 9.x,
+kissat 4.0.4 (built from source, DRAT proof logging), drat-trim (built, for proof checking).
+
+| instance | engine | encoding size | outcome |
+|---|---|---|---|
+| L=360 (p≥5 pool) | exact density | Σ1/m = 7/9 | **UNSAT trivially** (density < 1) |
+| L=360 (p≥3 pool, sanity) | CaDiCaL | 838 vars | **SAT < 0.1s**, witness re-verified (12 congruences) |
+| L=55440 | CaDiCaL (pysat) | 106,313 vars / 374,207 clauses | no verdict after ~55 min (killed; superseded by kissat) |
+| L=55440 | kissat 4.0.4 + DRAT | same CNF (DIMACS) | **timeout at 14,000 s (3.9 h)**, no verdict; partial DRAT grew to 49 GB (discarded) |
+| L=55440 | CP-SAT, 5 workers | AddAtMostOne + BoolOr model | **timeout at 11,800 s (3.3 h)**, status UNKNOWN |
+| L=166320 | kissat 4.0.4 (no proof logging, disk budget) | 383,639 vars / 741,635 clauses | **timeout at 12,000 s (3.3 h)**, no verdict |
+| first pairwise-AMO attempt | CaDiCaL | AMO on m≈5·10⁴ → 10⁹ clauses | **OOM-killed at 32 GB** (dead end; fixed with seqcounter AMO) |
+
+These instances are exactly the family on which the idealombrer repo reports "SAT solvers only
+time out" — their exact-rational sieve certificates (reproduced here, `external-repro/`) already
+prove non-covering for L ∈ {55440, 110880, 166320, 720720}; our SAT runs are an *independent*
+confirmation attempt with a checkable DRAT artifact, budget-capped at ~4 h each.
+
+Bonus: the p≥3 sanity run yields a machine-verified witness for the Lean
+`erdos_273.variants.three` (`answer(True)`, currently marked "TODO: find reference"):
+(0 mod 2), (1 mod 4), (1 mod 6), (7 mod 10), (3 mod 12), (11 mod 18), (11 mod 30),
+(23 mod 36), (3 mod 40), (35 mod 60), (71 mod 72), (179 mod 180) — distinct moduli, all p−1
+with p prime ≥ 3, covers ℤ (verified exhaustively mod 360).
 
 ## 6. Obstruction / nonexistence heuristics
 
-See §5 results and OBSTRUCTIONS.md.
+See OBSTRUCTIONS.md (parity reduction re-derived; Mirsky–Newman forced overlap; density
+prefilters; external Theorem A/B partial bounds with reproduced certificates).
+
+## 7. Bottom line of run v2
+
+- **No new verified mathematical result.** Erdős #273 remains OPEN in both directions.
+- Verified deliverables of this run: statement/convention re-verification against ErGr80 p.24
+  (distinct moduli > 1); Lean formal-conjectures fidelity check (faithful); a widened priority
+  check (still open; two artifact repos with partial results found and logged, one reproduced
+  bit-identically); an exact standalone verifier (`verify.py`, integer-only accept path); a
+  validated SAT encoding (sanity-SAT on the p≥3 pool with machine-verified Selfridge-type
+  witness); exact density prefilters; and negative compute results: CDCL/CP-SAT cannot decide
+  L ∈ {55440, 166320} within ~4 h budgets (consistent with the artifact repo's report), while
+  the reproduced exact-rational sieve certificates already settle those periods as non-covering.
+- Most promising directions for future runs: (a) independent from-first-principles
+  implementation of the BBMST distortion sieve to *independently* certify the L-period lemmas
+  and Theorem A; (b) structured constructions on periods with several primes p > 877 (tree/frame
+  methods), guided by the parity reduction; (c) formalizing the p≥3 witness for the Lean
+  `variants.three` TODO.

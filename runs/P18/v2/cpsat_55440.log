@@ -1,1 +1,6 @@
 L=55440 |pool|=43 density=1.043669
+note: cpsat run killed accidentally at ~55min (no verdict); relaunched 03:44
+L=55440 |pool|=43 density=1.043669
+status=UNKNOWN wall=11801.0s
+RESULT UNKNOWN (timeout)
+EXIT=0
