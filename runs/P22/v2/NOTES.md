@@ -193,8 +193,9 @@ The session was resumed with instructions to push harder. Additional work:
   formula detects 6 generators (the full 2·5334 group incl. flip) and adds
   6084 sound lex-leader clauses (`breakid_out.cnf`, 2917 vars, 25642
   clauses). gimsatul 1.1.3 (4 threads each) ran on `sb.cnf` and
-  `breakid_out.cnf` for hours: no termination, no progress signal. Consistent
-  with everything above.
+  `breakid_out.cnf` for 3.75 h wall (~15 core-hours each, 73M resp. 64M
+  conflicts): no termination, no progress signal (only ~9% of variables ever
+  fixed, all by preprocessing). Consistent with everything above.
 - **SAT-side improvement**: continued focused-walk runs improved the best
   known coloring from 242 to **232 monochromatic triangles** (out of 9779) —
   i.e. ≥ 9547 triangles simultaneously bichromatic, still 232 short of a
@@ -210,3 +211,7 @@ hardness estimates above are now measured, not guessed.
 6→2 × walk local search (~10⁹ flips), march_cu cubing (d10/d16/d20 on main;
 d12/d18 on inv_2), ~230 sampled cube-conquer runs on the main instance, and
 the full certified 4096-cube CnC proof of the order-2 case (~2.5 h).
+
+Wave 2 (resumed session): +8 cores for ~4 h — 2 × gimsatul (4 threads each,
+~15 core-hours per instance), 2 × walk (10¹⁰ flips total), ~25 star-cube
+scaling runs, 176M-node UP-only DFS, BreakID preprocessing.
