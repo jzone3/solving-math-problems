@@ -1,0 +1,16 @@
+CAND K????B_wF?^w
+ score=3.552713678801e-15 w=2
+CAND K????B_w?}^w
+ score=3.552713678801e-15 w=2
+CAND K????B_w?~B{
+ score=3.552713678801e-15 w=2
+CAND K????B_wE}Zw
+ score=3.552713678801e-15 w=2
+CAND K????B_wF}^w
+ score=2.486899575160e-14 w=2
+CAND K????B_Fo}B{
+ score=7.105427357601e-15 w=2
+CAND K????B_Fv}^w
+ score=2.842170943040e-14 w=2
+CAND K????B_~v}^w
+ score=4.263256414561e-14 w=2
