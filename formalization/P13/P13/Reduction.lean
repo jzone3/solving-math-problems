@@ -6,7 +6,7 @@ Together with UNSAT of `pmdCnf` (checked via the verified LRAT checker in
 carries *no* symmetry breaking, no WLOG argument is needed: the assignment is
 read off the design directly.
 -/
-import P13.Encoding
+import P13.Canon
 
 namespace P13
 
@@ -142,6 +142,102 @@ theorem no_design_of_unsat (h : CNF.Unsat pmdCnf) :
   have hsat' : CNF.Sat (assignOf B ∘ dec) pmdCnf := CNF.sat_relabel hsat
   rw [CNF.sat_def] at hsat'
   rw [h (assignOf B ∘ dec)] at hsat'
+  exact Bool.false_ne_true hsat'
+
+/-! ### The full (symmetry-broken) CNF
+
+A design in `Canonical` form (see `Canon.lean`) additionally satisfies the
+symmetry-breaking clauses, so UNSAT of the full CNF also refutes existence. -/
+
+theorem eval_symList (C : Fin 12 → Fin 6 → Fin 9) (hC : Canonical C) :
+    ∀ c ∈ symList, CNF.Clause.eval (assignOf C) c = true := by
+  intro c hc
+  simp only [symList, List.mem_append] at hc
+  rcases hc with (((hc | hc) | hc) | hc) | hc
+  · -- block 0 is the identity block
+    obtain ⟨p, _, rfl⟩ := List.mem_map.mp hc
+    simp [CNF.Clause.eval, assignOf, hC.block0 p]
+  · -- rotation canonicity
+    simp only [rotClauses, List.mem_flatMap, List.mem_map, List.mem_filter] at hc
+    obtain ⟨bl, _, p, hp, s, _, s2, hs2, rfl⟩ := hc
+    refine clause2_eval fun ⟨h1, h2⟩ => ?_
+    simp only [assignOf, decide_eq_true_eq] at h1 h2
+    have hlt := hC.rotmin bl p (by
+      intro hEq
+      exact absurd (congrArg Fin.val hEq) (by simpa using hp.2))
+    rw [h1, h2] at hlt
+    have := hs2.2
+    simp only [decide_eq_true_eq] at this
+    exact absurd (Fin.lt_def.mp hlt) (by omega)
+  · -- zero placement
+    simp only [zeroClauses, List.mem_append, List.mem_map, List.mem_flatMap,
+      List.mem_filter] at hc
+    rcases hc with ⟨bl, hbl, rfl⟩ | ⟨bl, hbl, p, _, rfl⟩
+    · have := hC.zeroFirst bl (by simpa using hbl.2)
+      simp [CNF.Clause.eval, assignOf, this]
+    · have := hC.noZero bl (by simpa using hbl.2) p
+      simp [CNF.Clause.eval, assignOf, this]
+  · -- strict order on blocks 0–6
+    simp only [order1Clauses, List.mem_flatMap] at hc
+    obtain ⟨bl, _, hc⟩ := hc
+    by_cases hbl : bl.val < 7
+    · rw [dif_pos hbl] at hc
+      simp only [List.mem_flatMap, List.mem_map, List.mem_filter] at hc
+      obtain ⟨s, _, s2, hs2, rfl⟩ := hc
+      refine clause2_eval fun ⟨h1, h2⟩ => ?_
+      simp only [assignOf, decide_eq_true_eq] at h1 h2
+      have hlt := hC.order1 bl hbl (by omega)
+      rw [h1, h2] at hlt
+      have := hs2.2
+      simp only [decide_eq_true_eq] at this
+      exact absurd (Fin.lt_def.mp hlt) (by omega)
+    · rw [dif_neg hbl] at hc
+      simp at hc
+  · -- non-strict order on blocks 8–11
+    simp only [order2Clauses, List.mem_flatMap] at hc
+    obtain ⟨bl, _, hc⟩ := hc
+    by_cases hbl : 8 ≤ bl.val ∧ bl.val < 11
+    · rw [dif_pos hbl] at hc
+      simp only [List.mem_flatMap, List.mem_map, List.mem_filter] at hc
+      obtain ⟨s, _, s2, hs2, rfl⟩ := hc
+      refine clause2_eval fun ⟨h1, h2⟩ => ?_
+      simp only [assignOf, decide_eq_true_eq] at h1 h2
+      have hle := hC.order2 bl hbl.1 hbl.2 (by omega)
+      rw [h1, h2] at hle
+      have := hs2.2
+      simp only [decide_eq_true_eq] at this
+      exact absurd (Fin.le_def.mp hle) (by omega)
+    · rw [dif_neg hbl] at hc
+      simp at hc
+
+theorem eval_pmdCnfVFull (C : Fin 12 → Fin 6 → Fin 9) (h : IsPMD1 C)
+    (hC : Canonical C) : CNF.eval (assignOf C) pmdCnfVFull = true := by
+  have hbase := eval_pmdCnfV C h
+  simp only [CNF.eval, pmdCnfV, List.all_toArray, List.all_eq_true] at hbase
+  simp only [CNF.eval, pmdCnfVFull, fullCnfList, List.all_toArray,
+    List.all_eq_true]
+  intro c hc
+  rcases List.mem_append.mp hc with hc | hc
+  · exact hbase c hc
+  · exact eval_symList C hC c hc
+
+/-- If the full (symmetry-broken) CNF — the instance actually refuted by
+kissat — is unsatisfiable, then no (9,6,1)-PMD with 12 blocks exists: any
+design could be brought into canonical form, whose induced assignment would
+satisfy the CNF. -/
+theorem no_design_of_unsat_full (h : CNF.Unsat pmdCnfFull) :
+    ¬∃ B : Fin 12 → Fin 6 → Fin 9, IsPMD1 B := by
+  rintro ⟨B, hB⟩
+  obtain ⟨C, hC, hcanon⟩ := exists_canonical hB
+  have hsat : CNF.Sat ((assignOf C ∘ dec) ∘ enc) pmdCnfVFull := by
+    have : (assignOf C ∘ dec) ∘ enc = assignOf C := by
+      funext w
+      simp [Function.comp, dec_enc]
+    rw [this]
+    exact eval_pmdCnfVFull C hC hcanon
+  have hsat' : CNF.Sat (assignOf C ∘ dec) pmdCnfFull := CNF.sat_relabel hsat
+  rw [CNF.sat_def] at hsat'
+  rw [h (assignOf C ∘ dec)] at hsat'
   exact Bool.false_ne_true hsat'
 
 end P13

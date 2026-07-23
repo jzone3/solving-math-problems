@@ -4,4 +4,5 @@ import P13.Encoding
 
 def main (args : List String) : IO Unit := do
   let out := args.headD "dump.cnf"
-  IO.FS.writeFile out (Std.Sat.CNF.dimacs P13.pmdCnf)
+  let cnf := if args.contains "--full" then P13.pmdCnfFull else P13.pmdCnf
+  IO.FS.writeFile out (Std.Sat.CNF.dimacs cnf)

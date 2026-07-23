@@ -129,4 +129,66 @@ theorem dec_enc (w : V) : dec (enc w) = w := by
 kissat (variable `n` here = DIMACS variable `n + 1`). -/
 def pmdCnf : CNF Nat := pmdCnfV.relabel enc
 
+/-! ### Symmetry-breaking clauses of `gen_cnf.py` (full mode)
+
+These are the five clause families appended by the generator after the base
+encoding; `solutions/P13/pmd9_unsat.cnf.gz` is exactly `cnfList ++ symList`.
+Their soundness is *proved* in `Canon.lean`: every design can be relabeled,
+rotated and reordered into one whose induced assignment satisfies them. -/
+
+/-- Block 0 is the identity block `(0,1,2,3,4,5)`. -/
+def block0Clauses : List (CNF.Clause V) :=
+  (List.finRange 6).map fun p => [(V.x 0 p ⟨p.val, by omega⟩, true)]
+
+/-- Rotation canonicity: position 0 of each block holds the block minimum. -/
+def rotClauses : List (CNF.Clause V) :=
+  (List.finRange 12).flatMap fun bl =>
+    ((List.finRange 6).filter fun p => p.val ≠ 0).flatMap fun p =>
+      (List.finRange 9).flatMap fun s =>
+        ((List.finRange 9).filter fun s2 => s2.val < s.val).map fun s2 =>
+          [(V.x bl 0 s, false), (V.x bl p s2, false)]
+
+/-- Blocks 0–7 start with point 0; blocks 8–11 do not contain point 0. -/
+def zeroClauses : List (CNF.Clause V) :=
+  (((List.finRange 12).filter fun bl => bl.val < 8).map fun bl =>
+      [(V.x bl 0 0, true)]) ++
+    ((List.finRange 12).filter fun bl => 8 ≤ bl.val).flatMap fun bl =>
+      (List.finRange 6).map fun p => [(V.x bl p 0, false)]
+
+/-- Blocks 0–7 are ordered strictly by their position-1 symbol. -/
+def order1Clauses : List (CNF.Clause V) :=
+  (List.finRange 12).flatMap fun bl =>
+    if h : bl.val < 7 then
+      (List.finRange 9).flatMap fun s =>
+        ((List.finRange 9).filter fun s2 => 1 ≤ s2.val ∧ s2.val ≤ s.val).map
+          fun s2 =>
+            [(V.x bl 1 s, false), (V.x ⟨bl.val + 1, by omega⟩ 1 s2, false)]
+    else []
+
+/-- Blocks 8–11 are ordered (non-strictly) by their position-0 symbol. -/
+def order2Clauses : List (CNF.Clause V) :=
+  (List.finRange 12).flatMap fun bl =>
+    if h : 8 ≤ bl.val ∧ bl.val < 11 then
+      (List.finRange 9).flatMap fun s =>
+        ((List.finRange 9).filter fun s2 => 1 ≤ s2.val ∧ s2.val < s.val).map
+          fun s2 =>
+            [(V.x bl 0 s, false), (V.x ⟨bl.val + 1, by omega⟩ 0 s2, false)]
+    else []
+
+/-- All symmetry-breaking clauses, in generator order. -/
+def symList : List (CNF.Clause V) :=
+  block0Clauses ++ rotClauses ++ zeroClauses ++ order1Clauses ++ order2Clauses
+
+/-- The full clause list of `gen_cnf.py 9` (base encoding + symmetry breaking),
+in generator order. -/
+def fullCnfList : List (CNF.Clause V) := cnfList ++ symList
+
+/-- The full CNF over the structured variable type `V`. -/
+def pmdCnfVFull : CNF V := ⟨fullCnfList.toArray⟩
+
+/-- The full CNF over `Nat` variables, exactly the DIMACS instance
+`solutions/P13/pmd9_unsat.cnf.gz` refuted by kissat (variable `n` here =
+DIMACS variable `n + 1`). -/
+def pmdCnfFull : CNF Nat := pmdCnfVFull.relabel enc
+
 end P13
