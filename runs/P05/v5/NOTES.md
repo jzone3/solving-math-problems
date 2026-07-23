@@ -231,6 +231,32 @@ longest paths all sharing exactly one common vertex — and never once crossed i
 AND = 0 regime. The single shared vertex is remarkably robust under local moves, matching
 the round-1 extremal picture (min triple intersection exactly 1, never 0).
 
+## Round 3: n ≤ 20 DP (`direct_dp20.c`) + weighted-multigraph annealer (`anneal_w.c`)
+
+Extended the subset-DP checker to 32-bit masks (n ≤ 20) and added a weighted annealer:
+integer edge weights 1..W, maximum-*weight* path vertex sets via dpw[mask][v]; a weighted
+witness would lift to an unweighted candidate by subdividing weight-w edges into w unit
+edges (then re-verified exactly — paths ending inside subdivided edges must be checked).
+
+Additional direct exhausts (all 0 hits):
+
+| Class | graphs checked | hits |
+|---|---|---|
+| subcubic (Δ≤3) n = 17 (complete) | 16,996,157 | 0 |
+| subcubic (Δ≤3) n = 18 (complete) | 72,556,640 | 0 |
+| all connected n = 12, 23 edges | 770,641,945 | 0 |
+| all connected n = 13, 18–19 edges | 131,902,078 | 0 |
+| all connected n = 14, 18–19 edges | 212,914,753 | 0 |
+
+Direct frontier now: **all n ≤ 11 complete; n = 12 to 23 edges; n = 13, 14 to 19 edges;
+n = 15, 16 to 17 edges; subcubic complete to n = 18** — ~3.0B graphs directly checked in
+total, zero counterexamples.
+
+Weighted annealing (n = 12–14, W = 3–6, degree cap 4–5, 60–150M iterations): same story
+as unweighted — every run floors at |AND of max-weight path sets| = 1–2 and never reaches
+the AND = 0 regime; edge weights make maximum-weight ties sparse (few distinct optimal
+vertex sets), which if anything strengthens the shared-vertex basin.
+
 ## 7. Conclusions
 
 1. Confirmed still open as of 2026-07 (arXiv claim 2006.16245 self-retracted).
@@ -243,14 +269,18 @@ the round-1 extremal picture (min triple intersection exactly 1, never 0).
 4. Two crisp obstruction patterns worth theory follow-up: (a) the k=3 "per-pair maximum
    paths on a triple always share a vertex" lemma (min intersection exactly 1 at extremes);
    (b) the k≥4 arm-length min-max infeasibility.
+6. Round 3: subcubic graphs exhausted completely through n = 18 (89.6M more), n = 12
+   through 23 edges (771M), n = 13–14 through 19 edges (345M); weighted-multigraph
+   annealing (which lifts to unweighted by subdivision) also floors at a shared vertex.
 5. Round 2 (subset-DP encoding): **complete exhaustive verification of Gallai-3 for every
    connected graph on ≤ 11 vertices** (1,006,700,565 graphs at n = 11 alone; count matches
    OEIS A001349), n = 12 up to 22 edges (745M graphs), sparse (≤ 17 edges) to n = 16 —
    ~1.79B graphs directly checked, 0 counterexamples. Annealing at n = 14–18 with an exact
    DP oracle never escaped the "all longest paths share exactly one vertex" basin.
 
-STATUS: negative / frontier-pushed — no counterexample found. Direct exhaustive frontier
-pushed to all n ≤ 11 (complete, ~1.0B graphs) plus n = 12 ≤ 22 edges and sparse n ≤ 16;
-pendant-arm spider families excluded over ~390M cores; annealing at n ≤ 18 never left the
-shared-vertex basin. Two conjecture-relevant lemma candidates isolated and documented.
-No solutions/P05/verify.py (nothing to verify — no witness claimed).
+STATUS: negative / frontier-pushed — no counterexample found. Direct exhaustive frontier:
+all n ≤ 11 complete (~1.0B graphs), n = 12 ≤ 23 edges, n = 13–14 ≤ 19 edges, sparse
+n ≤ 16, subcubic complete to n = 18 (~3.0B graphs direct total); pendant-arm spider
+families excluded over ~390M cores; unweighted (n ≤ 18) and weighted (n ≤ 14, W ≤ 6)
+annealing never left the shared-vertex basin. Two conjecture-relevant lemma candidates
+isolated and documented. No solutions/P05/verify.py (no witness claimed).

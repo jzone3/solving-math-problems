@@ -8,3 +8,5 @@ multi_search
 *.g6
 direct_dp
 anneal
+direct_dp20
+anneal_w
