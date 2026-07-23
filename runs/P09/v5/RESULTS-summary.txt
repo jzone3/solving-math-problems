@@ -9,6 +9,7 @@ FW BEST n=24 w=3: +0.000000
 FW BEST n=24 w=4: +0.000000
 FW BEST n=24 w=5: +0.000000
 FW BEST n=30 w=4: +0.000000
+FW BEST n=30 w=5: -0.431394
 GLOBAL BEST n=20 init=random: +0.000000
 GLOBAL BEST n=20 init=random: -0.398247
 GLOBAL BEST n=24 init=turan-union: +0.000000
