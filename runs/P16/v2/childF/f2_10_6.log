@@ -1,0 +1,3 @@
+>A nauty-geng -cX0x800d2D9 n=10 e=10-45 class=6/16
+>Z 770384 graphs generated in 0.25 sec
+n=10 res=6/16: 770384 graphs, min eig -3.949e-15 at ICQvDT[]?, FAILURES 0
