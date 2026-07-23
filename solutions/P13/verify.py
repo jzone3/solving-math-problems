@@ -19,11 +19,11 @@ positive witnesses (e.g. sanity-check designs found for known-existing v).
 import sys
 
 
-def verify(v, k, blocks):
+def verify(v, k, blocks, packing=False):
     b_expected = v * (v - 1) // k
     if v * (v - 1) % k != 0:
         return False, f"v(v-1)={v*(v-1)} not divisible by k={k}"
-    if len(blocks) != b_expected:
+    if not packing and len(blocks) != b_expected:
         return False, f"expected b={b_expected} blocks, got {len(blocks)}"
     seen = set()
     for r, blk in enumerate(blocks):
@@ -39,16 +39,21 @@ def verify(v, k, blocks):
                 if trip in seen:
                     return False, f"pair {trip[1:]} covered twice at distance {t}"
                 seen.add(trip)
+    if packing:
+        return True, (f"valid partial packing of {len(blocks)} blocks "
+                      f"(perfect design would need {b_expected}); no slot covered twice")
     if len(seen) != (k - 1) * v * (v - 1):
         return False, "coverage count mismatch"
     return True, "all (k-1)*v*(v-1) ordered-pair/distance slots covered exactly once"
 
 
 def main():
-    if len(sys.argv) != 2:
-        print("usage: verify.py <witness-file>")
+    args = [a for a in sys.argv[1:] if a != "--packing"]
+    packing = "--packing" in sys.argv[1:]
+    if len(args) != 1:
+        print("usage: verify.py [--packing] <witness-file>")
         sys.exit(2)
-    with open(sys.argv[1]) as f:
+    with open(args[0]) as f:
         toks = f.read().split()
     v, k = int(toks[0]), int(toks[1])
     rest = list(map(int, toks[2:]))
@@ -56,7 +61,7 @@ def main():
         print("FAIL: witness body not a multiple of k")
         sys.exit(1)
     blocks = [rest[i:i + k] for i in range(0, len(rest), k)]
-    ok, msg = verify(v, k, blocks)
+    ok, msg = verify(v, k, blocks, packing=packing)
     print(("PASS" if ok else "FAIL") + ": " + msg)
     sys.exit(0 if ok else 1)
 
