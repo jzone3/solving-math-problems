@@ -1,0 +1,1 @@
+SUMMARY total=1253740867 evaluated=1227855108 violations=0 best_gap=-1.347052e+00 best_g6=K?Beurwu~~^{ best_n=12 best_m=41 best_w=3 best_s=53.319614745975 best_rhs=54.666666666667
