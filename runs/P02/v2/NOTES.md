@@ -114,7 +114,7 @@ residual interpretation question; the problem file explicitly targets the bounda
 | 17 | 14143            | 31             | 0 |
 | 18 | 2438356          | 230            | **77** |
 | 19 | 42815            | 9              | 0 |
-| 20 | (8-way parallel, see scan20_*.log) | — | — |
+| 20 | aborted after ~4h (8-way); 0 candidates flagged before abort | — | — |
 
 (n=18 run 8-way parallel via geng res/mod classes; ~25 min wall. Also, ALL 171 MTF
 graphs with δ≥n/3 for n=6..17 were re-checked with the exact rational pipeline, not just
@@ -168,9 +168,12 @@ via small ILP over blowup weights of all 19 known cores — W itself covers ever
   2.44M reads, 8 parallel shards, ~25 min wall on 8 vcpus).
 - Exact rational re-verification: all 401 MTF δ≥n/3 graphs (n≤17: 171, n=18: 230).
 - Homomorphism nonexistence check W → W−8: exhaustive backtracking, instant.
-- n ≥ 19: n=19,20 (δ≥7) not run (strict case, covered by theorem); n=21 exhaustive geng
-  (-t -d7, n=21) infeasible in session budget — but the W[t] family already settles all
-  n = 9t, and blowups of the other cores cover many more n ≡ 0 (mod 3).
+- n = 19 exhaustive: 42,815 graphs, 9 MTF, 0 infeasible (≈ 25 min, 8-way) — matches the
+  theorem (strict case). n = 20 (also strict) aborted after ~4 h wall (8-way, no shard
+  finished, 0 candidates flagged); redundant given the positivity argument for δ > n/3.
+- n = 21 boundary exhaustion not attempted (≫ n=18's 2.4M graphs; days of compute) —
+  but the weighted-W family (1,k,k,1,1,1,1,1,k) already gives counterexamples for
+  EVERY n ≡ 0 (mod 3), n ≥ 9, including 21.
 
 ## Dead ends / near-misses
 
