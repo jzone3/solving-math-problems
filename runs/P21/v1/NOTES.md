@@ -91,15 +91,52 @@ Groups tried (natural subgroups of Aut(HoSi) = PSU(3,5):2 with semiregular-ish a
 |---|---|---|---|---|---|---|
 | C5×C5 | 7 | 49 | 8323 | 166852 | **UNSAT** | 2.5 s |
 | C5×C5 | 6 | 49 | 7134 | 142827 | (running) | |
-| C25   | 7 | 49 | | | (running) | |
-| C25   | 6 | 49 | | | (running) | |
-| C7    | 7 | 175 | 32914 | 855918 | (running) | |
-| C7    | 6 | 175 | 28212 | 732969 | (running) | |
+| F21 twisted | 6 | 175 | 44040 | 933619 | **UNSAT** | 4.2 s |
+| F21 twisted | 7 | 175 | 51380 | 1089996 | **UNSAT** | 4.2 s |
+| C7    | 7 | 175 | 51380 | 1087548 | (running) | |
+| C7    | 6 | 175 | 44040 | 931509 | (running) | |
+| C7 fixed-copy | 7 | 175 | 51380 | 1087723 | (running) | |
+| C7 fixed-copy | 6 (×6 miss classes) | 175 | 44040 | 931684 | (running) | |
 | C5fpf | 7 | 245 | 40915 | 1196335 | (running) | |
 
 (to be updated as runs finish)
+
+### F21 twisted search (build_and_solve_twisted)
+
+Motivated by Mačaj's statistics table; NB his |Aut| column refers to the *remainder graph*,
+not the packing, so F21-invariant packings were not actually promised. We searched anyway:
+G = F21 = ⟨σ,τ | σ⁷=τ³=1, τστ⁻¹=σ²⟩ acting with vertex orbits 1 + 4·7 + 21 (τ fixes 5
+vertices, matching the K_{1,4} fixed subgraph of order-3 HoSi automorphisms; this action is
+unique up to conjugacy given the fixed-point data). Counting fixed-vertex edge orbits forces
+the color action π of τ to be a 3-cycle on 3 colors fixing the rest (identity and (3,3)-type
+are impossible: only 4 τ-invariant fv orbits exist and the 21-edge fv orbit must split over a
+3-cycle of colors). Result: **UNSAT for both k=6 and k=7 in ≈5 s** ⇒ no 6-packing and no
+7-decomposition admits this F21 action, even allowing τ to permute the copies.
+
+### Fixed-copy reduction (soundness proof)
+
+Claim: N(⟨σ⟩) ≤ S₅₀ acts transitively on σ-invariant HoSi copies. Proof: given copies H, H'
+with σ ∈ Aut(H) ∩ Aut(H'), pick an isomorphism φ: H → H'. Then φ⁻¹σφ and σ generate
+order-7 (Sylow) subgroups of Aut(H) ≅ PSU(3,5):2, so ∃α ∈ Aut(H) with
+(φα)⁻¹⟨σ⟩(φα) = ⟨σ⟩, i.e. g = φα ∈ N(⟨σ⟩) and g(H) = H'. ∎
+Hence if any σ-invariant 6-packing/7-decomposition exists, one exists containing our fixed
+copy H₀ (first output of enum_copies_c7.py), so freezing H₀ as color 0 loses no generality.
+For k=6 the un-used fixed-vertex class is iterated over the 6 possibilities (miss=1..6).
+
+### Copy enumeration + exact cover (abandoned)
+
+enum_copies_c7.py enumerated 1.33M σ-invariant HoSi copies (blocking-clause SAT loop,
+~200/s), but a counting argument shows the total is ≈16471·E₇ where E₇ = #order-7 elements
+of PSU(3,5):2 (tens of thousands), i.e. hundreds of millions of copies — full enumeration +
+exact cover (cover.c / cover2.c) is infeasible on this box and was abandoned in favor of the
+fixed-copy SAT.
 
 ## 5. Negative results / dead ends
 
 - No fully C5×C5-symmetric 7-decomposition exists (UNSAT above, 2.5 s) — consistent with
   Šiagiová–Meszka/Wilsch–Mačaj finding only 5-packings in this class.
+- No F21-symmetric 6-packing or 7-decomposition in the unique fixed-point-compatible action,
+  even with the order-3 element permuting the copies (UNSAT, ≈4 s each).
+- Mačaj's 2018 classification implies no 7-decomposition where all copies share an order-7
+  automorphism (all 1602 six-packing remainders have girth < 5); our C7 k=7 SAT run aims to
+  re-derive this independently.

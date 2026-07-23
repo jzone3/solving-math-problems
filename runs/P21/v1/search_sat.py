@@ -65,6 +65,34 @@ def group_c25():
             sigma[o + i] = o + (i+1) % 25
     return [sigma]
 
+def group_f21():
+    # F21 = <sigma, tau | sigma^7, tau^3, tau sigma tau^-1 = sigma^2>
+    # vertex orbits: fixed pt 49; four 7-orbits (blocks 0..3, tau: i->2i);
+    # one 21-orbit (blocks 4,5,6 cycled by tau).
+    # tau fixes 5 vertices (49 and (b,0) for b=0..3), matching the K_{1,4}
+    # fixed subgraph of order-3 automorphisms of HoSi.
+    sigma = list(range(N))
+    for b in range(7):
+        for i in range(7):
+            sigma[b*7 + i] = b*7 + (i+1) % 7
+    sigma[49] = 49
+    tau = list(range(N))
+    for b in range(4):
+        for i in range(7):
+            tau[b*7 + i] = b*7 + (2*i) % 7
+    for j in range(3):
+        for i in range(7):
+            tau[(4+j)*7 + i] = (4 + (j+1) % 3)*7 + (2*i) % 7
+    tau[49] = 49
+    # sanity
+    t3 = [tau[tau[tau[v]]] for v in range(N)]
+    assert t3 == list(range(N))
+    lhs = [tau[sigma[v]] for v in range(N)]
+    rhs = [sigma[sigma[tau[v]]] for v in range(N)]
+    assert lhs == rhs, "tau sigma != sigma^2 tau"
+    assert sum(1 for v in range(N) if tau[v] == v) == 5
+    return [sigma, tau]
+
 def close_group(gens):
     # returns list of permutations (tuples) forming the generated group
     ident = tuple(range(N))
@@ -140,7 +168,8 @@ def canon_c4(p, q, r, s):
                 best = cand
     return best
 
-def build_and_solve(name, gens, k, fixed_vertex=None, timeout=None):
+def build_and_solve(name, gens, k, fixed_vertex=None, timeout=None, fix_copy=None,
+                    miss=None):
     t0 = time.time()
     group = close_group(gens)
     orbits, seen = edge_orbits(group)
@@ -163,13 +192,33 @@ def build_and_solve(name, gens, k, fixed_vertex=None, timeout=None):
         if k == 7:
             cnf.append(lits)
 
+    # optionally freeze a full copy (sound for C7: N(sigma) acts transitively on
+    # sigma-invariant HoSi copies, see NOTES.md), colored by its fv-orbit class
+    if fix_copy is not None:
+        fv_orbits_all = sorted({seen[(min(fixed_vertex, u), max(fixed_vertex, u))]
+                                for u in range(N) if u != fixed_vertex})
+        fvo_of_copy = [o for o in fix_copy if o in fv_orbits_all]
+        assert len(fvo_of_copy) == 1
+        use0 = [o for i, o in enumerate(fv_orbits_all) if i != miss] if miss is not None \
+               else fv_orbits_all
+        assert fvo_of_copy[0] in use0, "miss class equals frozen copy's class"
+        c0 = use0.index(fvo_of_copy[0])
+        assert c0 < k
+        print(f"[{name}] freezing copy of {len(fix_copy)} orbits as color {c0}", flush=True)
+        fixset = set(fix_copy)
+        for o in range(no):
+            cnf.append([X(o, c0)] if o in fixset else [-X(o, c0)])
+
     # symmetry breaking: orbits through fixed vertex <-> colors
     if fixed_vertex is not None:
         fv_orbits = sorted({seen[(min(fixed_vertex, u), max(fixed_vertex, u))]
                             for u in range(N) if u != fixed_vertex})
         assert len(fv_orbits) == 7
-        for c in range(min(k, 7)):
-            cnf.append([X(fv_orbits[c], c)])
+        use = [o for i, o in enumerate(fv_orbits) if i != miss] if miss is not None \
+              else fv_orbits
+        assert len(use) >= k
+        for c in range(k):
+            cnf.append([X(use[c], c)])
 
     # degree constraints on orbit representatives of vertices
     vseen = set(); vreps = []
@@ -195,6 +244,15 @@ def build_and_solve(name, gens, k, fixed_vertex=None, timeout=None):
             enc = CardEnc.equals(lits=lits, bound=7, vpool=pool, encoding=EncType.totalizer)
             cnf.extend(enc.clauses)
 
+    # global count: each color uses exactly 175/|orbit| orbits (all orbits same size here)
+    osz = len(orbits[0])
+    if all(len(o) == osz for o in orbits) and 175 % osz == 0:
+        per = 175 // osz
+        for c in range(k):
+            enc = CardEnc.equals(lits=[X(o, c) for o in range(no)], bound=per,
+                                 vpool=pool, encoding=EncType.totalizer)
+            cnf.extend(enc.clauses)
+
     # no monochromatic triangle / C4
     for c in range(k):
         for t in tri:
@@ -202,6 +260,102 @@ def build_and_solve(name, gens, k, fixed_vertex=None, timeout=None):
         for q in c4:
             cnf.append([-X(o, c) for o in q])
 
+    print(f"[{name}] CNF: {pool.top} vars, {len(cnf.clauses)} clauses ({time.time()-t0:.1f}s)", flush=True)
+    with Cadical195(bootstrap_with=cnf) as s:
+        sat = s.solve()
+        print(f"[{name}] k={k}: {'SAT' if sat else 'UNSAT'} ({time.time()-t0:.1f}s)", flush=True)
+        if sat:
+            model = set(l for l in s.get_model() if l > 0)
+            colors = {}
+            for o in range(no):
+                for c in range(k):
+                    if X(o, c) in model:
+                        colors.setdefault(c, []).extend(orbits[o])
+            return colors
+    return None
+
+def build_and_solve_twisted(name, k):
+    """F21-twisted search: sigma (order 7, fixed pt 49) stabilizes every color;
+    tau (order 3, tau sigma tau^-1 = sigma^2) permutes colors by
+    pi = (0 1 2), fixing colors 3..k-1.
+    Variables over sigma-orbits as in the C7 case, plus linking clauses
+    X[o][c] <-> X[tau(o)][pi(c)].  The four tau-invariant fixed-vertex orbits
+    (blocks 0..3) must take pi-fixed colors; blocks 4,5,6 take colors 0,1,2."""
+    t0 = time.time()
+    sigma, tau = group_f21()
+    group = close_group([sigma])          # C7 only: orbits/constraints as before
+    orbits, seen = edge_orbits(group)
+    no = len(orbits)
+    # tau action on sigma-orbits
+    tmap = []
+    for o in range(no):
+        u, v = orbits[o][0]
+        a, b = tau[u], tau[v]
+        tmap.append(seen[(min(a, b), max(a, b))])
+    pi = lambda c: (c + 1) % 3 if c < 3 else c
+    tri = cycle_orbit_reps(group, seen, 3)
+    c4 = cycle_orbit_reps(group, seen, 4)
+    print(f"[{name}] {no} orbits, {len(tri)} tri, {len(c4)} c4 ({time.time()-t0:.1f}s)", flush=True)
+
+    pool = IDPool()
+    def X(o, c): return pool.id(('x', o, c))
+    cnf = CNF()
+    for o in range(no):
+        lits = [X(o, c) for c in range(k)]
+        for i in range(k):
+            for j in range(i+1, k):
+                cnf.append([-lits[i], -lits[j]])
+        if k == 7:
+            cnf.append(lits)
+    # twist links
+    for o in range(no):
+        for c in range(k):
+            cnf.append([-X(o, c), X(tmap[o], pi(c))])
+            cnf.append([X(o, c), -X(tmap[o], pi(c))])
+    # fixed-vertex orbit assignment: block b fv orbit
+    fvo = [seen[(min(49, b*7), max(49, b*7))] for b in range(7)]
+    cnf.append([X(fvo[4], 0)])   # tau: block4->5->6
+    if k == 7:
+        # blocks 0..3 get the four pi-fixed colors 3,4,5,6
+        for b in range(4):
+            cnf.append([X(fvo[b], 3 + b)])
+    else:
+        # k=6: pi-fixed colors 3,4,5 go to three of blocks 0..3 (one uncolored),
+        # keep order to break symmetry: color 3+i to the i-th colored block
+        for b in range(4):
+            # block b colored => with a pi-fixed color; ordering constraint:
+            cnf.append([-X(fvo[b], 0)]); cnf.append([-X(fvo[b], 1)]); cnf.append([-X(fvo[b], 2)])
+        # symmetry: color 3 on block 0 or (block0 uncolored and color3 on block1)...
+        # simple ordering: if block a and block b (a<b) colored with pi-fixed colors,
+        # colors increase: encode: block0 in {3,uncolored}, then next colored gets next color.
+        # (light version: forbid color 4 or 5 on block 0, color 5 on block 1 unless...)
+        cnf.append([-X(fvo[0], 4)]); cnf.append([-X(fvo[0], 5)])
+        cnf.append([-X(fvo[1], 5)])
+    # degree constraints (identical to untwisted C7 case)
+    vreps = [0, 7, 14, 21, 28, 35, 42, 49]
+    for v in vreps:
+        w = {}
+        for u in range(N):
+            if u == v: continue
+            o = seen[(min(u, v), max(u, v))]
+            w[o] = w.get(o, 0) + 1
+        for c in range(k):
+            lits = []
+            for o, wt in w.items():
+                lits.append(X(o, c))
+                for d in range(wt - 1):
+                    y = pool.id(('dup', o, c, v, d))
+                    cnf.append([-y, X(o, c)]); cnf.append([y, -X(o, c)])
+                    lits.append(y)
+            cnf.extend(CardEnc.equals(lits=lits, bound=7, vpool=pool,
+                                      encoding=EncType.totalizer).clauses)
+    for c in range(k):
+        for t in tri:
+            cnf.append([-X(o, c) for o in t])
+        for q in c4:
+            cnf.append([-X(o, c) for o in q])
+        cnf.extend(CardEnc.equals(lits=[X(o, c) for o in range(no)], bound=25,
+                                  vpool=pool, encoding=EncType.totalizer).clauses)
     print(f"[{name}] CNF: {pool.top} vars, {len(cnf.clauses)} clauses ({time.time()-t0:.1f}s)", flush=True)
     with Cadical195(bootstrap_with=cnf) as s:
         sat = s.solve()
@@ -235,6 +389,14 @@ if __name__ == '__main__':
         res = build_and_solve('C5xC5', group_c5xc5(), k)
     elif which == 'c25':
         res = build_and_solve('C25', group_c25(), k)
+    elif which == 'f21':
+        res = build_and_solve_twisted('F21', k)
+    elif which == 'c7fix':
+        # optional 4th arg: index of fv class to leave out (k=6), else None
+        miss = int(sys.argv[4]) if len(sys.argv) > 4 else None
+        copy0 = [int(x) for x in open('copies_c7.txt').readline().split()]
+        res = build_and_solve('C7fix', perm_order7(), k, fixed_vertex=49,
+                              fix_copy=copy0, miss=miss)
     else:
         raise SystemExit('unknown group')
     if res and out:

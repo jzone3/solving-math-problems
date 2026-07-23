@@ -1,0 +1,3 @@
+[F21] 175 orbits, 2793 tri, 95508 c4 (2.1s)
+[F21] CNF: 51380 vars, 1089996 clauses (3.7s)
+[F21] k=7: UNSAT (4.2s)
