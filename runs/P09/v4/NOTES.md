@@ -157,6 +157,49 @@ been a proof-grade lead, its absence is evidence. One modeling bug found and
 fixed during development: λ₂ of the blowup is max(μ₂,0)·n, not μ₂·n — without
 the fix, complete patterns show spurious F = 1/ω² > 0 (caught on K₅ sanity run).
 
+## Round 3 (coordinator push #2): large-n simulated-annealing edge-flip search
+
+Third, again fundamentally different attack: direct stochastic search in graph
+space at sizes far beyond exhaustion (n = 13..64), maximizing
+gap(G) = λ₁² + λ₂² − 2m(1 − 1/ω) by simulated annealing on single edge flips.
+Code: `anneal.c` (build: `gcc -O3 -march=native -o anneal anneal.c -lm`).
+Per-step exact evaluation: Householder tridiagonalization + Sturm bisection for
+λ₁, λ₂ (tolerance 1e-11) and exact ω via bitmask branch-and-bound (n ≤ 64).
+Any gap > 1e-7 is printed as CANDIDATE with its graph6 string for independent
+re-verification with `solutions/P09/verify.py`.
+
+Two modes:
+1. Random-init anneal: `./anneal n restarts steps seed` — random G(n,p) starts
+   (p ∈ [0.15, 0.9]), geometric cooling T: 0.5n → 1e-3.
+   Ran n ∈ {13,14,15,16,18,20,22,25,28,32,36,40,45,50,56,64}, 30 restarts ×
+   1e6 steps each (4.8×10⁸ exact evaluations total).
+2. Turán-perturbation anneal: `./anneal n restarts steps seed 0 w` — start at
+   the balanced complete multipartite Turán graph K_{n/w×w} (an exact equality
+   point) plus 1–4 random flips, low temperature (0.02n) — a direct attack on
+   the neighborhood of the equality manifold at sizes unreachable by
+   exhaustion. Ran (n,w) ∈ {24,30,36,42,48,50,56,64} × {3..8} (16 configs),
+   20 restarts × 5e5 steps each (1.6×10⁸ evaluations).
+
+Results (best gap found per config, `anneal_summary_*.txt` /
+`turan_summary_*.txt`):
+- Small/medium n (13–28) random-init runs converge to gap ≈ +5e-11 — i.e. the
+  anneal *finds the equality graphs* (complete multipartite) to within the
+  1e-11 eigenvalue tolerance, and never exceeds them.
+- Turán-perturbation runs at n = 24, 36, 48 return to gap ≈ 0 (−2e-11 …
+  +1.8e-10, pure Sturm-bisection noise at equality) and never go above; all
+  other configs top out strictly below 0 (−0.24 … −1.05).
+- Largest-n random runs (n = 45–64) plateau at gap ≈ −3 … −4.3 (annealing
+  doesn't fully converge to Turán at this size/budget, but never trends
+  positive).
+- ZERO candidate lines emitted across all ~6.4×10⁸ evaluations.
+
+Interpretation: even far beyond the exhaustively verified range, stochastic
+hill-climbing with exact ω and high-precision eigenvalues always terminates at
+(or below) the known complete-multipartite equality manifold; the landscape
+shows no ascent direction past equality anywhere up to n = 64. Combined with
+rounds 1–2 this is strong evidence the conjecture is true with equality
+exactly on complete multipartite graphs.
+
 ## STATUS
 
 STATUS: negative / frontier-pushed — no counterexample and no non-trivial
@@ -168,3 +211,6 @@ for every connected template up to 10 vertices (11.7M patterns, fractional edge
 densities + part weights) — no blowup-type counterexample exists from any such
 template; the graphon form of the conjecture is numerically tight only at
 complete multipartite graphons.
+Round 3: simulated-annealing edge-flip search at n = 13..64 (~6.4×10⁸ exact
+evaluations, random + Turán-perturbation starts) — zero candidates; the search
+always terminates at or below the complete-multipartite equality manifold.
