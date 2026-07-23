@@ -176,6 +176,7 @@ Accept path is exact `Fraction` arithmetic; floats only steer the δ-search (coo
 | m \| 465585120 | 304 | 1.1904 | ≈ 0.94221 | **no covering** |
 | m \| 698377680 | 348 | 1.1986 | ≈ 0.96264 | **no covering** |
 | m \| 5354228880 = lcm(1..23) | 395 | 1.2058 | ≈ 0.93326 | **no covering** |
+| m \| 26771144400 = lcm(1..25) | 483 | — | ≈ 0.99928 | **no covering** |
 | {p−1 : 5 ≤ p ≤ 877} | 149 | 1.4530 | ≈ 0.9999091 | **no covering** (Theorem A re-derived) |
 
 (pool always = {m : m+1 prime ≥ 5} within the stated divisor set; logs:
@@ -215,8 +216,8 @@ results (`kissat2_55440.log`, `kissat_parity_55440.log`, `cpsat2_55440.log`).
   with distinct p−1 moduli (p ≥ 5) has all moduli dividing any of
   L ∈ {55440, 166320, 720720, 1441440, 2162160, 4324320, 8648640, 12252240, 36756720,
   61261200, 73513440, 122522400, 232792560 = lcm(1..22), 465585120, 698377680,
-  5354228880 = lcm(1..23)} — extending the known excluded
-  periods (previously ≤ 720720) by two orders of magnitude — and the p > 877 lower bound
+  5354228880 = lcm(1..23), 26771144400 = lcm(1..25)} — extending the known excluded
+  periods (previously ≤ 720720) by over four orders of magnitude — and the p > 877 lower bound
   (Theorem A) was independently re-derived from first principles, satisfying the methodology's
   second-verifier requirement.
 - Verified deliverables of this run: statement/convention re-verification against ErGr80 p.24
