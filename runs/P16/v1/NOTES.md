@@ -229,10 +229,13 @@ Since every line of search evidence says the bounds are true, this round produce
 
 Additional search this round:
 - **Exhaustive trees n = 22 and n = 24** (`trees_fast.py`, gentreeg → batched screener):
-  see `trees_fast.log` — no violations (completes the round-2 leftover).
+  all 5,623,756 trees on 22 and 39,299,897 on 24 vertices — no violations
+  (best 44 margin −0.0171, best 46 margin −0.221 at n=24); completes the round-2 leftover.
+  Log: `trees_fast.log`.
 - **k = 6 continuous support sweep** (`support_sweep.py 44|46 6 2 8`: all 112 connected
   cell-graph supports × loop subsets of size ≤ 2, multi-start): `sweep{44,46}_k6.log` —
-  feasible supremum again 0 / negative, no positive support.
+  long-running (in progress at wrap-up); every support completed so far has feasible
+  supremum 0 / negative, no positive support, matching k = 4 and k = 5 exactly.
 
 ## Suggested next steps (other variants)
 
