@@ -1,0 +1,24 @@
+# CW(132,81) C-driver: |Z_132^*|=40, 32 subgroups, max_orbits=48 signed=False case_timeout=3600s
+  case |H|=40 r=12 chi#0: DONE nodes=797 leaves=96 wits=0 time=0.0
+  case |H|=20 r=15 chi#0: DONE nodes=44845 leaves=5664 wits=0 time=0.1
+  case |H|=20 r=18 chi#0: DONE nodes=1268674 leaves=195408 wits=0 time=1.8
+  case |H|=20 r=14 chi#0: DONE nodes=13706 leaves=1728 wits=0 time=0.0
+  case |H|=20 r=18 chi#0: DONE nodes=1450922 leaves=174496 wits=0 time=1.7
+  case |H|=20 r=16 chi#0: DONE nodes=112319 leaves=19008 wits=0 time=0.1
+  case |H|=20 r=13 chi#0: DONE nodes=3907 leaves=480 wits=0 time=0.0
+  case |H|=20 r=14 chi#0: DONE nodes=8632 leaves=1200 wits=0 time=0.0
+  case |H|=10 r=24 chi#0: DONE nodes=1061056732 leaves=169433600 wits=0 time=1588.5
+  EXCEEDED |H|=10 r=27 chi#0: EXCEEDED nodes=2409627648 leaves=373811461 time=3600.4
+  case |H|=10 r=19 chi#0: DONE nodes=3921926 leaves=554400 wits=0 time=5.6
+  case |H|=10 r=24 chi#0: DONE nodes=1106519576 leaves=153679680 wits=0 time=1039.8
+  case |H|=10 r=21 chi#0: DONE nodes=49659926 leaves=7650720 wits=0 time=36.3
+  case |H|=10 r=20 chi#0: DONE nodes=14400086 leaves=2439360 wits=0 time=21.7
+  case |H|=10 r=21 chi#0: DONE nodes=44719046 leaves=4774560 wits=0 time=22.8
+  EXCEEDED |H|=8 r=36 chi#0: EXCEEDED nodes=2737831936 leaves=396194351 time=3601.0
+  EXCEEDED |H|=5 r=36 chi#0: EXCEEDED nodes=5426380800 leaves=735021645 time=3600.7
+  EXCEEDED |H|=4 r=48 chi#0: EXCEEDED nodes=4484759552 leaves=748812099 time=3600.6
+  EXCEEDED |H|=4 r=42 chi#0: EXCEEDED nodes=3653238784 leaves=525633408 time=3601.3
+  EXCEEDED |H|=4 r=46 chi#0: EXCEEDED nodes=3850371072 leaves=534062706 time=3600.3
+  EXCEEDED |H|=4 r=41 chi#0: EXCEEDED nodes=4693426176 leaves=681630480 time=3600.4
+# done CW(132,81): 14 cases complete, 7 exceeded, 27923.2s, 0 witnesses
+# exceeded cases: [([1, 25, 31, 37, 49, 67, 91, 97, 103, 115], 0), ([1, 23, 43, 65, 67, 89, 109, 131], 0), ([1, 25, 37, 49, 97], 0), ([1, 65, 89, 109], 0), ([1, 23, 109, 131], 0), ([1, 43, 89, 131], 0), ([1, 23, 43, 65], 0)]

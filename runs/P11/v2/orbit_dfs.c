@@ -15,6 +15,10 @@
  *
  * Prints WITNESS lines and a final summary. Exits early if time budget
  * (argv[1], seconds; 0 = unlimited) is exceeded, printing EXCEEDED.
+ *
+ * Optional prefix split (for parallelization): argv[2] is a string of
+ * characters from {0,+,-}, giving forced values for the first P orbits in
+ * the engine's descending-size order.  The DFS then starts at depth P.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -99,6 +103,7 @@ static void dfs(int idx, int rem, int cur_sum, int any_nz) {
 
 int main(int argc, char **argv) {
     double budget = argc > 1 ? atof(argv[1]) : 0;
+    const char *prefix = argc > 2 ? argv[2] : "";
     if (scanf("%d %d %d", &n, &k, &r) != 3) return 1;
     if (k > 255 || r > MAXR || n > MAXN) { fprintf(stderr, "too big\n"); return 1; }
     s0 = isqrt_(k);
@@ -149,7 +154,19 @@ int main(int argc, char **argv) {
     memset(a, 0, sizeof a);
     if (budget > 0) t_end = now() + budget;
     double t0 = now();
-    dfs(0, k, 0, 0);
+    int P = (int)strlen(prefix);
+    int rem0 = k, sum0 = 0, anz = 0, bad = 0;
+    for (int i = 0; i < P && i < r; i++) {
+        int oi = order_[i];
+        int v = prefix[i] == '+' ? 1 : prefix[i] == '-' ? -1 : 0;
+        if (v != 0) {
+            if (osize[oi] == 0 || osize[oi] > rem0) { bad = 1; break; }
+            for (int j = 0; j < osize[oi]; j++) a[opos[oi][j]] = osgn[oi][j] * v;
+            rem0 -= osize[oi]; sum0 += v * osum[oi]; anz = 1;
+        }
+    }
+    if (bad) { printf("DONE nodes=0 leaves=0 wits=0 time=0.0 (bad prefix)\n"); return 0; }
+    dfs(P, rem0, sum0, anz);
     if (exceeded) printf("EXCEEDED nodes=%lld leaves=%lld time=%.1f\n", nodes, leaves, now()-t0);
     else printf("DONE nodes=%lld leaves=%lld wits=%lld time=%.1f\n", nodes, leaves, wits, now()-t0);
     return 0;

@@ -40,4 +40,34 @@ for CW with prime p | k, p ∤ n) essentially forced as a multiplier, so exhaust
 ⟨7⟩-invariant case carries real nonexistence weight for that cell.
 
 ## Runs
-(see below, appended as they complete)
+
+### Unsigned C exhaustion (max-orbits 48, 3600s/case, ~14h wall, 6 cells parallel)
+Logs: c_<n>_<k>_plain.log. Zero witnesses everywhere. "exceeded" = cases hitting the
+1h/case budget (all with small |H| ∈ {2,3,4,5,6,8} and 26–48 orbits — these approach the
+unrestricted search and are V1/V3 territory).
+
+| cell | cases complete | exceeded | wall time |
+|---|---|---|---|
+| CW(96,36)  | 19 | 11 | 49699s |
+| CW(105,36) | 37 |  9 | 38881s |
+| CW(112,36) | 30 | 13 | 48298s |
+| CW(117,36) | 37 |  6 | 23252s |
+| CW(120,49) | (running, 118 subgroups) | ≥11 | — |
+| CW(132,81) | 14 |  7 | 27923s |
+
+Several huge cases completed with leaves=0, e.g. CW(117,36) |H|=4 r=35: 174·10⁹ nodes,
+0 leaves — the (Σa)²=k + subset-sum prunes alone kill them.
+
+### Signed (multiplier-with-sign) runs — mathematically vacuous, confirmed empirically
+All signed cases (nontrivial character χ: H→{±1}) die at node 1: χ-twisted invariance
+forces every orbit entry-sum to cancel, so Σa = 0, contradicting the necessary
+(Σa)² = k. Hence "multiplier with sign −1" can never produce a CW — the trivial-character
+(unsigned) search already covers everything. Logs c_<n>_<k>_signed.log
+(35–99 cases/cell, all complete, 0 witnesses, <1s each).
+
+### Dedicated attack: CW(120,49), forced multiplier 7
+k = 49 = 7², gcd(7,120)=1 ⇒ by the classical CW multiplier theorem 7 is a multiplier of
+ANY putative CW(120,49); so exhausting the ⟨7⟩-invariant case (|⟨7⟩|=4, r=39 orbits on
+Z_120) would resolve the cell outright. Split the DFS over 1094 depth-7 prefixes
+(split_case.py + orbit_dfs prefix mode, validated against unsplit runs on CW(13,9)/
+CW(21,16)); running 6-way parallel with 1h/job. Log: split_120_49_m7.log.

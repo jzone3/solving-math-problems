@@ -1,0 +1,37 @@
+# CW(132,81) C-driver: |Z_132^*|=40, 32 subgroups, max_orbits=30 signed=True case_timeout=1800s
+  case |H|=40 r=12 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=40 r=12 chi#2: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=40 r=12 chi#3: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=40 r=12 chi#4: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=40 r=12 chi#5: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=40 r=12 chi#6: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=40 r=12 chi#7: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=15 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=15 chi#2: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=15 chi#3: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=18 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=18 chi#2: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=18 chi#3: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=14 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=14 chi#2: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=14 chi#3: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=18 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=18 chi#2: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=18 chi#3: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=16 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=16 chi#2: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=16 chi#3: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=13 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=13 chi#2: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=13 chi#3: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=14 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=14 chi#2: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=20 r=14 chi#3: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=10 r=24 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=10 r=27 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=10 r=19 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=10 r=24 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=10 r=21 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=10 r=20 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+  case |H|=10 r=21 chi#1: DONE nodes=1 leaves=0 wits=0 time=0.0
+# done CW(132,81): 35 cases complete, 0 exceeded, 0.0s, 0 witnesses

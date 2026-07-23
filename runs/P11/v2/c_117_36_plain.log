@@ -1,0 +1,46 @@
+# CW(117,36) C-driver: |Z_117^*|=72, 48 subgroups, max_orbits=48 signed=False case_timeout=3600s
+  case |H|=72 r=6 chi#0: DONE nodes=7 leaves=0 wits=0 time=0.0
+  case |H|=36 r=10 chi#0: DONE nodes=16 leaves=0 wits=0 time=0.0
+  case |H|=36 r=8 chi#0: DONE nodes=16 leaves=0 wits=0 time=0.0
+  case |H|=36 r=9 chi#0: DONE nodes=40 leaves=0 wits=0 time=0.0
+  case |H|=24 r=10 chi#0: DONE nodes=27 leaves=0 wits=0 time=0.0
+  case |H|=24 r=12 chi#0: DONE nodes=552 leaves=0 wits=0 time=0.0
+  case |H|=24 r=8 chi#0: DONE nodes=27 leaves=0 wits=0 time=0.0
+  case |H|=24 r=8 chi#0: DONE nodes=27 leaves=0 wits=0 time=0.0
+  case |H|=18 r=15 chi#0: DONE nodes=17971 leaves=2400 wits=0 time=0.0
+  case |H|=18 r=15 chi#0: DONE nodes=7186 leaves=720 wits=0 time=0.0
+  case |H|=18 r=13 chi#0: DONE nodes=1786 leaves=0 wits=0 time=0.0
+  case |H|=12 r=20 chi#0: DONE nodes=853108 leaves=123012 wits=0 time=0.1
+  case |H|=12 r=18 chi#0: DONE nodes=148842 leaves=0 wits=0 time=0.0
+  case |H|=12 r=13 chi#0: DONE nodes=1275 leaves=0 wits=0 time=0.0
+  case |H|=12 r=13 chi#0: DONE nodes=1275 leaves=0 wits=0 time=0.0
+  case |H|=12 r=15 chi#0: DONE nodes=6987 leaves=0 wits=0 time=0.0
+  case |H|=12 r=18 chi#0: DONE nodes=603 leaves=0 wits=0 time=0.0
+  case |H|=12 r=14 chi#0: DONE nodes=603 leaves=0 wits=0 time=0.0
+  case |H|=12 r=12 chi#0: DONE nodes=603 leaves=0 wits=0 time=0.0
+  case |H|=12 r=14 chi#0: DONE nodes=603 leaves=0 wits=0 time=0.0
+  case |H|=12 r=21 chi#0: DONE nodes=2404163 leaves=0 wits=0 time=0.0
+  case |H|=12 r=14 chi#0: DONE nodes=603 leaves=0 wits=0 time=0.0
+  case |H|=12 r=12 chi#0: DONE nodes=603 leaves=0 wits=0 time=0.0
+  case |H|=9 r=25 chi#0: DONE nodes=93868561 leaves=12121200 wits=0 time=12.8
+  case |H|=8 r=20 chi#0: DONE nodes=394670 leaves=0 wits=0 time=0.0
+  case |H|=6 r=23 chi#0: DONE nodes=5202800 leaves=514080 wits=0 time=0.5
+  case |H|=6 r=23 chi#0: DONE nodes=10821980 leaves=1713600 wits=0 time=1.8
+  case |H|=6 r=27 chi#0: DONE nodes=754217360 leaves=143942400 wits=0 time=145.2
+  case |H|=6 r=23 chi#0: DONE nodes=5202800 leaves=514080 wits=0 time=0.6
+  case |H|=6 r=23 chi#0: DONE nodes=5716880 leaves=0 wits=0 time=0.0
+  case |H|=6 r=21 chi#0: DONE nodes=1347200 leaves=0 wits=0 time=0.0
+  EXCEEDED |H|=6 r=39 chi#0: EXCEEDED nodes=23437770752 leaves=3550700830 time=3600.1
+  case |H|=6 r=33 chi#0: DONE nodes=103981737277 leaves=0 wits=0 time=532.7
+  EXCEEDED |H|=6 r=35 chi#0: EXCEEDED nodes=23401070592 leaves=3544516061 time=3600.1
+  case |H|=6 r=25 chi#0: DONE nodes=48485200 leaves=4724160 wits=0 time=5.0
+  case |H|=6 r=21 chi#0: DONE nodes=1347200 leaves=0 wits=0 time=0.0
+  case |H|=6 r=23 chi#0: DONE nodes=10821980 leaves=1713600 wits=0 time=1.8
+  case |H|=4 r=32 chi#0: DONE nodes=9632666317 leaves=0 wits=0 time=51.0
+  EXCEEDED |H|=4 r=36 chi#0: EXCEEDED nodes=21732786176 leaves=3514076552 time=3600.1
+  case |H|=4 r=35 chi#0: DONE nodes=174284184106 leaves=0 wits=0 time=900.0
+  EXCEEDED |H|=3 r=41 chi#0: EXCEEDED nodes=25339887616 leaves=3490245184 time=3600.1
+  EXCEEDED |H|=3 r=41 chi#0: EXCEEDED nodes=24962400256 leaves=3435662334 time=3600.1
+  EXCEEDED |H|=3 r=45 chi#0: EXCEEDED nodes=19853737984 leaves=3312237451 time=3600.0
+# done CW(117,36): 37 cases complete, 6 exceeded, 23252.0s, 0 witnesses
+# exceeded cases: [([1, 14, 40, 53, 79, 92], 0), ([1, 25, 40, 64, 79, 103], 0), ([1, 64, 73, 109], 0), ([1, 16, 22], 0), ([1, 61, 94], 0), ([1, 55, 100], 0)]
