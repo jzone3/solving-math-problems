@@ -123,6 +123,37 @@ independently in each of the three encodings.
 - The alt CP-SAT model (IntVar + AddMultiplicationEquality) is much weaker than the
   boolean-expansion model: confirms (12,20) but times out at 8 h on (14,18)/(12,15).
 
+## Resumed session (2026-07-23): prescribed-automorphism attack on (14,28;8,3,14;7,6)
+
+New tooling: runs/P14/v1/solve_auto.py (CP-SAT with a prescribed automorphism sigma on
+points and chosen block-orbit structure; UNSAT only rules out sigma-invariant designs) and
+km_z7.py / km_z7_exhaustive.py (full Kramer–Mesner reduction for sigma = two 7-cycles).
+
+### Complete decisions (order-7 and friends)
+- **sigma = two 7-cycles (Z7, fixed-point-free): NO invariant design exists — complete.**
+  km_z7_exhaustive.py enumerates all 6498 base-block orbit representatives, computes
+  17-coordinate KM signatures (point-orbit mult counts + 13 pair-orbit coverages), and does
+  a complete meet-in-the-middle search over all admissible orbit structures (t=4 orbits;
+  t=3 + 7 fixed blocks, all n1+n2=7 splits; t<=2 impossible since fixed blocks are forced
+  to be full point-orbits x1 and within-orbit pair coverage caps fixed blocks at 6+6).
+  Result: NO solution in any case. Validated by 20 random positive controls
+  (planted 3/4-subsets found) + negative control. (The earlier CP-SAT count formulation
+  km_z7.py stalled UNKNOWN at 7000 s; the exhaustive join settles it in ~1 min.)
+- **sigma = 7-cycle + 7 fixed points: INFEASIBLE for every block-orbit split**
+  (4x7 / 7f+3x7 / 14f+2x7 / 21f+1x7 / 28f — all CP-SAT INFEASIBLE in <20 s each).
+- **Corollary: no BTD(14,28;8,3,14;7,6) has an automorphism of order 7** (both S14
+  conjugacy classes of order-7 elements excluded), hence **7 does not divide |Aut|**, and
+  in particular no Z14 or Z21/Z28 symmetry. (Direct z14 runs also INFEASIBLE for the
+  4x7 / 2x7+14 / 14f+14 splits.)
+- **Z13 impossible by counting**: block orbits have size 1 or 13, 28 = 13a+f needs f=2 or
+  15 or 28 fixed blocks, but a sigma-invariant size-7 block needs 7 = 13a + (mult on the
+  single fixed point) <= 2 — impossible; and 28 != 13a. So no order-13 automorphism.
+- Z5 (two 5-cycles + 4 fixed): INFEASIBLE for splits 5x5+3f, 4x5+8f, 3x5+13f (CP-SAT, fast).
+- Z2/Z3/Z4/Z6 runs (600 s each): INFEASIBLE for most splits (z2-seven with 2/4/6/8/10/12
+  fixed blocks; z2-six-14x2; z4 both splits; z6 two splits; z3-9x3+1f); UNKNOWN survivors
+  z2-seven-14x2, z3-8x3-4f, z3-7x3-7f, z3-6x3-10f, z6-4x6-2x2, z6-3x6-1x6-2x2 given
+  14400 s follow-up runs.
+
 ## STATUS: SOLVED (nonexistence) for 3 of 4 instances — BTD(14,18;7,1,9;7,4),
 ## BTD(12,15;6,2,10;8,6), BTD(12,20;4,3,10;6,4) do not exist (CP-SAT INFEASIBLE +
 ## kissat/drat-trim DRAT-certified UNSAT each); (14,28;8,3,14;7,6) negative (no verdict).

@@ -1,0 +1,9 @@
+6498 block-orbit representatives
+case t=4 n1=0 n2=0: 6220 candidate orbits
+case t=3 n1=1 n2=6: 308 candidate orbits
+case t=3 n1=2 n2=5: 1064 candidate orbits
+case t=3 n1=3 n2=4: 1981 candidate orbits
+case t=3 n1=4 n2=3: 1981 candidate orbits
+case t=3 n1=5 n2=2: 1064 candidate orbits
+case t=3 n1=6 n2=1: 308 candidate orbits
+NO sigma-invariant design exists (complete decision for two-7-cycle Z7)
