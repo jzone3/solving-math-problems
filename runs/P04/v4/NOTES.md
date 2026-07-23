@@ -165,6 +165,22 @@ zero violations of the Hajós bound.
    circulant sweep, Hajós now machine-verified for 24k+ vertex-transitive Eulerian graphs
    on 13–26 vertices.
 
+## 9. Wave 4 — exhaustive sweep of the minimal-counterexample class (geng)
+
+Any *minimal* counterexample has n ≥ 13 and δ ≥ 6 (Fuchs–Gellert–Heinrich); the sparsest
+Eulerian instance of that class is 6-regular. New pipeline (`regular_exhaust.py`):
+`nauty-geng -c -d6 -D6 n` → fast filter (randomized Hierholzer Euler tour split into
+simple cycles at first vertex repeat, ≤100 retries; passes iff ≤ K cycles found) →
+exact CP-SAT oracle on the ~11–17% of graphs the fast filter misses.
+
+- **n = 13 (K = 6): all 367,860 connected 6-regular graphs verified — zero violations.**
+  8-way geng split, ~10 min wall; 45,485 graphs needed the exact oracle, all feasible.
+  The literature's general exhaustion stops at n = 12; this is a complete exhaustion of
+  the sparsest minimal-counterexample slice at n = 13. Summary: `reg13_summary.txt`,
+  full per-graph slow-path log: `reg13_full.log.gz` (graph6 strings, re-checkable).
+- **n = 14 (K = 6): all 21,609,301 connected 6-regular graphs** — launched as an 8-way
+  geng split (`reg14_part*.txt`), ETA ≈ 9 h at observed throughput.
+
 ## STATUS
 
 STATUS: negative / frontier-pushed — no counterexample found; ~51k perturbed instances
@@ -177,7 +193,10 @@ equality plateau is large, connected under parity-preserving moves, and never ex
 Wave 3 additions: zero LP/ILP duality gap observed anywhere (fractional = integer
 cycle-decomposition number on every instance sampled; LP = K on extremal clique trees),
 and 8,211 dihedral Cayley graphs (exhaustive n = 14–18, sampled to 26) all satisfy Hajós.
-Most informative negative findings for future attacks: (i) any counterexample must beat
+Wave 4: exhaustive verification of ALL 367,860 connected 6-regular graphs on 13
+vertices — the complete sparsest slice of the minimal-counterexample class one vertex
+past the literature's n = 12 exhaustion — zero violations; the full 21.6M-graph n = 14
+slice is running. Most informative negative findings for future attacks: (i) any counterexample must beat
 the LP relaxation too, so LP-based pruning is sound and cheap; (ii) tightness is
 plentiful but always exactly K — the conjecture behaves like a sharp isoperimetric-type
 inequality with a fat equality manifold rather than a fragile bound.

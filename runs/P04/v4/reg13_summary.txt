@@ -1,0 +1,8 @@
+DONE total=35512 fast=31269 slow=4243 violations=0 t=400s
+DONE total=47863 fast=41931 slow=5932 violations=0 t=517s
+DONE total=41999 fast=36933 slow=5066 violations=0 t=461s
+DONE total=56706 fast=49624 slow=7082 violations=0 t=579s
+DONE total=55094 fast=48134 slow=6960 violations=0 t=571s
+DONE total=45140 fast=39466 slow=5674 violations=0 t=501s
+DONE total=37913 fast=33270 slow=4643 violations=0 t=429s
+DONE total=47633 fast=41748 slow=5885 violations=0 t=515s
