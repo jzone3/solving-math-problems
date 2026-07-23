@@ -148,7 +148,8 @@ edge-weight-regular graphs).
    n ≤ 22 exhaust; every exhausted n below n₀ yields a fully verified frontier).
 
 **Corollary of the (★) exhaust (steps 1 + enum): WoW conjecture 129 is TRUE for
-every graph on n ≤ 23 vertices (n ≤ 22 via enum_seq, n = 23 via enum_seq3, §8)** — pushes the exhaustive frontier from n = 10
+every graph on n ≤ 24 vertices (n ≤ 22 via enum_seq; n = 23, 24 via enum_seq3 +
+LP fallback, §8)** — pushes the exhaustive frontier from n = 10
 (Brewster–Dinneen–Faber 1995) to n = 22 without enumerating graphs (only degree
 sequences; ~1.9×10^11 sequences total vs ~10^30 graphs), on top of the direct
 geng exhaust n ≤ 12.
@@ -170,11 +171,12 @@ geng exhaust n ≤ 12.
   DONE — max Φ = 0, reached only from clique seeds (equality family); random
   seeds stay far below (Φ ≈ −60..−80)
 - STATUS: frontier-pushed (negative: no counterexample; conjecture 129 verified
-  for ALL graphs on n ≤ 22 vertices — up from n ≤ 10 in the literature — via the
-  (★) degree-sequence exhaust, plus direct verification of all graphs n ≤ 12,
-  all threshold graphs n ≤ 30, block-threshold asymptotics to n = 10^6, and
-  annealed searches to n = 200; new exact equality family K_t ∪ (t−2)K_1;
-  GM proof route shown to fail first at CS(723,6))
+  for ALL graphs on n ≤ 24 vertices — up from n ≤ 10 in the literature — via the
+  (★) degree-sequence exhaust + LP fallback certificates (§8), plus direct
+  verification of all graphs n ≤ 12, all threshold graphs n ≤ 30,
+  block-threshold asymptotics to n = 10^6, and annealed searches to n = 800;
+  new exact equality family K_t ∪ (t−2)K_1; GM proof route shown to fail first
+  at CS(723,6))
 
 ## 8. Second push (per follow-up request): bigger frontier + new tooling
 
@@ -195,8 +197,17 @@ geng exhaust n ≤ 12.
   (31 partitions, ~45 CPU-h), ZERO violations and ZERO near-misses
   (no sequence with g > −1e-6); max g = −0.00189 (odd n, strictly negative as
   the closed form predicts). **Conjecture 129 verified for ALL graphs n ≤ 23.**
-- `enum_seq3` exhaust n = 24 (~2.1e12 sequences, finer (d1,d2) partitioning):
-  RUNNING — result recorded here when complete.
+- `enum_seq3` exhaust n = 24: DONE — 2,256,710,139,345 graphical sequences
+  (180 (d1,d2)-partitions, ~130 CPU-h). Exactly ONE sequence with g > −1e-6:
+  the equality family K_13 ∪ 11K_1 (g = 0 to fp precision), certified by the
+  LP fallback with exact equality (dev = R_LP = 6.5). ZERO violations.
+  **Conjecture 129 verified for ALL graphs on n ≤ 24 vertices.**
+
+FINAL FRONTIER: WoW 129 true for every graph with n ≤ 24 vertices
+(vs n ≤ 10 in the literature). Method: exhaust all graphical degree sequences,
+certify each by g ≤ 0 (GM bound) or by the transportation-LP bound R_LP ≥ dev;
+both certificates depend only on the degree sequence and are sound for every
+realization. Total sequences certified: ~2.9×10^12 across n ≤ 24.
 
 ## 9. Conjecture 698 (definitional investigation + test of intended reading)
 
