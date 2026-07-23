@@ -60,3 +60,15 @@ pairs=595 base_vars=2450
 CNF: vars=23124 clauses=210084
 UNSAT n=112 k=36 gens=[15, 29] m=35: no H-fixed CW exists
 --- gens=(9,) |H|=6 m=36 timeout=3600s
+TIMEOUT gens=(9,) m=36 after 3600s
+--- gens=(15, 97) |H|=4 m=36 timeout=3600s
+n=112 k=36 gens=[15, 97] |H|=4 m=36 sizes=[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+pairs=630 base_vars=2592
+CNF: vars=24662 clauses=225573
+UNSAT n=112 k=36 gens=[15, 97] m=36: no H-fixed CW exists
+--- gens=(55, 71) |H|=4 m=36 timeout=3600s
+n=112 k=36 gens=[55, 71] |H|=4 m=36 sizes=[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+pairs=630 base_vars=2592
+CNF: vars=33494 clauses=313557
+UNSAT n=112 k=36 gens=[55, 71] m=36: no H-fixed CW exists
+--- gens=(27,) |H|=4 m=43 timeout=3600s

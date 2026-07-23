@@ -61,3 +61,7 @@ pairs=741 base_vars=3042
 CNF: vars=35260 clauses=328516
 UNSAT n=117 k=36 gens=[14] m=39: no H-fixed CW exists
 --- gens=(16,) |H|=3 m=41 timeout=3600s
+TIMEOUT gens=(16,) m=41 after 3600s
+--- gens=(61,) |H|=3 m=41 timeout=3600s
+TIMEOUT gens=(61,) m=41 after 3600s
+--- gens=(55,) |H|=3 m=45 timeout=3600s

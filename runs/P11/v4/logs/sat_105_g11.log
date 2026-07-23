@@ -1,3 +1,4 @@
 n=105 k=36 gens=[11] |H|=6 m=30 sizes=[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
 pairs=435 base_vars=1800
 CNF: vars=33116 clauses=315358
+UNSAT n=105 k=36 gens=[11] m=30: no H-fixed CW exists
