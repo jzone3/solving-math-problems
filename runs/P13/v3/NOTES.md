@@ -96,6 +96,17 @@ CP-SAT hit UNKNOWN at 250 s — CP-SAT is much weaker than kissat on the UNSAT s
 
 ## 6. LNS phase (v = 12, 15, 16, 18)
 
-`pmd_lns.py`: phase 1 solves the packing relaxation (each (ordered pair, distance)
-covered at most once, maximize covered slots; perfect packing = PMD), phase 2 hints the
-exact model with the best packing. Runs logged below.
+`pmd_lns.py`: phase 1 solves the packing relaxation, phase 2 hints the exact model with
+the best packing. First attempt used HARD at-most-one coverage + maximize covered — CP-SAT
+found no feasible solution at all in 3600 s for v=12 (feasibility itself is hard); the
+script then degenerates to a plain exact run (also UNKNOWN at 3600 s, seed 1). Rewrote
+phase 1 as a SOFT model: coverage counts free, minimize sum |count(pair,t) − 1| (always
+feasible; deviation 0 = PMD); sanity check v=7 reaches deviation 0 in <60 s.
+
+Soft-LNS sweep (5 workers, pack 3000 s + exact-with-hint 1500 s, seed 2):
+
+| v | best soft-packing deviation (of 5·v·(v−1) slots) | exact-with-hint |
+|---|---|---|
+| 12 | 160 / 660 after 3000 s | (below) |
+
+Rows appended as the sweep progresses.
