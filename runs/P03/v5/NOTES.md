@@ -222,7 +222,17 @@ Results:
   Combined with n=12: any minimal tau=3 counterexample needs n >= 16.
 - n=16: 4060 cubic graphs, 2595 kept (681 planar, 784 not 3EC dropped);
   9 allowed role profiles (listed above); enumeration running on 8 shards
-  (~2^24 orientations per graph before pruning; ETA ~1 day).
+  (~2^24 orientations per graph before pruning).
+  Pipeline upgrade for this cell: the packing decision was replaced by a
+  CEGAR / lazy-cut-generation exact solver (exact_pack_cegar): seed with the
+  source/sink star dicuts (which must be rainbow), backtrack a 3-coloring over
+  the current cut set, verify each color class is a dijoin (strong
+  connectivity of D + reversed class), extract a violated dicut from the
+  ancestor-closure witness and iterate. This avoids enumerating all closed
+  sets per instance (the previous bottleneck) and let the expensive reduced
+  min-dicut filter be deferred to the (empirically empty) non-packing branch.
+  Cross-validated: 400/400 vs exact_pack on n=14 candidates + 60/60 vs the
+  PySAT harness on random tau>=3 DAGs (test_cegar.py).
 
 STATUS: negative / frontier-pushed (phase 2 exhausted the n=12 and n=14 minimal
 cells completely — the two smallest possible sizes for a minimal tau=3

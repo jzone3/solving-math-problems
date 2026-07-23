@@ -282,6 +282,119 @@ def exact_pack(n, arcs):
     return rec(0)
 
 
+def _violated_cut(n, arcs, color, c):
+    """If color class c is NOT a dijoin, return a dicut (list of arc indices)
+    of D containing no class-c arc; else None. Uses the ancestor-closure of a
+    vertex not reachable from everywhere in D + rev(class c): that set U is
+    closed in the augmented digraph, hence closed in D, and delta+_D(U)
+    contains no class-c arc."""
+    adjm = [0] * n
+    for i, (u, v) in enumerate(arcs):
+        adjm[u] |= (1 << v)
+        if color[i] == c:
+            adjm[v] |= (1 << u)
+    reach = adjm[:]
+    for _ in range(n):
+        changed = False
+        for v in range(n):
+            r = reach[v]
+            m = r
+            while m:
+                w = (m & -m).bit_length() - 1
+                r |= reach[w]
+                m &= m - 1
+            if r != reach[v]:
+                reach[v] = r
+                changed = True
+        if not changed:
+            break
+    full = (1 << n) - 1
+    for v in range(n):
+        anc = 1 << v
+        for w in range(n):
+            if reach[w] & (1 << v):
+                anc |= (1 << w)
+        if anc != full:
+            cut = [i for i, (x, y) in enumerate(arcs)
+                   if (anc & (1 << x)) and not (anc & (1 << y))]
+            return cut
+    return None
+
+
+def exact_pack_cegar(n, arcs, seed_cuts):
+    """Exact packing decision via lazy cut generation (CEGAR): start with the
+    seed cuts (source/sink stars, which must be rainbow), find a 3-coloring
+    satisfying all current cuts by backtracking, verify each color class is a
+    dijoin, add a violated dicut and repeat. Returns True iff D partitions
+    into 3 dijoins."""
+    m = len(arcs)
+    cuts = [list(c) for c in seed_cuts]
+    while True:
+        ncuts = len(cuts)
+        arc_cuts = [[] for _ in range(m)]
+        for ci, cvt in enumerate(cuts):
+            for j in cvt:
+                arc_cuts[j].append(ci)
+        constrained = [j for j in range(m) if arc_cuts[j]]
+        constrained.sort(key=lambda j: min(len(cuts[c]) for c in arc_cuts[j]))
+        used = [0] * ncuts
+        left = [len(c) for c in cuts]
+        color = [0] * m
+
+        def rec(k):
+            if k == len(constrained):
+                return True
+            j = constrained[k]
+            opts = (0, 1, 2) if k > 0 else (0,)
+            for col in opts:
+                ok = True
+                changed = []
+                for ci in arc_cuts[j]:
+                    u2 = used[ci] | (1 << col)
+                    left[ci] -= 1
+                    changed.append((ci, used[ci]))
+                    used[ci] = u2
+                    if 3 - bin(u2).count("1") > left[ci]:
+                        ok = False
+                        break
+                if ok:
+                    color[j] = col
+                    if rec(k + 1):
+                        return True
+                for (ci, old) in changed:
+                    used[ci] = old
+                    left[ci] += 1
+            return False
+
+        if not rec(0):
+            return False
+        new = None
+        for c in range(3):
+            new = _violated_cut(n, arcs, color, c)
+            if new is not None:
+                break
+        if new is None:
+            return True
+        cuts.append(new)
+
+
+def star_cuts(n, arcs):
+    """Source out-stars and sink in-stars as arc-index lists (each is a
+    size-3 dicut in the reduced shape, hence must be rainbow)."""
+    ind = [0] * n
+    outd = [0] * n
+    for (u, v) in arcs:
+        ind[v] += 1
+        outd[u] += 1
+    cuts = []
+    for v in range(n):
+        if ind[v] == 0:
+            cuts.append([i for i, a in enumerate(arcs) if a[0] == v])
+        if outd[v] == 0:
+            cuts.append([i for i, a in enumerate(arcs) if a[1] == v])
+    return cuts
+
+
 def search_graph(n, g6, edges, profiles, out, stats):
     rng = random.Random(12345)
     m = len(edges)
@@ -305,14 +418,16 @@ def search_graph(n, g6, edges, profiles, out, stats):
         if ss_connected(n, arcs):
             stats['ss_skip'] += 1
             return
+        if exact_pack_cegar(n, arcs, star_cuts(n, arcs)):
+            stats['packed_cegar'] += 1
+            return
         if not dicut_structure_ok(n, arcs):
             stats['dicut_skip'] += 1
             return
-        if try_pack(n, arcs, rng, tries=1):
-            stats['packed_heur'] += 1
-            return
         if exact_pack(n, arcs):
             stats['packed_exact'] += 1
+            print("WARNING: cegar/exact disagreement", g6, arcs,
+                  file=sys.stderr)
             return
         # candidate NON-PACKING instance: emit for independent CPython/SAT
         # verification (this would be a counterexample!)
@@ -378,7 +493,7 @@ if __name__ == "__main__":
         lines = lines[int(sys.argv[2]):int(sys.argv[3])]
     profiles = PROFILES[n]
     stats = {'graphs': 0, 'dags': 0, 'profile_dags': 0, 'ss_skip': 0,
-             'dicut_skip': 0, 'packed_heur': 0, 'packed_exact': 0, 'cand': 0}
+             'packed_cegar': 0, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0}
     t0 = time.time()
     out = sys.stdout
     for gi, line in enumerate(lines):
