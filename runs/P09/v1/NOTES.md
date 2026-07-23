@@ -115,6 +115,37 @@ cases; triangle-free case was Lin–Ning–Wu 2021).
 - n ≥ 60 dense anneals are compute-bound by MaxClique (ω ≈ 20 at p = 0.8, ~0.4 s/eval) and
   would need incremental eigen/clique updates to converge; not pursued further under V1.
 
+## Campaign 3 (resumed session): exhaustive n = 12 via native C checker
+
+Goal: execute the recorded next frontier — exhaustive verification of ALL graphs on 12
+vertices (165,091,172,592 non-isomorphic graphs, ~160× the n = 11 compute).
+
+New tool: `bn_check.c` — a dependency-free C checker (~2.5 µs/graph at n = 10):
+- decodes geng's fixed-length graph6 lines in bulk;
+- top-2 adjacency eigenvalues via Householder tridiagonalization + Sturm-sequence bisection,
+  with threshold-aware early exit (certifies λ₁²+λ₂² ≤ 2m(1−1/g)−MARG as soon as the
+  bisection interval allows, g = greedy clique lower bound; uses λ₂² ≤ λ₁², valid by
+  Perron–Frobenius);
+- survivors get full-precision eigenvalues + exact Tomita-style BnB MaxClique (greedy-coloring
+  bound); prints any graph with ω·(2m − λ₁² − λ₂²) < 2m − MARG, MARG = 1e-5
+  (i.e. rules out violations with score > ~1e-6, same standard as the Python phases).
+
+Validation of the C checker:
+- Bug found & fixed during bring-up: BnB coloring bound requires vertices sorted by color
+  before the reverse sweep; the unsorted version under-reported ω (caught by differential
+  disagreement with `bn_core.py`).
+- Differential test vs `bn_core.evaluate` on ALL 12,344 non-trivial n = 8 graphs:
+  0 mismatches in λ₁, λ₂, m, ω, score (tol 1e-7).
+- Differential test on 2,999 random n = 12 graphs (p ∈ [0.1, 0.9]): 0 mismatches.
+- Full n = 11 re-run in C: total = 1,018,997,864 (matches the known count and the Python
+  campaign exactly), candidates = 0, in ~7 min on 8 cores.
+
+n = 12 production run: `run_n12.sh` — geng 12 split into 64 res/mod parts, 8-way parallel,
+per-part logs in `c12/n12_p*.log`, restartable via `.done` markers. Estimated ~24–30 h on
+8 cores.
+
+RESULT (see below for final tally): recorded when the sweep completes.
+
 ## STATUS: negative / frontier-pushed
 
 No counterexample found. Campaign totals:
