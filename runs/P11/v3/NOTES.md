@@ -178,7 +178,31 @@ Overnight solver campaign (~30 CPU-hours total):
   instances are equivalent-difficulty images; campaign stopped).
 Logs: orbit120_kissat.log, orbit120_cadical.log, lift{105,112,117}_kissat.log.
 
-STATUS: SOLVED (target cell CW(96,36): explicit proper witness, dual-verified) + frontier-pushed
-(7 more DB-open cells settled via literature + mechanical re-verification); remaining 4 cells
-negative/inconclusive (searches documented above).
+### NEW THEOREM: CW(120,49) does not exist
+
+Third campaign (after CP-SAT and monolithic SAT both timed out): went back to the multiplier
+structure. k = 49 = 7², gcd(120,49) = 1, so AGZ Thm 2.4 applies DIRECTLY to the full CW:
+7 is a multiplier and fixes a translate A'. KEY STEP AGZ apparently missed (their Table 10
+lists (120,49) as open, claiming remaining cases have "no known multipliers or a very small
+multiplier group"): fold A' modulo 40. The fold B is a ⟨7⟩-fixed integer vector on Z_40 with
+|b| ≤ 3, norm 49, flat autocorrelation (all Z_40 characters lift; row sum ±7). Exhaustive
+norm-pruned DFS over the 13 ⟨7⟩-orbits of Z_40 (sizes [1,1,2,2,2,4×8], 13,941,920
+norm-feasible assignments): ZERO have flat autocorrelation. Hence no CW(120,49) exists.
+
+Verification (both PASS):
+- solutions/P11/verify_no_cw120_49.py — standalone, dependency-light, with two controls:
+  (a) same code finds 4 fixed ICW_15(8,49) (>0, so it can find solutions), (b) reproduces
+  AGZ Prop 4.2's zero count for ⟨3⟩-fixed ICW_3(44,81). ~2 min.
+- runs/P11/v3/check120_indep.py — independent implementation: generating-function count of
+  norm-feasible assignments (13,941,920, matches DFS exactly) + numpy-FFT flatness test.
+
+This settles a cell listed open in AGZ 2021 (Table 10) and in the current La Jolla DB —
+a new result beyond the literature. Also checked (116,49): folds mod 58 and mod 29 both have
+fixed ICWs (64 and 16 resp.), so the same trick does NOT settle 116; (192,49) and all other
+DB-open k ∈ {49,121,169} cells with p ∤ n are being swept systematically (sweep49.py).
+
+STATUS: SOLVED (target cell CW(96,36): explicit proper witness, dual-verified; NEW THEOREM
+no CW(120,49), machine-proved twice independently) + frontier-pushed (7 more DB-open cells
+settled via literature + mechanical re-verification); remaining 3 target cells (105,36),
+(112,36), (117,36) negative/inconclusive (searches documented above).
 
