@@ -24,3 +24,10 @@ front-end done: 5122453 holes at N=2205403200, 1670 congs
   one_opt pass 15: moved=51 holes=947174 best=947174 t=1703s
   one_opt pass 16: moved=47 holes=947024 best=947024 t=1788s
   one_opt pass 17: moved=44 holes=946449 best=946449 t=1868s
+  one_opt pass 18: moved=49 holes=946023 best=946023 t=1963s
+  one_opt pass 19: moved=40 holes=945949 best=945949 t=2056s
+  one_opt pass 20: moved=32 holes=945949 best=945949 t=2147s
+  one_opt pass 21: moved=48 holes=945949 best=945949 t=2237s
+  one_opt pass 22: moved=39 holes=945949 best=945949 t=2322s
+  one_opt pass 23: moved=45 holes=945925 best=945925 t=2414s
+  one_opt pass 24: moved=46 holes=945905 best=945905 t=2501s

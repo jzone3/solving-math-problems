@@ -234,8 +234,8 @@ Encodings tried for "cover Z_N with distinct divisor moduli >= T" as CNF:
 
 Negative findings (dead end, well-documented):
 - cadical195, glucose42, minicard (via pysat) and kissat 4.0.4 (built from source, --sat)
-  ALL fail to solve the *known-SAT* instance N=5040 T=6 within 10-120 min, an instance HiGHS
-  ILP solves in ~30 s. LP-style global counting reasoning appears essential; clause learning
+  ALL fail to solve the *known-SAT* instance N=5040 T=6 (kissat: full 2 h budget exhausted,
+  no result), an instance HiGHS ILP solves in ~30 s. LP-style global counting reasoning appears essential; clause learning
   finds nothing to grip on the flat or tree encodings.
 - cube split does not rescue CDCL: cubes are individually as hard.
 - Conclusion: pure CDCL SAT is the wrong tool for covering-feasibility at these sizes;
@@ -275,9 +275,10 @@ N ascending, pruned by the necessary condition sum_{v|N, v>=T} 1/v >= 1):
 - T=3: N = 120 (all smaller N UNSAT; witness 14 congruences, PASS).
 - T=4: N = 360 (9 measure-feasible smaller N all UNSAT in <= 31 s total; witness 21
   congruences, PASS).
-- T=5, T=6: ladders running (HiGHS refutes each infeasible N in seconds-minutes where
-  cadical with 1e7-conflict budgets returns UNDECIDED — e.g. N=240,T=5 infeasible in ~1 min
-  by ILP vs UNDECIDED by SAT).
+- T=5: every N < 1260 UNSAT (N=840 needed a 40-min dedicated HiGHS run; ladder default is
+  900 s/N with UNDECIDED entries retried at 3-4 h). N=1260, 1680 retries running.
+- T=6: all N <= 1512 UNSAT except N=1260, 1440 UNDECIDED at 900 s (ladder paused to give
+  CPU to the T=5 chain; 5040 known SAT from session 1, so minimal N6 is in [1260, 5040]).
 
 Method note: ILP >> SAT for both directions on this family; the SAT ladder (minlcm.py) was
 abandoned after head-to-head comparison.
