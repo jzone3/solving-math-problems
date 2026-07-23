@@ -175,4 +175,22 @@ for k=81, 3 self-conjugate mod 5 and 3^4||81 gives fold == 0 mod 9, hence
   k<=100); self-conjugacy fails in the surviving cells for the relevant
   moduli, which is why Lander's theorem cannot be pushed further.
 
+## 5. Compute summary (8-core VM, gcc -O3)
+
+- ICW battery (21 cells): seconds to ~1 h each; largest ICW3(52,81):
+  4.8B nodes. Total ~2 h CPU.
+- CW(120,49) decision: 21.6B nodes, ~65 min (run twice: original + rewritten
+  engine, identical zero-solution outcome and node count).
+- Positive control CW(57,49): 1.9B nodes, found 72 fixed solutions.
+- CW(192,49): two fold cases split 3-way each (deterministic node-counter
+  partition, validated on CW(63,16) and CW(57,49) splits); hundreds of
+  billions of nodes searched, still running at session close.
+- SAT independent checks: CaDiCaL/kissat on 13.8M-clause (no-fold) and
+  ~14M-clause (with-fold) encodings of "CW(120,49) fixed by 7 exists";
+  running (UNSAT expected). SAT encoding validated SAT-side on CW(57,49)
+  (returns a witness that machine-verifies) and CW(63,16)+fold.
+- ICW zero cells re-verified by a second, independently written Python/FFT
+  exhaust (icw_recheck.py): 0 solutions for both, and exact count agreement
+  on three nonzero controls.
+
 STATUS: see end of file.
