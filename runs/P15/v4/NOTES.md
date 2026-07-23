@@ -87,6 +87,17 @@ Engineering notes:
   of stale upper bound) to avoid 20M-element re-sorts per heap ping-pong.
 - Bottleneck at 20M+ holes: np.unique sort per divisor (~650 divisors/level).
 
-## 5. Status
+## 5. Escalation runs (compute log)
 
-(in progress — T=14 running: levels 2^8,3^5,5^3,7^2,11,13,17,19)
+- T=13, levels 2^7,3^4,5^3,7^2,11,13,17,19 (slack 2.55): running.
+  Hole trajectory: 105 → 12k → 0.6M? → 4.2M (11) → 13.6M (13) → 36.2M (17).
+- T=14, levels 2^8,3^5,5^3,7^2,11,13,17,19 (slack 2.75): KILLED at 8 h
+  wall-clock timeout mid-13-level. Hole trajectory: 225 → 36k → 1.8M →
+  22.2M (11-level, ~2 h) → 69.5M holes entering the 13-level; the 13-level
+  alone needed >5 h (69.5M-element np.unique per divisor, ~1300 divisors).
+  NEGATIVE: T=14 explicit is beyond this machine/day budget with the
+  current per-level greedy — compute-bound, not density-bound (slack 2.75).
+
+## 6. Status
+
+(in progress — T=13 still running)
