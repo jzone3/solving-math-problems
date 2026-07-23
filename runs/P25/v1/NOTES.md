@@ -85,6 +85,28 @@ reproducible evidence for the standing conjecture K₃(6,1) = 73: modern multi-s
 search with budgets ~10⁴–10⁵× Wille's 1987 compute reproduces 73 instantly and cannot
 touch 72, and all cost-2 local optima are 2-exchange-rigid.
 
+### Round 2 — Systematic symmetry sweep (new structural result)
+
+`orbit_sweep.py`: enumeration of **all conjugacy classes of nontrivial cyclic subgroups
+⟨g⟩ of the full symmetry group S₃≀S₆** (class = coordinate cycle type λ ⊢ 6 + S₃-class of
+the composite symbol map per cycle: id/τ/σ — 220 classes incl. identity; 215 attempted within the 400-orbit cap), computing for
+each the exact minimum size of a ⟨g⟩-invariant covering code via orbit ILP (HiGHS, exact).
+
+Result: **178 nontrivial classes solved to exact optimality; NONE admits an invariant
+covering code of size ≤ 72.** The minimum over all solved classes is 73, achieved only by
+λ=[4,1,1] with symbol classes (id,id,τ) — i.e. there IS a 73-code with an order-4 monomial
+automorphism, but no 72-code with any of the 178 solved symmetry types. All other solved
+classes have invariant minimum ≥ 77. The remaining 42 classes (37 ILP timeouts at 300 s +
+5 skipped with > 400 orbits; all near-identity — single coordinate transpositions/symbol
+swaps and similar) are being re-decided as pure ≤72-feasibility ILPs with 1200 s each
+(`orbit_feas.py`, log `out/feas.txt`).
+
+Consequence (conditional on the feasibility re-checks finishing): if a 72-word code
+exists, its automorphism group within S₃≀S₆ is trivial or intersects only the handful of
+near-identity involution classes — i.e. **any putative 72-code is (essentially)
+symmetry-free**, explaining why annealing/tabu and algebraic constructions have failed
+since 1987 and sharply limiting the remaining search space for the upper-bound route.
+
 ## Catalog correction
 
 `research/wave3-smallest-open-cases.md` §C9 stated the interval as [65, 73], crediting

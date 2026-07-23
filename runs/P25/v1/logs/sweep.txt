@@ -1,0 +1,221 @@
+OPT lam=[6] assign=('id',) orbits=130 best_invariant_cover=82
+OPT lam=[6] assign=('tau',) orbits=63 best_invariant_cover=77
+OPT lam=[6] assign=('sigma',) orbits=42 best_invariant_cover=81
+OPT lam=[5, 1] assign=('id', 'id') orbits=153 best_invariant_cover=77
+OPT lam=[5, 1] assign=('id', 'tau') orbits=102 best_invariant_cover=81
+OPT lam=[5, 1] assign=('id', 'sigma') orbits=51 best_invariant_cover=93
+OPT lam=[5, 1] assign=('tau', 'id') orbits=78 best_invariant_cover=83
+OPT lam=[5, 1] assign=('tau', 'tau') orbits=77 best_invariant_cover=77
+OPT lam=[5, 1] assign=('tau', 'sigma') orbits=26 best_invariant_cover=93
+OPT lam=[5, 1] assign=('sigma', 'id') orbits=51 best_invariant_cover=81
+OPT lam=[5, 1] assign=('sigma', 'tau') orbits=34 best_invariant_cover=81
+OPT lam=[5, 1] assign=('sigma', 'sigma') orbits=51 best_invariant_cover=78
+OPT lam=[4, 2] assign=('id', 'id') orbits=207 best_invariant_cover=77
+NOSOLVE lam=[4, 2] assign=('id', 'tau') orbits=186 status=HighsModelStatus.kTimeLimit
+OPT lam=[4, 2] assign=('id', 'sigma') orbits=69 best_invariant_cover=93
+OPT lam=[4, 2] assign=('tau', 'id') orbits=96 best_invariant_cover=81
+OPT lam=[4, 2] assign=('tau', 'tau') orbits=93 best_invariant_cover=81
+OPT lam=[4, 2] assign=('tau', 'sigma') orbits=32 best_invariant_cover=81
+OPT lam=[4, 2] assign=('sigma', 'id') orbits=69 best_invariant_cover=81
+OPT lam=[4, 2] assign=('sigma', 'tau') orbits=62 best_invariant_cover=81
+OPT lam=[4, 2] assign=('sigma', 'sigma') orbits=69 best_invariant_cover=81
+NOSOLVE lam=[4, 1, 1] assign=('id', 'id', 'id') orbits=216 status=HighsModelStatus.kTimeLimit
+OPT lam=[4, 1, 1] assign=('id', 'id', 'tau') orbits=207 best_invariant_cover=73
+OPT lam=[4, 1, 1] assign=('id', 'id', 'sigma') orbits=72 best_invariant_cover=99
+NOSOLVE lam=[4, 1, 1] assign=('id', 'tau', 'tau') orbits=204 status=HighsModelStatus.kTimeLimit
+OPT lam=[4, 1, 1] assign=('id', 'tau', 'sigma') orbits=69 best_invariant_cover=93
+OPT lam=[4, 1, 1] assign=('id', 'sigma', 'sigma') orbits=72 best_invariant_cover=99
+OPT lam=[4, 1, 1] assign=('tau', 'id', 'id') orbits=99 best_invariant_cover=81
+OPT lam=[4, 1, 1] assign=('tau', 'id', 'tau') orbits=96 best_invariant_cover=81
+OPT lam=[4, 1, 1] assign=('tau', 'id', 'sigma') orbits=33 best_invariant_cover=81
+OPT lam=[4, 1, 1] assign=('tau', 'tau', 'tau') orbits=95 best_invariant_cover=81
+OPT lam=[4, 1, 1] assign=('tau', 'tau', 'sigma') orbits=32 best_invariant_cover=81
+OPT lam=[4, 1, 1] assign=('tau', 'sigma', 'sigma') orbits=33 best_invariant_cover=81
+OPT lam=[4, 1, 1] assign=('sigma', 'id', 'id') orbits=72 best_invariant_cover=90
+OPT lam=[4, 1, 1] assign=('sigma', 'id', 'tau') orbits=69 best_invariant_cover=87
+OPT lam=[4, 1, 1] assign=('sigma', 'id', 'sigma') orbits=72 best_invariant_cover=84
+OPT lam=[4, 1, 1] assign=('sigma', 'tau', 'tau') orbits=68 best_invariant_cover=81
+OPT lam=[4, 1, 1] assign=('sigma', 'tau', 'sigma') orbits=69 best_invariant_cover=78
+OPT lam=[4, 1, 1] assign=('sigma', 'sigma', 'sigma') orbits=72 best_invariant_cover=81
+NOSOLVE lam=[3, 3] assign=('id', 'id') orbits=249 status=HighsModelStatus.kTimeLimit
+OPT lam=[3, 3] assign=('id', 'tau') orbits=130 best_invariant_cover=80
+OPT lam=[3, 3] assign=('id', 'sigma') orbits=81 best_invariant_cover=81
+OPT lam=[3, 3] assign=('tau', 'tau') orbits=125 best_invariant_cover=77
+OPT lam=[3, 3] assign=('tau', 'sigma') orbits=42 best_invariant_cover=90
+OPT lam=[3, 3] assign=('sigma', 'sigma') orbits=81 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('id', 'id', 'id') orbits=198 best_invariant_cover=80
+OPT lam=[3, 2, 1] assign=('id', 'id', 'tau') orbits=165 best_invariant_cover=78
+OPT lam=[3, 2, 1] assign=('id', 'id', 'sigma') orbits=162 best_invariant_cover=78
+OPT lam=[3, 2, 1] assign=('id', 'tau', 'id') orbits=99 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('id', 'tau', 'tau') orbits=88 best_invariant_cover=80
+OPT lam=[3, 2, 1] assign=('id', 'tau', 'sigma') orbits=81 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('id', 'sigma', 'id') orbits=162 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('id', 'sigma', 'tau') orbits=135 best_invariant_cover=81
+NOSOLVE lam=[3, 2, 1] assign=('id', 'sigma', 'sigma') orbits=162 status=HighsModelStatus.kTimeLimit
+OPT lam=[3, 2, 1] assign=('tau', 'id', 'id') orbits=153 best_invariant_cover=78
+OPT lam=[3, 2, 1] assign=('tau', 'id', 'tau') orbits=150 best_invariant_cover=78
+OPT lam=[3, 2, 1] assign=('tau', 'id', 'sigma') orbits=123 best_invariant_cover=78
+OPT lam=[3, 2, 1] assign=('tau', 'tau', 'id') orbits=84 best_invariant_cover=80
+OPT lam=[3, 2, 1] assign=('tau', 'tau', 'tau') orbits=83 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('tau', 'tau', 'sigma') orbits=68 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('tau', 'sigma', 'id') orbits=123 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('tau', 'sigma', 'tau') orbits=122 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('tau', 'sigma', 'sigma') orbits=123 best_invariant_cover=78
+OPT lam=[3, 2, 1] assign=('sigma', 'id', 'id') orbits=54 best_invariant_cover=108
+OPT lam=[3, 2, 1] assign=('sigma', 'id', 'tau') orbits=45 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('sigma', 'id', 'sigma') orbits=54 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('sigma', 'tau', 'id') orbits=27 best_invariant_cover=126
+OPT lam=[3, 2, 1] assign=('sigma', 'tau', 'tau') orbits=24 best_invariant_cover=117
+OPT lam=[3, 2, 1] assign=('sigma', 'tau', 'sigma') orbits=27 best_invariant_cover=117
+OPT lam=[3, 2, 1] assign=('sigma', 'sigma', 'id') orbits=54 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('sigma', 'sigma', 'tau') orbits=45 best_invariant_cover=81
+OPT lam=[3, 2, 1] assign=('sigma', 'sigma', 'sigma') orbits=54 best_invariant_cover=81
+NOSOLVE lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'id') orbits=297 status=HighsModelStatus.kTimeLimit
+OPT lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'tau') orbits=198 best_invariant_cover=80
+NOSOLVE lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+OPT lam=[3, 1, 1, 1] assign=('id', 'id', 'tau', 'tau') orbits=165 best_invariant_cover=80
+OPT lam=[3, 1, 1, 1] assign=('id', 'id', 'tau', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+OPT lam=[3, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau') orbits=154 best_invariant_cover=79
+OPT lam=[3, 1, 1, 1] assign=('id', 'tau', 'tau', 'sigma') orbits=135 best_invariant_cover=78
+OPT lam=[3, 1, 1, 1] assign=('id', 'tau', 'sigma', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+OPT lam=[3, 1, 1, 1] assign=('tau', 'id', 'id', 'id') orbits=162 best_invariant_cover=80
+OPT lam=[3, 1, 1, 1] assign=('tau', 'id', 'id', 'tau') orbits=153 best_invariant_cover=80
+OPT lam=[3, 1, 1, 1] assign=('tau', 'id', 'id', 'sigma') orbits=126 best_invariant_cover=78
+OPT lam=[3, 1, 1, 1] assign=('tau', 'id', 'tau', 'tau') orbits=150 best_invariant_cover=78
+OPT lam=[3, 1, 1, 1] assign=('tau', 'id', 'tau', 'sigma') orbits=123 best_invariant_cover=81
+OPT lam=[3, 1, 1, 1] assign=('tau', 'id', 'sigma', 'sigma') orbits=126 best_invariant_cover=84
+OPT lam=[3, 1, 1, 1] assign=('tau', 'tau', 'tau', 'tau') orbits=149 best_invariant_cover=77
+OPT lam=[3, 1, 1, 1] assign=('tau', 'tau', 'tau', 'sigma') orbits=122 best_invariant_cover=78
+OPT lam=[3, 1, 1, 1] assign=('tau', 'tau', 'sigma', 'sigma') orbits=123 best_invariant_cover=81
+OPT lam=[3, 1, 1, 1] assign=('tau', 'sigma', 'sigma', 'sigma') orbits=126 best_invariant_cover=81
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'id', 'id', 'id') orbits=81 best_invariant_cover=81
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'id', 'id', 'tau') orbits=54 best_invariant_cover=108
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'id', 'id', 'sigma') orbits=81 best_invariant_cover=81
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'id', 'tau', 'tau') orbits=45 best_invariant_cover=117
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'id', 'tau', 'sigma') orbits=54 best_invariant_cover=81
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'id', 'sigma', 'sigma') orbits=81 best_invariant_cover=81
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'tau', 'tau', 'tau') orbits=42 best_invariant_cover=108
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'tau', 'tau', 'sigma') orbits=45 best_invariant_cover=90
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'tau', 'sigma', 'sigma') orbits=54 best_invariant_cover=81
+OPT lam=[3, 1, 1, 1] assign=('sigma', 'sigma', 'sigma', 'sigma') orbits=81 best_invariant_cover=81
+NOSOLVE lam=[2, 2, 2] assign=('id', 'id', 'id') orbits=378 status=HighsModelStatus.kTimeLimit
+NOSOLVE lam=[2, 2, 2] assign=('id', 'id', 'tau') orbits=207 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 2] assign=('id', 'id', 'sigma') orbits=126 best_invariant_cover=81
+NOSOLVE lam=[2, 2, 2] assign=('id', 'tau', 'tau') orbits=186 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 2] assign=('id', 'tau', 'sigma') orbits=69 best_invariant_cover=96
+OPT lam=[2, 2, 2] assign=('id', 'sigma', 'sigma') orbits=126 best_invariant_cover=78
+NOSOLVE lam=[2, 2, 2] assign=('tau', 'tau', 'tau') orbits=183 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 2] assign=('tau', 'tau', 'sigma') orbits=62 best_invariant_cover=81
+OPT lam=[2, 2, 2] assign=('tau', 'sigma', 'sigma') orbits=69 best_invariant_cover=84
+OPT lam=[2, 2, 2] assign=('sigma', 'sigma', 'sigma') orbits=126 best_invariant_cover=81
+SKIP lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'id') orbits=405
+NOSOLVE lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'tau') orbits=378 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'sigma') orbits=135 best_invariant_cover=81
+NOSOLVE lam=[2, 2, 1, 1] assign=('id', 'id', 'tau', 'tau') orbits=369 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 1, 1] assign=('id', 'id', 'tau', 'sigma') orbits=126 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('id', 'id', 'sigma', 'sigma') orbits=135 best_invariant_cover=81
+NOSOLVE lam=[2, 2, 1, 1] assign=('id', 'tau', 'id', 'id') orbits=216 status=HighsModelStatus.kTimeLimit
+NOSOLVE lam=[2, 2, 1, 1] assign=('id', 'tau', 'id', 'tau') orbits=207 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 1, 1] assign=('id', 'tau', 'id', 'sigma') orbits=72 best_invariant_cover=87
+NOSOLVE lam=[2, 2, 1, 1] assign=('id', 'tau', 'tau', 'tau') orbits=204 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 1, 1] assign=('id', 'tau', 'tau', 'sigma') orbits=69 best_invariant_cover=96
+OPT lam=[2, 2, 1, 1] assign=('id', 'tau', 'sigma', 'sigma') orbits=72 best_invariant_cover=87
+OPT lam=[2, 2, 1, 1] assign=('id', 'sigma', 'id', 'id') orbits=135 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('id', 'sigma', 'id', 'tau') orbits=126 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('id', 'sigma', 'id', 'sigma') orbits=135 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('id', 'sigma', 'tau', 'tau') orbits=123 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('id', 'sigma', 'tau', 'sigma') orbits=126 best_invariant_cover=78
+OPT lam=[2, 2, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') orbits=135 best_invariant_cover=78
+NOSOLVE lam=[2, 2, 1, 1] assign=('tau', 'tau', 'id', 'id') orbits=189 status=HighsModelStatus.kTimeLimit
+NOSOLVE lam=[2, 2, 1, 1] assign=('tau', 'tau', 'id', 'tau') orbits=186 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 1, 1] assign=('tau', 'tau', 'id', 'sigma') orbits=63 best_invariant_cover=81
+NOSOLVE lam=[2, 2, 1, 1] assign=('tau', 'tau', 'tau', 'tau') orbits=185 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 2, 1, 1] assign=('tau', 'tau', 'tau', 'sigma') orbits=62 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('tau', 'tau', 'sigma', 'sigma') orbits=63 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('tau', 'sigma', 'id', 'id') orbits=72 best_invariant_cover=105
+OPT lam=[2, 2, 1, 1] assign=('tau', 'sigma', 'id', 'tau') orbits=69 best_invariant_cover=99
+OPT lam=[2, 2, 1, 1] assign=('tau', 'sigma', 'id', 'sigma') orbits=72 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('tau', 'sigma', 'tau', 'tau') orbits=68 best_invariant_cover=90
+OPT lam=[2, 2, 1, 1] assign=('tau', 'sigma', 'tau', 'sigma') orbits=69 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('tau', 'sigma', 'sigma', 'sigma') orbits=72 best_invariant_cover=84
+OPT lam=[2, 2, 1, 1] assign=('sigma', 'sigma', 'id', 'id') orbits=135 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('sigma', 'sigma', 'id', 'tau') orbits=126 best_invariant_cover=81
+OPT lam=[2, 2, 1, 1] assign=('sigma', 'sigma', 'id', 'sigma') orbits=135 best_invariant_cover=78
+OPT lam=[2, 2, 1, 1] assign=('sigma', 'sigma', 'tau', 'tau') orbits=123 best_invariant_cover=78
+OPT lam=[2, 2, 1, 1] assign=('sigma', 'sigma', 'tau', 'sigma') orbits=126 best_invariant_cover=78
+OPT lam=[2, 2, 1, 1] assign=('sigma', 'sigma', 'sigma', 'sigma') orbits=135 best_invariant_cover=81
+SKIP lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'id') orbits=486
+SKIP lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'tau') orbits=405
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'tau') orbits=378 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'sigma') orbits=135 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'sigma', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'tau') orbits=369 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'sigma') orbits=126 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'sigma', 'sigma') orbits=135 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[2, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'tau') orbits=366 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'sigma') orbits=123 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'sigma', 'sigma') orbits=126 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'tau', 'sigma', 'sigma', 'sigma') orbits=135 best_invariant_cover=78
+OPT lam=[2, 1, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma', 'sigma') orbits=162 best_invariant_cover=78
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'id', 'id', 'id') orbits=243 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'id', 'id', 'tau') orbits=216 best_invariant_cover=80
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'id', 'id', 'sigma') orbits=81 best_invariant_cover=111
+NOSOLVE lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'id', 'tau', 'tau') orbits=207 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'id', 'tau', 'sigma') orbits=72 best_invariant_cover=105
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'id', 'sigma', 'sigma') orbits=81 best_invariant_cover=111
+NOSOLVE lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'tau', 'tau', 'tau') orbits=204 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'tau', 'tau', 'sigma') orbits=69 best_invariant_cover=99
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'tau', 'sigma', 'sigma') orbits=72 best_invariant_cover=105
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'id', 'sigma', 'sigma', 'sigma') orbits=81 best_invariant_cover=81
+NOSOLVE lam=[2, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'tau', 'tau') orbits=203 status=HighsModelStatus.kTimeLimit
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'tau', 'sigma') orbits=68 best_invariant_cover=90
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'sigma', 'sigma') orbits=69 best_invariant_cover=99
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'tau', 'sigma', 'sigma', 'sigma') orbits=72 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('tau', 'sigma', 'sigma', 'sigma', 'sigma') orbits=81 best_invariant_cover=96
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'id', 'id', 'id') orbits=162 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'id', 'id', 'tau') orbits=135 best_invariant_cover=87
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'id', 'id', 'sigma') orbits=162 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'id', 'tau', 'tau') orbits=126 best_invariant_cover=90
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'id', 'tau', 'sigma') orbits=135 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'id', 'sigma', 'sigma') orbits=162 best_invariant_cover=78
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'tau', 'tau', 'tau') orbits=123 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'tau', 'tau', 'sigma') orbits=126 best_invariant_cover=78
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'tau', 'sigma', 'sigma') orbits=135 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'id', 'sigma', 'sigma', 'sigma') orbits=162 best_invariant_cover=78
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'tau', 'tau', 'tau', 'tau') orbits=122 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'tau', 'tau', 'tau', 'sigma') orbits=123 best_invariant_cover=78
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'tau', 'tau', 'sigma', 'sigma') orbits=126 best_invariant_cover=78
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'tau', 'sigma', 'sigma', 'sigma') orbits=135 best_invariant_cover=81
+OPT lam=[2, 1, 1, 1, 1] assign=('sigma', 'sigma', 'sigma', 'sigma', 'sigma') orbits=162 best_invariant_cover=81
+SKIP lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'id', 'tau') orbits=486
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'id', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+SKIP lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'tau', 'tau') orbits=405
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'tau', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'tau', 'tau') orbits=378 status=HighsModelStatus.kTimeLimit
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'tau', 'sigma') orbits=135 best_invariant_cover=87
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'sigma', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'id', 'sigma', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'tau', 'tau') orbits=369 status=HighsModelStatus.kTimeLimit
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'tau', 'sigma') orbits=126 best_invariant_cover=90
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'sigma', 'sigma') orbits=135 best_invariant_cover=87
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'sigma', 'sigma', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'tau', 'tau') orbits=366 status=HighsModelStatus.kTimeLimit
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'tau', 'sigma') orbits=123 best_invariant_cover=81
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'sigma', 'sigma') orbits=126 best_invariant_cover=90
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'sigma', 'sigma', 'sigma') orbits=135 best_invariant_cover=81
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('id', 'tau', 'sigma', 'sigma', 'sigma', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'tau', 'tau', 'tau') orbits=365 status=HighsModelStatus.kTimeLimit
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'tau', 'tau', 'sigma') orbits=122 best_invariant_cover=81
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'tau', 'sigma', 'sigma') orbits=123 best_invariant_cover=81
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'sigma', 'sigma', 'sigma') orbits=126 best_invariant_cover=81
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('tau', 'tau', 'sigma', 'sigma', 'sigma', 'sigma') orbits=135 best_invariant_cover=81
+OPT lam=[1, 1, 1, 1, 1, 1] assign=('tau', 'sigma', 'sigma', 'sigma', 'sigma', 'sigma') orbits=162 best_invariant_cover=81
+NOSOLVE lam=[1, 1, 1, 1, 1, 1] assign=('sigma', 'sigma', 'sigma', 'sigma', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+sweep complete, classes solved: 215
