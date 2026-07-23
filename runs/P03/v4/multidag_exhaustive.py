@@ -68,11 +68,9 @@ def run(k, mmax, tau_hi=6, tau_lo=3):
             continue
         for mult in compositions(s, mmax, mmax):
             ms = {support[i]: mult[i] for i in range(s)}
-            key = canon(k, ms)
-            if key in seen:
-                continue
-            seen.add(key)
             stats["instances"] += 1
+            if stats["instances"] % 5_000_000 == 0:
+                print(f"[{time.time()-t0:7.0f}s] {stats}", flush=True)
             arcs = []
             for (u, v), c in ms.items():
                 arcs.extend([(u, v)] * c)
@@ -80,6 +78,11 @@ def run(k, mmax, tau_hi=6, tau_lo=3):
             tau = min(len(c) for c in cuts)
             if tau < tau_lo or tau > tau_hi:
                 continue
+            # canonicalize (k! perms) only for the rare tau-in-range instances
+            key = canon(k, ms)
+            if key in seen:
+                continue
+            seen.add(key)
             stats["tau3+"] += 1
             _, nu = max_packing(k, arcs, tau=tau)
             if nu < tau:

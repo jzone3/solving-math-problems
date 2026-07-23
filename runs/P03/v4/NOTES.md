@@ -200,13 +200,27 @@ break parallel-arc interchangeability; generalized Schrijver rings with r =
 => The unweighted shadow of the Schrijver/ring family packs perfectly at
 every scale tried — consistent with weight-0 arcs being essential.
 
-Exhaustive scans, phase 2 (see k6m12.log / k7m11.log):
-- k=6 components, m <= 12: [completed below / see final log lines]
-- k=7 components, m <= 11: [see final log lines]
+Exhaustive scans, phase 2 (canon reordered: k! canonicalization only for
+tau-in-range instances, making k=7 feasible):
+- k=6 components, m <= 12: COMPLETE — 278,860 tau>=3 classes, all gap 0
+  (2.8h). Completes the scan that OOM-killed in phase 1.
+- k=6, m <= 13: COMPLETE — 1,006,733 tau>=3 classes, all gap 0 (2.5h).
+- k=7, m <= 11: COMPLETE — 51,782 tau>=3 classes (74.3M raw instances),
+  all gap 0 (2.5h).
+- k=6 m <= 14 and k=7 m <= 12: launched as further escalation (see
+  k6m14.log / k7m12.log final lines).
 
-Bigger annealers (6h each, memory-bounded caches): seeds 101 (tau 3-4,
-n<=16, m<=40), 202 (ring5-seeded), 404 (Schrijver-seeded), 303 (ring7-seeded,
-tau 3-6, n<=30, m<=60 — uses the flow-tau path, no component ceiling).
+Bigger annealers (6h each, memory-bounded caches), ALL COMPLETED, zero
+gaps:
+- seed 101 (tau 3-4, n<=16, m<=40, random init): 895,494 evals
+  (241k tau3 + 151k tau4 ILP-checked).
+- seed 202 (ring5-seeded): 678,154 evals (200k tau3 + 109k tau4).
+- seed 404 (Schrijver-seeded): 836,750 evals (233k tau3 + 141k tau4).
+- seed 303 (ring7-seeded, tau 3-6, n<=30, m<=60, flow-tau path — no
+  component ceiling): 70,228 evals (18.7k tau3 / 10.6k tau4 / 4.4k tau5 /
+  1.3k tau6).
+=> phase-2 annealer total: ~2.48M evaluations, ~1.1M fully ILP-checked,
+no instance with nu < tau.
 
 ## STATUS: negative / frontier-pushed — no counterexample; exhaustive
 verification extended to all simple digraphs on <= 6 vertices and all
