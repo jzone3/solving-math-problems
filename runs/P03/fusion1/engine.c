@@ -237,6 +237,11 @@ static void setup_roles(void){
         {4,3,4,7},{2,5,10,1},{5,2,1,10},{3,5,8,2},{5,3,2,8},
         {4,5,6,3},{5,4,3,6}};
         for(unsigned i=0;i<sizeof(x)/sizeof(x[0]);i++)memcpy(role[nroles++],x[i],sizeof(x[i]));
+    } else if(k==3&&n==16){
+        int x[][4]={{2,2,6,6},{3,3,5,5},{4,4,4,4},
+                    {5,5,3,3},{6,6,2,2},{7,7,1,1}};
+        for(unsigned i=0;i<sizeof(x)/sizeof(x[0]);i++)
+            memcpy(role[nroles++],x[i],sizeof(x[i]));
     }
 }
 int main(int ac,char**av){

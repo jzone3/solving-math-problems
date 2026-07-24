@@ -1,0 +1,34 @@
+C engine feasibility sample for full n=16 cubic cell
+Engine: fast predecessor-closed ideal enumeration, tau3 mode, 6 profiles
+Input: 25 representative graphs sampled evenly from kept16.jsonl (2595 total)
+Four single-process timings (graphs 0..3): 74, 175, 54, 71 seconds.
+25-graph batch used 8-way parallelism; 22 completed, 3 exceeded 300s timeout.
+Completed batch timing summary: mean 105.27s, median 91s, max 293s.
+Conservative 8-shard projection from completed batch: 9.49 hours.
+This is below the one-day stop threshold; launch approved.
+
+0 76 0 DONE_graphs=1_orientations=5844206_profiles=2314436_ss=1092772_tau_skip=0_safe=534154_checks=687510_packed=687510_cand=0_deferred=0
+1 181 0 DONE_graphs=1_orientations=5505120_profiles=2196744_ss=938176_tau_skip=0_safe=947872_checks=310696_packed=310696_cand=0_deferred=0
+2 54 0 DONE_graphs=1_orientations=8079144_profiles=3052380_ss=2410488_tau_skip=0_safe=864_checks=641028_packed=641028_cand=0_deferred=0
+3 72 0 DONE_graphs=1_orientations=5947128_profiles=2331464_ss=1224332_tau_skip=0_safe=480572_checks=626560_packed=626560_cand=0_deferred=0
+4 89 0 DONE_graphs=1_orientations=6691968_profiles=2617048_ss=1424098_tau_skip=0_safe=378868_checks=814082_packed=814082_cand=0_deferred=0
+5 59 0 DONE_graphs=1_orientations=4948656_profiles=1953752_ss=865708_tau_skip=0_safe=787304_checks=300740_packed=300740_cand=0_deferred=0
+6 100 0 DONE_graphs=1_orientations=7793700_profiles=2963540_ss=2176454_tau_skip=0_safe=832_checks=786254_packed=786254_cand=0_deferred=0
+7 300 124 
+8 63 0 DONE_graphs=1_orientations=7195728_profiles=2776792_ss=1847996_tau_skip=0_safe=736_checks=928060_packed=928060_cand=0_deferred=0
+9 104 0 DONE_graphs=1_orientations=7832256_profiles=2975260_ss=2208948_tau_skip=0_safe=720_checks=765592_packed=765592_cand=0_deferred=0
+10 84 0 DONE_graphs=1_orientations=6069576_profiles=2359916_ss=1329950_tau_skip=0_safe=235324_checks=794642_packed=794642_cand=0_deferred=0
+11 70 0 DONE_graphs=1_orientations=6855168_profiles=2628544_ss=1742482_tau_skip=0_safe=160104_checks=725958_packed=725958_cand=0_deferred=0
+12 62 0 DONE_graphs=1_orientations=5312328_profiles=2085668_ss=1006066_tau_skip=0_safe=668518_checks=411084_packed=411084_cand=0_deferred=0
+13 91 0 DONE_graphs=1_orientations=7390560_profiles=2856796_ss=1854596_tau_skip=0_safe=592_checks=1001608_packed=1001608_cand=0_deferred=0
+14 102 0 DONE_graphs=1_orientations=5475336_profiles=2161976_ss=1034496_tau_skip=0_safe=689980_checks=437500_packed=437500_cand=0_deferred=0
+15 300 124 
+16 70 0 DONE_graphs=1_orientations=5768952_profiles=2244344_ss=1213918_tau_skip=0_safe=619884_checks=410542_packed=410542_cand=0_deferred=0
+17 107 0 DONE_graphs=1_orientations=5621232_profiles=2265920_ss=832490_tau_skip=0_safe=1205888_checks=227542_packed=227542_cand=0_deferred=0
+18 293 0 DONE_graphs=1_orientations=6249624_profiles=2445884_ss=1291396_tau_skip=0_safe=555892_checks=598596_packed=598596_cand=0_deferred=0
+19 76 0 DONE_graphs=1_orientations=4683696_profiles=1856800_ss=757620_tau_skip=0_safe=894672_checks=204508_packed=204508_cand=0_deferred=0
+20 202 0 DONE_graphs=1_orientations=5499336_profiles=2135660_ss=1158468_tau_skip=0_safe=409864_checks=567328_packed=567328_cand=0_deferred=0
+21 91 0 DONE_graphs=1_orientations=5266848_profiles=2089024_ss=927920_tau_skip=0_safe=857536_checks=303568_packed=303568_cand=0_deferred=0
+22 300 124 
+23 137 0 DONE_graphs=1_orientations=5965296_profiles=2310936_ss=1396060_tau_skip=0_safe=375616_checks=539260_packed=539260_cand=0_deferred=0
+24 133 0 DONE_graphs=1_orientations=3588864_profiles=1432968_ss=626856_tau_skip=0_safe=633096_checks=173016_packed=173016_cand=0_deferred=0
