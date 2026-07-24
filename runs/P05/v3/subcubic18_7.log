@@ -1,0 +1,7 @@
+nohup: ignoring input
+n=18 cnt=5000 elapsed=74s
+n=18 cnt=10000 elapsed=153s
+n=18 cnt=15000 elapsed=260s
+n=18 cnt=20000 elapsed=380s
+n=18 cnt=25000 elapsed=476s
+n=18 cnt=30000 elapsed=550s
