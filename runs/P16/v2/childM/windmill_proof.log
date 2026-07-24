@@ -1,0 +1,25 @@
+=== cap c = 2 (assuming k >= 3) ===
+  lam1: >= 0 for all k >= 3: PROVED (coeff-positive)
+  lam2: >= 0 for all k >= 3: PROVED (coeff-positive)
+  Mhh: >= 0 for all k >= 3: PROVED (coeff-positive)
+  det2*: >= 0 for all k >= 3: PROVED (coeff-positive)
+  k=3: decomposition matches full spectrum: True (min eig 1.100292)
+  k=10: decomposition matches full spectrum: True (min eig 2.051377)
+  k=25: decomposition matches full spectrum: True (min eig 2.328362)
+=== cap c = 4 (assuming k >= 5) ===
+  lam1: >= 0 for all k >= 5: PROVED (coeff-positive)
+  lam2: >= 0 for all k >= 5: PROVED (coeff-positive)
+  Mhh: >= 0 for all k >= 5: PROVED (coeff-positive)
+  det2*: >= 0 for all k >= 5: PROVED (coeff-positive)
+  k=5: decomposition matches full spectrum: True (min eig 2.280293)
+  k=10: decomposition matches full spectrum: True (min eig 3.516235)
+  k=25: decomposition matches full spectrum: True (min eig 4.412688)
+=== small k, cap inactive: exact rational PSD check ===
+  c=2 k=2: PSD exact: True
+  c=2 k=3: PSD exact: True
+  c=4 k=2: PSD exact: True
+  c=4 k=3: PSD exact: True
+  c=4 k=4: PSD exact: True
+  c=4 k=5: PSD exact: True
+
+THEOREM M1 PROVED: M(sigma_c)(F_k) PSD for all k >= 2, c in {2,4}.

@@ -1,0 +1,4 @@
+c=2.0: max per-edge violation 113.975062 at (di,dj,mi,mj)=(40, 40, np.float64(2.95), np.float64(2.95))
+c=4.0: max per-edge violation 113.975062 at (di,dj,mi,mj)=(40, 40, np.float64(2.95), np.float64(2.95))
+c=2.0: identity max abs error 6.24e-12
+c=4.0: identity max abs error 4.21e-12

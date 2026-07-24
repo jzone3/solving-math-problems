@@ -1,0 +1,3 @@
+n=8 res=0/1 cap2: tot=7442 cw(h=d)fail=3247 I1fail=371 max_rho0=1.3064 worstI1viol=4.976e-01
+n=8 res=0/1 cap4: tot=7442 cw(h=d)fail=573 I1fail=0 max_rho0=1.0278 worstI1viol=2.132e-14
+n=8 res=0/1 old: tot=7442 cw(h=d)fail=571 I1fail=0 max_rho0=1.0278 worstI1viol=2.132e-14

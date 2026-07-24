@@ -1,0 +1,26 @@
+=== A: single-hub mixtures ===
+A done 1062
+=== B: two shared hubs ===
+=== C: hub + regular block ===
+=== D: two-hub bridged ===
+=== E: skew bipartite + hubs ===
+=== F: windmill x regular hybrids ===
+
+WORST 15 margins:
+  -0.000000  c=4.0 n=49  F:F_14+3reg20
+  +0.000000  c=2.0 n=49  F:F_14+3reg20
+  +0.035445  c=2.0 n=21  C:hub+6-reg(20) partial
+  +0.035445  c=4.0 n=21  C:hub+6-reg(20) partial
+  +0.040424  c=2.0 n=21  C:hub+5-reg(20) partial
+  +0.040424  c=4.0 n=21  C:hub+5-reg(20) partial
+  +0.060851  c=2.0 n=21  C:hub+4-reg(20) partial
+  +0.060851  c=4.0 n=21  C:hub+4-reg(20) partial
+  +0.079248  c=2.0 n=31  C:hub+6-reg(30) partial
+  +0.079248  c=4.0 n=31  C:hub+6-reg(30) partial
+  +0.099368  c=2.0 n=11  C:hub+4-reg(10) partial
+  +0.099368  c=4.0 n=11  C:hub+4-reg(10) partial
+  +0.114885  c=2.0 n=11  C:hub+5-reg(10) partial
+  +0.116302  c=2.0 n=11  C:hub+6-reg(10) full
+  +0.116302  c=4.0 n=11  C:hub+6-reg(10) full
+
+TOTAL checks: 2770, failures: 0

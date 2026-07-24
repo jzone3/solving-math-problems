@@ -1,0 +1,7 @@
+F_14 old sigma min eig: -0.14531352375087891
+F_13 old: 1.0273893802558263
+F_14 old: -0.14531352375087891
+windmills c=2.0: worst min eig 0.4384
+windmills c=4.0: worst min eig 0.4384
+n<=8 c=2.0: tot=8025 bad=0 worst=-2.778e-15 degenerate-edge sigma_c=0: True
+n<=8 c=4.0: tot=8025 bad=0 worst=-2.778e-15 degenerate-edge sigma_c=0: True

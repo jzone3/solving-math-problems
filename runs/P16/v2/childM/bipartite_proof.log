@@ -1,0 +1,45 @@
+=== capped case: p = q + c + r (r >= 1, q >= 2) ===
+cap c=2:
+  tA (q>=2,r>=1): nonneg-coeff proof: num True, den True
+  tB (q>=2,r>=1): nonneg-coeff proof: num True, den True
+  det (q>=2,r>=1): nonneg-coeff proof: num True, den True
+cap c=4:
+  tA (q>=2,r>=1): nonneg-coeff proof: num True, den True
+  tB (q>=2,r>=1): nonneg-coeff proof: num True, den True
+  det (q>=2,r>=1): nonneg-coeff proof: num True, den True
+=== uncapped case p = q + e, 0 <= e <= c (T1 re-proof) ===
+  c=2 e=0 tA: nonneg-coeff proof: num True, den True
+  c=2 e=0 tB: nonneg-coeff proof: num True, den True
+  c=2 e=0 det: nonneg-coeff proof: num True, den True
+  c=2 e=1 tA: nonneg-coeff proof: num True, den True
+  c=2 e=1 tB: nonneg-coeff proof: num True, den True
+  c=2 e=1 det: nonneg-coeff proof: num True, den True
+  c=2 e=2 tA: nonneg-coeff proof: num True, den True
+  c=2 e=2 tB: nonneg-coeff proof: num True, den True
+  c=2 e=2 det: nonneg-coeff proof: num True, den True
+  c=4 e=0 tA: nonneg-coeff proof: num True, den True
+  c=4 e=0 tB: nonneg-coeff proof: num True, den True
+  c=4 e=0 det: nonneg-coeff proof: num True, den True
+  c=4 e=1 tA: nonneg-coeff proof: num True, den True
+  c=4 e=1 tB: nonneg-coeff proof: num True, den True
+  c=4 e=1 det: nonneg-coeff proof: num True, den True
+  c=4 e=2 tA: nonneg-coeff proof: num True, den True
+  c=4 e=2 tB: nonneg-coeff proof: num True, den True
+  c=4 e=2 det: nonneg-coeff proof: num True, den True
+  c=4 e=3 tA: nonneg-coeff proof: num True, den True
+  c=4 e=3 tB: nonneg-coeff proof: num True, den True
+  c=4 e=3 det: nonneg-coeff proof: num True, den True
+  c=4 e=4 tA: nonneg-coeff proof: num True, den True
+  c=4 e=4 tB: nonneg-coeff proof: num True, den True
+  c=4 e=4 det: nonneg-coeff proof: num True, den True
+=== float cross-check (random biregular bipartite) ===
+  (9,2) c=2.0: min eig 1.283357, tA=5.9336 tB=5.9444 det=13.5967
+  (9,2) c=4.0: min eig 2.434773, tA=5.9336 tB=9.7775 det=32.3249
+  (8,3) c=2.0: min eig 1.296960, tA=6.4714 tB=8.5679 det=17.8232
+  (8,3) c=4.0: min eig 1.949157, tA=6.4714 tB=12.0278 det=32.2586
+  (12,2) c=2.0: min eig 1.429665, tA=7.5319 tB=5.9702 det=17.2596
+  (12,2) c=4.0: min eig 2.956541, tA=7.5319 tB=9.8809 det=42.7404
+  (7,4) c=2.0: min eig 0.825669, tA=7.1578 tB=10.3870 det=13.8045
+  (7,4) c=4.0: min eig 0.962322, tA=7.1578 tB=11.8045 det=17.3218
+
+THEOREM M2 PROVED: M(sigma_c) PSD on all semiregular bipartite delta>=2 graphs, c in {2,4}.
