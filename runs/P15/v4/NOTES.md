@@ -1481,3 +1481,36 @@ Cumulative replica: secs 3.1-3.9, ~14,700 congruences, all moduli
 pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
+## 47. Phase 30 (sec 3.10, prime 29) (2026-07-22)
+
+emit310.py -- Owens sec 3.10: prime 29 fills TWO holes at once (the
+third and fifth empty holes of Fig 3.9): branch 2 (mod 4), first
+input of a 3 (1 mod 3), second and third inputs of the 5 -- target
+cells (2,5) and (3,5).  Twenty-nine sets built per the text:
+atoms 1..8^ + 3-conjunctions + 9^(1,2)/9^(4,8^); five 5-conjunction
+sets each covering both 5-inputs (pairing the ten sets in sequence --
+reconstruction choice); the double 25^ set; a 17^ over the first
+sixteen; Owens's four combined 7^ sets written out explicitly
+(slots 1,2 bare covering both 5-inputs, slot 3 x, slots 4-6 5-scaled
+at (3,5), set 21 carrying the reserve 25^(9^,9^,_,_)@(2,5)); two 11^
+copies; a 23^ (last input count under-determined -> placeholder);
+two 13^ copies; two 19^ copies at 13 inputs each (five inputs apply
+to the whole 4 hole per sec 3.8 -> 5 x-slots); and the final
+7^(9^,9^,x,5*9^,5*9^,B) with B = 17^ over the first sixteen sets.
+Set 1 dropped (29 < 42); 29^ filled with the twenty-eight.
+
+Machine-checked results:
+  sec3.10: 12414 congruences, 133 placeholders
+  min modulus: 58
+  dups within sec3.10: 0
+  overlap w/ skeleton and secs 3.3-3.9: all 0
+Census (window 2^7 3^4 5^2 7*29): residual confined to the 29-classes
+hosting 11/13/17/19/23-towers (moduli outside the window) plus
+recursion tails; all 2/3/5/7-smooth classes covered.
+
+Cumulative replica: secs 3.1-3.10, ~27,100 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
