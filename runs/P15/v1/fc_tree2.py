@@ -65,17 +65,20 @@ class Builder:
         self.chosen = []
         self.rng = rng
         self.cnt_cache = {}      # (m, g) -> bincount of frags[m] % g
+        self.cache_size = 0
+
+    CACHE_BUDGET = 2 * 10**8   # total cached elements (~1.6 GB)
 
     def cnt(self, m, g):
-        if g > 8192:                      # avoid unbounded cache memory
-            return np.bincount(self.frags[m] % g, minlength=g)
         key = (m, g)
         c = self.cnt_cache.get(key)
         if c is None:
-            if len(self.cnt_cache) > 30000:
-                self.cnt_cache.clear()
             c = np.bincount(self.frags[m] % g, minlength=g)
+            if self.cache_size + g > self.CACHE_BUDGET:
+                self.cnt_cache.clear()
+                self.cache_size = 0
             self.cnt_cache[key] = c
+            self.cache_size += g
         return c
 
     def mass(self):
@@ -153,6 +156,7 @@ class Builder:
         self.frags = newfrags
         self.cnt_cache = {k: v for k, v in self.cnt_cache.items()
                           if k[0] not in changed}
+        self.cache_size = sum(k[1] for k in self.cnt_cache)
         self.chosen.append((a, n))
         self.unused.discard(n)
 
