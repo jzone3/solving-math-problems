@@ -776,3 +776,41 @@ STATUS: near-miss / frontier-pushed (strongest state of the session:
 the binding section 3.8 is repaired with machine-verified fresh moduli;
 no exhaustive obstruction remains - burdens (a)-(c) are finite,
 mechanical, and have multiple options each).
+
+## 23. Phase 11: burden (a) discharged - global stratum assignment (blueprint v4)
+
+Re-read Owens's text for every penalized section and extracted the 5-adic /
+3-adic strata each section's own sets occupy:
+
+    3.8(19), 3.12(37), 3.14(43), 3.17(59), 3.19(71/73), 3.20(79/83):
+        only 5, 25^ usage -> v5 in {0,1,even}; odd v5>=3 FREE.
+    3.16(53): fills TWO copies of 125^ (thesis p.15) -> odd v5=3j present,
+        so the odd-5 stratum is NOT free there; but 3.16 uses only a single
+        3-conjunction (no 3^/9^/27^ towers) -> the v3>=2 stratum IS free.
+
+Mint choices (sections43.py, all checks PASS):
+    * six sections: 25^ towers over 5-scaled inputs (odd-5 stratum), as
+      machine-verified fresh for 3.8 in blueprint43c;
+    * 3.16: 9^ towers over 5-scaled inputs (v5=1, v3>=2 stratum).
+
+Cross-section (global) freshness: a mint lives at P^k * (stratum) where P
+is the section's final prime and mints feed only the final tower.  The only
+ways another section can reproduce such values are enumerated by
+sections43.py, yielding 5 finite ROUTING side conditions (input assignments
+the thesis text leaves free):
+    S1: 3.16's 125^ sets must not feed its 19^/37^/43^ copies
+        (route them into 29^/31^/7^/11^/13^/41^/47^ or the final 53^);
+    S2: 3.19's and 3.20's 5*9^-type sets must not feed their 53^ copies.
+
+Ledger arithmetic re-checked at TRUE mint costs (blueprint43d.py): all
+3^-based repairs replaced by 25^ (cost 4), 3.16's 125^ repairs by 9^
+(cost 2), 3.17's 25^ cost corrected 1 -> 4.  ALL 13 LEDGERS PASS.
+
+BLUEPRINT v4 = blueprint v3 with all seven penalized sections' mints in
+machine-checked fresh strata + 5 explicit routing side conditions + true
+mint costs.  Burden (a) is discharged at the stratum level; burden (b)
+(spare-set instantiation on relocated branches) inherits the same odd-5
+mechanism; burden (c) (residue-level emission + end-to-end verifier)
+remains the final open step.
+
+STATUS: near-miss / frontier-pushed
