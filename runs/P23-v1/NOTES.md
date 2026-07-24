@@ -155,6 +155,12 @@ Following the problem file's "Minkowski sums" lever, we generated genuinely new 
   One further swap found (w=47189, v=375; 9 singles total). Still no candidate with two
   independent deletions ⇒ no 508 via any single substitution in the whole Minkowski pool.
 
+- **Combined pool** (`combine.py`, `scan_fresh.py`): merged the Minkowski pool with the
+  enriched Parts/apex pool (49,953 vertices, 450,220 exact edges). Only 14 apex points
+  with ≥4 record neighbours were not already covered by earlier scans; all 14 scanned —
+  zero swap-deletables. Annealing chains over the combined pool seeded at the
+  triple-substituted variant also re-converged to 509.
+
 The striking outcome: the record's size is invariant under substitution of new Minkowski
 geometry — every reachable 509-vertex variant is again vertex-critical. This strongly
 suggests 509 sits at the bottom of a wide structural basin, and beating it needs a
