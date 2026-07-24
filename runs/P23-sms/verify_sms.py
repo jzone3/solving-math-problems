@@ -9,11 +9,11 @@ Given a universe pkl and a witness (list of vertex indices), this:
   so chi(U[S]) == k+1 exactly, machine-certified.
 Prints PASS only if every gate passes.
 """
-import sys, os, pickle, subprocess, tempfile, argparse
+import sys, os, pickle, subprocess, tempfile, argparse, shutil
 from mfield import MField
 
-KISSAT = os.path.expanduser("~/p23/kissat/build/kissat")
-DRATTRIM = os.path.expanduser("~/p23/drat-trim/drat-trim")
+KISSAT = os.environ.get("KISSAT") or shutil.which("kissat") or os.path.expanduser("~/p23/kissat/build/kissat")
+DRATTRIM = os.environ.get("DRATTRIM") or shutil.which("drat-trim") or os.path.expanduser("~/p23/drat-trim/drat-trim")
 
 
 def induced_edges(fld, pts):

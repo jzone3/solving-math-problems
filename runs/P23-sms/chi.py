@@ -1,8 +1,8 @@
 """Quick: is the WHOLE universe k-colorable? (kissat on the direct k-coloring CNF)
 If UNSAT for k=4 => chi(U)>=5 => U contains a 5-chromatic subgraph (worth mining).
 If SAT   for k=4 => chi(U)<=4 => NO 5-chromatic subgraph exists anywhere in U."""
-import sys, pickle, subprocess, tempfile, os, time
-KISSAT = os.path.expanduser("~/p23/kissat/build/kissat")
+import sys, pickle, subprocess, tempfile, os, time, shutil
+KISSAT = os.environ.get("KISSAT") or shutil.which("kissat") or os.path.expanduser("~/p23/kissat/build/kissat")
 
 path = sys.argv[1]
 k = int(sys.argv[2]) if len(sys.argv) > 2 else 4

@@ -3,8 +3,8 @@ by producing a proper 4-coloring with kissat and INDEPENDENTLY checking, in exac
 integer arithmetic, that every one of the universe's exact unit-distance edges is
 bichromatic. A proper coloring is a self-verifying certificate of 4-colorability.
 Prints PASS + the coloring's class sizes."""
-import sys, pickle, subprocess, tempfile, os
-KISSAT = os.path.expanduser("~/p23/kissat/build/kissat")
+import sys, pickle, subprocess, tempfile, os, shutil
+KISSAT = os.environ.get("KISSAT") or shutil.which("kissat") or os.path.expanduser("~/p23/kissat/build/kissat")
 
 path = sys.argv[1]
 with open(path, "rb") as f:
