@@ -1,0 +1,16 @@
+used moduli: 12331418, cells: 4249
+cells patched: 575/4249, failed: 3674
+  FAIL ('sec3.6', 2819739, 9369360)
+  FAIL ('sec3.6', 3182088, 6776055)
+  FAIL ('sec3.6', 4537299, 6776055)
+  FAIL ('sec3.19', 439752, 6474735)
+  FAIL ('sec3.19', 1681482, 6474735)
+  FAIL ('sec3.19', 2923212, 6474735)
+  FAIL ('sec3.19', 4164942, 6474735)
+  FAIL ('sec3.19', 5406672, 6474735)
+  FAIL ('sec3.19', 1888032, 6124815)
+  FAIL ('sec3.19', 2664417, 6124815)
+patch congruences: 5598
+patch moduli all distinct; min patch modulus: 49
+self-test: cells with incomplete patch cover: 0
+wrote patches47.json

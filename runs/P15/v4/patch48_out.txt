@@ -1,0 +1,21 @@
+used moduli: 12331418, cells: 4249
+pass cap=8 big=True: patched 102, remaining 4147
+pass cap=4 big=False: patched 181, remaining 3966
+pass cap=16 big=False: patched 82, remaining 3884
+pass cap=64 big=False: patched 45, remaining 3839
+pass cap=512 big=False: patched 4, remaining 3835
+cells patched: 414/4249, failed: 3835
+  FAIL ('sec3.19', 14956167, 19424205)
+  FAIL ('sec3.19', 9723162, 19424205)
+  FAIL ('sec3.19', 3248427, 19424205)
+  FAIL ('sec3.19', 14425212, 18374445)
+  FAIL ('sec3.19', 8300397, 18374445)
+  FAIL ('sec3.19', 15201597, 18374445)
+  FAIL ('sec3.19', 9076782, 18374445)
+  FAIL ('sec3.20', 450524, 8370135)
+  FAIL ('sec3.20', 7980284, 8370135)
+  FAIL ('sec3.20', 5190239, 8370135)
+patch congruences: 3711
+patch moduli all distinct; min patch modulus: 54
+self-test: cells with incomplete patch cover: 0
+wrote patches48.json

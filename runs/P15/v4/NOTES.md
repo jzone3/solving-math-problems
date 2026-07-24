@@ -1932,3 +1932,55 @@ the record construction the surviving source text actually
 determines.
 
 STATUS: near-miss / frontier-pushed
+## 63. Phase 45: fresh-modulus patching of the open cells -- and
+## obstruction C (2026-07-22)
+
+Goal: complete the duplicate-free emission by covering each of the
+4,205 open placeholder cells with NEW congruences whose moduli are
+globally fresh (patch45/46/47/48/49.py, outputs *_out.txt).
+
+Key tool (deflation identity, machine-verified by per-cell
+self-tests): for a cell (r,n), step s>=2 and any b|n with
+gcd(b,s)=1, the congruence  r + j*n (mod s*n/b)  covers exactly
+{r+i*n : i=j (mod s)}.  Distinct b give distinct moduli for the same
+step, so cells can be covered by mixed multisets of steps (v3) or by
+recursive scale trees with per-node closure (v4), with global
+freshness tracked across the emission and all patches.
+
+Results of five successively stronger strategies:
+
+  v1 plain multiples n*d, d|10080 greedy:        208/4249 cells
+  v2 deflated d=const, first-fit:                462/4249
+  v3 mixed scales over Z/10080:                  575/4249
+  v4 recursive scale trees, cost caps, big-first: 414/4249
+  v5 = v4 after coarsening sibling cells
+     (4249 -> 3845 merged cells):                 414/3845
+
+All produced patches pass their self-tests (each patched cell fully
+covered by its own patch congruences; all patch moduli distinct and
+fresh; min patch modulus 54).  414 cells are now PATCHABLE with
+explicit verified congruences (patches48/49.json).
+
+OBSTRUCTION C (column counting): the stall of all five strategies
+has a clean structural cause.  Every patch modulus for a cell mod n
+must have the form g*s (g|n, gcd(s,n/g)=1), i.e. live in n's divisor
+lattice; a full cover of one cell consumes essentially one divisor
+COLUMN (a chain g*s, s=2,4,8,... plus one closure).  A family of k
+sibling cells mod n therefore needs ~k columns, but the lattice only
+has d(n) of them -- and the emission's 12.33M moduli already occupy
+the shallow strata (measured: median free harmonic mass 0.57 < 1 per
+cell over divisors of 10080; for 2505 cells the plain-multiple
+supply is below covering density outright).  sec3.19/3.20/3.6 have
+families of 400+ siblings vs d(n) ~ 42: infeasible by counting, at
+ANY search effort.  Coarsening (merging complete p-tuples of
+siblings into coarser cells) shrinks families only 10% -- the tails
+are staggered across residues, not complete tuples.
+
+Conclusion: completing the replica's coverage CANNOT be done by
+per-cell fresh-modulus patching; the remaining 6-8% of measure must
+be covered by congruences each absorbing MANY cells across sections
+at once -- which is precisely the unstated global routing (x-slots)
+of Owens's own text, now characterized by a third machine-checked
+counting obstruction.
+
+STATUS: near-miss / frontier-pushed

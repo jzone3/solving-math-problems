@@ -1,0 +1,5 @@
+used moduli: 12331418, cells: 4249, candidate scales: 71
+cells patched: 208/4249, failed: 4041
+patch congruences: 3252
+patch moduli distinct: OK; min patch modulus: 1539
+wrote patches45.json

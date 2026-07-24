@@ -1,0 +1,16 @@
+used moduli: 12331418, cells: 4249
+cells patched: 462/4249
+failures: 3787
+  FAIL ('sec3.19', 14956167, 19424205)
+  FAIL ('sec3.19', 9723162, 19424205)
+  FAIL ('sec3.19', 3248427, 19424205)
+  FAIL ('sec3.19', 8300397, 18374445)
+  FAIL ('sec3.19', 15201597, 18374445)
+  FAIL ('sec3.19', 9076782, 18374445)
+  FAIL ('sec3.20', 450524, 8370135)
+  FAIL ('sec3.20', 7980284, 8370135)
+  FAIL ('sec3.20', 5190239, 8370135)
+  FAIL ('sec3.20', 4349864, 8370135)
+patch congruences: 2407
+patch moduli all distinct; min patch modulus: 54
+wrote patches46.json
