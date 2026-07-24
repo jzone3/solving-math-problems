@@ -1644,3 +1644,28 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 53. Phase 36 (sec 3.16, prime 53) (2026-07-22)
+
+emit316.py -- Owens sec 3.16: last (fifth) 5-input on the 4 hole,
+branch (2 mod 4) n one hole mod 25 (the printed "mod 25*3^*4" is
+OCR-garbled; reconstruction uses the 25-cell (5,25), marked as a
+choice).  Fifty-two sets: atoms + 3-conjunctions; 5* and 25* copies;
+two 125^ towers over (5,25); two 19^ at thirteen; 29^; 31^ at
+twenty-nine (sec 3.11's reserved 5^(2,4,8^,1) carries over); six 7^
+with the third input covered; three 13^; 37^; four 11^; 41^; 43^;
+47^; two 23^; three 17^.  53^ filled with all fifty-two.
+
+Machine-checked results:
+  sec3.16: 175414 congruences, 115 placeholders
+  min modulus: 53
+  dups within sec3.16: 0
+  overlap w/ skeleton and secs 3.3-3.15: all 0
+Census (window 2^7 3^4 5^3 53): target cell FULLY covered in-window
+(0 uncovered of 686880; dropped measure 0.11 from out-of-window
+moduli).
+
+Cumulative replica: secs 3.1-3.16, ~477,300 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
