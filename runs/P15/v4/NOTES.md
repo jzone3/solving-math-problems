@@ -1691,3 +1691,33 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 55. Phase 38 (sec 3.18, primes 61/67/89) (2026-07-22)
+
+emit318.py -- Owens sec 3.18: third 3-input of the fourth 5-input on
+the 4 hole, split mod 8: 61^ on (2 mod 8), 67^ on (6 mod 8) with two
+of the 67-entries supplied by depth-shifted 61^ towers (levels 3-4
+and 5-6, Nielsen's prime-13 doubling device) and one by an 89^.
+Each half: sixty-three sets built as in sec 3.17.
+
+NEW FINDING -- OBSTRUCTION B: the nine 7^ copies of shape
+7^(_,_,x,x,25(x,x,x,_,x),_) each need the same bare-25 piece in
+their fifth input.  At residue level, identical pieces repeat the
+modulus 7^k*25 across copies (first attempt: 2548 duplicate moduli,
+family 5^2*7*{61,67}*...), and every smooth rescaling of the piece
+collides with the 25^/5* set families already present.  Owens's
+resolution is unstated; the pieces are emitted as placeholders,
+documented as the sec-3.18 analogue of obstruction A.
+
+Machine-checked results (after placeholdering the pieces):
+  sec3.18: 1141426 congruences, 568 placeholders
+  min modulus: 61
+  dups within sec3.18: 0
+  overlap w/ all previous sections: 0
+Census (window 2^7 3^4 5^3 61, 61-half): residual dominated by the
+out-of-window 67/89 material and dropped measure 0.399.
+
+Cumulative replica: secs 3.1-3.18, ~1.69M congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
