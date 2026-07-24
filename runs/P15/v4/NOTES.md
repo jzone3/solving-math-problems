@@ -1037,3 +1037,32 @@ cosets) with coverage + distinctness.
 
 These are the honest, machine-verified constructive results of the session.
 No T>=43 witness exists.  FINAL STATUS: near-miss / frontier-pushed.
+
+## 33. Phase 18: exact-skeleton-seeded kill machinery (skelkill.py)
+
+Executed the experiment phase 2 flagged as the mandatory next step: seed
+the compressed kill-pool endgame with the EXACT Owens 2/3 skeleton
+(emitcore.py residue emission, 123 congs, distinct moduli, min 48) instead
+of greedy layers, and measure hole-class concentration by exact recursive
+coset coalescing over M = 2^13 * 3^7.
+
+Results (skelkill.py):
+  raw holes 15,454,616 (density 0.8626) -> coalesced to 58,386 minimal
+  cosets.  Structure: the four even cells 2(4),4(8),8(16),16(32) are single
+  classes (Owens covers these with secs. 3.3-3.4, not the kill pool); the
+  bulk (58k classes) sits at moduli 24576..17915904, i.e. finite-depth
+  tower tails plus the grey 4^-input odd lines.
+  Kill pools at T=43: window M gives 5 unused divisors; xM*5^2*7 gives 552;
+  xM*5^3*7^2 gives 1224.  58,386 >> 1224: INFEASIBLE.
+
+Interpretation: the exact core improves the holes/pool ratio by ~2 orders
+of magnitude over greedy (greedy at T=13: ~1e6 classes vs ~1e2 pool;
+exact skeleton: 5.8e4 vs 1.2e3), but the endgame remains ~50x short.  The
+gap is exactly the 5/7-layer problem: the structured cells (density
+0.47 in the even branch alone) must be absorbed by full Owens-style 5^/7^
+sections BEFORE any kill pool applies -- i.e. the residue-level emission
+of secs. 3.3-3.20 with globally coordinated depths, which remains the open
+research problem (secs. 29-30).  Consistent with everything above: no
+shortcut around the full construction exists.
+
+STATUS: near-miss / frontier-pushed (unchanged).
