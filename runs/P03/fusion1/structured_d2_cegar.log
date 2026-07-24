@@ -1,0 +1,2 @@
+D2 base_dag= True
+D2 {'built': 69, 'tau=3': 69, 'tau_k': 69, 'out_safe': 56, 'rho_ok': 56, 'packed': 56, 'partitions_sum': 56, 'partitions_min': 1} near_miss_by_cuts= ((0, 495), 'D27-lift-p11-zero', 3, None, False)

@@ -1,0 +1,1 @@
+D1-k3 {'built': 7, 'tau=3': 7, 'tau_k': 7, 'out_safe': 7, 'rho_ok': 2, 'packed': 2, 'partitions_sum': 2, 'partitions_min': 1} near_miss_by_cuts= ((0, 300), 'STS25-lambda1', 3, None, True)

@@ -267,6 +267,45 @@ The D3 target instance was the J(6,3) layer, with 20 upper vertices, 15
 lower vertices, and 60 arcs. These are structured negative results only;
 they do not close any unrestricted Woodall cell.
 
+### CEGAR rerun of D1/D2 and partition instrumentation
+
+The initial D2 ideal-cap result has been superseded. `structured_search.py`
+now routes all tau=k packing decisions through a lazy SAT/CEGAR checker:
+source/sink stars are seeded, violated dicuts are found by the dijoin
+verifier, and only the resulting rainbow clause is added. Thus no lift is
+deferred merely because its full dicut family is too large.
+
+The expanded D2 run covered the D27 base plus 68 voltage lifts:
+
+```text
+p=2,3,5,7: 12 random + 4 structured voltage patterns per p
+p=11: 4 structured voltage patterns
+built=69; tau=3=69; exact CEGAR checked=69
+out-of-safe-class=56; rho-qualified=56; packed=56
+non-packing candidates=0; deferred=0
+```
+
+The structured patterns were constant-zero, constant-one, solid/dashed
+arc-type voltages, and random assignments. All lifts remain DAG covers of
+the DAG base. The CEGAR partition counter was run with a hard cap of one
+color-normalized partition per instance (so `partitions_min=1` means at
+least one partition; it is not a claim that exactly one exists). No
+in-class lift failed packing.
+
+The expanded D1 CEGAR run covered seven block-size-3 designs (v=7,9,13,15,
+19,21,25), all tau=3. Seven were out-of-safe-class and two were
+rho-qualified; both rho-qualified cases packed, with no candidates.
+The block-size-4 CEGAR run covered four designs, with two tau=4 cases and
+zero rho-qualified cases; no candidates occurred. D3's prior six-instance
+run remains unchanged: one rho-qualified tau=3 case, packed.
+
+For the small D1 cases, the CEGAR result was independently checked against
+the full Python harness on STS(7) and STS(9). Since no non-packing result
+was found, there was no candidate requiring emergency independent
+re-verification. Across all in-class instances, the observed minimum
+partition count under the cap was one (a lower-bound report due to the
+cap), so no strictly tighter near-miss ranking is claimed.
+
 ## Family A: tau=4 reduced shape
 
 For sources `s`, sinks `t`, type-A internal vertices `(in,out)=(1,2)` and
