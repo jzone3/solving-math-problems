@@ -135,3 +135,148 @@ quantitative content beyond v1–v5. No PR (per instructions).
 - `../../../toolkit/` — reference copies of prior verifiers/engines used here
   (`verify_v1.py`, `verify_subtract.py`, `fc_tree2.py`, `engine_e.py`,
   `cover_mc.c`, `branchgame.py`), copied from origin/runs/P15-v{1,3,4,5}.
+
+## 6. Experiment C: frontier push (compressed ruin/recreate repair)
+
+Code: `frontier17.py`. This experiment retained `fc_tree2.Builder`'s exact
+fragment dictionary and added global reassignment by ruin/recreate: randomly
+remove a batch of already-placed classes, replay the survivors exactly into a
+fresh compressed builder, then rerun exact-gain greedy. Acceptance minimized
+the exact residual mass, with fragment count as a tie-breaker. No explicit
+`Z_N` bitmask was allocated, and no floating score was used for acceptance.
+
+### m=17 profiles
+
+| factorization | N | reciprocal slack | greedy/repair budget | best residual mass | fragments | classes |
+|---|---:|---:|---:|---:|---:|---:|
+| `2^5·3^3·5^2·7·11·13·17` | 367,567,200 | 1.760859 | 90s + 4×20s | 0.0126542928749 | 1,339,929 | 1,129 |
+| `2^6·3^3·5^2·7·11·13·17` | 735,134,400 | 1.801665 | 120s + 3×20s | 0.0101066322022 | 1,348,762 | 1,286 |
+| `2^7·3^3·5^2·7·11·13·17` | 1,470,268,800 | 1.822068 | 120s + 2×15s | 0.0069223165179 | 1,503,530 | 1,448 |
+| `2^7·3^4·5^2·7·11·13·17` | 4,410,806,400 | 1.865425 | 300s + 4×40s | **0.00401251140834** | 1,600,470 | 1,727 |
+
+The deepest profile's baseline ended at mass `0.00401435755602`,
+2,194,285 fragments and 1,721 classes. Four repair attempts reduced this
+to mass `0.00401251140834`; one repair was rejected, and the accepted
+repairs only reduced the residual by about `1.8e-6`. Thus reassignment helps
+quantitatively but does not approach closure.
+
+### m=18
+
+Profile `2^7·3^4·5^2·7·11·13·17`, N=4,410,806,400, reciprocal slack
+1.806601. With 180 seconds greedy plus two 30-second repair attempts:
+
+```
+C-BASE stats mass=0.00427372985584 frags=2242705 chosen=1690 elapsed=180.0s
+C-REPAIR 0 ACCEPT old=(0.00427372985584,2242705,1690) new=(0.00427179936984,2199202,1706)
+C-REPAIR 1 ACCEPT old=(0.00427179936984,2199202,1706) new=(0.00427146859132,2208872,1711)
+C-DONE best mass=0.00427146859132 frags=2208872 chosen=1711 elapsed=298.0s
+```
+
+### Verification and conclusion
+
+No complete witness was produced, so the verified frontier remains m=16.
+The incomplete m=17 and m=18 artifacts were explicitly rejected by the
+first verifier:
+
+```
+FAIL: integer not covered (sampling): -298004427984244793786055837060
+FAIL: integer not covered (sampling): -610776842766686546465144208891
+```
+
+`verify_subtract.py` on the incomplete m=17 artifact was run for 20 seconds
+and exited with status 124 (cell subtraction did not finish); it produced no
+PASS line. No file is named `witness_m17.json` or `witness_m18.json`.
+
+Experiment C therefore did not beat m=16. The compressed representation
+removes the RAM wall and ruin/recreate genuinely reassigns existing moduli,
+but the residual remains diffuse at roughly 1.3–2.2 million CRT fragments
+and mass 0.004–0.013. The remaining gap is global alignment rather than
+local residue optimization.
+
+## 7. Experiment C deep-N continuation (m=17)
+
+The previous Experiment C used N≈10^9. This continuation tested the
+v1-style deep divisor lattice, with a long greedy budget and then repair.
+
+### Deep profiles tested
+
+An initial profile
+`2^8·3^5·5^3·7^2·11·13·17·19` has
+N=17,599,117,536,000 and reciprocal sum 2.303121274, but it fragmented
+immediately:
+
+```
+chosen=17 mass=0.45789 frags=226620288 unused=10335 t=18s
+chosen=34 mass=0.27085 frags=545201464 unused=10318 t=168s
+```
+
+RSS reached approximately 3.7 GB at that point, so this profile was stopped
+as the requested memory backoff condition.
+
+The viable deep profile was the v1-style
+`2^7·3^5·5^3·7^2·11·13·17`, with
+N=463,134,672,000, 4,592 eligible divisors, reciprocal sum 2.008361916.
+This is smaller than the full v1 winning N because the latter also included
+prime 19, but it retained the deep 2/3/5 structure without runaway initial
+fragmentation.
+
+### Long greedy
+
+The first 900-second pass reached:
+
+```
+TIMEOUT mass=0.0002297 frags=3251891 chosen=2084
+C-BASE stats mass=0.000229669287209 frags=3251891 chosen=2084 elapsed=901.0s
+```
+
+A resumed 900-second pass, replaying that exact compressed state, reached:
+
+```
+TIMEOUT mass=0.0002198 frags=3783878 chosen=2216
+C-BASE stats mass=0.00021984738383 frags=3783878 chosen=2216 elapsed=916.3s
+```
+
+### Ruin/recreate repair
+
+Using the resumed state, four 180-second repair attempts with ruin size 50
+were run. The best state was:
+
+```
+C-REPAIR 0 ACCEPT old=(0.00021984738383,3783878,2216) new=(0.000215189315388,5514082,2236)
+C-REPAIR 1 ACCEPT old=(0.000215189315388,5514082,2236) new=(0.000214108748481,5459588,2236)
+C-REPAIR 2 REJECT old=(0.000214108748481,5459588,2236) new=(0.000276081597277,7234086,2270)
+C-REPAIR 3 ACCEPT old=(0.000214108748481,5459588,2236) new=(0.0002137030803,5481137,2238)
+C-DONE best mass=0.0002137030803 frags=5481137 chosen=2238 elapsed=2203.6s
+```
+
+The deep lattice improved the residual by roughly 20× relative to the
+N=4.4e9 experiment (0.0040 → 0.000214), but did not close it. The remaining
+residual is still over five million diffuse fragments. No m=18 run was
+started after this continuation because the m=17 state remained far from
+exact closure and the 60–75 minute time budget had been consumed.
+
+The best partial was rejected by `verify_v1.py`:
+
+```
+FAIL: integer not covered (sampling): 36138693373302250625994930856
+```
+
+`verify_subtract.py` on the same partial ran for 20 seconds and exited
+`124` without output; no PASS line exists. No `witness_m17.json` was
+created, and the verified frontier remains m=16.
+
+### Experiment C diagnosis (why m=17 does not close)
+
+Decisive structural evidence: as greedy continues on the deep lattice the
+residual *measure* shrinks (0.004 → 2.14e-4) but the residual *fragment count*
+GROWS (chosen 2084→2216, frags 3.25M → 3.78M → 5.48M). Each additional
+placement shatters existing cells faster than it removes them — the exact
+divergence law v2 §10 (|U_{i+1}| = p·|U_i| − kills) and v3's coset-engine
+divergence predict. Ruin/recreate reassignment (global, RAM-wall-free on the
+compressed rep) moves the measure only marginally and cannot reverse the
+fragment growth. This is the integrality-gap / diffuse-dust wall, not a speed
+or slack limitation: no local or global *reassignment* of divisor-of-N moduli
+closes a diffuse tail; the record constructions avoid it only by building the
+tail exactly top-down. Verified explicit frontier therefore stands at m=16
+(v1); Experiments A–C did not beat it, and this is a genuine negative, not a
+budget artifact.
