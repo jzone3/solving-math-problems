@@ -28,6 +28,7 @@ static int b_[NMAX], d_[NMAX], e_[NMAX];
 static int v_[NMAX];                /* v_[u] for u = 1..n-1; -1 = unassigned */
 static long long arrays_out = 0, bases_tried = 0, csp_sat = 0;
 static long long max_arrays = -1;
+static long long dfs_nodes, dfs_budget = 20000000;   /* per-base cap */
 
 static uint64_t rng;
 static uint64_t xrnd(void) { rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng << 17; return rng; }
@@ -59,6 +60,7 @@ static int order_[NMAX], no_;
 
 static void dfs(int idx) {
     if (max_arrays >= 0 && arrays_out >= max_arrays) return;
+    if (++dfs_nodes > dfs_budget) return;
     if (idx == no_) { csp_sat++; check_and_print(); return; }
     int u = order_[idx];
     for (int val = 0; val < N; val++) {
@@ -133,6 +135,7 @@ int main(int argc, char **argv) {
         if ((forb[2][1] >> 0 & 1)) { bases_tried++; continue; }   /* v_2 - v_1 = 0 forbidden */
         no_ = 0;
         for (int u = 3; u < N; u++) order_[no_++] = u;
+        dfs_nodes = 0;
         dfs(0);
         bases_tried++;
         if (bases_tried % 1000000 == 0)
