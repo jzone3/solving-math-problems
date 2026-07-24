@@ -199,7 +199,6 @@ static void leaf(void){
     if(tauv!=k){tau_skip++;return;}
     if(!rho_ok()){safe_skip++;return;}
     if(!rho_reverse_ok()){safe_skip++;return;}
-    enumerate_cuts();
     if(!reduced_cuts_ok()){safe_skip++;return;}
     checks++;
     if(packs())packed++;

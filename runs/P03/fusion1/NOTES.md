@@ -201,10 +201,12 @@ PASS C fast-vs-PySAT/reference k=4 1,000/1,000
 
 The cross-validation compared the full minimal-dicut mask set, not only
 its cardinality. On a representative n=16 high-girth graph orientation,
-1,000 repeated check-mode records took 0.129 seconds with closed-set
-enumeration versus 0.612 seconds with the old subset sweep, a measured
-4.75x per-record speedup after amortizing process startup. The exact
-speedup depends on the orientation's ideal count.
+1,000 repeated check-mode records took 0.132 seconds with closed-set
+enumeration versus 0.467 seconds with the old subset sweep, a measured
+3.54x per-record speedup after amortizing process startup. The earlier
+measurement included a redundant second cut enumeration, which has also
+been removed from the production leaf path. The exact speedup depends on
+the orientation's ideal count.
 
 ## Family A: tau=4 reduced shape
 
