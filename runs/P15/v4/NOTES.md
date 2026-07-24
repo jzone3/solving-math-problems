@@ -925,3 +925,28 @@ Net state after this correction:
 
 STATUS: near-miss / frontier-pushed (counting blueprint intact; all
 value-set-level freshness arguments, positive and negative, withdrawn).
+
+## 28. Phase 15: residue-level emitter validated against Nielsen's worked examples
+
+emit.py implements the arrow calculus at RESIDUE level (the sound route):
+placement of Z-covering systems on classes, q^(inputs) at depth n with
+auxiliary p finitization (CRT-merged), exact Nielsen semantics.  Validated
+against the paper's own worked examples:
+    2^ (p=5, n=5):     10 cosets - matches Nielsen's set (1) exactly;
+    3^(1,2^) (p=5,n=4): 49 cosets - matches "forty-nine cosets in S";
+both verified to cover Z by the independent recursive-CRT checker
+(solutions/P15/verify.py) with all moduli distinct.
+
+This gives, for the first time in the session, machinery in which
+freshness/collision questions are DECIDABLE (exact moduli, exact residues,
+n-increase expressible as the depth parameter).  Burden (c) roadmap:
+  1. emit Owens's smooth core (secs. 3.1-3.4) - the 2/3-skeleton, 5-layer,
+     7-layer with the T=43 modification (drop modulus-42 congruence,
+     re-aim per blueprint43b);
+  2. emit each prime section's sets and towers with per-tower (n, p)
+     bookkeeping, auto-increasing n on modulus collision;
+  3. run the whole system through verify.py (recursive CRT, feasible since
+     coverage factorizes by branch).
+Each step is finite and now mechanically checkable.
+
+STATUS: near-miss / frontier-pushed
