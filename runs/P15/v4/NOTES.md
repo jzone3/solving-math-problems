@@ -737,3 +737,42 @@ conjectured - now with a machine-verified, exhaustive local argument.
 
 STATUS: frontier-pushed (local-patch program closed exhaustively;
 open routes: global small-prime redesign only).
+
+## 22. Phase 10: the ODD-5-POWER loophole - phase-9 refutation REPAIRED (blueprint v3)
+
+Phase 9's refutation of the section-3.8 repair was complete for tower
+bases over the sections' 3-scalable pool - but a systematic valuation
+scan found the loophole: every modulus in the universal set-building
+pattern has 5-adic valuation in {0, 1, even >= 2} (the single 5-scaling
+gives exactly 1; 25^ gives even).  The stratum of ODD 5-adic valuation
+>= 3 is COMPLETELY UNUSED.  Hence extra 25^ towers over 5-SCALED inputs
+mint sets whose moduli 5^(2j+1)*m are all fresh:
+
+    mint1 = 25^(s5,s6,s7,s8):  moduli 25^j*5*{1,2,4,8*2^i}
+    mint2 = 25^(s13,s14):      moduli 25^j*3^a*5*{1,2,4,8*2^i}
+
+blueprint43c.py machine-checks (cap 10^6): zero collisions against the
+FULL section-3.8 pool including its own 19-tower, zero cross-collisions
+between the mints, valuations {3,5,7} all odd.  This restores exactly
+the +2 sets the T=43 ledger of 3.8 needs - with modulus-fresh support,
+replacing the refuted 3^ repair.  15 fresh 25^ input pairs exist vs the
+universal core, enough options for the other penalized sections.
+
+Slack accounting from the T=43 ledgers (blueprint43.py finishes):
+12 spare covering sets (19:+2, 29:+2, 31:+1, 41:+1, 43:+1, 53:+1,
+59:+1, 61:+3); only 4 are needed to absorb the cells relocated by the
+re-aim {84,126,168,504} (with 252 free after the phase-8 correction).
+
+BLUEPRINT v3 = 12 T=43 ledgers with odd-5-power repairs + re-aim of the
+42-cell + spare-set absorption of the 4 relocated cells.  All counting
+arithmetic and the binding section's modulus freshness are now
+machine-verified.  Remaining validation burdens (open, not claimed):
+  (a) per-section freshness replay for the other six penalized sections
+      (same mechanism, 15 input-pair options each);
+  (b) freshness of spare-set instantiations on the relocated branches;
+  (c) residue-level emission + independent end-to-end verifier.
+
+STATUS: near-miss / frontier-pushed (strongest state of the session:
+the binding section 3.8 is repaired with machine-verified fresh moduli;
+no exhaustive obstruction remains - burdens (a)-(c) are finite,
+mechanical, and have multiple options each).
