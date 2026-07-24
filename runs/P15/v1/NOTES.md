@@ -174,6 +174,40 @@ past where we stopped (our machine frontier was M=6; literature is 42).
   (recip >= ~1.7), i.e. much larger N than minimal — the earlier fixed
   small-N attempts were starved, not the search algorithm.
 
+## 5c. Fourth push: M=16 hypothesis sweep and tree builder (all negative)
+
+* Hypothesis 1 (init jitter is the culprit): pure-greedy init
+  (init_frac=1.0) is WORSE, not better — 963k initial uncovered at
+  N=518918400 vs 258k for jittered seed 29. Deterministic argmax ties
+  create systematic overlap. REFUTED.
+* Hypothesis 2 (more reciprocal slack fixes it): N=735134400
+  (recip 1.864, prime 17) inits at 0.9-1.6M uncovered — much worse than
+  deeper-2-power N with LOWER recip. Slack is not sufficient; DEPTH of
+  small prime powers is what greedy chains exploit (Krukenberg's
+  observation, rediscovered empirically). M=15's success N=518918400 is
+  2^8*3^4*5^2*7*11*13 — deep in 2.
+* Hypothesis 3 (deep-2 rich N): best M=16 candidate N=1816214400 =
+  2^7*3^4*5^2*7^2*11*13 (recip 1.725 vs 1.71 that sufficed for M=15).
+  3-seed fleet OOM-killed (each proc peaks ~15 GB in init at N=1.8e9);
+  solo rerun inits in ~2h42m at 660k uncovered (0.036% — proportionally
+  the best M=16 init seen, but absolutely hopeless for walk closure at
+  10-60 cells/min). NEGATIVE.
+* `fc_tree.py`: CRT/tree-structured sparse greedy builder — fragments
+  (r, m) with m | N refined lazily, no cell arrays, N unbounded by
+  memory. Gain-density greedy with fragment-sampled residue scoring:
+  M=3, M=6, M=8 PASS witnesses generated without any array (M=8 at
+  N=2^5*3^3*5^2*7*11 in ~7 min, 116 congs). At M=10 fragmentation blows
+  up (2.8M fragments) and the top-K sample no longer sees where the
+  remaining mass lives, so gain estimates go blind and the run exhausts
+  moduli at mass ~0.015. A production version would need exact
+  per-modulus gain aggregation over the fragment tree (CRT convolution),
+  not sampling. Documented dead end at current engineering depth.
+
+Conclusion: the constructive frontier of this session's array/LS family
+is M=15. M=16 requires either the exact-tree greedy or a faithful
+Krukenberg-style layered design; M>=43 (the actual target) requires the
+Owens Ch.3 transcription + fresh-prime surgery (Section 5).
+
 ## 6. Compute spent (approx)
 
 * finite_cover: ~25 min CPU total (M=3..7).
@@ -186,6 +220,9 @@ past where we stopped (our machine frontier was M=6; literature is 42).
 * third push (walk engines): ~40 h CPU across up to 8 parallel processes
   over ~8 h wall (M=15 success at N=518918400; M=16 seed/jitter sweeps
   negative; two ~2h+ inits at N=1.1e9 negative).
+* fourth push: ~25 h CPU over ~9 h wall (M=16 hypothesis sweeps at
+  N=518M/735M/1.04G/1.82G incl. one OOM-killed fleet and one 2h42m solo
+  init; fc_tree builder runs M=3..10).
 
 ## 7. STATUS
 
@@ -197,7 +234,9 @@ search (fc_walk2) on top of jittered lazy-greedy initialization. The
 walk engine breaks the fc_anneal 23k plateau at N=129729600 (down to
 ~8k) but M=15 ultimately fell via a richer-slack N. M=16 documented
 negative for the whole array-based LS family (init quality collapses at
-big N; see 5b); SAT encoding documented dead end; recursive
+big N; hypothesis sweeps and OOM data in 5c) and for the new sparse
+CRT/tree greedy (fc_tree, PASS to M=8, sampling-blind at M=10, see 5c);
+SAT encoding documented dead end; recursive
 registry-greedy builder documented dead end; best path to 43 remains the
 Owens-42-class surgery with fresh primes 97/101 (Section 5), which needs
 a faithful Owens Ch.3 transcription as its remaining step.
