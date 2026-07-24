@@ -1,0 +1,17 @@
+windmill F_14          n=  29 minK=   14.002911 D1ok  b46 ok minM=   -0.1453 F2FAIL
+windmill F_20          n=  41 minK=   14.596964 D1ok  b46 ok minM=  -12.7448 F2FAIL
+windmill F_40          n=  81 minK=   15.297480 D1ok  b46 ok minM= -121.7447 F2FAIL
+windmill F_80          n= 161 minK=   15.649087 D1ok  b46 ok minM= -641.3394 F2FAIL
+windmill F_150         n= 301 minK=   15.813031 D1ok  b46 ok minM=-2513.6733 F2FAIL
+wheel W_30             n=  30 minK=   21.327242 D1ok  b46 ok minM=    2.2145 F2ok
+wheel W_40             n=  40 minK=   22.902096 D1ok  b46 ok minM=   -0.6024 F2FAIL
+wheel W_60             n=  60 minK=   24.535010 D1ok  b46 ok minM=  -13.7862 F2FAIL
+wheel W_100            n= 100 minK=   25.888143 D1ok  b46 ok minM=  -70.3952 F2FAIL
+wheel W_150            n= 150 minK=   26.581153 D1ok  b46 ok minM= -197.1873 F2FAIL
+hub+10C4               n=  41 minK=   23.019507 D1ok  b46 ok minM=   -1.0209 F2FAIL
+hub+15C4               n=  61 minK=   24.589622 D1ok  b46 ok minM=  -14.7115 F2FAIL
+hub+25C4               n= 101 minK=   25.908567 D1ok  b46 ok minM=  -72.3227 F2FAIL
+hub+40C4               n= 161 minK=   26.676710 D1ok  b46 ok minM= -233.3955 F2FAIL
+hub+15K3               n=  46 minK=   23.533692 D1ok  b46 ok minM=   -3.4925 F2FAIL
+hub+25K3               n=  76 minK=   25.241782 D1ok  b46 ok minM=  -31.6173 F2FAIL
+hub+40K3               n= 121 minK=   26.247584 D1ok  b46 ok minM= -116.0938 F2FAIL

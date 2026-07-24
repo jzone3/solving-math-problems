@@ -1,0 +1,21 @@
+k=   2 n=   5 1Md=      4.6667 dMd=     14.2222 mineig=4.384e-01 rho=0.936844 rho0=0.953704 astar~0.001
+k=   3 n=   7 1Md=     15.0000 dMd=     70.0000 mineig=1.100e+00 rho=0.890490 rho0=0.947917 astar~0.001
+k=   5 n=  11 1Md=     37.1429 dMd=    379.0476 mineig=2.280e+00 rho=0.858786 rho0=1.003968 astar~0.041
+k=   8 n=  17 1Md=     27.0968 dMd=   1613.7634 mineig=3.229e+00 rho=0.865390 rho0=1.146356 astar~0.665
+k=  12 n=  25 1Md=   -194.8571 dMd=   5464.3810 mineig=1.941e+00 rho=0.937350 rho0=1.369353 astar~0.935
+k=  17 n=  35 1Md=  -1078.7797 dMd=  15447.1412 mineig=-5.253e+00 rho=1.137234 rho0=1.665411 astar~None
+k=  25 n=  51 1Md=  -4780.0554 dMd=  48678.1163 mineig=-3.045e+01 rho=1.577230 rho0=2.152568 astar~None
+k=  40 n=  81 1Md= -24138.7137 dMd= 197229.4593 mineig=-1.217e+02 rho=2.480910 rho0=3.079744 astar~None
+k=  60 n= 121 1Md= -90199.4214 dMd= 660593.3385 mineig=-3.315e+02 rho=3.715210 rho0=4.323992 astar~None
+k= 100 n= 201 1Md=-450320.0250 dMd=3036916.6490 mineig=-1.051e+03 rho=6.203661 rho0=6.819390 astar~None
+k= 200 n= 401 1Md=-3800620.5015 dMd=24153719.2637 mineig=-4.601e+03 rho=12.445436 rho0=13.065942 astar~None
+k=16: float mineig=-3.284177  EXACT x^T M x = -6507132941/1981250000 = -3.284357  -> F2 VIOLATED
+k=17: float mineig=-5.252537  EXACT x^T M x = -387378337/73750000 = -5.252588  -> F2 VIOLATED
+k=18: float mineig=-7.486250  EXACT x^T M x = -383310999/51171875 = -7.490658  -> F2 VIOLATED
+k=25: float mineig=-30.445140  EXACT x^T M x = -21979467527/722000000 = -30.442476  -> F2 VIOLATED
+k=5: min eig K = 10.600331 (D1 ok); rho(Q)^2=125.821 max arg46=172.000 bound46 ok
+k=12: min eig K = 13.676191 (D1 ok); rho(Q)^2=629.339 max arg46=1112.800 bound46 ok
+k=17: min eig K = 14.351488 (D1 ok); rho(Q)^2=1229.238 max arg46=2269.600 bound46 ok
+k=25: min eig K = 14.876430 (D1 ok); rho(Q)^2=2605.161 max arg46=4954.857 bound46 ok
+k=40: min eig K = 15.297480 (D1 ok); rho(Q)^2=6565.101 max arg46=12752.465 bound46 ok
+k=80: min eig K = 15.649087 (D1 ok); rho(Q)^2=25925.050 max arg46=51150.313 bound46 ok

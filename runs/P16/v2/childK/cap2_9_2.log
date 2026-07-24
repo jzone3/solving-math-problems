@@ -1,0 +1,3 @@
+>A nauty-geng -cX0x200d2D8 n=9 e=9-36 class=2/4
+>Z 71539 graphs generated in 0.02 sec
+n=9 cap=2.0 res=2/4: tot=71539 bad=0 worst=-4.844e-16 (HCZVRqs)
