@@ -229,6 +229,18 @@ The session was resumed with instructions to push harder. Additional work:
   simultaneously bichromatic, but the best known coloring still leaves 209 —
   reinforcing the arrowing conjecture.
 
+- **Basin sampling + path relinking (fifth wave)**: independent restarts
+  (20 min walk descent → 40 min LNS refinement per sample, `basin_worker.sh`)
+  show the 209 basin was not optimal: fresh basins reached **204** twice
+  independently (`record_204_coloring.txt`, re-verified by
+  `verify_record.py`: PASS). Distinct 204-basins differ in ~1400 edges —
+  far-apart optima; exact recombination over the full difference set
+  (`recombine.py`) is essentially the whole instance and does not terminate,
+  while recombination within a basin (hamming ~100) just returns the parent
+  cost. The min-mono landscape has many deep, distant local optima in the
+  204–211 range; the true optimum is plausibly slightly below 204 but the
+  persistent gap of ~200 (2% of all triangles) continues to support arrowing.
+
 Bottom line unchanged: G₁₂₇ → (3,3)ᵉ remains undecided; the quantitative
 hardness estimates above are now measured, not guessed. Techniques exhausted
 on this hardware: CDCL (kissat/gimsatul), lex/BreakID/SBVA preprocessing,
