@@ -1,0 +1,28 @@
+d=1/3 (pool r2<=25/8): (-4, 0, 0, 0):mono=False,nonmono=True
+d=2/3 (pool r2<=15/4): (-8, 0, 0, 0):mono=False,nonmono=False
+d=1 (pool r2<=71/16): (-12, 0, 0, 0):mono=False,nonmono=True, (-10, 0, 0, -2):mono=False,nonmono=True, (-3, -1, -1, 3):mono=False,nonmono=True
+d=4/3 (pool r2<=83/16): (-16, 0, 0, 0):mono=False,nonmono=False
+d=5/3 (pool r2<=95/16): (-20, 0, 0, 0):mono=False,nonmono=True, (-2, 0, 0, -6):mono=False,nonmono=True
+d=2 (pool r2<=109/16): (-24, 0, 0, 0):mono=False,nonmono=False, (-20, 0, 0, -4):mono=False,nonmono=False, (-6, -2, -2, 6):mono=False,nonmono=False
+d=7/3 (pool r2<=123/16): (-28, 0, 0, 0):mono=False,nonmono=False, (-26, 0, -6, 0):mono=False,nonmono=True
+d=8/3 (pool r2<=69/8): (-32, 0, 0, 0):mono=True,nonmono=False
+d=3 (pool r2<=77/8): (-36, 0, 0, 0):mono=False,nonmono=True, (-30, 0, 0, -6):mono=False,nonmono=True, (-24, -2, -8, 6):mono=False,nonmono=False, (-14, 0, 0, -10):mono=False,nonmono=False
+d=10/3 (pool r2<=171/16): (-40, 0, 0, 0):mono=False,nonmono=False, (-4, 0, 0, -12):mono=False,nonmono=False
+d=sqrt(1/3) (pool r2<=29/8): (-6, 0, -2, 0):mono=False,nonmono=False, (-2, 0, 0, -2):mono=False,nonmono=False
+d=sqrt(4/3) (pool r2<=19/4): (-12, 0, -4, 0):mono=False,nonmono=False, (-4, 0, 0, -4):mono=False,nonmono=False
+d=sqrt(7/3) (pool r2<=45/8): (-18, 0, -2, 0):mono=False,nonmono=False, (-5, -1, -1, 5):mono=False,nonmono=False
+d=sqrt(11/3) (pool r2<=105/16): (-22, 0, 0, -2):mono=False,nonmono=True, (0, -4, 0, 0):mono=False,nonmono=True
+d=sqrt3 (pool r2<=49/8): (-18, 0, -6, 0):mono=False,nonmono=False, (-16, 0, 0, -4):mono=False,nonmono=False, (-15, -1, -5, 3):mono=False,nonmono=False, (-6, 0, 0, -6):mono=False,nonmono=False
+d=sqrt(16/3) (pool r2<=61/8): (-24, 0, -8, 0):mono=False,nonmono=False, (-8, 0, 0, -8):mono=False,nonmono=False
+d=sqrt(19/3) (pool r2<=131/16): (-30, 0, -2, 0):mono=False,nonmono=False, (-8, -2, -2, 8):mono=False,nonmono=False
+d=sqrt5 (pool r2<=119/16): (-26, 0, 0, -2):mono=False,nonmono=False, (-21, -1, -7, 3):mono=False,nonmono=False, (-18, 0, 0, -6):mono=False,nonmono=False, (-12, -2, -4, 6):mono=False,nonmono=False
+d=sqrt7 (pool r2<=137/16): (-30, 0, -6, 0):mono=False,nonmono=False, (-25, -1, -5, 5):mono=False,nonmono=False, (-9, -1, -1, 9):mono=False,nonmono=False
+d=sqrt(25/3) (pool r2<=149/16): (-34, 0, 0, -2):mono=False,nonmono=False, (-32, 0, 0, -4):mono=False,nonmono=False, (-30, 0, -10, 0):mono=False,nonmono=False, (-10, 0, 0, -10):mono=False,nonmono=False
+d=sqrt(64/3) (pool r2<=245/16): (-48, 0, -16, 0):mono=False,nonmono=False, (-8, -8, -8, 8):mono=False,nonmono=False
+d=sqrt2: not lattice-representable
+d=sqrt(8/3): not lattice-representable
+d=sqrt6: not lattice-representable
+d=sqrt8: not lattice-representable
+d=sqrt(5/3) (pool r2<=81/16): (-14, 0, 0, -2):mono=False,nonmono=False, (-9, -1, -3, 3):mono=False,nonmono=False, (-8, 0, 0, -4):mono=False,nonmono=False
+d=sqrt(20/3) (pool r2<=67/8): (-28, 0, 0, -4):mono=False,nonmono=False, (-18, -2, -6, 6):mono=False,nonmono=False, (-16, 0, 0, -8):mono=False,nonmono=False
+d=sqrt11 (pool r2<=85/8): (-33, -1, -11, 3):mono=False,nonmono=False, (-22, 0, 0, -10):mono=False,nonmono=False, (0, -6, 0, -6):mono=False,nonmono=False

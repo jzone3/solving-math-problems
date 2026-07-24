@@ -1,0 +1,4 @@
+pool 8251 76934
+plain 4-colorability of pool: SAT
+nonmono 8/3 property holds: False
+mono 8/3 property holds: True
