@@ -1270,4 +1270,36 @@ cross-section modulus collisions, min modulus >= 42 throughout.
 Remaining: obstruction A disambiguation, S10's unidentified x-source,
 secs 3.7-3.20.
 
+## 39. Phase 24: obstruction A settled symbolically (collide35.py)
+
+Question: can Nielsen's own depth mechanism ("artificially increase
+n", sec 2) disambiguate the repeated-modulus family in the tenth
+input's second summand, 5^(3*3(x,x,8^), 3*2, 3*4, 3*8^+9*8^)?
+
+Method: exponent-vector families (a,b,c,e) = (2,3,5,11)-adic
+valuations, checked for intersection symbolically -- depth- and
+window-independent.
+
+Machine-checked results:
+ - literal reading: slot 1 (8^ on 1 (mod 9)) and slot 4 (9*8^ on
+   3 (mod 9)) both realize 2^a 3^2 5^c 11^e with a>=3, c>=1: COLLIDE
+   (e.g. modulus 3960 appears twice);
+ - R1 stagger the 2-chain: still collide (and by Nielsen's own arrow
+   definition the pure-2 part {2^m..2^n} always contains a=3);
+ - R2 move slot 1 one 3-level deeper: collides with the 27^*8^
+   chains of S4/S8/slot-5;
+ - R3 widen to all of 1 (mod 3): collides with 3*8^ (S7 slot 4);
+ - R4 drop the 5-part: collides with S5 = 3*8^+9*8^.
+
+CONCLUSION: the repeated modulus in Nielsen 4.5's tenth input cannot
+be removed by any of the local mechanisms the paper describes; since
+Nielsen asserts global distinctness, the actual construction must use
+an unstated NON-LOCAL re-aim (e.g. per-level auxiliary-prime closures
+absorbing one family), whose residue-level data the paper does not
+provide.  Reconstructing the record system residue-exactly therefore
+requires solving a small research problem the source leaves open --
+consistent with phase 19's finding on the thesis "x" slots.  This is
+the sharpest form of obstruction A and applies verbatim to the copies
+in sec 3.6.
+
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
