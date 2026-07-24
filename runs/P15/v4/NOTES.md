@@ -1104,3 +1104,44 @@ promoting the thesis text to a residue-level witness is a research task:
 the text is a counting-level certificate with free residue choices.
 
 STATUS: near-miss / frontier-pushed (unchanged).
+
+## 35. Phase 20: canonical p-adic digits + faithful emission of sec. 3.4
+(canon.py, emit34.py; emit33.py upgraded to v2)
+
+Two results:
+
+(1) SEMANTIC DISCOVERY (canon.py).  The tower/split slot labels in the
+Nielsen/Owens diagrams are ABSOLUTE p-adic digit positions on the
+p-adic tree of Z, shared across sections.  Emitting towers by naive
+relative placement (c + m*cls mod m*p^k) permutes digits depending on
+the context-modulus unit, so the cross-section "x" bookkeeping ("this
+cell is already covered elsewhere") silently breaks: with relative
+placement, sec 3.4's x-cells missed sec 3.3's coverage by 10-19% per
+cell; with canonical digits (canon.ext) the residuals collapse to
+finite-depth tails.  This is the precise mechanical content of the
+"geometric alignment" gap flagged in phase 13 -- now solved.
+
+(2) SEC 3.4 EMITTED AND VALIDATED (emit34.py).  Full 7^ tower with
+Owens's six inputs incl. the composite set A, over window
+2^8*3^3*5^4*7^2 (and a deeper 3^4 run): 266 congruences, min modulus
+42, ZERO duplicate moduli, ZERO overlap with sec 3.3 and the 2/3
+skeleton (all sec-3.4 moduli contain 7).  The three 125^.3^.m sets are
+injected as separately-verified relative covers of the hole-8 sliver
+(their moduli need 5-exponent 5, beyond the window).  Residual census
+converges to Owens's target diagram as depths increase (E3 3->4):
+  hole 8:  j=1 4.6%->2.9%, j=2 4.5%->2.0%, j=3 3.8%->2.9%,
+           j=4 1.7%->1.0%  (floor = 1/49 = 2.04% 7-recursion tail
+           + shrinking 3-tails); j=0 = the one hole Owens leaves open
+           ("5( ,x,x,x,x)", filled by later sections);
+  hole 16: all five classes -> tails only;
+  holes 4, 32: unchanged from sec 3.3, as the thesis states.
+
+Combined system so far (skeleton + 3.3 + 3.4): 606 congruences, all
+moduli pairwise distinct, min modulus 42.  This is now a residue-level
+reconstruction of Owens secs. 3.1-3.4 -- the deepest machine-verified
+replica of the record construction.  Remaining: secs. 3.5-3.20 (the
+primes 11..89), each of which cites Nielsen's sets wholesale; their
+faithful emission needs Nielsen's full section data plus the same
+canonical-digit discipline.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
