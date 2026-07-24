@@ -160,6 +160,10 @@ def main():
         S2 = greedy_pass(got, tag)
         print(f'  it{it} k={k}: -> {len(S2)} (cur {len(cur)} best {len(best)}) '
               f'{round(time.time()-t0)}s', flush=True)
+        if len(S2) <= NREC:              # record every plateau (<=509) hit
+            novel = len(set(S2) - set(range(NREC)))
+            pickle.dump(sorted(S2), open(f'plat_{SEED}_{it}.pkl', 'wb'))
+            print(f'    plateau {len(S2)}: {novel} non-record vertices', flush=True)
         if len(S2) <= len(cur):          # plateau move: accept equal sizes too
             cur = set(S2)
         if len(S2) < len(best):

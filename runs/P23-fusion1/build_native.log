@@ -1,0 +1,27 @@
+record 509 rmax=2.524
+minkowski added 40036 -> 40545 (9s)
+  apex 0/509 added 6 (9s)
+  apex 50/509 added 316 (48s)
+  apex 100/509 added 635 (79s)
+  apex 150/509 added 869 (119s)
+  apex 200/509 added 965 (138s)
+  apex 250/509 added 1005 (164s)
+  apex 300/509 added 1064 (185s)
+  apex 350/509 added 1238 (205s)
+  apex 400/509 added 1511 (211s)
+  apex 450/509 added 1654 (211s)
+  apex 500/509 added 1748 (211s)
+apex added 1752 -> 42297 (211s)
+  edge scan 0/42297 edges 20063 (213s)
+  edge scan 5000/42297 edges 93812 (223s)
+  edge scan 10000/42297 edges 155814 (233s)
+  edge scan 15000/42297 edges 213702 (242s)
+  edge scan 20000/42297 edges 247673 (251s)
+  edge scan 25000/42297 edges 283980 (259s)
+  edge scan 30000/42297 edges 316381 (268s)
+  edge scan 35000/42297 edges 342908 (276s)
+  edge scan 40000/42297 edges 363981 (284s)
+  degree filter -> 41836 v 365848 e
+  degree filter -> 41776 v 365656 e
+  degree filter -> 41764 v 365632 e
+pool_native: 41764 v 365632 e (290s)

@@ -1,3 +1,9 @@
 LNS seed=24 pool=pool_x2big.pkl start=509
   it0 k=18: -> 512 (cur 509 best 509) 211s
   it1 k=26: -> 517 (cur 509 best 509) 498s
+  it2 k=24: -> 522 (cur 509 best 509) 705s
+  it3 k=12: -> 509 (cur 509 best 509) 910s
+  it4 k=17: -> 511 (cur 509 best 509) 1134s
+  it5 k=18: -> 516 (cur 509 best 509) 1351s
+  it6 k=21: -> 511 (cur 509 best 509) 1533s
+  it7 k=12: -> 514 (cur 509 best 509) 1746s

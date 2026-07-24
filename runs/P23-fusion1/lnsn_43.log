@@ -1,0 +1,6 @@
+LNS seed=43 pool=pool_native.pkl start=509
+  it0 k=7: -> 510 (cur 509 best 509) 205s
+  it1 k=6: -> 509 (cur 509 best 509) 384s
+    plateau 509: 0 non-record vertices
+  it2 k=6: -> 509 (cur 509 best 509) 572s
+    plateau 509: 0 non-record vertices

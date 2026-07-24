@@ -1,0 +1,9 @@
+LNS seed=31 pool=pool_native.pkl start=509
+  it0 k=6: -> 509 (cur 509 best 509) 207s
+  it1 k=8: -> 510 (cur 509 best 509) 420s
+  it2 k=12: -> 512 (cur 509 best 509) 629s
+  it3 k=25: -> 512 (cur 509 best 509) 841s
+  it4 k=7: -> 509 (cur 509 best 509) 1060s
+  it5 k=21: recreate failed (1066s)
+  it6 k=23: -> 516 (cur 509 best 509) 1359s
+  it7 k=14: -> 513 (cur 509 best 509) 1690s
