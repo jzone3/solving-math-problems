@@ -98,6 +98,30 @@ def main():
     # empty triple intersection
     for v in range(n):
         cnf.append([-M[0][v], -M[1][v], -M[2][v]])
+    # minimal-counterexample coverage: a vertex on none of the three paths can be
+    # deleted (deletion never creates longer paths, so the triple stays longest with
+    # empty intersection) => WLOG every vertex is on >=1 path. With disjoint pairwise
+    # intersections this forces 3L >= n+3.
+    for v in range(n):
+        cnf.append([M[0][v], M[1][v], M[2][v]])
+    # minimal-counterexample edge reduction: edges not used by any of the three paths
+    # can be deleted too (deleting edges never creates longer paths; the union of three
+    # pairwise-intersecting paths stays connected) => WLOG the graph IS the union of
+    # the three paths: x_uv -> some path uses edge {u,v} at some step.
+    E = {}
+    for k in range(3):
+        for i in range(L - 1):
+            for u in range(n):
+                for v in range(u + 1, n):
+                    e = pool.id(f'e{k}_{i}_{u}_{v}')
+                    E[(k, i, u, v)] = e
+                    cnf.append([-e, P[k][i][u], P[k][i][v]])
+                    cnf.append([-e, P[k][i + 1][u], P[k][i + 1][v]])
+                    cnf.append([-P[k][i][u], -P[k][i + 1][v], e])
+                    cnf.append([-P[k][i][v], -P[k][i + 1][u], e])
+    for u in range(n):
+        for v in range(u + 1, n):
+            cnf.append([-X[(u, v)]] + [E[(k, i, u, v)] for k in range(3) for i in range(L - 1)])
     # pairwise nonempty (necessary: two longest paths always intersect)
     Wpair = []
     for a in range(3):
