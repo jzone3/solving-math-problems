@@ -188,9 +188,15 @@ Results (logs `logs/quasi7.log`, `logs/quasi8.log`):
 - **n=7: NO quasi-Folkman system exists** (synthesis UNSAT immediately from the t6 masks).
 - **n=8: NO quasi-Folkman system exists** (UNSAT after 1 CEGAR iteration).
 - (Monotone in n via embedding, so none exists on ≤ 8 vertices.)
-- n=9: the 36.5M-clause instance was still being decided at wrap-up (`logs/quasi9b.log`);
-  n=10 open. Hence the minimum order of a quasi-Folkman system is in **{9,10,11}**,
-  improving on the paper's "≤ 11, minimum unknown".
+- n=9: UNDECIDED at wrap-up despite three concurrent encodings run for ~5–10 h each:
+  (a) incremental CaDiCaL on the t13 masks + S₉ lex-leader breaking (`quasi_exact.py`,
+  `logs/quasi9d.log`), (b) one-shot kissat on the same instance dumped to DIMACS
+  (`quasi_dump.py` → `out/quasi9.cnf`, 9,960 vars / 36.6M clauses), (c) fast CEGAR on the
+  t12 masks + lex (`logs/quasi9e.log`, >28k iterations, candidates |T|≈36–48 all
+  colorable). n=10 open. Hence the minimum order of a quasi-Folkman system is in
+  **{9,10,11}**, improving on the paper's "≤ 11, minimum unknown".
+- Lex-leader soundness sanity check: the n=8 instance is UNSAT both with and without
+  the symmetry-breaking clauses (`logs/quasi8.log` = without).
 
 This is (per §5-style priority check: no artifact deciding small quasi-Folkman orders was
 found) a small but genuinely new exact result directly answering a question left open in
