@@ -29,6 +29,83 @@ def residual_stats(b):
     return b.mass(), b.nfrags(), len(b.chosen)
 
 
+def weighted_best(b, n, weights):
+    """Exact weighted CRT gain profile over the compressed fragments."""
+    import numpy as np
+    from math import gcd
+    if n > 200000:
+        return b.best_class(n)
+    profile = np.zeros(n)
+    for m, residues in b.frags.items():
+        if len(residues) == 0:
+            continue
+        g = gcd(m, n)
+        wr = weights.get(m)
+        if wr is None or len(wr) != len(residues):
+            wr = np.ones(len(residues))
+        counts = np.bincount(residues % g, weights=wr, minlength=g)
+        profile += (1.0 / (m // g * n)) * np.tile(counts, n // g)
+    a = int(profile.argmax())
+    return float(profile[a]), a
+
+
+def min_conflicts(b, pps, seconds, moves, seed):
+    """Exact single-modulus reassignment with breakout-weighted scoring.
+
+    Removing a modulus replays every other assignment into a fresh compressed
+    builder; the subsequent candidate residue is selected by an exact
+    weighted CRT profile.  The replay is deliberately expensive but avoids
+    any approximate coverage acceptance.
+    """
+    rng = random.Random(seed)
+    weights = {m: [1.0] * len(r) for m, r in b.frags.items()}
+    best = b
+    best_mass = b.mass()
+    t0 = time.time()
+    stagnant = 0
+    for step in range(moves):
+        if time.time() - t0 >= seconds:
+            break
+        if not b.chosen:
+            break
+        # Randomized candidate selection prevents repeatedly touching only
+        # the smallest moduli, while breakout weights bias future choices.
+        n_candidates = min(3, len(b.chosen))
+        picks = rng.sample(b.chosen, n_candidates)
+        pick = picks[rng.randrange(len(picks))]
+        remove_n = pick[1]
+        keep = [x for x in b.chosen if x[1] != remove_n]
+        trial = make_builder(b.M, pps, keep)
+        # Score candidate residues against the current weighted hole set.
+        # The exact trial below still decides the real residual delta.
+        _, a = weighted_best(b, remove_n, weights)
+        trial.apply(a, remove_n)
+        new_mass = trial.mass()
+        if new_mass < b.mass():
+            b = trial
+            weights = {m: [1.0] * len(r) for m, r in b.frags.items()}
+            stagnant = 0
+            if new_mass < best_mass:
+                best, best_mass = b, new_mass
+            verdict = "ACCEPT"
+        else:
+            stagnant += 1
+            verdict = "REJECT"
+        if stagnant >= 3:
+            # PAWS/breakout: increase pressure on current residual cells.
+            for m, r in b.frags.items():
+                old = weights.get(m)
+                if old is None or len(old) != len(r):
+                    weights[m] = [2.0] * len(r)
+                else:
+                    weights[m] = [x + 1.0 for x in old]
+            stagnant = 0
+        print("MC step=%d %s remove=%d mass=%.12g frags=%d chosen=%d t=%.1fs" %
+              (step, verdict, remove_n, b.mass(), b.nfrags(),
+               len(b.chosen), time.time() - t0), flush=True)
+    return best
+
+
 def ruin_recreate(b, pps, rng, ruin, seconds):
     if not b.chosen:
         return b
@@ -51,6 +128,8 @@ def main():
     ap.add_argument("--seed", type=int, default=1701)
     ap.add_argument("--seed-json", default=None,
                     help="resume from a partial JSON's congruences")
+    ap.add_argument("--mc-seconds", type=float, default=0)
+    ap.add_argument("--mc-moves", type=int, default=0)
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
     pps = parse_fact(args.fact)
@@ -67,6 +146,11 @@ def main():
     best = b0
     print("C-BASE stats mass=%.12g frags=%d chosen=%d elapsed=%.1fs" %
           (*residual_stats(best), time.time() - t0), flush=True)
+    if args.mc_moves and args.mc_seconds > 0:
+        best = min_conflicts(best, pps, args.mc_seconds, args.mc_moves,
+                             args.seed)
+        print("C-MC best mass=%.12g frags=%d chosen=%d elapsed=%.1fs" %
+              (*residual_stats(best), time.time() - t0), flush=True)
     rng = random.Random(args.seed)
     history = [("base", *residual_stats(best))]
     for j in range(args.repairs):

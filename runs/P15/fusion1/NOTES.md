@@ -280,3 +280,60 @@ closes a diffuse tail; the record constructions avoid it only by building the
 tail exactly top-down. Verified explicit frontier therefore stands at m=16
 (v1); Experiments A–C did not beat it, and this is a genuine negative, not a
 budget artifact.
+
+## 8. Experiment C weighted min-conflicts continuation
+
+The random ruin/recreate loop was replaced in `frontier17.py` by an exact
+single-modulus reassignment loop. For each move it removes one assigned
+modulus, replays every other assignment into a fresh compressed builder, and
+selects the replacement residue using a weighted CRT gain profile over the
+current residual fragments. The resulting assignment is accepted only when
+the exact compressed residual mass decreases. After three stagnant moves,
+fragment weights receive a breakout/PAWS increment; the best state is
+retained.
+
+The deep-N greedy state had to be regenerated because the prior partial JSON
+artifacts were not present at handoff. The 900-second seed run produced:
+
+```
+C-BASE stats mass=0.000229669287209 frags=3251891 chosen=2084 elapsed=900.0s
+```
+
+One 900-second min-conflicts move was:
+
+```
+MC step=0 REJECT remove=71604 mass=0.000229669287209 frags=3251891 chosen=2084 t=84.2s
+C-MC best mass=0.000229669287209 frags=3251891 chosen=2084 elapsed=984.3s
+```
+
+Ten additional exact moves from that state gave one accepted move:
+
+```
+MC step=0 REJECT remove=21120 mass=0.000229669287209 frags=3251891 chosen=2084 t=86.2s
+MC step=1 REJECT remove=8085 mass=0.000229669287209 frags=3251891 chosen=2084 t=171.9s
+MC step=2 ACCEPT remove=349272 mass=0.000229637907567 frags=3249138 chosen=2084 t=257.1s
+...
+C-MC best mass=0.000229637907567 frags=3249138 chosen=2084 elapsed=860.1s
+```
+
+Ten further weighted moves from that accepted state all rejected:
+
+```
+C-MC best mass=0.000229637907567 frags=3249138 chosen=2084 elapsed=879.5s
+```
+
+True exact reassignment therefore reduced fragment count, but only from
+3,251,891 to 3,249,138 (2,753 fragments, 0.085%) and reduced mass by
+3.13e-8. It did not reverse the diffuse-residual plateau. Each move costs
+roughly 85–95 seconds because exact removal requires replaying approximately
+2,084 classes through the compressed representation.
+
+The best m=17 partial failed the first verifier with:
+
+```
+FAIL: integer not covered (sampling): 36138693373302250625994930856
+```
+
+The second verifier ran for 20 seconds and exited 124 without output due to
+cell subtraction cost. No witness passed either verifier, and no m=18 run
+was attempted. The verified frontier remains m=16.
