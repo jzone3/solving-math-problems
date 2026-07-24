@@ -201,9 +201,11 @@ Automated analogue implemented here — coset_cover.py / coset_cover.c:
 - Large caps (16+) explode the hole count (millions by n~500): every accepted
   class fragments up to 65k holes. Per-class hit caps (512-4096) tame growth
   (~1M holes) at the cost of coverage efficiency; throughput ~1.5 class/s.
-- m=10..20 runs reach density ~1e-3..1e-4 with ~1M holes; the residual tail
-  needs ~#holes more classes — hours-to-days per m at current throughput.
-  m=20 variant stalled at density 0.23 (bootstrap misalignment).
+- m=10..20 runs reach density ~1e-3..2e-4 but hole counts keep growing
+  (1.7-4.4M cosets at t=2400-2900s, ~0.5-1 class/s); the residual tail needs
+  ~#holes more classes — days per m at this throughput. m=20 variant stalled
+  at density 0.22 (bootstrap misalignment). Coset-engine frontier within
+  session budget: m ≤ 9 covered+verified; m ≥ 10 diverges in hole count.
 
 Honest assessment: the symbolic coset engine removes the lcm wall but not the
 resource-allocation wall. Reaching m=43 the Nielsen/Owens way needs their
@@ -217,6 +219,6 @@ structure of the published record constructions.
 
 STATUS: frontier-pushed (verified covering systems for every m ≤ 12 via
 explicit engines, plus a new symbolic-coset engine with unbounded lcm verified
-at m=5-8 in seconds-minutes; no m≥43 witness — greedy variants documented
+at m ≤ 9 in seconds-minutes; no m≥43 witness — greedy variants documented
 above hit the resource-allocation wall that the record constructions solve by
-hand-tuned recursive rationing)
+hand-tuned recursive rationing; next: branch-family compression of hole sets)
