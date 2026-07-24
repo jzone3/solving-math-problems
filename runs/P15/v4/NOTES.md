@@ -1372,3 +1372,41 @@ machine-checked proof that the record construction admits no local
 modification path to 43.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
+## 42. Phase 27: sec 3.7 (the prime 17) emitted (emit37.py)
+
+Owens 3.7 = a 17^ on the 12-hole (the single coset 13 (mod 24)
+reopened by removing the modulus-12 congruence of the 3-tower),
+filled with sixteen of the seventeen sets Nielsen constructs in his
+prime-19 section (4.8), dropping the one set that is itself a 17^.
+
+Transcription decisions (canonical, phase-20/22 semantics):
+ - contents are absolute cells CONTAINING the branch (13 mod 24 is
+   inside 1 (mod 4), 1 (mod 12), 4 (mod 9), 5 (mod 8)); moduli are
+   content * 17^k with no 24-factor, matching Nielsen's dropped
+   moduli 19/38 for the bare sets 1 and 2;
+ - 9^(a,b) towers anchored at the hole's mod-9 cell 4 (mod 9);
+ - the composite sixteenth set (reserve 5^ + 7^ + 11^ + big 13^)
+   transcribed with blank/tail placeholders where Nielsen's
+   "save room" 11^-with-three-inputs notation under-determines
+   slots; "5^*c" = content on the 5^ chain cells 5^(k-1) (mod 5^k).
+
+Machine-checked results:
+  sec3.7: 2576 congruences, 369 placeholders
+  min modulus: 51
+  dups within sec3.7: 0
+  overlap w/ skeleton, secs 3.3/3.4/3.5/3.6: 0, 0, 0, 0, 0
+Census (census37.py, window 2^6 3^5 5^2 7*11*17): 12-hole residual
+2.8%, concentrated in the recursion tail (class 0 mod 17), the
+T13/T14 x-slots (classes 7/8; they cite prime-11 partial covers at
+depths beyond this section's E11=1), and the dropped-measure strata
+(13-moduli outside the window).  Same structure in the w13 window.
+Residuals are finite-depth/window artifacts plus the documented
+x-slot citations -- NOT claimed covered.
+
+Cumulative replica: secs 3.1-3.7, ~7500 congruences, all moduli
+pairwise distinct across sections.  Notably sec 3.7 avoids
+obstruction A (no repeated-modulus family): Nielsen's 4.8 sets are
+collision-free under the canonical reading.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
