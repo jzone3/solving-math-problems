@@ -1,0 +1,1026 @@
+[
+  {
+    "row": 0,
+    "edges": 16,
+    "counts": [
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 33,
+        "extra": 17,
+        "conflict": false
+      },
+      {
+        "assigned": 32,
+        "extra": 16,
+        "conflict": false
+      },
+      {
+        "assigned": 38,
+        "extra": 22,
+        "conflict": false
+      },
+      {
+        "assigned": 34,
+        "extra": 18,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 35,
+        "extra": 19,
+        "conflict": false
+      },
+      {
+        "assigned": 34,
+        "extra": 18,
+        "conflict": false
+      },
+      {
+        "assigned": 33,
+        "extra": 17,
+        "conflict": false
+      },
+      {
+        "assigned": 33,
+        "extra": 17,
+        "conflict": false
+      },
+      {
+        "assigned": 35,
+        "extra": 19,
+        "conflict": false
+      },
+      {
+        "assigned": 34,
+        "extra": 18,
+        "conflict": false
+      },
+      {
+        "assigned": 34,
+        "extra": 18,
+        "conflict": false
+      },
+      {
+        "assigned": 33,
+        "extra": 17,
+        "conflict": false
+      },
+      {
+        "assigned": 35,
+        "extra": 19,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 33,
+        "extra": 17,
+        "conflict": false
+      },
+      {
+        "assigned": 31,
+        "extra": 15,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 35,
+        "extra": 19,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 14,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 31,
+        "extra": 15,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 37,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 34,
+        "extra": 18,
+        "conflict": false
+      },
+      {
+        "assigned": 37,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 37,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 38,
+        "extra": 22,
+        "conflict": false
+      },
+      {
+        "assigned": 32,
+        "extra": 16,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 14,
+        "conflict": false
+      },
+      {
+        "assigned": 38,
+        "extra": 22,
+        "conflict": false
+      },
+      {
+        "assigned": 31,
+        "extra": 15,
+        "conflict": false
+      },
+      {
+        "assigned": 37,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 37,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 37,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 39,
+        "extra": 23,
+        "conflict": false
+      },
+      {
+        "assigned": 37,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 34,
+        "extra": 18,
+        "conflict": false
+      },
+      {
+        "assigned": 35,
+        "extra": 19,
+        "conflict": false
+      },
+      {
+        "assigned": 28,
+        "extra": 12,
+        "conflict": false
+      },
+      {
+        "assigned": 33,
+        "extra": 17,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 35,
+        "extra": 19,
+        "conflict": false
+      },
+      {
+        "assigned": 33,
+        "extra": 17,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      },
+      {
+        "assigned": 37,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 36,
+        "extra": 20,
+        "conflict": false
+      }
+    ]
+  },
+  {
+    "row": 1,
+    "edges": 20,
+    "counts": [
+      {
+        "assigned": 43,
+        "extra": 23,
+        "conflict": false
+      },
+      {
+        "assigned": 49,
+        "extra": 29,
+        "conflict": false
+      },
+      {
+        "assigned": 44,
+        "extra": 24,
+        "conflict": false
+      },
+      {
+        "assigned": 51,
+        "extra": 31,
+        "conflict": false
+      },
+      {
+        "assigned": 47,
+        "extra": 27,
+        "conflict": false
+      },
+      {
+        "assigned": 44,
+        "extra": 24,
+        "conflict": false
+      },
+      {
+        "assigned": 51,
+        "extra": 31,
+        "conflict": false
+      },
+      {
+        "assigned": 43,
+        "extra": 23,
+        "conflict": false
+      },
+      {
+        "assigned": 46,
+        "extra": 26,
+        "conflict": false
+      },
+      {
+        "assigned": 47,
+        "extra": 27,
+        "conflict": false
+      },
+      {
+        "assigned": 51,
+        "extra": 31,
+        "conflict": false
+      },
+      {
+        "assigned": 47,
+        "extra": 27,
+        "conflict": false
+      },
+      {
+        "assigned": 44,
+        "extra": 24,
+        "conflict": false
+      },
+      {
+        "assigned": 51,
+        "extra": 31,
+        "conflict": false
+      },
+      {
+        "assigned": 48,
+        "extra": 28,
+        "conflict": false
+      },
+      {
+        "assigned": 44,
+        "extra": 24,
+        "conflict": false
+      },
+      {
+        "assigned": 51,
+        "extra": 31,
+        "conflict": false
+      },
+      {
+        "assigned": 42,
+        "extra": 22,
+        "conflict": false
+      },
+      {
+        "assigned": 44,
+        "extra": 24,
+        "conflict": false
+      },
+      {
+        "assigned": 49,
+        "extra": 29,
+        "conflict": false
+      },
+      {
+        "assigned": 54,
+        "extra": 34,
+        "conflict": false
+      },
+      {
+        "assigned": 48,
+        "extra": 28,
+        "conflict": false
+      },
+      {
+        "assigned": 35,
+        "extra": 15,
+        "conflict": false
+      },
+      {
+        "assigned": 45,
+        "extra": 25,
+        "conflict": false
+      },
+      {
+        "assigned": 43,
+        "extra": 23,
+        "conflict": false
+      },
+      {
+        "assigned": 46,
+        "extra": 26,
+        "conflict": false
+      },
+      {
+        "assigned": 41,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 48,
+        "extra": 28,
+        "conflict": false
+      },
+      {
+        "assigned": 45,
+        "extra": 25,
+        "conflict": false
+      },
+      {
+        "assigned": 45,
+        "extra": 25,
+        "conflict": false
+      },
+      {
+        "assigned": 45,
+        "extra": 25,
+        "conflict": false
+      },
+      {
+        "assigned": 49,
+        "extra": 29,
+        "conflict": false
+      },
+      {
+        "assigned": 41,
+        "extra": 21,
+        "conflict": false
+      },
+      {
+        "assigned": 50,
+        "extra": 30,
+        "conflict": false
+      },
+      {
+        "assigned": 44,
+        "extra": 24,
+        "conflict": false
+      },
+      {
+        "assigned": 47,
+        "extra": 27,
+        "conflict": false
+      },
+      {
+        "assigned": 47,
+        "extra": 27,
+        "conflict": false
+      },
+      {
+        "assigned": 48,
+        "extra": 28,
+        "conflict": false
+      },
+      {
+        "assigned": 44,
+        "extra": 24,
+        "conflict": false
+      },
+      {
+        "assigned": 52,
+        "extra": 32,
+        "conflict": false
+      },
+      {
+        "assigned": 50,
+        "extra": 30,
+        "conflict": false
+      },
+      {
+        "assigned": 46,
+        "extra": 26,
+        "conflict": false
+      },
+      {
+        "assigned": 49,
+        "extra": 29,
+        "conflict": false
+      },
+      {
+        "assigned": 48,
+        "extra": 28,
+        "conflict": false
+      },
+      {
+        "assigned": 47,
+        "extra": 27,
+        "conflict": false
+      },
+      {
+        "assigned": 45,
+        "extra": 25,
+        "conflict": false
+      },
+      {
+        "assigned": 43,
+        "extra": 23,
+        "conflict": false
+      },
+      {
+        "assigned": 46,
+        "extra": 26,
+        "conflict": false
+      },
+      {
+        "assigned": 44,
+        "extra": 24,
+        "conflict": false
+      },
+      {
+        "assigned": 47,
+        "extra": 27,
+        "conflict": false
+      }
+    ]
+  },
+  {
+    "row": 2,
+    "edges": 30,
+    "counts": [
+      {
+        "assigned": 88,
+        "extra": 58,
+        "conflict": false
+      },
+      {
+        "assigned": 101,
+        "extra": 71,
+        "conflict": false
+      },
+      {
+        "assigned": 97,
+        "extra": 67,
+        "conflict": false
+      },
+      {
+        "assigned": 93,
+        "extra": 63,
+        "conflict": false
+      },
+      {
+        "assigned": 85,
+        "extra": 55,
+        "conflict": false
+      },
+      {
+        "assigned": 89,
+        "extra": 59,
+        "conflict": false
+      },
+      {
+        "assigned": 103,
+        "extra": 73,
+        "conflict": false
+      },
+      {
+        "assigned": 95,
+        "extra": 65,
+        "conflict": false
+      },
+      {
+        "assigned": 89,
+        "extra": 59,
+        "conflict": false
+      },
+      {
+        "assigned": 95,
+        "extra": 65,
+        "conflict": false
+      },
+      {
+        "assigned": 96,
+        "extra": 66,
+        "conflict": false
+      },
+      {
+        "assigned": 91,
+        "extra": 61,
+        "conflict": false
+      },
+      {
+        "assigned": 96,
+        "extra": 66,
+        "conflict": false
+      },
+      {
+        "assigned": 98,
+        "extra": 68,
+        "conflict": false
+      },
+      {
+        "assigned": 87,
+        "extra": 57,
+        "conflict": false
+      },
+      {
+        "assigned": 82,
+        "extra": 52,
+        "conflict": false
+      },
+      {
+        "assigned": 101,
+        "extra": 71,
+        "conflict": false
+      },
+      {
+        "assigned": 90,
+        "extra": 60,
+        "conflict": false
+      },
+      {
+        "assigned": 90,
+        "extra": 60,
+        "conflict": false
+      },
+      {
+        "assigned": 95,
+        "extra": 65,
+        "conflict": false
+      },
+      {
+        "assigned": 92,
+        "extra": 62,
+        "conflict": false
+      },
+      {
+        "assigned": 96,
+        "extra": 66,
+        "conflict": false
+      },
+      {
+        "assigned": 91,
+        "extra": 61,
+        "conflict": false
+      },
+      {
+        "assigned": 83,
+        "extra": 53,
+        "conflict": false
+      },
+      {
+        "assigned": 90,
+        "extra": 60,
+        "conflict": false
+      },
+      {
+        "assigned": 100,
+        "extra": 70,
+        "conflict": false
+      },
+      {
+        "assigned": 92,
+        "extra": 62,
+        "conflict": false
+      },
+      {
+        "assigned": 92,
+        "extra": 62,
+        "conflict": false
+      },
+      {
+        "assigned": 95,
+        "extra": 65,
+        "conflict": false
+      },
+      {
+        "assigned": 99,
+        "extra": 69,
+        "conflict": false
+      },
+      {
+        "assigned": 96,
+        "extra": 66,
+        "conflict": false
+      },
+      {
+        "assigned": 98,
+        "extra": 68,
+        "conflict": false
+      },
+      {
+        "assigned": 93,
+        "extra": 63,
+        "conflict": false
+      },
+      {
+        "assigned": 87,
+        "extra": 57,
+        "conflict": false
+      },
+      {
+        "assigned": 83,
+        "extra": 53,
+        "conflict": false
+      },
+      {
+        "assigned": 83,
+        "extra": 53,
+        "conflict": false
+      },
+      {
+        "assigned": 92,
+        "extra": 62,
+        "conflict": false
+      },
+      {
+        "assigned": 94,
+        "extra": 64,
+        "conflict": false
+      },
+      {
+        "assigned": 89,
+        "extra": 59,
+        "conflict": false
+      },
+      {
+        "assigned": 89,
+        "extra": 59,
+        "conflict": false
+      },
+      {
+        "assigned": 93,
+        "extra": 63,
+        "conflict": false
+      },
+      {
+        "assigned": 86,
+        "extra": 56,
+        "conflict": false
+      },
+      {
+        "assigned": 97,
+        "extra": 67,
+        "conflict": false
+      },
+      {
+        "assigned": 92,
+        "extra": 62,
+        "conflict": false
+      },
+      {
+        "assigned": 101,
+        "extra": 71,
+        "conflict": false
+      },
+      {
+        "assigned": 92,
+        "extra": 62,
+        "conflict": false
+      },
+      {
+        "assigned": 86,
+        "extra": 56,
+        "conflict": false
+      },
+      {
+        "assigned": 83,
+        "extra": 53,
+        "conflict": false
+      },
+      {
+        "assigned": 86,
+        "extra": 56,
+        "conflict": false
+      },
+      {
+        "assigned": 95,
+        "extra": 65,
+        "conflict": false
+      }
+    ]
+  },
+  {
+    "row": 3,
+    "edges": 42,
+    "counts": [
+      {
+        "assigned": 158,
+        "extra": 116,
+        "conflict": false
+      },
+      {
+        "assigned": 155,
+        "extra": 113,
+        "conflict": false
+      },
+      {
+        "assigned": 156,
+        "extra": 114,
+        "conflict": false
+      },
+      {
+        "assigned": 159,
+        "extra": 117,
+        "conflict": false
+      },
+      {
+        "assigned": 167,
+        "extra": 125,
+        "conflict": false
+      },
+      {
+        "assigned": 162,
+        "extra": 120,
+        "conflict": false
+      },
+      {
+        "assigned": 158,
+        "extra": 116,
+        "conflict": false
+      },
+      {
+        "assigned": 142,
+        "extra": 100,
+        "conflict": false
+      },
+      {
+        "assigned": 160,
+        "extra": 118,
+        "conflict": false
+      },
+      {
+        "assigned": 145,
+        "extra": 103,
+        "conflict": false
+      },
+      {
+        "assigned": 154,
+        "extra": 112,
+        "conflict": false
+      },
+      {
+        "assigned": 146,
+        "extra": 104,
+        "conflict": false
+      },
+      {
+        "assigned": 138,
+        "extra": 96,
+        "conflict": false
+      },
+      {
+        "assigned": 150,
+        "extra": 108,
+        "conflict": false
+      },
+      {
+        "assigned": 164,
+        "extra": 122,
+        "conflict": false
+      },
+      {
+        "assigned": 158,
+        "extra": 116,
+        "conflict": false
+      },
+      {
+        "assigned": 153,
+        "extra": 111,
+        "conflict": false
+      },
+      {
+        "assigned": 145,
+        "extra": 103,
+        "conflict": false
+      },
+      {
+        "assigned": 162,
+        "extra": 120,
+        "conflict": false
+      },
+      {
+        "assigned": 156,
+        "extra": 114,
+        "conflict": false
+      },
+      {
+        "assigned": 157,
+        "extra": 115,
+        "conflict": false
+      },
+      {
+        "assigned": 157,
+        "extra": 115,
+        "conflict": false
+      },
+      {
+        "assigned": 154,
+        "extra": 112,
+        "conflict": false
+      },
+      {
+        "assigned": 159,
+        "extra": 117,
+        "conflict": false
+      },
+      {
+        "assigned": 169,
+        "extra": 127,
+        "conflict": false
+      },
+      {
+        "assigned": 159,
+        "extra": 117,
+        "conflict": false
+      },
+      {
+        "assigned": 170,
+        "extra": 128,
+        "conflict": false
+      },
+      {
+        "assigned": 158,
+        "extra": 116,
+        "conflict": false
+      },
+      {
+        "assigned": 164,
+        "extra": 122,
+        "conflict": false
+      },
+      {
+        "assigned": 155,
+        "extra": 113,
+        "conflict": false
+      },
+      {
+        "assigned": 164,
+        "extra": 122,
+        "conflict": false
+      },
+      {
+        "assigned": 154,
+        "extra": 112,
+        "conflict": false
+      },
+      {
+        "assigned": 155,
+        "extra": 113,
+        "conflict": false
+      },
+      {
+        "assigned": 156,
+        "extra": 114,
+        "conflict": false
+      },
+      {
+        "assigned": 159,
+        "extra": 117,
+        "conflict": false
+      },
+      {
+        "assigned": 145,
+        "extra": 103,
+        "conflict": false
+      },
+      {
+        "assigned": 155,
+        "extra": 113,
+        "conflict": false
+      },
+      {
+        "assigned": 164,
+        "extra": 122,
+        "conflict": false
+      },
+      {
+        "assigned": 147,
+        "extra": 105,
+        "conflict": false
+      },
+      {
+        "assigned": 163,
+        "extra": 121,
+        "conflict": false
+      },
+      {
+        "assigned": 143,
+        "extra": 101,
+        "conflict": false
+      },
+      {
+        "assigned": 164,
+        "extra": 122,
+        "conflict": false
+      },
+      {
+        "assigned": 150,
+        "extra": 108,
+        "conflict": false
+      },
+      {
+        "assigned": 161,
+        "extra": 119,
+        "conflict": false
+      },
+      {
+        "assigned": 160,
+        "extra": 118,
+        "conflict": false
+      },
+      {
+        "assigned": 154,
+        "extra": 112,
+        "conflict": false
+      },
+      {
+        "assigned": 151,
+        "extra": 109,
+        "conflict": false
+      },
+      {
+        "assigned": 156,
+        "extra": 114,
+        "conflict": false
+      },
+      {
+        "assigned": 157,
+        "extra": 115,
+        "conflict": false
+      },
+      {
+        "assigned": 146,
+        "extra": 104,
+        "conflict": false
+      }
+    ]
+  }
+]

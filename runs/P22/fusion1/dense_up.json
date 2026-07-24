@@ -1,0 +1,770 @@
+[
+  {
+    "row": 0,
+    "edges": 16,
+    "counts": [
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 16,
+        "extra": 0,
+        "conflict": false
+      }
+    ]
+  },
+  {
+    "row": 1,
+    "edges": 20,
+    "counts": [
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 20,
+        "extra": 0,
+        "conflict": false
+      }
+    ]
+  },
+  {
+    "row": 2,
+    "edges": 30,
+    "counts": [
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      },
+      {
+        "assigned": 30,
+        "extra": 0,
+        "conflict": false
+      }
+    ]
+  }
+]
