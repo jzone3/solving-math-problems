@@ -220,13 +220,14 @@ The session was resumed with instructions to push harder. Additional work:
   (`lns.py`): free the edges of 20–100 random currently-mono triangles plus
   ~250–450 random edges (~550–850 vars), solve that sub-MaxSAT *exactly* with
   RC2, accept non-worsening moves, with random 12-edge kicks on stagnation.
-  This drove the record 232 → **210 monochromatic triangles** within minutes
-  and 6 parallel instances then held 210 through >150k LNS iterations
-  (~1 h each), suggesting ~210 is close to the true optimum. Record coloring:
-  `record_210_coloring.txt`, independently re-verified by `verify_record.py`
-  (rebuilds G₁₂₇ from scratch, recounts: 210, PASS). So ≥ 9569/9779 triangles
-  can be simultaneously bichromatic, but the best known coloring still leaves
-  210 — reinforcing the arrowing conjecture.
+  This drove the record 232 → 210 within minutes, then → **209** after ~1 h;
+  6 parallel instances then held 209 for a further ~2.5 h (>300k LNS
+  iterations total), suggesting ~209 is close to the true optimum. Record
+  coloring: `record_209_coloring.txt` (and `record_210_coloring.txt`),
+  independently re-verified by `verify_record.py` (rebuilds G₁₂₇ from
+  scratch, recounts: 209, PASS). So ≥ 9570/9779 triangles can be
+  simultaneously bichromatic, but the best known coloring still leaves 209 —
+  reinforcing the arrowing conjecture.
 
 Bottom line unchanged: G₁₂₇ → (3,3)ᵉ remains undecided; the quantitative
 hardness estimates above are now measured, not guessed. Techniques exhausted
