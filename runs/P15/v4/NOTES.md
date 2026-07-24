@@ -1410,3 +1410,40 @@ obstruction A (no repeated-modulus family): Nielsen's 4.8 sets are
 collision-free under the canonical reading.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
+## 43. Phase 28: sec 3.8 (the prime 19) emitted (emit38.py)
+
+Owens 3.8: branch 2 (mod 4); a 19^ completely fills the first input
+in the 5 on the 4 hole (cell 6 mod 20).  Twenty sets built exactly
+per the text: 1, 2, 4, 8^; the 5-conjunctions 5*1, 5*2, 5*4, 5*8^,
+25^(1,2,4,8^); an 11^ copy with slot 6 = x ("already covered on this
+branch"); five 3^ copies over the ten sets in sequence; a 13^ over
+the first twelve; a 17^ over the first sixteen; and three 7^ copies
+including the prescribed 7^(1,2,3(x,1,x),4,8^,3^(2,4)).  Sets 1 and
+2 dropped as 19^-inputs (moduli 19, 38 < 42), leaving the eighteen
+needed inputs.
+
+Reconstruction choices (Owens does not write out the other two 7^
+layouts): U19 = 7^(5*1,5*2,45-cell,5*4,5*8^,25^) and
+U20 = 7^(11^,13^,9-cell,3^(5*2,5*4),17^,3^(5*8^,25^)).  Finding a
+collision-free assignment required three iterations -- the first two
+natural choices produced 60 and 4 repeated moduli respectively
+(e.g. 1995 = 3*5*7*19 minted by both a bare 3-input in one 7^ and a
+5-scaled 3^ level in another), a small live instance of exactly the
+repeated-moduli discipline Nielsen describes.  The final assignment
+is machine-verified collision-free.
+
+Machine-checked results:
+  sec3.8: 4124 congruences, 37 placeholders
+  min modulus: 57
+  dups within sec3.8: 0
+  overlap w/ skeleton and secs 3.3-3.7: all 0
+Census (window 2^7 3^4 5^2 7*19): residual concentrated in the
+19-classes hosting the 11^/13^/17^ sets (their moduli fall outside
+the window) plus recursion tails -- structural window artifacts;
+the 2/3/5/7-smooth classes are covered.
+
+Cumulative replica: secs 3.1-3.8, ~11,600 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
