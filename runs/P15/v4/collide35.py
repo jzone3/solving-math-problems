@@ -95,3 +95,45 @@ the two contents a different auxiliary-prime closure at EVERY level
 sec-2 remark permits ("use different powers of p whenever
 necessary") but whose residue-level data the paper does not specify.
 This is the precise, machine-checked content of obstruction A.""")
+
+
+def saturation_scan():
+    """Phase 25: constructive re-aim search.  Try to cover slot-1's
+    cell family (1 mod 9 n 2-branch n 5-cell n 7-cell n 11-cell) with
+    DIVISOR moduli (the only single-congruence re-aims possible) and
+    check each candidate vector class against the concrete secs
+    3.1-3.6 emission."""
+    import emitcore, emit33, emit34, emit35, emit36
+
+    def val(m, p):
+        d = 0
+        while m % p == 0:
+            m //= p
+            d += 1
+        return d
+
+    used = set()
+    for src in (emitcore.emit(), emit33.emit(), emit34.emit34()[0],
+                emit35.emit()[0], emit36.emit36()[0]):
+        for _, n in src:
+            used.add((val(n, 2), val(n, 3), min(val(n, 5), 2),
+                      min(val(n, 7), 2),
+                      min(val(n, 11) + val(n, 13), 2)))
+    print("\n== phase 25: divisor-vector saturation scan ==")
+    # candidate rescues for the slot-1 family: vectors (a, 2, c, d, e)
+    # with c,d,e >= 1 and a in {0,1,2} (whole cell / *2 / *4), plus the
+    # unavoidable a=3 start of any 2-chain.
+    for a in (0, 1, 2, 3):
+        v = (a, 2, 1, 1, 1)
+        print(f"  rescue vector a={a}: (2^{a}*3^2*5*7*11-family) "
+              f"{'USED -- collides' if v in used else 'FREE'}")
+    # b-shift and c-shift rescues
+    for v, lab in (((0, 3, 1, 1, 1), "b=3 (27-cell)"),
+                   ((2, 3, 1, 1, 1), "27*4"),
+                   ((3, 2, 2, 1, 1), "c=2 (25-level)")):
+        print(f"  rescue {lab}: "
+              f"{'USED -- collides' if v in used else 'FREE'}")
+
+
+if __name__ == "__main__":
+    saturation_scan()

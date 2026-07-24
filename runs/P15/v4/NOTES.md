@@ -1303,3 +1303,39 @@ the sharpest form of obstruction A and applies verbatim to the copies
 in sec 3.6.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
+## 40. Phase 25: constructive re-aim search -- total divisor saturation
+
+Goal: fix obstruction A constructively, by re-aiming the slot-1
+family of Nielsen 4.5's tenth input onto genuinely unused moduli.
+A single-congruence re-aim of a cell (c, M) can only use DIVISOR
+moduli of M (one cannot add primes: covering all classes of a new
+prime needs p-1 congruences of the SAME modulus, which is illegal).
+So candidate rescues are exactly the divisor exponent vectors
+(a, b, c, d, e) <= (j, 2, m, l, k).
+
+Machine scan (collide35.py saturation_scan) against the concrete
+emitted moduli of secs 3.1-3.6 (~4900 congruences):
+
+ - a=0 (whole 1(9)-cell, 3465-family): USED (S10 slot4's 3*3(x,x,1))
+ - a=1 (9*2-family): USED (S10 slot4's +9*2)
+ - a=2 (9*4-family): USED (S10 inner slot4's 9*4)
+ - a=3 (start of any 2-chain): USED (the colliding 9*8^ itself)
+ - b=3 shifts (27-cell, 27*4): USED (the 27^* chains)
+ - c=2 shift (using 25^ for the inner tower, i.e. Nielsen's
+   "artificially increase n" applied to the 5-arrow): shifts BOTH
+   colliding slots together, so the internal pair persists at every
+   c; and the c=2 stratum is itself used by S6/S7 level-2 families.
+
+CONCLUSION (sharpest form of obstruction A): the divisor-vector
+space around the tenth input is TOTALLY SATURATED -- Owens's
+density-perfect smooth core leaves no unused divisor family, and
+every depth shift (2-adic, 3-adic, 5-adic) either self-collides or
+lands on an occupied stratum.  A residue-exact repair of Nielsen
+4.5/Owens 3.5 therefore requires restructuring the input sets
+themselves (redistributing which cells each slot covers), i.e. the
+same open redesign problem as the T=43 attempt.  This closes the
+local-repair program at residue level, mirroring the counting-level
+closure of phases 6-9b.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
