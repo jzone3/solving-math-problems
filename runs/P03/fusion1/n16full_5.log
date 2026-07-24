@@ -1,3 +1,6 @@
 GRAPH 6 orientations=6438782 profiles=2568288 ss=1217600 tau_skip=0 safe=595696 checks=754992 packed=754992 cand=0 deferred=0
 GRAPH 14 orientations=13603084 profiles=5338548 ss=2942932 tau_skip=0 safe=596872 checks=1798744 packed=1798744 cand=0 deferred=0
 GRAPH 22 orientations=21758730 profiles=8416340 ss=5374522 tau_skip=0 safe=597864 checks=2443954 packed=2443954 cand=0 deferred=0
+GRAPH 1 orientations=5634240 profiles=2218080 ss=1050400 tau_skip=0 safe=1504 checks=1166176 packed=1166176 cand=0 deferred=0
+GRAPH 2 orientations=12659124 profiles=4961412 ss=2675646 tau_skip=0 safe=287080 checks=1998686 packed=1998686 cand=0 deferred=0
+GRAPH 3 orientations=20070048 profiles=7796924 ss=4646894 tau_skip=0 safe=287848 checks=2862182 packed=2862182 cand=0 deferred=0
