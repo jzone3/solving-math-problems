@@ -253,4 +253,33 @@ smallest possible shape of any τ=3 counterexample after the ACZ reduction) admi
 automorphism of order 3 or 4 acting freely on the sources** — 194.8M candidates
 exhaustively decided, 0 unpackable.
 
-## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under ANY automorphism of order 3 or 4 acting freely on sources — 194.8M candidates decided (676,378 SAT + 194.1M certified colorings), 0 UNSAT.
+## 10. Fifth wave: C annealed sampling of the FULL (asymmetric) ACZ region
+
+The order-3/4 symmetric subclasses being exhausted, the remaining haystack is asymmetric
+(or ≤order-2-symmetric) members of the ACZ-complete class. Ported the sampler to C
+(`ascan.c`): random configuration-model start, degree-preserving double-swap mutations,
+hill-climb on tight-dicut count (harder instances = more tight cuts), random restarts
+after 400 stale steps. EVERY τ=3 candidate along every trajectory gets a CERTIFIED
+packing decision (WalkSAT 3-coloring + full-verification CEGAR against ALL dicuts, as in
+zscan.c); any unresolved candidate is dumped as an `ACAND` line and exact-SAT-checked by
+`averify.py` (independent bip.py pipeline). Cross-validated on 400 debug samples
+(τ flags + packing certificates vs exact Python SAT): 0 mismatches.
+
+Shapes (all satisfy ρ≥4, i.e. n4≥12 with n4≡0 mod 3): (n4,n3) = (12,0) minimal n=28;
+(12,3) n=34; (12,4) n=36; (15,0) ρ=5 n=35. 8 workers × 4 h wall:
+
+| shape (n4,n3) | workers | restarts | τ=3 certified decisions | UNSAT/dumped |
+|---------------|---------|----------|-------------------------|--------------|
+| (12,0)        | 4       | 249,628  | 72,532,184              | 0            |
+| (12,3)        | 2       | 16,685   | 5,545,274               | 0            |
+| (12,4)        | 1       | 3,921    | 1,380,936               | 0            |
+| (15,0)        | 1       | 6,561    | 1,939,851               | 0            |
+| Σ             | 8       | 276,795  | **81,398,245**          | **0**        |
+
+That is 81.4M certified 3-dijoin-packing decisions inside the full (unrestricted) ACZ
+class — ~7,200× the wave-2 Python annealing coverage (11.3k) — with 0 unpackable
+instances and 0 candidates even surviving the heuristic packer. Together with the
+exhaustive symmetric closures, the empirical evidence within the ACZ-complete class is
+now: every sampled/enumerated τ=3 member packs, across ~276M decided instances.
+
+## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under ANY automorphism of order 3 or 4 acting freely on sources — 194.8M candidates decided (676,378 SAT + 194.1M certified colorings), 0 UNSAT; NEW (wave 5): 81.4M certified packing decisions via C annealed sampling of the FULL asymmetric ACZ region (shapes (12,0),(12,3),(12,4),(15,0); ρ=4–5, n=28–36), 0 UNSAT — ~276M total decided instances in the ACZ-complete class, all pack.
