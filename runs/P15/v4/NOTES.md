@@ -814,3 +814,29 @@ mechanism; burden (c) (residue-level emission + end-to-end verifier)
 remains the final open step.
 
 STATUS: near-miss / frontier-pushed
+
+## 24. Phase 12: burden (b) discharged - spare-set instantiation freshness
+
+spares43.py (all checks PASS): donate 4 spare covering sets from sections
+with slack avoiding 3.16 (donors 19, 29, 61, 61), instantiate each as an
+odd-5-stratum mint, and aim it at a relocated cell c in {84,126,168,504}.
+Absolute spare moduli are c * P^k * 5^(2j+1) * m.  Machine-checked facts:
+  F1 all four cells are 5-free (so spare v5 stays odd >= 3);
+  F2 spare moduli have odd v5 >= 3 and no factor 53;
+  F3 zero collisions vs Owens's only odd-v5 families (the 3.3/3.4
+     125-structures, which have no prime factor >= 11, and the 53-scaled
+     125^ values of 3.16) up to 10^7;
+  F4 donor slack suffices: need {19:1, 29:1, 61:2} vs slack
+     {19:2, 29:2, 61:3} (avoiding 53 entirely).
+The spare moduli are also distinct from the donor sections' own repair
+mints (v7 = 1 from the cell factor vs 0).
+
+BLUEPRINT v4 status: burdens (a) and (b) are both discharged at the
+machine-checked stratum level with explicit routing side conditions.
+The single remaining burden is (c): residue-level emission of the entire
+integrated system + independent end-to-end verifier - i.e. a full explicit
+reconstruction of Owens's ~10^86-congruence system in compressed form with
+the v4 modifications.  That is the precise, finite frontier this session
+leaves open.
+
+STATUS: near-miss / frontier-pushed
