@@ -1144,4 +1144,60 @@ primes 11..89), each of which cites Nielsen's sets wholesale; their
 faithful emission needs Nielsen's full section data plus the same
 canonical-digit discipline.
 
+## 36. Phase 21: sec 3.5 (the prime 11) emitted; two new reconstruction
+## obstructions identified and quantified
+
+(0) 81^(1,_) PLACEMENT CANONICALIZED (emitcore.py).  Nielsen 4.2's
+extra tower uses moduli 3^n, n>=4 (pure powers of 3, no factor 2).
+Canonical reading consistent with "one input in a 27 and one input in
+a 27^" leftover: the tower sits over the 18-hole 3 (mod 9) and covers
+the digit-1 chain from level 2 on (30 mod 81, 84 mod 243, ...).  The
+level-1 digit-1 cell 12 (mod 27) cannot be covered (27 = 3^3 < 3^4)
+and is exactly Nielsen's "one input in a 27"; the digit-2 chain
+21 (mod 27), 57 (mod 81), ... is the "one input in a 27^".  Machine
+census (2^7*3^7 window) confirms: 18-hole residual = 12 (mod 27)
+u {21 (mod 27), 57 (mod 81), ...} u 3-adic tail, exactly.
+
+(1) SEC 3.5 EMITTED (emit35.py) = Nielsen 4.5 with Owens's
+permutation (class mod 11*5 moved to 4 (mod 5), realized as the swap
+1<->4 on the first 5-adic digit of every 5^ tower cited in the
+section).  Branch B = [1 (mod 12)] u [1 (mod 4) n 3 (mod 9)]; all ten
+Nielsen input sets transcribed with canonical digits (S1: 4; S2: 8^;
+S3: 3*2+27*1+27^*2; S4: 3*4+27*4+27^*8^; S5: 3*8^+9*8^; S6-S8 the 5^
+sets; S9 the 7^ set; S10 the two-summand set).  1326 congruences over
+depths (D2,D3,E5,E7,E11)=(6,5,2,2,2), min modulus 44, ZERO modulus
+overlap with the skeleton / sec 3.3 / sec 3.4 (every sec-3.5 modulus
+contains 11).  Coverage census per input over 2^7*3^6*5^2*7^2: S1
+covers B exactly; S2-S5, S8 miss only finite-depth tails.
+
+(2) OBSTRUCTION A -- REPEATED MODULUS FAMILIES INSIDE NIELSEN'S OWN
+SETS: 48 internal duplicate moduli, all from the family
+72*2^j*5^m*7^l*11^k.  Root cause is textual, not a transcription slip:
+Nielsen's tenth input contains 5^(3*3(x,x,8^), 3*2, 3*4, 3*8^+9*8^),
+whose first slot (3*3(x,x,8^): 9*8*2^j...) and fourth slot (9*8^:
+9*8*2^j...) generate the SAME modulus values at different residues.
+In Nielsen's finite system these are disambiguated by the "artificially
+increase n" depth mechanism (truncate one family earlier and close it
+with a different auxiliary prime) -- a choice the text does not
+specify.  This is the same repeating-moduli phenomenon documented in
+phase 16, now located inside a concrete cited set.
+
+(3) OBSTRUCTION B -- THE CROSS-SECTION x-SLOTS NEED THE "COVERS MORE
+THAN NEEDED" PURE-MODULUS CONVENTION: the uncovered cells of S6, S7,
+S9, S10 concentrate exactly on (3 mod 9) n (5-digit-3 cells) n B --
+the slots Nielsen marks as already covered by sec 4.3 ("the third
+input in 5^ ... already has 3 (mod 9) covered", the property Owens
+explicitly preserves in his sec 3.3 remark).  Nielsen 4.3 (lines
+436-458) states that several entries of the prime-5 sets apply "to the
+entire congruence class 2 (mod 2)" or larger -- i.e. those contents
+are emitted with PURE moduli (no 2-adic context factor), so they cover
+the odd branch too, with moduli like 9*5^m = 45, 225, ... >= 42.  Our
+emit33.py placed every content inside the 2-adic hole context, so its
+coverage is even-only and the odd-branch x of sec 3.5 fails (machine
+census: no 5-class has (3 mod 9) n (1 mod 4) covered by secs 3.1-3.4
+as currently emitted).  FIX REQUIRED (next phase): re-emit the flagged
+slot-3 contents of sec 3.3 with pure moduli per the convention,
+re-checking min modulus (>=42) and global distinctness, then re-run
+the sec-3.5 census.
+
 STATUS: near-miss / frontier-pushed (no T>=43 witness).

@@ -71,11 +71,17 @@ def emit():
         for r, n in place(rel_4up(M // n2), c2, n2):
             if n >= 42:
                 congs.append((r, n))
-    # 81^(1,_) on branch 21 (mod 27)
-    for k in range(4, D3 + 1):
-        cls = (21 + 3 ** (k - 1) - 27) % 3 ** k
-        c, n = crt(1, 2, cls, 3 ** k)
-        congs.append((c, n))
+    # 81^(1,_): moduli 3^n, n >= 4 (pure powers of 3, no factor 2).
+    # Canonical reading (phase 21): the extra tower sits over the
+    # 18-hole 3 (mod 9) and covers the digit-1 chain from level 2 on:
+    # cells 3 + 3^(j+1) (mod 3^(j+2)) for j >= 2, i.e. 30 (mod 81),
+    # 84 (mod 243), ...; the level-1 digit-1 cell 12 (mod 27) cannot
+    # be covered (modulus 27 = 3^3 is < 3^4), matching Nielsen's "one
+    # input in a 27" leftover, and the digit-2 chain 21 (mod 27),
+    # 57 (mod 81), ... is the "one input in a 27^" leftover.
+    for j in range(2, D3 - 1):
+        cls = (3 + 3 ** (j + 1)) % 3 ** (j + 2)
+        congs.append((cls, 3 ** (j + 2)))
     return congs
 
 
@@ -123,7 +129,7 @@ def main():
             continue
         # tower tails: deep 2-adic or 3-adic alignment
         if x % 3 ** D3 in (0, 3 ** D3 - 3 ** (D3 - 1)) or \
-           x % 3 ** D3 == (21 + 3 ** (D3 - 1) - 27) % 3 ** D3:
+           x % 3 ** D3 == (3 + 3 ** (D3 - 1)) % 3 ** D3:
             continue
         # 2-adic tails inside placed inputs: x rel-tail if the 2-part of
         # x's position within its 3-cell exceeds depth - approximate by
