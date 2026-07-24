@@ -40,7 +40,7 @@ tracked v5 `kept14.jsonl`; they are not part of the repository.
 The fresh nauty generation produced 4,060 connected cubic graphs on 16
 vertices. `prep_graphs.py` retained 2,595 non-planar, 3-edge-connected
 graphs, dropping 681 planar and 784 not-3-edge-connected graphs. Eight PyPy
-shards are running over these 2,595 retained graphs:
+shards were initially run over these 2,595 retained graphs:
 
 ```
 0:325  325:650  650:975  975:1300
@@ -55,4 +55,15 @@ completed their first graph and one shard had completed two. Per-graph totals
 ranged from 5.10M to 8.23M DAG leaves, 4.48M to 6.72M profile leaves, and
 1.12M to 2.60M CEGAR packing checks; all reported zero candidates. One shard
 was still processing its first graph. All eight candidate files remained
-empty.
+empty. This full-cell run was intentionally stopped after partial coverage:
+approximately one graph per shard (two in one shard), all completed graphs
+packed every checked orientation, and no candidate was emitted. The estimated
+runtime for the full cell was about 38 hours per shard, so this is not a full
+n=16 closure.
+
+## Strategy pivot
+
+The all-cubic n=16 run was stopped in favor of structurally distinct families.
+Family B below is an exhaustive high-girth (girth at least 5) subfamily, not
+the full cubic cell. Any negative result is scoped only to that high-girth
+subfamily.
