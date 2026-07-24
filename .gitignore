@@ -2,3 +2,7 @@ runs/P03/v3/ascan
 runs/P03/v3/ascan_dbg
 runs/P03/v3/aout_*
 runs/P03/v3/aerr_*
+runs/P03/v3/z3nf
+runs/P03/v3/z3nf_dbg
+runs/P03/v3/nf_*
+runs/P03/v3/cnt_*

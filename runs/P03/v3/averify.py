@@ -13,10 +13,8 @@ from bip import all_min_dicuts, pack3
 
 
 def parse(line):
-    parts = dict(p.split("=", 1) for p in line.split()[1:3])
     nbrs_str = line.split("nbrs=", 1)[1].strip()
-    nbrs = [tuple(int(x) for x in row.split(",")) for row in nbrs_str.split(";")]
-    return int(parts["n4"]), int(parts["n3"]), nbrs
+    return [tuple(int(x) for x in row.split(",")) for row in nbrs_str.split(";")]
 
 
 def parse_dbg(line):
@@ -31,8 +29,13 @@ def main(paths):
     for path in paths:
         with open(path) as f:
             for line in f:
-                if line.startswith("ADBG"):
-                    c_tau3, c_packed, nbrs = parse_dbg(line)
+                if line.startswith("ADBG") or line.startswith("NDBG"):
+                    try:
+                        c_tau3, c_packed, nbrs = parse_dbg(line)
+                    except ValueError:
+                        continue  # garbled partial line (killed writer)
+                    if any(len(r) not in (3, 4) for r in nbrs):
+                        continue
                     nT = max(t for row in nbrs for t in row) + 1
                     tau, md = all_min_dicuts(nbrs, nT)
                     py_tau3 = 1 if tau >= 3 else 0
@@ -45,9 +48,9 @@ def main(paths):
                         dbg_bad += 1
                         print(f"MISMATCH: py_tau={tau} {line.strip()}")
                     continue
-                if not line.startswith("ACAND"):
+                if not (line.startswith("ACAND") or line.startswith("NCAND")):
                     continue
-                n4, n3, nbrs = parse(line)
+                nbrs = parse(line)
                 nT = max(t for row in nbrs for t in row) + 1
                 tau, md = all_min_dicuts(nbrs, nT)
                 checked += 1
