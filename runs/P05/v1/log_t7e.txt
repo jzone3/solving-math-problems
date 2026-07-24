@@ -1,0 +1,2 @@
+start n=7 L=4 vars=336 clauses=1773
+UNSAT after 96 refinements, 1s (no graph on 7 vertices has 3 longest paths of 4 vertices with empty common intersection, given blocking set)

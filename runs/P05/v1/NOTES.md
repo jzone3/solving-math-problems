@@ -255,6 +255,36 @@ of dispersing it. Conclusion: the t=1 hub attractor dominates every encoding tri
 counterexample, if one exists, is not adjacent (in edge-move distance) to either the
 symmetric t=3 optima or generic random graphs at these sizes.
 
+## 12. Wave 6: SAT + CEGAR encoding (`cegar.py`) and the minimality reduction
+
+Encoding: adjacency vars x_uv + three L-slot path vars; constraints = path validity,
+empty triple intersection, nonempty pairwise intersections. The Π2 side ("no path longer
+than L exists") is handled by CEGAR: each model graph is exactly-scanned; every
+(L+1)-vertex path Q found adds the sound blocking clause ⋁_{e∈E(Q)} ¬x_e.
+
+**Minimality reductions (proved and encoded):** in a minimal counterexample,
+1. every vertex lies on ≥1 of the three paths (deleting an untouched vertex never
+   creates longer paths, so the triple stays longest with empty intersection), and
+2. every edge lies on ≥1 of the three paths (same argument for edge deletion; the union
+   of three pairwise-intersecting paths stays connected).
+Hence WLOG **G = union of its three longest paths**: n ≤ 3L−3 (pairwise intersections
+are disjoint, so ≥3 vertices are double-covered), m ≤ 3(L−1), max degree ≤ 6, and
+capacity gives 3L ≤ 2n+3-ish, narrowing L to a band around (n+3)/3 … 2n/3.
+
+**Corollary sharpening the exhaustive frontier:** a minimal counterexample with n = 13
+has L ≤ 8, so m ≤ 3·7 = 21 ≤ 24 — inside our exhausted band. Combined with the n=13
+≤24-edge sweep: **no minimal 2-connected counterexample to Gallai-3 exists on ≤ 13
+vertices** (and none at all on ≤ 11 by the full sweeps). Any ≤13-vertex counterexample
+must contain a cut vertex.
+
+Empirics: with the reductions, n=7 solves in 96 refinements (vs 1 689 naive) and small
+instances go to UNSAT quickly, matching the enumeration ground truth (validation).
+n=10–12 instances ran for hours accumulating 10⁵–10⁶ blocking clauses without
+converging — the space of maximal P_{L+1}-free graphs is too rich for pure clause
+blocking at these sizes; grid killed at n=13–14 (clause explosion, ~6×10⁶). Dead end as
+a decision procedure beyond n≈9, but the minimality reduction is the session's main
+theoretical yield.
+
 ## STATUS: negative / frontier-pushed
 
 No counterexample found (t never 0 anywhere: ~10⁶ annealed graphs to n = 40, 30 k+
