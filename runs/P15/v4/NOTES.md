@@ -1240,4 +1240,34 @@ sec3.5 1326 congruences; pairwise modulus overlap between sections =
      system is not yet identified from the text;
   c. secs 3.6-3.20 remain to be emitted.
 
+## 38. Phase 23: sec 3.6 (the prime 13) emitted
+
+emit36.py: Nielsen 4.6 with Owens's permutation (class mod 13*5 moved
+to 2 (mod 5)), on the complementary branch B' = 3 (mod 4) side of the
+6/18 holes.  Contents are built from TAGGED atoms (tag = which 2-adic
+symbol the atom depends on), so branch, 5-adic permutation, and the
+keep/x filter are parameters:
+ - first ten 13^ inputs = the ten 4.5 sets with 4 / 8^ -> 3 (mod 4);
+ - input 11 = modified 11^ copy keeping only 4/8^-dependent atoms
+   (Nielsen's "replace each 20 and 21 by an x": the 2-adically
+   unrestricted entries are already covered on this branch by sec 3.5,
+   confirmed by the census with secs 3.1-3.5 in the base);
+ - input 12 = same skeleton with 4 -> 1 and 8^ -> 2 (fresh classes,
+   moduli carry 11*13 >= 143 so the min-modulus bound is safe).
+
+Results: 2338 congruences, min modulus 52; modulus overlap with
+skeleton / 3.3 / 3.4 / 3.5 all ZERO.  Census (two windows, base =
+secs 3.1-3.5): first-ten inputs 1.5% uncovered (concentrated on the
+8^-input's beyond-window 2-tails, dropped measure 9.3e-2); inputs
+11/12 6.4% uncovered (reduced window 2^5*3^5*5^2*7*11*13, dropped
+4.9e-2) -- residuals sit in the known artifact locations plus the
+same S10 open slot as sec 3.5.  Internal duplicate moduli: 104, all
+the 2520*13-family -- the SAME obstruction-A repeating-moduli family
+(tenth-input slot 1 vs slot 4), doubled by the two 11^ copies.
+
+Cumulative residue replica: secs 3.1-3.6, ~4900 congruences, zero
+cross-section modulus collisions, min modulus >= 42 throughout.
+Remaining: obstruction A disambiguation, S10's unidentified x-source,
+secs 3.7-3.20.
+
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
