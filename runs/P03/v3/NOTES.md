@@ -282,6 +282,10 @@ instances and 0 candidates even surviving the heuristic packer. Together with th
 exhaustive symmetric closures, the empirical evidence within the ACZ-complete class is
 now: every sampled/enumerated τ=3 member packs, across ~276M decided instances.
 
+Second batch (5 h × 6 workers, new shapes (12,1) n=29, (12,2) n=30, (15,1) n=37 plus
+more (12,0)): 296,437 restarts, **87,396,129 further certified τ=3 packing decisions,
+0 UNSAT** — wave-5 sampling total 168.8M.
+
 ## 11. Sixth wave: exhaustive closure of NON-free order-3 automorphisms
 
 Wave 4 closed order-3 automorphisms acting FREELY on the 12 sources. Wave 6 attacks the
@@ -307,11 +311,11 @@ Largest cases: (2,10) 4.99M, (1,7) 3.47M, (3,1) 2.90M, (0,7) 2.61M.
 
 Residual gap within order-3: p∈{0,1} (q≥9 fixed sources) combined with f∈{10,13,16}
 (≥10 fixed sinks) blows up combinatorially (the fixed–fixed part degenerates to a
-near-unrestricted 12×16-ish bipartite enumeration; count mode exceeded 15-min budget,
-i.e. ≳10⁹–10¹²) — plus (0,16) which is the trivial σ (excluded by definition). So the
+near-unrestricted 12×16-ish bipartite enumeration; COUNT-ONLY mode for (1,10) did not
+terminate in >4.5 h of dedicated runtime, i.e. ≳10¹⁰) — plus (0,16) which is the trivial σ (excluded by definition). So the
 combined exhaustive statement is now: **no τ=3 counterexample in the minimal ACZ shape
 admits any automorphism of order 4 free on sources, or ANY order-3 automorphism having
 at least 2 source orbits or at most 7 fixed sinks** (~212M candidates decided overall,
 0 unpackable).
 
-## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under ANY automorphism of order 3 or 4 acting freely on sources — 194.8M candidates decided (676,378 SAT + 194.1M certified colorings), 0 UNSAT; NEW (wave 5): 81.4M certified packing decisions via C annealed sampling of the FULL asymmetric ACZ region (shapes (12,0),(12,3),(12,4),(15,0); ρ=4–5, n=28–36), 0 UNSAT — ~276M total decided instances in the ACZ-complete class, all pack.
+## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under ANY automorphism of order 3 or 4 acting freely on sources — 194.8M candidates decided (676,378 SAT + 194.1M certified colorings), 0 UNSAT; NEW (wave 5): 81.4M certified packing decisions via C annealed sampling of the FULL asymmetric ACZ region (shapes (12,0),(12,3),(12,4),(15,0); ρ=4–5, n=28–36), 0 UNSAT — ~276M total decided instances in the ACZ-complete class, all pack; NEW (wave 6): non-free order-3 closure — all 15 tractable (p,f) cases exhausted (17.6M candidates, 12.7M certified packings, 0 UNSAT), upgrading the exhaustive statement to: no minimal-shape τ=3 counterexample admits an order-4 automorphism free on sources, or ANY order-3 automorphism with ≥2 source orbits or ≤7 fixed sinks; plus 87.4M more certified sampling decisions (wave 5 batch 2; shapes (12,0),(12,1),(12,2),(15,1)) — cumulative ~381M decided ACZ-class instances, every one packs.
