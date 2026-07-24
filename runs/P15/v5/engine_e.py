@@ -72,6 +72,7 @@ class Builder:
         self.fin_measure = 1e-7
         self.fail_hist = {}
         self.split_fallback = False
+        self.fin_floor = 10 ** 5
 
     def _divisors(self, n):
         divs = [1]
@@ -300,6 +301,14 @@ class Builder:
         # thinner and are eventually absorbed by the finisher. Only enabled
         # when self.split_fallback is set: measured at L=10 it converts deep
         # partial covers into full-tree rollbacks (root Fail at ~3M calls).
+        # finisher fallback for failing mid-band cells: close them from the
+        # reserve-prime tower family instead of propagating Fail upward
+        if M >= self.fin_floor:
+            try:
+                self.finisher(a, M)
+                return
+            except Fail:
+                pass
         if self.split_fallback and depth <= self.max_depth - 2:
             for q0 in (2, 3, 5, 7):
                 if M % q0 != 0:
@@ -327,6 +336,7 @@ def main():
     ap.add_argument("--out", default=None)
     ap.add_argument("--stall", type=int, default=2_000_000)
     ap.add_argument("--qtries", type=int, default=10)
+    ap.add_argument("--finfloor", type=float, default=1e5)
     ap.add_argument("--ptries", type=int, default=8)
     a = ap.parse_args()
     caps = {}
@@ -341,6 +351,7 @@ def main():
         b = Builder(a.L, caps, max_mod=int(a.max_mod), rng=rng, eps=a.eps,
                     q_tries=a.qtries, p_tries=a.ptries)
         b.stall_limit = a.stall
+        b.fin_floor = int(a.finfloor)
         try:
             b.cover_cell(0, 1)
             break
