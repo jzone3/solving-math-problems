@@ -436,3 +436,41 @@ literature-table-guided placement), which is the documented next project.
 STATUS: negative for >=43. Frontier this session: L=10 partial covers
 12.7k -> 30.5k classes; thin-cell half of the problem solved outright by the
 fresh-prime finisher (Section 16).
+
+## 19. Engine I (fattest-first priority queue, no rollback): decisive negative
+
+Fundamentally different control flow tested: a global heap of uncovered cells
+ordered fattest-first (so fat holes get first pick of scarce small moduli),
+chains place tails immediately and requeue level cells, failures split-and-
+requeue (termination unconditional), thin cells closed by the finisher.
+
+Measured outcome (engine_i.py, L=6, both default and generous caps):
+- chain placement dies after ~331 (default caps) / ~1,122 (generous caps)
+  classes; the ENTIRE remaining band then split-cascades (350k-517k splits,
+  heap ~500k cells) until the finisher's reserve of 5,133 tail primes is
+  exhausted by same-modulus sibling cells. SUPPLY FAILURE, not covered.
+- variant with finisher-fallback instead of splitting dies in 17 pops: a fat
+  cell's finisher recursion at small M collides with the palette everywhere
+  and drains the reserve.
+
+Interpretation: fattest-first breadth order destroys the implicit budgeting
+that DFS commitment provides; without rollback, early modulus consumption is
+irreversible and the whole mid band goes bankrupt simultaneously. Rollback and
+depth-first commitment are not conveniences — they are how the search
+implicitly rations towers. This closes the "different control flow" family.
+
+## 20. Engine E + mid-band finisher fallback: ceiling unchanged (negative)
+
+engine_e now tries the reserve-prime finisher on any failing cell with
+M >= --finfloor (1e3/1e4/1e5 tested) before raising Fail. Four sweeps at
+L=10 (eps 0.02/0.05, max-mod 1e16/1e18, seeds 21000-24000, ~2 h x 4 cores,
+11 completed restarts): stalls at 9,962-23,550 classes — same ceiling as
+without the fallback. Rescuing individual mid-band cells does not help
+because the binding constraint is the JOINT assignment of towers to the
+thousands of fat holes, not any single cell's closure.
+
+FINAL STATUS this continuation: negative for >=43. The greedy/DFS/queue
+engine family (B,C,D,E,F,G,H,I + fallback variants) is exhausted at L=10.
+The documented next project remains an exact global assignment mechanism
+(set-cover/ILP over fat-hole--tower incidence, or a faithful mechanization of
+Nielsen's Table 1/Owens' ledger allocation).
