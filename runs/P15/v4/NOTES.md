@@ -1066,3 +1066,41 @@ research problem (secs. 29-30).  Consistent with everything above: no
 shortcut around the full construction exists.
 
 STATUS: near-miss / frontier-pushed (unchanged).
+
+## 34. Phase 19: faithful residue emission of Owens sec. 3.3 (emit33.py)
+
+Emitted the prime-5 section onto the even-branch holes 2(4),4(8),8(16),
+16(32) with explicit branch classes (window 2^9*3^4*5^3 = 5,184,000):
+outer plain 5-split on classes j=0..4 (mod 5) of the even branch, with
+  j=0: 16+32;
+  j=1: 3( , ,3^(4+8, )+3^(16,32^|16br)) + 64^|32br;
+  j=2: 3(64^|32br, 4+8+16+32, 3^(1,2));
+  j=3: blank + the 125^ patch (see below);
+  j=4: 5(2, 4+8+16+32, 3^(1,2), 3^(32^|16br,4+8+16)+64^|32br,
+        5^(1,2,3^(1,2),4^)).
+
+Results: 217 congruences, min modulus 45 (>= 42 OK), ZERO duplicate
+moduli, ZERO modulus overlap with the emitted 2/3 skeleton (all sec-3.3
+moduli are divisible by 5; the skeleton's never are).  Residual census
+MATCHES Owens's diagram (thesis p.6) exactly up to finite-depth tails:
+  hole 4:  j=0 blank (1.0), j=1 5/6 (0.8355 obs), j=2 1/3 (0.3375),
+           j=3 blank, j=4 1/10 (0.1059);
+  hole 8:  same profile as hole 4;
+  hole 16: j=0 covered (0), j=1 2/3 (0.676), j=2 1/3 (0.3375),
+           j=3 blank, j=4 tails only (663/64800);
+  hole 32: j=0 covered, j=1 tails (2025 = 32400/16 2-tail), j=2 tails
+           (808 = 675+133), j=3 blank, j=4 tails (558).
+
+Key finding on the 125^ patch (p.6 line "125^(3^(4,x),3^(8,x),
+3^(16^,x),3^( ,x))"): the labels 4/8/16^ must be RELATIVE 2-adic sets
+inside the 8 hole (matching sec. 3.4's reuse of the modulus families
+"125 3^ 4" etc.), but its "x" slots are unspecified sets Owens accounts
+only at the counting level -- the measure-level "almost complete"
+coverage of the 8-hole's input 4 is NOT derivable from the thesis text
+alone; it requires choices resolved elsewhere in his ledger.  Emitting
+only the specified parts covers a negligible sliver (307/129600).
+This concretely documents, at the first nontrivial section, why
+promoting the thesis text to a residue-level witness is a research task:
+the text is a counting-level certificate with free residue choices.
+
+STATUS: near-miss / frontier-pushed (unchanged).
