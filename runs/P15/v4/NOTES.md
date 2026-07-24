@@ -1571,3 +1571,28 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 50. Phase 33 (sec 3.13, prime 41) (2026-07-22)
+
+emit313.py -- Owens sec 3.13: second 3-input of the second 5-input on
+the 4 hole (2 mod 4 n 2 mod 5 n 2 mod 3).  Sets per the text: atoms
+1,2,4,8^ + 3-conjunctions + 9^(1,2)/9^(4,8^); an 11^ and a 13^
+(eleven inputs); twelve 5*copies; three 25^; two 19^ at thirteen
+inputs; a 29^; six 7^ at five inputs; a 31^; two 17^; a 37^; two 23^
+at nineteen inputs (using sec 3.9's 5^(2,1,4,8) swap).  Owens's ledger
+says forty-one sets; the sequential reconstruction yields forty-two,
+so the second 23^ copy is spare (noted).  41^ filled with forty sets
+after dropping 1.
+
+Machine-checked results:
+  sec3.13: 32834 congruences, 117 placeholders
+  min modulus: 82
+  dups within sec3.13: 0
+  overlap w/ skeleton and secs 3.3-3.12: all 0
+Census (window 2^7 3^4 5^2 41): residual = out-of-window tower
+classes + tails, as in previous sections.
+
+Cumulative replica: secs 3.1-3.13, ~90,100 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
