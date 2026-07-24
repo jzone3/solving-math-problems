@@ -282,3 +282,12 @@ Validation (dramatic speedup vs direct CNF):
   witness-hunt value. Kept running.
 - Hall/matching prune in circ.c measured net-negative (n=9: 119M->86M
   nodes, 3x CPU) — committed disabled for the record.
+
+- cutconv.c: C port of the exact cut-conversion (incremental d2-legality
+  constraint propagation), cross-validated against the python version on
+  n=7 (108 arrays) and n=11 (2000 arrays).
+- twobase n=13 result: 1,520,352 single-base candidates, 2,592 valid
+  two-base circular 12x13 arrays; cut conversion fails for ALL of them
+  (python and C converters agree).
+- Cumulative cut-conversion negatives: n=11: 80 mult + 2000 two-base;
+  n=13: 48 mult + 2592 two-base. No structured circular array converts.
