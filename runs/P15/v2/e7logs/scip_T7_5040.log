@@ -1,0 +1,22 @@
+N=5040 T=7: 54 values, 19323 vars
+presolving:
+(round 1, exhaustive) 0 del vars, 1 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 5092 upgd conss, 0 impls, 54 clqs, 0 implints
+   (1.0s) probing: 51/19323 (0.3%) - 0 fixings, 0 aggregations, 0 implications, 0 bound changes
+   (1.0s) probing aborted: 50/50 successive totally useless probings
+   (1.4s) symmetry computation started: requiring (bin +, int +, cont +), (fixed: bin -, int -, cont -)
+   (1.5s) symmetry computation finished: 20 generators found (max: 1500, log10 of symmetry group size: 13.41) (symcode time: 0.11)
+dynamic symmetry handling statistics:
+   orbitopal reduction:       no components
+   orbital reduction:          1 components of sizes 120
+   lexicographic reduction:  120 permutations with support sizes 1248, 1248, 3744, 1248, 3744, 2976, 6446, 1248, 2976, 4836, 2976, 6446, 4836, 2976, 4836, 4836, 17296, 17142, 17010, 19295, 2496, 4992, 2496, 4992, 4032, 7278, 2496, 4032, 5772, 4032, 7278, 5772, 4032, 5772, 5772, 3744, 1248, 2496, 4992, 4032, 7278, 2496, 4032, 5772, 4032, 7278, 5772, 4032, 5772, 5772, 4992, 7488, 6144, 8942, 4992, 6144, 7644, 6144, 8942, 7644, 6144, 7644, 7644, 3744, 1248, 4032, 7278, 2496, 4032, 5772, 4032, 7278, 5772, 4032, 5772, 5772, 6144, 8942, 4992, 6144, 7644, 6144, 8942, 7644, 6144, 7644, 7644, 8430, 4032, 5952, 7068, 5952, 8430, 7068, 5952, 7068, 7068, 7278, 8430, 9670, 8430, 6446, 9670, 8430, 9670, 9670, 4032, 5772, 4032, 7278, 5772, 4032, 5772, 5772, 7068, 2976, 8430, 7068, 5952, 7068
+handled 1 out of 1 symmetry components
+presolving (2 rounds: 2 fast, 2 medium, 2 exhaustive):
+ 0 deleted vars, 1 deleted constraints, 0 added constraints, 0 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 54 cliques, 0 implied integral variables (0 bin, 0 int, 0 cont)
+presolved problem has 19323 variables (19323 bin, 0 int, 0 cont) and 5094 constraints
+     53 constraints of type <setppc>
+      1 constraints of type <linear>
+   5040 constraints of type <logicor>
+transformed objective value is always integral (scale: 1)
+Presolving Time: 1.63
+
