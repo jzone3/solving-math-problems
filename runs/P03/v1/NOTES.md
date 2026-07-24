@@ -214,6 +214,35 @@ Searches (all tau=3 instances SAT-checked for 3-dijoin-partition):
   (48-arc (4,3)-biregular, rho=4). Hill-climbing never even retains
   nontrivial tight 3-cuts - packing slack appears structural here too.
 
+## Phase 5 — C-speed mass sampling + structured tight-cut constructions
+
+New checker bireg.c: pure-C reimplementation of the (4,3)-biregular pipeline
+(2^p bitmask dicut enumeration, minimality filter, and a watched-count
+3-coloring backtracker replacing the SAT solver). Validated against
+bipsearch.py (pysat/CaDiCaL) on 200 random p=12 instances: exact match on
+minimal-dicut counts AND pack/no-pack results. Throughput ~780 tau=3
+instances/s/core at p=12 (~30x the Python+SAT harness).
+
+- configuration-model random sampling, 6 workers x 2 h at p=12/q=16:
+  33.06M instances, 33.05M with tau=3 - ALL pack.
+- 2 workers x 2 h at p=15/q=20: 838k tau=3 instances - all pack.
+
+Structured constructions (Python, exact enumeration via bipsearch.py) - the
+idea: force the tight-cut structure a counterexample would need. Tight
+source-sets in this class have 4k-3 = 0 mod 3, i.e. sizes 3, 6, 9; size-3
+tight sets are exactly "blocks" (3 sources fully covering 3 private sinks).
+- blockcons.py: 4 disjoint blocks + all set-partitions of the 12 leftover
+  arcs into 4 extra sinks: exhaustive, 15,400 instances (each with 4 disjoint
+  nontrivial tight 3-cuts) - all pack.
+- laminarcons.py: laminar family A,B,C,D,A+B,C+D all tight (extra sinks e1
+  in A+B, e2 in C+D): exhaustive, 4,000 instances with 6 nested nontrivial
+  tight 3-cuts - all pack.
+- crossingcons.py: CROSSING tight 6-sets S1=A+B, S2=B+C sharing block B
+  (crossing size-3 tight sets are impossible in this class): exhaustive,
+  1,080 instances - all pack.
+- blockcons15.py: 5-block construction at p=15/q=20, 10,088 sampled
+  instances (5 disjoint nontrivial tight 3-cuts each) - all pack.
+
 ## STATUS
 
 STATUS: negative / frontier-pushed — no counterexample. Exhaustive: all
@@ -226,5 +255,9 @@ the seeds) still packs. Phase 4: identified the exact smallest open case via
 ACZ's P2-P4 (tau=3, rho>=4: (4,3)-biregular bipartite, >=12 sources, >=48
 arcs), exhausted all bipartite in-degree-3 instances with p<=6 sources q<=9
 sinks (2.95M tau=3 checks), and SAT-checked >0.8M instances inside the open
-class itself (random, annealed, and tight-cut-seeded) - all pack. No
+class itself (random, annealed, and tight-cut-seeded) - all pack. Phase 5:
+C-speed checker (validated against the SAT harness) pushed the open-class
+count to >34M tau=3 instances at p=12/q=16 and ~850k at p=15/q=20, plus
+exhaustive structured families forcing disjoint / laminar / crossing
+nontrivial tight 3-cuts (~20k instances) - all pack. No
 solutions/P03/verify.py since there is no claimed witness.
