@@ -208,6 +208,14 @@ measurement included a redundant second cut enumeration, which has also
 been removed from the production leaf path. The exact speedup depends on
 the orientation's ideal count.
 
+The optimized engine was then launched on all eight shards of the prepared
+455-graph n=18 high-girth list. After a bounded approximately 15-minute
+run, every shard was still processing its first assigned graph; therefore
+coverage was **0/455 completed**, with zero exact packing checks recorded
+and zero candidates. The eight `h18fast_*.log` files and empty
+`h18fast_*.cand` files preserve this partial run. This is not an exhaustion
+claim, and no n=20 run was attempted.
+
 ## Family A: tau=4 reduced shape
 
 For sources `s`, sinks `t`, type-A internal vertices `(in,out)=(1,2)` and
