@@ -1596,3 +1596,27 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 51. Phase 34 (sec 3.14, prime 43) (2026-07-22)
+
+emit314.py -- Owens sec 3.14: middle 3-input of the fourth 5-input on
+the 4 hole (2 mod 4 n 4 mod 5 n 2 mod 3).  Forty-two sets exactly per
+the text: atoms + 5-conjunctions + 25^; an 11^ with one covered
+input; 3*copies of the first ten; five 9^ pairs (incl. 9^(25^,11^));
+five 7^ copies at five inputs; 31^, 29^, two 17^, 23^, a partially
+filled 37^; three 13^; three 19^ at thirteen inputs.  Since 43 >= 42
+NO set is dropped -- the bare set 1 gives the minimum modulus 43 and
+all forty-two sets fill the 43^.
+
+Machine-checked results:
+  sec3.14: 88624 congruences, 117 placeholders
+  min modulus: 43
+  dups within sec3.14: 0
+  overlap w/ skeleton and secs 3.3-3.13: all 0
+Census (window 2^7 3^4 5^2 43): residual = out-of-window tower
+classes + tails, as before.
+
+Cumulative replica: secs 3.1-3.14, ~178,700 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
