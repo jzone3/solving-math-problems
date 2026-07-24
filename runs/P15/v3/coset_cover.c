@@ -154,6 +154,34 @@ static u64 scap_;
 static Hole *cands;
 static u64 *cL;
 
+/* distinct hole moduli snapshot (for cheap prefilter in passes) */
+static u64 distM[1<<16]; static u64 ndistM=0;
+static u64 dmslot[1<<18];
+static void snapshot_distM(void){
+    ndistM=0;
+    memset(dmslot, 0, sizeof(dmslot));
+    for(u64 i=0;i<live_n && ndistM<(1<<16);i++){
+        if(!tab_has(live[i].a, live[i].M)) continue;
+        u64 M=live[i].M;
+        u64 s = (M*0x9E3779B97F4A7C15ULL >> 46) & ((1<<18)-1);
+        int found=0;
+        while(dmslot[s]){
+            if(dmslot[s]==M){ found=1; break; }
+            s=(s+1)&((1<<18)-1);
+        }
+        if(!found){ dmslot[s]=M; distM[ndistM++]=M; }
+    }
+}
+static int worth_trying(u64 d){
+    for(u64 j=0;j<ndistM;j++){
+        u64 M=distM[j], g=gcd64(d,M);
+        u128 L=(u128)(d/g)*M;
+        if(L > ((u128)1<<62)) continue;
+        if(L/M <= (M==1?frag_cap_:inc_cap_)) return 1;
+    }
+    return 0;
+}
+
 /* try modulus d; returns 1 if a class (b mod d) was emitted */
 static int try_modulus(u64 d){
     u64 m = m_, inc_cap = inc_cap_, frag_cap = frag_cap_;
@@ -339,19 +367,30 @@ int main(int argc, char **argv){
             unused[un++]=d;
         }
     }
-    /* further passes over unused moduli until no progress */
+    /* further passes over unused moduli until no progress; when a pass
+     * makes no progress, escalate the incidental cap (controlled
+     * fragmentation of stuck families) until it reaches frag_cap_ */
     while(count){
         u64 k=0, progress=0;
+        snapshot_distM();
         for(u64 i=0;i<un;i++){
-            if(count && try_modulus(unused[i])) progress++;
+            if(count && worth_trying(unused[i]) && try_modulus(unused[i])){
+                progress++;
+                if(progress % 256 == 0) snapshot_distM();
+            }
             else unused[k++]=unused[i];
         }
         un=k;
-        printf("pass done: accepted=%llu remaining_pool=%llu holes=%llu density=%.3Le\n",
+        printf("pass done: accepted=%llu remaining_pool=%llu holes=%llu density=%.3Le inc_cap=%llu\n",
                (unsigned long long)progress,(unsigned long long)un,
-               (unsigned long long)count,density_);
+               (unsigned long long)count,density_,
+               (unsigned long long)inc_cap_);
         fflush(stdout);
-        if(!progress) break;
+        if(!progress){
+            if(inc_cap_ >= frag_cap_) break;
+            inc_cap_ *= 2;
+            if(inc_cap_ > frag_cap_) inc_cap_ = frag_cap_;
+        }
     }
     fclose(out_);
     if(count==0){ printf("COVERED n=%llu\n",(unsigned long long)ncover_); return 0; }

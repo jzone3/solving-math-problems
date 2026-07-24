@@ -207,6 +207,21 @@ Automated analogue implemented here — coset_cover.py / coset_cover.c:
   at density 0.22 (bootstrap misalignment). Coset-engine frontier within
   session budget: m ≤ 9 covered+verified; m ≥ 10 diverges in hole count.
 
+### Adaptive cap escalation (phase 3b, negative)
+Added to coset_cover.c: multi-pass with a distinct-hole-modulus prefilter
+(cheap worth_trying check) and automatic doubling of the incidental split cap
+whenever a full pass over the unused-modulus pool makes no progress. Effect on
+m=10: the stuck mass at density 0.219 (inc_cap=8, 12k holes, pool of 392k
+unused moduli useless) IS unlocked by escalation — density drops to ~0.05
+within one escalated pass — but each escalation trades stuck density for
+fragmentation and the cycle repeats: 40-min runs end at density 5e-3..5e-2
+with 0.8-9.3M holes, still diverging. Configs swept: inc_cap {6,8,12,16},
+frag_cap {16,32,64,1024,4096}, alpha {0,0.5}, hit_cap {512,2048,4096,inf}.
+Conclusion: no cap/weight schedule closes m>=10 with enumerated cosets;
+divergence is structural (fragmentation reproduces faster than plugging),
+matching the theory note above — the record constructions avoid it only via
+symbolic p-up tail families, never enumerating individual cosets.
+
 Honest assessment: the symbolic coset engine removes the lcm wall but not the
 resource-allocation wall. Reaching m=43 the Nielsen/Owens way needs their
 recursive p↑ bookkeeping (holes as symbolic branch families, not enumerated
