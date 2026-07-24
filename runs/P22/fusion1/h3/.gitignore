@@ -1,0 +1,5 @@
+# regenerable multi-MB artifacts (rebuild via build_h3.py / block_search.py)
+h3.drat
+h3.lrat
+blocks/
+__pycache__/

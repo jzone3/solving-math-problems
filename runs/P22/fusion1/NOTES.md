@@ -23,6 +23,15 @@ DRAT certificate is produced (none exists — the instance did not close).
 Outcome (honest): **G₁₂₇ → (3,3)ᵉ remains UNDECIDED.** Two new documented
 results below sharpen *why* the standard attacks stall.
 
+**Separate, more promising target — H₃ (63 vertices):** see
+[`h3/NOTES.md`](h3/NOTES.md). We independently reconstruct the Hermitian-unital
+graph H₃ of Mulrenin–Van Overberghe (arXiv:2506.14942) and reproduce + **fully
+certify** (DRAT+LRAT, two solvers, two checkers) their q=3 result
+`H₃ → (K₃)_{T₃}` (T₃ = non-degenerate triangles, T₃ ⊉ K₄). H₃ is not itself
+K₄-free (9576 K₄'s), so this is not yet a Folkman bound; a 250-construction
+balanced-block-construction search toward `f(2,3,4) ≤ 63` was all-SAT (none
+arrows), quantifying the gap to the paper's open conjecture.
+
 ---
 
 ## Priority re-check (methodology formalization gate)
