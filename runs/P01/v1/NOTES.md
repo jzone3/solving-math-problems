@@ -208,9 +208,21 @@ the conjecture being TRUE.
     n=22/26/30 at 1512/4896/40708 — high-girth/high-connectivity families move AWAY
     from few HCs; nothing below 144.
 
+## Continuation 3 (2026-07-24): third 8-h worker wave
+
+- Fresh random-seed anneals (search5, 8 h each): n=30 reached the **144 floor from a
+  random seed** (62k restart-iterations) — fourth independent random-seed rediscovery of
+  the floor (after n=22/24/28); n=26 stalled at 240, n=34 stalled (counting cost at cap).
+- Seeded floor checks at n=44 and n=46 (8 h each, basin-hopping from the 144 family):
+  best_ever stayed exactly 144 — no descent below 144 up to n=46.
+- Multiplicity-3 multigraph anneals at n=20/26 (8 h each): in-run best_simple_hc 144 /
+  200 (capped values, not exact recounts); nothing near count 1.
+- Grow chain: n=48 step still in progress at wrap-up (>9 h; candidate evaluation cost
+  grows steeply); g46/g47 remain the last completed, double-verified members.
+
 ## STATUS: negative (no counterexample; frontier pushed: constant-144-HC simple family
    verified for all n = 19–47 (n=46/47 double-verified with two independent counters), the
-   144 floor independently reproduced from random seeds at n=22/24/28 with a 10× faster
+   144 floor independently reproduced from random seeds at n=22/24/28/30 with a 10× faster
    bitmask counter, beating published few-HC constructions [GMZ 36·2^⌊n/5⌋−2, TZ
    constant-216] for n ≥ 25; multigraph relaxations (mult ≤ 2 and ≤ 3) reach 25 weighted
    HCs @ n=18 but never below 16 HCs in any space searched; SAT-CEGAR and structure-
