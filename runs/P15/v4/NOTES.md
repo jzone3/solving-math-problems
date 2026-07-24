@@ -854,3 +854,37 @@ claimed; the counting- and stratum-level blueprint is fully machine-
 verified, and the sole remaining burden is residue-level emission of the
 integrated ~10^86-congruence system plus end-to-end coverage
 verification.
+
+## 26. Phase 13: geometric-alignment gap in the spare-set absorption (correction)
+
+Attempting residue-level emission of the spare sets exposed a gap in the
+phase-12 discharge of burden (b).  spares43.py verified MODULUS freshness of
+mint-type spare instantiations, but implicitly assumed a ledger spare set can
+be "aimed" at an arbitrary relocated cell.  It cannot: a ledger set is a
+covering object of its section's WORKING BRANCH (a fixed cell of the 2-3-5-7
+core); its absolute moduli are branch-scale * relative moduli.  A relocated
+cell c in {84,126,168,504} has modulus with no 5-part and a fixed position in
+the smooth core; a section set on a different branch cannot cover it, and
+force-scaling by c (as spares43.py modeled) is not the calculus's semantics.
+
+Two further explicit findings from this phase:
+  * a no-84/126 re-aim is measure-infeasible: with only quotients {4,12}
+    stolen, the safe free quotient pool (7-smooth free t, sum 1/t = 0.321,
+    plus stolen 1/4+1/12) reaches only 0.654 < 1 - so cells 84 and 126
+    genuinely relocate;
+  * sec 3.10's pool CONTAINS relative modulus 84 (7-combo inputs 3*4), and
+    sec 3.8's pool contains 49 values divisible by 84 and 82 divisible by
+    126 - so cross-scaled instantiations are not automatically fresh either.
+
+CORRECTED absorption mechanism (counting-consistent, geometry-aware): a
+relocated cell increases the INPUT COUNT of whichever section's final tower
+covers the branch containing it; the extra input is filled by an unused pool
+set of that same section (slack).  Moduli stay within the section's own
+semantics - no new freshness burden - but this requires locating each
+relocated cell inside the branch geography of a section with slack, i.e.
+transcribing the smooth core's Figure 3.9 hole map.  That geometric check
+supersedes spares43.py's F1-F3 and is the sharpened form of burden (b).
+
+STATUS: near-miss / frontier-pushed (burden (a) discharged at stratum level;
+burden (b) reduced to a finite branch-containment check on the core map;
+burden (c) unchanged).
