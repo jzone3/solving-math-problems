@@ -329,3 +329,46 @@ no proof, no counterexample. Sharpest targets now: (i) window nonemptiness
 alpha*(G)*rho(G) < 1 off the equality manifold (childI §8 route map) for 46;
 (ii) Conjecture J's binding-pair exclusion (childJ route map: V1/V2 case bash,
 T1/T2 coexistence contradiction, or ord4 certificates) for 44.
+
+## 11. Round 6 (children K, L): F2 REFUTED — but Bound 46 survives; Bound 44 nearly reduced to one inequality
+
+**Headline: Conjecture F2 (sigma = d+m-4) is FALSE.** childK found that windmill
+(friendship) graphs F_k violate M(G) ⪰ 0 for all k >= 14 (minimal counterexample
+F_14, n=29 — just above the exhaustive n<=10 range). Exact sympy disproof on the
+symmetric quotient: AB - C^2 = -k^2(k-1)(k^3-9k^2-75k+99)/(4(k^2+4k-3)) < 0 for
+k >= 14; exact rational witness x = 1217/554 on the hub gives x^T M x = -2639/554.
+Wheels and hub+gadget families fail similarly. **Upstream SURVIVES**: D1
+(K = diag(arg46) - A_L^2 ⪰ 0) holds with margin 14-27 on every failing family and
+Bound 46 holds with large margin — only childF's diagonal CHOICE broke, not the
+reduction (Theorem F3 holds for any diagonal). This retroactively refutes childI's
+Conjecture I1 and window statement for the old sigma. Flagging here: childF §4 and
+childI's F2 claims must be read as REFUTED at n=29; their n<=10 verifications were
+true but the family lay outside all tested regimes (lesson: hub-dominated graphs
+with huge m at low-degree vertices are the adversarial regime for diagonal choices).
+
+Rescues (childK): Theorem K3 (explicit diagonal fixes all windmills, sympy-proved);
+Conjecture F2' (exists diagonal s with M(s) ⪰ 0 — SDP-verified exhaustively n<=7 +
+all families); **new crown Conjecture F2''**: sigma-hat = d - 4 + min(m, d+c),
+c in {2,4} — passes ALL 10,013,006 delta>=2 graphs n<=10 (both caps), all hub
+families, skew bipartite, 4,000 random/hybrid graphs to n~150.
+F2'' => F2' => D1 => Bound 46 (delta>=2).
+
+Bound 44 (childL): **Theorem L1**: clause (b) of Conjecture J collapses to a
+single-edge inequality (B): rho0(e)(s_e-3) + 3 z1_e - zs_e > 0 for heavy edges
+(plus boundary (W=)); equivalently the excess-contraction form
+sum_{f~e}(z1_f-rho) < z1_e-rho; equivalently c=-3 passes every heavy test.
+Verified n<=9/trees<=16/hard sets/random with min margin exactly 1 (tight at
+near-3-regular arg44-constant 2-balls). **Theorem L2**: clause (a) holds over the
+entire pool tuple universe (~2*10^8 pairs from 93k graphs) with exactly ONE
+admissible-window conflict — childJ's T1/T2 pair — and **Lemma X (proved)** shows
+that conflict is unrealizable in any single graph. So Conjecture J (hence Bound 44)
+is now reduced essentially to inequality (B) + (W=) + a realizability argument for
+clause (a) beyond the pool. Caution recorded: the s_f=2 floor is false (s_f>=3);
+the 1-ball version of (B) is false — 2-ball data is essential.
+
+Round-6 local negative result: neighborhood-averaged sigma corrections
+(f2_sigma_corr*.py) give only marginal CW improvement (627 -> 514 fails at c=0.1).
+
+Round 7 (children M, N) launched: prove/stress F2'' (hub-heavy adversarial n=20..80
++ resolvent machinery with capped sigma); prove (B) and (W=) via margin conjecture
+D_e >= 1 / finite 2-ball enumeration + asymptotics.
