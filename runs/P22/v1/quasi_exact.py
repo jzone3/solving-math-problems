@@ -29,6 +29,35 @@ rng = random.Random(7)
 PERMS = [tuple(range(n))] + [tuple(rng.sample(VERTS, n)) for _ in range(299)]
 
 solver = Cadical153()
+nextvar = [len(TRIPLES) + 1]
+def newvar():
+    v = nextvar[0]; nextvar[0] += 1
+    return v
+
+# lex-leader symmetry breaking on the triple vector under sampled S_n elements
+# (sound: the constraint set is S_n-invariant, so some lex-min solution survives)
+T_ID0 = {t: i + 1 for i, t in enumerate(TRIPLES)}
+for p in PERMS[1:120]:
+    prev = None
+    for t in TRIPLES:
+        ft = tuple(sorted((p[t[0]], p[t[1]], p[t[2]])))
+        if ft == t:
+            continue
+        a, b = T_ID0[t], T_ID0[ft]
+        if prev is None:
+            solver.add_clause([-a, b])
+        else:
+            solver.add_clause([-prev, -a, b])
+        nxt = newvar()
+        if prev is None:
+            solver.add_clause([-nxt, -a, b]); solver.add_clause([-nxt, a, -b])
+            solver.add_clause([nxt, -a, -b]); solver.add_clause([nxt, a, b])
+        else:
+            solver.add_clause([-nxt, prev])
+            solver.add_clause([-nxt, -a, b]); solver.add_clause([-nxt, a, -b])
+            solver.add_clause([nxt, -prev, -a, -b]); solver.add_clause([nxt, -prev, a, b])
+        prev = nxt
+
 for q in combinations(VERTS, 4):
     solver.add_clause([-(TRIPLES.index(f) + 1) for f in combinations(q, 3)])
 
