@@ -1,0 +1,16 @@
+seed5 it1: n=175057 -> core 85997 764.3s
+seed5 it2: n=85997 -> core 53248 484.2s
+seed5 it3: n=53248 -> core 41487 340.0s
+seed5 it4: n=41487 -> core 28847 207.2s
+seed5 it5: n=28847 -> core 25283 163.4s
+seed5 it6: n=25283 -> core 23508 175.4s
+seed5 it7: n=23508 -> core 21501 156.5s
+seed5 it8: n=21501 -> core 20448 146.7s
+seed5 it9: n=20448 -> core 19430 150.9s
+seed5 it10: n=19430 -> core 18786 175.1s
+seed5 it11: n=18786 -> core 18358 149.8s
+seed5 it12: n=18358 -> core 17692 134.0s
+seed5 it13: n=17692 -> core 17221 135.2s
+seed5 it14: n=17221 -> core 16666 133.9s
+seed5 it15: n=16666 -> core 16229 127.8s
+seed5 it16: n=16229 -> core 15984 135.0s

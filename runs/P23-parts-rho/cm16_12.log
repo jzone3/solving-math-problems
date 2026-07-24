@@ -1,0 +1,31 @@
+seed12 it1: n=77485 -> core 32943 357.3s
+seed12 it2: n=32943 -> core 21167 171.5s
+seed12 it3: n=21167 -> core 17598 109.9s
+seed12 it4: n=17598 -> core 14586 85.9s
+seed12 it5: n=14586 -> core 13405 97.6s
+seed12 it6: n=13405 -> core 12228 74.9s
+seed12 it7: n=12228 -> core 10323 63.0s
+seed12 it8: n=10323 -> core 9107 64.6s
+seed12 it9: n=9107 -> core 8445 56.1s
+seed12 it10: n=8445 -> core 8103 53.4s
+seed12 it11: n=8103 -> core 7507 48.1s
+seed12 it12: n=7507 -> core 7209 46.9s
+seed12 it13: n=7209 -> core 7069 51.1s
+seed12 it14: n=7069 -> core 6740 40.1s
+seed12 it15: n=6740 -> core 6590 37.0s
+seed12 it16: n=6590 -> core 6414 38.9s
+seed12 it17: n=6414 -> core 6358 43.7s
+seed12 it18: n=6358 -> core 6231 41.6s
+seed12 it19: n=6231 -> core 6161 47.3s
+seed12 it20: n=6161 -> core 6073 39.5s
+seed12 it21: n=6073 -> core 5962 40.2s
+seed12 it22: n=5962 -> core 5889 33.0s
+seed12 it23: n=5889 -> core 5728 35.2s
+seed12 it24: n=5728 -> core 5669 41.5s
+seed12 it25: n=5669 -> core 5428 39.3s
+seed12 it26: n=5428 -> core 5380 37.8s
+seed12 it27: n=5380 -> core 5347 35.9s
+seed12 it28: n=5347 -> core 5318 37.5s
+seed12 it29: n=5318 -> core 5299 46.8s
+seed12: plateau (shrink 0.0036), stopping
+seed12 FINAL 5299

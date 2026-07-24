@@ -135,7 +135,7 @@ geometry; machinery confirmed end-to-end).
 | 20 | 79561 / 880920       | SAT  | fails (ref-only) |
 | 21 | 79729 / 882384       | SAT  | fails (despite ref + 1 aux kind) |
 | 23 | 79813 / 882972       | SAT  | fails (ref-only) |
-| 25 | 173317 / ~2M         | SAT  | fails (native, 583 kinds) |
+| 25 | 173317 / 2063928         | SAT  | fails (native, 583 kinds) |
 | 28 | 175057 / 2069280     | **UNSAT** | **WORKS — new type-M rotation** |
 
 Controls for the two new working rotations: the SINGLE (unrotated) copy is
