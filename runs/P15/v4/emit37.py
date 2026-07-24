@@ -66,20 +66,20 @@ A3_8 = x2(E8, 1, 3)
 
 
 def nineup(c1, c2):
-    """9^(a,b): 3-adic tower anchored at the hole's mod-9 cell (4 mod 9,
-    since 13 = 1 + 1*3 + 1*9): level m puts input t on the canonical
-    digit cell above 9.  Contents are absolute cells CONTAINING the
-    branch (covering more than needed is fine, phase 22)."""
+    """9^(a,b): 3-adic tower anchored at the hole's mod-3 cell (1,3)
+    (the hole 13 mod 24 fixes only mod 3 = 1); level m has modulus
+    9*3^(m-1).  Contents are absolute cells CONTAINING the branch
+    (covering more than needed is fine, phase 22)."""
     congs, tails = [], []
     for m in range(1, E9 + 1):
         for t, inp in enumerate((c1, c2), start=1):
-            cell = ext((4, 9), 3, t * 3 ** (m - 1), m)
+            cell = ext((1, 3), 3, t * 3 ** (m - 1), m)
             if inp == ONE:
                 congs.append(cell)
             else:
                 congs += [crt(c, mm, r, n) for (r, n) in inp
                           for (c, mm) in [cell]]
-    tails.append(ext((4, 9), 3, 0, E9))
+    tails.append(ext((1, 3), 3, 0, E9))
     return congs, tails
 
 

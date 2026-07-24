@@ -1447,3 +1447,37 @@ Cumulative replica: secs 3.1-3.8, ~11,600 congruences, all moduli
 pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
+## 46. Phase 29 (sec 3.9, prime 23) + a 9^-anchor bugfix (2026-07-22)
+
+Bugfix found while emitting sec 3.9: my 9^ towers in emit37.py were
+anchored at the hole's mod-9 residue (4 mod 9), but the 12-hole
+13 mod 24 fixes only mod 3 = 1 -- a 9^(a,b) must be a tower over the
+mod-3 cell (level m modulus 9*3^(m-1)), else two thirds of the branch
+is silently missed.  Fixed in emit37.py (nineup anchored at (1,3)):
+sec 3.7 residual dropped 5,146,880 -> 2,914,944 cells with the
+remainder now confined to classes 0/15 (tail + the dropped composite
+set 16's out-of-window 11/13 moduli) and small tails at 12/13/14.
+Same convention applied in emit39.py (anchor (2,3)).
+
+emit39.py -- Owens sec 3.9 = Nielsen 4.9 on the 24-hole (17 mod 24,
+reopened modulus-24 congruence), with Owens's swap 5^(1,2,4,8) ->
+5^(2,1,4,8).  Twenty-two 23^ inputs: atoms 2,4,8,16^ and their
+3-conjunctions, 9^(1,2), 9^(4,8), three 5^ sets, two 7^ sets, the
+reserve set 9^(16^,_) + 7^(9^(x,*) five ways, 5^(9^(x,*) four ways)),
+one each of 13^/17^/19^ over previous sets (padded with 1), and two
+11^ copies over the twenty 11-free sets (V1-V10 and V11-V20).
+
+Machine-checked results:
+  sec3.9: 3108 congruences, 87 placeholders
+  min modulus: 46
+  dups within sec3.9: 0
+  overlap w/ skeleton and secs 3.3-3.8: all 0
+Census (window 2^7 3^4 5^2 7*23): classes 18-22 (the 13^/17^/19^/11^
+sets, moduli outside the window) plus tails account for the residual;
+all 2/3/5/7-smooth classes covered.
+
+Cumulative replica: secs 3.1-3.9, ~14,700 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
