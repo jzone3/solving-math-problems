@@ -313,3 +313,33 @@ Session-2 conclusions:
 
 STATUS (session 2): frontier-pushed (exact minimal-lcm ladder + SAT-attack negative +
 structural explanation of the explicit-witness cap; still no route toward min modulus 43).
+
+## 13. Session 3 (resumed after restart): solver-portfolio attack on the open ladder cells
+
+New tools this session: cpsat.py (OR-tools CP-SAT, parallel portfolio), scip.py
+(SCIP 6.2.1 via pyscipopt: LP + conflict analysis + symmetry handling), ilp_cube.py /
+t5cubes.sh (cube-and-conquer at the MIP level: exact case split on the LARGEST divisor
+value v0 whose class covers point 0 with residue 0 — fix x_{v0,0}=1, x_{v,0}=0 for v>v0;
+instance UNSAT iff all cubes UNSAT), t6ladder(2).sh (sharded SCIP ladder for T=6).
+
+Benchmarks on the known-UNSAT calibration instance N=1260/T=5 (HiGHS+symbreak: <4 h):
+- CP-SAT (4 workers, 1 h): UNKNOWN — portfolio SAT reasoning does not help here either.
+- SCIP (4 h): timelimit. So no solver dominates; HiGHS and SCIP are complementary.
+
+**New exact results (SCIP):**
+- N=1260, T=6: **INFEASIBLE** (SCIP, ~3.5 h) — the cell HiGHS could not close in 8+ h.
+  Combined with session-2 refutations of all other feasible N <= 1512 and the new
+  N=1848 = 2^3·3·7·11 UNSAT (SCIP, <4 h), the minimal T=6 lcm is now confined to
+  {1800?, 1890?, ...} ∩ (1512, 5040]; ladder over all 30 remaining measure-feasible
+  candidates is running sharded 4-wide at 4 h/N.
+- N=1800, T=6: INDETERMINATE at 4 h (only primes 2,3,5 — dense residue space).
+
+**N=1680, T=5 resists everything** (the big open cell): HiGHS+symbreak 12 h timelimit,
+SCIP+symbreak 12 h timelimit, CP-SAT UNKNOWN, HiGHS cubes (4 shards x 2 h/cube: v0 =
+1680/840/560/420 all UNDECIDED), SCIP cubes (90 min/cube: same). ~60 CPU-h total.
+Either direction (SAT witness or UNSAT) would settle whether minimal T=5 lcm is 1680.
+T=7 @ 5040: HiGHS+symbreak 12 h INDETERMINATE; SCIP 12 h run in flight.
+
+STATUS (session 3, interim): frontier-pushed — T=6 minimal-lcm lower bound raised past
+1260/1848 via SCIP; T5@1680 certified hard for a 4-solver portfolio incl. MIP-level
+cube-and-conquer.

@@ -2,3 +2,9 @@
 status: timelimit
 INDETERMINATE
 === N=1800 (2^3,3^2,5^2)
+status: timelimit
+INDETERMINATE
+=== N=1848 (2^3,3,7,11)
+status: infeasible
+UNSAT: no covering of Z_1848 with distinct divisor moduli >= 6
+=== N=1890 (2,3^3,5,7)

@@ -1,0 +1,4 @@
+=== N=1980 (2^2,3^2,5,11)
+status: infeasible
+UNSAT: no covering of Z_1980 with distinct divisor moduli >= 6
+=== N=2520 (2^3,3^2,5,7)

@@ -706,3 +706,52 @@ Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap 
       1277      22       121   1.10%   0               inf                  inf      185      2    901    28655k 39012.0s
       1279      22       122   1.10%   0               inf                  inf      186      2    903    28787k 39161.8s
       1282      22       123   1.11%   0               inf                  inf      186      2    905    29158k 39496.1s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+      1284      22       124   1.11%   0               inf                  inf      187      2    909    29601k 39896.6s
+      1286      22       125   1.11%   0               inf                  inf      187      2    911    29938k 40197.0s
+      1288      22       126   1.11%   0               inf                  inf      187      2    913    30274k 40493.2s
+      1289      22       127   1.11%   0               inf                  inf      188      2    915    30374k 40594.4s
+      1291      22       128   1.11%   0               inf                  inf      189      2    917    30499k 40717.5s
+      1292      22       129   1.11%   0               inf                  inf      190      2    918    30622k 40840.1s
+      1295      22       130   1.31%   0               inf                  inf      191      2    930    30914k 41114.0s
+      1297      22       131   1.40%   0               inf                  inf      192      2    942    31066k 41234.5s
+      1300      22       132   1.43%   0               inf                  inf      193      2    948    31521k 41627.6s
+      1302      22       133   1.44%   0               inf                  inf      194      2    954    32002k 42007.3s
+      1304      22       134   1.45%   0               inf                  inf      194      2    960    32338k 42265.8s
+      1306      22       135   1.45%   0               inf                  inf      194      2    964    32675k 42516.3s
+      1307      22       136   1.45%   0               inf                  inf      195      2    976    32868k 42666.4s
+      1310      29       137   1.46%   0               inf                  inf      195      2    982    34555k 42962.5s
+      1310      28       137   1.46%   0               inf                  inf      195      2    982    34555k 43020.5s
+      1311      29       138   1.46%   0               inf                  inf      337      3    984    34775k 43200.2s
+      1311      29       138   1.46%   0               inf                  inf      337      3    984    34775k 43200.2s
+
+Solving report
+  Status            Time limit reached
+  Primal bound      inf
+  Dual bound        0
+  Gap               inf
+  P-D integral      0
+  Solution status   -
+  Timing            43200.19
+                    195.71 (Presolve)
+                        MIP    time [calls] = 3.99 [1]
+                        subMIP time [calls] = 191.72 [573]
+                    43004.30 (Solve)
+                        MIP    time [calls] = 34028.82 [1]
+                        subMIP time [calls] = 8975.48 [484]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [573]
+  Max sub-MIP depth 18
+  Nodes             1311
+  Repair LPs        0
+  LP iterations     34775842
+                    0 (strong br.)
+                    128954 (separation)
+                    4646693 (heuristics)
+N=5040 T=7: 54 values, 19323 columns
+status: Time limit reached
+INDETERMINATE (time limit?)
