@@ -108,6 +108,36 @@ Searched 2026-07-23:
 - Wall time: 18,002 s for the n ≤ 72 CP-SAT sweep + 27,601 s for n = 73..78
   (concurrent with the deep search, ~25,700 s), 8 cores.
 
+## Second extension: full Latin Tableau Conjecture (shape + type) sweep
+
+Coordinator asked to push further "another way", so we attacked the **stronger**
+conjecture (Chow–Tiefenbruck 2025, of which wide ⇒ Latin is the specialization):
+*a Latin tableau of shape λ and type μ exists iff δ(λ) ⪰ μ*, δ = chromatic
+difference sequence. A counterexample here could exist even if wide ⇒ Latin holds.
+
+- **Reduction used (proved, CT Prop. 2)**: achievable types form a down-set in
+  dominance order, so LTC ⟺ for every shape λ a Latin tableau of type exactly δ(λ)
+  exists. One feasibility test per shape.
+- δ computed exactly (integers only) via CT Theorem 1 corner constraints:
+  α_r = min_{i,j≥0} [ r(i+j) + Σ_{k>i} max(λ_k − j, 0) ], δ_r = α_r − α_{r−1};
+  sanity-checked (δ((4,2,1)) = (3,2,1,1), δ((3,3,3)) = (3,3,3), δ weakly
+  decreasing and summing to |λ| asserted for every shape).
+- `ltc_search.py`: CP-SAT boolean encoding x[r,c,k] (cell gets color k), exactly-one
+  per cell, at-most-one per color per row/column, Σ x[·,k] = δ_k; SAT tableaux
+  re-checked exactly (shape, distinctness, sorted multiplicities == δ).
+- `ltc_verify.py`: independent pure-Python verifier (no OR-Tools, no floats):
+  independent δ computation + exhaustive MRV DFS with one sound symmetry reduction
+  (untouched equal-multiplicity colors are interchangeable).
+
+**Result: LTC verified exhaustively for ALL shapes with |λ| ≤ 55** — 2,984,864
+shapes, every one SAT with exact re-check; `ltc_candidates.txt`/`ltc_unknown.txt`
+never created (no UNSAT, no timeout at 600 s). Prior art was the 12×12 box (CT
+2025), which by size covers all shapes only for |λ| ≤ 13 — so sizes 14..55 add a
+large new by-size frontier (every shape with λ₁ ≥ 13 or ℓ(λ) ≥ 13 up to size 55
+was previously unchecked). Independent cross-check via `ltc_verify.py --frontier`
+to n ≤ 20 with identical outcomes (`ltc_verify_log.txt`). Wall time 25,399 s
+(~7 h) on 8 cores (`ltc_log.txt`).
+
 ## Dead ends / notes
 
 - (2,1,1): not wide (submultiset (1,1) ⪰̸ (2)) and not Latin — consistent.

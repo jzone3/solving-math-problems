@@ -1,0 +1,1 @@
+LTC (via CT Prop 2 reduction to type=delta) verified for all shapes |lambda| <= 55
