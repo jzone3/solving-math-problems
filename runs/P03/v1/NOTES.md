@@ -262,6 +262,26 @@ vs fastcuts+pysat (30 instances).
 - 2,770 instances exceeded the backtracker node limit (~0.03%); every one
   independently re-checked (fastcuts + CaDiCaL): all pack. Zero UNSAT.
 
+## Phase 7 — C-speed exhaustive frontier (all in-degree-3 bipartite)
+
+bipexhaust.c: exhaustive enumeration of ALL multisets of q sink-triples
+over p sources (canonical nondecreasing triple order kills sink
+permutations), full-cover filter, 2^p dicut sweep, tau=3 filter,
+node-limited 3-coloring backtracker (hard deferral, none occurred).
+Re-verified the old Python frontier first: p=6 q=9 gives 6,906,900 multisets
+/ 2,472,000 tau=3 - all pack, matching phase 4.
+
+New exhaustive results (zero UNSAT, zero hard deferrals):
+- p=6: q=10 (20.0M multisets / 10.1M tau=3), q=11 (54.6M / 34.3M),
+  q=12 (141.1M / 101.8M) - all pack.
+- p=7: q=7 (22.5M / 17k), q=8 (118.0M / 2.78M),
+  q=9 (563.9M / 56.8M), q=10 (2,481.3M / 551.7M) - all pack.
+- p=7 q=11 (10.15B multisets) sharded 8 ways: in progress.
+
+By the ACZ reduction this proves Woodall for every digraph whose reduced
+sink-regular form has <= 7 sources and <= 10 sinks (well beyond what
+theory alone certifies), on top of the earlier frontiers.
+
 ## STATUS
 
 STATUS: negative / frontier-pushed — no counterexample. Exhaustive: all
