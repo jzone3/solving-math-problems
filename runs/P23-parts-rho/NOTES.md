@@ -117,7 +117,48 @@ For each candidate t: W_t = P_t ∪ ω_t P_t (shared origin), all edges exact,
 Control t=4: W_4 = 5677 vertices / 42018 edges → **UNSAT** (contains G509's
 geometry; machinery confirmed end-to-end).
 
-RESULTS TABLE — filled in below as runs complete.
+| t  | W_t vertices / edges | 4-colorable? | verdict |
+|----|----------------------|--------------|---------|
+| 1  | 505 / 3924           | SAT  | fails (degenerate: pool closed under ω₁) |
+| 3  | 805 / 5076           | SAT  | fails (native) |
+| 4  | 5677 / 42018         | **UNSAT** | control — the record's rotation ✓ |
+| 5  | 6301 / 46440         | SAT  | fails (ref-only) |
+| 7  | 6757 / 51204         | SAT  | fails (native) |
+| 9  | 27265 / 270966       | SAT  | fails (despite ref + 1 aux kind) |
+| 10 | 27889 / 275808       | SAT  | fails (no ref kind) |
+| 11 | 28309 / 279246       | SAT  | fails (ref-only) |
+| 12 | 28621 / 281562       | SAT  | fails (ref-only) |
+| 13 | 28933 / 284112       | SAT  | fails (ref-only) |
+| 15 | 29053 / 284952       | SAT  | fails (despite ref + 1 aux kind) |
+| 16 | 77485 / 863046       | **UNSAT** | **WORKS — new type-M rotation** |
+| 19 | 79393 / 884376       | SAT  | fails (native, 281 kinds!) |
+| 20 | 79561 / 880920       | SAT  | fails (ref-only) |
+| 21 | 79729 / 882384       | SAT  | fails (despite ref + 1 aux kind) |
+| 23 | 79813 / 882972       | SAT  | fails (ref-only) |
+| 25 | 173317 / ~2M         | SAT  | fails (native, 583 kinds) |
+| 28 | 175057 / 2069280     | **UNSAT** | **WORKS — new type-M rotation** |
+
+Controls for the two new working rotations: the SINGLE (unrotated) copy is
+4-colorable in both cases — `pool_alone.py`: r=4 pool (38743 vtx / 431490
+edges) → SAT; r=√28 pool (87469 vtx / 1034100 edges) → SAT. So the
+non-4-colorability genuinely comes from the ω_t cross edges, not from the
+lattice disk itself.
+
+**New working rotations found (Parts: "Working constructions of type M with
+other rotations are not known yet"):**
+- **ω₁₆ = (31 + 3i√7)/32** = exp(i arccos(31/32)); union lives in
+  ℚ(√3,√7,√11); cross structure: 30 reference edges (radius-4 pairs) + three
+  auxiliary kinds (12+12+12).
+- **ω₂₈ = (55 + i√111)/56** = exp(i arccos(55/56)); union in ℚ(√3,√11,√37);
+  60 reference + 24 + 12 auxiliary.
+
+Both unions are being SAT-core/greedy-minimized (`coremin.py`, `greedy.py`,
+every step drat-trim-core-checked); results below.
+
+Not tested (too large / no candidate structure): t=27, 31 (ref-only kind at
+radius √t — all six tested ref-only rotations came out SAT); t=2, 6, 8, 14,
+17, 18, 22, 24, 26, 29, 30, 32 (no reference points at all; t=24 has a single
+aux kind and no ref, analogous to the failed t=10).
 
 ## Files
 

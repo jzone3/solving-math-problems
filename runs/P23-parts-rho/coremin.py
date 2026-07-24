@@ -77,6 +77,11 @@ if __name__ == '__main__':
         print(f'seed{seed} it{it}: n={len(S)} -> core {len(keep)} {dt}s', flush=True)
         if len(keep) >= len(S):
             break
+        shrink = (len(S) - len(keep)) / len(S)
         S = keep
+        pickle.dump(sorted(S), open(f'coremin_seed{seed}_snap.pkl', 'wb'))
+        if shrink < 0.004:
+            print(f'seed{seed}: plateau (shrink {shrink:.4f}), stopping', flush=True)
+            break
     pickle.dump(sorted(S), open(f'coremin_seed{seed}.pkl', 'wb'))
     print(f'seed{seed} FINAL {len(S)}', flush=True)
