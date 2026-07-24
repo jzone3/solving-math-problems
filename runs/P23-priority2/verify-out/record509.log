@@ -1,0 +1,38 @@
+{
+  "file": "runs/P23-priority2/sources/code-evidence/509_parts.vtx",
+  "claimed_order": 509,
+  "field": "mfield Q(3,5,11)",
+  "parsed_order": 509,
+  "edge_count": 2442,
+  "status": "UNSAT",
+  "certificate": "s VERIFIED",
+  "numeric_margin": "0.00016021784676687764682183462038084329244198511808109511983357070037468593466264502311281077961824003428176538053858150732200488207320485451292513931299695258801840814002052260854797264763397069235253837024342488552966812564418629748862462907488836041171666062401",
+  "near_candidates": 2442
+}
+
+PARSE exact SymPy records=509 field=mfield Q(3,5,11)
+EDGE exact_unit_edges=2442 near_candidates=2442 closest_nonedge_margin=0.00016021784676687764682183462038084329244198511808109511983357070037468593466264502311281077961824003428176538053858150732200488207320485451292513931299695258801840814002052260854797264763397069235253837024342488552966812564418629748862462907488836041171666062401 pair=(137, 395)
+KISSAT
+s UNSATISFIABLE
+
+
+DRAT-TRIM
+
+c turning on binary mode checking
+
+c parsing input formula with 2036 variables and 13331 clauses
+
+c finished parsing, read 177525003 bytes from proof file
+
+c detected empty clause; start verification via backward checking
+
+c 11342 of 13331 clauses in core                            
+
+c 1060671 of 1942431 lemmas in core using 81587284 resolution steps
+
+c 0 RAT lemmas in core; 1187708 redundant literals in core lemmas
+
+s VERIFIED
+
+c verification time: 125.563 seconds
+

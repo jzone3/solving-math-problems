@@ -1,0 +1,41 @@
+
+Jaan Parts,
+Graph minimization, focusing on the example
+of 5-chromatic unit-distance graphs in the plane
+
+
+   graph type         M (minimal)       A (accumulative)    coordinates
+
+M-graph     m6a     509 v509e2442.vtx
+                    510 v510e2502.vtx
+
+L-subgraph  m6a     374 v374e1860.vtx  412 v412e2106.vtx
+                    374 v374e1868.vtx  406 v406e2082.vtx
+                    375 v375e1920.vtx  403 v403e2112.vtx
+                    376 v376e1890.vtx  451 v451e2400.vtx
+            m6b     374 v374e1864.vtx  406 v406e2076.vtx
+                    375 v375e1916.vtx  403 v403e2106.vtx
+            m6c     374 v374e1872.vtx  400 v400e2034.vtx
+
+S-subgraph  m6a     136 v136e564.vtx   166 v166e774.vtx
+            m6b     141 v141e594.vtx   172 v172e804.vtx
+            m6c     150 v150e639.vtx   167 v167e772.vtx
+
+mono-pair   8/3     367 v367e1822.vtx  375 v375e1862.vtx  (+-4/3, 0)
+            8/r3 *  421 v421e2094.vtx  433 v433e2186.vtx  (0, +-4/r3)
+
+non-mono-   3       214 v214e977.vtx   226 v226e1037.vtx  (+-3/2, 0)
+   -pair    7/3     319 v319e1524.vtx  343 v343e1688.vtx  (+-7/6, r11/6)
+            5/3     315 v315e1498.vtx  335 v335e1638.vtx  (+-5/6, r11/6)
+            1/3     312 v312e1502.vtx                     (+-1/6, 0)
+            r11/r3  308 v308e1522.vtx  310 v310e1536.vtx  (+-r11/r12, 1/r12)
+
+non-mono-   r7  **  159 v159e646.vtx   180 v180e778.vtx   (1, -2/r3)
+   -triple  r5      265 v265e1293.vtx                     (2/3, r11/3)
+            r3      221 v221e1006.vtx  238 v238e1131.vtx  (1, 0)
+            r5/r3   250 v250e1116.vtx                     (1/2, r11/6)
+            1/r3    265 v265e1246.vtx  289 v289e1389.vtx  (1/3, 0)
+_______
+
+ *  rN = sqrt(N)
+ ** all triples have center (0, 0), other points obtained by *exp(+-i2pi/3)
