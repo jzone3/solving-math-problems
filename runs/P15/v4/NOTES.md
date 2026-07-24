@@ -950,3 +950,25 @@ n-increase expressible as the depth parameter).  Burden (c) roadmap:
 Each step is finite and now mechanically checkable.
 
 STATUS: near-miss / frontier-pushed
+
+## 29. Phase 15b: residue emission of the 2/3-skeleton - distinct moduli confirmed
+
+emitcore.py emits Owens's secs. 3.1-3.2 (2^(1) T=42-truncated + 3^(2,4^) on
+the odd branch, minus moduli {6,12,18,24,36}, + 81^(1,_) on 21 mod 27) as
+explicit congruences and machine-checks them.  With the input-1 model
+corrected to a single congruence (not a 2^ tower):
+    123 congruences, ZERO duplicate moduli, min modulus 48 (>=42).
+Residual holes (density 0.863) are exactly the cells later sections fill:
+the even cells {2(4),4(8),8(16),16(32)}, the 4^-input relative-odd "grey"
+cells, and the odd 5*3^i / 3^j line (holes 5,15,45,63,... - the input to
+sec 3.3, the prime 5).  This is the first residue-level, distinct-modulus
+reconstruction of the skeleton and confirms the emitter (phase 15) scales
+to real Owens sections.
+
+Remaining work for a full witness is emission of secs. 3.3-3.20 with
+per-tower depth bookkeeping - a large but finite engineering task; the
+2/3-skeleton demonstrates the method is sound and the moduli come out
+distinct without any freshness "proof", because the depth parameter (n) is
+chosen large enough per tower exactly as Nielsen/Owens prescribe.
+
+STATUS: near-miss / frontier-pushed
