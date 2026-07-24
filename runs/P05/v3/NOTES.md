@@ -129,7 +129,21 @@ center).
   **counterexample** (longest = 2D+M, only two arms usable per path).
   This is exactly the property the A1–A3 dead-end analysis said is required.
 - Exhaustive over all 2-connected graphs: n=4..8 (7,721 blocks): NO block has
-  the property. n=9 (194,066): NO hit. n=10: COMPLETE, all 9,743,542 2-connected graphs scanned (7 workers, ~2.9 core-hours after a 4x fast-filter rewrite), NO hit. n=11 (~317M blocks, 8 workers) launched.
+  the property. n=9 (194,066): NO hit. n=10: COMPLETE, all 9,743,542
+  2-connected graphs scanned (7 workers, ~2.9 core-hours after a 4x
+  fast-filter rewrite), NO hit.
+- General n=11 is ~440M blocks (infeasible in full here); a 3/192 random-slice
+  sample (~7M blocks) is running — no hit so far.
+- **Subcubic escalation** (where hypotraceable-like pathologies live; degree
+  ≤ 3 2-connected blocks via geng -C -D3): COMPLETE and negative for
+  n=11..17 (3,421 / 11,679 / 43,418 / 165,993 / 666,854 / 2,756,486 blocks
+  at n=12..17; worker totals match exactly). n=18 (11,780,245) running
+  4-way split.
+- Conclusion so far: no block on ≤ 17 vertices (subcubic) or ≤ 10 vertices
+  (general) admits the three-equal-avoidant-crossings configuration, so no
+  Gallai-3 counterexample of the "block + three pendant arms" shape exists
+  with such a core. Any counterexample of this shape needs a structurally
+  larger/denser exotic block.
 
 ## STATUS: negative
 

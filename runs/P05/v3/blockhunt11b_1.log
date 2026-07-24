@@ -1,0 +1,14 @@
+n=11 cnt=5000 elapsed=41s
+n=11 cnt=10000 elapsed=59s
+n=11 cnt=15000 elapsed=79s
+n=11 cnt=20000 elapsed=109s
+n=11 cnt=25000 elapsed=134s
+n=11 cnt=30000 elapsed=160s
+n=11 cnt=35000 elapsed=186s
+n=11 cnt=40000 elapsed=218s
+n=11 cnt=45000 elapsed=258s
+n=11 cnt=50000 elapsed=300s
+n=11 cnt=55000 elapsed=351s
+n=11 cnt=60000 elapsed=410s
+n=11 cnt=65000 elapsed=485s
+n=11 cnt=70000 elapsed=579s

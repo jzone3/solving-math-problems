@@ -109,7 +109,7 @@ def check_block(n, adj, g6):
 
 def main():
     n = int(sys.argv[1])
-    extra = [sys.argv[2]] if len(sys.argv) > 2 else []
+    extra = list(sys.argv[2:])  # e.g. res/mod split and/or -D3 degree bound
     proc = subprocess.Popen(["nauty-geng", "-q", "-C", str(n)] + extra,
                             stdout=subprocess.PIPE, text=True)
     t0 = time.time()
