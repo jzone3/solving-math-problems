@@ -75,7 +75,11 @@ n=16 and 455 graphs at n=18. The preparation filter retained all of them:
 none were planar or below 3-edge-connectivity. Eight n=16 PyPy shards were
 launched over ranges `0:7, 7:13, 13:19, 19:25, 25:31, 31:37, 37:43,
 43:49`. Their candidate files are empty at launch/checkpoint; the exhaustive
-orientation and exact CEGAR checks are still running.
+orientation and exact CEGAR checks are still running. After roughly 12
+minutes, the shards had completed 1–2 of their assigned graphs (five of
+eight shards had reached graph 2), with cumulative per-shard CEGAR checks
+ranging from 1.33M to 2.76M and zero candidates. The n=16 high-girth run
+remains active and is being checkpointed in the shard logs.
 
 This experiment is explicitly scoped to connected cubic graphs of girth at
 least 5, after the non-planar and 3-edge-connected filters. It is not a

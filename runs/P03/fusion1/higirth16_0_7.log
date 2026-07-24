@@ -1,1 +1,2 @@
 [1/7] {'graphs': 1, 'dags': 8325436, 'profile_dags': 6786028, 'ss_skip': 5716756, 'packed_cegar': 1069272, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=253s
+[2/7] {'graphs': 2, 'dags': 16371528, 'profile_dags': 13394496, 'ss_skip': 11113532, 'packed_cegar': 2280964, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=537s
