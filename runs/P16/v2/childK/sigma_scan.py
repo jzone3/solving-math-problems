@@ -10,12 +10,6 @@ from common import g6_to_adj, build, geng
 from graphs import windmill, wheel, hub_plus_cycles, hub_plus_cliques
 
 
-def mineig_s(bd, s):
-    D = np.diag(s)
-    Ms = 2 * D + 4 * np.eye(bd["n"]) - bd["Q"] - D @ bd["H"] @ bd["A"] * 0 - D @ bd["H"] @ D
-    return np.linalg.eigvalsh(Ms)[0]
-
-
 def mineig(bd, s):
     D = np.diag(s)
     Ms = 2 * D + 4 * np.eye(bd["n"]) - bd["Q"] - D @ bd["H"] @ D
