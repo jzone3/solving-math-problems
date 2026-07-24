@@ -275,12 +275,17 @@ New exhaustive results (zero UNSAT, zero hard deferrals):
 - p=6: q=10 (20.0M multisets / 10.1M tau=3), q=11 (54.6M / 34.3M),
   q=12 (141.1M / 101.8M) - all pack.
 - p=7: q=7 (22.5M / 17k), q=8 (118.0M / 2.78M),
-  q=9 (563.9M / 56.8M), q=10 (2,481.3M / 551.7M) - all pack.
-- p=7 q=11 (10.15B multisets) sharded 8 ways: in progress.
+  q=9 (563.9M / 56.8M), q=10 (2,481.3M / 551.7M),
+  q=11 (10,150.6M multisets / 3,650.2M tau=3, 8 shards, ~7 core-hours)
+  - all pack.
+- p=8: q=8 (3,872.9M / 703k), q=9 (27,540.6M / 231.7M) - all pack.
+- p=8 q=10 (~179B multisets) sharded 5 ways: in progress.
 
 By the ACZ reduction this proves Woodall for every digraph whose reduced
-sink-regular form has <= 7 sources and <= 10 sinks (well beyond what
-theory alone certifies), on top of the earlier frontiers.
+sink-regular form has <= 7 sources and <= 11 sinks, or <= 8 sources and
+<= 9 sinks (well beyond what theory alone certifies), on top of the
+earlier frontiers. Cumulative exhaustive enumeration this phase: ~44.9B
+multisets, ~4.6B tau=3 packing checks, zero UNSAT, zero hard deferrals.
 
 ## STATUS
 
@@ -301,5 +306,9 @@ exhaustive structured families forcing disjoint / laminar / crossing
 nontrivial tight 3-cuts (~20k instances) - all pack. Phase 6: the tau=4
 smallest open class ((5,4)-biregular, p=12/q=15, 60 arcs, open since ACZ's
 P4 is tau=3-specific): 9.93M instances checked (hard cases independently
-resolved via fastcuts+CaDiCaL) - all pack. No
+resolved via fastcuts+CaDiCaL) - all pack. Phase 7: exhaustive C
+enumeration of ALL in-degree-3 bipartite instances through p=7 sources /
+q=11 sinks and p=8 / q=9 (~45B multisets, ~4.6B tau=3 packing checks) -
+all pack; by the ACZ reduction Woodall now holds for every digraph whose
+sink-regular reduced form fits those sizes. No
 solutions/P03/verify.py since there is no claimed witness.
