@@ -39,3 +39,4 @@ GRAPH 33 orientations=227285412 profiles=87534068 ss=56657712 tau_skip=0 safe=75
 GRAPH 34 orientations=233876160 profiles=90110736 ss=58104316 tau_skip=0 safe=7792152 checks=24214268 packed=24214268 cand=0 deferred=0
 GRAPH 35 orientations=239808024 profiles=92436388 ss=59328442 tau_skip=0 safe=8266430 checks=24841516 packed=24841516 cand=0 deferred=0
 GRAPH 36 orientations=247669248 profiles=95415256 ss=61568328 tau_skip=0 safe=8267166 checks=25579762 packed=25579762 cand=0 deferred=0
+GRAPH 37 orientations=254847828 profiles=98174008 ss=63356692 tau_skip=0 safe=8268278 checks=26549038 packed=26549038 cand=0 deferred=0
