@@ -195,7 +195,13 @@ static void leaf(void){
     for(int z=0;z<n;z++)for(int v=0;v<n;v++)if(reachv[v]&(1ULL<<z))reachv[v]|=reachv[z];
     if(source_sink_ok()){ss_skip++;return;}
     enumerate_cuts();
-    if(enum_deferred){deferred++;return;}
+    if(enum_deferred){
+        deferred++;
+        fprintf(stderr,"DEFERRED n=%d m=%d arcs=",n,arc_m);
+        for(int i=0;i<arc_m;i++)fprintf(stderr,"%s%d>%d",i?",":"",ou[i],ov[i]);
+        fputc('\n',stderr); fflush(stderr);
+        return;
+    }
     if(tauv!=k){tau_skip++;return;}
     if(!rho_ok()){safe_skip++;return;}
     if(!rho_reverse_ok()){safe_skip++;return;}
