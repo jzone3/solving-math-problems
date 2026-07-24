@@ -218,6 +218,8 @@ Round 4: the triangle-free subcase (bound λ₁²+λ₂² ≤ m) exhausted for A
 triangle-free graphs n ≤ 15 (1.47×10¹⁰ graphs, counts match A006785 exactly) —
 zero violations; equality only at disjoint unions of complete bipartite graphs
 (max gap ≈ 6e-12 float noise).
+Round 5: ~8×10⁷ dihedral Cayley graphs up to order 64 (exhaustive through
+order 34, sampled beyond) — zero violations, equality families only.
 
 ## Round 4 (coordinator push #3): exhaustive triangle-free subcase (ω = 2)
 
@@ -239,3 +241,24 @@ Near-boundary structure: every best_gap is +4e-12 float noise at exact
 equality s = m, attained by disjoint unions of complete bipartite graphs
 (λ₁² + λ₂² = ab + cd = m for K_{a,b} ∪ K_{c,d}) — the known ω = 2 equality
 family. No non-trivial near-miss.
+
+## Round 5 (coordinator push #4): dihedral Cayley graph sweep
+
+Fifth attack: Cayley graphs of the dihedral groups D_n (order 2n), a
+vertex-transitive family strictly beyond the circulant scan of round 1.
+Code: `cayley.c` (`gcc -O3 -march=native -o cayley cayley.c -lm`).
+Connection sets S = S^{-1} built from rotation pairs {r^k, r^{-k}},
+optionally r^{n/2}, and any subset of the n reflections s r^i; exact ω via
+bitmask B&B (2n ≤ 64), λ₁/λ₂ via tridiagonalization + Sturm bisection to
+1e-12; early-out s ≤ m − 1e-6 is safe since RHS ≥ m.
+
+- EXHAUSTIVE for n = 3..17 (all 2^(⌊(n−1)/2⌋+[2|n]+n) − 1 connection sets;
+  33,554,430 sets at n = 17 / order 34): 0 candidates.
+- SAMPLED 3×10⁶ random connection sets each for n = 18..32 (orders 36..64,
+  ~4.5×10⁷ total): 0 candidates.
+- Best gaps everywhere ≈ +7e-11 or below — float noise at exact equality,
+  attained by complete-multipartite-type Cayley graphs (e.g. 2·K_n from all
+  rotations, K_{n,n} from all reflections, cocktail-party-type sets).
+
+Result: zero violations, zero non-trivial near-misses across ~8×10⁷ dihedral
+Cayley graphs up to order 64 (`cay/n*.sum`).
