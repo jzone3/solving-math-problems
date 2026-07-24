@@ -86,7 +86,34 @@ girth-at-least-5 n=16 subfamily only.
 
 The n=18 input was generated and prepared (455 graphs retained), but was not
 launched after n=16 completion because its expected runtime exceeded the
-remaining session budget.
+remaining session budget. It is now running in eight background shards over
+the 455 prepared graphs; logs and candidate files are checkpointed by range.
+
+## Tau=4 n=10 reduced-cell exhaustion
+
+`nauty-geng -c -d3 -D4 10` generated 4,414 connected graphs. Filtering to
+exact degree sequence `[3,3,3,3,3,3,4,4,4,4]` gave 1,404 graphs, of which
+426 were planar and 978 non-planar. The corrected exhaustive run over all
+978 non-planar graphs enumerated 25,345,994 acyclic orientations and 6,092
+profile-matching orientations. Of those, 6,076 were source-sink-connected
+and 16 had tau=3; **zero had tau=4**, so zero exact k=4 packing instances
+were required and zero candidates were emitted. This is an exhaustive
+closure of the reduced profile cell at n=10, with the stronger conclusion
+that no orientation in the generated non-planar graph family reaches tau=4.
+
+An initial implementation omitted the explicit tau=4 check before emitting
+diagnostics; it emitted 16 false candidates that all independently verified
+with the PySAT harness as tau=3 and non-packing for k=4. Those outputs are
+retained as debugging artifacts; they are not counterexamples. The corrected
+rerun has empty candidate files. The new size-4 reduced-dicut filter was
+cross-validated against direct closed-set enumeration on 300/300 instances.
+
+## Standalone verifier
+
+Added `solutions/P03/verify.py`, which has no third-party dependencies. It
+passed 80 exact-vs-brute checks for k=3, 80 for k=4, and independently
+reconstructed two representative n=16 high-girth orientations, confirming
+tau=3 and exact 3-dijoin packing. It prints `PASS` only after all checks.
 
 This experiment is explicitly scoped to connected cubic graphs of girth at
 least 5, after the non-planar and 3-edge-connected filters. It is not a
