@@ -272,3 +272,9 @@ parity theorem. False: brute force over all chord 2-factors found odd-t gadgets 
 w=7 (72 of 292), w=8 (696/2976), ..., w=11 (2420416/5849252). Exact minima by full
 enumeration: w=6: 8, w=7: 10, w=8..11: 12. So no Thomason-style parity argument applies;
 t=1 can only be excluded by exhaustion (done for w ≤ 16) or a new idea.
+
+w=15 full-space exact minimum (window.c, complete enumeration of all 10,010,698,109 chord
+2-factors, ~16 h): min t = 24, attained by 124 gadgets; example chords
+0-2 0-3 1-3 1-8 2-8 4-6 4-7 5-7 5-14 6-14 9-11 9-12 10-12 10-13 11-13
+(two pentagram-blocks + linking). This independently re-confirms no t=1 at w=15 and
+extends the exact-minimum table: w=6..15 minima 8,10,12,12,12,12,12,16,18,24.
