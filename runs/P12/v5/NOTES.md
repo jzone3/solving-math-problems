@@ -257,6 +257,21 @@ sequential-counter exactly-one for distance 1 and at-most-one for distance 2).
   attack would need the clique/candidate reformulation inside the encoding (candidate selector
   variables instead of cell variables) plus cluster-scale cubing — documented as future work.
 
+### D8. Randomized-restart DFS witness hunt (rdfs.c, second resume)
+CPro1-style randomized backtracking (the method that solved several open design instances):
+normalized DFS with random value ordering + node-budget restarts (budgets 5·10⁵–2·10⁷ tried),
+multi-threaded, hours per order. Control: finds T2(8) in < 1 s (verify.py PASS).
+- n=11: reaches valid 9-row partials by the thousands and ONE 10-row partial (only one row
+  missing — deepest partial T2(11) we know of; recorded in rdfs11b/rdfs11c logs+dumps);
+  never completed row 11.
+- n=13: reaches 11-row partials (two short); never 12. Deepest partials dumped in rdfs13b.txt.
+- Odd/even contrast: for n=7, 9 (proven nonexistent) the same hunter reaches (n−1)-row partials
+  quickly and of course never finishes; the qualitative behaviour of n=11, 13 is identical to
+  the provably-empty orders — further (heuristic) evidence for odd nonexistence.
+Note: CPro1's authors ran comparable heuristics 48 h on a Ryzen 7950X3D per instance and also
+failed on exactly these two instances (they remain OPEN_INSTANCES in their repo; their solved
+designs/ directory has no tuscan-2-square entry — re-checked this session).
+
 Recommended next attack: Kapralov-style clique search on the 6,026,973-candidate compatibility
 graph with modern parallel exact solvers on a cluster, or SAT with candidate-selector variables
 (not cell variables) and cluster-scale cubing; the C6 rigidity theorem guarantees that

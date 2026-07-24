@@ -71,7 +71,22 @@ static int rdfs(State *s, int r, int pos, uint16_t inrow,
     if (pos == N) {
         int last = s->row[r][N-1];
         if (s->waslast[last]) return 0;
-        if (r + 1 > *bestdepth) *bestdepth = r + 1;
+        /* rows 0..r all valid (incl. last-column distinctness) here */
+        if (r + 1 > *bestdepth) {
+            *bestdepth = r + 1;
+            if (r + 1 > best_depth_global) {
+                #pragma omp critical
+                if (r + 1 > best_depth_global) {
+                    best_depth_global = r + 1;
+                    printf("PARTIAL depth=%d n=%d\n", r + 1, N);
+                    for (int i = 0; i <= r; i++) {
+                        for (int j = 0; j < N; j++) printf("%d ", s->row[i][j]);
+                        printf("\n");
+                    }
+                    fflush(stdout);
+                }
+            }
+        }
         s->waslast[last] = 1;
         int abrt = 0;
         if (r == N - 1) {
