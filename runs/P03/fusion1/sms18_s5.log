@@ -1,0 +1,1 @@
+{"n": 18, "sources": 5, "sinks": 5, "candidates": 100, "tau_lt3": 10, "packed": 83, "out_safe_reject": 7, "rho_reject": 0, "status": "budget", "seconds": 28.55}

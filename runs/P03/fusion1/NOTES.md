@@ -396,3 +396,53 @@ weights and exact CBC lazy-separation packing, ran:
 ```
 
 No tau_w=3 instance with weighted packing below three was found.
+
+### SAT-modulo-properties graph search
+
+The new `sms_search.py` implements an outer Glucose4 SAT search over
+topologically labelled reduced cubic DAGs. For a profile with `s` sources
+and `s` sinks, sources are placed first and sinks last in the topological
+order (WLOG); internal vertices are constrained to type `(1,2)` or
+`(2,1)`, with exact role counts. Every complete edge assignment is blocked
+by its exact edge-set clause after checking connectivity, planarity,
+source-sink connectivity, both rho bounds, exact tau, and exact CEGAR
+packing. This is a sound labelled-class search: absence of an isomorphism
+rejection layer can only cause duplicate proposals, never remove a graph.
+
+Neither `sms` nor `pysms` was installed on the box, so the purpose-built SMS
+tool was not used. The implementation uses static topological-order
+symmetry reduction only; all reported runs below are budget-terminated
+partial searches, not UNSAT closures.
+
+The tiny agreement check used an n=8, two-source/two-sink SAT proposal. The
+C engine, Python CEGAR checker, and independent harness all agreed:
+
+```text
+tau=3; 7 minimal dicuts; pack=True
+```
+
+An initial tau helper based on directed source-to-sink min-cuts produced
+three false apparent candidates at n=16. Independent harness verification
+showed their actual tau values were 2, 1, and 2. The SAT search was corrected
+to use the exact harness tau routine for n<=20; the false logs were discarded
+and no candidate is claimed.
+
+Corrected SAT/CEGAR bounded results:
+
+```text
+n=16: 6 profiles (s=2..7), 600 candidates, 171 tau<3,
+       113 packed, 77 source-sink/planarity rejects, 239 rho rejects;
+       all profiles stopped on budget, no candidate.
+n=18: 7 profiles (s=2..8), 700 candidates, 94 tau<3,
+       216 packed, 122 source-sink/planarity rejects, 268 rho rejects;
+       all profiles stopped on budget, no candidate.
+n=20: 8 profiles (s=2..9), 376 candidates, 89 tau<3,
+       154 packed, 21 source-sink/planarity rejects, 112 rho rejects;
+       all profiles stopped on budget, no candidate.
+```
+
+The counts are not exhaustive closures: every profile had a time or
+candidate budget, and no profile reached UNSAT. Since no new tau=3 closure
+was obtained, the tau=4 SAT search was not started. No non-packing instance
+survived exact checking, so no independent counterexample re-verification
+was required.
