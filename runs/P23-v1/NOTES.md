@@ -161,6 +161,13 @@ Following the problem file's "Minkowski sums" lever, we generated genuinely new 
   zero swap-deletables. Annealing chains over the combined pool seeded at the
   triple-substituted variant also re-converged to 509.
 
+- **Rotated-copy pool** (`rotpool.py`): exact in-field unit rotations u1 = 5/6 + (√11/6)i
+  and u2 = 1/2 + (√3/2)i (and products) applied to the whole record — G509 ∪ 5 rotated
+  copies dedupes to 1704 vertices / 9534 exact edges (the copies overlap heavily: the
+  record is nearly closed under these ring rotations). Full swap scan of all 154
+  candidates: **2 more single swaps** (w=1124→v=301, w=1251→v=220 — the same record
+  vertices already known to be replaceable), no pairs, no 508.
+
 The striking outcome: the record's size is invariant under substitution of new Minkowski
 geometry — every reachable 509-vertex variant is again vertex-critical. This strongly
 suggests 509 sits at the bottom of a wide structural basin, and beating it needs a
