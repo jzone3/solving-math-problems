@@ -177,6 +177,23 @@ can never violate the conjecture (equality iff the positive spectrum has rank �
 K_a ∪ K_a). Also note 2e_w = ‖S‖_F² for loopless profiles, so the graphon-regime statement is
 μ₁² + (μ₂⁺)² ≤ (1 − 1/ω)·Σ_k μ_k².
 
+## Campaign 5: native-C Metropolis annealer at n = 13–40 (`bn_anneal.c`)
+
+Ports the validated bn_check.c eigensolver (Householder + Sturm, full precision) and exact
+Tomita MaxClique into a Metropolis edge-flip annealer on the ratio objective (~200k full exact
+evaluations/s/core — ~10⁴× the Python annealer's throughput). Geometric cooling 0.02 → 0.0005
+over 60k steps per restart; each restart draws n uniform in the worker's range and G(n,p),
+p ∈ [0.2, 0.8]. Validated against `bn_core.py` to 12 decimal digits on best-found graphs at
+n = 13/20/30. Any graph with ratio > 1 + 1e-9 is printed as CANDIDATE in graph6.
+
+Local round 1 (8 workers × 4 h, seeds 1000–1007, ranges 13–16/17–20/21–26/27–34/13–40):
+9,452,928,667 Metropolis steps over 166,837 restarts — **zero candidates**; best ratio exactly
+1.000000000000 in every worker, all at known equality classes (verified in Python: e.g. n=17
+ω=2 bipartite-union m=22, n=21 ω=5 m=160, n=27 ω=8 m=252 all ratio exactly 1). Logs:
+anneal_c/w*.log. Local round 2 (seeds 5000–5007, n=13–32, 3 h) + two child-Devin shards
+(seeds 2000–2007 n=13–40 and 3000–3007 n=13–20, 8 workers × 4 h each, mandatory sanity gate;
+logs merged from branches runs/P09-v1-annealA/-annealB): results below.
+
 ## STATUS: negative / frontier-pushed
 
 No counterexample found. Campaign totals:
