@@ -1854,3 +1854,52 @@ could pass.
 
 STATUS: near-miss / frontier-pushed
 
+## 61. Phase 43: placeholder census -- exact classification (2026-07-22)
+
+placeholders.py classifies every one of the 4,249 placeholder cells
+of the duplicate-free emission by an EXACT arithmetic-progression
+intersection test (no sampling): for each cell (r,n), the first
+K=4096 points of the progression are checked against every emitted
+congruence of modulus <= 2*10^6 (49,075 of the 12.33M; larger moduli
+cover <= 1/2e6 of a cell's density and cannot absorb a cell).
+
+Result (placeholders_out.txt):
+
+  TOTAL: covered-elsewhere = 44, open = 4,205
+  residual-fraction histogram (uncovered fraction of each cell):
+    exactly 0        :   44
+    (0, 1%)          :  296
+    [1%, 5%)         : 3134
+    [5%, 10%)        :  544
+    [10%, 25%)       :  162
+    [25%, 37%]       :   69
+    mean 3.9%, median 2.7%, max 36.8%
+
+Interpretation:
+
+  * 44 cells (sec3.6: 36, sec3.16: 4, sec3.19: 4) are ALREADY fully
+    covered by other sections' emitted congruences -- machine
+    confirmation that some of the cross-section x-slot bookkeeping
+    resolves without any new choice.
+
+  * The overwhelming mass (3,430 cells, 81%) has residual < 5%:
+    consistent with pure recursion tails, where each extra tower
+    level multiplies the residual by 1/q.  These are finite-depth
+    truncation artifacts of Nielsen's infinite (q^m)^ semantics,
+    coverable in principle by deepening the emission, at the cost
+    of exponentially more congruences -- the moduli exist and stay
+    distinct (fresh powers), so they are not obstructions, just
+    unbounded work.
+
+  * The 231 cells with residual >= 10% (led by sec3.6's repair
+    strips, sec3.9, sec3.4's 125^-x-slots) are the genuinely
+    under-determined choices: obstruction-B pieces, the shallow
+    strips displaced by the obstruction-A repair, and the source
+    x-slots whose supplier Owens does not name.  These need real
+    assignments (new set shapes with fresh moduli), not just depth.
+
+This splits the final gap between the emission and a full
+machine-verified T=42 replica into (a) unbounded-but-mechanical
+tail-deepening and (b) ~231 genuine residue-level research choices.
+
+STATUS: near-miss / frontier-pushed

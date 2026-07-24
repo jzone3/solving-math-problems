@@ -1,0 +1,30 @@
+congruences: 12331418, with modulus<= 2000000: 49075
+skeleton: placeholders=0 covered=0 open=0
+sec3.3: placeholders=0 covered=0 open=0
+sec3.4: placeholders=18 covered=0 open=18 worst=(693, 16020, 37800)
+sec3.5: placeholders=77 covered=0 open=77 worst=(329, 1078, 5929)
+sec3.6: placeholders=503 covered=36 open=467 worst=(1509, 10783695, 23423400)
+sec3.7: placeholders=369 covered=0 open=369 worst=(287, 9163, 14161)
+sec3.8: placeholders=37 covered=0 open=37 worst=(339, 98306, 462080)
+sec3.9: placeholders=87 covered=0 open=87 worst=(1100, 280577, 812544)
+sec3.10: placeholders=133 covered=0 open=133 worst=(266, 18473, 41209)
+sec3.11: placeholders=151 covered=0 open=151 worst=(891, 18177, 71424)
+sec3.12: placeholders=153 covered=0 open=153 worst=(417, 82436, 10513920)
+sec3.13: placeholders=117 covered=0 open=117 worst=(341, 4746242, 6455040)
+sec3.14: placeholders=117 covered=0 open=117 worst=(305, 17501, 61017)
+sec3.15: placeholders=159 covered=0 open=159 worst=(245, 735, 2303)
+sec3.16: placeholders=115 covered=4 open=111 worst=(241, 1519, 2597)
+sec3.17: placeholders=249 covered=0 open=249 worst=(298, 8991, 23895)
+sec3.18: placeholders=568 covered=0 open=568 worst=(298, 232227, 301401)
+sec3.19: placeholders=498 covered=4 open=494 worst=(241, 882, 3577)
+sec3.20: placeholders=898 covered=0 open=898 worst=(285, 15729, 20335)
+
+TOTAL: covered=44 open=4205
+residual-fraction histogram over placeholders:
+  [0.0000,0.00): 44
+  [0.0001,0.01): 296
+  [0.0100,0.05): 3134
+  [0.0500,0.10): 544
+  [0.1000,0.25): 162
+  [0.2500,1.01): 69
+  mean=0.0393 median=0.0271 max=0.3684
