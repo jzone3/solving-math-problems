@@ -202,8 +202,20 @@ The session was resumed with instructions to push harder. Additional work:
   counterexample. The plateau structure (many restarts stuck at ~232–245)
   continues to support the arrowing conjecture.
 
+- **SBVA (third wave)**: structured bounded variable addition
+  (hgarrereyn/SBVA, the SAT-Comp-2023-winning preprocessing) applied to both
+  instances. On `plain.cnf` SBVA finds *nothing* (0 additions — the triangle
+  encoding has no recoverable clause structure); on `breakid_out.cnf` it
+  compresses 25642 → 20290 clauses (+19 aux vars, `sbva_breakid.cnf`).
+  gimsatul (6 threads, 3.5 h, 81M conflicts) on the SBVA+BreakID instance and
+  kissat (3.4 h, 172M conflicts) on the BreakID instance: no termination, no
+  progress beyond preprocessing-fixed variables. A further 4×10¹⁰ walk flips
+  did not improve on 232 mono triangles.
+
 Bottom line unchanged: G₁₂₇ → (3,3)ᵉ remains undecided; the quantitative
-hardness estimates above are now measured, not guessed.
+hardness estimates above are now measured, not guessed. Techniques exhausted
+on this hardware: CDCL (kissat/gimsatul), lex/BreakID/SBVA preprocessing,
+march_cu + manual star cubing, orbit collapse (full theorem), local search.
 
 ## 7. Compute spent
 
