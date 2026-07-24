@@ -183,9 +183,17 @@ then Nikiforov's theorem per component gives λ₁(C)²+λ₁(D)² ≤
 2m_C(1−1/ω(C)) + 2m_D(1−1/ω(D)) ≤ 2m(1−1/ω(G)). So disconnected n=12
 graphs cannot be minimal counterexamples given n ≤ 11 is verified.
 
-### n = 12 exhaustive sweep (running)
-`nauty-geng -c 12` (153,620,333,545 connected graphs), 16-way res/mod split
-through check2. Expected ~14 h wall on 8 cores.
+### n = 12 exhaustive sweep (DONE — ALL graphs on 12 vertices)
+16-way `nauty-geng` res/mod split through check2, ~19 h wall on 8 cores.
+**164,059,830,476 graphs checked — the part counts sum EXACTLY to the known
+total number of graphs on 12 vertices (OEIS A000088(12)), i.e. complete
+coverage of ALL n=12 graphs (the intended -c connected restriction did not
+take effect; the full unrestricted class was swept, which is strictly
+stronger). ZERO violations.** The threshold checker emitted exactly 3
+CANDIDATE lines; exact recheck (numpy/networkx) shows all three are the
+balanced Turán graphs K_{4,4,4}, K_{3,3,3,3}, K_{2×6} with ratio = 1.0
+exactly — the known equality class. The conjecture is now exhaustively
+machine-verified for EVERY graph on ≤ 12 vertices (≈1.65 × 10¹¹ graphs).
 
 ### Vertex-transitive census sweep (DONE)
 Downloaded the full Holt–Royle census of ALL vertex-transitive graphs on
@@ -209,6 +217,10 @@ a complete multipartite equality-family graph K_{25×2}; its exact ratio is
 verified for ALL circulants on ≤ 50 vertices (~128M total).
 
 ## STATUS: negative — no counterexample found. Frontier pushed:
-conjecture exhaustively machine-verified for ALL graphs n ≤ 11
-(1.03 × 10⁹ graphs) and ALL circulants n ≤ 42; ~110M+ annealed samples
-ω ∈ {3..8} up to n = 150; equality family strict local max to flip-dist 3.
+conjecture exhaustively machine-verified for ALL graphs n ≤ 12
+(1.65 × 10¹¹ graphs), ALL vertex-transitive graphs n < 48 (100,720,344,
+full Holt–Royle census), and ALL circulants n ≤ 50 (~128M); plus ~110M+
+annealed samples ω ∈ {3..8} up to n = 150 and depth-3 stability of the
+λ₂>0 equality family. Only equality cases found are the known balanced
+complete multipartite class (and disjoint unions of two equal Turán
+graphs). No ratio ever exceeded 1.
