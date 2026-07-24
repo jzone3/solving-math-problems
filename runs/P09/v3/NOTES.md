@@ -216,6 +216,28 @@ a complete multipartite equality-family graph K_{25×2}; its exact ratio is
 1, t < 1 only because t excludes the 1−1/ω factor). Conjecture now
 verified for ALL circulants on ≤ 50 vertices (~128M total).
 
+## 6. Fourth pass: blow-up limit attack (`blowup.py`)
+
+Fundamentally different encoding: search over graph LIMITS instead of
+graphs. For a pattern H (loopless) with simplex weights x, the blow-up
+H[x·N] has λ_i(G) ~ N·μ_i(B) with B = diag(√x)·A(H)·diag(√x),
+2m ~ N²·xᵀAx, ω = ω(H on supp x). Asymptotic ratio
+R(H,x) = (μ₁² + max(μ₂,0)²)/(xᵀAx·(1−1/ω)); any (H,x) with R > 1 gives an
+explicit large-n counterexample by integer rounding. Maximized R over the
+simplex (projected gradient with analytic eigenvector gradients,
+multi-restart, ω recomputed on the support at every iterate) for EVERY
+pattern with ω ≥ 3: all graphs n ≤ 9 (272,770 patterns after filtering
+ω<3). Result: max R = 1.000000000000 (12 digits) for every n ∈ {5..9},
+attained only at balanced-complete-multipartite weightings; ZERO patterns
+exceed 1. The equality surface is a global max over the entire 9-pattern
+blow-up limit space, not just a local one.
+
+Loopy blow-ups (parts → cliques, covers unions-of-Turáns asymptotics) are
+ruled out analytically: with loops, 2m/N² = ‖B‖_F² exactly (loop part i
+contributes x_i² to both), and μ₁²+μ₂² ≤ Σμ_k² = ‖B‖_F², while the bound
+factor (1−1/ω) → 1 since ω grows linearly in N. So no clique-blow-up
+sequence can violate asymptotically; equality requires rank(B) ≤ 2.
+
 ## STATUS: negative — no counterexample found. Frontier pushed:
 conjecture exhaustively machine-verified for ALL graphs n ≤ 12
 (1.65 × 10¹¹ graphs), ALL vertex-transitive graphs n < 48 (100,720,344,
