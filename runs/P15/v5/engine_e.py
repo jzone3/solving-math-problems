@@ -353,6 +353,7 @@ def main():
     sys.setrecursionlimit(100000)
     t0 = time.time()
     b = None
+    best_dump = 0
     for it in range(a.restarts):
         rng = random.Random(a.seed + it) if it > 0 else None
         b = Builder(a.L, caps, max_mod=int(a.max_mod), rng=rng, eps=a.eps,
@@ -368,8 +369,8 @@ def main():
                   f"failhist(mod digits)={sorted(b.fail_hist.items())}",
                   flush=True)
             if a.dump_stall and isinstance(e, Stall) and \
-                    b.best_out > getattr(main, "_best_dump", 0):
-                main._best_dump = b.best_out
+                    b.best_out > best_dump:
+                best_dump = b.best_out
                 with open(a.dump_stall, "w") as f:
                     json.dump({"L": a.L, "partial": True,
                                "congruences": [[r, m]

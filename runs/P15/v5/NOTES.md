@@ -516,3 +516,60 @@ route and leaves faithful mechanization of Nielsen's Table 1 joint
 allocation as the only credible remaining path to >= 43.
 
 STATUS: negative for >= 43.
+
+## 22. Executable Nielsen arrow-notation DSL (arrow_dsl.py) + partial min-40 transcription (nielsen40.py)
+
+Executed the named next project: mechanize Nielsen's arrow calculus directly
+from the MinimumModulus40 paper.
+
+What was built and validated:
+- arrow_dsl.py: exact executable semantics for Nielsen's prime-power tree
+  notation. Primitives: Split(q, inputs) (branch a CRT cell into its q
+  prime-adic input windows, paper's "q(a, b, ...)" diagrams), One (take the
+  cell as a congruence class), Hole (named ledger of uncovered cells), X
+  (cell claimed covered elsewhere, recorded for later verification),
+  Arrow(q, inputs) (Nielsen's q^arrow: per-level inputs + closing tail
+  "j mod p on the level-(n+1-j) leftover"), plus CRT/subcell helpers.
+- test_arrow_dsl.py: reproduces the paper's own worked examples exactly:
+  2( ,2(2( ,1), )) = 6 (mod 8); 3( ,2(1, ), ) = 5 (mod 6);
+  3( , ,2(2( ,1), )) = 3 (mod 12); the explicit 2^arrow with p=5, n=5
+  (10 classes, verified set equality); Example-1-style
+  3^arrow(1, 2^arrow) closes to a verified covering of lcm 12960 with 49
+  classes. ALL DSL TESTS PASS. First machine-level confirmation that the
+  branch-window and arrow-closure conventions match the paper.
+- nielsen40.py: transcription of Sections 4.1-4.3 (L=40). 4.1 leaves the 5
+  expected holes at measure 31/32; 4.2 (including the refined deep inputs
+  3^(2(1, ),2(2^, )) that free the 2*3^n (n>=4) moduli for the extra
+  81^arrow(1,_)) leaves the expected 10-hole ledger at measure 0.8252;
+  4.3 fills the m8 hole per the paper's 5(8,16^,3(...),3^(8,16^),5^(...))
+  expression. Hole-ledger measures agree with the paper's narrative at each
+  stage.
+
+What failed, precisely:
+- Deferred arrow closure ("multipliers made explicit at a later stage") via
+  any independent per-arrow closer degenerates. Measured sequence:
+  (a) small shared multipliers collide with other sections' forced level
+  moduli (e.g. tail 3*2^6=192 of 4.1's 2^arrow vs level 24*2^3 of 4.2);
+  (b) big-reserve-prime multipliers force n >= p-1 ~ 210 levels, blowing up
+  nested structural arrows exponentially;
+  (c) an engine-E-style fresh-prime 2-chain finisher on each leftover cell
+  exhausts the pure dyadic integer family: closures with the same odd part
+  compete for the identical M*2^k integers (depth-300 recursion);
+  (d) widening to q in {2..59} with per-call level/tail reservations still
+  cascades: sibling windows of nested chains consume each other's low-q
+  families (measured w4-cascade, 298-deep).
+  This is the same-modulus-family obstruction of Section 21 reappearing
+  INSIDE the paper transcription: Nielsen's closing sections (4.13-4.25,
+  "The primes 41..103") are not boilerplate — they ARE the joint allocation
+  that assigns each arrow's leftover portions to shared prime towers with
+  residues aligned by the inherited-x marks. A faithful reproduction of
+  min-40 therefore requires transcribing those closing sections too (a
+  hand-ledger of ~25 subsections), not a generic closer.
+
+Next concrete step (scoped, unfinished): transcribe 4.4-4.12 (hole fillers)
+and 4.13-4.25 (the per-prime joint closure) with explicit (p, n) per arrow
+taken from the paper's text, using Arrow(..., p=, n=) which the DSL already
+supports and tests; then verify with verify_subtract.py and only then
+attempt the 43 scale-up.
+
+STATUS: negative for >= 43.
