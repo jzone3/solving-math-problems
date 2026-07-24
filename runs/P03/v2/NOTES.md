@@ -278,3 +278,39 @@ inside the generator.
 STATUS: negative / frontier-pushed — exhaustive verification of Woodall up
 to n=7 (all), and n=8,9 in the sparse regime (<=12 underlying edges), ~3.12B
 digraphs total, 0 failures.
+
+---
+
+## Phase 4 (C-core exhaustive sweeps — order-of-magnitude escalation)
+
+`checker.c`: 2M digraphs/s/core C reimplementation of the pipeline (Tarjan
+SCC, downset enumeration of the condensation, tau, ACZ rho shortcut, 60-try
+randomized greedy packing); survivors stream to files and are certified by
+the exact CBC ILP (`ilp_survivors.py`). Validated against the Python checker
+on 3M instances (read/tau_ge2/rho_short counts match exactly). Greedy
+successes are sound (each color hits every minimal dicut, disjointness by
+construction), so only survivors need exact certification.
+
+Sweeps (32 geng-shards, 7-8 parallel pipelines; generation directg-bound at
+~0.5-0.8M lines/s per pipeline):
+- n=9, e=13: 8,975,556,879 digraphs; 9,682 survivors -> ILP: 0 failures.
+- n=10, e=10..12: 2,963,087,717; 322 survivors -> ILP: 0 failures.
+- n=10, e=13: 23,636,654,910; 15,982 survivors -> ILP: 0 failures.
+- n=9, e=14: 46,320,761,268; 90,733 survivors -> ILP: 0 failures.
+
+### Cumulative exhaustive frontier for Woodall (all verified, 0 failures)
+- ALL digraphs on <= 7 vertices (880,471,142);
+- n=8: <= 12 underlying edges (484,212,058);
+- n=9: <= 14 underlying edges (57,050,144,532);
+- n=10: <= 13 underlying edges (26,599,742,627).
+Exhaustive total: ~85.0 BILLION digraphs. Campaign total (with phase-2
+random/annealed/weighted sweeps): ~85.6B instances, 0 counterexamples.
+117,459 greedy-resistant survivors across the C sweeps, every one
+ILP-certified feasible.
+
+Next escalations: n=9 e=15 (~100B), n=10 e=14 (~80B), n=11 e<=13; feasible
+at ~1 day each on this box; or push tau>=3 pruning into directg itself.
+
+STATUS: negative / frontier-pushed — exhaustive Woodall verification now
+covers all digraphs on <=7 vertices, n=8 <=12 edges, n=9 <=14 edges, n=10
+<=13 edges: ~85 billion digraphs, 0 failures.
