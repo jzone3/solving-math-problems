@@ -75,11 +75,18 @@ n=16 and 455 graphs at n=18. The preparation filter retained all of them:
 none were planar or below 3-edge-connectivity. Eight n=16 PyPy shards were
 launched over ranges `0:7, 7:13, 13:19, 19:25, 25:31, 31:37, 37:43,
 43:49`. Their candidate files are empty at launch/checkpoint; the exhaustive
-orientation and exact CEGAR checks are still running. After roughly 12
-minutes, the shards had completed 1–2 of their assigned graphs (five of
-eight shards had reached graph 2), with cumulative per-shard CEGAR checks
-ranging from 1.33M to 2.76M and zero candidates. The n=16 high-girth run
-remains active and is being checkpointed in the shard logs.
+orientation and exact CEGAR checks were then running. The n=16 high-girth
+run is now **COMPLETE**. Across all 49 graphs and all orientation profiles,
+the machine totals were 389,188,756 DAG leaves, 320,659,024
+profile-matching leaves, 256,410,440 source-sink skips, and 64,248,584 exact
+CEGAR packing checks. Every CEGAR check packed; there were **zero
+candidates**, and all eight candidate files are empty. The longest shard
+wall time was 2,487 seconds. This is an exhaustive closure of the
+girth-at-least-5 n=16 subfamily only.
+
+The n=18 input was generated and prepared (455 graphs retained), but was not
+launched after n=16 completion because its expected runtime exceeded the
+remaining session budget.
 
 This experiment is explicitly scoped to connected cubic graphs of girth at
 least 5, after the non-planar and 3-edge-connected filters. It is not a

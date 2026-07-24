@@ -1,1 +1,7 @@
 [1/6] {'graphs': 1, 'dags': 7893700, 'profile_dags': 6513268, 'ss_skip': 5174052, 'packed_cegar': 1339216, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=411s
+[2/6] {'graphs': 2, 'dags': 15811788, 'profile_dags': 13040148, 'ss_skip': 10400932, 'packed_cegar': 2639216, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=749s
+[3/6] {'graphs': 3, 'dags': 23601400, 'profile_dags': 19489744, 'ss_skip': 15414056, 'packed_cegar': 4075688, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=1135s
+[4/6] {'graphs': 4, 'dags': 31682772, 'profile_dags': 26119608, 'ss_skip': 20824920, 'packed_cegar': 5294688, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=1448s
+[5/6] {'graphs': 5, 'dags': 39683296, 'profile_dags': 32698180, 'ss_skip': 26148642, 'packed_cegar': 6549538, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=1779s
+[6/6] {'graphs': 6, 'dags': 47474792, 'profile_dags': 39148112, 'ss_skip': 31178782, 'packed_cegar': 7969330, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=2137s
+DONE {'graphs': 6, 'dags': 47474792, 'profile_dags': 39148112, 'ss_skip': 31178782, 'packed_cegar': 7969330, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} wall=2137s
