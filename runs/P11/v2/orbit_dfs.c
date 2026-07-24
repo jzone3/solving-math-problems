@@ -19,6 +19,13 @@
  * Optional prefix split (for parallelization): argv[2] is a string of
  * characters from {0,+,-}, giving forced values for the first P orbits in
  * the engine's descending-size order.  The DFS then starts at depth P.
+ *
+ * Optional fold prune: after the orbit lines, a line "FOLD d T" followed by
+ * r lines of d ints (per-orbit contribution to the folded vector b over
+ * Z_d for value +1) and T lines of d ints (the complete list of valid
+ * folded images b: sum b_j = +-sqrt(k), sum b_j^2 = k, folded autocorr 0).
+ * The DFS prunes any node whose partial b cannot reach any target within
+ * the remaining per-class capacity.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,6 +44,13 @@ static uint64_t feas[MAXR + 1][4]; /* bitset of achievable weights (k<=127) */
 static int suf_abs[MAXR + 1];
 static int a[MAXN];
 static int val[MAXR];
+#define MAXD 32
+#define MAXT 512
+static int fold_d = 0, fold_T = 0;
+static int fcnt[MAXR][MAXD];      /* per-orbit contribution (value +1) */
+static int ftgt[MAXT][MAXD];      /* valid folded targets */
+static int fRsuf[MAXR + 1][MAXD]; /* suffix capacity per class */
+static int bcur[MAXD];
 static long long nodes = 0, leaves = 0, wits = 0;
 static double t_end = 0;
 static int exceeded = 0;
@@ -72,6 +86,19 @@ static void print_witness(void) {
     printf("]\n"); fflush(stdout);
 }
 
+static int fold_ok(int idx) {
+    for (int t = 0; t < fold_T; t++) {
+        int ok = 1;
+        for (int j = 0; j < fold_d; j++) {
+            int diff = ftgt[t][j] - bcur[j];
+            if (diff < 0) diff = -diff;
+            if (diff > fRsuf[idx][j]) { ok = 0; break; }
+        }
+        if (ok) return 1;
+    }
+    return 0;
+}
+
 static void dfs(int idx, int rem, int cur_sum, int any_nz) {
     if (exceeded) return;
     if ((++nodes & 0xFFFFF) == 0 && t_end > 0 && now() > t_end) { exceeded = 1; return; }
@@ -88,13 +115,16 @@ static void dfs(int idx, int rem, int cur_sum, int any_nz) {
     int d2 = -s0 - cur_sum; if (d2 < 0) d2 = -d2;
     int dm = d1 < d2 ? d1 : d2;
     if (dm > suf_abs[idx]) return;
+    if (fold_d && !fold_ok(idx)) return;
     int oi = order_[idx];
     dfs(idx + 1, rem, cur_sum, any_nz);
     if (osize[oi] > 0 && osize[oi] <= rem) {
         for (int vi = 0; vi < (any_nz ? 2 : 1); vi++) {
             int v = vi ? -1 : 1;
             for (int j = 0; j < osize[oi]; j++) a[opos[oi][j]] = osgn[oi][j] * v;
+            if (fold_d) for (int j = 0; j < fold_d; j++) bcur[j] += v * fcnt[oi][j];
             dfs(idx + 1, rem - osize[oi], cur_sum + v * osum[oi], 1);
+            if (fold_d) for (int j = 0; j < fold_d; j++) bcur[j] -= v * fcnt[oi][j];
             for (int j = 0; j < osize[oi]; j++) a[opos[oi][j]] = 0;
             if (exceeded) return;
         }
@@ -119,6 +149,18 @@ int main(int argc, char **argv) {
             osum[i] += osgn[i][j];
         }
         (void)usable;
+    }
+    /* optional FOLD section */
+    {
+        char word[16];
+        if (scanf("%15s", word) == 1 && strcmp(word, "FOLD") == 0) {
+            scanf("%d %d", &fold_d, &fold_T);
+            if (fold_d > MAXD || fold_T > MAXT) { fprintf(stderr, "fold too big\n"); return 1; }
+            for (int i = 0; i < r; i++)
+                for (int j = 0; j < fold_d; j++) scanf("%d", &fcnt[i][j]);
+            for (int t = 0; t < fold_T; t++)
+                for (int j = 0; j < fold_d; j++) scanf("%d", &ftgt[t][j]);
+        }
     }
     /* order by size descending */
     for (int i = 0; i < r; i++) order_[i] = i;
@@ -151,6 +193,17 @@ int main(int argc, char **argv) {
         }
         suf_abs[i] = suf_abs[i + 1] + (osum[oi] >= 0 ? osum[oi] : -osum[oi]);
     }
+    if (fold_d) {
+        for (int j = 0; j < fold_d; j++) fRsuf[r][j] = 0;
+        for (int i = r - 1; i >= 0; i--) {
+            int oi = order_[i];
+            for (int j = 0; j < fold_d; j++) {
+                int c = fcnt[oi][j]; if (c < 0) c = -c;
+                fRsuf[i][j] = fRsuf[i + 1][j] + c;
+            }
+        }
+        memset(bcur, 0, sizeof bcur);
+    }
     memset(a, 0, sizeof a);
     if (budget > 0) t_end = now() + budget;
     double t0 = now();
@@ -162,6 +215,7 @@ int main(int argc, char **argv) {
         if (v != 0) {
             if (osize[oi] == 0 || osize[oi] > rem0) { bad = 1; break; }
             for (int j = 0; j < osize[oi]; j++) a[opos[oi][j]] = osgn[oi][j] * v;
+            if (fold_d) for (int j = 0; j < fold_d; j++) bcur[j] += v * fcnt[oi][j];
             rem0 -= osize[oi]; sum0 += v * osum[oi]; anz = 1;
         }
     }

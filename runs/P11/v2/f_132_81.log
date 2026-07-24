@@ -1,0 +1,26 @@
+# CW(132,81) C-driver: |Z_132^*|=40, 32 subgroups, max_orbits=64 signed=False case_timeout=3600s
+  case |H|=40 r=12 chi#0: DONE nodes=8 leaves=0 wits=0 time=0.0
+  case |H|=20 r=15 chi#0: DONE nodes=679 leaves=0 wits=0 time=0.0
+  case |H|=20 r=18 chi#0: DONE nodes=7 leaves=0 wits=0 time=0.0
+  case |H|=20 r=14 chi#0: DONE nodes=294 leaves=0 wits=0 time=0.0
+  case |H|=20 r=18 chi#0: DONE nodes=15061 leaves=320 wits=0 time=0.0
+  case |H|=20 r=16 chi#0: DONE nodes=4518 leaves=512 wits=0 time=0.0
+  case |H|=20 r=13 chi#0: DONE nodes=47 leaves=0 wits=0 time=0.0
+  case |H|=20 r=14 chi#0: DONE nodes=47 leaves=0 wits=0 time=0.0
+  case |H|=10 r=24 chi#0: DONE nodes=12890935 leaves=892224 wits=0 time=4.7
+  case |H|=10 r=27 chi#0: DONE nodes=6339438 leaves=298560 wits=0 time=1.7
+  case |H|=10 r=19 chi#0: DONE nodes=74143 leaves=0 wits=0 time=0.0
+  case |H|=10 r=24 chi#0: DONE nodes=2032623 leaves=66560 wits=0 time=0.4
+  case |H|=10 r=21 chi#0: DONE nodes=22863 leaves=0 wits=0 time=0.0
+  case |H|=10 r=20 chi#0: DONE nodes=285526 leaves=29184 wits=0 time=0.1
+  case |H|=10 r=21 chi#0: DONE nodes=263815 leaves=3648 wits=0 time=0.0
+  EXCEEDED |H|=8 r=36 chi#0: EXCEEDED nodes=7238320128 leaves=727716540 time=3600.4
+  EXCEEDED |H|=5 r=36 chi#0: EXCEEDED nodes=13098811392 leaves=673418916 time=3600.0
+  EXCEEDED |H|=4 r=51 chi#0: EXCEEDED nodes=6350176256 leaves=752939188 time=3600.5
+  EXCEEDED |H|=4 r=48 chi#0: EXCEEDED nodes=7493124096 leaves=743359492 time=3600.4
+  EXCEEDED |H|=4 r=54 chi#0: EXCEEDED nodes=37966839808 leaves=430613239 time=3600.2
+  EXCEEDED |H|=4 r=42 chi#0: EXCEEDED nodes=7697596416 leaves=707323906 time=3600.5
+  EXCEEDED |H|=4 r=46 chi#0: EXCEEDED nodes=11489247232 leaves=660727696 time=3600.0
+  EXCEEDED |H|=4 r=41 chi#0: EXCEEDED nodes=5052039168 leaves=743752994 time=3600.2
+# done CW(132,81): 15 cases complete, 8 exceeded, 28809.8s, 0 witnesses
+# exceeded cases: [([1, 23, 43, 65, 67, 89, 109, 131], 0), ([1, 25, 37, 49, 97], 0), ([1, 65, 67, 131], 0), ([1, 65, 89, 109], 0), ([1, 43, 67, 109], 0), ([1, 23, 109, 131], 0), ([1, 43, 89, 131], 0), ([1, 23, 43, 65], 0)]

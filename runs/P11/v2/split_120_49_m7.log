@@ -1,2 +1,8 @@
 # split CW(120,49) |H|=4 r=39 depth=7 first sizes=[4, 4, 4, 4, 4, 4, 4]
 # 1094 prefix jobs
+  pfx=00000+0: EXCEEDED nodes=12741246976 leaves=2078355866 time=3600.0
+  pfx=000000+: EXCEEDED nodes=12988710912 leaves=2118845532 time=3600.0
+  pfx=0000000: EXCEEDED nodes=12818841600 leaves=2083997765 time=3600.1
+  pfx=00000++: EXCEEDED nodes=12721324032 leaves=2088783522 time=3600.2
+  pfx=0000+00: EXCEEDED nodes=12948865024 leaves=2112335886 time=3600.3
+  pfx=00000+-: EXCEEDED nodes=12774801408 leaves=2101333555 time=3600.3

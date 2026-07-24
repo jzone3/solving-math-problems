@@ -11,7 +11,7 @@ from orbit_search import subgroups, orbits_of, characters, build_pats, units
 BIN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "orbit_dfs")
 
 
-def case_input(n, k, pats):
+def case_input(n, k, pats, fold_d=0):
     lines = [f"{n} {k} {len(pats)}"]
     for size, ent, _es in pats:
         if ent is None:
@@ -21,18 +21,70 @@ def case_input(n, k, pats):
             for p, s in sorted(ent.items()):
                 parts.append(f"{p} {s}")
             lines.append(" ".join(parts))
+    if fold_d:
+        tg = fold_targets(fold_d, k)
+        lines.append(f"FOLD {fold_d} {len(tg)}")
+        for size, ent, _es in pats:
+            cnt = [0] * fold_d
+            if ent is not None:
+                for p, s in ent.items():
+                    cnt[p % fold_d] += s
+            lines.append(" ".join(map(str, cnt)))
+        for t in tg:
+            lines.append(" ".join(map(str, t)))
     return "\n".join(lines) + "\n"
+
+
+_fold_cache = {}
+
+
+def fold_targets(d, k):
+    """All integer vectors b of length d with sum b = +-sqrt(k), sum b^2 = k,
+    and folded autocorrelation over Z_d zero for all nonzero shifts."""
+    key = (d, k)
+    if key in _fold_cache:
+        return _fold_cache[key]
+    import math
+    s = math.isqrt(k)
+    assert s * s == k
+    out = []
+    vec = [0] * d
+
+    def rec(j, rem_sq, cur_sum):
+        if j == d:
+            if rem_sq == 0 and abs(cur_sum) == s:
+                for t in range(1, d):
+                    if sum(vec[i] * vec[(i + t) % d] for i in range(d)) != 0:
+                        return
+                out.append(tuple(vec))
+            return
+        # bound remaining sum reachability
+        m = math.isqrt(rem_sq)
+        rem_slots = d - j
+        if abs(cur_sum) - m * rem_slots > s:
+            return
+        for v in range(-m, m + 1):
+            if v * v <= rem_sq:
+                vec[j] = v
+                rec(j + 1, rem_sq - v * v, cur_sum + v)
+        vec[j] = 0
+
+    rec(0, k, 0)
+    _fold_cache[key] = out
+    return out
 
 
 def main():
     n, k = int(sys.argv[1]), int(sys.argv[2])
     signed = "--signed" in sys.argv
-    mo, ct = 40, 3600
+    mo, ct, fd = 40, 3600, 0
     for i, arg in enumerate(sys.argv):
         if arg == "--max-orbits":
             mo = int(sys.argv[i + 1])
         if arg == "--case-timeout":
             ct = int(sys.argv[i + 1])
+        if arg == "--fold":
+            fd = int(sys.argv[i + 1])
     subs = subgroups(n)
     print(f"# CW({n},{k}) C-driver: |Z_{n}^*|={len(units(n))}, {len(subs)} subgroups, "
           f"max_orbits={mo} signed={signed} case_timeout={ct}s", flush=True)
@@ -50,7 +102,7 @@ def main():
             if chi is not None and all(v == 1 for v in chi.values()):
                 continue
             pats = build_pats(n, H, orbs, chi)
-            inp = case_input(n, k, pats)
+            inp = case_input(n, k, pats, fd)
             res = subprocess.run([BIN, str(ct)], input=inp, capture_output=True, text=True)
             out = res.stdout.strip().splitlines()
             tag = f"|H|={len(H)} r={r} chi#{ci}"

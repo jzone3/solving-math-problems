@@ -1,0 +1,4 @@
+# split CW(120,49) |H|=4 r=39 depth=6 first sizes=[4, 4, 4, 4, 4, 4] fold_d=8
+# 296 prefix jobs (69 skipped)
+  pfx=0++0+-: DONE nodes=194507040 leaves=11864032 wits=0 time=25.7
+  pfx=0++0++: DONE nodes=194507040 leaves=11864032 wits=0 time=41.8

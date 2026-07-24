@@ -66,8 +66,33 @@ forces every orbit entry-sum to cancel, so Σa = 0, contradicting the necessary
 (35–99 cases/cell, all complete, 0 witnesses, <1s each).
 
 ### Dedicated attack: CW(120,49), forced multiplier 7
-k = 49 = 7², gcd(7,120)=1 ⇒ by the classical CW multiplier theorem 7 is a multiplier of
-ANY putative CW(120,49); so exhausting the ⟨7⟩-invariant case (|⟨7⟩|=4, r=39 orbits on
-Z_120) would resolve the cell outright. Split the DFS over 1094 depth-7 prefixes
-(split_case.py + orbit_dfs prefix mode, validated against unsplit runs on CW(13,9)/
-CW(21,16)); running 6-way parallel with 1h/job. Log: split_120_49_m7.log.
+k = 49 = 7², gcd(7,120)=1 ⇒ 7 is a multiplier of ANY putative CW(120,49)
+(Theorem 2.4 in Arasu–Gordon–Zhang, arXiv:1908.08447: k = p^{2r} prime power,
+gcd(n,k)=1 ⇒ p is a multiplier and fixes a translate; citing Arasu–Seberry 1996).
+So exhausting the ⟨7⟩-invariant case (⟨7⟩ = {1,7,49,103} mod 120, |⟨7⟩|=4, r=39
+orbits) resolves the cell outright. First split attempt (no fold prune, 1094 depth-7
+prefixes, 1h/job): first 6 jobs all EXCEEDED — abandoned in favor of the fold prune.
+
+### BREAKTHROUGH: quotient-fold prune (2026-07-23)
+For d | n fold the first row to b_j = Σ_{i≡j (mod d)} a_i. Zero autocorrelation over
+Z_n implies zero folded autocorrelation over Z_d, Σ_j b_j² = k and Σ_j b_j = ±√k.
+Enumerate ALL valid folded images b (fold_targets() in drive_c.py; e.g. d=8,k=49: only
+16 targets = ±7 concentrated in a single residue class!). DFS maintains the partial fold
+vector and prunes when no target is reachable within per-class remaining capacity
+(fRsuf). Implemented in orbit_dfs.c (FOLD input section) + drive_c.py/split_case.py.
+- Soundness: prune is a necessary condition only; exact leaf check unchanged. Control
+  cells still give 2/8/22 (and 6/8 in split mode) witnesses.
+- Power: benchmark CW(120,49) |H|=8 r=28 case: 10.7·10⁹ nodes / 2858s without fold →
+  223,196 nodes / 0.03s with fold-8 (≈50,000× reduction).
+Fold moduli used: d=8 (n=96,112,120: 192/192/16 targets), d=7 (n=105: 42), d=9 (n=117:
+108), d=6 (n=132: 48).
+
+### Fold-pruned full reruns (max-orbits 64 ⇒ ALL nontrivial subgroups, 3600s/case)
+Logs f_<n>_<k>.log. CW(117,36): all 45 subgroup cases processed, 39 complete,
+6 EXCEEDED (all |H|≤4, r≥41), 0 witnesses. CW(132,81): 23 cases, 1h-exceeded tail only,
+0 witnesses. Others still running; every completed case 0 witnesses.
+
+### CW(120,49) ⟨7⟩ exhaust with fold-8 (the decisive case)
+split_case.py resumable prefix split (depth 6, 365 jobs, done_pfx.txt skip list),
+logs split_120_49_m7_fold8.log + split2_120_49.log, unlimited time/job, 5 workers.
+Individual prefix jobs now complete in minutes–tens of minutes (vs >1h timeout before).

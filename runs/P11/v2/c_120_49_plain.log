@@ -45,3 +45,8 @@
   case |H|=8 r=28 chi#0: DONE nodes=11973646330 leaves=1987015680 wits=0 time=3399.3
   case |H|=8 r=26 chi#0: DONE nodes=1311709958 leaves=188508128 wits=0 time=328.1
   case |H|=8 r=23 chi#0: DONE nodes=60132010 leaves=8869920 wits=0 time=15.5
+  case |H|=8 r=28 chi#0: DONE nodes=10569981254 leaves=1510991736 wits=0 time=2607.5
+  case |H|=8 r=26 chi#0: DONE nodes=1370122510 leaves=227708640 wits=0 time=389.7
+  case |H|=8 r=26 chi#0: DONE nodes=1496723062 leaves=214870920 wits=0 time=370.0
+  case |H|=8 r=24 chi#0: DONE nodes=170292571 leaves=25095528 wits=0 time=43.8
+  case |H|=8 r=28 chi#0: DONE nodes=10569981254 leaves=1510991736 wits=0 time=2636.4
