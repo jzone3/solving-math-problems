@@ -31,3 +31,4 @@ RESULT n=15 L=8 status=UNSAT iters=622 blockclauses=192630 time=6994.7s
 RESULT n=15 L=9 status=UNSAT iters=305 blockclauses=272760 time=20449.8s
 RESULT n=16 L=8 status=TIMEOUT iters=1339 blockclauses=331516 time=36198.3s
 RESULT n=16 L=9 status=TIMEOUT iters=933 blockclauses=576344 time=37825.2s
+RESULT n=16 L=8 status=UNSAT iters=1549 blockclauses=343543 time=54678.1s

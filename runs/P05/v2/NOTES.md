@@ -79,9 +79,9 @@ See results.log (machine-written, one RESULT line per completed (n,L)). Checkpoi
   (949s, 95960 blocking clauses). No counterexample on <= 14 vertices.
 - n = 15, L = 4..9 (full feasible range): **UNSAT**. Hardest cell L=9 (20450s, 272760
   blocking clauses). No counterexample on <= 15 vertices.
-- n = 16: L = 5 (2316s), 6 (7797s), 7 (1207s) UNSAT; L = 8 and L = 9 TIMEOUT at the 36000s
-  (10h) per-cell limit with 331516 / 576344 blocking clauses accumulated and no counterexample
-  encountered (every SAT model up to that point was refuted by the longest-path oracle).
+- n = 16: L = 5 (2316s), 6 (7797s), 7 (1207s), 8 (UNSAT at 54678s on a second attempt with
+  blocking-clause persistence, 343543 clauses; first attempt hit a 10h limit) all UNSAT;
+  L = 9 running (>15h, 585k clauses, no counterexample encountered).
 - n = 17: L = 7 UNSAT (3727s); L = 5, 6, 8, 9, 10 killed unfinished at session end (~11h wall
   each, no counterexample encountered).
 
