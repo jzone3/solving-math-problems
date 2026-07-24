@@ -1,0 +1,10 @@
+42 classes to re-check at target 72
+INFEASIBLE lam=[4, 2] assign=('id', 'tau') orbits=186
+INFEASIBLE lam=[4, 1, 1] assign=('id', 'id', 'id') orbits=216
+INFEASIBLE lam=[4, 1, 1] assign=('id', 'tau', 'tau') orbits=204
+INFEASIBLE lam=[3, 3] assign=('id', 'id') orbits=249
+INFEASIBLE lam=[3, 2, 1] assign=('id', 'sigma', 'sigma') orbits=162
+INFEASIBLE lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'id') orbits=297
+UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit
+UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') orbits=243 status=HighsModelStatus.kTimeLimit

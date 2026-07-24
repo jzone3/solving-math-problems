@@ -98,8 +98,11 @@ covering code of size ≤ 72.** The minimum over all solved classes is 73, achie
 automorphism, but no 72-code with any of the 178 solved symmetry types. All other solved
 classes have invariant minimum ≥ 77. The remaining 42 classes (37 ILP timeouts at 300 s +
 5 skipped with > 400 orbits; all near-identity — single coordinate transpositions/symbol
-swaps and similar) are being re-decided as pure ≤72-feasibility ILPs with 1200 s each
-(`orbit_feas.py`, log `out/feas.txt`).
+swaps and similar) were re-run as pure ≤72-feasibility ILPs (`orbit_feas.py`): **20 more
+proved INFEASIBLE** (logs `logs/feas*.txt`), so 198 of the 219 nontrivial cyclic classes
+are now rigorously eliminated. 22 classes remain undecided (the extreme near-identity
+ones, 243–486 orbits, e.g. a single symbol swap τ or rotation σ on one or two
+coordinates); a 4 h/class feasibility re-run is in progress.
 
 Consequence (conditional on the feasibility re-checks finishing): if a 72-word code
 exists, its automorphism group within S₃≀S₆ is trivial or intersects only the handful of

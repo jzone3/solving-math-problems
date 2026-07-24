@@ -65,16 +65,23 @@ def orbits_of(perm, smap):
     return orbits, orb_id
 
 log, TARGET, TL = sys.argv[1], int(sys.argv[2]), float(sys.argv[3])
+SHARD, NSHARDS = (int(sys.argv[4]), int(sys.argv[5])) if len(sys.argv) > 5 else (0, 1)
+skip_lines = set()
+if len(sys.argv) > 6:
+    skip_lines = set(l.strip() for l in open(sys.argv[6]))
 classes = []
 for line in open(log):
     m = re.match(r"(NOSOLVE|SKIP) lam=(\[[^\]]*\]) assign=(\([^)]*\))", line)
     if m:
+        if f"lam={m.group(2)} assign={m.group(3)}" in skip_lines:
+            continue
         lam = ast.literal_eval(m.group(2))
         assign = ast.literal_eval(m.group(3))
         if isinstance(assign, str):
             assign = (assign,)
         classes.append((lam, assign))
-print(f"{len(classes)} classes to re-check at target {TARGET}", flush=True)
+classes = classes[SHARD::NSHARDS]
+print(f"{len(classes)} classes to re-check at target {TARGET} (shard {SHARD}/{NSHARDS})", flush=True)
 for lam, assign in classes:
     if all(L == 1 and s == "id" for L, s in zip(lam, assign)):
         print(f"IDENTITY-SKIP lam={lam} assign={assign} (this is the unrestricted problem)", flush=True)
