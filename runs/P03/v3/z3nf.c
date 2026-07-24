@@ -252,7 +252,12 @@ static void gen_choices(void){
 
 static int findeg[16]; /* arcs to fixed sink t from fixed sources */
 
+static long long fsrc_ctr;
+static int FSHARD_DEPTH = 3;
+
 static void rec_fsrc(int j, int lo){
+    if (j == FSHARD_DEPTH && j < Q && NSHARDS > 1 && (fsrc_ctr++ % NSHARDS) != SHARD)
+        return;
     if (j == Q) {
         /* every 3fixed-src sink must have exactly 3 arcs */
         for (int t = 0; t < F; t++)
@@ -295,8 +300,9 @@ static long long shard_ctr;
 
 static void rec_cmat(int a, int b, int left){
     if (a == P) {
-        /* shard split at cmat level */
-        if (NSHARDS > 1 && (shard_ctr++ % NSHARDS) != SHARD) return;
+        /* shard at cmat level only when fsrc-level sharding is unavailable */
+        if (Q <= FSHARD_DEPTH && NSHARDS > 1 && (shard_ctr++ % NSHARDS) != SHARD)
+            return;
         for (int bb = 0; bb < K; bb++) { e_b[bb] = 0; }
         memset(findeg, 0, sizeof(findeg));
         gen_choices();

@@ -318,4 +318,41 @@ admits any automorphism of order 4 free on sources, or ANY order-3 automorphism 
 at least 2 source orbits or at most 7 fixed sinks** (~212M candidates decided overall,
 0 unpackable).
 
+## 12. Twin-sink reduction lemma (structural result, machine-checkable proof steps)
+
+**Lemma.** Let D be a source→sink bipartite digraph, sinks of in-degree 3, and let
+t₁ ≠ t₂ be *twin sinks*: identical in-neighborhoods N = {a,b,c}. If D − t₂ (delete t₂
+and its 3 arcs) admits 3 disjoint dijoins, then so does D.
+
+*Proof.* Take a 3-coloring χ of A(D−t₂) rainbow on every dicut of D−t₂. Extend to D by
+χ(x→t₂) := χ(x→t₁) for x ∈ N. Let δ⁺(X) be any dicut of D (X closed, cut nonempty).
+(i) If t₂ ∈ X then N ⊆ X, so X∖{t₂} is closed in D−t₂ with the SAME cut → rainbow.
+(ii) If t₂ ∉ X and δ⁺_{D−t₂}(X) ≠ ∅: it is a dicut of D−t₂, rainbow; δ⁺_D(X) ⊇ it →
+rainbow. (iii) If t₂ ∉ X and δ⁺_{D−t₂}(X) = ∅: any x ∈ X∩N with t₁ ∉ X would put
+x→t₁ in that empty cut, so t₁ ∈ X, hence N ⊆ X and δ⁺_D(X) = {a→t₂, b→t₂, c→t₂},
+whose colors equal those of δ⁻(t₁) = δ⁺_{D−t₂}(V∖{t₁}) — a dicut of D−t₂, rainbow. ∎
+
+**Corollary (via ACZ ρ=3 theorem).** In the minimal ACZ shape (12 deg-4 sources), if a
+τ=3 counterexample D has twin sinks t₁,t₂, then τ(D−t₂) ≤ 2. (Deleting t₂ drops its
+three deg-4 in-neighbors to degree 3, so ρ(D−t₂) = 9/3 = 3; if τ(D−t₂) = 3 the ACZ
+theorem for ρ≤3, w=1 makes D−t₂ pack, and by the Lemma D packs — contradiction. And
+τ(D−t₂) > 3 is impossible since sink in-cuts have size 3.)
+
+So every twin-sink pair in a minimal-shape counterexample must be "fragile": deleting
+either twin creates a dicut of size ≤ 2. This constrains the residual order-3 gap cases
+sharply: for p=0 (σ fixes all 12 sources) every sink orbit is a TRIPLE of twins, and
+the corollary applies to each pair. Documented as a filter for future scans.
+(Lemma additionally machine-checked: 4,000 random twin-sink instances, pack(D−t₂) ⇒
+pack(D) never violated, exact SAT both sides.)
+
+## 13. Seventh wave: exhaustive uniform slices of the order-3 gap cases
+
+Extended z3nf.c sharding into the fixed-source recursion (split at depth 3 of rec_fsrc),
+validated by re-summing case (1,7) over 4 shards = 3,471,019 (exact match with the
+unsharded run). Then scanned shards of the intractable gap cases (p,f) ∈
+{(1,10),(1,13),(1,16),(0,10),(0,13)} with NSHARDS=1000 (documented uniform 1/1000
+slices; multiple shards for the biggest cases), 8 workers, 5 h budget:
+
+GAP_RESULTS_PLACEHOLDER
+
 ## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under ANY automorphism of order 3 or 4 acting freely on sources — 194.8M candidates decided (676,378 SAT + 194.1M certified colorings), 0 UNSAT; NEW (wave 5): 81.4M certified packing decisions via C annealed sampling of the FULL asymmetric ACZ region (shapes (12,0),(12,3),(12,4),(15,0); ρ=4–5, n=28–36), 0 UNSAT — ~276M total decided instances in the ACZ-complete class, all pack; NEW (wave 6): non-free order-3 closure — all 15 tractable (p,f) cases exhausted (17.6M candidates, 12.7M certified packings, 0 UNSAT), upgrading the exhaustive statement to: no minimal-shape τ=3 counterexample admits an order-4 automorphism free on sources, or ANY order-3 automorphism with ≥2 source orbits or ≤7 fixed sinks; plus 87.4M more certified sampling decisions (wave 5 batch 2; shapes (12,0),(12,1),(12,2),(15,1)) — cumulative ~381M decided ACZ-class instances, every one packs.
