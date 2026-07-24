@@ -1,0 +1,11 @@
+obj=20 n=12 best_score=0.000000 m=6
+NEAR-MISS/CANDIDATE: {"n": 12, "score": 0.0, "edges": [[0, 2], [1, 6], [3, 10], [4, 11], [5, 9], [7, 8]]}
+obj=20 n=16 best_score=0.000000 m=8
+NEAR-MISS/CANDIDATE: {"n": 16, "score": 0.0, "edges": [[0, 8], [1, 9], [2, 3], [4, 10], [5, 7], [6, 11], [12, 15], [13, 14]]}
+obj=20 n=20 best_score=0.000000 m=10
+NEAR-MISS/CANDIDATE: {"n": 20, "score": 0.0, "edges": [[0, 16], [1, 13], [2, 15], [3, 19], [4, 11], [5, 10], [6, 8], [7, 14], [9, 18], [12, 17]]}
+obj=20 n=26 best_score=-0.774912 m=21
+obj=20 n=36 best_score=-1.536532 m=35
+obj=20 n=44 best_score=-1.483116 m=38
+obj=20 n=60 best_score=-1.416408 m=45
+TOP: {"obj": 20, "n": 12, "score": 0.0, "edges": [[0, 2], [1, 6], [3, 10], [4, 11], [5, 9], [7, 8]]}
