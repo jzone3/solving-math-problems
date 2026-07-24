@@ -1,1 +1,3 @@
 GRAPH 8 orientations=6878558 profiles=2677348 ss=1626980 tau_skip=0 safe=265340 checks=785028 packed=785028 cand=0 deferred=0
+GRAPH 16 orientations=13758052 profiles=5326664 ss=3299252 tau_skip=0 safe=266512 checks=1760900 packed=1760900 cand=0 deferred=0
+GRAPH 24 orientations=21490530 profiles=8263248 ss=5503716 tau_skip=0 safe=267532 checks=2492000 packed=2492000 cand=0 deferred=0
