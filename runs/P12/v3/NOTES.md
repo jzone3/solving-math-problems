@@ -199,6 +199,31 @@ Earlier SAT cube-and-conquer of T2(9) (2,317 row-1-prefix cubes, ~15 core-min ea
 ~580 core-h est.) was retired after ~37 cubes (all UNSAT) when rowdfs2 proved
 orders of magnitude faster.
 
+## 9. RESULT: independent verification of T2(9) nonexistence; T2(11) campaign
+
+**T2(9) does not exist — independently re-proved by complete search.** The
+standard-form row DFS (`rowdfs2.c`, before the last-column prune) exhausted all
+6,985 top-level candidates (rows starting with symbol 1), distributed over 8 child
+Devin sessions + this box in 8 ranges x 8 chunks. Every one of the 56 chunks ended
+`SOLUTIONS=0 EXHAUSTED`; total ~14.6 billion search nodes, ~2.5 core-hours, under
+an hour wall-clock. Full logs: `runs/P12/v3/rowres_9/summary_*.txt` (all committed
+on this branch). This is, to our knowledge, the first published-anywhere
+reproduction of Kapralov (2012) by a method other than his clique search, and it
+validates the standard-form lemma pipeline end to end (which also re-proves T2(7)
+nonexistence in 4,351 nodes and finds a verified T2(8) witness in 0.05 s).
+
+**T2(11) cost estimate.** With the last-column prune (~3.4x fewer nodes), n=9
+costs ~0.34 s/top-candidate; an n=11 sample gave >700 s per top-level candidate
+(3 candidates unfinished after 2,066 s / 1.6 G nodes). With 598,477 top-level
+candidates the full exhaust is ≥ 4-5 core-YEARS with this algorithm — out of
+session reach but well within a modest cluster month. The pipeline (rowsplit.sh
+ranges, resumable, results committed to the branch) is ready for exactly that.
+
+**Ongoing**: 8 children + this box now run a 1%-sample witness hunt on T2(11)
+(scattered ranges of 800 top-candidates each, 4 h/chunk caps), plus a full-range
+MRV hunt locally. Any WITNESS line is auto-committed and must pass
+solutions/P12/verify.py before being believed.
+
 STATUS: negative / frontier-pushed — no witness found (searches hit the n−1 wall);
 new structural theorems close off ALL algebraic/symmetric construction routes for
 T2(11) and T2(13); problem remains open.
