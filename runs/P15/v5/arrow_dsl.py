@@ -84,6 +84,10 @@ class Ctx:
         self.paths = {}    # modulus -> path (debug)
         self.reserved = {}  # integer -> count held for pending arrows
         self.fin_calls = 0
+        self.arrowset = frozenset()  # enclosing arrow primes (symbolic)
+        self.shadow = False  # True for throwaway spill-probe contexts
+        self.assumed = []  # regions covered by declared infinite families
+        self.families = []  # (modulus, arrowset, path) per taken class
 
     def finisher(self, a, M, path="", depth=0):
         """Close cell (a mod M) unconditionally with fresh reserve-prime
@@ -148,6 +152,7 @@ class Ctx:
             f"duplicate modulus {M}: {path} vs {self.paths.get(M)}"
         self.used.add(M)
         self.paths[M] = path
+        self.families.append((M, self.arrowset, path))
         self.out.append((a % M, M))
 
 
@@ -231,7 +236,8 @@ class Arrow(Expr):
                    self.p, self.n)
             return
         rec = {"q": self.q, "inputs": list(self.inputs), "a": a, "M": M,
-               "path": path, "p": self.p, "n": self.n}
+               "path": path, "p": self.p, "n": self.n,
+               "aset": ctx.arrowset}
         ctx.pending.append(rec)
         if self.name:
             ctx.named[self.name] = rec

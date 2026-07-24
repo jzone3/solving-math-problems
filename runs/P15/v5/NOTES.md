@@ -572,4 +572,47 @@ taken from the paper's text, using Arrow(..., p=, n=) which the DSL already
 supports and tests; then verify with verify_subtract.py and only then
 attempt the 43 scale-up.
 
+## Section 23: symbolic layer + Section 4.4 transcribed and verified (2026-07-22)
+
+New machinery (symbolic.py + nielsen40.py additions):
+- symbolic.py: symbolic finalization of pending arrows (no level
+  materialization), arrow-family collision checker `collide` (moduli
+  M1*prod(q_i^a_i) vs M2*prod(r_j^b_j) intersect iff stripped parts match
+  and exponent windows overlap), x-cell validation by exact cell
+  subtraction, and `symbolic_verify` (accepts caller-supplied covered
+  regions). test_symbolic.py: 5 tests, all pass.
+- nielsen40.py: `_materialize_regions(ctx, depth)` — exact covered
+  regions of the partial system: placed classes, arrow levels 1..depth
+  (recursively, skipping Hole/X windows), relaxed leftover chain cells
+  for arrows whose inputs are all dyadically relaxed (Nielsen: the arrow
+  "applies to the entire congruence class 2 (mod 2)"), plus declared
+  assumed regions for infinite families.
+- `ASplit(q, inputs)`: split whose window assignment is found by
+  backtracking so that every inherited-x cell an input would claim lands
+  on a region already covered (Nielsen's diagram-relative window order).
+  This replaced the earlier positional guess, which failed.
+- 4.3 extension: the paper's extra 125^*1 — bare 5-power classes 5^a
+  (a>=3) covering, at each 25^ level k>=2, the window-4 cell relaxed to
+  its 5-part (window 4's 3^(4,8^) applies only to 0 mod 4); family
+  {5^a} registered; deep tower beyond the truncation declared as an
+  assumed region justified by level-wise induction (windows 1-3 by
+  relaxed 25^ inputs, window 4 by 125^*1, window 5 descends).
+
+Result: Section 4.4 (the prime 7, filling the modulus-4 hole on branch
+2 mod 4) now transcribed and SYMBOLIC VERIFY: PASS —
+  after 4.4: 11 classes, 11 hole-cells (measure 0.495470),
+  77 level-1 classes, 67 under-arrow families, 15 inherited x-cells all
+  validated against materialized coverage; no family collisions.
+Open holes carried: h44_left (7-window-1), h44_g5, h44_g15 (paper: "one
+class modulo 5 and another modulo 5*3"), plus the m6..m36 holes of 4.2.
+
+Caveats (honest scope): x-window routing is coverage-aligned rather than
+read off Nielsen's diagrams pixel-by-pixel; the 125^*1 deep-tower region
+is an assumed-by-induction region, checked structurally (family
+registered in the collision checker) but not yet closed into concrete
+tail classes. Full closure with explicit (p,n) multipliers remains to be
+done in the 4.13-4.25 transcription step.
+
+Next: transcribe 4.5 (prime 11) .. 4.12, then the per-prime closure.
+
 STATUS: negative for >= 43.
