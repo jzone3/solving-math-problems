@@ -121,3 +121,96 @@ n=24 models=3690 clauses=703076 t=15672s best_hc_count=NA
 n=24 models=3739 clauses=712484 t=15807s best_hc_count=NA
 n=24 models=3763 clauses=717044 t=15931s best_hc_count=NA
 n=24 models=3793 clauses=722780 t=16067s best_hc_count=NA
+n=24 models=3808 clauses=725660 t=16195s best_hc_count=NA
+n=24 models=3822 clauses=728348 t=16324s best_hc_count=NA
+n=24 models=3835 clauses=730844 t=16460s best_hc_count=NA
+n=24 models=3852 clauses=734108 t=16622s best_hc_count=NA
+n=24 models=3857 clauses=735068 t=16752s best_hc_count=NA
+n=24 models=3861 clauses=735836 t=16886s best_hc_count=NA
+n=24 models=3866 clauses=736796 t=17027s best_hc_count=NA
+n=24 models=3874 clauses=738308 t=17159s best_hc_count=NA
+n=24 models=3883 clauses=740036 t=17289s best_hc_count=NA
+n=24 models=3889 clauses=741188 t=17454s best_hc_count=NA
+n=24 models=3892 clauses=741740 t=17617s best_hc_count=NA
+n=24 models=3898 clauses=742892 t=17761s best_hc_count=NA
+n=24 models=3903 clauses=743852 t=17945s best_hc_count=NA
+n=24 models=3907 clauses=744596 t=18082s best_hc_count=NA
+n=24 models=3914 clauses=745892 t=18211s best_hc_count=NA
+n=24 models=3917 clauses=746444 t=18360s best_hc_count=NA
+n=24 models=3921 clauses=747188 t=18481s best_hc_count=NA
+n=24 models=3924 clauses=747764 t=18604s best_hc_count=NA
+n=24 models=3926 clauses=748148 t=18766s best_hc_count=NA
+n=24 models=3935 clauses=749876 t=18917s best_hc_count=NA
+n=24 models=3941 clauses=751028 t=19124s best_hc_count=NA
+n=24 models=3943 clauses=751412 t=19254s best_hc_count=NA
+n=24 models=3945 clauses=751796 t=19402s best_hc_count=NA
+n=24 models=3949 clauses=752564 t=19568s best_hc_count=NA
+n=24 models=3954 clauses=753524 t=19729s best_hc_count=NA
+n=24 models=3960 clauses=754676 t=19893s best_hc_count=NA
+n=24 solver stall -> rebuild #12 (models=3963, blocking=755252, next_budget=4000000)
+n=24 models=3964 clauses=755444 t=20161s best_hc_count=NA
+n=24 models=4000 clauses=762308 t=20246s best_hc_count=NA
+n=24 models=4024 clauses=766916 t=20374s best_hc_count=NA
+n=24 models=4041 clauses=770180 t=20495s best_hc_count=NA
+n=24 models=4052 clauses=772292 t=20621s best_hc_count=NA
+n=24 models=4064 clauses=774596 t=20767s best_hc_count=NA
+n=24 models=4070 clauses=775748 t=20893s best_hc_count=NA
+n=24 models=4078 clauses=777284 t=21066s best_hc_count=NA
+n=24 solver stall -> rebuild #13 (models=4083, blocking=778244, next_budget=4000000)
+n=24 models=4084 clauses=778436 t=21354s best_hc_count=NA
+n=24 models=4143 clauses=789740 t=21475s best_hc_count=NA
+n=24 models=4163 clauses=793532 t=21597s best_hc_count=NA
+n=24 models=4175 clauses=795836 t=21746s best_hc_count=NA
+n=24 models=4184 clauses=797564 t=21871s best_hc_count=NA
+n=24 models=4185 clauses=797756 t=22063s best_hc_count=NA
+n=24 solver stall -> rebuild #14 (models=4185, blocking=797756, next_budget=4000000)
+n=24 models=4186 clauses=797948 t=22255s best_hc_count=NA
+n=24 models=4224 clauses=805220 t=22409s best_hc_count=NA
+n=24 models=4247 clauses=809636 t=22544s best_hc_count=NA
+n=24 models=4257 clauses=811556 t=22670s best_hc_count=NA
+n=24 models=4269 clauses=813860 t=22797s best_hc_count=NA
+n=24 models=4282 clauses=816356 t=22934s best_hc_count=NA
+n=24 models=4292 clauses=818252 t=23087s best_hc_count=NA
+n=24 models=4301 clauses=819980 t=23211s best_hc_count=NA
+n=24 models=4311 clauses=821876 t=23345s best_hc_count=NA
+n=24 solver stall -> rebuild #15 (models=4314, blocking=822452, next_budget=4000000)
+n=24 models=4315 clauses=822644 t=23644s best_hc_count=NA
+n=24 models=4356 clauses=830516 t=23770s best_hc_count=NA
+n=24 models=4377 clauses=834548 t=23892s best_hc_count=NA
+n=24 solver stall -> rebuild #16 (models=4379, blocking=834932, next_budget=4000000)
+n=24 models=4380 clauses=835124 t=24090s best_hc_count=NA
+n=24 models=4413 clauses=841460 t=24219s best_hc_count=NA
+n=24 models=4432 clauses=845084 t=24344s best_hc_count=NA
+n=24 models=4441 clauses=846812 t=24473s best_hc_count=NA
+n=24 models=4452 clauses=848924 t=24594s best_hc_count=NA
+n=24 models=4463 clauses=851012 t=24718s best_hc_count=NA
+n=24 models=4483 clauses=854828 t=24847s best_hc_count=NA
+n=24 solver stall -> rebuild #17 (models=4492, blocking=856556, next_budget=4000000)
+n=24 models=4493 clauses=856748 t=25134s best_hc_count=NA
+n=24 models=4500 clauses=858092 t=25142s best_hc_count=NA
+n=24 models=4526 clauses=863060 t=25263s best_hc_count=NA
+n=24 models=4546 clauses=866876 t=25388s best_hc_count=NA
+n=24 models=4561 clauses=869756 t=25512s best_hc_count=NA
+n=24 models=4574 clauses=872252 t=25642s best_hc_count=NA
+n=24 models=4584 clauses=874172 t=25775s best_hc_count=NA
+n=24 models=4594 clauses=876092 t=25900s best_hc_count=NA
+n=24 models=4603 clauses=877820 t=26030s best_hc_count=NA
+n=24 models=4610 clauses=879164 t=26164s best_hc_count=NA
+n=24 solver stall -> rebuild #18 (models=4615, blocking=880124, next_budget=4000000)
+n=24 models=4616 clauses=880316 t=26487s best_hc_count=NA
+n=24 models=4650 clauses=886820 t=26610s best_hc_count=NA
+n=24 models=4667 clauses=890060 t=26757s best_hc_count=NA
+n=24 models=4682 clauses=892940 t=26885s best_hc_count=NA
+n=24 models=4695 clauses=895412 t=27019s best_hc_count=NA
+n=24 models=4702 clauses=896756 t=27175s best_hc_count=NA
+n=24 models=4713 clauses=898844 t=27304s best_hc_count=NA
+n=24 models=4722 clauses=900572 t=27427s best_hc_count=NA
+n=24 models=4734 clauses=902876 t=27556s best_hc_count=NA
+n=24 models=4743 clauses=904604 t=27691s best_hc_count=NA
+n=24 models=4746 clauses=905180 t=27822s best_hc_count=NA
+n=24 solver stall -> rebuild #19 (models=4751, blocking=906140, next_budget=4000000)
+n=24 models=4752 clauses=906332 t=28130s best_hc_count=NA
+n=24 models=4780 clauses=911708 t=28258s best_hc_count=NA
+n=24 models=4794 clauses=914396 t=28386s best_hc_count=NA
+n=24 models=4802 clauses=915932 t=28526s best_hc_count=NA
+n=24 models=4810 clauses=917468 t=28653s best_hc_count=NA
