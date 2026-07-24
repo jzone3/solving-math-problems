@@ -1669,3 +1669,25 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 54. Phase 37 (sec 3.17, prime 59) (2026-07-22)
+
+emit317.py -- Owens sec 3.17: last (third) 3-input in the first
+5-input on the 8 hole (4 mod 8 n 1 mod 5 n 0 mod 3).  Fifty-eight
+sets per the text, incl. the half-filled reserve 9^ device (set 25 =
+5*9^(16^,_)+9^(_,16^)), three 25^, ten 7^ copies at three inputs,
+four 11^, four 13^, three 17^, three 19^ at thirteen, plus singles
+23/29/37/41/43/47.  59^ filled with all fifty-eight.
+
+Machine-checked results:
+  sec3.17: 72700 congruences, 249 placeholders
+  min modulus: 59
+  dups within sec3.17: 0
+  overlap w/ skeleton and secs 3.3-3.16: all 0
+Census (window 2^7 3^4 5^2 59): residual = out-of-window tower
+classes + tails.
+
+Cumulative replica: secs 3.1-3.17, ~550,000 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
