@@ -1,0 +1,15 @@
+
+c turning on binary mode checking
+
+c parsing input formula with 2036 variables and 11267 clauses
+
+c finished parsing, read 14094 bytes from proof file
+
+c ERROR: no conflict
+
+s NOT VERIFIED
+
+c verification time: 0.043 seconds
+
+
+wall=0.04613947868347168

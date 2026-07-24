@@ -1,0 +1,16 @@
+{
+  "file": "runs/P23-priority2/data/v510e2502.vtx",
+  "claimed_order": 510,
+  "parsed_order": 510,
+  "field": "mfield Q(3,5,11)",
+  "encoded_edges": 2502,
+  "exact_unit_edges": 2502,
+  "edge_count_matches_filename": true,
+  "status": "UNSAT",
+  "certificate": "",
+  "numeric_margin": 0.0001602178467665638,
+  "cnf_clauses": 13578
+}
+
+s UNSATISFIABLE
+
