@@ -269,7 +269,7 @@ exhaustion is impossible.
 | triangle-free connected n = 13 (complete) | 19,425,052 | 0 |
 | triangle-free connected n = 14 (complete) | 445,781,050 | 0 |
 | squarefree (C4-free) connected n = 15 (complete) | 93,762,704 | 0 |
-| squarefree (C4-free) connected n = 16 (complete) | (running) | |
+| squarefree (C4-free) connected n = 16 (complete) | 1,201,732,437 | 0 |
 
 (geng -t / -f slices; counts match geng -u exactly.)
 
@@ -293,10 +293,15 @@ exhaustion is impossible.
 6. Round 3: subcubic graphs exhausted completely through n = 18 (89.6M more), n = 12
    through 23 edges (771M), n = 13–14 through 19 edges (345M); weighted-multigraph
    annealing (which lifts to unweighted by subdivision) also floors at a shared vertex.
+7. Round 4 (girth-targeted): triangle-free graphs exhausted completely at n = 13, 14
+   (465M) and squarefree (C4-free) graphs completely at n = 15, 16 (1.30B) — the class
+   containing all known extremal longest-path constructions is clean through n = 16.
+   Cumulative direct total: ~4.8B graphs, zero counterexamples.
 
 STATUS: negative / frontier-pushed — no counterexample found. Direct exhaustive frontier:
 all n ≤ 11 complete (~1.0B graphs), n = 12 ≤ 23 edges, n = 13–14 ≤ 19 edges, sparse
-n ≤ 16, subcubic complete to n = 18 (~3.0B graphs direct total); pendant-arm spider
-families excluded over ~390M cores; unweighted (n ≤ 18) and weighted (n ≤ 14, W ≤ 6)
-annealing never left the shared-vertex basin. Two conjecture-relevant lemma candidates
-isolated and documented. No solutions/P05/verify.py (no witness claimed).
+n ≤ 16, subcubic complete to n = 18, triangle-free complete to n = 14, squarefree
+complete to n = 16 (~4.8B graphs direct total); pendant-arm spider families excluded over
+~390M cores; unweighted (n ≤ 18) and weighted (n ≤ 14, W ≤ 6) annealing never left the
+shared-vertex basin. Two conjecture-relevant lemma candidates isolated and documented.
+No solutions/P05/verify.py (no witness claimed).
