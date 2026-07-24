@@ -474,3 +474,45 @@ engine family (B,C,D,E,F,G,H,I + fallback variants) is exhausted at L=10.
 The documented next project remains an exact global assignment mechanism
 (set-cover/ILP over fat-hole--tower incidence, or a faithful mechanization of
 Nielsen's Table 1/Owens' ledger allocation).
+
+## 21. ILP post-hoc closer (closer_ilp.py): infeasible, and a sharp theorem why
+
+Executed the named next project: closer_ilp.py takes a stalled partial cover,
+extracts the exact residual by cell subtraction, coalesces sibling shards,
+generates candidate covers per residual cell (direct take, divisor take,
+2-chain with tail prime p over palette + reserve, ~27 candidates/cell), and
+solves the joint assignment as an ILP (CBC via PuLP): one candidate per cell,
+each modulus used globally at most once, minimize total classes. Also added
+--dump-stall to engine_e (snapshots the best partial cover every +500 classes
+so the rollback-destroyed best state is recoverable).
+
+Test instance (L=6 witness minus its 3 largest-modulus classes, 152 classes):
+residual = 1,797 cells, measure 7.7e-8, ILP 48,519 vars / 10,842 conflict
+constraints -> INFEASIBLE in 8 s. A 12-class deletion (6,110 cells, 256k vars)
+is likewise infeasible. Diagnosis is structural, not a budget artifact:
+
+  The residual concentrates into a handful of modulus FAMILIES — here just 6
+  distinct moduli M carrying 264-396 same-M cells each. Every 2-chain
+  candidate for a cell (a mod M) consumes the level moduli M*2^k, and these
+  are the SAME integers for every cell in the family regardless of the tail
+  prime chosen. So at most one cell per family can be closed by a chain
+  (plus one direct take of M itself); a family of size >= 3 is already
+  ILP-infeasible under any candidate library whose supports are built from
+  the family's own base modulus. Fresh-prime injection cannot decouple them:
+  a class with modulus p*M*2^k covers only a 1/p slice of a same-M cell, and
+  any covering "recipe" for a full cell must have relative-modulus support
+  with reciprocal sum >= 1, forcing small support elements that collide
+  across the family (disjoint covering supports are exactly the scarce
+  resource the whole problem is about).
+
+Conclusion: post-hoc independent closure of a stalled greedy state is
+IMPOSSIBLE in principle whenever the residual has same-modulus families of
+size > 2 — which is always, since stalls happen exactly when a fat subtree
+fragments. Tower sharing must be arranged DURING construction (the
+literature's inherited-x marks align sibling residues so one tower serves
+many cells); it cannot be retrofitted by any assignment solver over
+independent per-cell candidates. This kills the set-cover/ILP-over-stalls
+route and leaves faithful mechanization of Nielsen's Table 1 joint
+allocation as the only credible remaining path to >= 43.
+
+STATUS: negative for >= 43.

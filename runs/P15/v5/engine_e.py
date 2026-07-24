@@ -73,6 +73,8 @@ class Builder:
         self.fail_hist = {}
         self.split_fallback = False
         self.fin_floor = 10 ** 5
+        self.snapshot = []
+        self.snap_at = 500
 
     def _divisors(self, n):
         divs = [1]
@@ -188,6 +190,9 @@ class Builder:
         if len(self.out) > self.best_out:
             self.best_out = len(self.out)
             self.best_calls = self.calls
+            if self.best_out >= self.snap_at:
+                self.snapshot = list(self.out)
+                self.snap_at = self.best_out + 500
         elif self.calls - self.best_calls > self.stall_limit:
             raise Stall(f"stalled at {self.best_out} classes")
         if self.calls % 20000 == 0:
@@ -337,6 +342,8 @@ def main():
     ap.add_argument("--stall", type=int, default=2_000_000)
     ap.add_argument("--qtries", type=int, default=10)
     ap.add_argument("--finfloor", type=float, default=1e5)
+    ap.add_argument("--dump-stall", default=None,
+                    help="write partial cover to this file on best stall")
     ap.add_argument("--ptries", type=int, default=8)
     a = ap.parse_args()
     caps = {}
@@ -360,6 +367,15 @@ def main():
                   f"{b.calls} calls, {time.time()-t0:.1f}s) "
                   f"failhist(mod digits)={sorted(b.fail_hist.items())}",
                   flush=True)
+            if a.dump_stall and isinstance(e, Stall) and \
+                    b.best_out > getattr(main, "_best_dump", 0):
+                main._best_dump = b.best_out
+                with open(a.dump_stall, "w") as f:
+                    json.dump({"L": a.L, "partial": True,
+                               "congruences": [[r, m]
+                                               for r, m in b.snapshot]}, f)
+                print(f"dumped stall snapshot ({len(b.snapshot)} classes) to "
+                      f"{a.dump_stall}", flush=True)
             b = None
     if b is None:
         print("FAILED all restarts")
