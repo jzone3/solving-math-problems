@@ -50,4 +50,8 @@ shards are running over these 2,595 retained graphs:
 Each shard uses `enum_pypy.py` with profile, DAG, source-sink, CEGAR exact
 packing, reduced-dicut, and exact backtracking filters. Candidate output is
 written to a separate `.cand.jsonl` file and stderr progress to a `.log`
-file. At launch no candidate output had been emitted.
+file. At the latest checkpoint (about 9 minutes wall time), five shards had
+completed their first graph, with per-shard totals ranging from 5.40M to
+8.23M DAG leaves, 4.78M to 6.72M profile leaves, and 1.12M to 2.55M CEGAR
+packing checks; all five reported zero candidates. Three shards were still
+processing their first graph. All eight candidate files remained empty.
