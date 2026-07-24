@@ -144,18 +144,27 @@ n = 12 production run: `run_n12.sh` — geng 12 split into 64 res/mod parts, 8-w
 per-part logs in `c12/n12_p*.log`, restartable via `.done` markers. Estimated ~24–30 h on
 8 cores.
 
-RESULT (see below for final tally): recorded when the sweep completes.
+RESULT: **COMPLETE — all 165,091,172,592 non-isomorphic graphs on 12 vertices satisfy the
+conjecture.** Per-part totals sum EXACTLY to the known count 165,091,172,592 (validating that
+no graph was dropped); 103,978,035 survivors required an exact MaxClique resolution; ZERO
+candidates (no graph with ω·(2m − λ₁² − λ₂²) < 2m − 1e-5). Wall time ~15 h: parts 0–15 and
+24–55 on this box (8 cores), parts 16–23 and 56–63 delegated to two child Devin sessions
+(logs merged from branches runs/P09-v1-parts16-23 and runs/P09-v1-parts56-63; child checkers
+passed the mandatory n=9 sanity gate total=274668/survivors=3890/candidates=0 before running).
+Per-part logs: c12/n12_p*.log (all 64 committed).
 
 ## STATUS: negative / frontier-pushed
 
 No counterexample found. Campaign totals:
-- **Exhaustive: every graph on ≤ 11 vertices (1.03×10⁹ graphs) satisfies the conjecture**
-  (believed to exceed any published verification), independently cross-checked.
+- **Exhaustive: every graph on ≤ 12 vertices (1.66×10¹¹ graphs) satisfies the conjecture**
+  (believed to exceed any published verification); totals match known graph counts exactly at
+  every n; C checker differentially validated against an independent Python/NumPy/NetworkX path.
 - Exhaustive: every circulant C_n(S), n ≤ 50 (~2.1×10⁸ graphs) satisfies it.
 - ~2,700 annealed/basin-hopped restarts (~60 core-h) over n = 15–80, ω = 2–22; exhaustive
   1-/2-flip scans of equality families; Kneser/Johnson/Paley/book/kite/join scans.
 Maximum ratio ever observed: exactly 1, only at known equality classes (complete multipartite,
 disjoint unions like K_{a,b} ∪ K_{c,d} and K_a ∪ K_a, plus isolated-vertex paddings). Maximum
-strictly-inside ratio 0.99864. Strong computational evidence the conjecture is TRUE with
-extremal surface exactly these classes. Natural next frontier: exhaustive n = 12 (~1.65×10¹¹
-graphs, ~160× this compute) or SAT/SMS-driven search in the ω = 3,4 sparse regime.
+strictly-inside ratio 0.99900. Strong computational evidence the conjecture is TRUE with
+extremal surface exactly these classes. Natural next frontier: exhaustive n = 13 (~5×10¹³
+graphs, ~300× the n = 12 compute — needs a cluster) or SAT/SMS-driven search in the
+ω = 3,4 sparse regime.
