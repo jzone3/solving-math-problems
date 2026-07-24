@@ -1,0 +1,18 @@
+[cegar] n=509 edges=2442 k=4 (find chi>=5) Nstart=508 sym-clauses=0
+[cegar] iter 25: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=25, 4.7s
+[cegar] iter 50: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=50, 8.9s
+[cegar] iter 75: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=75, 11.9s
+[cegar] iter 100: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=100, 22.4s
+[cegar] iter 125: cand |S|=508 4-colorable; +coloring (2 mono edges), N=508, colorings=125, 25.9s
+[cegar] iter 150: cand |S|=508 4-colorable; +coloring (2 mono edges), N=508, colorings=150, 30.0s
+[cegar] iter 175: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=175, 37.4s
+[cegar] iter 200: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=200, 42.4s
+[cegar] iter 225: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=225, 47.0s
+[cegar] iter 250: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=250, 68.8s
+[cegar] iter 275: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=275, 74.2s
+[cegar] iter 300: cand |S|=508 4-colorable; +coloring (2 mono edges), N=508, colorings=300, 82.9s
+[cegar] iter 325: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=325, 91.9s
+[cegar] iter 350: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=350, 99.9s
+[cegar] iter 375: cand |S|=508 4-colorable; +coloring (1 mono edges), N=508, colorings=375, 105.2s
+[cegar] iter 376: outer UNSAT at N=508 (375 colorings, 105.2s) => no non-4-colorable S with |S|<=508
+[cegar] RESULT: no non-4-colorable subset with |S|<=Nstart found (lower bound established up to that N).
