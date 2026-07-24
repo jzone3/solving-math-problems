@@ -1,0 +1,16 @@
+>A nauty-geng -cd2D2 n=3 e=3
+>Z 1 graphs generated in 0.00 sec
+n=3 done tot=1 bad=0 worst_margin=1.000e+00
+>A nauty-geng -cd2D3 n=4 e=4-6
+>Z 3 graphs generated in 0.00 sec
+n=4 done tot=4 bad=1 worst_margin=-1.111e-06
+>A nauty-geng -cd2D4 n=5 e=5-10
+>Z 11 graphs generated in 0.00 sec
+n=5 done tot=15 bad=1 worst_margin=-1.111e-06
+>A nauty-geng -cd2D5 n=6 e=6-15
+>Z 61 graphs generated in 0.00 sec
+n=6 done tot=76 bad=1 worst_margin=-1.111e-06
+>A nauty-geng -cd2D6 n=7 e=7-21
+>Z 507 graphs generated in 0.00 sec
+n=7 done tot=583 bad=1 worst_margin=-1.111e-06
+bad: [('C~', array(-1.11054322e-06))]

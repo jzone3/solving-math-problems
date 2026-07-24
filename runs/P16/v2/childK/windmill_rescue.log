@@ -1,0 +1,24 @@
+den sign check (should be >0 for k>=2): (k - 1)**2*(k**2 + 4*k - 3)
+lam_a: 11*k**3 + 33*k**2 - 79*k + 27
+  k=t+2: num sign-definite True, den True, overall sign 1
+lam_s: (k - 1)*(7*k**3 + 17*k**2 - 67*k + 27)
+  k=t+2: num sign-definite True, den True, overall sign 1
+Ah: 2*(k**4 + 5*k**3 - 15*k**2 - 5*k + 6)
+  k=t+2: num sign-definite False, den True, overall sign 1
+  k=t+3: num sign-definite True, den True, overall sign 1
+Aq(num): 2*(k - 1)*(k**4 + 5*k**3 - 15*k**2 - 5*k + 6)
+  k=t+2: num sign-definite False, den True, overall sign 1
+  k=t+3: num sign-definite True, den True, overall sign 1
+detq(num): 8*k*(k - 1)**2*(k**2 + 4*k - 3)*(3*k**5 + 9*k**4 - 82*k**3 + 58*k**2 + 55*k - 27)
+  k=t+2: num sign-definite False, den True, overall sign 1
+  k=t+3: num sign-definite False, den True, overall sign 1
+  k=t+4: num sign-definite True, den True, overall sign 1
+
+numeric cross-check (full 2k+1 matrix):
+  k=2: mineig M(s) = -6.644592 FAIL
+  k=3: mineig M(s) = -0.576973 FAIL
+  k=5: mineig M(s) = 2.911159 OK
+  k=14: mineig M(s) = 5.216406 OK
+  k=25: mineig M(s) = 5.598152 OK
+  k=60: mineig M(s) = 5.843012 OK
+  k=200: mineig M(s) = 5.954383 OK
