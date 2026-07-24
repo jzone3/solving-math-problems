@@ -56,25 +56,26 @@ int main(int argc, char **argv) {
     for (int i = 0; i < nmods; i++)
         for (long t = res[i]; t < N; t += mods[i]) cnt[t]++;
 
-    /* freed moduli and the hole set H' */
+    /* freed moduli and the constraint set H':
+     * H' = { t : ALL coverage of t comes from freed moduli }  (incl. cnt==0
+     * holes). Elements with any frozen coverage can never become holes. */
     int *freed = malloc(sizeof(int) * nmods);
     int NM = 0;
     for (int i = 0; i < nmods; i++) if (mods[i] >= n_min) freed[NM++] = i;
-    long NH = 0, cap = 1 << 20;
+    uint16_t *cntF = calloc(N, sizeof(uint16_t));
+    for (int j = 0; j < NM; j++) {
+        int i = freed[j];
+        for (long t = res[i]; t < N; t += mods[i]) cntF[t]++;
+    }
+    long NH = 0, cap = 1 << 20, base_holes = 0;
     int64_t *H = malloc(sizeof(int64_t) * cap);
-    for (long t = 0; t < N; t++) if (cnt[t] == 0) {
+    for (long t = 0; t < N; t++) if (cnt[t] == cntF[t]) {
+        if (cnt[t] == 0) base_holes++;
         if (NH == cap) { cap *= 2; H = realloc(H, sizeof(int64_t) * cap); }
         H[NH++] = t;
     }
-    long base_holes = NH;
-    for (int j = 0; j < NM; j++) {
-        int i = freed[j]; long n = mods[i];
-        for (long t = res[i]; t < N; t += n) if (cnt[t] == 1) {
-            if (NH == cap) { cap *= 2; H = realloc(H, sizeof(int64_t) * cap); }
-            H[NH++] = t;
-        }
-    }
-    fprintf(stderr, "N=%ld m=%d freed=%d (n>=%ld) holes=%ld damage=%ld H'=%ld\n",
+    free(cntF);
+    fprintf(stderr, "N=%ld m=%d freed=%d (n>=%ld) holes=%ld freed-only=%ld H'=%ld\n",
             N, m, NM, n_min, base_holes, NH - base_holes, NH);
 
     /* per freed modulus: hash residues of H' to candidate ids, CSR buckets */

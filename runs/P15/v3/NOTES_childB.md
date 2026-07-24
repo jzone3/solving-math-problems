@@ -27,7 +27,7 @@ without it, 70 s with).
 Result at N=183783600 m=13: ~100 it/s (~1.7x). The full-hole-list gain
 scan (4.8e5 random-access weight reads per move) dominates; not enough.
 
-## cover_mc3.c (the engine that closed m=13)
+## cover_mc3.c (the main engine)
 Key idea: a move never scans the full hole list NOR full residue range.
 - Candidate residues are proposed from a SAMPLE of the hole list
   (default 16384; exact whenever nh <= sample, i.e. the entire endgame).
@@ -58,8 +58,46 @@ N=15120), witnesses PASS solutions/P15/verify.py.
   unchanged from baseline) produces 80-150k transient holes per kick at
   this scale but recovers to new bests within ~2-4 min at this rate.
 
+## Endgame findings (the last ~1e4 holes)
+- The staircase reliably reaches ~8-16k holes in ~60-90 min but then
+  plateaus: single-modulus argmax moves stop finding improvements, breakout
+  weights drive raw energy 3-5x uphill, kicks restore. Plateaus observed at
+  9961, 8294, 7784, 7721 across seeds/configs (kick_after 300/900, gentle vs
+  destructive kicks, drift clamp: none broke it fundamentally).
+- Added state dump/warm-restart to cover_mc3: best state written to
+  out.json.state every >=60 s and at exit; arg8 warm-starts from a state
+  file. Warm restarts with fresh seed+weights DO dig below a plateau
+  (11357 -> 8523 -> 6447 ...).
+
+## repair_mc.c (hole-driven repair inside the full assignment; task idea d)
+Frees all moduli with n >= n_min, freezes the rest, and runs a
+holes_mc-style weighted min-conflicts over the constraint set
+H' = { t : ALL of t's coverage comes from freed moduli } (includes the
+current cnt==0 holes). Staying at the old residue is always a candidate, so
+start energy == current hole count; covering H' <=> full covering system.
+Candidate residues per freed modulus are restricted to residues of H'
+elements (plus the old residue) with hashed CSR buckets, so huge moduli
+(n up to N) cost O(|H'|) per move, never O(n). On SOLVED it splices the
+freed residues back, re-verifies coverage of Z_N element-by-element, and
+writes the full witness; on NOSOLUTION it writes the best spliced state
+(cover_mc3 state format) for warm restarts.
+CORRECTNESS NOTE: the first version used H' = holes + uniquely-covered
+elements of freed classes; that misses elements covered ONLY by >=2 freed
+moduli, which silently become holes after splicing (observed: mc warm run
+"best" above its warm-start energy). The cnt==cntF formulation fixes it.
+Measured: at 6k holes, n_min=30000 (390 freed, |H'|~150k) trims ~5%/10 min;
+n_min>=1e5 is useless below ~30k holes (expected optimal hole coverage by
+big moduli alone is tiny: sum over freed of ~holes*(N/n)/N).
+
+## squeeze.sh
+Driver: alternate cover_mc3 warm restarts (fresh seed/weights) with
+repair_mc trims, always continuing from the best state so far.
+7784 -> 6447 -> 6050 -> 5768 -> ... at N=183783600 m=13.
+
 ## Run log
-- mc3 m=13 N=183783600 seed 91: [in progress; outcome recorded below]
+- mc3 m=13 N=183783600 seed 91 et al.: staircase 480k -> ~8-10k, plateaus.
+- squeeze chains at N=183783600 (from 5768) and N=367567200 (slack 2.038,
+  ~10 GB RAM, greedy ~2.3e5 holes, staircase to ~53k): [in progress]
 
 ## Outcome
 [pending]

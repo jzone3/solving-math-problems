@@ -188,6 +188,7 @@ int main(int argc, char **argv) {
     char statepath[4096];
     snprintf(statepath, sizeof statepath, "%s.state", outpath);
     double tdump = 0.0;
+    long dumped_best = -1;
 
     double t0 = now(), tbest = t0;
     long long it = 0;
@@ -201,6 +202,19 @@ int main(int argc, char **argv) {
             printf("rate=%.1f it/s energy=%ld t=%.1fs\n", (it - it_log) / (tn - tlog), energy, tn - t0);
             fflush(stdout);
             tlog = tn; it_log = it;
+            if (tn - tdump > 60.0 && best != dumped_best) {
+                char tmp[4200];
+                snprintf(tmp, sizeof tmp, "%s.tmp", statepath);
+                FILE *sf = fopen(tmp, "w");
+                if (sf) {
+                    fprintf(sf, "%ld %d %d %ld\n", N, m, nmods, best);
+                    for (int i2 = 0; i2 < nmods; i2++)
+                        fprintf(sf, "%ld %ld\n", best_state[i2], mods[i2]);
+                    fclose(sf);
+                    rename(tmp, statepath);
+                }
+                tdump = tn; dumped_best = best;
+            }
         }
         if (tn - tbest > kick_after) {
             memcpy(res, best_state, sizeof(long) * nmods);
@@ -288,20 +302,6 @@ int main(int argc, char **argv) {
             tbest = now();
             printf("best=%ld it=%lld t=%.1fs\n", best, it, now() - t0);
             fflush(stdout);
-            if (now() - tdump > 60.0) {
-                /* periodic best-state dump for external repair drivers */
-                char tmp[4200];
-                snprintf(tmp, sizeof tmp, "%s.tmp", statepath);
-                FILE *sf = fopen(tmp, "w");
-                if (sf) {
-                    fprintf(sf, "%ld %d %d %ld\n", N, m, nmods, best);
-                    for (int i2 = 0; i2 < nmods; i2++)
-                        fprintf(sf, "%ld %ld\n", best_state[i2], mods[i2]);
-                    fclose(sf);
-                    rename(tmp, statepath);
-                }
-                tdump = now();
-            }
         } else if (++stall >= stall_lim) {
             for (long k = 0; k < nh; k++) w[hl[k]] += 1.0f;
             stall = 0;
@@ -320,6 +320,19 @@ int main(int argc, char **argv) {
         fprintf(f, "]}\n");
         fclose(f);
         return 0;
+    }
+    {
+        /* final best-state dump */
+        char tmp[4200];
+        snprintf(tmp, sizeof tmp, "%s.tmp", statepath);
+        FILE *sf = fopen(tmp, "w");
+        if (sf) {
+            fprintf(sf, "%ld %d %d %ld\n", N, m, nmods, best);
+            for (int i2 = 0; i2 < nmods; i2++)
+                fprintf(sf, "%ld %ld\n", best_state[i2], mods[i2]);
+            fclose(sf);
+            rename(tmp, statepath);
+        }
     }
     printf("NOSOLUTION best=%ld t=%.1fs it=%lld\n", best, now() - t0, it);
     return 1;
