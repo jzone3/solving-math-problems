@@ -356,3 +356,37 @@ greedily and leaves late subtrees bankrupt.
 
 STATUS: negative (min modulus >= 43 not achieved; structural frontier
 deepened at L=10 but not closed).
+
+## 16. Fresh-prime finisher: the depth-13 crawl eliminated, L=10 frontier at 21,475 classes
+
+Section 15 diagnosed per-subtree modulus bankruptcy at recursion depth 12–13, where
+cells have astronomically large fresh moduli M (~1e15) but the capped palette
+(primes <= 199, small exponent caps) is exhausted. This continuation implements a
+**guaranteed finisher** for thin cells, exploiting that a fresh huge M makes the
+modulus family {p * M * 2^i} essentially collision-free:
+
+- `Builder.finisher(a, M)`: covers any cell (a mod M) with 1/M < 1e-7 by a pure
+  2-chain: tail classes j mod p at moduli p*M*2^(K+1-j) (j = 1..p) plus direct takes
+  of the level cells (a + M*2^(k-1) mod M*2^k). Tail prime p is drawn from a
+  dedicated reserve of primes in (199, 2000] — disjoint from the mid-band palette,
+  so the finisher can never bankrupt the structured search. Exponent caps do NOT
+  apply (a covering system only needs finitely many distinct moduli, not smooth
+  ones); moduli up to 1e80 allowed. Verified sound via verify_subtract (PASS on
+  L=6 witness, now 155 congruences vs 292 before, 0.7–9s).
+
+Config sweep findings (all logged, eL10*.log):
+- generous caps (exponents ~log_p 1e30) WITHOUT finisher: thrash at 1e6–1e7-digit band;
+- finisher threshold at measure 1e-5 or 1e-3: failures migrate to just below the
+  threshold — the finisher must sit strictly above the structured band;
+- finisher WITH small-prime tails (p >= 3): steals mid-band towers, restart 0 dies
+  at 1.4M calls — direct measurement that tower supply is the shared resource;
+- finisher with p > 199 reserve + default caps + max-mod 1e16–1e18: restarts now
+  reach **21,475 classes** (restart 2, eps 0.02, max-mod 1e18) and **16,381**
+  (eps 0.005, 1e16) in ~25 min each vs 12.7k after 2.5 h before. Fail histogram
+  (new instrumentation, fail_hist by modulus digit count) shows residual failures
+  spread over the 1e2–1e7 band: the remaining obstruction is genuinely mid-band
+  combinatorics (which residue/tower to give each fat hole), no longer the tail.
+
+STATUS: negative for >=43; L=10 still not closed, frontier moved 12.7k -> 21.5k
+classes and per-restart wall time cut ~6x. Next lever: smarter mid-band residue
+selection (exact set-cover on the fat holes) rather than more compute.
