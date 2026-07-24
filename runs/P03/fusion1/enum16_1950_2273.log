@@ -1,0 +1,1 @@
+[1/323] {'graphs': 1, 'dags': 5725556, 'profile_dags': 5024936, 'ss_skip': 2419624, 'packed_cegar': 2605312, 'dicut_skip': 0, 'packed_exact': 0, 'cand': 0} t=589s
