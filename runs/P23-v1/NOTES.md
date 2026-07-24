@@ -142,6 +142,13 @@ Following the problem file's "Minkowski sums" lever, we generated genuinely new 
   single-vertex deletion of all 26 was then tested (~13,000 further SAT instances):
   **all 26 are vertex-critical**. Still no 508 graph.
 
+- **Max substitution + re-scan** (`maxsub.py`, `scan_gmax.py`): applying all 8 swaps at
+  once is SAT; greedy backoff found a valid **triple-substituted record** G* =
+  G509 − {413,347,300} + {47264,620,1674} (`gmax.pkl`). G* is again vertex-critical
+  (all 509 deletions SAT), and a full swap scan around G* (195 candidates, radius 2.05)
+  found only the 3 reverse swaps, 3 of the remaining known swaps, and **one new swap
+  (w=947, v=298)** — again no candidate with two independent deletions. No 508.
+
 The striking outcome: the record's size is invariant under substitution of new Minkowski
 geometry — every reachable 509-vertex variant is again vertex-critical. This strongly
 suggests 509 sits at the bottom of a wide structural basin, and beating it needs a
@@ -163,7 +170,7 @@ construction over new rings (different Loeschian t / apex angles), not vertex su
 - `sat.py` 4-colouring CNF encoding + kissat driver.
 - `verify.py` standalone independent verifier (also copied to `solutions/P23/`).
 - `coremin.py` / `greedy.py` / `plateau.py` / `scan508.py` / `addcore.py` / `anneal.py` /
-  `minkowski.py` / `scan508m.py` / `scan_alt.py` / `scan_pairs.py` /
+  `minkowski.py` / `scan508m.py` / `scan_alt.py` / `scan_pairs.py` / `maxsub.py` / `scan_gmax.py` /
   `test_all.py` the minimization attack.
 - `best586.vtx` / `best586.edges` a fresh, fully re-verified 586-vertex 5-chromatic UDG
   (a distinct graph produced by our pipeline; demonstrates the toolchain end-to-end, > record).
