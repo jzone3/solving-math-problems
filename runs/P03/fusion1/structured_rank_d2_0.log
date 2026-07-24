@@ -1,0 +1,8 @@
+D2 base_dag= True
+PARTITIONS D2-shard0 D27-lift-p2-random3 tau 3 count 10000 capped True
+PARTITIONS D2-shard0 D27-lift-p2-random11 tau 3 count 10000 capped True
+PARTITIONS D2-shard0 D27-lift-p3-random3 tau 3 count 10000 capped True
+PARTITIONS D2-shard0 D27-lift-p3-random11 tau 3 count 10000 capped True
+PARTITIONS D2-shard0 D27-lift-p5-random3 tau 3 count 10000 capped True
+PARTITIONS D2-shard0 D27-lift-p5-random11 tau 3 count 10000 capped True
+PARTITIONS D2-shard0 D27-lift-p7-random3 tau 3 count 10000 capped True

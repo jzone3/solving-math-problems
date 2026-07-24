@@ -321,7 +321,11 @@ def _violated_cut(n, arcs, color, c):
         if anc != full:
             cut = [i for i, (x, y) in enumerate(arcs)
                    if (anc & (1 << x)) and not (anc & (1 << y))]
-            return cut
+            # A disconnected component can yield an empty cut.  Empty
+            # dicuts are not constraints, so keep looking for a nonempty
+            # violated dicut instead of reporting a spurious failure.
+            if cut:
+                return cut
     return None
 
 

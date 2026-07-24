@@ -348,3 +348,51 @@ billions of leaves), not dicut enumeration, which was already optimized by
 the closed-set engine. Work is therefore reallocated to structured/algebraic
 families D1--D3, with every tau=k non-safe-class instance checked by the exact
 packing harness and any failure independently rechecked before reporting.
+
+### Final structured near-miss and amplification increment
+
+Partition counting was rerun with a cap of 10,000 color-normalized
+partitions rather than the earlier cap of one. Every completed in-class
+count reached the cap:
+
+```text
+D1 tau=3: 2 rho-qualified instances, both >=10,000
+D3 tau=3: 1 rho-qualified instance, >=10,000
+D2: 47 in-class voltage lifts reached >=10,000
+```
+
+The remaining high-p D2 count jobs were stopped at the bounded compute
+budget and do not affect any packing claim. All D2 packing decisions remain
+exact CEGAR decisions, with no deferred or non-packing instance. The global
+observed minimum among completed ranked cases is therefore the cap lower
+bound, 10,000; no fragile low-partition gadget was found.
+
+The CEGAR verifier was corrected for disconnected covers: an ancestor
+closure can produce an empty cut, which is not a dicut constraint. Empty
+cuts are now skipped while searching for a nonempty violated dicut. A
+30-instance random cross-check (two eligible tau=3 cases) and the existing
+harness smoke tests passed after this fix.
+
+Targeted amplification used the D3 `J(6,3)` gadget, the tightest completed
+ranked construction:
+
+```text
+64 voltage lifts (p=2,3,5,7; structured plus random)
+100 bipartite degree-preserving 2-switch attempts
+1 two-copy sink amalgam
+161 total; 160 tau=3 in-class; 160/160 packed; 0 candidates
+```
+
+The initial targeted run emitted apparent failures on disconnected
+zero/constant covers because of the empty-cut verifier bug. Those
+diagnostic records were discarded; the fixed rerun packed all 160
+in-class instances. No candidate is claimed.
+
+The structured weighted guide search on STS(7)/STS(9), using small integer
+weights and exact CBC lazy-separation packing, ran:
+
+```text
+1,933 trials; 920 tau_w=3 instances; 0 weighted gaps
+```
+
+No tau_w=3 instance with weighted packing below three was found.

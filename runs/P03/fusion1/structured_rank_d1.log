@@ -1,0 +1,4 @@
+PARTITIONS D1-k3 STS15-lambda1 tau 3 count 10000 capped True
+PARTITIONS D1-k3 STS21-lambda1 tau 3 count 10000 capped True
+D1-k3 {'built': 7, 'tau=3': 7, 'tau_k': 7, 'out_safe': 7, 'rho_ok': 2, 'packed': 2, 'partitions_sum': 20000, 'partitions_min': 10000} near_miss_by_cuts= ((0, 300), 'STS25-lambda1', 3, None, True)
+D1-k4 {'built': 4, 'tau=4': 2, 'tau_k': 2, 'out_safe': 2, 'tau=8': 2} near_miss_by_cuts= ((0, 140), 'all4-7-lambda1', 4, None, True)

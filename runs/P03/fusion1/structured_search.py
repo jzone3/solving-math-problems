@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exact searches in symmetric/algebraic Woodall families D1--D3."""
 import itertools
+import os
 import random
 import sys
 from collections import Counter
@@ -12,6 +13,9 @@ from pysat.formula import IDPool
 from harness import (is_dag, is_planar, is_source_sink_connected,
                      minimal_dicuts, rho, tau)
 from enum_pypy import _violated_cut, star_cuts
+
+COUNT_CAP = int(os.environ.get("STRUCTURED_COUNT_CAP", "10000"))
+RANK = bool(int(os.environ.get("STRUCTURED_RANK", "0")))
 
 
 def min_dicuts(n, arcs, max_ideals=200000):
@@ -130,12 +134,14 @@ def tau_mincut(n, arcs):
     return best
 
 
-def cegar_count(n, arcs, k, cap=1):
+def cegar_count(n, arcs, k, cap=None):
     """Exact CEGAR packing and count modulo color permutation.
 
     The SAT instance starts with source/sink stars, then lazily receives a
     clause for every violated dicut discovered by the dijoin verifier.
     """
+    if cap is None:
+        cap = COUNT_CAP
     m = len(arcs)
     cuts = [list(c) for c in star_cuts(n, arcs)]
     pool = IDPool()
@@ -281,6 +287,10 @@ def check_family(name, cases, k):
             stats["out_safe"] += 1
             if rho(n, arcs, k) >= (4 if k == 3 else 3):
                 stats["rho_ok"] += 1
+                if RANK:
+                    print("PARTITIONS", name, label, "tau", t,
+                          "count", count,
+                          "capped", count == COUNT_CAP, flush=True)
                 if packed:
                     stats["packed"] += 1
                     stats["partitions_sum"] += count
@@ -349,7 +359,11 @@ def run_d2():
                 for i in range(p):
                     arcs.append((u * p + i, v * p + ((i + g) % p)))
             cases.append((f"D27-lift-p{p}-{tag}", 27 * p, arcs))
-    check_family("D2", cases, 3)
+    shards = int(os.environ.get("STRUCTURED_SHARDS", "1"))
+    shard = int(os.environ.get("STRUCTURED_SHARD", "0"))
+    if shards > 1:
+        cases = cases[shard::shards]
+    check_family(f"D2-shard{shard}" if shards > 1 else "D2", cases, 3)
 
 
 def run_d3():

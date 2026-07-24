@@ -1,0 +1,2 @@
+PARTITIONS D3 J6,3 tau 3 count 10000 capped True
+D3 {'built': 6, 'tau=2': 4, 'tau=3': 2, 'tau_k': 2, 'out_safe': 2, 'rho_ok': 1, 'packed': 1, 'partitions_sum': 10000, 'partitions_min': 10000} near_miss_by_cuts= ((0, 60), 'J6,3', 3, None, True)
