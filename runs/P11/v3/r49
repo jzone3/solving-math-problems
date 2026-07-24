@@ -31,17 +31,3 @@ CW(640,49): inconclusive; ['m=128,d=5:TIMEOUT', 'm=80,d=8:TIMEOUT', 'm=160,d=4:T
 CW(660,49): NONEXISTENT (fold m=110, d=6); ['m=110,d=6:COUNT 0']
 CW(684,49): inconclusive; ['m=114,d=6:TIMEOUT', 'm=228,d=3:TIMEOUT', 'm=171,d=4:TIMEOUT', 'm=342,d=2:TIMEOUT']
 CW(696,49): inconclusive; ['m=116,d=6:COUNT 64', 'm=87,d=8:COUNT 210', 'm=232,d=3:COUNT 64', 'm=174,d=4:TIMEOUT', 'm=348,d=2:TIMEOUT']
-nohup: ignoring input
-53 open cells, k in [49]; resuming past 31
-CW(720,49): inconclusive; ['m=90,d=8:TIMEOUT', 'm=180,d=4:TIMEOUT', 'm=120,d=6:TIMEOUT', 'm=360,d=2:TIMEOUT', 'm=144,d=5:TIMEOUT', 'm=240,d=3:TIMEOUT']
-CW(741,49): inconclusive; ['m=247,d=3:COUNT 28']
-CW(760,49): inconclusive; ['m=95,d=8:COUNT 54', 'm=190,d=4:TIMEOUT', 'm=380,d=2:TIMEOUT', 'm=152,d=5:TIMEOUT']
-CW(768,49): inconclusive; ['m=256,d=3:TIMEOUT', 'm=128,d=6:TIMEOUT', 'm=384,d=2:TIMEOUT', 'm=96,d=8:TIMEOUT', 'm=192,d=4:TIMEOUT']
-CW(774,49): inconclusive; ['m=129,d=6:COUNT 12', 'm=258,d=3:TIMEOUT', 'm=387,d=2:TIMEOUT']
-CW(792,49): inconclusive; ['m=99,d=8:COUNT 54', 'm=198,d=4:COUNT 192', 'm=132,d=6:COUNT 168', 'm=396,d=2:TIMEOUT', 'm=264,d=3:TIMEOUT']
-CW(798,49): mult thm n/a
-CW(800,49): inconclusive; ['m=100,d=8:TIMEOUT', 'm=160,d=5:TIMEOUT', 'm=200,d=4:TIMEOUT', 'm=400,d=2:TIMEOUT']
-CW(816,49): NONEXISTENT (fold m=136, d=6); ['m=136,d=6:COUNT 0']
-CW(817,49): inconclusive; []
-CW(840,49): mult thm n/a
-CW(855,49): inconclusive; ['m=285,d=3:TIMEOUT', 'm=171,d=5:TIMEOUT']
