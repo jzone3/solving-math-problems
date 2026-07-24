@@ -1,0 +1,8 @@
+direct inst80 status=OPTIMAL time=5.0s
+WITNESS -> witness_inst80_direct.json
+80 OPTIMAL
+direct inst81 status=OPTIMAL time=309.5s
+WITNESS -> witness_inst81_direct.json
+81 OPTIMAL
+direct inst82 status=INFEASIBLE time=3.2s
+82 INFEASIBLE

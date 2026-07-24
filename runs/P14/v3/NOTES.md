@@ -103,6 +103,26 @@ Groups prescribed (per V, as cycle types of a generator, plus a few non-cyclic):
   (each element doubled in exactly one block); the C2 KM subproblems would suit a SAT encoding
   with cardinality networks (V2) better than CP-SAT integers.
 
+## Session continuation: direct matrix model (double-lex) — NONEXISTENCE results
+
+`direct_solve.py`: exact CP-SAT model on the V×B multiplicity matrix itself
+(booleans a=mult-1, b=mult-2 per cell; row/column sums; pairwise products linearized by
+AND-vars), plus **double-lex symmetry breaking** (adjacent columns and adjacent rows
+lex-non-increasing — sound for the full row×column symmetry group; classic lex² result).
+
+Validation of this second encoding (all machine-run):
+- known-existing (8,8;4,1,6;6,4) → SAT (0.1 s), witness PASSes verify.py
+- known-nonexistent (10,10;3,1,5;5,2) → INFEASIBLE (0.03 s)
+- CPro1-solved siblings: (12,16;4,4,12;9,8) → SAT 5 s; (14,21;6,3,12;8,6) → SAT 310 s
+- Greig's nonexistence theorem instance (12,26;3,5,13;6,5) → INFEASIBLE 3.2 s (reproduces Greig)
+
+**Results on the open cells:**
+- instance 3, BTD(12,20;4,3,10;6,4): **INFEASIBLE (837 s)** → design does NOT exist.
+- instance 2, BTD(12,15;6,2,10;8,6): **INFEASIBLE (1822 s)** → design does NOT exist.
+- instance 1, (14,18;7,1,9;7,4): still running (12 h budget).
+- Independent confirmation runs (different encoding: KM model with trivial group, no lex
+  constraints) launched for instances 2 and 3 — results below when finished.
+
 STATUS: SOLVED (existence, instance 4 BTD(14,28;8,3,14;7,6) — verified witnesses in solutions/P14/);
 frontier-pushed on instances 1–3 (all prescribed automorphisms of order ≥3 excluded; order-2 cases
 undecided after ~30 h total compute); no nonexistence proofs obtained.
