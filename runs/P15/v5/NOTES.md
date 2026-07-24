@@ -390,3 +390,25 @@ Config sweep findings (all logged, eL10*.log):
 STATUS: negative for >=43; L=10 still not closed, frontier moved 12.7k -> 21.5k
 classes and per-restart wall time cut ~6x. Next lever: smarter mid-band residue
 selection (exact set-cover on the fat holes) rather than more compute.
+
+## 17. Split fallback (negative), stall knob, long L=10 sweeps: frontier 30,090 classes
+
+- Split fallback (on chain failure, subdivide the cell so children reach the
+  finisher band): measured HARMFUL at L=10 — converts deep partial covers into a
+  deterministic full-tree rollback (root Fail at ~2.3–3.0M calls). Left in the code
+  behind `Builder.split_fallback = False` with the measurement documented. The
+  reason: splits mask local failure and re-commit the search to hopeless residue
+  assignments higher in the tree, so the eventual Fail rolls back everything.
+- Tail-prime reserve enlarged to all primes in (199, 50000] (5133 primes); no
+  supply failures observed since.
+- New `--stall` CLI knob (calls without class-count growth before a restart is
+  aborted).
+- Long sweeps (eps 0.02/0.05, max-mod 1e16/1e18, stall 2M/20M, ~4.5 h so far):
+  best restart reached **30,090 placed classes** (eps 0.05, max-mod 1e16,
+  seed 4243) before stalling; multiple independent restarts stall in the
+  16k–30k band with failures spread over the 1e2–1e7 modulus band.
+
+Interpretation: the finisher fully solved the thin-cell (deep) half of the
+problem; everything now hinges on mid-band residue assignment, where random
+restarts + greedy DFS have a reproducible ceiling. STATUS: negative for >=43;
+L=10 open; frontier 12.7k -> 30.1k classes this continuation.
