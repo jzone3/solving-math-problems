@@ -1,0 +1,14 @@
+=== cap c=2, capped regime ===
+  lam(-g): coeff-positive num=True den=True
+  Mhh: coeff-positive num=True den=True
+  det2: coeff-positive num=True den=True
+  lam(+g) >= 0: implied by det2 >= 0 and Mhh > 0 (lam(+g) = (det2 + kL*Mho^2)/Mhh)
+  capped-regime symbolic proof: COMPLETE
+=== cap c=4, capped regime ===
+  lam(-g): coeff-positive num=True den=True
+  Mhh: coeff-positive num=True den=True
+  det2: coeff-positive num=True den=True
+  lam(+g) >= 0: implied by det2 >= 0 and Mhh > 0 (lam(+g) = (det2 + kL*Mho^2)/Mhh)
+  capped-regime symbolic proof: COMPLETE
+=== numeric cross-checks (concrete gadgets, incl. uncapped small k) ===
+all concrete-gadget checks k=2..25 pass; worst min eig 0.438355

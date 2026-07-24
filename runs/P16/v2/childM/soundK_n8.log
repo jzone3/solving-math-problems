@@ -1,0 +1,2 @@
+soundK n=8 K=16 kappa=0.99 res=0/1 cap=2.0: tot=7442 fail=0 worst=2.132e-14
+soundK n=8 K=16 kappa=0.99 res=0/1 cap=4.0: tot=7442 fail=0 worst=2.132e-14

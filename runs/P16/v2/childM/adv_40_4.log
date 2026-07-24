@@ -1,0 +1,5 @@
+restart 0: cur=0.1987 best=0.1987
+restart 10: cur=0.1524 best=0.0942
+restart 20: cur=0.1764 best=0.0942
+restart 30: cur=0.1270 best=0.0942
+DONE n=40 cap=4.0 restarts=40: best min-eig 0.084032 (no counterexample)

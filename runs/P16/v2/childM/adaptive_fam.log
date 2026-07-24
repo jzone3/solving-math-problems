@@ -1,0 +1,53 @@
+F_5 c=2.0: certified at j=2 (alpha step), rhoK=0.8759
+F_14 c=2.0: certified at j=4 (alpha step), rhoK=0.8774
+F_40 c=2.0: certified at j=6 (alpha step), rhoK=0.8833
+F_150 c=2.0: certified at j=8 (alpha step), rhoK=0.8870
+F_300 c=2.0: certified at j=9 (alpha step), rhoK=0.8878
+F_600 c=2.0: certified at j=10 (alpha step), rhoK=0.8882
+hub+K3x10 c=2.0: j=4 rhoK=0.8755
+hub+K3x25 c=2.0: j=6 rhoK=0.8809
+hub+K3x60 c=2.0: j=7 rhoK=0.8849
+hub+K3x150 c=2.0: j=8 rhoK=0.8870
+hub+C4x10 c=2.0: j=4 rhoK=0.8796
+hub+C4x25 c=2.0: j=6 rhoK=0.8794
+hub+C4x60 c=2.0: j=7 rhoK=0.8804
+hub+C4x150 c=2.0: j=8 rhoK=0.8810
+hub+C5x10 c=2.0: j=5 rhoK=0.8791
+hub+C5x25 c=2.0: j=6 rhoK=0.8796
+hub+C5x60 c=2.0: j=7 rhoK=0.8806
+hub+C5x150 c=2.0: j=9 rhoK=0.8811
+hub+P4x10 c=2.0: j=5 rhoK=0.8791
+hub+P4x25 c=2.0: j=7 rhoK=0.8814
+hub+P4x60 c=2.0: j=8 rhoK=0.8832
+hub+P4x150 c=2.0: j=9 rhoK=0.8841
+hub+K4x10 c=2.0: j=3 rhoK=0.8923
+hub+K4x25 c=2.0: j=5 rhoK=0.8850
+hub+K4x60 c=2.0: j=6 rhoK=0.8835
+hub+K4x150 c=2.0: j=8 rhoK=0.8832
+F_5 c=4.0: certified at j=1 (alpha step), rhoK=0.8588
+F_14 c=4.0: certified at j=3 (alpha step), rhoK=0.8413
+F_40 c=4.0: certified at j=5 (alpha step), rhoK=0.8433
+F_150 c=4.0: certified at j=7 (alpha step), rhoK=0.8457
+F_300 c=4.0: certified at j=8 (alpha step), rhoK=0.8462
+F_600 c=4.0: certified at j=9 (alpha step), rhoK=0.8465
+hub+K3x10 c=4.0: j=3 rhoK=0.8425
+hub+K3x25 c=4.0: j=4 rhoK=0.8420
+hub+K3x60 c=4.0: j=6 rhoK=0.8442
+hub+K3x150 c=4.0: j=7 rhoK=0.8457
+hub+C4x10 c=4.0: j=3 rhoK=0.8613
+hub+C4x25 c=4.0: j=5 rhoK=0.8566
+hub+C4x60 c=4.0: j=6 rhoK=0.8561
+hub+C4x150 c=4.0: j=8 rhoK=0.8562
+hub+C5x10 c=4.0: j=4 rhoK=0.8593
+hub+C5x25 c=4.0: j=5 rhoK=0.8563
+hub+C5x60 c=4.0: j=7 rhoK=0.8561
+hub+C5x150 c=4.0: j=8 rhoK=0.8562
+hub+P4x10 c=4.0: j=4 rhoK=0.8510
+hub+P4x25 c=4.0: j=6 rhoK=0.8497
+hub+P4x60 c=4.0: j=7 rhoK=0.8503
+hub+P4x150 c=4.0: j=8 rhoK=0.8508
+hub+K4x10 c=4.0: j=3 rhoK=0.8851
+hub+K4x25 c=4.0: j=5 rhoK=0.8713
+hub+K4x60 c=4.0: j=6 rhoK=0.8676
+hub+K4x150 c=4.0: j=7 rhoK=0.8664
+FAMILIES: ALL CERTIFIED

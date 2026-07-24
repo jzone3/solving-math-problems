@@ -1,0 +1,2 @@
+adaptive n=9 res=1/8 cap=2.0: tot=24193 fail=0 max_j=7
+adaptive n=9 res=1/8 cap=4.0: tot=24193 fail=0 max_j=4
