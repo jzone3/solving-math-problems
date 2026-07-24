@@ -1022,3 +1022,18 @@ reference contradicting this, so I will not manufacture an unverified witness.
 FINAL STATUS: near-miss / frontier-pushed.  Record remains 42 (Owens 2014);
 minimum-modulus 43 is open.  All machinery, blueprints, and the corrected
 analysis are on branch runs/P15-v4.
+
+## 32. Regression check (session close)
+
+Re-ran the independent explicit verifier on all committed witnesses:
+  T=4  PASS  (38 congruences, min 4)
+  T=6  PASS  (93, min 6)
+  T=8  PASS  (625, min 8)
+  T=10 PASS  (1002, min 10)
+  T=12 PASS  (2064, min 12)
+All verified covering systems remain valid.  The emitgram.py compiler
+additionally reproduces Nielsen's two worked examples exactly (10 and 49
+cosets) with coverage + distinctness.
+
+These are the honest, machine-verified constructive results of the session.
+No T>=43 witness exists.  FINAL STATUS: near-miss / frontier-pushed.
