@@ -67,9 +67,13 @@ class Builder:
         self.cnt_cache = {}      # (m, g) -> bincount of frags[m] % g
 
     def cnt(self, m, g):
+        if g > 8192:                      # avoid unbounded cache memory
+            return np.bincount(self.frags[m] % g, minlength=g)
         key = (m, g)
         c = self.cnt_cache.get(key)
         if c is None:
+            if len(self.cnt_cache) > 30000:
+                self.cnt_cache.clear()
             c = np.bincount(self.frags[m] % g, minlength=g)
             self.cnt_cache[key] = c
         return c

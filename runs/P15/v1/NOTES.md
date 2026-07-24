@@ -208,6 +208,45 @@ is M=15. M=16 requires either the exact-tree greedy or a faithful
 Krukenberg-style layered design; M>=43 (the actual target) requires the
 Owens Ch.3 transcription + fresh-prime surgery (Section 5).
 
+## 5d. Fifth push: exact-gain CRT/tree greedy (fc_tree2) — M=16 SOLVED
+
+Implemented the "exact tree-aggregated gains" step flagged at the end of
+5c. `fc_tree2.py`: uncovered fragments (r, m), m | N, are grouped by
+their modulus m, each group a numpy residue array. For candidate modulus
+n the exact covered-mass profile over classes a mod n is
+
+    G_n[a] = sum_m (1/lcm(m,n)) * cnt_{m,gcd(m,n)}[a mod gcd(m,n)]
+
+with cnt_{m,g} = bincount of the group's residues mod g — a CRT
+convolution keyed on DISTINCT fragment moduli (dozens/hundreds), not on
+fragments (tens of millions). This removes fc_tree's sampling blindness
+entirely: gains are exact for every n <= ARRAY_CAP=200000 (full argmax
+profile) and exact-per-candidate (pinned residues) for larger n.
+Selection: lazy-greedy max gain-density s/n over a stale-max heap
+(gains only decrease as coverage grows, so stale-heap pops are sound).
+No cell arrays anywhere: memory is O(#fragments), N unbounded.
+
+Results (all PASS by solutions/P15/verify.py):
+
+* M=10, N=908107200 (2^6 3^4 5^2 7^2 11 13): 242 congs, ~7 min.
+* M=12, same N: 280 congs, ~5 min.
+* M=16, N=2^7 3^5 5^3 7^2 11 13 17 = 3.24e12 (recip slack via depth,
+  per 5c's Krukenberg lesson): 896 congruences, ~10 min single core.
+  Witness: witnesses_small/tree_cover_M16.json. FRONTIER 15 -> 16,
+  and the LCM (3.2e12) is 6000x beyond any array-based N we could touch.
+* M=17 (same fact minus nothing, mods >= 17): greedy grinds to mass
+  ~2.6e-4 then enters a slow tail (~14 s/step, each step covering
+  ~1e-6 mass); still running at 10 h budget.
+* M=18/M=20 (facts with 19, 2^8): early fragmentation hits 350-400M
+  fragments (~3 GB arrays); progress steady but tails equally slow.
+
+Engineering notes: (a) per-(m,g) bincount cache gives ~4x endgame
+speedup but MUST be bounded (g <= 8192, <= 30k entries) — the unbounded
+version OOM-killed three runs at 24-31 GB rss; (b) fragment explosion
+peaks mid-run (mass ~0.1-0.3) and shrinks again in the endgame; (c) the
+tail is now rate-limited by step latency x tiny per-step gain, not by
+blindness — an incremental heap or endgame batching is the next lever.
+
 ## 6. Compute spent (approx)
 
 * finite_cover: ~25 min CPU total (M=3..7).
@@ -223,20 +262,21 @@ Owens Ch.3 transcription + fresh-prime surgery (Section 5).
 * fourth push: ~25 h CPU over ~9 h wall (M=16 hypothesis sweeps at
   N=518M/735M/1.04G/1.82G incl. one OOM-killed fleet and one 2h42m solo
   init; fc_tree builder runs M=3..10).
+* fifth push (fc_tree2): ~12 h CPU over ~6 h wall so far (M=10/12/16
+  PASS; M=17/18/20 long tails, three OOM kills from the unbounded
+  bincount cache before it was capped).
 
 ## 7. STATUS
 
 STATUS: negative (for min modulus >= 43); machine frontier pushed from
-min modulus 6 to min modulus 15: verified explicit covers (PASS by
-solutions/P15/verify.py) for every M in 3..15, culminating in M=15 with
-1066 congruences over N=518918400 via WalkSAT-style reassignment local
-search (fc_walk2) on top of jittered lazy-greedy initialization. The
-walk engine breaks the fc_anneal 23k plateau at N=129729600 (down to
-~8k) but M=15 ultimately fell via a richer-slack N. M=16 documented
-negative for the whole array-based LS family (init quality collapses at
-big N; hypothesis sweeps and OOM data in 5c) and for the new sparse
-CRT/tree greedy (fc_tree, PASS to M=8, sampling-blind at M=10, see 5c);
-SAT encoding documented dead end; recursive
-registry-greedy builder documented dead end; best path to 43 remains the
-Owens-42-class surgery with fresh primes 97/101 (Section 5), which needs
-a faithful Owens Ch.3 transcription as its remaining step.
+min modulus 6 to min modulus 16: verified explicit covers (PASS by
+solutions/P15/verify.py) for every M in 3..16, culminating in M=16 with
+896 congruences over N=3.24e12 via the exact-gain CRT/tree greedy
+(fc_tree2, section 5d) — no cell arrays, N unbounded, gains exact via
+CRT convolution keyed on distinct fragment moduli. This retires the
+array-based LS family (capped at M=15 by memory, 5b/5c) and the sampled
+fc_tree (blind at M=10, 5c). M=17/18/20 runs are in slow greedy tails
+(5d); SAT and recursive registry-greedy builders remain documented dead
+ends; best path to the real >=43 target remains the Owens-42-class
+surgery with fresh primes 97/101 (Section 5), which needs a faithful
+Owens Ch.3 transcription as its remaining step.
