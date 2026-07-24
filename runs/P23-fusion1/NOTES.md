@@ -96,6 +96,28 @@ drove its pool straight to a 509-vertex core, i.e. the identical SAT/DRAT/greedy
 machinery *does* reach 509 exactly when the geometry supports it. The √2-field
 floor at ≈569 is therefore a real property of the geometry, not a solver limit.
 
+### E5 — SAT minimization of a *different construction* (Voronov series-1) — NEGATIVE
+The prompt's third lever: "SAT-driven subgraph minimization from larger
+5-chromatic graphs". v1 only ever minimized Parts-derived vertex sets. Here we
+took **Voronov's series-1 plane graphs** (`github.com/vsvor/dist-graphs`,
+`plane/series 1/dimacs/s1_graph{1..5}.dimacs`) — genuinely different constructions
+in the field ℚ(√2,√3,√6), **3877 vertices / ~26,800 edges** each. Structure alone
+suffices for minimization (every induced subgraph of a UDG is a UDG), so we
+minimized the edge graph directly (`load_dimacs.py` → `coremin.py`/`greedy.py`).
+- All five confirmed non-4-colorable (χ ≥ 5). Core-min → **1625–1969**.
+- Greedy destructive (4 seeds on graph1) descends into the **~1000–1100** range
+  and plateaus — **far above 509**, consistent with Voronov's published plane
+  record being *larger* than Parts'. The five graphs differ by only ~18 edges, so
+  their minima coincide. No sub-509 subgraph. (To even *attempt* a claim below 509
+  one would also need Voronov's exact coordinates, which series-1 doesn't ship;
+  moot, since the floor is ~1000.)
+
+### Priority re-check (this session, widened) — record still 509
+Fresh Exa web + arXiv sweep for any post-2020 sub-509 result: only Parts 2010.12665
+(509), Heule 1805.12181 (553), de Grey/Heule graphs, and the ≥26 lower bound
+(2303.14714). MathWorld "Parts Graphs" still lists 509 as the smallest. **No
+public improvement exists** — reproducing/attacking 509 is the state of the art.
+
 ## Interpretation
 - Rational rotations keep you inside the Parts field and its minimization basin →
   collapse to 509.
@@ -115,6 +137,8 @@ floor at ≈569 is therefore a real property of the geometry, not a solver limit
   the pool via `POOL=<pool>.pkl`).
 - `verify_m.py` — independent verifier over an arbitrary multi-quadratic field
   (exact edges + kissat UNSAT + drat-trim).
+- `load_dimacs.py` (E5) — load a DIMACS graph (e.g. Voronov's) into a pool for
+  structural SAT minimization.
 - `emit.py`, `export_vtx.py` — extract an induced subgraph and export readable
   coords.
 - `best569_x2.vtx` / `best569_x2.edges` / `g569_x2.pkl` — the verified 569-vertex
