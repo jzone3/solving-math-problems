@@ -325,6 +325,7 @@ def main():
     ap.add_argument("--restarts", type=int, default=20)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--stall", type=int, default=2_000_000)
     a = ap.parse_args()
     caps = {}
     for tok in a.caps.split(","):
@@ -336,6 +337,7 @@ def main():
     for it in range(a.restarts):
         rng = random.Random(a.seed + it) if it > 0 else None
         b = Builder(a.L, caps, max_mod=int(a.max_mod), rng=rng, eps=a.eps)
+        b.stall_limit = a.stall
         try:
             b.cover_cell(0, 1)
             break
