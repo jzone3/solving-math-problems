@@ -153,3 +153,41 @@ POOL=pool_x2.pkl python3 greedy.py 2 coremin_seed2.pkl   # -> greedy_seed2.pkl (
 python3 emit.py pool_x2.pkl greedy_seed2.pkl g569_x2.pkl
 python3 verify_m.py --pkl g569_x2.pkl --primes 2,3,5,11 --drat   # PASS + s VERIFIED
 ```
+
+---
+
+## Session 2 continuation (coordinator: "keep going")
+
+### E6 — extended-field 508 swap scan (`scan508x.py`) — NEGATIVE, informative
+Gap found in all previous work: v1's −1+1 / −2+1 / −3+2 swap scans, and this
+run's minimization, only ever used candidate vertices from the **native** Parts
+field ℚ(√3,√5,√11). The ℚ(√2,…) extension vertices had *never* been tested as
+substitution candidates for the record.
+
+Scan: 147 pool_x2big candidates with ≥4 record-neighbours; for each, every
+record vertex within radius 2.05 was tested for `G509 − v + w` non-4-colorability
+(DRAT-certified core each time), then all pairs of successful deletions (→ 508).
+
+Result: **0 swap-deletable candidates** (1429 s, 8 cores). Contrast: v1's native
+Minkowski candidates yielded 9 single swaps. Interpretation: √2-extension points
+sit off the record's ring, so they can join the graph but can never take over the
+colour-forcing role of a record vertex — the record's criticality is *ring-local*.
+
+### E7 — large-neighbourhood ruin & recreate (`lns508.py`) — NEGATIVE so far
+Every earlier move was small-radius (−1+0, −2+1, −3+2, greedy deletion), which
+provably cannot escape a vertex-critical graph's basin. LNS uses radius-20 moves:
+
+1. **ruin** — delete a *spatially localised ball* of k ∈ [6,26] vertices;
+2. **recreate** — conflict-driven column generation: repeatedly ask kissat for a
+   4-colouring of the current set and add the pool vertex that is *blocked*
+   (sees all 4 colours) under the most sampled colourings — a proper
+   column-generation recreate. (A degree-greedy recreate was tried first and
+   *never* restored non-4-colorability: it is far too weak.)
+3. **repair** — proof-free SAT deletion passes (GLIM=250) + one final
+   DRAT core extraction;
+4. **accept on ≤** so the search *plateau-walks* across alternative 509s instead
+   of restarting from the record each time.
+
+Behaviour: recreate reliably rebuilds a non-4-colorable set, and repair reliably
+returns to **exactly 509** (or 510–517 on unlucky iterations) — i.e. the machinery
+lands on the 509 plateau from many different ruined states, but never below.

@@ -1,0 +1,8 @@
+pool=pool_x2big.pkl candidates with >=4 record nbrs: 147
+  ..0/147 53s
+  ..25/147 235s
+  ..50/147 464s
+  ..75/147 701s
+  ..100/147 923s
+  ..125/147 1153s
+DONE 147 candidates, 0 swap-deletable, 0 508-candidates, 1429s

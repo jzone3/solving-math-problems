@@ -1,0 +1,11 @@
+record rmax=2.524 clip r2<=6.760
+after rotation orbit: 3253 2.1 s
+after minkowski layer: 33253 added 30000 4.5 s
+  edge scan 0 / 33253 edges 5986 5.9 s
+  edge scan 5000 / 33253 edges 30370 14.3 s
+  edge scan 10000 / 33253 edges 54075 25.6 s
+  edge scan 15000 / 33253 edges 77633 34.5 s
+  edge scan 20000 / 33253 edges 102966 45.3 s
+  edge scan 25000 / 33253 edges 131240 55.0 s
+  edge scan 30000 / 33253 edges 161374 63.9 s
+pool_x2big: 33253 v 173922 e 69.4 s
