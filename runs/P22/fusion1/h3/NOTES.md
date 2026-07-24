@@ -134,6 +134,33 @@ subgraphs), **no K₄-free subgraph of H₃ was found that arrows**; `f(2,3,4) �
 via H₃ remains **open** (consistent with the paper's conjecture and its
 Theorem 1.2 requiring q → ∞).
 
+## Certificate-backed negative decisions (SAT witnesses)
+
+`verify_witness.py` extracts a model from kissat for each of the three K₄-free
+alterations and **independently** verifies it: rebuild the subgraph, map the
+model to an edge 2-colouring, enumerate all triangles and confirm **0
+monochromatic**, re-assert K₄-free. All three PASS (0 mono triangles), so each
+"does not arrow" decision has an exact certificate (the counterpart of the DRAT
+proof on the UNSAT side):
+
+```
+max-triangle-ilp:    |E|=627 #triangles=1101 mono=0 K4-free=yes PASS
+max-edge-ilp:        |E|=601 #triangles=951  mono=0 K4-free=yes PASS
+greedy-max-triangle: |E|=627 #triangles=1101 mono=0 K4-free=yes PASS
+```
+
+Colourings saved to `witnesses.json`.
+
+## Priority re-check (H₃ route)
+Fresh Exa searches (2026-07-24): no published Fe(3,3;4) upper bound below 786
+(Lange–Radziszowski–Xu record stands; cf. also "Ramsey graphs and the Folkman
+number Fe(3,3;4)", Australas. J. Combin. 77). No artifact exhibits a *K₄-free*
+subgraph of H₃ that arrows — the paper only **conjectures** H₃ contains a
+Folkman subgraph, and its unconditional Theorem 1.2 needs q → ∞. So
+`f(2,3,4) ≤ 63` via H₃ is genuinely **open**; the certified positive result here
+is `H₃ → (K₃)_{T₃}` (T₃ = non-degenerate triangles, not K₄-free), matching the
+paper's q=3 computation.
+
 ## Files
 - `build_h3.py` — constructor + property checks + CNF/edge emit.
 - `verify_h3.py` — independent second verifier (different field model). PASS.
