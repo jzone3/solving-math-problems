@@ -93,8 +93,9 @@ fails. Two repairs, both machine-verified:
      **σ̂_i := d_i − 4 + min(m_i, d_i + c),  c ∈ {2, 4}**
 
    (equal to d + m − 4 whenever m ≤ d + c, in particular on regular graphs,
-   preserving tightness on the equality manifold). See F2″ in NOTES.md for
-   verification status (exhaustive n ≤ 9, families, K_{a,b}, random/hybrid).
+   preserving tightness on the equality manifold). See F2″ in NOTES.md:
+   exhaustive n ≤ 10 (all 10,013,006 δ≥2 graphs, both caps, 0 failures),
+   all families, skew K_{a,b}, 4,000 random/hybrid graphs to n ≈ 150.
 
 **New crown statement (F2′):** for every connected δ ≥ 2 graph there exists
 a diagonal s ≥ 0 with M(s) = 2 diag(s) + 4I − Q − diag(s) H diag(s) ⪰ 0

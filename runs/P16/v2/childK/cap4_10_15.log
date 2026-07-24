@@ -1,3 +1,3 @@
 >A nauty-geng -cX0x800d2D9 n=10 e=10-45 class=15/16
 >Z 689524 graphs generated in 0.22 sec
-n=10 cap=2.0 res=15/16: tot=689524 bad=0 worst=-2.286e-15 (I?ovUqs\?)
+n=10 cap=4.0 res=15/16: tot=689524 bad=0 worst=-2.286e-15 (I?ovUqs\?)

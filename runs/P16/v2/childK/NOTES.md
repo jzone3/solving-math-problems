@@ -68,8 +68,8 @@ Main deliverables:
    f2cap_rand.log, sigma_scan.log):
    - exhaustive ALL 8,025 δ≥2 graphs n ≤ 8: 0 failures (both caps);
    - exhaustive ALL 197,772 δ≥2 graphs n = 9: 0 failures (both caps);
-   - exhaustive n = 10 in progress at time of writing (cap2_10_*.log,
-     16-way split; check logs for final status);
+   - exhaustive ALL 9,808,209 δ≥2 graphs n = 10: 0 failures for BOTH caps
+     (cap2_10_*.log, cap4_10_*.log, 16-way geng splits, totals verified);
    - all windmills/wheels/hub-families incl. large sizes: positive margins;
    - complete bipartite K_{a,b} incl. very skew (2,100): positive;
    - 4,000 random/hybrid graphs to n ≈ 150 (incl. windmill-glued-to-regular
@@ -111,8 +111,8 @@ Main deliverables:
    prove nonemptiness by constructing s via local rules + a fixed-point or
    continuity/interlacing argument; K3's explicit windmill spectrum is a
    template for hub-dominated blocks).
-3. n = 10 exhaustive for F2″ cap 2 was launched (16-way); finish/extend to
-   cap 4 and to targeted n = 30…60 hub-heavy enumerations (hub + mixed
-   gadgets) which are the real risk region, NOT small n.
+3. F2″ is now exhaustively clean for both caps up to n = 10; extend testing
+   to targeted n = 30…60 hub-heavy enumerations (hub + mixed gadgets),
+   which are the real risk region, NOT small n.
 4. Update childF/childI NOTES + runs/INDEX.md to flag F2 as REFUTED (parent
    session should propagate; this branch only adds childK files).
