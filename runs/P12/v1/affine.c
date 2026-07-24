@@ -12,7 +12,8 @@
  *
  * For random b we solve the v-CSP by DFS; every solution is an (n-1) x n
  * circular Tuscan-2 array (independently re-checked), printed to stdout in
- * cutconv format.  Usage: ./affine n seed [max_arrays]
+ * cutconv format.  Usage: ./affine n seed [max_arrays] [basefile]
+ * With basefile: enumerate ALL v-solutions for each base line (n numbers).
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -99,15 +100,23 @@ int main(int argc, char **argv) {
     rng = argc > 2 ? strtoull(argv[2], 0, 10) : 12345;
     if (!rng) rng = 1;
     max_arrays = argc > 3 ? atoll(argv[3]) : -1;
+    FILE *bf = argc > 4 ? fopen(argv[4], "r") : NULL;
     for (int x = 1; x < N; x++)
         for (int y = 1; y < N; y++) if (x * y % N == 1) inv_[x] = y;
     b_[0] = 0;
     int pool[NMAX];
     for (;;) {
-        /* random circular arrangement */
-        for (int i = 0; i < N - 1; i++) pool[i] = i + 1;
-        for (int i = N - 2; i > 0; i--) { int j = xrnd() % (i + 1); int t = pool[i]; pool[i] = pool[j]; pool[j] = t; }
-        for (int i = 0; i < N - 1; i++) b_[i + 1] = pool[i];
+        if (bf) {
+            int okread = 1;
+            for (int c = 0; c < N; c++)
+                if (fscanf(bf, "%d", &b_[c]) != 1) { okread = 0; break; }
+            if (!okread) break;
+        } else {
+            /* random circular arrangement */
+            for (int i = 0; i < N - 1; i++) pool[i] = i + 1;
+            for (int i = N - 2; i > 0; i--) { int j = xrnd() % (i + 1); int t = pool[i]; pool[i] = pool[j]; pool[j] = t; }
+            for (int i = 0; i < N - 1; i++) b_[i + 1] = pool[i];
+        }
         int ok = 1;
         for (int c = 0; c < N; c++) {
             d_[c] = ((b_[(c + 1) % N] - b_[c]) % N + N) % N;
