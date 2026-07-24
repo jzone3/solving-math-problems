@@ -65,6 +65,18 @@ independently and with a checked UNSAT certificate — the q=3 case of Theorem 1
 that the paper attributes to "recent adjacent computational work" [ref 22].
 Two solvers agree UNSAT; two independent checkers verify the proof.
 
+## Full-graph arrowing H₃ → (3,3)ᵉ: certified but trivial
+
+`full_arrow.py` emits the arrowing CNF over **all** 5376 triangles of H₃
+(`h3_full.cnf`, 1008 vars / 10752 clauses). kissat → UNSAT (exit 20), drat-trim
+→ VERIFIED, so H₃ → (3,3)ᵉ. But the proof is *tiny* (23 core lemmas): each
+maximal clique is a K₉ ⊇ K₆ and R(3,3)=6, so every 2-colouring already has a
+monochromatic (degenerate) triangle inside one clique. Hence full-graph arrowing
+is trivial and useless for Folkman — the content is entirely in the **K₄-free**
+constraint (which forbids exactly those clique triangles). This is why T₃
+(non-degenerate only) is the meaningful system and why f(2,3,4) ≤ 63 hinges on
+the open K₄-free-subgraph question.
+
 ## Why this is NOT yet a Folkman bound (honest scope)
 
 H₃ is **not** K₄-free: it contains **9576** K₄'s (each order-9 clique alone
