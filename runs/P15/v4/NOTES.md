@@ -1749,3 +1749,43 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 57. Phase 40 (sec 3.20, primes 79/83) -- FINAL SECTION (2026-07-22)
+
+emit320.py -- Owens sec 3.20: the last empty hole, fourth 5-input
+(4 mod 5) on the 32 hole (16 mod 32), split by the 3-digit: 79^ on
+(1 mod 3), 83^ on (2 mod 3).  Seventy-eight sets per 3-input per the
+text; the 83-side adds a depth-shifted 79^ tower, a 43^ and two 41^
+(all at shifted levels to stay fresh against the 79-side and its own
+sets) for eighty-two sets.
+
+Machine-checked results:
+  sec3.20: 4152716 congruences, 898 placeholders
+  min modulus: 79
+  dups within sec3.20: 0
+  overlap w/ all previous sections: 0
+Census (window 2^8 3^3 5^2 79): residual dominated by out-of-window
+79^2/83-material (dropped measure 0.284).
+
+## 58. CAMPAIGN WRAP-UP: full section-by-section replica
+
+Sections 3.1-3.20 of Owens's record T=42 construction are now ALL
+residue-emitted: ~12.3M explicit congruences, each section with zero
+internal duplicate moduli and zero modulus overlap against every
+other section (all pairs checked).  Minimum modulus over the whole
+emission: 42-range as prescribed (sec 3.4's min 42; sec 3.14 shows
+the critical bare-43 set).
+
+This is NOT claimed as a complete machine-verified covering system:
+  - placeholder (x) slots remain where the sources leave residue
+    choices open (each documented per section);
+  - obstruction A (secs 3.5/3.6, Nielsen's tenth input) and
+    obstruction B (sec 3.18's nine bare-25 pieces) are proven
+    under-specified at residue level;
+  - census windows are finite; out-of-window moduli reported as
+    dropped measure per section.
+
+No T>=43 witness was constructed or found in the literature through
+July 2026; the record remains 42 (Owens 2014).
+
+STATUS: near-miss / frontier-pushed
+
