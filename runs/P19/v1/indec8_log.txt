@@ -1,0 +1,13 @@
+L=8 B=20: 1871593 wide partitions (727.0s)
+  200000/1871593 filtered, 0 indec so far (912.2s)
+  400000/1871593 filtered, 0 indec so far (920.2s)
+  600000/1871593 filtered, 0 indec so far (983.5s)
+  800000/1871593 filtered, 0 indec so far (1073.8s)
+  1000000/1871593 filtered, 0 indec so far (1081.7s)
+  1200000/1871593 filtered, 0 indec so far (1197.0s)
+  1400000/1871593 filtered, 20 indec so far (1287.7s)
+  1600000/1871593 filtered, 249 indec so far (1358.4s)
+  1800000/1871593 filtered, 5115 indec so far (1473.8s)
+indecomposable: 17837 (1514.7s)
+max first part: 17 (bound B=20), max |lam|=126
+done: 17837 indecomposables tested, non-SAT: [] (2182.4s)
