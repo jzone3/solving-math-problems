@@ -1620,3 +1620,27 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 52. Phase 35 (sec 3.15, prime 47) (2026-07-22)
+
+emit315.py -- Owens sec 3.15: first 3-input of the fourth 5-input on
+the 4 hole (2 mod 4 n 4 mod 5 n 1 mod 3).  Same twenty-five sets as
+sec 3.14 with 3/9^ over 1 mod 3; the 25^ broken into five pieces
+(four level-1 25*c congruences + the deeper tower) to feed seven 7^
+copies at four inputs each (slot 4 = the input needing only a 25);
+then two 17^, 29^, 31^, three 13^, three 19^ at thirteen inputs,
+41^, 43^, two 23^ -- forty-six sets, 47^ filled with all of them
+(47 >= 42, nothing dropped).
+
+Machine-checked results:
+  sec3.15: 123172 congruences, 159 placeholders
+  min modulus: 47
+  dups within sec3.15: 0
+  overlap w/ skeleton and secs 3.3-3.14: all 0
+Census (window 2^7 3^4 5^2 47): residual = out-of-window tower
+classes + tails, as before.
+
+Cumulative replica: secs 3.1-3.15, ~301,900 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
