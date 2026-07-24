@@ -326,6 +326,8 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default=None)
     ap.add_argument("--stall", type=int, default=2_000_000)
+    ap.add_argument("--qtries", type=int, default=10)
+    ap.add_argument("--ptries", type=int, default=8)
     a = ap.parse_args()
     caps = {}
     for tok in a.caps.split(","):
@@ -336,7 +338,8 @@ def main():
     b = None
     for it in range(a.restarts):
         rng = random.Random(a.seed + it) if it > 0 else None
-        b = Builder(a.L, caps, max_mod=int(a.max_mod), rng=rng, eps=a.eps)
+        b = Builder(a.L, caps, max_mod=int(a.max_mod), rng=rng, eps=a.eps,
+                    q_tries=a.qtries, p_tries=a.ptries)
         b.stall_limit = a.stall
         try:
             b.cover_cell(0, 1)
