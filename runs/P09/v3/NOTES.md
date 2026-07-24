@@ -238,6 +238,23 @@ contributes x_i² to both), and μ₁²+μ₂² ≤ Σμ_k² = ‖B‖_F², whil
 factor (1−1/ω) → 1 since ω grows linearly in N. So no clique-blow-up
 sequence can violate asymptotically; equality requires rank(B) ≤ 2.
 
+### Dense-limit (graphon) observation
+For any graphon W: λ₁(W)²+λ₂(W)² ≤ Σλ_k² = ‖W‖₂² ≤ ‖W‖₁ (since 0≤W≤1),
+with ‖W‖₁ the limit of 2m/n². If W is not {0,1}-valued a.e. (or its 0/1
+support contains arbitrarily large cliques), ω(G_n) → ∞ along the sequence,
+so the bound factor (1−1/ω) → 1 and the conjecture holds asymptotically
+with equality only if rank(W) ≤ 2 and W ∈ {0,1}. The genuinely open
+territory is thus finite-n / sparse: consistent with everything above and
+with the blow-up scan (which covers all {0,1} patterns with ≤ 9 parts).
+
+### Strongly regular graphs (Spence catalogues, up to n = 64)
+Downloaded all complete SRG catalogues from Ted Spence's site (27 parameter
+sets, incl. the full 32,548 SRG(36,15,6,6), 3,854 SRG(35,18,9,9), 6,760
+SRG(37,18,8,9), 180 SRG(36,14,4,6), 167 SRG(64,18,2,6), …): 43,718 SRGs —
+0 violations, 0 equalities (exact numpy eigenvalues + exact clique number,
+threshold prefilter). SRGs need NOT be vertex-transitive, so this is not
+subsumed by the VT census; script inline in NOTES history / srg/ dir.
+
 ## STATUS: negative — no counterexample found. Frontier pushed:
 conjecture exhaustively machine-verified for ALL graphs n ≤ 12
 (1.65 × 10¹¹ graphs), ALL vertex-transitive graphs n < 48 (100,720,344,
