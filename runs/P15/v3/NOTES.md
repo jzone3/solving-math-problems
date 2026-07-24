@@ -244,6 +244,19 @@ than the 273k/7.35e7=3.7e-3 of the earlier m=13 attempt, confirming the slack
 law. MC staircase observed: 483k -> 142k holes in ~40 min at ~50 it/s, then
 kick-dominated plateau. Outcome recorded below when runs finish.
 
+8h results (all NOSOLUTION, best remaining holes):
+- m=13 N=183783600 seed91: 51,238 (from 483k greedy; steady staircase all 8h)
+- m=13 N=183783600 seed92: 142,305
+- m=13 N=367567200 seed94: 199,608 (bigger N: only ~0.1-50 it/s, RAM-bound)
+- m=14 N=183783600 seed93: 159,107
+Interpretation: slack 1.96 is sufficient in principle (monotone descent, no
+hard stall), but baseline throughput (~50 it/s at N=1.8e8) is the binding
+constraint. Delegated to child sessions: (A) multi-seed sweep, (B) engine
+optimization — child B's cover_mc3.c (sampled-candidate proposals from the
+hole list + OpenMP) reached ~20x it/s and descended to ~7.7k holes in under
+1h, plus an exact hole-driven endgame repairer (repair_mc.c). Their results
+land on branches runs/P15-v3-childA / runs/P15-v3-childB and are merged here.
+
 STATUS: frontier-pushed (verified covering systems for every m ≤ 12 via
 explicit engines, plus a new symbolic-coset engine with unbounded lcm verified
 at m ≤ 9 in seconds-minutes; no m≥43 witness — greedy variants documented
