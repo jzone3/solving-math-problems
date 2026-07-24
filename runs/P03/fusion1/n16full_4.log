@@ -33,3 +33,7 @@ GRAPH 26 orientations=172645596 profiles=66813992 ss=41111756 tau_skip=0 safe=79
 GRAPH 27 orientations=178114164 profiles=68983016 ss=42062862 tau_skip=0 safe=8705900 checks=18214254 packed=18214254 cand=0 deferred=0
 GRAPH 28 orientations=185719968 profiles=71876944 ss=44151550 tau_skip=0 safe=8706828 checks=19018566 packed=19018566 cand=0 deferred=0
 GRAPH 29 orientations=192017436 profiles=74364704 ss=45307736 tau_skip=0 safe=9429276 checks=19627692 packed=19627692 cand=0 deferred=0
+GRAPH 30 orientations=197292168 profiles=76466168 ss=46163352 tau_skip=0 safe=10390672 checks=19912144 packed=19912144 cand=0 deferred=0
+GRAPH 31 orientations=203616264 profiles=78913560 ss=47632062 tau_skip=0 safe=10598284 checks=20683214 packed=20683214 cand=0 deferred=0
+GRAPH 32 orientations=210597228 profiles=81635740 ss=49248266 tau_skip=0 safe=10880212 checks=21507262 packed=21507262 cand=0 deferred=0
+GRAPH 33 orientations=216052404 profiles=83800528 ss=50215302 tau_skip=0 safe=11625990 checks=21959236 packed=21959236 cand=0 deferred=0
