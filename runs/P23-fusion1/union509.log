@@ -1,0 +1,13 @@
+distinct 509-plateau graphs: 5
+pairs: 10
+  plat_41_0.pkl + plat_swap_41438.pkl: union 512 -> 509 (251s)
+  plat_41_0.pkl + plat_45_7.pkl: union 512 -> 509 (251s)
+  plat_41_0.pkl + record: union 511 -> 509 (252s)
+  record + plat_swap_41438.pkl: union 510 -> 509 (482s)
+  record + plat_45_7.pkl: union 510 -> 509 (489s)
+  plat_41_0.pkl + plat_swap_41451.pkl: union 512 -> 509 (504s)
+  record + plat_swap_41451.pkl: union 510 -> 509 (719s)
+  plat_45_7.pkl + plat_swap_41438.pkl: union 511 -> 509 (726s)
+  plat_45_7.pkl + plat_swap_41451.pkl: union 511 -> 509 (751s)
+  plat_swap_41438.pkl + plat_swap_41451.pkl: union 511 -> 509 (944s)
+DONE

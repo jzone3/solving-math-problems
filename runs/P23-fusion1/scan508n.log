@@ -1,1 +1,15 @@
 pool=pool_native.pkl candidates with >=4 record nbrs: 697
+  ..0/697 92s
+  w=41451 swap-deletable: [415]
+  ..25/697 552s
+  w=41438 swap-deletable: [413]
+  ..50/697 1021s
+  ..75/697 1508s
+  ..100/697 1926s
+  w=3452 swap-deletable: [356]
+  w=2731 swap-deletable: [220]
+  w=2472 swap-deletable: [217]
+  ..125/697 2402s
+  w=1674 swap-deletable: [300]
+  w=1666 swap-deletable: [301]
+  ..150/697 2901s

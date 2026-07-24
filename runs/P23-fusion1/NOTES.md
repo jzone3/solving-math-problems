@@ -191,3 +191,37 @@ provably cannot escape a vertex-critical graph's basin. LNS uses radius-20 moves
 Behaviour: recreate reliably rebuilds a non-4-colorable set, and repair reliably
 returns to **exactly 509** (or 510–517 on unlucky iterations) — i.e. the machinery
 lands on the 509 plateau from many different ruined states, but never below.
+
+### E7b — LNS results (native + extended pools) — NEGATIVE
+Built a second, richer **native-field** pool (`build_native.py`, ℚ(√3,√5,√11)):
+record ∪ Minkowski sums ∪ **apex points** (both third vertices of the unit
+triangle on every record pair at distance ≤ 2 — computed exactly, with the
+apex scale factor √((4−d²)/4d²) cached per distance so sympy denesting runs once
+per distinct d²). After a degree-5 filter: **41,764 vertices / 365,632 exact
+edges**. v1 had Minkowski pools here but no apex layer and, crucially, no LNS.
+
+~70 LNS iterations over both pools (each iteration = ruin + column-generation
+recreate + repair, ~3.5 min): the distribution of outcomes is
+509 ×20+, 510, 511, 512, …, 522 — the search **lands exactly on 509 from many
+different ruined states and never below**.
+
+### E8 — alternative 509s and their unions (`union509.py`) — NEGATIVE, novel
+The plateau walk emitted **genuinely different 509-vertex 5-chromatic graphs**
+(differing from the record in 1–2 vertices), and the native swap scan found more
+(e.g. `509 − v415 + apex41451`, `509 − v413 + apex41438`, `509 − v220 + mink2731`).
+Until now only *one* 509 graph was known, so this test was impossible:
+
+> if two distinct 509s exist, their union (510–512 vertices) is non-4-colorable,
+> and its minimum non-4-colorable subgraph need not be either of them.
+
+All **10 pairs** of the 5 distinct 509s were core-minimized + fully greedily
+reduced: **every union collapses back to exactly 509**. Combining independent
+509s does not interfere constructively.
+
+### E9 — native-field 508 swap scan (`scan508x.py` on `pool_native.pkl`)
+697 candidates with ≥4 record neighbours (including the new apex layer, which v1
+did not have). Per candidate: DRAT-certified test of `509 − v + w` for every
+record vertex within radius 2.05, then all pairs of successful deletions (→508).
+Swap-deletable candidates *are* found here (unlike in the √2 extension), i.e. the
+record has substitutable vertices — but no candidate so far admits **two**
+simultaneous deletions, which is what a 508 requires.
