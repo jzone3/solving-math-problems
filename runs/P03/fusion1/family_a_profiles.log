@@ -1,0 +1,4 @@
+START (2, 2, 4, 4)
+{'profile': (2, 2, 4, 4), 'generated': 5854, 'region': 10, 'packed': 10, 'slowest_exact_seconds': 0.034317970275878906}
+START (3, 3, 3, 3)
+{'profile': (3, 3, 3, 3), 'generated': 4076, 'region': 889, 'packed': 889, 'slowest_exact_seconds': 0.06480765342712402}

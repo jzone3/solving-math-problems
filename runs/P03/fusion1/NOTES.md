@@ -99,5 +99,18 @@ between `harness.has_k_disjoint_dijoins(...,4)` and brute-force 4-coloring.
 
 The v4 weighted machinery (`weighted.py` plus its self-contained
 `woodall.py`) has been ported. It uses PuLP/CBC lazy separation for weighted
-packing. A short weighted smoke search is running/queued; results will be
-recorded with exact tau_w and packing verification.
+packing. The v4 tau_w=2 smoke search ran 58,462 trials with no gap. A
+tau_w=3 search ran 23,630 trials, encountered 3,154 instances with
+tau_w=3, and found no `nu_w < 3` gap; every failed 3-packing check was also
+required to pass the exact 2-packing feasibility check before it could be
+reported.
+
+Family A targeted runs have now covered:
+
+- profile `(2,2,4,4)`, n=12: 10 out-of-safe-class instances, all packed;
+- profile `(3,3,3,3)`, n=12: 889 out-of-safe-class instances, all packed.
+
+The exact k=4 checker was used on every listed instance. The smallest
+profile `(2,2,3,3)` was computationally tested separately: 4,746/5,000
+generated instances had tau=4, all 4,746 were source-sink-connected (so no
+out-of-safe-class instances occurred), and all satisfied both rho bounds.
