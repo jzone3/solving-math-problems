@@ -64,6 +64,15 @@ class Builder:
         self.frags = {1: np.zeros(1, dtype=np.int64)}   # m -> residues
         self.chosen = []
         self.rng = rng
+        self.cnt_cache = {}      # (m, g) -> bincount of frags[m] % g
+
+    def cnt(self, m, g):
+        key = (m, g)
+        c = self.cnt_cache.get(key)
+        if c is None:
+            c = np.bincount(self.frags[m] % g, minlength=g)
+            self.cnt_cache[key] = c
+        return c
 
     def mass(self):
         return sum(len(r) / m for m, r in self.frags.items())
@@ -79,8 +88,7 @@ class Builder:
                 continue
             g = gcd(m, n)
             w = 1.0 / lcm(m, n)
-            cnt = np.bincount(R % g, minlength=g)
-            G += w * np.tile(cnt, n // g)
+            G += w * np.tile(self.cnt(m, g), n // g)
         return G
 
     def best_class(self, n):
@@ -108,13 +116,14 @@ class Builder:
                     continue
                 g = gcd(m, n)
                 w = 1.0 / lcm(m, n)
-                s += w * int((R % g == a % g).sum())
+                s += w * int(self.cnt(m, g)[a % g])
             if s > best_s:
                 best_s, best_a = s, a
         return best_s, best_a
 
     def apply(self, a, n):
         newfrags = {}
+        changed = set()
         for m, R in self.frags.items():
             g = gcd(m, n)
             L = lcm(m, n)
@@ -127,6 +136,8 @@ class Builder:
             sel = R[hit]
             if len(sel) == 0:
                 continue
+            changed.add(m)
+            changed.add(L)
             q = L // m
             # children rr = r + t*m, t in 0..q-1; exclude rr ≡ a (mod n)
             children = (sel[:, None] + np.arange(q)[None, :] * m).ravel()
@@ -136,6 +147,8 @@ class Builder:
                 newfrags[L] = surv if prev is None else \
                     np.concatenate([prev, surv])
         self.frags = newfrags
+        self.cnt_cache = {k: v for k, v in self.cnt_cache.items()
+                          if k[0] not in changed}
         self.chosen.append((a, n))
         self.unused.discard(n)
 
