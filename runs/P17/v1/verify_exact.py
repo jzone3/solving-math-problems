@@ -75,6 +75,9 @@ if __name__ == '__main__':
     if ok:
         print(f"PASS: graph violates WoW {which} "
               f"({'n+' if which==20 else 'n-'} > sum of positive eigenvalues)")
+    elif ok is None:
+        print(f"UNDECIDED: could not certify WoW {which} at max precision")
+        sys.exit(2)
     else:
         print(f"FAIL: no violation of WoW {which}")
         sys.exit(1)
