@@ -168,6 +168,13 @@ Following the problem file's "Minkowski sums" lever, we generated genuinely new 
   candidates: **2 more single swaps** (w=1124→v=301, w=1251→v=220 — the same record
   vertices already known to be replaceable), no pairs, no 508.
 
+- **Double-addition greedy** (`addcore2.py`): the move class single-substitution scans
+  cannot reach (508 = 509 − 3 + 2). Enumerated all 1,597 unit-adjacent pairs of Minkowski
+  candidates (each with ≥4 record neighbours), ranked by combined record degree, and for
+  the top 400 pairs ran full greedy core-jump deletion from the 511-vertex superset
+  G509 ∪ {w1,w2}. **All 400 runs bottomed at exactly 509** (tens of thousands of SAT
+  instances, ~4.5 h × 8 cores). No −3+2 reduction exists in this geometry either.
+
 The striking outcome: the record's size is invariant under substitution of new Minkowski
 geometry — every reachable 509-vertex variant is again vertex-critical. This strongly
 suggests 509 sits at the bottom of a wide structural basin, and beating it needs a
