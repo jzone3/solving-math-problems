@@ -226,11 +226,12 @@ R(H,x) = (μ₁² + max(μ₂,0)²)/(xᵀAx·(1−1/ω)); any (H,x) with R > 1 g
 explicit large-n counterexample by integer rounding. Maximized R over the
 simplex (projected gradient with analytic eigenvector gradients,
 multi-restart, ω recomputed on the support at every iterate) for EVERY
-pattern with ω ≥ 3: all graphs n ≤ 9 (272,770 patterns after filtering
-ω<3). Result: max R = 1.000000000000 (12 digits) for every n ∈ {5..9},
-attained only at balanced-complete-multipartite weightings; ZERO patterns
-exceed 1. The equality surface is a global max over the entire 9-pattern
-blow-up limit space, not just a local one.
+pattern with ω ≥ 3: all graphs n ≤ 10 (272,770 patterns for n ≤ 9 plus
+11,992,995 for n = 10, 8-way parallel, ~3 h). Result: max R =
+1.000000000000 (12 digits) for every n ∈ {5..10}, attained only at
+balanced-complete-multipartite weightings; ZERO patterns exceed 1. The
+equality surface is a global max over the entire 10-part blow-up limit
+space, not just a local one.
 
 Loopy blow-ups (parts → cliques, covers unions-of-Turáns asymptotics) are
 ruled out analytically: with loops, 2m/N² = ‖B‖_F² exactly (loop part i
