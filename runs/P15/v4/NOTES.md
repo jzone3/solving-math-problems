@@ -888,3 +888,40 @@ supersedes spares43.py's F1-F3 and is the sharpened form of burden (b).
 STATUS: near-miss / frontier-pushed (burden (a) discharged at stratum level;
 burden (b) reduced to a finite branch-containment check on the core map;
 burden (c) unchanged).
+
+## 27. Phase 14: tower-semantics correction - freshness models were over-approximations
+
+Re-reading Nielsen sec. 2 precisely: (q^m)^ = q^(m-1) * q^, with the j-th
+input contributing classes a + j*q^(k-1) - q^(m-1) (mod q^k) for ALL k >= m.
+So a 25^ contributes moduli 5^k * m for every k >= 2 (both parities of v5),
+not 25^j * m.  semfix.py re-runs the sec 3.8 model under the correct
+semantics:
+  * the phase-10 "odd-5-power" mints COLLIDE (46 collisions) - phase 10/11's
+    stratum freshness proofs are INVALID as stated;
+  * moreover the corrected pool consumes EVERY 2-3-5-smooth value <= 10^6,
+    so no smooth-stratum mint for sec 3.8 exists in the plain value-set
+    model at all.
+
+But the same re-reading also invalidates the phase-9 REFUTATION and the
+baseline disjointness "PASS" of ledger38.py: Owens's own sets, modeled as
+plain value sets under correct semantics, would collide with each other too.
+The construction avoids this via Nielsen's "artificially increase n"
+mechanism: any tower can be pushed to deeper 2-adic (or other) levels,
+shifting its moduli off used values.  Owens: "whenever we use this arrow
+notation, we will artificially increase n when needed to avoid repeating
+moduli."  Freshness is therefore NOT decidable in the value-set model in
+either direction; it is a resource question about deepening room, which the
+plain multiset models (phases 9-12) cannot see.
+
+Net state after this correction:
+  * the T=43 counting blueprint (blueprint43d.py, 13 ledgers, true costs)
+    remains valid - counting is semantics-robust;
+  * all phase-9..13 modulus-level refutations AND freshness proofs are
+    withdrawn as over-approximations (kept in the log as bounds on the
+    plain model);
+  * the single sound remaining question is burden (c): residue-level
+    emission with explicit n-increase bookkeeping, verified end-to-end.
+    This is now provably the ONLY sound validation route.
+
+STATUS: near-miss / frontier-pushed (counting blueprint intact; all
+value-set-level freshness arguments, positive and negative, withdrawn).
