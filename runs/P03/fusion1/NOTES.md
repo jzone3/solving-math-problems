@@ -84,10 +84,9 @@ candidates**, and all eight candidate files are empty. The longest shard
 wall time was 2,487 seconds. This is an exhaustive closure of the
 girth-at-least-5 n=16 subfamily only.
 
-The n=18 input was generated and prepared (455 graphs retained), but was not
-launched after n=16 completion because its expected runtime exceeded the
-remaining session budget. It is now running in eight background shards over
-the 455 prepared graphs; logs and candidate files are checkpointed by range.
+The n=18 input was generated and prepared (455 graphs retained). It is now
+running in eight background shards over the 455 prepared graphs; logs and
+candidate files are checkpointed by range.
 
 ## Tau=4 n=10 reduced-cell exhaustion
 
