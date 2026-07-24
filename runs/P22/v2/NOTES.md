@@ -248,6 +248,15 @@ The session was resumed with instructions to push harder. Additional work:
   looks like a robust empirical floor for min-mono-triangles on G₁₂₇
   (still 2.1% of the 9779 triangles away from a SAT witness).
 
+- **Seventh wave — automorphism-image crossover (`aut_crossover.py`)**: for
+  the 204 record X, all 10668 images X^σ (σ affine, ± color flip) were
+  enumerated; the *closest* image is Hamming 758 away (median 1334) —
+  consistent with the trivial-stabilizer theorem: the record is deeply
+  asymmetric, so its orbit gives no cheap mid-distance parents. Exact RC2
+  recombination over the single 758-edge difference set ran 2 h without
+  terminating (again ≈ the full hard instance). Parallel fresh basins + LNS
+  reseeds (~20 more core-hours) still bottom out at 204.
+
 Bottom line unchanged: G₁₂₇ → (3,3)ᵉ remains undecided; the quantitative
 hardness estimates above are now measured, not guessed. Techniques exhausted
 on this hardware: CDCL (kissat/gimsatul), lex/BreakID/SBVA preprocessing,
