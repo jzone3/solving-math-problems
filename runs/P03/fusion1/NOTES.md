@@ -37,4 +37,17 @@ tracked v5 `kept14.jsonl`; they are not part of the repository.
 
 ## n=16 exhaustion
 
-Pending / in progress. Logs and shard outputs are kept in this directory.
+The fresh nauty generation produced 4,060 connected cubic graphs on 16
+vertices. `prep_graphs.py` retained 2,595 non-planar, 3-edge-connected
+graphs, dropping 681 planar and 784 not-3-edge-connected graphs. Eight PyPy
+shards are running over these 2,595 retained graphs:
+
+```
+0:325  325:650  650:975  975:1300
+1300:1625  1625:1950  1950:2273  2273:2595
+```
+
+Each shard uses `enum_pypy.py` with profile, DAG, source-sink, CEGAR exact
+packing, reduced-dicut, and exact backtracking filters. Candidate output is
+written to a separate `.cand.jsonl` file and stderr progress to a `.log`
+file. At launch no candidate output had been emitted.
