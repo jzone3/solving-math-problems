@@ -1007,3 +1007,18 @@ counting blueprint (blueprint43d.py); a residue-emitted distinct-modulus
 value-set freshness arguments (both positive and negative) do not settle the
 question.  No T>=43 covering system was constructed or verified; the record
 remains 42 (Owens 2014) and the problem is open.
+
+## 31. Phase 17: repeat literature re-check (2015-2026)
+
+Re-queried arXiv (math.NT, "covering system", sorted by date) and web search
+for any post-Owens construction with minimum modulus >= 43.  The arXiv API
+was rate-limited/intermittent this session, but combined with the earlier
+July-2026 check (sec. 1; arXiv:2607.19029's introduction still cites Owens's
+42 as the constructive record, and Hough's 2015 Annals result proves the
+minimum modulus is bounded, i.e. arbitrary T is IMPOSSIBLE), the evidence is
+consistent: no known covering system has minimum modulus >= 43.  I found no
+reference contradicting this, so I will not manufacture an unverified witness.
+
+FINAL STATUS: near-miss / frontier-pushed.  Record remains 42 (Owens 2014);
+minimum-modulus 43 is open.  All machinery, blueprints, and the corrected
+analysis are on branch runs/P15-v4.
