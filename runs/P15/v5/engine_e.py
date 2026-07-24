@@ -31,7 +31,7 @@ def _sieve(n):
     return [i for i in range(2, n + 1) if s[i]]
 
 
-TAIL_PRIMES = _sieve(2000)
+TAIL_PRIMES = _sieve(50000)
 
 
 def crt(r1, m1, r2, m2):
@@ -71,6 +71,7 @@ class Builder:
         self.fin_max_mod = 10 ** 80
         self.fin_measure = 1e-7
         self.fail_hist = {}
+        self.split_fallback = False
 
     def _divisors(self, n):
         divs = [1]
@@ -295,6 +296,21 @@ class Builder:
                     continue
         self.fail_hist[min(len(str(M)), 12)] = \
             self.fail_hist.get(min(len(str(M)), 12), 0) + 1
+        # split fallback: subdivide the cell; children get geometrically
+        # thinner and are eventually absorbed by the finisher. Only enabled
+        # when self.split_fallback is set: measured at L=10 it converts deep
+        # partial covers into full-tree rollbacks (root Fail at ~3M calls).
+        if self.split_fallback and depth <= self.max_depth - 2:
+            for q0 in (2, 3, 5, 7):
+                if M % q0 != 0:
+                    n_out = len(self.out)
+                    try:
+                        for i in range(q0):
+                            self.cover_cell(a + i * M, M * q0, depth + 1)
+                        return
+                    except Fail:
+                        self.rollback(n_out)
+                    break
         raise Fail(f"cell {a} mod {M}")
 
 
