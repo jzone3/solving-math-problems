@@ -19,3 +19,5 @@ GRAPH 13 orientations=90322476 profiles=34665044 ss=23042222 tau_skip=0 safe=303
 GRAPH 14 orientations=96758676 profiles=37221096 ss=24318054 tau_skip=0 safe=3593134 checks=9309908 packed=9309908 cand=0 deferred=0
 GRAPH 15 orientations=103917972 profiles=39994828 ss=26065030 tau_skip=0 safe=3856526 checks=10073272 packed=10073272 cand=0 deferred=0
 GRAPH 16 orientations=109332852 profiles=42129220 ss=27053760 tau_skip=0 safe=4561508 checks=10513952 packed=10513952 cand=0 deferred=0
+GRAPH 17 orientations=115772172 profiles=44610808 ss=28663542 tau_skip=0 safe=4727304 checks=11219962 packed=11219962 cand=0 deferred=0
+GRAPH 18 orientations=123376332 profiles=47507204 ss=30744126 tau_skip=0 safe=4728232 checks=12034846 packed=12034846 cand=0 deferred=0
