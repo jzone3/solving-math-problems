@@ -266,3 +266,9 @@ STATUS: negative on the main question / frontier-pushed on structure and records
   n = 16..22 via two-window rings).
 - Dead ends logged: h-IDS filtering (subsumed by exact counting), generic annealing
   (plateaus ~2.5× above structured constructions), pentagram-block seeds (6^k growth).
+
+Dead end (parity route): hoped t ≡ 0 (mod 2) always, which would kill t=1 for ALL w by a
+parity theorem. False: brute force over all chord 2-factors found odd-t gadgets already at
+w=7 (72 of 292), w=8 (696/2976), ..., w=11 (2420416/5849252). Exact minima by full
+enumeration: w=6: 8, w=7: 10, w=8..11: 12. So no Thomason-style parity argument applies;
+t=1 can only be excluded by exhaustion (done for w ≤ 16) or a new idea.
