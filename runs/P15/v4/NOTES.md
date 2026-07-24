@@ -1721,3 +1721,31 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 56. Phase 39 (sec 3.19, primes 71/73) (2026-07-22)
+
+emit319.py -- Owens sec 3.19: the remaining single 9^-input in the
+last 3-input of the second 5-input on 2 mod 4, reconstructed as the
+9-cell (3,9) (figure does not fix the child; documented).  Split mod
+8: 71^ on (2,8), 73^ on (6,8) + two depth-shifted 71^ towers
+(levels 3-4/5-6, the doubling trick).  Seventy sets per half per the
+text.
+
+Collision found & fixed: the six single-input 9^ copies at level 1
+(modulus 27*m) exactly repeat the six 3-conjunctions 3*set (27*m) --
+1,105,632 duplicate moduli.  Fix: start the 9^ copies at level 2
+(Nielsen's artificial depth increase); the sets are 3-free so
+27*3^k*m never meets 27*m.  Dups -> 0.
+
+Machine-checked results:
+  sec3.19: 6487776 congruences, 498 placeholders
+  min modulus: 71
+  dups within sec3.19: 0
+  overlap w/ all previous sections: 0
+Census (window 2^7 3^4 5^2 71): 71-half FULLY covered in-window
+(0 of 51120; dropped measure 0.174).
+
+Cumulative replica: secs 3.1-3.19, ~8.18M congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
