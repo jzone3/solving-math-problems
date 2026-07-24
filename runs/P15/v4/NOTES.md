@@ -1903,3 +1903,32 @@ machine-verified T=42 replica into (a) unbounded-but-mechanical
 tail-deepening and (b) ~231 genuine residue-level research choices.
 
 STATUS: near-miss / frontier-pushed
+## 62. Phase 44: exact residual measure of the emission (2026-07-22)
+
+placeholders2.py adds two uncapped global computations
+(placeholders2_out.txt):
+
+  (1) Single-congruence absorption at ANY modulus (cell (r,n) is
+      inside one congruence iff its modulus divides n and residues
+      agree): exactly the same 44 cells as the capped phase-43 test.
+      So no placeholder is absorbed by any single big-modulus set;
+      the 4,205 open cells genuinely need unions/new assignments.
+
+  (2) Exact residual measure: summing (uncovered fraction)/n over
+      all placeholder cells with the exact progression census
+      against the 49,075 moduli <= 2e6, and bounding the maximal
+      possible further absorption by the total measure of the
+      12.28M emitted moduli > 2e6 (1.55e-2), the density of Z left
+      uncovered by the emission is rigorously bracketed:
+
+        residual density in [6.31e-2, 7.86e-2]
+
+Interpretation: the duplicate-free emission covers >= 92.1% and
+<= 93.7% of the integers; the missing 6-8% is exactly the measure
+Owens routes through the unstated x-slot choices, obstruction-B
+pieces, recursion-tail handoffs, and the obstruction-A repair
+strips.  This is the first rigorous two-sided bound on how much of
+the record construction the surviving source text actually
+determines.
+
+STATUS: near-miss / frontier-pushed

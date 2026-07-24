@@ -1,0 +1,6 @@
+distinct moduli: 12331418
+placeholders: 4249
+single-congruence absorbed (any modulus): 44
+residual measure of placeholders (mod<= 2000000 census): 7.858780e-02
+total measure of emitted moduli > 2000000 (max further absorption): 1.551384e-02
+rigorous residual bracket: [6.307e-02, 7.859e-02]
