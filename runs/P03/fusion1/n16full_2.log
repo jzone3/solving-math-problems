@@ -9,3 +9,4 @@ GRAPH 3 orientations=18369252 profiles=7128572 ss=4031888 tau_skip=0 safe=115228
 GRAPH 4 orientations=25849872 profiles=9982236 ss=6048060 tau_skip=0 safe=1153208 checks=2780968 packed=2780968 cand=0 deferred=0
 GRAPH 5 orientations=34585668 profiles=13252512 ss=8803932 tau_skip=0 safe=1153880 checks=3294700 packed=3294700 cand=0 deferred=0
 GRAPH 6 orientations=40179648 profiles=15450468 ss=9895548 tau_skip=0 safe=1789400 checks=3765520 packed=3765520 cand=0 deferred=0
+GRAPH 7 orientations=45699468 profiles=17649132 ss=10924108 tau_skip=0 safe=2504884 checks=4220140 packed=4220140 cand=0 deferred=0
