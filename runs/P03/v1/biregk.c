@@ -87,8 +87,10 @@ static int cnt[MAXCUTS][MAXK];
 static int rem_[MAXCUTS];
 static int cuts_of[MAXARCS][96]; static int ncuts_of[MAXARCS];
 
+static long dfs_nodes, dfs_limit;
 static int dfs(int a, int m){
     if (a == m) return 1;
+    if (++dfs_nodes > dfs_limit) return -1;
     for (int c = 0; c < K; c++){
         int ok = 1;
         for (int k = 0; k < ncuts_of[a] && ok; k++){
@@ -100,14 +102,17 @@ static int dfs(int a, int m){
         if (!ok) continue;
         color[a] = c;
         for (int k = 0; k < ncuts_of[a]; k++){ int j=cuts_of[a][k]; cnt[j][c]++; rem_[j]--; }
-        if (dfs(a+1, m)) return 1;
+        int r = dfs(a+1, m);
+        if (r) return r;
         for (int k = 0; k < ncuts_of[a]; k++){ int j=cuts_of[a][k]; cnt[j][c]--; rem_[j]++; }
     }
     return 0;
 }
 
+/* returns 1 = packs, 0 = proven no packing, -1 = node limit hit (HARD) */
 static int packsK(void){
     int m = K*q;
+    dfs_nodes = 0; dfs_limit = 20000000;
     for (int a = 0; a < m; a++) ncuts_of[a]=0;
     for (int j = 0; j < nmin; j++){
         rem_[j]=0;
@@ -175,10 +180,17 @@ int main(int argc, char **argv){
             rand_inst(); n++;
             if (enum_cuts() != K) continue;
             okK++;
-            if (!packsK()){
+            int r = packsK();
+            if (r == 0){
                 printf("UNSAT COUNTEREXAMPLE "); print_inst(); fflush(stdout);
                 FILE *f = fopen("counterexample.txt","a");
                 fprintf(f, "BIREGK K=%d p=%d ", K, p); fclose(f);
+            } else if (r == -1){
+                printf("HARD "); print_inst(); fflush(stdout);
+                FILE *f = fopen("hardk.txt","a");
+                fprintf(f, "HARD K=%d p=%d ", K, p);
+                for (int t=0;t<q;t++){ for(int pos=0;pos<K;pos++) fprintf(f,"%d ",sink[t][pos]); }
+                fprintf(f, "\n"); fclose(f);
             }
         }
         if (n % 200000 < 200)
