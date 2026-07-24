@@ -1514,3 +1514,35 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 48. Phase 31 (sec 3.11, prime 31) (2026-07-22)
+
+emit311.py -- Owens sec 3.11: the 36-hole (33 mod 36, i.e. 1 mod 4 n
+6 mod 9).  Thirty-one sets per the text: atoms 1..8^ with 3-, 9-
+conjunctions; 27^(1,2)/27^(4,8^) over (6,9); three 5^ copies with the
+prescribed 5^(2,4,8^,1) (reserved for sec 3.16); three 7^ copies at
+five entries each; the composite set C + 7^(five 5^(x,x,*,*)
+wrappers); three 11^ copies at eight entries (the text's two
+partial-5^ entries are under-determined -> placeholders); two 13^,
+two 17^ (thirteen entries), one each 19^/23^/29^.  Set 1 dropped
+(31 < 42); 31^ filled with the thirty.
+
+Key distinctness mechanism confirmed again: every intermediate tower
+lives inside a 31-cell, so all section moduli carry 31 and
+cross-section overlap is structurally zero; within-section reuse of
+the same set across towers of different primes is safe (the tower
+prime enters the modulus), while same-prime copies get disjoint set
+lists.
+
+Machine-checked results:
+  sec3.11: 16814 congruences, 151 placeholders
+  min modulus: 62
+  dups within sec3.11: 0
+  overlap w/ skeleton and secs 3.3-3.10: all 0
+Census (window 2^7 3^4 5^2 7*31): residual confined to classes
+hosting the 11/13/17/19/23/29 towers (out-of-window moduli) + tails.
+
+Cumulative replica: secs 3.1-3.11, ~43,900 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
