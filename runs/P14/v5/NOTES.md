@@ -164,3 +164,15 @@ integral obstructions):
   systems; CBC certs / longer runs in flight).
 NOTE: our Zk patterns act fixed-point-freely (k | V); results are for these
 specific cycle types.
+
+### 8.4 Progress checkpoint (2026-07-23 late)
+- I3 Z3: INFEASIBLE (CP-SAT, 2580s, 4h budget) => I3 has no fixed-point-free
+  automorphism of order 3, 4, 6, or 12. (CBC confirmation for Z3 in flight.)
+- I2 Z6, Z12: INFEASIBLE (CBC-confirmed). I2 Z3/Z2/Z4: UNKNOWN (Z3 even at 4h).
+- I1 Z2, I4 Z7: UNKNOWN at 4h CP-SAT.
+- Level-1 kissat cubes (8, by t=|Qrow1 ∩ Qrow0|): all 8 TIMEOUT at 6h.
+- Level-2 cube-and-conquer (cube_driver.py): 170 cubes fixing Q rows 0,1,2
+  (canonical by class-intersection counts (a,b,c,d), deduped by b<=c),
+  1800s/cube, 8 workers. In progress; so far all decided cubes UNSAT, no SAT.
+  If ALL cubes turn UNSAT (after escalating timeouts), the b2=14 sector of I1
+  is empty, which combined with the published b2=14 restriction would close I1.
