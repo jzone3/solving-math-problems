@@ -1546,3 +1546,28 @@ pairwise distinct across sections.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
 
+## 49. Phase 32 (sec 3.12, prime 37) (2026-07-22)
+
+emit312.py -- Owens sec 3.12: first input of the 5 on the 8 hole
+(36 mod 40), restricted to the first two 3-inputs (third deferred to
+sec 3.16 / prime 53).  Thirty-seven sets: atoms 1,2,4,8,16^; the four
+3-conjunction sets incl. 3(3^(1,2),3^(4,8)) and the split set
+3(16^,_)+5*3(_,16^); 5*copies of the first eight; two 25^ copies
+anchored at (1,5); six 7^ copies at three inputs each (sec 3.4 covers
+the rest); two 13^; two 19^ at thirteen inputs (sec 3.8); one 29^,
+one 31^; three 11^; two 17^; one 23^.  Set 1 dropped (37 < 42); 37^
+filled with the thirty-six.
+
+Machine-checked results:
+  sec3.12: 13410 congruences, 153 placeholders
+  min modulus: 74
+  dups within sec3.12: 0
+  overlap w/ skeleton and secs 3.3-3.11: all 0
+Census (window 2^7 3^4 5^2 37): residual confined to the classes
+hosting 7/11/13/17/19/23/29/31 towers (out-of-window moduli) + tails.
+
+Cumulative replica: secs 3.1-3.12, ~57,300 congruences, all moduli
+pairwise distinct across sections.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
