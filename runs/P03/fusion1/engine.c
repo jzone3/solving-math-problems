@@ -18,9 +18,11 @@ static int eu[MAXM],ev[MAXM],deg[MAXN],od[MAXN],idg[MAXN];
 static int ou[MAXM], ov[MAXM], arc_m;
 static uint64_t reachv[MAXN];
 static int cuts[MAXCUT], clen[MAXCUT], ncuts, mincut[MAXCUT], minlen[MAXCUT], nmin, tauv;
+static int enum_deferred, ideal_count, cut_mode_fast=1;
+static int topo[MAXN], predmask[MAXN], topo_n;
 static int color[MAXM], used[MAXCUT], leftc[MAXCUT], arc_cuts[MAXM][MAXCUT], narc[MAXM];
 static long long graphs, orientations, profiles, ss_skip, tau_skip, safe_skip;
-static long long packed, candidates, checks;
+static long long packed, candidates, checks, deferred;
 static int role[32][4], nroles;
 
 static int pop(uint64_t x){ return __builtin_popcountll(x); }
@@ -35,18 +37,7 @@ static int cmpcut(const void*a,const void*b){
     int x=*(const int*)a,y=*(const int*)b;
     return clen[x]-clen[y];
 }
-static void enumerate_cuts(void){
-    ncuts=0; tauv=999;
-    uint64_t full=(1ULL<<n)-1;
-    for(uint64_t x=1;x<full;x++){
-        int closed=1;
-        for(int i=0;i<arc_m;i++)
-            if(bit(x,ov[i]) && !bit(x,ou[i])) { closed=0; break; }
-        if(!closed) continue;
-        int cm=cut_for(x), z=pop((uint64_t)cm);
-        if(z<tauv) tauv=z;
-        if(ncuts<MAXCUT){ cuts[ncuts]=cm; clen[ncuts++]=z; }
-    }
+static void finalize_cuts(void){
     int ord[MAXCUT];
     for(int i=0;i<ncuts;i++) ord[i]=i;
     qsort(ord,ncuts,sizeof(int),cmpcut);
@@ -59,6 +50,58 @@ static void enumerate_cuts(void){
             }
         if(!sub){ mincut[nmin]=cuts[i]; minlen[nmin]=clen[i]; nmin++; }
     }
+}
+static void enumerate_cuts_old(void){
+    ncuts=0; tauv=999;
+    uint64_t full=(1ULL<<n)-1;
+    for(uint64_t x=1;x<full;x++){
+        int closed=1;
+        for(int i=0;i<arc_m;i++)
+            if(bit(x,ov[i]) && !bit(x,ou[i])) { closed=0; break; }
+        if(!closed) continue;
+        int cm=cut_for(x), z=pop((uint64_t)cm);
+        if(z<tauv) tauv=z;
+        if(ncuts<MAXCUT){ cuts[ncuts]=cm; clen[ncuts++]=z; }
+    }
+    finalize_cuts();
+}
+static void fast_ideal_rec(int p, uint64_t set){
+    if(enum_deferred)return;
+    if(++ideal_count > 1000000 || ncuts >= MAXCUT){
+        enum_deferred=1; return;
+    }
+    if(p==topo_n){
+        uint64_t full=(1ULL<<n)-1;
+        if(set && set!=full){
+            int cm=cut_for(set), z=pop((uint64_t)cm);
+            if(z<tauv)tauv=z;
+            cuts[ncuts]=cm;clen[ncuts++]=z;
+        }
+        return;
+    }
+    int v=topo[p];
+    fast_ideal_rec(p+1,set);
+    if((predmask[v]&~(int)set)==0)
+        fast_ideal_rec(p+1,set|(1ULL<<v));
+}
+static void enumerate_cuts_fast(void){
+    ncuts=0; nmin=0; tauv=999; enum_deferred=0; ideal_count=0;
+    int indeg[MAXN]={0}, q[MAXN],qh=0,qt=0;
+    memset(predmask,0,sizeof(predmask));
+    for(int i=0;i<arc_m;i++){predmask[ov[i]]|=1<<ou[i];indeg[ov[i]]++;}
+    for(int v=0;v<n;v++)if(!indeg[v])q[qt++]=v;
+    while(qh<qt){
+        int v=q[qh++];topo[topo_n++]=v;
+        for(int i=0;i<arc_m;i++)if(ou[i]==v&&!--indeg[ov[i]])q[qt++]=ov[i];
+    }
+    if(topo_n!=n){enum_deferred=1;return;}
+    fast_ideal_rec(0,0);
+    if(!enum_deferred)finalize_cuts();
+}
+static void enumerate_cuts(void){
+    topo_n=0;
+    if(cut_mode_fast)enumerate_cuts_fast();
+    else enumerate_cuts_old();
 }
 static int reaches(int s,int t){
     uint64_t seen=1ULL<<s, todo=seen;
@@ -152,6 +195,7 @@ static void leaf(void){
     for(int z=0;z<n;z++)for(int v=0;v<n;v++)if(reachv[v]&(1ULL<<z))reachv[v]|=reachv[z];
     if(source_sink_ok()){ss_skip++;return;}
     enumerate_cuts();
+    if(enum_deferred){deferred++;return;}
     if(tauv!=k){tau_skip++;return;}
     if(!rho_ok()){safe_skip++;return;}
     if(!rho_reverse_ok()){safe_skip++;return;}
@@ -197,6 +241,7 @@ int main(int ac,char**av){
            (strcmp(av[2],"tau4a")==0 ? 41 :
            (strcmp(av[2],"check3")==0 ? 3 :
            (strcmp(av[2],"check4")==0 ? 4 : 3)));
+    if(ac>=6 && !strcmp(av[5],"old"))cut_mode_fast=0;
     shard=atoi(av[3]);nshards=atoi(av[4]);
     char line[4096];long long idx=0;
     while(fgets(line,sizeof(line),stdin)){
@@ -207,14 +252,18 @@ int main(int ac,char**av){
         if(!strncmp(av[2],"check",5)){
             for(int i=0;i<m;i++){ou[i]=eu[i];ov[i]=ev[i];od[ou[i]]++;idg[ov[i]]++;}
             enumerate_cuts();
-            printf("CHECK tau=%d mincuts=%d pack=%d\n",tauv,nmin,packs());
+            if(enum_deferred){printf("CHECK DEFERRED ideals=%d cuts=%d\n",ideal_count,ncuts);
+                memset(deg,0,sizeof(deg)); continue;}
+            printf("CHECK tau=%d mincuts=%d pack=%d masks=",tauv,nmin,packs());
+            for(int q=0;q<nmin;q++)printf("%s%u",q?",":"",(unsigned)mincut[q]);
+            putchar('\n');
             memset(deg,0,sizeof(deg)); continue;
         }
         for(int v=0;v<n;v++){od[v]=idg[v]=0;reachv[v]=1ULL<<v;}
         graphs++;orient(0);
-        fprintf(stderr,"GRAPH %lld orientations=%lld profiles=%lld ss=%lld tau_skip=%lld safe=%lld checks=%lld packed=%lld cand=%lld\n",idx,orientations,profiles,ss_skip,tau_skip,safe_skip,checks,packed,candidates);fflush(stderr);
+        fprintf(stderr,"GRAPH %lld orientations=%lld profiles=%lld ss=%lld tau_skip=%lld safe=%lld checks=%lld packed=%lld cand=%lld deferred=%lld\n",idx,orientations,profiles,ss_skip,tau_skip,safe_skip,checks,packed,candidates,deferred);fflush(stderr);
         memset(deg,0,sizeof(deg));
     }
-    fprintf(stderr,"DONE graphs=%lld orientations=%lld profiles=%lld ss=%lld tau_skip=%lld safe=%lld checks=%lld packed=%lld cand=%lld\n",graphs,orientations,profiles,ss_skip,tau_skip,safe_skip,checks,packed,candidates);
+    fprintf(stderr,"DONE graphs=%lld orientations=%lld profiles=%lld ss=%lld tau_skip=%lld safe=%lld checks=%lld packed=%lld cand=%lld deferred=%lld\n",graphs,orientations,profiles,ss_skip,tau_skip,safe_skip,checks,packed,candidates,deferred);
     return 0;
 }

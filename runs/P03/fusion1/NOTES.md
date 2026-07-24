@@ -175,6 +175,37 @@ This experiment is explicitly scoped to connected cubic graphs of girth at
 least 5, after the non-planar and 3-edge-connected filters. It is not a
 closure of the full n=16 cubic cell.
 
+## Fast closed-set dicut engine
+
+The original C engine tested every nonempty proper vertex subset when
+enumerating dicuts. `engine.c` now defaults to predecessor-closed
+order-ideal recursion over a topological order of the DAG. An inclusion
+branch is taken only when every in-neighbour of the vertex is already in
+the current set; each nonempty proper ideal contributes its out-cut. The
+previous `2^n` sweep remains available with the extra `old` command-line
+argument for regression testing.
+
+The implementation has a hard safety cap of 1,000,000 ideals and
+`MAXCUT` collected cuts. If either cap is reached, the orientation is
+marked deferred and is not classified as packed or non-packed; production
+logs report the deferred count for exact PySAT follow-up. No truncated
+minimal-dicut set is used for a packing decision.
+
+Cross-validation results before production use:
+
+```text
+PASS C fast-vs-old 20,000/20,000 exact tau/minimal-dicut-set/pack
+PASS C fast-vs-PySAT/reference k=3 1,000/1,000
+PASS C fast-vs-PySAT/reference k=4 1,000/1,000
+```
+
+The cross-validation compared the full minimal-dicut mask set, not only
+its cardinality. On a representative n=16 high-girth graph orientation,
+1,000 repeated check-mode records took 0.129 seconds with closed-set
+enumeration versus 0.612 seconds with the old subset sweep, a measured
+4.75x per-record speedup after amortizing process startup. The exact
+speedup depends on the orientation's ideal count.
+
 ## Family A: tau=4 reduced shape
 
 For sources `s`, sinks `t`, type-A internal vertices `(in,out)=(1,2)` and
