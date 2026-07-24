@@ -7,3 +7,4 @@ __pycache__/
 k4free_max.drat
 k4free_max_cnfs/
 h3_full.drat
+k4free_opt*.cnf

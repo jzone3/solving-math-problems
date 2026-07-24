@@ -1,0 +1,10 @@
+HiGHS 1.15.1
+Status            Time limit reached
+Primal bound      -510
+Dual bound        -2476
+Gap               385.49%
+Solution status   feasible
+Timing            1200.01
+Note: PuLP's HiGHS wrapper reported that logPath and warmStart are
+unsupported solver options; the known 682 incumbent was therefore not
+installed as a MIP start. Objective values are negated in this HiGHS report.

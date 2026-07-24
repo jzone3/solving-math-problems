@@ -146,6 +146,19 @@ subgraphs), **no K₄-free subgraph of H₃ was found that arrows**; `f(2,3,4) �
 via H₃ remains **open** (consistent with the paper's conjecture and its
 Theorem 1.2 requiring q → ∞).
 
+## Exact max-triangle-K₄-free optimum: still open interval
+
+Attempted to certify the true maximum number of non-degenerate triangles in any
+K₄-free subgraph of H₃ (`k4free_opt.py`, CBC 900 s + HiGHS 1.15.1 1200 s, warm
+starts). The MILP is hard: best proven incumbent **682**, best valid upper bound
+**≈2477** — **optimality NOT proven** (interval [682, 2477]). So we cannot yet
+claim the triangle-maximal K₄-free subgraph, only a strong incumbent. The best
+incumbent subgraph (627 edges, 1101 triangles) is again **SAT / does not arrow**
+(independently-verified 0-mono-triangle colouring). Recorded in `k4free_opt.json`
+(`certified_optimal: false`). Note: even a certified optimum would not settle the
+conjecture, since arrowing is not monotone in triangle count — this only bounds
+the natural "how many triangles can a K₄-free subgraph keep" quantity.
+
 ## Certificate-backed negative decisions (SAT witnesses)
 
 `verify_witness.py` extracts a model from kissat for each of the three K₄-free
