@@ -1,7 +1,7 @@
 """508-swap scan over the Minkowski pool (POOL=pool_mink.pkl).
 Record vertices are indices 0..508. Usage: scan508m.py <nworkers> <worker_id> [mindeg]
 """
-import pickle, random, sys
+import os, pickle, random, sys
 from coremin import solve_core, allpts, adj
 from field import to_float
 
@@ -21,7 +21,8 @@ def unsat(S, tag):
 if __name__ == '__main__':
     nw, wid = int(sys.argv[1]), int(sys.argv[2])
     mindeg = int(sys.argv[3]) if len(sys.argv) > 3 else 6
-    cands = [w for w in range(509, NALL) if len(adj[w] & g509) >= mindeg]
+    maxdeg = int(os.environ.get('MAXDEG', '99'))
+    cands = [w for w in range(509, NALL) if mindeg <= len(adj[w] & g509) < maxdeg]
     cands.sort(key=lambda w: -len(adj[w] & g509))
     print(f'worker {wid}/{nw}: {len(cands)} candidates (mindeg {mindeg})', flush=True)
     tag = f'm508_{wid}'

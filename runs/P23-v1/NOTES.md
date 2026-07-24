@@ -149,6 +149,12 @@ Following the problem file's "Minkowski sums" lever, we generated genuinely new 
   found only the 3 reverse swaps, 3 of the remaining known swaps, and **one new swap
   (w=947, v=298)** — again no candidate with two independent deletions. No 508.
 
+- **Complete low-degree extension** (`scan508m.py` with MAXDEG): the remaining 488
+  Minkowski candidates with 4–5 record neighbours were all scanned, completing the
+  *entire* 683-candidate single-substitution neighbourhood of the record in the pool.
+  One further swap found (w=47189, v=375; 9 singles total). Still no candidate with two
+  independent deletions ⇒ no 508 via any single substitution in the whole Minkowski pool.
+
 The striking outcome: the record's size is invariant under substitution of new Minkowski
 geometry — every reachable 509-vertex variant is again vertex-critical. This strongly
 suggests 509 sits at the bottom of a wide structural basin, and beating it needs a
