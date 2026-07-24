@@ -446,3 +446,51 @@ candidate budget, and no profile reached UNSAT. Since no new tau=3 closure
 was obtained, the tau=4 SAT search was not started. No non-packing instance
 survived exact checking, so no independent counterexample re-verification
 was required.
+
+### Full n=16 reduced cubic tau=3 closure attempt
+
+The prepared `kept16.jsonl` list contains 2,595 connected, non-planar,
+3-edge-connected cubic graphs on 16 vertices. The C engine was extended with
+all six n=16 cubic role profiles:
+
+```text
+(sources,sinks,typeA,typeB) =
+(2,2,6,6), (3,3,5,5), (4,4,4,4),
+(5,5,3,3), (6,6,2,2), (7,7,1,1)
+```
+
+A feasibility sample used 25 evenly spaced graphs. Four single-process
+timings were 74, 175, 54, and 71 seconds. In the 25-graph 8-way timing
+batch, 22 completed within 300 seconds, with mean 105.27 seconds, median 91
+seconds, and maximum 293 seconds; three hit the per-graph timeout under
+parallel CPU contention. The conservative projection was 9.49 hours over
+eight shards, below the one-day stop threshold, so the full run was launched.
+
+The run is checkpointed per graph in `n16full_0.log` through
+`n16full_7.log`, with reproducible input in `n16_full_engine.txt`. At the
+latest checkpoint, 124 graph completions had been recorded across the
+shards, with cumulative totals:
+
+```text
+orientations=128,828,474
+profile orientations=50,071,776
+source-sink skips=29,710,266
+exact packing checks=15,904,820
+packed=15,904,820
+deferred=0
+candidates=0
+```
+
+The eight processes were still running at this checkpoint; this is therefore
+not yet a closure claim. Every completed check so far packed, and no ideal
+enumeration deferred instance occurred. The logs will be updated as shards
+advance.
+
+For an independent orientation-level cross-check, two random topological
+orientations of the first two prepared graphs were passed through the C
+`check3` mode and the Python harness. Both agreed exactly:
+
+```text
+orientation 1: tau=3, 60 minimal dicuts, pack=True
+orientation 2: tau=3, 66 minimal dicuts, pack=True
+```
