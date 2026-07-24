@@ -337,3 +337,45 @@ FAIL: integer not covered (sampling): 36138693373302250625994930856
 The second verifier ran for 20 seconds and exited 124 without output due to
 cell subtraction cost. No witness passed either verifier, and no m=18 run
 was attempted. The verified frontier remains m=16.
+
+## 9. Experiment D — literature-transcription check (why we can't just copy a known m>=17 cover)
+
+Checked whether an explicit, transcribable covering system with minimum
+modulus 17-20 exists in the accessible literature to verify directly (a
+legitimate way to beat our automated m=16 frontier without a new search).
+
+- Klein 2025 (arXiv:2508.18062, downloaded /tmp/klein.pdf) is a *lower-bound*
+  paper (min modulus 5 => max modulus >= 108, lcm >= 1440; min 6 => lcm
+  >= 5040). Its explicit small examples / Krukenberg's minimal-lcm covers are
+  only tabulated up to **m = 7** (L(3)=120, L(4)=360, L(5)=1440, L(6)=5040,
+  L(7)=15120). All of these are BELOW v1's already-verified m=16, so
+  transcribing them cannot advance the frontier.
+- The actual human records with min modulus in [17, 42] — Krukenberg m=18
+  (1971 PhD thesis "Covering sets of the integers", ref [8]), Choi m=20,
+  Morikawa m=24, Gibson m=25, Nielsen m=40, Owens m=42 — are hand-tuned
+  recursive resource-allocation arguments, not published as explicit
+  congruence lists. v4 spent an entire prior run mechanizing Owens' thesis to
+  a residue-level emission (12.33M congruences, ~93% of Z) and still could not
+  complete it to a verified witness (the under-determined x-slots / obstruction
+  C). Nielsen m=40 alone has > 10^50 congruences — non-materializable by design.
+
+Conclusion: there is no accessible, transcribable explicit covering system
+with min modulus > 16; the record constructions are exactly the ones that
+resist mechanization. So neither direct search (Experiments A-C, capped at
+m=16 by the integrality-gap wall) nor literature transcription (Experiment D)
+beats the m=16 verified frontier within this session's scope.
+
+## 10. Session bottom line
+
+Min modulus >= 43 is a genuine OPEN problem (record 42, Owens 2014); it has
+not been solved in the literature and was not solved here. This session added,
+beyond v1-v5, four new exactly-checked negative results: (A) greedy+finisher
+fusion, (B) the complete 20-section T=43 counting-deficit ledger (56-set
+deficit), (C) the first true weighted min-conflicts search on the unbounded-N
+compressed representation (proving the m=17 residual is a deep local optimum
+that global reassignment moves by only 0.085%), and (D) a literature-
+transcription check. Verified explicit frontier stands at m=16. No witness was
+fabricated; every negative is backed by exact-verifier output. The only
+credible route to 43 remains an exact top-down construction with joint
+tower/x-slot allocation designed from the start — not any search, repair, or
+counting blueprint reachable by the methods exhausted across v1-v5 + fusion1.
