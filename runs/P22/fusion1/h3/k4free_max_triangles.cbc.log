@@ -1,0 +1,57 @@
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/ubuntu/.local/lib/python3.10/site-packages/pulp/apis/../solverdir/cbc/linux/i64/cbc /tmp/b37362ce21224fecbabce07495fbedda-pulp.mps -max -mips /tmp/b37362ce21224fecbabce07495fbedda-pulp.mst -sec 30 -timeMode elapsed -solve -printingOptions all -solution /tmp/b37362ce21224fecbabce07495fbedda-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 21677 COLUMNS
+At line 120462 RHS
+At line 142135 BOUNDS
+At line 146168 ENDATA
+Problem MODEL has 21672 rows, 4032 columns and 87696 elements
+Coin0008I MODEL read with 0 errors
+opening mipstart file /tmp/b37362ce21224fecbabce07495fbedda-pulp.mst.
+MIPStart values read for 4032 variables.
+seconds was changed from 1e+100 to 30
+Option for timeMode changed from cpu to elapsed
+Continuous objective value is 2520 - 6.09 seconds
+Cgl0004I processed model has 21672 rows, 4032 columns (4032 integer (4032 of which binary)) and 87696 elements
+Cutoff increment increased from 1e-05 to 0.9999
+Cbc0045I MIPStart provided solution with cost 682
+Cbc0012I Integer solution of 682 found by Reduced search after 0 iterations and 0 nodes (13.65 seconds)
+Cbc0031I 240 added rows had average density of 55.775
+Cbc0013I At root node, 240 cuts changed objective from -2520 to -2518.5 in 2 passes
+Cbc0014I Cut generator 0 (Probing) - 2 row cuts average 4.0 elements, 0 column cuts (0 active)  in 0.051 seconds - new frequency is -100
+Cbc0014I Cut generator 1 (Gomory) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 1.126 seconds - new frequency is -100
+Cbc0014I Cut generator 2 (Knapsack) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.021 seconds - new frequency is -100
+Cbc0014I Cut generator 3 (Clique) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.088 seconds - new frequency is -100
+Cbc0014I Cut generator 4 (MixedIntegerRounding2) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.016 seconds - new frequency is -100
+Cbc0014I Cut generator 5 (FlowCover) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.002 seconds - new frequency is -100
+Cbc0014I Cut generator 7 (ZeroHalf) - 418 row cuts average 65.8 elements, 0 column cuts (0 active)  in 3.690 seconds - new frequency is -100
+Cbc0020I Exiting on maximum time
+Cbc0005I Partial search - best objective 682 (best possible -2518.5), took 1644 iterations and 0 nodes (30.89 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+Cuts at root node changed objective from -2520 to -2518.5
+Probing was tried 2 times and created 2 cuts of which 0 were active after adding rounds of cuts (0.051 seconds)
+Gomory was tried 2 times and created 0 cuts of which 0 were active after adding rounds of cuts (1.126 seconds)
+Knapsack was tried 2 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.021 seconds)
+Clique was tried 2 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.088 seconds)
+MixedIntegerRounding2 was tried 2 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.016 seconds)
+FlowCover was tried 2 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.002 seconds)
+TwoMirCuts was tried 1 times and created 0 cuts of which 0 were active after adding rounds of cuts (1.064 seconds)
+ZeroHalf was tried 2 times and created 418 cuts of which 0 were active after adding rounds of cuts (3.690 seconds)
+
+Result - Stopped on time limit
+
+Objective value:                682.00000000
+Upper bound:                    2518.500
+Gap:                            -0.73
+Enumerated nodes:               0
+Total iterations:               1644
+Time (CPU seconds):             34.36
+Time (Wallclock seconds):       34.79
+
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       34.42   (Wallclock seconds):       34.86
+

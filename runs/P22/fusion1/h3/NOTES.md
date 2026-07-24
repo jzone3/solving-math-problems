@@ -103,12 +103,44 @@ Theorem 1.2 needing `q → ∞` (bound ≈ 2^280). So **balanced block construct
 of H₃ do not yield an f(2,3,4) ≤ 63 Folkman graph**; a positive answer, if one
 exists, needs edge deletions outside this natural family (open).
 
+## Frontier probe 2: max-triangle K₄-free subgraphs (ILP) — negative
+
+Block constructions force each maximal clique *triangle-free* (very lossy). A
+strictly larger family of K₄-free subgraphs is obtained by deleting only an
+edge **hitting set** of the K₄'s: every K₄ must lose ≥1 of its 6 edges, but
+cliques may keep triangles (as long as they don't extend to a K₄). `k4free_max.py`
+solves this with an ILP (PuLP/CBC): binary `x_e` (edge kept), `z_T ≤ x_e` for
+each triangle edge, constraint `Σ_{e∈K₄} x_e ≤ 5` for all 9576 K₄'s, objective
+`max Σ z_T`. Each extracted subgraph is *independently* re-checked K₄-free
+(direct enumeration, `#K4 == 0`) and its arrowing CNF (over **all** its
+triangles, not just non-degenerate ones) is solved with kissat.
+
+CBC did not close the ILP within 900 s (max-triangle incumbent 682, upper bound
+2514; so the reported values are strong feasible incumbents, not certified
+optima). Even so, every candidate is satisfiable:
+
+| subgraph | ILP status | \|E\| | total triangles | non-deg / deg | kissat | K₄-free |
+|---|---|---:|---:|---:|---|---|
+| max-triangle ILP | feasible (gap) | 627 | 1101 | 682 / 419 | **SAT** | yes (asserted) |
+| max-edge ILP | feasible (gap) | 601 | 951 | 562 / 389 | **SAT** | yes (asserted) |
+| greedy max-triangle | heuristic | 627 | 1101 | 682 / 419 | **SAT** | yes (asserted) |
+
+These retain far more triangles (up to 1101) than the block constructions
+(~500–600) yet still **do not arrow** — a K₄-free subgraph of H₃ needs its
+triangle hypergraph dense enough to force monochromaticity, and even the
+triangle-maximizing K₄-free subgraphs found are colourable. So across two
+independent families (bipartite block constructions and optimal K₄-edge-hitting
+subgraphs), **no K₄-free subgraph of H₃ was found that arrows**; `f(2,3,4) ≤ 63`
+via H₃ remains **open** (consistent with the paper's conjecture and its
+Theorem 1.2 requiring q → ∞).
+
 ## Files
 - `build_h3.py` — constructor + property checks + CNF/edge emit.
 - `verify_h3.py` — independent second verifier (different field model). PASS.
 - `h3.edges`, `h3.cnf` — the graph (1008 edges) and arrowing CNF (1008 var / 6048 cl).
 - `h3.drat`, `h3.lrat` — UNSAT proofs; `*.verify.out` — solver/checker logs.
-- `block_search.py`, `block_results.json`, `blocks/` — frontier probe (all SAT).
+- `block_search.py`, `block_results.json`, `blocks/` — frontier probe 1 (all SAT).
+- `k4free_max.py`, `k4free_results.json`, `k4free_max*.cnf`, `*.cbc.log` — frontier probe 2, max-triangle K₄-free subgraphs (all SAT).
 
 ## Bottom line
 Independently reconstructed H₃, and reproduced + **certified** (DRAT & LRAT,
