@@ -67,3 +67,37 @@ The all-cubic n=16 run was stopped in favor of structurally distinct families.
 Family B below is an exhaustive high-girth (girth at least 5) subfamily, not
 the full cubic cell. Any negative result is scoped only to that high-girth
 subfamily.
+
+## Family B: high-girth cubic subfamily
+
+The required `nauty-geng -c -t -f -d3 -D3 n` command generated 49 graphs at
+n=16 and 455 graphs at n=18. The preparation filter retained all of them:
+none were planar or below 3-edge-connectivity. Eight n=16 PyPy shards were
+launched over ranges `0:7, 7:13, 13:19, 19:25, 25:31, 31:37, 37:43,
+43:49`. Their candidate files are empty at launch/checkpoint; the exhaustive
+orientation and exact CEGAR checks are still running.
+
+This experiment is explicitly scoped to connected cubic graphs of girth at
+least 5, after the non-planar and 3-edge-connected filters. It is not a
+closure of the full n=16 cubic cell.
+
+## Family A: tau=4 reduced shape
+
+For sources `s`, sinks `t`, type-A internal vertices `(in,out)=(1,2)` and
+type-B vertices `(2,1)`, stub balance gives `a-b=4(t-s)`. The two
+rho(4) bounds give `a+3b >= 12` and `3a+b >= 12`. With at least two sources
+and sinks, the smallest profile is `(s,t,a,b)=(2,2,3,3)`, hence n=10 and
+17 arcs. The next profiles can be derived by `family_a.role_profiles`.
+
+The derivation was computationally checked: 30 generated instances of the
+claimed `(2,2,3,3)` shape with `tau=4` all had `rho(4,D)>=3` and
+`rho(4,reverse(D))>=3`. The k=4 exact partition checker was independently
+validated by `test_k4.py`: **300/300** small random DAG instances agreed
+between `harness.has_k_disjoint_dijoins(...,4)` and brute-force 4-coloring.
+
+## Family C: weighted search
+
+The v4 weighted machinery (`weighted.py` plus its self-contained
+`woodall.py`) has been ported. It uses PuLP/CBC lazy separation for weighted
+packing. A short weighted smoke search is running/queued; results will be
+recorded with exact tau_w and packing verification.
