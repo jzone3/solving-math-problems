@@ -91,3 +91,6 @@ cand_lines=75
 === checkpoint 2026-07-24T10:32:58Z parts_done=40/96 ===
 aggregate total=6.53893e+10 cliqued=75 cand=75
 cand_lines=75
+=== checkpoint 2026-07-24T11:02:59Z parts_done=43/96 ===
+aggregate total=6.97609e+10 cliqued=75 cand=75
+cand_lines=75
