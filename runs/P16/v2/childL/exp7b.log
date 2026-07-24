@@ -1,0 +1,15 @@
+light: 42952 heavy: 4774
+/home/ubuntu/repos/solving-math-problems/runs/P16/v2/childL/exp7b_fast.py:60: RuntimeWarning: invalid value encountered in multiply
+  return a2 * r * r + B * r + C
+  heavy 0 conflicts so far 0
+  heavy 500 conflicts so far 0
+  heavy 1000 conflicts so far 0
+  heavy 1500 conflicts so far 0
+  heavy 2000 conflicts so far 0
+  heavy 2500 conflicts so far 0
+  heavy 3000 conflicts so far 0
+  heavy 3500 conflicts so far 0
+  heavy 4000 conflicts so far 0
+  heavy 4500 conflicts so far 1
+conflicting cross pairs: 1
+  qmin=-5 light=(3, 4, 21, Fraction(14, 1)) (':H`ECwT`^', 4) heavy=(7, 19, 109, Fraction(14, 1)) (':L`EKIS`]{LY', 0)

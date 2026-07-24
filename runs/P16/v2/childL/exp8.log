@@ -1,0 +1,15 @@
+samples: 15659 min Delta: 1.0
+status: 0 Optimization terminated successfully. (HiGHS Status 7: Optimal)
+t* = 1.0
+c = {'pi': np.float64(0.0), 'be': np.float64(0.0), 'F1': np.float64(0.0), 'F2': np.float64(0.0), 'F3': np.float64(0.0), 'F4': np.float64(0.0)}
+tightest residuals:
+   1.0 ('GCXecW', 4)
+   1.0 ('GCXecW', 3)
+   1.0 ('GCXecW', 10)
+   1.0 ('GCXecW', 9)
+   1.0 ('GCpb`o', 8)
+   1.0 ('GCpb`o', 9)
+   1.0 ('GCpb`o', 6)
+   1.0 ('GCpb`o', 7)
+   1.0 ('G?ovF?', 5)
+   1.0 ('G?ovF?', 4)
