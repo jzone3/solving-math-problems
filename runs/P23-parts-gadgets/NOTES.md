@@ -29,13 +29,19 @@ sharp structural obstructions.** Headline results:
    | gadget | Parts | this run | gap |
    |---|---|---|---|
    | non-mono-triple √7      | 159 | **188** | +18% |
-   | non-mono-triple √3      | 221 | (fill)  |  |
+   | non-mono-triple √3      | 221 | **343** | +55% |
    | non-mono-triple √(5/3)  | 250 | **263** | +5% |
    | non-mono-triple √5      | 265 | 516 (bad basin) | |
    | non-mono-triple 1/√3    | 265 | **319** | +20% |
    | non-mono-pair 3         | 214 | **324** | +51% |
-   | non-mono-pair √(11/3)   | 308 | (fill)  |  |
-   | mono-pair 8/3           | 367 | (fill)  |  |
+   | non-mono-pair √(11/3)   | 308 | **516** | +68% |
+   | mono-pair 8/3           | 367 | **548** | +49% |
+
+   Gaps are expected: Parts used months of exhaustive local restructuring with
+   isomorph rejection; our generic DRAT-core + greedy core-jump (a few CPU-hours)
+   still lands the same order of magnitude and every graph is exactly verified.
+   The comparison table uses PARTS' (smaller) sizes for all assembly floors, so
+   the negative conclusions below are conservative.
 
    Every emitted gadget passes `verify_gadget.py`: distinct exact vertices, stored
    edges == exact strict-UDG recomputation, the bare graph is 4-colorable (property
@@ -59,7 +65,10 @@ sharp structural obstructions.** Headline results:
    minimized mono-pair gadget in exact arithmetic over ℚ(√3,√11,√13,√19)
    (`build_spindle.py`, `mfield.py`): overlap exactly 1, closing edge exactly unit,
    4-coloring CNF UNSAT with drat-trim `s VERIFIED` — a valid 5-chromatic UDG of
-   (fill) vertices, our smallest assembled graph, far above 509.
+   **1095 = 2·548 − 1** vertices (`spindle_union.pkl`), our smallest assembled
+   graph. Overlap of the two copies was computed exactly and equals 1, matching
+   the field-theoretic prediction. With Parts' 367-vertex gadget the same route
+   gives 733 — still 224 above the 509 record.
 6. **Same-pair composition is empty.** A distance d admitting BOTH a mono-pair and a
    non-mono-pair gadget would give a 5-chromatic union with massive overlap. Scan of
    ~30 lattice-representable distances (`scan_property.py`, pools up to ⊕⁴H², 8251
@@ -124,5 +133,5 @@ python3 lattice.py                   # arithmetic sanity (H^2 = 31 vtx / 60 edge
 N=3 M=2 R2=4 DEGMIN=4 SEED=2 python3 run_gadget.py triple 7/3   # 188-vertex sqrt7 triple
 python3 verify_gadget.py gadget_triple_7_3_seed2.pkl            # PASS + s VERIFIED
 python3 assembly.py                  # 0 in-lattice spindle closings
-python3 build_spindle.py gadget_monopair_64_9_seed1.pkl         # explicit 5-chromatic spindle
+python3 build_spindle.py gadget_monopair_64_9_seed1.pkl        # explicit 5-chromatic spindle
 ```

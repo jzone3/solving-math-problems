@@ -231,3 +231,7 @@ greedy: 521 vertices (1151.4s)
 greedy: 520 vertices (1158.8s)
 greedy: 519 vertices (1166.5s)
 greedy: 518 vertices (1173.9s)
+greedy: 517 vertices (1181.4s)
+greedy: 516 vertices (1191.5s)
+FINAL: 516 vertices, 2588 edges
+saved gadget_nonmonopair_11_3_seed1.pkl
