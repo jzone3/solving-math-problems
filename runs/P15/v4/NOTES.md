@@ -840,3 +840,17 @@ the v4 modifications.  That is the precise, finite frontier this session
 leaves open.
 
 STATUS: near-miss / frontier-pushed
+
+## 25. Consolidated blueprint replay
+
+verify_blueprint4.py independently re-executes all five machine-checked
+components of blueprint v4 from a single entry point (ledgers at true
+mint costs, re-aim lemma, sec-3.8 mint freshness, global stratum
+assignment, spare-set freshness) and prints PASS only if all succeed.
+Current output: BLUEPRINT v4 REPLAY: PASS.
+
+FINAL STATUS: near-miss / frontier-pushed.  No T>=43 covering system is
+claimed; the counting- and stratum-level blueprint is fully machine-
+verified, and the sole remaining burden is residue-level emission of the
+integrated ~10^86-congruence system plus end-to-end coverage
+verification.
