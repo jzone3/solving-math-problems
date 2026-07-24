@@ -187,6 +187,7 @@ Automated analogue implemented here — coset_cover.py / coset_cover.c:
 | 6 | 139    | 390         | 260 s budget |
 | 7 | 209    | 792         | |
 | 8 | 194    | 702         | (hit_cap=512 variant: 1182 congr) |
+| 9 | 496    | 4368        | 500 s, no hit cap, inc_cap=16 |
 
 ### Negative findings
 - coset_cover2.py (pure hole-driven tree: always attack largest hole with its
