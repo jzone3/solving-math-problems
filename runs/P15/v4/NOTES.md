@@ -1339,3 +1339,36 @@ local-repair program at residue level, mirroring the counting-level
 closure of phases 6-9b.
 
 STATUS: near-miss / frontier-pushed (no T>=43 witness).
+
+## 41. Phase 26: exact-cover restructuring search (search10.py)
+
+New attack after phase 25 closed local repair: treat the tenth
+input's colliding region R = (1 mod 9 u 3 mod 9) n {v2>=3} inside a
+fixed (5,7,11)-context as a finite exact-cover problem over the
+dyadic-triadic cell tree, searching for ANY packing of R by free
+divisor vectors (a,b) = (v2,v3), including binary/ternary depth
+cascades (split cell (a,b) -> (a+1,b)x2 or (a,b+1)x3).
+
+Machine result: the used-vector census of the concrete secs 3.1-3.6
+emission (~4900 congruences) shows the ENTIRE box a<=8, b<=7 is
+occupied -- 72 of 72 vectors used in the context (c,d,e>=1, f=0).
+The vectors "free" beyond the box (a>=9 or b>=8) are artifacts of
+finite emission depth: symbolically every used family is an infinite
+ray ({a>=a0} chains, {b>=b0} 27^-type chains), so no (a,b) vector is
+free at ANY depth.  The packer accordingly fails at the very first
+chain cell, and depth cascades only push the demand into the next
+saturated stratum (c+1 levels are occupied by the same towers'
+level-(m+1) families).
+
+CONCLUSION: obstruction A cannot be repaired by any redistribution
+of the tenth input's coverage within its own (5,7,11)-context --
+saturation is total, a direct consequence of the density-perfect
+smooth core (phase 7).  Any valid fix must re-balance coverage
+ACROSS the 5/7/11 sections (change which context cells each section
+covers), i.e. the global redesign that is precisely the open T=43
+problem.  The counting-level (phases 6-9b), divisor-vector (phase
+25), and exact-cover (this phase) closures now form a three-level
+machine-checked proof that the record construction admits no local
+modification path to 43.
+
+STATUS: near-miss / frontier-pushed (no T>=43 witness).
