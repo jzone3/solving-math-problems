@@ -235,3 +235,34 @@ Seeded annealing (anneal2, ring seeds, 90 min, T from e/40): n=22/24/26 remained
 ring values 144/216/324 — the ring graphs are strong local minima under chord 2-swaps;
 no full-space state below them was found. Consistent with (but not proof of) these being
 the true minima at those orders.
+
+## 7. w=17 attempt & compute summary
+
+w=17 (15 fp-shards) ran ~12 h wall (~72+ core-hours, interrupted once by a VM restart)
+without completing any shard — the search-tree growth (~×15–30 per +1 in w) puts w=17 at
+roughly 1–3 more days of this machine; terminated at session end, no t=1 gadget found in
+the explored prefix. The t1search sharding (by vertex 0's first chord partner) makes this
+trivially resumable: rerun `./t1search 17 <fp>` for fp = 2..16.
+
+Total compute this session: ≈ 100 core-hours.
+- window.c exact-min exhaustions: w = 8..14.
+- t1search exhaustions: w ≤ 16 complete (≈ 2·10^9 nodes), w = 17 partial.
+- anneal.c full-space annealing: n = 22..30, ~50 restarts × 2·10^5 iterations each.
+- All counters cross-validated: C bitmask DFS vs brute-force permutation counting (60
+  random cases) vs independent python verifier (verify_candidate.py); K5 h-IDS sanity
+  check matches Thomassen's remark.
+
+## STATUS
+
+STATUS: negative on the main question / frontier-pushed on structure and records.
+- No counterexample found (no 4-regular simple uniquely hamiltonian graph).
+- NEW structural theorem (machine-verified): no t=1 window gadget with w ≤ 16 exists ⇒
+  every 4-regular uniquely hamiltonian graph is 4-edge-connected if n ≤ 33, and for all n
+  every 2-edge-cut side has ≥ 17 vertices. This closes the low-connectivity route used by
+  ALL known bounded-HC 4-regular families (Fleischner multigraphs, TZ 216-family,
+  GMZ minimizers) and is a publishable-style complement to GMZ's n ≤ 21 exhaustion.
+- NEW explicit records: 4-regular hamiltonian graphs with exactly 144/192/216/288/324 HCs
+  at n = 22/23/24/25/26, extending GMZ Table 3 beyond its "?" frontier (and 144 for all
+  n = 16..22 via two-window rings).
+- Dead ends logged: h-IDS filtering (subsumed by exact counting), generic annealing
+  (plateaus ~2.5× above structured constructions), pentagram-block seeds (6^k growth).

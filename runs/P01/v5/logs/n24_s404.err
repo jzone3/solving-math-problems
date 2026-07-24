@@ -19,3 +19,5 @@ restart 17 done best=600
 restart 18 done best=576
 restart 19 done best=600
 restart 20 done best=1050
+restart 21 done best=952
+restart 22 done best=900
