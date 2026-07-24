@@ -20,3 +20,17 @@ presolved problem has 19323 variables (19323 bin, 0 int, 0 cont) and 5094 constr
 transformed objective value is always integral (scale: 1)
 Presolving Time: 1.63
 
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+  430s|     1 |     0 |238270 |     - |   478M |   0 |  19k|5104 |5094 |   0 |  0 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+  533s|     1 |     0 |283144 |     - |   497M |   0 |  19k|5104 |5096 |   2 |  1 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+  626s|     1 |     0 |315614 |     - |   509M |   0 |  19k|5104 |5098 |   4 |  2 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+  693s|     1 |     0 |342106 |     - |   521M |   0 |  19k|5104 |5100 |   6 |  3 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+  739s|     1 |     0 |361406 |     - |   547M |   0 |  19k|5104 |5101 |   7 |  4 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+  799s|     1 |     0 |382812 |     - |   553M |   0 |  19k|5104 |5102 |   8 |  5 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+  864s|     1 |     0 |404689 |     - |   556M |   0 |  19k|5104 |5103 |   9 |  6 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+  936s|     1 |     0 |427499 |     - |   557M |   0 |  19k|5104 |5104 |  10 |  7 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+ 1005s|     1 |     0 |448680 |     - |   563M |   0 |  19k|5104 |5105 |  11 |  8 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+ 1076s|     1 |     0 |471647 |     - |   570M |   0 |  19k|5104 |5107 |  13 |  9 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+ 1139s|     1 |     0 |493596 |     - |   571M |   0 |  19k|5104 |5108 |  14 | 10 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+ 1200s|     1 |     0 |513131 |     - |   572M |   0 |  19k|5104 |5109 |  15 | 11 |  10 |   0 | 0.000000e+00 |      --      |    Inf | unknown
+ 3469s|     1 |     2 |540114 |     - |   573M |   0 |  19k|5104 |5109 |  15 | 11 |  10 |  37 | 0.000000e+00 |      --      |    Inf | unknown

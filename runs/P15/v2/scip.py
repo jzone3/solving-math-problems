@@ -16,6 +16,9 @@ def main():
     ap.add_argument("-T", type=int, required=True)
     ap.add_argument("--time-limit", type=float, default=7200)
     ap.add_argument("-o", "--out")
+    ap.add_argument("--cube-v0", type=int, default=0,
+                    help="fix x_{v0,0}=1 and x_{v,0}=0 for v>v0 "
+                         "(largest-value-covering-0 case split)")
     args = ap.parse_args()
     fac = factorize_spec(args.N)
     N = 1
@@ -30,8 +33,15 @@ def main():
         m.addCons(quicksum(x[(v, a)] for a in range(v)) <= 1)
     for n in range(N):
         m.addCons(quicksum(x[(v, n % v)] for v in divs) >= 1)
-    # translation symmetry: WLOG class covering 0 has residue 0
-    m.addCons(quicksum(x[(v, 0)] for v in divs) >= 1)
+    if args.cube_v0:
+        v0 = args.cube_v0
+        m.addCons(x[(v0, 0)] >= 1)
+        for v in divs:
+            if v > v0:
+                m.addCons(x[(v, 0)] <= 0)
+    else:
+        # translation symmetry: WLOG class covering 0 has residue 0
+        m.addCons(quicksum(x[(v, 0)] for v in divs) >= 1)
     print(f"N={N} T={args.T}: {len(divs)} values, {len(x)} vars", flush=True)
     m.optimize()
     st = m.getStatus()
