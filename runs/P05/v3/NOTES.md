@@ -137,18 +137,26 @@ center).
 - **Subcubic escalation** (where hypotraceable-like pathologies live; degree
   ≤ 3 2-connected blocks via geng -C -D3): COMPLETE and negative for
   n=11..17 (3,421 / 11,679 / 43,418 / 165,993 / 666,854 / 2,756,486 blocks
-  at n=12..17; worker totals match exactly). n=18 (11,780,245) running
-  4-way split.
-- Conclusion so far: no block on ≤ 17 vertices (subcubic) or ≤ 10 vertices
-  (general) admits the three-equal-avoidant-crossings configuration, so no
+  at n=12..17; worker totals match exactly). n=18: COMPLETE, all 11,780,245
+  subcubic 2-connected blocks scanned (8 slices, worker totals sum exactly to
+  11,780,245; ~76 core-hours), NO hit.
+- Conclusion: **no block on ≤ 18 vertices (subcubic) or ≤ 10 vertices
+  (general) admits the three-equal-avoidant-crossings configuration**, so no
   Gallai-3 counterexample of the "block + three pendant arms" shape exists
-  with such a core. Any counterexample of this shape needs a structurally
-  larger/denser exotic block.
+  with such a core — a clean structural frontier for this construction shape
+  (arms can be arbitrarily long, so this covers infinitely many graphs, far
+  beyond the n ≤ 12 exhaustive literature frontier). Any counterexample of
+  this shape needs a larger exotic block.
 
-## STATUS: negative
+## STATUS: negative / frontier-pushed (for the block+3-arms shape)
 
 No counterexample; no near-miss below triple-intersection 1 (the conjectured
 optimum). Family sweeps (~7.9M block-structure configs, n ≤ 22), 20+ annealing
 runs (n ≤ 30) with plateau walks, depth-2 refinement of all score-1 optima,
-and a full independent exhaustive re-verification for all connected graphs
-n ≤ 10 — all negative. Total compute ≈ 45 core-hours (pypy3, 8 cores).
+a full independent exhaustive re-verification for all connected graphs
+n ≤ 10, and the Stage-E structural hunt — exhaustive over ALL 2-connected
+blocks n ≤ 10 (9.74M at n=10), ALL subcubic 2-connected blocks n ≤ 18
+(11.78M at n=18), and a 13M-block n=11 sample — all negative. The Stage-E
+result rules out every "block + three pendant arms" counterexample whose core
+is a general block ≤ 10 vertices or subcubic block ≤ 18 vertices, for arms of
+ANY length. Total compute ≈ 200 core-hours (pypy3, 8 cores).
