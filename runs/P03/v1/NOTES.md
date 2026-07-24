@@ -243,6 +243,25 @@ tight sets are exactly "blocks" (3 sources fully covering 3 private sinks).
 - blockcons15.py: 5-block construction at p=15/q=20, 10,088 sampled
   instances (5 disjoint nontrivial tight 3-cuts each) - all pack.
 
+## Phase 6 — tau=4 smallest open class
+
+ACZ's P4 (settling rho=3) is tau=3-specific, so for tau=4 the class rho=3
+is already open: sink-regular (5,4)-biregular bipartite digraphs with 12
+sources of out-degree 5, 15 sinks of in-degree 4, 60 arcs.
+
+Checker biregk.c generalizes bireg.c to arbitrary tau=K (K-coloring
+backtracker with a 20M-node limit; instances hitting the limit are deferred
+to hardk.txt and resolved by resolve_hard.py using the INDEPENDENT
+fastcuts.py poset-ideal enumerator + CaDiCaL). Validation: K=3 exact match
+vs bipsearch.py (50 instances, cut counts + pack results); K=4 exact match
+vs fastcuts+pysat (30 instances).
+
+- 7 workers x 3 h at K=4, p=12/q=15: 9,931,200 instances, ALL tau=4
+  (single-sink 4-cuts + random 5-out-regular sources make tau<4 rare),
+  all pack into 4 disjoint dijoins.
+- 2,770 instances exceeded the backtracker node limit (~0.03%); every one
+  independently re-checked (fastcuts + CaDiCaL): all pack. Zero UNSAT.
+
 ## STATUS
 
 STATUS: negative / frontier-pushed — no counterexample. Exhaustive: all
@@ -259,5 +278,8 @@ class itself (random, annealed, and tight-cut-seeded) - all pack. Phase 5:
 C-speed checker (validated against the SAT harness) pushed the open-class
 count to >34M tau=3 instances at p=12/q=16 and ~850k at p=15/q=20, plus
 exhaustive structured families forcing disjoint / laminar / crossing
-nontrivial tight 3-cuts (~20k instances) - all pack. No
+nontrivial tight 3-cuts (~20k instances) - all pack. Phase 6: the tau=4
+smallest open class ((5,4)-biregular, p=12/q=15, 60 arcs, open since ACZ's
+P4 is tau=3-specific): 9.93M instances checked (hard cases independently
+resolved via fastcuts+CaDiCaL) - all pack. No
 solutions/P03/verify.py since there is no claimed witness.
