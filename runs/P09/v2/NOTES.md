@@ -150,8 +150,45 @@ tiny dense eigenproblems:
   support) would imply an unweighted one: the weighted relaxation adds no
   power, and we did not spend compute on it.
 
-## STATUS: negative — no counterexample in the structured (V2) two-eigenvalue
-design class after two waves: exhaustive blow-ups (≤7-vertex patterns, n ≤ 300),
+## Frontier push (third wave): exhaustive verification for ALL graphs n ≤ 11
+
+Fundamentally different encoding: instead of structured families, brute-force
+the complete isomorphism-free catalogue via nauty geng + a dedicated C scorer
+(`geng_check.c`): graph6 decode, exact ω by bitmask branch-and-bound with
+popcount pruning, λ₁/λ₂ by cyclic Jacobi (10⁻¹² accuracy on n ≤ 11), complete
+graphs skipped (excluded by conjecture). Any score > 1e-6 flags VIOLATION;
+any score > −1e-6 flags BOUNDARY for independent exact recheck
+(`recheck_boundary.py`: mpmath 50 dps eigensym + sympy real-root isolation
+fallback for anything positive at 50 dps).
+
+Counts (checked = # of non-isomorphic graphs, matches OEIS A000088 exactly,
+confirming full coverage):
+
+| n  | graphs checked  | violations | boundary (|score|<1e-6) |
+|----|-----------------|------------|-------------------------|
+| 6  | 156             | 0          | 32                      |
+| 7  | 1,044           | 0          | 59                      |
+| 8  | 12,346          | 0          | 112                     |
+| 9  | 274,668         | 0          | 195                     |
+| 10 | 12,005,168      | 0          | 329                     |
+| 11 | 1,018,997,864   | 0          | 525                     |
+
+n = 11 ran as 8 parallel geng res/8 classes (logs geng_n11_0..7.log), ~30 h
+wall total. All 1,252 boundary graphs across n = 6–11 rescored at 50 decimal
+digits: every one is EXACT equality (|score| < 1e-30); zero strictly-positive,
+zero float-masked violations. Max double-precision score ever seen: 2.2e-13
+(pure Jacobi rounding on equality cases).
+
+Consequence (citable frontier): **the Bollobás–Nikiforov conjecture holds for
+every graph on at most 11 vertices**, verified exhaustively with exact clique
+numbers and boundary cases certified in high-precision/exact arithmetic. Any
+counterexample has n ≥ 12.
+
+## STATUS: negative / frontier-pushed — no counterexample after three waves,
+and NEW citable frontier: conjecture verified exhaustively for ALL graphs on
+n ≤ 11 vertices (1.03 × 10⁹ graphs, exact ω, boundary cases certified at 50
+digits) ⇒ any counterexample needs n ≥ 12. Structured (V2) two-eigenvalue
+design class: exhaustive blow-ups (≤7-vertex patterns, n ≤ 300),
 sampled blow-ups (8–14-vertex patterns, n ≤ 1000; ~384k weight-optimized configs
 total), bridged/overlapping clique pairs, double-Turán unions, ~20 CPU-hours of
 exact-ω annealing at n up to 90, 50-digit recheck of every near-equality top,

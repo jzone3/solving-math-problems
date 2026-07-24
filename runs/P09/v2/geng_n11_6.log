@@ -1,0 +1,11 @@
+BOUNDARY J???Fz{~Fw? score=5.68434188608e-14 w=2 m=24
+BOUNDARY J???Fz{~Fs? score=8.881784197e-14 w=2 m=24
+BOUNDARY J???Fz{~F{? score=6.39488462184e-14 w=2 m=25
+BOUNDARY J???Fz{}fs? score=1.7763568394e-14 w=2 m=24
+BOUNDARY J???Fz{~f{? score=7.1054273576e-15 w=2 m=26
+BOUNDARY J???Fz}~f{? score=-1.03028696685e-13 w=2 m=27
+BOUNDARY J??F~z{~Fw? score=-2.84217094304e-14 w=2 m=30
+BOUNDARY J?ABrpw]Fo? score=-5.3290705182e-14 w=2 m=22
+BOUNDARY J?ABrpw}Fo? score=8.881784197e-14 w=2 m=23
+BOUNDARY J?ABrrw}Fo? score=3.19744231092e-14 w=2 m=24
+checked=143004566 violations=0 boundary(>-1e-06)=10 maxscore=8.881784197e-14 maxg6=J???Fz{~Fs?
