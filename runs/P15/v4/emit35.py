@@ -238,7 +238,7 @@ def main():
     N = 2 ** 7 * 3 ** 6 * 5 ** 2 * 7 ** 2   # 114,307,200
     print("census window:", N)
     base = np.zeros(N, dtype=bool)
-    for r, n in prev:
+    for r, n in prev + c33 + list(c34):
         if N % n == 0:
             base[r % n::n] = True
     idx = np.arange(N)

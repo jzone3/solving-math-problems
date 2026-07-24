@@ -1200,4 +1200,44 @@ slot-3 contents of sec 3.3 with pure moduli per the convention,
 re-checking min modulus (>=42) and global distinctness, then re-run
 the sec-3.5 census.
 
+## 37. Phase 22: canonical slot->digit convention discovered and
+## validated; obstruction B RESOLVED; combined 3.1-3.5 replica
+
+(1) THE SLOT->DIGIT CONVENTION.  For every p-split / p-tower in the
+Nielsen/Owens diagrams, slot t sits on the canonical p-adic digit t
+for t < p, and slot p sits on the recursion digit 0.  Independent
+textual confirmation: Nielsen 4.3's "lowest gray circle represents the
+class 20 (mod 25)" -- the fifth-slot-then-fourth-slot cell is digits
+(0,4), i.e. 0 + 4*5 = 20 (mod 25), exactly.  emit33.py and emit34.py
+were remapped accordingly (previously slots were placed on digits
+t-1); emit35.py already used this convention.
+
+(2) OBSTRUCTION B RESOLVED.  With the remap, sec 3.3's third
+hole-input (5-digit 3) places 3^(1,2) on the 3-split's recursion
+digit, and its ONE-cells have PURE moduli 45, 135, ... (no 2-adic
+context factor) -- these cover (3 mod 9) n (3 mod 5) on BOTH parities,
+which is precisely the "covers more than needed" property Nielsen
+states in 4.3 and Owens preserves in his 3.3 remark.  Machine check:
+sec 3.5's input S6 = 5^(1,2,3*1,4) now covers its branch with ZERO
+uncovered cells (was 639,744 under the old mapping), and S7's 3 mod 45
+gap disappears likewise.  The sec 3.4 residual census keeps Owens's
+target diagram shape under the remap (hole 8 open only on 5-slot 1,
+hole 16 tails only).
+
+(3) COMBINED 3.1-3.5 STATE: skeleton 123 + sec3.3 217 + sec3.4 266 +
+sec3.5 1326 congruences; pairwise modulus overlap between sections =
+0 everywhere; min modulus 42 (sec3.4), 44 (sec3.5), 45 (sec3.3),
+48 (skeleton).  Explicit witnesses T=4..12 still PASS (regression).
+
+(4) REMAINING GAPS (quantified, honest):
+  a. Obstruction A (48 duplicate moduli inside Nielsen's own tenth
+     input, family 72*2^j*5^m*7^l*11^k) still needs the unspecified
+     depth/auxiliary-prime disambiguation;
+  b. S9/S10 residuals are now dominated by finite-depth window
+     artifacts (7-digit-0 recursion cells), EXCEPT one genuine slot:
+     S10's 7-digit-6 set leaves (reduced 18-part) n (5-digit sigma(1))
+     uncovered -- the covering source of this x in Owens's rearranged
+     system is not yet identified from the text;
+  c. secs 3.6-3.20 remain to be emitted.
+
 STATUS: near-miss / frontier-pushed (no T>=43 witness).

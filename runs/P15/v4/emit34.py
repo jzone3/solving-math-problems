@@ -68,8 +68,10 @@ def three_up(cell, a, b):
 
 
 def three_split(cell, s0, s1, s2):
+    """3(s0,s1,s2): canonical slot->digit convention (phase 22): slots
+    (1,2,3) sit on 3-adic digits (1,2,0)."""
     out = []
-    for cls, inp in ((0, s0), (1, s1), (2, s2)):
+    for cls, inp in ((1, s0), (2, s1), (0, s2)):
         sub = ext(cell, 3, cls, 1)
         if inp is None:
             continue
@@ -98,7 +100,7 @@ def set_A(cell):
                                   [H8], None),
             lambda s: three_split(s, lambda u: three_up(u, None, UP16_8),
                                   UP16_8, None))):
-        sub = ext(cell, 5, i, 1)
+        sub = ext(cell, 5, (i + 1) % 5, 1)   # slots (1..5) -> digits (1,2,3,4,0)
         out += inp(sub)
     return out
 
@@ -121,10 +123,10 @@ def five_up_t5(cell):
 
 
 def sliver_cells(cell7):
-    """Residual sliver of the 8 hole in cell7: hole8 & 19 (mod 25) &
+    """Residual sliver of the 8 hole in cell7: hole8 & 20 (mod 25) &
     3^ first slots -- covered by the (relatively verified) 125^.3^.m."""
     cells = []
-    base = crt(19, 25, cell7[0], cell7[1])
+    base = crt(20, 25, cell7[0], cell7[1])
     for kk in range(1, E3 + 1):
         c2 = ext(base, 3, 3 ** (kk - 1), kk)
         cells.append(crt(H8[0], H8[1], c2[0], c2[1]))
@@ -145,36 +147,36 @@ def emit34():
                 congs += three_split(cell7, [(0, 2)], [(0, 4)],
                                      lambda s: three_up(s, "ONE", [(0, 2)]))
             else:
-                for j in range(5):
+                # 5-split slots (1..5) -> digits (1,2,3,4,0): slot 1 is
+                # the "+x", slot 5 holds the 125^ sets (digit 0, below)
+                for j in range(1, 5):
                     cj = crt(j, 5, cell7[0], cell7[1])
-                    if j == 0:
-                        continue                    # "+x"
-                    if j == 4:
-                        continue                    # 125^ sets, below
+                    if j == 1:
+                        continue                    # "+x" (slot 1)
                     if t == 4:
-                        if j == 1:
+                        if j == 2:
                             congs += three_split(
                                 cj, [(0, 4)], [H8, H16],
                                 lambda s: three_up(s, None, [(0, 4)]))
-                        elif j == 2:
-                            congs += three_split(cj, "ONE", None, None)
                         elif j == 3:
+                            congs += three_split(cj, "ONE", None, None)
+                        elif j == 4:
                             congs += isect(cj, [(0, 2)])
                     elif t == 5:
-                        if j == 1:
+                        if j == 2:
                             congs += isect(cj, [H8, H16])
-                        elif j == 2:
+                        elif j == 3:
                             congs += three_split(
                                 cj, lambda s: three_up(s, "ONE", [(0, 2)]),
                                 None, None)
-                        elif j == 3:
+                        elif j == 4:
                             congs += five_up_t5(cj)
                     elif t == 6:
-                        if j == 1:
+                        if j == 2:
                             congs += set_A(cj)
-                        elif j == 2:
-                            congs += three_split(cj, [(0, 2)], None, None)
                         elif j == 3:
+                            congs += three_split(cj, [(0, 2)], None, None)
+                        elif j == 4:
                             congs += isect(cj, [(0, 4)])
                 if t in (4, 5, 6):
                     placeholders += sliver_cells(cell7)

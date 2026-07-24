@@ -48,20 +48,28 @@ def three_up(a, b, ctx, depth=None):
 
 
 def emit():
+    """Canonical slot->digit convention (phase 22): for a p-split /
+    p-tower, slot t sits on p-adic digit t for t < p, and slot p on the
+    recursion digit 0.  Owens's five hole-inputs therefore occupy the
+    5-adic digits (1,2,3,4,0), and each 3(a,b,c) split the 3-adic
+    digits (1,2,0)."""
     congs = []
-    # ---- input 1 (j=0 mod 5): 16+32
-    congs += isect((0, 5), hole_cells(["16", "32"]))
+    # ---- input 1 (digit 1 mod 5): 16+32
+    congs += isect((1, 5), hole_cells(["16", "32"]))
 
-    # ---- input 2 (j=1): 3( , , 3^(4+8, ) + 3^(16, 32^|16br) ) + 64^|32br
-    ctx = ext((1, 5), 3, 2, 1)      # third class of the 3-split
+    # ---- input 2 (digit 2): 3( , , 3^(4+8, ) + 3^(16, 32^|16br) ) + 64^|32br
+    ctx = ext((2, 5), 3, 0, 1)      # third slot of the 3-split -> digit 0
     congs += three_up(hole_cells(["4", "8"]), None, ctx)
     congs += three_up(hole_cells(["16"]), two_tower(HOLES["16"], 5), ctx)
-    congs += isect((1, 5), two_tower(HOLES["32"], 6))
+    congs += isect((2, 5), two_tower(HOLES["32"], 6))
 
-    # ---- input 3 (j=2): 3(64^|32br, 4+8+16+32, 3^(1,2))
-    congs += isect(ext((2, 5), 3, 0, 1), two_tower(HOLES["32"], 6))
-    congs += isect(ext((2, 5), 3, 1, 1), hole_cells(["4", "8", "16", "32"]))
-    congs += three_up("ONE", [(0, 2)], ext((2, 5), 3, 2, 1))
+    # ---- input 3 (digit 3): 3(64^|32br, 4+8+16+32, 3^(1,2))
+    congs += isect(ext((3, 5), 3, 1, 1), two_tower(HOLES["32"], 6))
+    congs += isect(ext((3, 5), 3, 2, 1), hole_cells(["4", "8", "16", "32"]))
+    # slot 3 -> digit 0: 3^(1,2) covers the 3 (mod 9) chain with PURE
+    # moduli 45*..., the "covers more than needed" property cited by
+    # secs 3.5/3.6 (x-slots on the odd branch)
+    congs += three_up("ONE", [(0, 2)], ext((3, 5), 3, 0, 1))
 
     # ---- input 4 (j=3): blank, then the 125^ patch on the 8 hole:
     # 125^(3^(4,x), 3^(8,x), 3^(16^|8br,x), 3^( ,x))  [x -> sec 3.4]
@@ -73,7 +81,7 @@ def emit():
     rel16up = [(2 ** (k - 1), 2 ** k) for k in range(4, D2 - 2)]
     for k in range(1, D5 + 1):
         for t, rinp in ((1, rel4), (2, rel8), (3, rel16up), (4, None)):
-            cell = ext((3, 5), 5, t * 5 ** (k + 1), k + 2)
+            cell = ext((4, 5), 5, t * 5 ** (k + 1), k + 2)
             if rinp is None:
                 continue
             for kk in range(1, D3 + 1):
@@ -85,17 +93,17 @@ def emit():
     # ---- input 5 (j=4): 5(2, 4+8+16+32, 3^(1,2),
     #                       3^(32^|16br, 4+8+16) + 64^|32br, 5^(1,2,3^(1,2),4^))
     def in5(i):                      # inner 5-split: second 5-adic digit
-        return ext((4, 5), 5, i, 1)
-    congs += isect(in5(0), [(0, 2)])                          # "2"
-    congs += isect(in5(1), hole_cells(["4", "8", "16", "32"]))
-    congs += three_up("ONE", [(0, 2)], in5(2))
+        return ext((0, 5), 5, i, 1)
+    congs += isect(in5(1), [(0, 2)])                          # "2"
+    congs += isect(in5(2), hole_cells(["4", "8", "16", "32"]))
+    congs += three_up("ONE", [(0, 2)], in5(3))
     congs += three_up(two_tower(HOLES["16"], 5),
-                      hole_cells(["4", "8", "16"]), in5(3))
-    congs += isect(in5(3), two_tower(HOLES["32"], 6))
-    # 5^(1,2,3^(1,2),4^) on inner class 4: canonical 5-digits
+                      hole_cells(["4", "8", "16"]), in5(4))
+    congs += isect(in5(4), two_tower(HOLES["32"], 6))
+    # 5^(1,2,3^(1,2),4^) on inner slot 5 -> digit 0: canonical 5-digits
     for k in range(1, D5 + 1):
         for t, inp in ((1, "ONE"), (2, [(0, 2)]), (3, "3UP12"), (4, up4())):
-            cell = ext(in5(4), 5, t * 5 ** (k - 1), k)
+            cell = ext(in5(0), 5, t * 5 ** (k - 1), k)
             if inp == "ONE":
                 congs.append(cell)
             elif inp == "3UP12":
