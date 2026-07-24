@@ -9,10 +9,22 @@ Plan per parent instructions: multi-seed sweep m=13 at N=367567200
 budgets (25200 s), distinct seeds; restart any seed whose best= stalls
 for >1 h. Every witness must PASS solutions/P15/verify.py.
 
+A stall monitor kills any run whose best= is unchanged for >1 h and
+restarts it with a fresh seed (same N, fresh 25200 s budget).
+
 ## Run log
 | N | m | seed | budget (s) | outcome |
 |---|---|------|------------|---------|
-| 367567200 | 13 | 101 | 25200 | running |
-| 183783600 | 13 | 102 | 25200 | running |
-| 183783600 | 13 | 103 | 25200 | running |
-| 183783600 | 13 | 104 | 25200 | running |
+| 367567200 | 13 | 101 | 25200 | stalled at best=205375 holes (t=1547s); killed after 1h no improvement, restarted as seed 201 |
+| 183783600 | 13 | 102 | 25200 | running; best=149167 at t=8830s, still improving |
+| 183783600 | 13 | 103 | 25200 | stalled at best=161075 (t=3823s); killed, restarted as seed 202 |
+| 183783600 | 13 | 104 | 25200 | stalled at best=311355 (t=4568s); killed, restarted as seed 203 |
+| 367567200 | 13 | 201 | 25200 | stalled at best=222151 (t=9s, greedy init then no MC gain); killed, restarted as seed 204 |
+| 183783600 | 13 | 202 | 25200 | running; best=217978 at t=1978s |
+| 183783600 | 13 | 203 | 25200 | running; best=305001 at t=1816s |
+| 367567200 | 13 | 204 | 25200 | running; best=220439 at init |
+
+Early observation: at N=3.7e8 the MC loop is extremely slow (~0.1 it/s after
+init; per-move cost O(holes + N/n)); best barely moves past greedy init
+(~2.2e5 holes). At N=1.8e8 the loop sustains ~40 it/s and descends steadily
+(5.4e5 -> 1.5e5 holes on seed 102).
