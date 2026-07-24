@@ -1816,3 +1816,41 @@ residue-level choices the source texts leave unstated.
 
 STATUS: near-miss / frontier-pushed
 
+## 60. Phase 42: OBSTRUCTION A RESOLVED at residue level (2026-07-22)
+
+The last remaining duplicate-modulus families (152 values inside
+secs 3.5/3.6, Nielsen's tenth input) are now repaired by explicit
+depth-shifting -- the residue-level realization of Nielsen's
+"artificially increase n" device that phases 24-26 could not find
+via value-set arguments:
+
+  emit35.py S10 slot6: A33_xx8 ((1,9) x 8^-chain) and A9_8
+  ((3,9) x 8^-chain) shared the family 9*2^(3..8).  The A9_8 chain
+  is replaced by its depth-shifted continuation (2-digits 7..12,
+  moduli 9*2^(9..14)); the shallow strip becomes an explicit
+  placeholder tail.  sec3.5 dups: 48 -> 0.
+
+  emit36.py: the same repair in the unsubstituted copies, plus a
+  second collision in the substituted (input-12) copy where
+  "9*8^"->"9*2" (mod 18) repeated x8's substituted (1,9)*2 (mod 18),
+  and the first replacement chain collided with s11's "9*4" (mod 36)
+  and the 9*2^(9..14) family.  Final choice: chain at 2-digits
+  14..19 (moduli 9*2^(16..21)), fresh against every family.
+  sec3.6 dups: 104 -> 8 -> 48 -> 0 across the iterations.
+
+globalcheck.py over the full emission now reports:
+
+  TOTAL: 12,331,418 congruences, 4,249 placeholders
+  global min modulus: 42
+  GLOBAL duplicate moduli values: 0
+
+This is the first fully duplicate-free residue-level emission of
+Owens's record T=42 construction produced in this campaign: every
+one of the 12.33M congruences has a distinct modulus >= 42.  NOT yet
+a machine-verified covering system: 4,249 placeholder slots (source
+x-slots, recursion tails, obstruction-B pieces, and the new repair
+strips) still need coverage assignments before a coverage verifier
+could pass.
+
+STATUS: near-miss / frontier-pushed
+

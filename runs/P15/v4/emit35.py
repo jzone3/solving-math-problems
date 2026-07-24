@@ -169,7 +169,18 @@ def inputs():
     # S10 = 5^(3(3(1,4, )), , , ) + 7^(six sets)
     f10, f10t = five([A3314, None, None, None])
     slot4, slot4t = five([A33_xx1 + A9_2, E8, None, A3_1 + A9_4])
-    slot6, slot6t = five([A33_xx8, A3_2, A3_4, A3_8 + A9_8])
+    # OBSTRUCTION-A REPAIR (residue level): slot6 held both A33_xx8
+    # (9-cell (1,9) x 8^-chain) and A9_8 (9-cell (3,9) x 8^-chain) --
+    # the same modulus family 9*2^a, duplicated at every 5/7/11 level.
+    # Nielsen's "artificially increase n": replace the A9_8 chain by
+    # its depth-shifted continuation (2-digits D2+1..2*D2, moduli
+    # 9*2^(D2+3..2*D2+2), globally fresh); the shallow strip becomes
+    # an explicit placeholder tail.
+    E8DEEP = [ext((1, 4), 2, 2 ** (j - 1), j)
+              for j in range(D2 + 1, 2 * D2 + 1)]
+    A9_8D = x2(E8DEEP, 3, 9)
+    slot6, slot6t = five([A33_xx8, A3_2, A3_4, A3_8 + A9_8D])
+    slot6t = slot6t + x2(E8, 3, 9)      # shallow strip, coverage pending
     A81b, A81bT = eightyone_14()
     slot5c, slot5t = five([ACH_1, ACH_2, ACH_4, ACH_8])
     slot5 = A33_124 + A81b + slot5c

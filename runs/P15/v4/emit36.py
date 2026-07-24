@@ -204,8 +204,26 @@ def ten_sets(A, sig5, keep=None, sub4=None, sub8=None):
     x8 = (a33_xx8(A) if keep is None or keep("8") else ([], []))
     if sub4 and x8[0]:
         x8 = (x2([ext((1, 3), 3, 0, 1)], 1, 2), [])   # 8^ -> 2
+    # OBSTRUCTION-A REPAIR (as in emit35): x8 = (1,9) x 8^-chain and
+    # "9*8^" = (3,9) x 8^-chain share the modulus family 9*2^a.  Use
+    # the depth-shifted continuation of the 9*8^ chain (2-digits
+    # D2+1..2*D2); the shallow strip is left as a placeholder tail.
+    deep8 = [ext(A.base4, 2, 2 ** (j - 1), j)
+             for j in range(D2 + 1, 2 * D2 + 1)]
+    if (keep is None or keep("8")) and not sub4:
+        g98d = (x2(deep8, 3, 9), x2(A.E8, 3, 9))
+    elif sub4 and (keep is None or keep("8")):
+        # substituted copy: "9*2" (mod 18) would repeat x8's substituted
+        # (1,9)*2 (mod 18); emit it as a 2-adic chain inside (1,2)
+        # depth range chosen beyond both the x8 strip (9*2^(3..8)) and
+        # the unsubstituted copy's deep chain (9*2^(9..16))
+        chain2 = [ext((1, 2), 2, 2 ** (j - 1), j)
+                  for j in range(2 * D2 + 2, 3 * D2 + 2)]
+        g98d = (x2(chain2, 3, 9), [crt(*ext((1, 2), 2, 0, D2), 3, 9)])
+    else:
+        g98d = G(["9*8^"])
     s6c, s6t = fv([x8,
-                   G(["3*2"]), G(["3*4"]), G(["3*8^", "9*8^"])])
+                   G(["3*2"]), G(["3*4"]), join(G(["3*8^"]), g98d)])
     c5a, t5a = a33_124(A, keep, sub4)
     c5b, t5b = eightyone_14(A, keep, sub4)
     c5c, t5c = fv([G(["27^*1"]), G(["27^*2"]), G(["27^*4"]),
