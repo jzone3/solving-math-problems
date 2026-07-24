@@ -291,3 +291,23 @@ Validation (dramatic speedup vs direct CNF):
   (python and C converters agree).
 - Cumulative cut-conversion negatives: n=11: 80 mult + 2000 two-base;
   n=13: 48 mult + 2592 two-base. No structured circular array converts.
+
+### Round 3 final: affine-twisted family (largest structured family yet)
+
+- affine.c: rows_u = u*b + v_u (u in Zn*), b any circular arrangement,
+  v a twist vector. Exactly-once coverage <=> per-delta bijection
+  conditions <=> binary difference-disequality CSP on v (constraints
+  precomputed from b); trivial twists v_u = a + m*u normalized by fixing
+  v_1 = v_2 = 0. Every emitted array independently re-checked. Validated
+  on n=7 (arrays found, none convert — consistent with T2(7) nonexistence).
+- n=11: >1,000,000 distinct affine circular 10x11 arrays generated and
+  cut-converted (cutconv.c, exact search): ZERO convert to a T2(11).
+  Also all twists around the 80 multiplicative bases (100K+ arrays): none.
+- n=13: affine arrays much rarer over random bases (~4 per 30M bases);
+  twist enumeration around the 48 multiplicative bases running.
+- STATUS: frontier-pushed (no verdict on T2(11)/T2(13) existence).
+  The circular/cut route is now heavily mapped: structured circular
+  arrays exist in abundance for both open orders, but cut-conversion
+  has failed on ~1M+ arrays; and squares provably do not require
+  circular structure (n=8, n=12 calibrations). General sliced
+  exhaustive circular searches continue (3 child sessions + local).
