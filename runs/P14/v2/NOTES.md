@@ -107,3 +107,41 @@ multiplicity counts, column sums, all pairwise inner products = L; prints PASS/F
 - Lex-free cross-check cubes (xcheck/, 23 CNFs: 11+7+5 for (12,15)/(12,20)/(14,18),
   row0+row1 fixed only, no lex) running since 17:11; none finished after ~2.7h —
   much harder without double-lex pruning, as expected.
+
+## Final wrap-up (2026-07-24 00:45 UTC)
+
+Lex-free cross-check cubes (xcheck/): none of the 23 finished after ~7.5h of 7-way
+parallel kissat (no double-lex pruning ⇒ far harder). Left inconclusive; replication
+of the three UNSATs by an independent encoding/solver remains the open follow-up
+(recommend: orbit/Kramer–Mesner ILP from V3, or a fresh SAT encoding by another session).
+
+### Results summary
+- **(14,28;8,3,14;7,6): EXISTS — SOLVED.** Witness found by cube-and-conquer
+  (13 row-1 cubes, kissat; SAT cube after ~10h). Verified PASS by
+  solutions/P14/verify.py and by a second, independently-written numpy check.
+  Witness: solutions/P14/witness-14-28-8-3-14-7-6.txt.
+- **(12,15;6,2,10;8,6), (12,20;4,3,10;6,4), (14,18;7,1,9;7,4): UNSAT (nonexistence
+  claimed).** kissat proves the symmetry-broken CNFs unsatisfiable (each in minutes);
+  DRAT proofs (1.1–1.8 GB) checked by drat-trim: s VERIFIED (real backward check;
+  beware drat-trim silently misparsing CNFs with mid-file comments — strip them).
+  Claim rests on: (a) encoding faithfulness — validated by SAT+PASS on 5 known-existing
+  siblings and UNSAT on Greig's proven-nonexistent (12,26;3,5,13;6,5);
+  (b) symmetry-break soundness — row-0 fixing is elementary WLOG; double-lex on the
+  remaining (V-1)×B submatrix with column group restricted to row-0 segments is sound
+  by Flener et al. 2002. Independent replication still recommended before closing cells.
+
+### Compute spent (approx)
+~30h wall on 8 cores: 4h+12h monolithic runs (sym/nosym × 4 instances), 3 proof
+reruns + 3 drat-trim verifications (~45 min each), 13-cube conquer on (14,28)
+(~10h, 3–4-way), 5 sanity SAT runs, Greig UNSAT run, 23 lex-free cross-check cubes
+(7-way, unfinished), 2 CP-SAT attempts (12h UNKNOWN; per-cube 4h UNKNOWN).
+
+### Near-misses / dead ends
+- Pure nosym kissat: no verdict in 12h on any instance.
+- CP-SAT (OR-Tools): too slow both monolithic and per-cube at tested budgets.
+- drat-trim "c trivial UNSAT / s VERIFIED" on comment-bearing CNFs is a false
+  verification — a genuine tooling trap worth remembering.
+
+## STATUS: SOLVED — (14,28;8,3,14;7,6) constructed & verified; plus frontier-pushed:
+## DRAT-certified nonexistence claims for (12,15), (12,20), (14,18) pending
+## independent replication.
