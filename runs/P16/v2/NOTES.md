@@ -372,3 +372,35 @@ Round-6 local negative result: neighborhood-averaged sigma corrections
 Round 7 (children M, N) launched: prove/stress F2'' (hub-heavy adversarial n=20..80
 + resolvent machinery with capped sigma); prove (B) and (W=) via margin conjecture
 D_e >= 1 / finite 2-ball enumeration + asymptotics.
+
+## 12. Round 7 (children M, N): F2'' hardened; Conjecture H REFUTED (Bound 44 certificate route dies)
+
+childM (Bound 46 / F2''): F2'' (capped sigma-hat = d-4+min(m,d+c)) SURVIVED all
+attacks: 2,770 hub-heavy stress graphs n~11-101 + adversarial min-eig annealing
+(n=12-60, both caps), 0 failures. New exact sympy theorems: M1 (all windmills),
+M2 (all semiregular bipartite incl. skew), M3 (hub + k copies of any g-regular
+gadget, symbolic — covers every childK F2-killing family). h=d CW route REFUTED
+for sigma-hat (worse residue than old sigma); degenerate-edge convention verified
+safe (F1'/F3 extend to any cap). Resolvent machinery with sound adaptive alpha
+certifies ALL 205,797 delta>=2 graphs n<=9 + hub families to n=1201;
+rho(P) <= 0.89 on all capped families. Open core unchanged in shape:
+alpha*·rho < 1, now with a two-case split (cap-active vs cap-free).
+
+childN (Bound 44): **inequality (B), clause (b), Conjecture J and Conjecture H are
+ALL FALSE.** Counterexample trees T52 (n=52; D_e = -22/5 kills (B)/clause (b)) and
+T40 (n=40; kills Conjecture H itself: H-interval [-76/39,-7] disjoint from c > -3
+positivity requirement; R = rho0 for all radii, so every r-ball variant dies too).
+Exact self-contained verification: runs/P16/v2/childN/verify_counterexamples.py.
+Mechanism "pad just beyond the horizon": leaf padding outside B2(e) inflates zs_e
+while keeping rho0(e) quiet. W1B falsified at n=35. Bound 44 itself HOLDS on all
+counterexample trees. Consequence: childH/childJ/childL's "resisting
+configurations" were real obstructions; the affine shifted-sum certificate family
+v = s + c·1 is definitively too rigid. Bound 44 is equivalent (childH Lemma H1) to
+existence of SOME positive v with A_L^2 v <= R v; next candidates (childN §5):
+v = s + c + beta(R - arg44), v_e = max(s_e+c, gamma z1_e/R), v = alpha s + beta z1 + c.
+T40/T52 are now the sharpest test cases for any future certificate.
+
+Running tally of refutations found by this campaign (all exact): F2 (windmills,
+n=29), Conjecture I1/window (same), h=d for sigma-hat, W1B (n=35), (B)/clause (b)
+(T52), Conjecture H (T40). Bounds 44 and 46 themselves: still no proof, no
+counterexample — OPEN.
