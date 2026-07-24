@@ -232,6 +232,18 @@ implement branch-family compression (store hole families as (base coset,
 recursive p↑ tail) pairs and fill them wholesale), which is exactly the
 structure of the published record constructions.
 
+### Phase 4: high-slack explicit push at m=13/14 (in progress)
+Per the empirical slack law (feasibility needs Sigma 1/d ~1.8+ over divisors
+>= m), picked the highest-slack lcms fitting in RAM:
+- N=183783600 = 2^4*3^3*5^2*7*11*13*17: slack(m=13) = 1.957 (948 divisors)
+- N=367567200 = 2^5*...(same odd part): slack(m=13) = 2.038 (10.3 GB arrays)
+Launched cover_mc (breakout min-conflicts) 8h runs: m=13 seeds 91/92 at
+N=1.8e8, m=13 at N=3.7e8, m=14 at N=1.8e8. Greedy init leaves 4.8e5 holes
+(2.6e-3 of N) at 1.8e8 and 2.3e5 (0.6e-3) at 3.7e8 — relatively far better
+than the 273k/7.35e7=3.7e-3 of the earlier m=13 attempt, confirming the slack
+law. MC staircase observed: 483k -> 142k holes in ~40 min at ~50 it/s, then
+kick-dominated plateau. Outcome recorded below when runs finish.
+
 STATUS: frontier-pushed (verified covering systems for every m ≤ 12 via
 explicit engines, plus a new symbolic-coset engine with unbounded lcm verified
 at m ≤ 9 in seconds-minutes; no m≥43 witness — greedy variants documented
