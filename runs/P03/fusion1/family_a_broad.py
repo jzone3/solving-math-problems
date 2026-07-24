@@ -115,7 +115,8 @@ def search(seconds=600, seed=0):
         if rec is None:
             continue
         generated += 1
-        n, arcs = anneal(rng, *rec)
+        n, base_arcs = rec
+        arcs = anneal(rng, n, base_arcs)
         annealed += 1
         if not in_region(n, arcs):
             continue
