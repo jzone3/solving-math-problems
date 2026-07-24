@@ -241,6 +241,13 @@ The session was resumed with instructions to push harder. Additional work:
   204–211 range; the true optimum is plausibly slightly below 204 but the
   persistent gap of ~200 (2% of all triangles) continues to support arrowing.
 
+- **Sixth wave (2026-07-24)**: 8 more workers (4 fresh basin samplers +
+  4 exact-RC2 LNS runs seeded from `record_204_coloring.txt` with distinct
+  seeds), ~1.5 h wall / ~12 core-hours: no coloring below **204** found;
+  every deep restart re-converges into a 204–211 local optimum. 204 now
+  looks like a robust empirical floor for min-mono-triangles on G₁₂₇
+  (still 2.1% of the 9779 triangles away from a SAT witness).
+
 Bottom line unchanged: G₁₂₇ → (3,3)ᵉ remains undecided; the quantitative
 hardness estimates above are now measured, not guessed. Techniques exhausted
 on this hardware: CDCL (kissat/gimsatul), lex/BreakID/SBVA preprocessing,
