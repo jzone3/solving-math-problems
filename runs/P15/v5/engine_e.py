@@ -22,6 +22,18 @@ PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61,
           139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199]
 
 
+def _sieve(n):
+    s = bytearray([1]) * (n + 1)
+    s[0:2] = b"\0\0"
+    for i in range(2, int(n ** 0.5) + 1):
+        if s[i]:
+            s[i * i::i] = b"\0" * len(s[i * i::i])
+    return [i for i in range(2, n + 1) if s[i]]
+
+
+TAIL_PRIMES = _sieve(2000)
+
+
 def crt(r1, m1, r2, m2):
     # gcd(m1, m2) == 1
     from math import gcd
@@ -56,6 +68,9 @@ class Builder:
         self.best_out = 0
         self.best_calls = 0
         self.stall_limit = 2_000_000
+        self.fin_max_mod = 10 ** 80
+        self.fin_measure = 1e-7
+        self.fail_hist = {}
 
     def _divisors(self, n):
         divs = [1]
@@ -136,6 +151,36 @@ class Builder:
                         break
         return best[1] if best else None
 
+    def finisher(self, a, M, depth=0):
+        """Guaranteed cover of a thin cell (fresh huge modulus M) by pure
+        2-chains with fresh tail primes; no caps, unbounded exponents."""
+        self.calls += 1
+        if depth > 200:
+            raise Fail("finisher depth")
+        if self.inherited(a, M):
+            return
+        if M >= self.L and M not in self.used and M <= self.fin_max_mod:
+            self.take(a, M, [])
+            return
+        for p in TAIL_PRIMES:
+            if p <= 199 or M % p == 0:
+                continue
+            K = max(p - 1, 1)
+            while p * M * 2 ** (K + 1 - p) < self.L:
+                K += 1
+            if M * 2 ** K * p > self.fin_max_mod:
+                continue
+            tail = [p * M * 2 ** (K + 1 - j) for j in range(1, p + 1)]
+            if any(m in self.used for m in tail):
+                continue
+            for j, m in enumerate(tail, 1):
+                anc = M * 2 ** (K + 1 - j)
+                self.take(crt(a % anc, anc, j % p, p), m, [])
+            for k in range(1, K + 1):
+                self.finisher(a + M * 2 ** (k - 1), M * 2 ** k, depth + 1)
+            return
+        raise Fail("finisher supply")
+
     def cover_cell(self, a, M, depth=0):
         self.calls += 1
         if len(self.out) > self.best_out:
@@ -150,6 +195,9 @@ class Builder:
             raise Fail("depth")
         L = self.L
         if self.inherited(a, M):
+            return
+        if M >= L and 1.0 / M < self.fin_measure:
+            self.finisher(a, M)
             return
         if M >= L and self.mod_ok(M):
             log = []
@@ -245,6 +293,8 @@ class Builder:
                 except Fail:
                     self.rollback(n_out)
                     continue
+        self.fail_hist[min(len(str(M)), 12)] = \
+            self.fail_hist.get(min(len(str(M)), 12), 0) + 1
         raise Fail(f"cell {a} mod {M}")
 
 
@@ -275,7 +325,9 @@ def main():
             break
         except (Fail, Stall) as e:
             print(f"restart {it} FAILED: {e} ({len(b.out)} classes, "
-                  f"{b.calls} calls, {time.time()-t0:.1f}s)", flush=True)
+                  f"{b.calls} calls, {time.time()-t0:.1f}s) "
+                  f"failhist(mod digits)={sorted(b.fail_hist.items())}",
+                  flush=True)
             b = None
     if b is None:
         print("FAILED all restarts")
