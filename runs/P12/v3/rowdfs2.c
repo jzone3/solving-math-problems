@@ -8,6 +8,10 @@
  * with all used d1/d2 pairs; we branch on the s with the fewest and filter
  * children lists incrementally (fail-fast on empty).
  *
+ * Extra prune: the LAST column of a T2 square must also be a permutation
+ * (counting lemma), so candidates whose last symbol is already used as some
+ * chosen row's last symbol are filtered.
+ *
  * usage: rowdfs2 n [split_s split_lo split_hi] [maxseconds]
  *   split: restrict the TOP-level branching (which is chosen as start
  *   symbol split_s) to candidate indices [lo,hi) of the root-filtered list,
@@ -32,7 +36,7 @@ static inline int disjoint(const mask_t*a,const mask_t*b){
 }
 static inline void morq(mask_t*a,const mask_t*b){a->m[0]|=b->m[0];a->m[1]|=b->m[1];a->m[2]|=b->m[2];}
 
-typedef struct { unsigned char p[MAXN]; mask_t d1,d2; } cand_t;
+typedef struct { unsigned char p[MAXN]; mask_t d1,d2; unsigned short lastbit; } cand_t;
 static cand_t *cands[MAXN]; static int ncand[MAXN];
 
 static unsigned char cur[MAXN]; static int used_[MAXN];
@@ -43,6 +47,7 @@ static void gen(int pos){
         cand_t c; memset(&c,0,sizeof c); memcpy(c.p,cur,N);
         for(int i=0;i<N-1;i++) mset(&c.d1,cur[i]*N+cur[i+1]);
         for(int i=0;i<N-2;i++) mset(&c.d2,cur[i]*N+cur[i+2]);
+        c.lastbit = 1u << cur[N-1];
         if(gcnt==gcap){gcap=gcap?gcap*2:1024;gbuf=realloc(gbuf,gcap*sizeof(cand_t));}
         gbuf[gcnt++]=c; return;
     }
@@ -84,7 +89,7 @@ static void print_sol(int depth_assigned_count){
 
 static int assigned[MAXN];
 
-static int dfs(int depth, mask_t *u1, mask_t *u2){
+static int dfs(int depth, mask_t *u1, mask_t *u2, unsigned lastmask){
     if(depth==N){ solutions++; print_sol(depth); return stop_after_first; }
     /* MRV: pick unassigned s with min list length */
     int best=-1,bl=1<<30;
@@ -103,7 +108,9 @@ static int dfs(int depth, mask_t *u1, mask_t *u2){
             fprintf(stderr,"nodes=%lld depth=%d elapsed=%.0fs\n",nodes,depth,el);
             if(el>maxsec){timedout=1;return 1;}
         }
+        if(lastmask & c->lastbit) continue;
         mask_t n1=*u1,n2=*u2; morq(&n1,&c->d1); morq(&n2,&c->d2);
+        unsigned nlast = lastmask | c->lastbit;
         /* forward check: filter all unassigned lists (excluding s) */
         int ok=1;
         for(int t=1;t<N && ok;t++) if(t!=s && !assigned[t]){
@@ -111,7 +118,7 @@ static int dfs(int depth, mask_t *u1, mask_t *u2){
             int *dst=lists[depth+1][t], k=0;
             for(int j=0;j<m;j++){
                 cand_t *d=&cands[t][src[j]];
-                if(disjoint(&n1,&d->d1) && disjoint(&n2,&d->d2)) dst[k++]=src[j];
+                if(!(nlast & d->lastbit) && disjoint(&n1,&d->d1) && disjoint(&n2,&d->d2)) dst[k++]=src[j];
             }
             lens[depth+1][t]=k;
             if(k==0) ok=0;
@@ -119,7 +126,7 @@ static int dfs(int depth, mask_t *u1, mask_t *u2){
         if(ok){
             memcpy(sol[s],c->p,N);
             assigned[s]=1;
-            if(dfs(depth+1,&n1,&n2)) return 1;
+            if(dfs(depth+1,&n1,&n2,nlast)) return 1;
             assigned[s]=0;
         }
     }
@@ -137,7 +144,7 @@ int main(int argc,char**argv){
     morq(&u1,&id1); morq(&u2,&id2);
     for(int s=1;s<N;s++){ for(int j=0;j<ncand[s];j++) lists[1][s][j]=j; lens[1][s]=ncand[s]; }
     t0=time(NULL);
-    dfs(1,&u1,&u2);
+    dfs(1,&u1,&u2, 1u<<(N-1)); /* identity row's last symbol is n-1 */
     printf("nodes=%lld SOLUTIONS=%lld %s\n",nodes,solutions,timedout?"TIMEOUT":"EXHAUSTED");
     return 0;
 }
