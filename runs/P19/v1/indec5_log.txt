@@ -1,0 +1,4 @@
+L=5 B=30: 271776 wide partitions (13.6s)
+indecomposable: 193 (33.6s)
+max first part among indecomposables: 10 (bound B=30), max |lam|=48
+done: 193 indecomposables tested, non-SAT: [] (35.7s)

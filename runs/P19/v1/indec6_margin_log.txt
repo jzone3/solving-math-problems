@@ -1,0 +1,2 @@
+wide 5-part tails with parts<=45: 1887379 (99.6s)
+checked 14077760 wide 6-part partitions with lam1 in [31,45]; indecomposable: [] (3381.7s)

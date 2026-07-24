@@ -138,6 +138,39 @@ was previously unchecked). Independent cross-check via `ltc_verify.py --frontier
 to n ≤ 20 with identical outcomes (`ltc_verify_log.txt`). Wall time 25,399 s
 (~7 h) on 8 cores (`ltc_log.txt`).
 
+## Fourth attack: ALL indecomposable wide partitions with ≤ 6 parts are Latin
+
+CFGV Def. 5: a wide λ is *decomposable* if λ = μ + ν (partwise sum) with μ, ν wide;
+Prop. 5: for each fixed number of parts ℓ there are only finitely many indecomposable
+wide partitions. CFGV's 2003 check covered all indecomposables with **≤ 5 parts**
+(their |λ| ≤ 65 sweep). This run pushes that class-complete milestone to **ℓ = 6**,
+a result covering partitions of unbounded size (up to decomposition).
+
+Method (`indec6.py`): DFS-enumerate wide partitions with exactly ℓ parts and first
+part ≤ B (sound pruning: every prefix is a subpartition, hence must be wide); filter
+to indecomposables by exhaustive search over wide summand splits; CP-SAT Latin test
+with exact integer re-check of every tableau (rows are exact permutations, columns
+distinct).
+
+Results (logs `indec5_log.txt`, `indec6_log.txt`):
+- ℓ = 2: 3 indecomposables (max λ₁ = 3), all Latin.
+- ℓ = 3: 11 (max λ₁ = 5, max |λ| = 15), all Latin.
+- ℓ = 4: 45 (max λ₁ = 8, max |λ| = 30), all Latin.
+- ℓ = 5: 193 (max λ₁ = 10, max |λ| = 48 ≤ 65 — consistent with CFGV's claim that
+  their sweep covered all ℓ ≤ 5 indecomposables), all Latin.
+- **ℓ = 6: 852 indecomposable wide partitions (max λ₁ = 12, max |λ| = 70), all
+  Latin — zero UNSAT/UNKNOWN.** Note max |λ| = 70 > 65: some ℓ = 6 indecomposables
+  lie beyond CFGV's sweep (though inside our |λ| ≤ 78 frontier).
+- Completeness margin (`indec6_margin.py`, log `indec6_margin_log.txt`): enumerated
+  all 14,077,760 wide 6-part partitions with λ₁ ∈ [31, 45] (tails are wide 5-part
+  partitions) and verified **every one is decomposable** — so the B = 30 cutoff
+  misses no indecomposable (empirical max λ₁ is 12, margin 12 → 45).
+
+Caveat recorded honestly: "sum of Latin partitions is Latin" is NOT a proved closure
+(CFGV prove wideness is closed under +, Prop. 4/Cor.), so this does not formally
+reduce the WPC to indecomposables; it is the same class-complete verification level
+CFGV themselves reported for ℓ ≤ 5, advanced one level to ℓ = 6.
+
 ## Dead ends / notes
 
 - (2,1,1): not wide (submultiset (1,1) ⪰̸ (2)) and not Latin — consistent.
