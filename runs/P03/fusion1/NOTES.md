@@ -114,6 +114,19 @@ passed 80 exact-vs-brute checks for k=3, 80 for k=4, and independently
 reconstructed two representative n=16 high-girth orientations, confirming
 tau=3 and exact 3-dijoin packing. It prints `PASS` only after all checks.
 
+The structured broader search used four 900-second workers with layered
+generators, degree-preserving rewires, and four-step annealing. It generated
+2,810 instances, certified 845 out-of-safe-class tau=4 instances, and exact
+checked all 845 as packed (slowest exact check 0.386 seconds). No near-miss
+or non-packing instance occurred. A second throughput batch was stopped
+before producing a completed aggregate log and is not counted.
+
+The n=18 high-girth search was launched across all eight prepared ranges.
+After approximately 36 minutes, no shard had completed its first graph and
+all candidate files remained empty; the shards were stopped to avoid
+unbounded resource use. Thus the recorded n=18 coverage is **0/455
+completed**, not an exhaustion result.
+
 This experiment is explicitly scoped to connected cubic graphs of girth at
 least 5, after the non-planar and 3-edge-connected filters. It is not a
 closure of the full n=16 cubic cell.
