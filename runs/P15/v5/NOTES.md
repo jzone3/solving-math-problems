@@ -412,3 +412,27 @@ Interpretation: the finisher fully solved the thin-cell (deep) half of the
 problem; everything now hinges on mid-band residue assignment, where random
 restarts + greedy DFS have a reproducible ceiling. STATUS: negative for >=43;
 L=10 open; frontier 12.7k -> 30.1k classes this continuation.
+
+## 18. Wide parallel restart sweep at L=10: robust ~30k-class ceiling (negative)
+
+7 concurrent sweeps (one per core), 200-restart budgets, varied hyperparameters:
+eps in {0.01, 0.02, 0.05, 0.1}; max-mod in {1e16, 1e17, 1e18}; branching width
+q_tries/p_tries up to 20/16 (new CLI knobs); distinct seed blocks (11000-17000).
+~4 h wall x 7 processes, 55 completed restarts total (logs par0-6.log).
+
+Result: NO complete L=10 cover. Every restart stalls; stall points concentrate in
+16,385-30,457 placed classes; best 30,457. Widening the branching (qtries 16-20)
+does not shift the ceiling -- it only slows restarts. Ceiling insensitivity across
+eps/max-mod/width/seed strongly indicates a structural obstruction in greedy
+mid-band residue assignment, not a sampling shortfall: at ~1/2^15 residual
+measure the surviving fat holes need small moduli that earlier greedy commitments
+have consumed, and rollback cannot repair choices that high in the tree.
+
+Conclusion of this line: random-restart DFS over the finisher-equipped arrow
+calculus is exhausted at L=10. Closing the mid band needs a global assignment
+mechanism (exact set-cover / ILP over the fat-hole--tower incidence, or
+literature-table-guided placement), which is the documented next project.
+
+STATUS: negative for >=43. Frontier this session: L=10 partial covers
+12.7k -> 30.5k classes; thin-cell half of the problem solved outright by the
+fresh-prime finisher (Section 16).
