@@ -134,8 +134,8 @@ static int packs(void){
 static int profile_ok(void){
     int s=0,t=0,a=0,b=0;
     for(int v=0;v<n;v++){
-        if(deg[v]==4&&idg[v]==0){s++;continue;}
-        if(deg[v]==4&&od[v]==0){t++;continue;}
+        if(deg[v]==(k==3?3:4)&&idg[v]==0){s++;continue;}
+        if(deg[v]==(k==3?3:4)&&od[v]==0){t++;continue;}
         if(deg[v]==3&&idg[v]==1&&od[v]==2){a++;continue;}
         if(deg[v]==3&&idg[v]==2&&od[v]==1){b++;continue;}
         return 0;

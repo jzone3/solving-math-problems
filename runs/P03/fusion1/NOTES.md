@@ -127,6 +127,49 @@ all candidate files remained empty; the shards were stopped to avoid
 unbounded resource use. Thus the recorded n=18 coverage is **0/455
 completed**, not an exhaustion result.
 
+## Validated C engine and n=12 tau=4 cells
+
+`engine.c` is a standalone C orientation/dicut/partition engine. It reads
+underlying graph edge-list records, enumerates acyclic orientations with
+role-profile pruning, sweeps all vertex masks for dicuts and tau, applies
+the source-sink, rho, and reduced size-k-dicut filters, and solves the
+rainbow partition problem by exact backtracking.
+
+Before using it for enumeration, its `check3` and `check4` modes were
+compared against the Python/PySAT harness on 300 random DAGs for each k.
+For every one of the 600 instances, tau, minimal-dicut count, and
+pack/no-pack agreed exactly:
+
+```text
+PASS C validation k 3: 300/300
+PASS C validation k 4: 300/300
+```
+
+For the n=12 profile `(2,2,4,4)`, nauty generated 327,041 connected
+degree-3/4 graphs; 39,071 had the required degree sequence, 7,490 of
+those were planar, and 31,581 non-planar graphs were exhausted. The C
+engine enumerated 6,642,846,058 orientations and 744,680 profile
+orientations. Of these, 737,962 were source-sink-connected, 5,572 had
+tau different from 4, and the remaining 1,146 failed one of the two
+rho>=3 filters. Thus **0 out-of-safe-class tau=4 orientations** reached
+the exact packing check; candidate count was zero.
+
+For the n=12 profile `(3,3,3,3)`, the correct underlying degree sequence
+has six degree-4 and six degree-3 vertices (not four degree-4 vertices).
+Among the same nauty output, 122,406 graphs had this degree sequence,
+12,190 were planar, and 110,216 non-planar graphs were exhausted. The C
+engine enumerated 32,849,953,100 orientations and 144,496 profile
+orientations. Of these, 114,112 were source-sink-connected, 1,404 had
+tau different from 4, and 9,416 failed the rho filters. The remaining
+19,564 out-of-safe-class tau=4 orientations were all exactly packed:
+**19,564/19,564 packed, 0 candidates**. This is exhaustive for the
+retained non-planar graph list and profile.
+
+The n=18 C rerun was launched after correcting the cubic role-profile
+test. It was stopped after approximately eight minutes per shard while
+the first graph in each range was still running; no graph completed and
+all candidate files were empty. Recorded coverage is therefore **0/455**.
+
 This experiment is explicitly scoped to connected cubic graphs of girth at
 least 5, after the non-planar and 3-edge-connected filters. It is not a
 closure of the full n=16 cubic cell.
