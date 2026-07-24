@@ -153,6 +153,30 @@ candidates (no graph with ω·(2m − λ₁² − λ₂²) < 2m − 1e-5). Wall 
 passed the mandatory n=9 sanity gate total=274668/survivors=3890/candidates=0 before running).
 Per-part logs: c12/n12_p*.log (all 64 committed).
 
+## Campaign 4: weighted-blowup / graphon-regime search (`blowup.py`)
+
+Since n ≤ 12 is exhausted, any counterexample lives at n ≥ 13 or asymptotically. This attack
+probes the n → ∞ regime directly: for a profile graph H with vertex weights w on the simplex,
+the blowup G_n (parts ≈ n·w_i independent sets) has λ₁/n → μ₁(S), λ₂/n → max(μ₂(S), 0),
+m/n² → e_w = ½·Σ_{i≠j} A_ij w_i w_j, ω = ω(H), where S = diag(√w)·A_H·diag(√w). Any (H, w)
+with ratio(w) = (μ₁² + (μ₂⁺)²)/(2 e_w (1 − 1/ω(H))) > 1 would give an asymptotic (hence, by
+continuity, a finite) counterexample.
+
+Method: projected-gradient ascent on the simplex (analytic eigenvalue gradients via
+∂μ_k/∂x_i = 2 v_k[i]·(A diag(x) v_k)[i], x = √w), multi-restart, over ALL connected profiles
+H from geng.
+
+RESULT: for every connected profile on 3–9 vertices (2 + 6 + 21 + 112 + 853 + 11,117 +
+261,080 profiles), the maximum of ratio(w) is EXACTLY 1, attained only at Turán-type weights
+(zero-weight-degenerations included). Zero violations. So no blowup/graphon-scale
+counterexample exists with ≤ 9 parts.
+
+Remark (proved, not just searched): for blowups with *clique* parts (looped profiles),
+ω(G_n) → ∞ so the RHS → 2m, while λ₁² + λ₂² ≤ Σ λ_k² = 2m always — hence clique-part blowups
+can never violate the conjecture (equality iff the positive spectrum has rank ≤ 2, e.g.
+K_a ∪ K_a). Also note 2e_w = ‖S‖_F² for loopless profiles, so the graphon-regime statement is
+μ₁² + (μ₂⁺)² ≤ (1 − 1/ω)·Σ_k μ_k².
+
 ## STATUS: negative / frontier-pushed
 
 No counterexample found. Campaign totals:
@@ -160,6 +184,8 @@ No counterexample found. Campaign totals:
   (believed to exceed any published verification); totals match known graph counts exactly at
   every n; C checker differentially validated against an independent Python/NumPy/NetworkX path.
 - Exhaustive: every circulant C_n(S), n ≤ 50 (~2.1×10⁸ graphs) satisfies it.
+- Graphon regime: no weighted-blowup counterexample over ALL connected profiles ≤ 9 vertices
+  (273k profiles × multi-restart simplex optimization); max ratio exactly 1 at Turán weights.
 - ~2,700 annealed/basin-hopped restarts (~60 core-h) over n = 15–80, ω = 2–22; exhaustive
   1-/2-flip scans of equality families; Kneser/Johnson/Paley/book/kite/join scans.
 Maximum ratio ever observed: exactly 1, only at known equality classes (complete multipartite,
