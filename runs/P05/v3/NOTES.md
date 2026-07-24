@@ -133,7 +133,7 @@ center).
   2-connected graphs scanned (7 workers, ~2.9 core-hours after a 4x
   fast-filter rewrite), NO hit.
 - General n=11 is ~440M blocks (infeasible in full here); a 3/192 random-slice
-  sample (~7M blocks) is running — no hit so far.
+  sample COMPLETE: 13,000,459 blocks scanned (slices 0-2/192), NO hit.
 - **Subcubic escalation** (where hypotraceable-like pathologies live; degree
   ≤ 3 2-connected blocks via geng -C -D3): COMPLETE and negative for
   n=11..17 (3,421 / 11,679 / 43,418 / 165,993 / 666,854 / 2,756,486 blocks
