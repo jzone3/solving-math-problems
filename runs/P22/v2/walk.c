@@ -89,6 +89,16 @@ int main(int argc, char **argv){
             flip(e);
             if (nmono < best){
                 best = nmono;
+                {
+                    char name[64];
+                    snprintf(name, sizeof name, "walk_best_%llu.txt",
+                             (unsigned long long)strtoull(argv[2] ? argv[2] : "0", 0, 10));
+                    FILE *o = fopen(name, "w");
+                    fprintf(o, "c nmono %d\n", best);
+                    for (int i = 0; i < NE; i++) fprintf(o, "%d", color[i]);
+                    fprintf(o, "\n");
+                    fclose(o);
+                }
                 if (best == 0){
                     FILE *o = fopen("best_coloring.txt", "w");
                     for (int i = 0; i < NE; i++) fprintf(o, "%d %d\n", i, color[i]);

@@ -212,10 +212,27 @@ The session was resumed with instructions to push harder. Additional work:
   progress beyond preprocessing-fixed variables. A further 4×10¹⁰ walk flips
   did not improve on 232 mono triangles.
 
+- **MaxSAT / LNS (fourth wave)**: reformulated the SAT side as MaxSAT
+  (`g127.wcnf`: each triangle side a unit-weight soft clause; optimum = min
+  number of mono triangles). NuWLS-c 2023 (6 diversified copies via
+  variable-renaming/polarity/clause shuffles, `shuffle_wcnf.py`) plateaus at
+  249–285 — worse than our walk. The winner is **exact-subproblem LNS**
+  (`lns.py`): free the edges of 20–100 random currently-mono triangles plus
+  ~250–450 random edges (~550–850 vars), solve that sub-MaxSAT *exactly* with
+  RC2, accept non-worsening moves, with random 12-edge kicks on stagnation.
+  This drove the record 232 → **210 monochromatic triangles** within minutes
+  and 6 parallel instances then held 210 through >150k LNS iterations
+  (~1 h each), suggesting ~210 is close to the true optimum. Record coloring:
+  `record_210_coloring.txt`, independently re-verified by `verify_record.py`
+  (rebuilds G₁₂₇ from scratch, recounts: 210, PASS). So ≥ 9569/9779 triangles
+  can be simultaneously bichromatic, but the best known coloring still leaves
+  210 — reinforcing the arrowing conjecture.
+
 Bottom line unchanged: G₁₂₇ → (3,3)ᵉ remains undecided; the quantitative
 hardness estimates above are now measured, not guessed. Techniques exhausted
 on this hardware: CDCL (kissat/gimsatul), lex/BreakID/SBVA preprocessing,
-march_cu + manual star cubing, orbit collapse (full theorem), local search.
+march_cu + manual star cubing, orbit collapse (full theorem), walk local
+search, NuWLS-c MaxSAT, exact-RC2 large-neighborhood search.
 
 ## 7. Compute spent
 
