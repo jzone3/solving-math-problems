@@ -216,6 +216,57 @@ and zero candidates. The eight `h18fast_*.log` files and empty
 `h18fast_*.cand` files preserve this partial run. This is not an exhaustion
 claim, and no n=20 run was attempted.
 
+## Structured/algebraic families D1--D3
+
+The structured search is implemented in `structured_search.py`. All reported
+packing decisions use exact SAT partition checks over the generated full
+minimal-dicut sets. No non-packing instance was found, so there was no
+candidate requiring independent PySAT escalation.
+
+For D1 incidence designs, the bounded exact run constructed four block-size-3
+systems: the cyclic/Fano STS(7), an affine STS(9), and cyclic systems at
+v=13 and v=15. Results were:
+
+```text
+built=4; tau=3: 2; tau=6: 1; tau=7: 1
+tau=3 out-of-safe-class=2; rho-qualified=0; packed candidates=0
+```
+
+The block-size-4 run used all 4-subsets on v=7 and the cyclic 2-(13,4,1)
+projective-plane design, with one copy and a doubled-arc multiplicity
+variant. Results were:
+
+```text
+built=4; tau=4: 1; tau=8: 1; tau=20: 1; tau=40: 1
+tau=4 out-of-safe-class=1; rho-qualified=0; packed candidates=0
+```
+
+Thus these incidence systems produced no instance in the required
+rho-qualified target class. The larger requested v=19,21,25 systems and
+additional multiplicity sweep remain outside this bounded run.
+
+D2 reconstructed the 27-vertex ACZ D27 near-miss and generated 12 random
+voltage lifts for each p in {2,3,5,7}. The base is a DAG, has tau=3, and
+packs. All 48 lifts exceeded the structured ideal-enumeration safety cap and
+were deferred rather than truncated; they are not claimed as checked
+instances. Aggregate result:
+
+```text
+built=49; exact tau=3=1; deferred=48; non-packing=0
+```
+
+D3 checked six small Johnson/Kneser incidence layers (m=4,5,6 and k=2,3).
+The result was:
+
+```text
+built=6; tau=2=3; tau=3=3; tau=3 out-of-safe-class=2;
+rho(3)>=4 and non-safe=1; packed=1; candidates=0
+```
+
+The D3 target instance was the J(6,3) layer, with 20 upper vertices, 15
+lower vertices, and 60 arcs. These are structured negative results only;
+they do not close any unrestricted Woodall cell.
+
 ## Family A: tau=4 reduced shape
 
 For sources `s`, sinks `t`, type-A internal vertices `(in,out)=(1,2)` and
@@ -249,3 +300,12 @@ The exact k=4 checker was used on every listed instance. The smallest
 profile `(2,2,3,3)` was computationally tested separately: 4,746/5,000
 generated instances had tau=4, all 4,746 were source-sink-connected (so no
 out-of-safe-class instances occurred), and all satisfied both rho bounds.
+
+## Reallocation to structured/algebraic constructions
+
+The full n=18 high-girth exhaustion is infeasible on this box: the dominant
+cost is the number of acyclic orientations per underlying graph (millions to
+billions of leaves), not dicut enumeration, which was already optimized by
+the closed-set engine. Work is therefore reallocated to structured/algebraic
+families D1--D3, with every tau=k non-safe-class instance checked by the exact
+packing harness and any failure independently rechecked before reporting.

@@ -1,0 +1,2 @@
+D1-k3 {'built': 4, 'tau=3': 2, 'tau_k': 2, 'out_safe': 2, 'tau=6': 1, 'tau=7': 1} near_miss_by_cuts= ((9, 27), 'STS9-lambda1', 3, 9, True)
+D1-k4 {'built': 4, 'tau=20': 1, 'tau=40': 1, 'tau=4': 1, 'tau_k': 1, 'out_safe': 1, 'tau=8': 1} near_miss_by_cuts= ((13, 52), 'all4-13-lambda1', 4, 13, True)

@@ -1,0 +1,1 @@
+D3 {'built': 6, 'tau=2': 3, 'tau=3': 3, 'tau_k': 3, 'out_safe': 2, 'rho_ok': 1, 'packed': 1} near_miss_by_cuts= ((20, 60), 'J6,3', 3, 20, True)
