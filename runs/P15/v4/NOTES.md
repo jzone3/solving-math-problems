@@ -1789,3 +1789,30 @@ July 2026; the record remains 42 (Owens 2014).
 
 STATUS: near-miss / frontier-pushed
 
+## 59. Phase 41: consolidated global check (2026-07-22)
+
+globalcheck.py -- loads ALL emitted sections (3.1-3.20) at once:
+
+  TOTAL: 12,331,378 congruences, 4,133 placeholders
+  global min modulus: 42 (sec 3.4's boundary set, as in Owens)
+  10 smallest moduli: 42,43,44,45,46,47,48,50,51,52
+  GLOBAL duplicate moduli values: 152 -- located entirely INSIDE
+  sec3.5 (48 values) and sec3.6 (104 values): exactly the documented
+  obstruction-A repeated-modulus families of Nielsen's tenth input
+  (secs 21-26 of these notes).  No other duplicate exists anywhere
+  in the 12.3M-congruence emission; every cross-section pair is
+  clean.
+
+Joint census over window 2^7 3^4 5^2 7^2: 52.7% uncovered -- as
+expected, this small smooth window excludes all the large-prime
+moduli (dropped measure 5.48), so it is a sanity diagnostic only;
+the per-section windowed censuses (each including its own prime)
+are the meaningful ones.
+
+Remaining gaps to a complete machine-verified T=42 replica:
+obstruction A (secs 3.5/3.6), obstruction B (sec 3.18), and the
+4,133 documented placeholder slots.  These are precisely the
+residue-level choices the source texts leave unstated.
+
+STATUS: near-miss / frontier-pushed
+
