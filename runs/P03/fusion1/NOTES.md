@@ -102,8 +102,9 @@ that no orientation in the generated non-planar graph family reaches tau=4.
 
 An initial implementation omitted the explicit tau=4 check before emitting
 diagnostics; it emitted 16 false candidates that all independently verified
-with the PySAT harness as tau=3 and non-packing for k=4. Those outputs are
-retained as debugging artifacts; they are not counterexamples. The corrected
+with the PySAT harness as tau=3 and non-packing for k=4. They are recorded in
+`tau4_n10_prefix_false_positives.jsonl` with `tau=3` and
+`real_counterexample=false`; they are not counterexamples. The corrected
 rerun has empty candidate files. The new size-4 reduced-dicut filter was
 cross-validated against direct closed-set enumeration on 300/300 instances.
 
