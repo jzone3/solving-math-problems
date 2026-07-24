@@ -972,3 +972,38 @@ distinct without any freshness "proof", because the depth parameter (n) is
 chosen large enough per tower exactly as Nielsen/Owens prescribe.
 
 STATUS: near-miss / frontier-pushed
+
+## 30. Phase 16: general arrow->residue compiler (emitgram.py) - distinctness is decidable and exposes the true constraint
+
+Built a GENERAL compiler from the full arrow grammar (C, Two, Arrow, Lev,
+Sum) to explicit Z-covering congruence systems, with placement/composition.
+Validated against Nielsen's worked examples: 2^ (p=5,n=5) -> exactly 10
+cosets; 3^(1,2^) (p=5,n=4) -> exactly 49 cosets; both cover Z with distinct
+moduli (independent recursive-CRT verifier).
+
+Crucially, on a deep nested Owens-style fragment the compiler makes the
+DISTINCTNESS constraint concrete and decidable:
+  * coverage always holds (the calculus is coverage-correct by construction);
+  * modulus distinctness FAILS exactly when two inputs of a tower share
+    structure - e.g. two plain-C() inputs of a 5^ both yield modulus 5^k at
+    every level k (duplicate pure powers of 5).  This is precisely Nielsen's
+    "repeating moduli" obstruction: real inputs must carry distinct 2-adic
+    (or other) scalings so the level moduli differ, and towers must go to
+    deep enough n / distinct aux primes.
+
+This is the sharpest and most honest characterization of what a T>=43
+witness requires and why value-set shortcuts (phases 9-12) were unsound: a
+full witness is an assignment, across all ~20 sections, of (input structure,
+aux prime, depth n) to every tower such that simultaneously (i) coverage
+holds, (ii) ALL moduli are globally distinct, and (iii) min modulus >= 43.
+emitgram.py can DECIDE (ii)+(iii) for any concrete candidate assignment, but
+producing the assignment for the T=43-modified skeleton is the open research
+problem - the same one Owens flags in his conclusion.
+
+STATUS: near-miss / frontier-pushed.  Deliverables this session: a validated
+residue-level compiler/verifier for the calculus; a machine-checked T=43
+counting blueprint (blueprint43d.py); a residue-emitted distinct-modulus
+2/3-skeleton (emitcore.py); and a precise, corrected account of why the
+value-set freshness arguments (both positive and negative) do not settle the
+question.  No T>=43 covering system was constructed or verified; the record
+remains 42 (Owens 2014) and the problem is open.
