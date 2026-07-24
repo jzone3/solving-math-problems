@@ -185,9 +185,11 @@ order was known. Our results, machine-exhaustive:
 - DFS engine: none on n <= 15 (n=15: 955,042,794 nodes, full tree).
 - SAT engine: UNSAT n = 15, 16, 17 (monolithic; 148 s / 430 s / 1990 s),
   n = 18 (36/36 cube cases), n = 19 (36/36 cube cases).
+- n = 20: 45/45 cube cases UNSAT (all unordered vertex-0 chord-length pairs (d1,d2),
+  2 <= d1 <= d2 <= 10; ~5,000-46,000 CEGAR refinements per case, hardest cases (7,8),
+  (7,9), (8,9) at ~5,200-5,900 s each; log satmulti20_cases.log).
 - **Theorem (computational): every 4-regular loopless uniquely hamiltonian multigraph
-  has at least 20 vertices.** (Two independent engines overlap and agree on n <= 15.)
-- n=20 multigraph cube sweep launched (45 cases, running at session end).
+  has at least 21 vertices.** (Two independent engines overlap and agree on n <= 15.)
 
 ## 7. Third phase — Fleischner-primitive gadget search (sat_path.py)
 
@@ -203,13 +205,16 @@ blocking clauses + reflection images. (Bug found & fixed during validation: apex
 from the cycle sequence must respect cyclic order, else phantom chords appear — caught by
 an assertion that blocking sets are subsets of the model.)
 
-Results: **UNSAT for all n <= 17** — no such gadget exists on <= 17 vertices, so no
-"one-gadget-ring" Sheehan counterexample on <= 51 vertices via this schema. n=18 running
-(47k+ refinements). Refinement counts grow ~2.3x per vertex.
+Results: **UNSAT for all n <= 18** (n=18: 50,475 refinements, 8,289 s) — no such gadget
+exists on <= 18 vertices, so no "one-gadget-ring" Sheehan counterexample on <= 54
+vertices via this schema. n=19 running (111k+ refinements, log satpath.log).
+Refinement counts grow ~2.3x per vertex.
 
-STATUS: negative / frontier-pushed (NEW: multigraph minimum order >= 20, proved by two
+STATUS: negative / frontier-pushed (NEW: multigraph minimum order >= 21, proved by two
 independent exhaustive engines — SAT-CEGAR with dihedral-symmetrized minimized blocking
 clauses + cube-and-conquer, and memoized completion DFS; simple case independently
-re-exhausted through n = 19; plus phase-1 results: nearly cubic seeds saturated,
+re-exhausted through n = 19; NEW: no unique-ham-path Fleischner-primitive gadget on
+n <= 18, ruling out one-gadget-ring counterexamples on <= 54 vertices; plus phase-1
+results: nearly cubic seeds saturated,
 symmetric families and gadget rings ruled out, near-miss wall rem=8 at n=22 with
 parity-clustered dead-ends).
