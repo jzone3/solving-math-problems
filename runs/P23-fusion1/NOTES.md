@@ -629,3 +629,21 @@ re-checked non-4-colorable by kissat. This set *contains* the record, so the
 descent is not a calibration curiosity: if it ever passes below 509 the result
 is a new record, and if it stalls exactly at 509 that is another independent
 confirmation of the record's optimality within Parts' union.
+
+## E27 — the padded-descent calibration, and why it matters (`greedy8.py` on the descent output)
+
+Honest correction to E26: chained exact-LNS descent from the padded 800-vertex
+witness reached 760 in ~2 h, but plain batched greedy deletion with DRAT core
+jumps takes the *same* 760-vertex set to **509 in nine minutes**. Padding is
+trivially removable, so descent was doing expensive work that deletion does for
+free — the exact-LNS trade only earns its cost *below* the deletion floor.
+
+So the pipeline is now: greedy to the floor, then exact-LNS from there. The
+floor is again exactly 509 (`greedy_g760.pkl`), independently re-derived from a
+random padded start — the fourth independent route in this run that lands on
+509 and never below.
+
+`chain2.sh` now runs six workers from that 509 witness with mixed hole sizes
+(H ∈ {30,45,60,80}, scattered or contiguous, 1-hop refill pool, budget H−1), so
+every accepted trade would *be* a 508. No trade accepted so far; the completed
+neighbourhoods keep coming back UNSAT.
