@@ -1,0 +1,6 @@
+Target B n=14 tau=4 feasibility gate.
+Inputs: tau4_n14a.kept.g6 (905732 graphs, role profile (2,2,5,5)); tau4_n14b.kept.g6 (6064184 graphs, role profile (3,3,4,4)).
+A 25-graph sample per profile ran with 8 shards per profile. Separate measured wall times: profile A 1.046s; profile B 1.645s.
+Sample A totals: orientations=42931338, profiles=1802, ss=1800, tau_skip=0, safe=0, checks=2, packed=2, deferred=0, cand=0.
+Sample B totals: orientations=60621348, profiles=104, ss=68, tau_skip=8, safe=14, checks=14, packed=14, deferred=0, cand=0.
+Projected wall at measured rates: profile A ~10.5h; profile B ~110.8h. Even with the two profiles run in parallel, profile B exceeds the 18h gate. No production run launched.

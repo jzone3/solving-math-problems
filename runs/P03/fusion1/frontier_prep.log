@@ -1,0 +1,2 @@
+Target A n=18: nauty-geng -q -c -d3 -D3 18; connected cubic total=41301; non-planar 3-edge-connected retained=29219.
+Target B n=14: nauty-geng -q -c -d3 -D4 14, split 8 ways; total generated=36801545; retained profile A (4 degree-4, 10 degree-3)=905732; retained profile B (6 degree-4, 8 degree-3)=6064184; planar=473134; not3ec=144416; other degree sequence=29214079.

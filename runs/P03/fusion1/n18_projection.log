@@ -1,0 +1,5 @@
+Target A n=18 tau=3 feasibility gate.
+Input: n18_cubic.kept.g6, 29219 graphs; 25 evenly spaced sample.
+Engine: all n=18 tau=3 role profiles, fast closed-set enumeration, 8 shards.
+At 6m21s wall, 0/25 sample graphs had completed; all shard logs remained before their first GRAPH checkpoint. No candidate output and no deferred output.
+Conservative lower-bound projection: >~386 hours across 8 shards (using 6m21s per graph), hence infeasible under the 18h gate; no production run launched.

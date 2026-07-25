@@ -500,3 +500,79 @@ orientations of the first two prepared graphs were passed through the C
 orientation 1: tau=3, 60 minimal dicuts, pack=True
 orientation 2: tau=3, 66 minimal dicuts, pack=True
 ```
+
+## Next-frontier feasibility gates: n=18 tau=3 and n=14 tau=4
+
+After the n=16 closure, both natural extensions were prepared behind
+explicit feasibility gates. The fast closed-set engine was compiled with all
+sixteen previously used n=18 cubic role profiles and with the two scaled
+n=14 tau=4 profiles:
+
+```text
+n=18 tau=3:
+(2,2,7,7), (3,3,6,6), (4,4,5,5), (5,5,4,4),
+(2,3,8,5), (3,2,5,8), (2,4,9,3), (4,2,3,9),
+(3,4,7,4), (4,3,4,7), (2,5,10,1), (5,2,1,10),
+(3,5,8,2), (5,3,2,8), (4,5,6,3), (5,4,3,6)
+
+n=14 tau=4:
+(2,2,5,5), (3,3,4,4)
+```
+
+The n=18 graph preparation used
+`nauty-geng -q -c -d3 -D3 18` and retained 29,219 connected,
+non-planar, 3-edge-connected cubic graphs from 41,301 connected cubic
+graphs. The reproducible retained graph6 list is
+`n18_cubic.kept.g6.gz`.
+
+An evenly spaced 25-graph, 8-shard fast-engine sample was stopped after
+6m21s with 0/25 graph checkpoints completed. No candidate or deferred
+instance appeared. Even the conservative lower bound of 6m21s per graph
+projects to more than 386 hours across eight shards, so the full n=18 cell
+was not launched and is recorded as infeasible under the 18-hour gate.
+
+The n=14 tau=4 preparation used
+`nauty-geng -q -c -d3 -D4 14`, split into eight nauty ranges, and retained:
+
+```text
+(2,2,5,5):  905,732 graphs
+(3,3,4,4): 6,064,184 graphs
+```
+
+Across the preparation, 36,801,545 connected degree-3--4 graphs were
+generated; 473,134 were planar, 144,416 failed 3-edge-connectivity, and
+29,214,079 had another degree sequence. The reproducible retained lists are
+`tau4_n14a.kept.g6.gz` and `tau4_n14b.kept.g6.gz`.
+
+A 25-graph sample for each profile ran through the exact fast engine with
+eight shards per profile. Separate measured wall times were 1.046 seconds
+for profile A and 1.645 seconds for profile B. The profile-A sample had
+42,931,338 orientations, 1,802 profile orientations, 1,800 source-sink
+skips, 2 exact checks, and 2 packed. The profile-B sample had 60,621,348
+orientations, 104 profile orientations, 68 source-sink skips, 8 tau skips,
+14 safe rejects, 14 exact checks, and 14 packed. Both had zero deferred
+instances and zero candidates.
+
+Scaling those separate measured rates gives approximately 10.5 hours for
+profile A and 110.8 hours for profile B across eight shards. Since profile B
+dominates, the full n=14 tau=4 cell was not launched under the 18-hour gate.
+No production closure or counterexample claim is made for either target.
+
+Preparation and projection details are preserved in
+`frontier_prep.log`, `n18_projection.log`, and
+`tau4_n14_projection.log`. The engine's exact τ, closed-set enumeration, and
+packing path were used throughout; no deferred instance required CEGAR
+resolution because neither production cell was launched.
+
+The post-change validation suite still passes:
+
+```text
+PASS harness smoke tests
+PASS tau=4 reduced-dicut filter: 300/300
+PASS k=4 SAT vs brute force: 300/300
+PASS independent harness crosscheck: 40/40
+```
+
+Two deterministic orientations from the prepared n=14 lists were also
+checked through the C `check4` mode and Python harness; both agreed at
+`tau=3` (and therefore were correctly outside the tau=4 packing check).

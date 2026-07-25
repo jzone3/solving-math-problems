@@ -227,8 +227,15 @@ static void orient(int e){
 }
 static void setup_roles(void){
     nroles=0;
-    if(k==4&&n==12){
-        int x[2][4]={{2,2,4,4},{3,3,3,3}};
+    if(k==4&&(n==12||n==14)){
+        int x[2][4];
+        if(n==12){
+            int y[2][4]={{2,2,4,4},{3,3,3,3}};
+            memcpy(x,y,sizeof(x));
+        } else {
+            int y[2][4]={{2,2,5,5},{3,3,4,4}};
+            memcpy(x,y,sizeof(x));
+        }
         int which = mode == 42 ? 1 : 0;
         memcpy(role[nroles++],x[which],sizeof(x[which]));
     } else if(k==3&&n==18){
