@@ -70,3 +70,6 @@ GRAPH 63 orientations=426699552 profiles=164672884 ss=104085866 tau_skip=0 safe=
 GRAPH 64 orientations=431308716 profiles=166514388 ss=104778310 tau_skip=0 safe=16544118 checks=45191960 packed=45191960 cand=0 deferred=0
 GRAPH 65 orientations=436502784 profiles=168555240 ss=105771886 tau_skip=0 safe=17194928 checks=45588426 packed=45588426 cand=0 deferred=0
 GRAPH 66 orientations=442719924 profiles=170965416 ss=107145740 tau_skip=0 safe=17425644 checks=46394032 packed=46394032 cand=0 deferred=0
+GRAPH 67 orientations=448904544 profiles=173372404 ss=108488394 tau_skip=0 safe=17670168 checks=47213842 packed=47213842 cand=0 deferred=0
+GRAPH 68 orientations=456401124 profiles=176236712 ss=110523366 tau_skip=0 safe=17671048 checks=48042298 packed=48042298 cand=0 deferred=0
+GRAPH 69 orientations=463461816 profiles=178952964 ss=112239592 tau_skip=0 safe=17671944 checks=49041428 packed=49041428 cand=0 deferred=0
