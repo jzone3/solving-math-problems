@@ -461,3 +461,18 @@ and the open branch never reaches a free closure. So both the bottom-up
 now empirically cap below m=17 here. Confirms the missing piece is a specific
 *closure design* (the global alignment identity used by Owens/Nielsen), not more
 search — the genuine open-research part. Frontier stays m=16.
+
+Addendum (improved tree builder): generalized to p-ary splits with prime
+ordering, smallest-admissible-modulus-first, iterative bounds, and an exact
+bounded `fully_covered()` union-closure test. Given a fair budget it STILL does
+not close even **m=16** — which we know is achievable (the 641-congruence
+divisor cover in `solutions/P15/witness_m16.json`). It exhausts 3e5 nodes /
+~6900 backtracks with no branch surviving as a closure. Diagnosis: the greedy
+*divisor* engine finds m=16 because it works inside the divisor-of-N lattice
+where closure is structural (coverage of Z ⟺ coverage of Z_N); the free-form
+distinct-modulus tree searches a far larger unstructured space and never lands
+the global alignment that makes a finite distinct-modulus cover close. This is
+the sharpest statement of the obstruction reached here: closing m>=17 (and
+reproducing 42) is a *design* problem — the specific alignment identity — not a
+search-budget or engine-strength problem. Both bottom-up and top-down engines,
+fairly tried, terminate at the m=16 divisor-lattice frontier.

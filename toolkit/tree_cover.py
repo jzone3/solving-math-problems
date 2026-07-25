@@ -68,11 +68,71 @@ class TreeBuilder:
         self.nodes = 0
         self.backtracks = 0
         self.max_open_depth = 0
+        self.closure_nodes = 0
 
     def inherited(self, a, M):
         """Exact check whether (a mod M) lies inside a chosen class."""
         return any(M % n == 0 and (a - r) % n == 0
                    for r, n in self.out)
+
+    def fully_covered(self, a, M, cap=20000):
+        """Exact bounded union check for a currently open AP.
+
+        Only chosen classes whose moduli divide M can contribute to this
+        cell.  The recursive refinement is exact; if its finite branch count
+        exceeds cap, conservatively return False rather than approximating.
+        """
+        compatible = [(r, n) for r, n in self.out
+                      if M % n == 0 and (a - r) % gcd(n, M) == 0]
+        if not compatible:
+            return False
+        stack = [(a % M, M)]
+        seen = 0
+        while stack:
+            r, m = stack.pop()
+            seen += 1
+            self.closure_nodes += 1
+            if seen > cap:
+                return False
+            if any(m % n == 0 and (r - q) % n == 0
+                   for q, n in compatible):
+                continue
+            prime = None
+            for q, n in compatible:
+                t = n
+                d = 2
+                while d * d <= t:
+                    if t % d:
+                        d += 1
+                        continue
+                    vn = vm = 0
+                    while t % d == 0:
+                        t //= d
+                        vn += 1
+                    u = m
+                    while u % d == 0:
+                        u //= d
+                        vm += 1
+                    if vn > vm:
+                        prime = d
+                        break
+                    d += 1
+                if prime is None and t > 1:
+                    u = m
+                    vm = 0
+                    while u % t == 0:
+                        u //= t
+                        vm += 1
+                    if vm == 0:
+                        prime = t
+                if prime is not None:
+                    break
+            if prime is None:
+                return False
+            child_mod = m * prime
+            for j in range(prime):
+                stack.append((r + j * m, child_mod))
+        return True
 
     def take(self, a, n):
         if n < self.minmod or n <= 1 or n in self.used or n in self.blocked:
@@ -95,18 +155,18 @@ class TreeBuilder:
         if depth > self.max_depth:
             raise SearchLimit("depth limit")
 
-    def _chain(self, a, M, depth, tail):
-        """Try one finite binary chain with a fresh odd tail prime."""
-        if gcd(M, tail) != 1:
+    def _chain(self, a, M, depth, split, tail):
+        """Try one finite p-ary chain with a fresh odd-prime tail."""
+        if split == tail or gcd(M, tail) != 1:
             raise DeadEnd("tail shares a factor with cell modulus")
 
         # Tail exponents run from K down to K+1-tail.  The smallest tail
         # modulus must itself meet the minimum-modulus requirement.
         K = max(tail - 1, 1)
-        while tail * M * 2 ** (K + 1 - tail) < self.minmod:
+        while tail * M * split ** (K + 1 - tail) < self.minmod:
             K += 1
 
-        tail_mods = [tail * M * 2 ** (K + 1 - j)
+        tail_mods = [tail * M * split ** (K + 1 - j)
                      for j in range(1, tail + 1)]
         # Level classes are optional: recursively closing a sibling instead
         # can avoid a collision with another branch.  Only the tail classes
@@ -137,22 +197,22 @@ class TreeBuilder:
                         reserved.add(n)
                         self.blocked.add(n)
                     return
-                child_mod = path_M * 2
-                for open_j in (0, 1):
-                    sibling_j = 1 - open_j
-                    sibling_a = (path_a + sibling_j * path_M) % child_mod
+                child_mod = path_M * split
+                for open_j in range(split):
+                    sibling_js = [j for j in range(split) if j != open_j]
                     next_a = (path_a + open_j * path_M) % child_mod
                     submark = len(self.out)
                     try:
-                        if child_mod >= self.minmod:
-                            # Prefer the economical direct level class, but
-                            # backtrack to a recursive closure if it collides
-                            # or prevents the rest of the tree from closing.
-                            try:
-                                self.take(sibling_a, child_mod)
-                            except DeadEnd:
-                                self._close(sibling_a, child_mod, depth + k)
-                        else:
+                        for sibling_j in sibling_js:
+                            sibling_a = (path_a + sibling_j * path_M) % child_mod
+                            if split == 2 and child_mod >= self.minmod:
+                                # Binary splits have one non-open child, so
+                                # it can use the level modulus directly.
+                                try:
+                                    self.take(sibling_a, child_mod)
+                                    continue
+                                except DeadEnd:
+                                    pass
                             self._close(sibling_a, child_mod, depth + k)
                         walk(k + 1, next_a, child_mod,
                              ancestors + [(next_a, child_mod)])
@@ -173,26 +233,33 @@ class TreeBuilder:
 
     def _close(self, a, M, depth):
         self._check_limits(depth)
-        if self.inherited(a, M):
+        if self.inherited(a, M) or self.fully_covered(a, M):
             return
         if M >= self.minmod and M not in self.used:
             self.take(a, M)
             return
 
-        # A fresh tail is selected per attempted cell.  Tail order is a
-        # deterministic heuristic; DFS backtracks on all exact failures.
-        tails = [p for p in self.tails if gcd(p, M) == 1 and p not in self.used]
-        for tail in tails:
-            mark = len(self.out)
-            try:
-                self._chain(a, M, depth, tail)
-                return
-            except SearchLimit:
-                self.rollback(mark)
-                raise
-            except DeadEnd:
-                self.rollback(mark)
-                self.backtracks += 1
+        # Try p-ary splits whose first usable modulus is closest to the
+        # minimum.  Binary is preferred when it can consume one direct level
+        # class; larger p values diversify branches but recurse on p-1
+        # siblings because equal moduli are forbidden.
+        splits = [p for p in self.primes if p > 1 and gcd(p, M) == 1]
+        splits.sort(key=lambda p: (abs(p * M - self.minmod), p))
+        tails = [p for p in self.tails
+                 if gcd(p, M) == 1 and p not in self.used]
+        tails.sort()
+        for split in splits:
+            for tail in tails:
+                mark = len(self.out)
+                try:
+                    self._chain(a, M, depth, split, tail)
+                    return
+                except SearchLimit:
+                    self.rollback(mark)
+                    raise
+                except DeadEnd:
+                    self.rollback(mark)
+                    self.backtracks += 1
         raise DeadEnd("no tail closes cell")
 
     def run(self):
