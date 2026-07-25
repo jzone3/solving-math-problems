@@ -1,0 +1,7 @@
+  15000000 tails, 4225314 wides checked, bad=[] (3664.9s)
+  15500000 tails, 8749463 wides checked, bad=[] (4345.5s)
+  16000000 tails, 13749463 wides checked, bad=[] (5296.6s)
+  16500000 tails, 19223220 wides checked, bad=[] (6313.9s)
+  17000000 tails, 25382257 wides checked, bad=[] (7465.9s)
+  17500000 tails, 32265131 wides checked, bad=[] (8314.9s)
+range done: 38030891 wides with lam1 in [21,34] from tail 14500000; tails processed 3411840; indecomposable: [] (8795.4s)

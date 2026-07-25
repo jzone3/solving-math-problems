@@ -138,7 +138,7 @@ was previously unchecked). Independent cross-check via `ltc_verify.py --frontier
 to n ≤ 20 with identical outcomes (`ltc_verify_log.txt`). Wall time 25,399 s
 (~7 h) on 8 cores (`ltc_log.txt`).
 
-## Fourth attack: ALL indecomposable wide partitions with ≤ 7 parts are Latin
+## Fourth attack: ALL indecomposable wide partitions with ≤ 8 parts are Latin
 
 CFGV Def. 5: a wide λ is *decomposable* if λ = μ + ν (partwise sum) with μ, ν wide;
 Prop. 5: for each fixed number of parts ℓ there are only finitely many indecomposable
@@ -175,12 +175,29 @@ Results (logs `indec5_log.txt`, `indec6_log.txt`):
   (empirical max λ₁ is 15, margin 15 → 38). So the B = 25 cutoff misses no
   indecomposable.
 
+- **ℓ = 8** (`indec8.py`; log `indec8_log.txt`, list `indec8_list.txt`):
+  1,871,593 wide 8-part partitions with λ₁ ≤ 20; **17,837 indecomposables
+  (max λ₁ = 17, max |λ| = 126), all Latin — zero UNSAT/UNKNOWN.**
+- ℓ = 8 completeness margin (`indec8_margin.py` + memory-safe rewrite
+  `indec8_margin2.py`; logs `indec8_margin_log.txt`, `indec8_margin2_log.txt`,
+  `indec8_margin2b_log.txt`): all 17,911,840 wide 7-part tails with parts ≤ 34
+  processed across three runs (0–8.0M, 8.0M–14.5M, 14.5M–17.9M after two
+  OOM-kills, see dead ends); in total **88,606,334 wide 8-part partitions with
+  λ₁ ∈ [21, 34] verified decomposable, zero indecomposable** — so the B = 20
+  cutoff misses none (empirical max λ₁ is 17, margin 17 → 34).
+
 Caveat recorded honestly: "sum of Latin partitions is Latin" is NOT a proved closure
 (CFGV prove wideness is closed under +, Prop. 4/Cor.), so this does not formally
 reduce the WPC to indecomposables; it is the same class-complete verification level
-CFGV themselves reported for ℓ ≤ 5, advanced two levels to ℓ = 7.
+CFGV themselves reported for ℓ ≤ 5, advanced three levels to ℓ = 8.
 
 ## Dead ends / notes
+
+- ℓ = 8 margin sweep was OOM-killed twice: (1) materializing 17.9M tails plus
+  fork-COW un-sharing across 8 pool workers; (2) unbounded `lru_cache` on
+  `self_dom` growing per worker. Fixed by streaming the tail generator and
+  `maxtasksperchild=50`; deterministic enumeration order made exact resumes safe
+  (tail counts across the three runs sum to 17,911,840 exactly).
 
 - (2,1,1): not wide (submultiset (1,1) ⪰̸ (2)) and not Latin — consistent.
 - Wideness check cost is dominated by submultiset enumeration for many-distinct-part
