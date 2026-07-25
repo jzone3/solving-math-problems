@@ -159,6 +159,28 @@ incumbent subgraph (627 edges, 1101 triangles) is again **SAT / does not arrow**
 conjecture, since arrowing is not monotone in triangle count — this only bounds
 the natural "how many triangles can a K₄-free subgraph keep" quantity.
 
+## Complete CEGAR decision procedure — undecided (does not converge)
+
+`cegar.py` implements a *complete* refinement loop that can in principle settle
+the conjecture either way: ILP picks a K₄-free subgraph G forced to contain a
+monochromatic triangle under every good colouring found so far
+(`Σ_{T∈mono(c)} y_T ≥ 1`, `y_T ≤ x_e`, `Σ_{K₄} x_e ≤ 5`); kissat then tests G
+for arrowing. UNSAT ⇒ G arrows ⇒ f(2,3,4) ≤ 63; ILP infeasibility ⇒ no K₄-free
+subgraph arrows ⇒ conjecture false; SAT ⇒ add the new good colouring and repeat.
+Each iteration provably cuts the current G, so it terminates — but only after
+finitely-many (worst-case astronomically many) colourings.
+
+Bounded run (HiGHS, 90 s/ILP, ~40 min wall): **27 iterations, |C|=29, status
+undecided** — every G was SAT (does not arrow), K₄-freeness independently
+asserted each round. The loop does **not** trend toward arrowing: the ILP
+repeatedly returns *degenerate* candidates (often 5–6 edges / 2 triangles that
+trivially dodge the few accumulated colourings), because "hit finitely many
+colourings" is far too weak a pressure — tiny K₄-free graphs always evade a
+small colouring set. This confirms the practical intractability: settling the
+paper's conjecture is not reachable by this (or the earlier heuristic) approach
+within available compute. Artifacts: `cegar.py`, `cegar_results.json`,
+`colorings.json`.
+
 ## Certificate-backed negative decisions (SAT witnesses)
 
 `verify_witness.py` extracts a model from kissat for each of the three K₄-free

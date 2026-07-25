@@ -8,3 +8,5 @@ k4free_max.drat
 k4free_max_cnfs/
 h3_full.drat
 k4free_opt*.cnf
+cegar_*.cnf
+cegar_*.drat
