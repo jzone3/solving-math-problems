@@ -189,3 +189,6 @@ faster than star cubing (all 400 sampled cubes time out), so "better cubing
 variables" does not help. The problem's hardness is concentrated in deep CDCL
 reasoning that no shallow structural decomposition on this hardware unlocks —
 consistent with 20 years of the problem staying open.
+
+## Fresh post-restart datapoint (2026-07-25T15:48Z)
+- kissat 4.0.4 on `runs/P22/v2/sb.cnf` (symmetry-broken G127 arrowing, 10884 vars / 68860 clauses), 590s wall, 64 MB RSS -> `s UNKNOWN` (no verdict). Reconfirms non-termination; G127 arrowing remains undecided on this hardware.
