@@ -1,7 +1,7 @@
 Base graph: 509 vertices, 2442 exact unit-distance edges
-Accepted original edge indices: 2 5 10 13 18 21 42 46 54 147 150
-Confirmed removals: 11
-Final retained edge count: 2431
+Accepted original edge indices: 2 5 10 13 18 21 42 46 54 55 56 59 62 63 67 70 71 73 74 79 82 93 96 104 117 118 120 130 137 141 146 147 150 154 155 160
+Confirmed removals: 36
+Final retained edge count: 2406
 
 Initial uncapped exploratory tests (indices 0--79):
   UNSAT/removable: 3 (indices 10, 46, 54)
@@ -17,5 +17,11 @@ Longer candidate follow-up snapshot:
   SAT: 5
   timeout/unknown: 0 in this snapshot
 
-The final 2431-edge graph was independently solved by Kissat and checked by
-drat-trim.  No timeout or SAT result was counted as an UNSAT/removable edge.
+The final 2406-edge graph was independently solved by Kissat and checked by
+drat-trim.  Its certificate log is v509e2406.log. No timeout or SAT result was
+counted as an UNSAT/removable edge.
+
+Greedy sequential pass:
+  wall-clock budget: 5 hours
+  stopped after: 13068.7 seconds (about 3 h 38 min)
+  candidate remainder: 79 candidates in the last state snapshot

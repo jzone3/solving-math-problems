@@ -36,40 +36,51 @@ as an original-edge dependency list without dependency tracking; deleting the
 produced a SAT instance and was discarded.
 
 The first uncapped tests found three individually removable edges (original
-edge indices 10, 46, and 54).  After deleting those, longer candidate tests
-found additional removable pairs; the retained reduced graph has **2431
-edges**, i.e. 11 confirmed deletions.  Its compact final certificate is in
-`verify-out/reconstruction-2431.log` and contains:
+edge indices 10, 46, and 54).  A greedy sequential pass was then run from the
+2431-edge witness, testing candidates one at a time against the current graph
+and accepting only deletions followed by a fresh UNSAT certificate.  The final
+bounded result has **2406 edges**, i.e. 36 confirmed deletions.  Its compact
+certificate is in `verify-out/v509e2406.log` and contains:
 
 ```text
 s UNSATISFIABLE
 s VERIFIED
 ```
 
-The witness files are:
+The final witness files are:
 
-- `data/v509e2431.edges`
-- `data/v509e2431.cnf`
+- `data/v509e2406.edges`
+- `data/v509e2406.cnf`
 - coordinates: `data/v509e2442.vtx` (the same 509 exact coordinates)
 
-The 2431 retained edges were checked explicitly against the exact 2442-edge
-set; all are exact unit edges.  The 120-second all-edge sweep was abandoned
-after the lead diagnostic showed that its timeout cases systematically contain
-the hard UNSAT instances.  A longer-budget follow-up is recorded separately;
-timeouts and SAT results were never counted as removable.
+The accepted original edge indices are:
 
-Our 11 confirmed deletions are fewer than the 36 reported by de Grey--Parts, so
-the resulting 2431-edge witness does not reach their 2406; the remaining
-undecided candidates are where a larger simultaneous deletion set could still
-live, and nothing here is evidence against their result.
+```text
+2 5 10 13 18 21 42 46 54 55 56 59 62 63 67 70 71 73
+74 79 82 93 96 104 117 118 120 130 137 141 146 147 150
+154 155 160
+```
+
+The 2406 retained edges were checked explicitly against the exact 2442-edge
+set; all are exact unit edges.  Thus this independently reconstructed witness
+matches the 509/2406 edge count reported by de Grey--Parts, although it is not
+claimed to be their exact edge-deletion set.
+
+The greedy pass used a 5-hour wall-clock budget and stopped after 13,068.7
+seconds (about 3 h 38 min), immediately after certifying the 2406-edge
+witness.  It tested candidates in rotating batches of four parallel Kissat
+instances against the same current graph, applying at most one accepted
+deletion per round.  The remaining candidate list was not exhausted; this was
+a bounded reconstruction, not a minimality proof.
 
 For auditability, the partial 120-second sweep completed 883 of 2442 edge
 instances before being redirected: 633 were SAT and 250 timed out. A longer
 900-second-capped follow-up was then run on the available timeout candidates;
 in the snapshot used for the reconstruction, 112 were UNSAT and 5 were SAT.
 The candidate tests were deliberately not treated as a proof of global
-edge-minimality. The accepted deletions were only those whose reduced graph
-was re-solved and independently certified, yielding the 2431-edge witness.
+edge-minimality. Every accepted intermediate graph was re-solved and
+drat-trim-checked before the next round; the final accepted graph has the
+certificate cited above.
 
 The provenance audit and public-data verdict are in
 `runs/P23-priority2/OBTAIN-2406.md`.
