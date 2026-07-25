@@ -666,3 +666,37 @@ off optimum. This is the current bottleneck of the whole approach.
 
 Meanwhile on W₄: 27 neighbourhoods of the 509 witness (H = 30…80, scattered and
 contiguous) have now run to their time limit without a single accepted trade.
+
+## E29 — attacking the check itself, and a cross-edge census (`fastcolor.py`, `diskscan.py`)
+
+Two exact preprocessors were added before the SAT call (`fastcolor.py`): peel
+vertices of degree ≤ 3 (they can always be coloured last) and decompose into
+biconnected blocks (colourings merge across a cut vertex after permuting
+colours), plus triangle colour-fixing for symmetry breaking — a triangle is the
+largest clique available, since K₄ is not a plane unit-distance graph. On the
+1924-vertex W₁₆ witness the reductions do **nothing**: `1924 -> peeled 1924,
+blocks [1924]`. The witness is already a biconnected 4-core, so the >8 min check
+is irreducible by these means. Negative, but it removes the cheapest hypothesis.
+
+`diskscan.py` then tried the other direction — find a *small* obstruction in W₁₆
+rather than shrinking a big one. Central disks are 4-colorable and answer fast:
+
+| radius | vertices | edges | verdict |
+|---|---|---|---|
+| 1.00 | 4765 | 24408 | SAT (11.6 s) |
+| 1.49 | 10501 | 79632 | SAT (0.4 s) |
+| 2.00 | 18253 | 163860 | SAT (0.7 s) |
+
+Cross-edge census (edges joining the two rotated halves — the only thing that
+makes a union non-4-colorable) explains the difficulty:
+
+* W₄ pool: 5696 vertices, 42366 edges, **126 cross edges** (record uses 18);
+* W₁₆ pool: 77485 vertices, 863046 edges, **96 cross edges in total**, of which
+  30 already exist within radius 1.5 and the rest only appear beyond radius 3.
+
+So W₁₆ is a far *sparser* coupling spread over a 13× larger pool: its
+obstruction is forced to be geometrically wide, which is consistent with greedy
+stalling near 1900 and with every disk up to radius 2 being 4-colorable. The
+ω₁₆/ω₂₈ rotations are new mathematics, but this census is evidence they are the
+wrong place to look for a *small* 5-chromatic graph — Parts' t = 4, the smallest
+working rotation, is also the most tightly coupled one.
