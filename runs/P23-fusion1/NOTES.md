@@ -550,3 +550,18 @@ random holes each. First completed neighbourhood (seed 2) returned
 so that hole *provably* cannot be refilled below 509 within its 1-hop pool. This
 is the first complete "no 508 here" statement in the run that is not a search
 floor. Remaining holes are running; no witness so far.
+
+### E23 status (continued)
+
+21 random 20-vertex holes in the record's W₄ embedding are now **certified
+UNSAT** (no ≤ 18-vertex refill from their 1-hop pool exists), 0 witnesses. Each
+takes ~5–10 min and ~300–400 hyperedges of width ~10. A wider batch with
+30-vertex holes and a 28-vertex budget (`lnsloop2.sh`, K = 480) is running; those
+neighbourhoods are an order of magnitude larger and have not closed yet.
+
+Reading: the record is not merely vertex-critical, it is *locally rigid* — every
+hole tested so far cannot be refilled more cheaply even when the refill may use
+any nearby pool vertex, not just record vertices. That is a much stronger
+statement than the earlier swap scans (which only tried −k+k moves), and it says
+a 508 (if one exists in this pool) must differ from the record in a large,
+non-local region.
