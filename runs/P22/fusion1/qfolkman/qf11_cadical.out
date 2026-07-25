@@ -1,0 +1,130 @@
+c --- [ banner ] -------------------------------------------------------------
+c 
+c CaDiCaL SAT Solver
+c Copyright (c) 2016-2026
+c A. Biere, M. Fleury, N. Froleyks, K. Fazekas, F. Pollitt, T. Faller
+c JKU Linz, University of Freiburg, TU Wien
+c 
+c Version 3.0.1 c60730422e758ef1cebe7aeddf2dda31c996bf04
+c g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0 -Wall -Wextra -O3 -DNDEBUG
+c Fri Jul 24 15:44:47 UTC 2026 Linux devin-box 5.15.200 x86_64
+c 
+c --- [ proof tracing ] ------------------------------------------------------
+c 
+c opening file to write 'qf11_cadical.drat'
+c writing binary proof trace to 'qf11_cadical.drat'
+c 
+c --- [ parsing input ] ------------------------------------------------------
+c 
+c reading DIMACS file from 'qf11.cnf'
+c opening file to read 'qf11.cnf'
+c found 'p cnf 55 176' header
+c parsed 176 clauses in 0.00 seconds process time
+c 
+c --- [ options ] ------------------------------------------------------------
+c 
+c all options are set to their default value
+c 
+c --- [ solving ] ------------------------------------------------------------
+c 
+c time measured in process time since initialization
+c 
+c  seconds  reduction conflicts       size tier2     variables
+c         MB    restarts   redundant    glue  trail      remaining
+c          level     rate       size/glu tier1 irredundant
+c 
+c *  0.00  2  0 0   0  0    0    0 0.0 0 0 2 6  0%  176  55 100%
+c )  0.00  4  0 0   0  0    0    0 0.0 0 0 2 6  0%  176  55 100%
+c {  0.00  4  0 0   0  0    0    0 0.0 0 0 2 6  0%  176  55 100%
+c -  0.00  4  8 1  48  2  300  241 1.7 7 4 2 6 72%  176  55 100%
+c -  0.00  5  8 2  96  2  733  532 1.6 7 5 2 6 71%  176  55 100%
+c }  0.01  5  7 2  96  2 1002  700 1.6 7 5 2 6 70%  176  55 100%
+c [  0.01  5  0 2  96  0 1002  700 0.0 0 0 2 6  0%  176  55 100%
+c O  0.01  5  5 2  96  6 1003  701 1.7 5 3 2 6 44%  176  55 100%
+c -  0.01  5  5 3  96  1 1409  835 1.6 6 4 2 6 70%  176  55 100%
+c i  0.01  5  5 3  96  1 1412  837 1.6 6 4 2 6 70%  176  54 98%
+c i  0.01  5  5 3  96  1 1582  946 1.6 6 4 2 6 69%  176  51 93%
+c i  0.01  5  5 3  96  1 1605  957 1.6 6 4 2 6 69%  176  50 91%
+c i  0.01  5  5 3  96  1 1636  972 1.6 6 4 2 6 69%  176  45 82%
+c i  0.01  5  5 3  96  1 1653  983 1.6 6 4 2 6 69%  176  42 76%
+c i  0.01  5  5 3  96  1 1657  985 1.6 6 4 2 6 69%  176  26 47%
+c ]  0.01  5  5 3  96  1 1660  986 1.6 6 4 2 6 69%  176   4  7%
+c 0  0.01  5  5 3  96  1 1660  986 1.6 6 4 2 6 69%  176   4  7%
+c 
+c --- [ closing proof ] ------------------------------------------------------
+c 
+c DRAT proof file 'qf11_cadical.drat' closed
+c DRAT 1655 added clauses 72.84%
+c DRAT 617 deleted clauses 27.16%
+c DRAT 19705 bytes (0.02 MB)
+c 
+c --- [ result ] -------------------------------------------------------------
+c 
+s UNSATISFIABLE
+c 
+c --- [ run-time profiling ] -------------------------------------------------
+c 
+c process time taken by individual solving procedures
+c (percentage relative to process time for solving)
+c 
+c         0.01   95.92% search
+c         0.01   52.94% unstable
+c         0.00   42.26% stable
+c         0.00    3.46% simplify
+c         0.00    2.09% sweep
+c         0.00    1.03% parse
+c         0.00    1.02% congruence
+c         0.00    0.47% lucky
+c         0.00    0.08% backbone
+c         0.00    0.04% probe
+c   =================================
+c         0.01   97.63% solve
+c 
+c last line shows process time for solving
+c (percentage relative to total process time)
+c 
+c --- [ statistics ] ---------------------------------------------------------
+c 
+c chronological:               288        17.35 %  of conflicts
+c conflicts:                  1660    154146.16    per second
+c backbone:                    330       600.00 %  of vars
+c decisions:                  2469    229269.20    per second
+c fixed:                        51        92.73 %  of all variables
+c learned:                    1599        96.33 %  per conflict
+c learned_lits:              14085       100.00 %  learned literals
+c minimized:                     0         0.00 %  learned literals
+c shrunken:                   2855        20.27 %  learned literals
+c minishrunken:                503         3.57 %  learned literals
+c otfs:                         11         0.66 %  of conflict
+c propagations:              26249         2.44 M  per second
+c reduced:                     173        10.42 %  per conflict
+c rephased:                      1      1660.00    interval
+c restarts:                     96        17.29    interval
+c stabilizing:                   1        39.40 %  of conflicts
+c subsumed:                    433        24.49 %  of all clauses
+c strengthened:                 11         0.62 %  of all clauses
+c ticks:                    337642        12.86    propagation
+c 
+c seconds are measured in process time for solving
+c 
+c --- [ glue usage ] ---------------------------------------------------------
+c 
+c focused glue 2 used 740 clauses 32.13% accumulated 52.71% tier1
+c focused glue 3 used 468 clauses 20.32% accumulated 73.03%
+c focused glue 4 used 261 clauses 11.33% accumulated 84.36%
+c focused glue 5 used 158 clauses 6.860% accumulated 91.22%
+c focused glue 6 used 81 clauses 3.517% accumulated 94.74% tier2
+c 
+c stable glue 2 used 696 clauses 28.22% accumulated 69.38% tier1
+c stable glue 3 used 334 clauses 13.54% accumulated 82.92% tier2
+c 
+c 
+c --- [ resources ] ----------------------------------------------------------
+c 
+c total process time since initialization:         0.01    seconds
+c total real time since initialization:            0.01    seconds
+c maximum resident set size of process:            4.76    MB
+c 
+c --- [ shutting down ] ------------------------------------------------------
+c 
+c exit 20
