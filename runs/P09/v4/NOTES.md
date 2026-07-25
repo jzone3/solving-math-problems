@@ -218,6 +218,8 @@ Round 4: the triangle-free subcase (bound λ₁²+λ₂² ≤ m) exhausted for A
 triangle-free graphs n ≤ 15 (1.47×10¹⁰ graphs, counts match A006785 exactly) —
 zero violations; equality only at disjoint unions of complete bipartite graphs
 (max gap ≈ 6e-12 float noise).
+Round 6: extended to ALL 581,460,254,001 triangle-free graphs on 16 vertices
+(112 slices, 12 child sessions; total = A006785(16) exactly) — zero violations.
 Round 5: ~8×10⁷ dihedral Cayley graphs up to order 64 (exhaustive through
 order 34, sampled beyond) — zero violations, equality families only.
 
@@ -262,3 +264,20 @@ bitmask B&B (2n ≤ 64), λ₁/λ₂ via tridiagonalization + Sturm bisection to
 
 Result: zero violations, zero non-trivial near-misses across ~8×10⁷ dihedral
 Cayley graphs up to order 64 (`cay/n*.sum`).
+
+## Round 6 (coordinator push #5): triangle-free frontier extended to n = 16
+
+Sixth push: the ω = 2 exhaustive check extended one more level, to ALL
+triangle-free graphs on 16 vertices, via 112 geng slices (`-tq 16 R/112` into
+`checker2`): 16 slices local + 96 fanned out to 12 child worker sessions
+(branches runs/P09-v4-tf16-0..11, folded back into `tf16/`).
+
+- Total graphs: 581,460,254,001 = A006785(16) EXACTLY (sum of the 112 slice
+  totals) — the full census is covered with no gap and no overlap.
+- Violations: 0 across all 112 slices.
+- Best gap: +5.9e-12 (float noise at exact equality s = m, again attained by
+  unions of complete bipartite graphs). No non-trivial near-miss.
+- Compute: ~800 CPU-hours across 13 machines (~26 h wall).
+
+The triangle-free case of Bollobás–Nikiforov is now machine-verified for all
+graphs on ≤ 16 vertices (≈ 6×10¹¹ graphs).
