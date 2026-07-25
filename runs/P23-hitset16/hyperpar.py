@@ -126,10 +126,24 @@ def tabu_hyperedge(fixed_col, movable, rng, tabu=TABU, return_col=False):
     # highest-conflict-degree endpoint first is much tighter than relying on
     # the arbitrary lattice edge order, while preserving soundness.
     conflict_adj = {}
+    forced = set()
     for u, v in bad_edges:
-        conflict_adj.setdefault(u, set()).add(v)
-        conflict_adj.setdefault(v, set()).add(u)
-    D = set()
+        if u not in mv and v not in mv:
+            return None
+        if u not in mv:
+            forced.add(v)
+        elif v not in mv:
+            forced.add(u)
+        else:
+            conflict_adj.setdefault(u, set()).add(v)
+            conflict_adj.setdefault(v, set()).add(u)
+    for v in forced:
+        for u in list(conflict_adj.get(v, ())):
+            conflict_adj[u].discard(v)
+            if not conflict_adj[u]:
+                del conflict_adj[u]
+        conflict_adj.pop(v, None)
+    D = set(forced)
     while conflict_adj:
         v = max(conflict_adj, key=lambda x: len(conflict_adj[x]))
         D.add(v)
