@@ -49,7 +49,17 @@ def triangle_edges(triangles):
     ]
 
 
-def solve_ilp(edges, k4s, triangles, mode, seconds, log_path, initial_kept=None):
+def solve_ilp(
+    edges,
+    k4s,
+    triangles,
+    mode,
+    seconds,
+    log_path,
+    initial_kept=None,
+    backend="cbc",
+    objective_floor=None,
+):
     model = pulp.LpProblem(
         f"H3_K4free_{mode}",
         pulp.LpMaximize,
@@ -71,6 +81,8 @@ def solve_ilp(edges, k4s, triangles, mode, seconds, log_path, initial_kept=None)
                 z[i] >= pulp.lpSum(x[e] for e in tri) - 2
             ), f"tri_lower_{i}"
         model += pulp.lpSum(z.values())
+        if objective_floor is not None:
+            model += pulp.lpSum(z.values()) >= objective_floor, "objective_floor"
     elif mode == "edges":
         model += pulp.lpSum(x.values())
     else:
@@ -84,12 +96,23 @@ def solve_ilp(edges, k4s, triangles, mode, seconds, log_path, initial_kept=None)
             for i, tri in enumerate(triangles):
                 z[i].setInitialValue(1 if all(e in initial for e in tri) else 0)
 
-    solver = pulp.PULP_CBC_CMD(
-        msg=True,
-        timeLimit=seconds,
-        logPath=str(log_path),
-        warmStart=initial_kept is not None,
-    )
+    if backend == "highs":
+        solver = pulp.HiGHS(
+            msg=True,
+            timeLimit=seconds,
+            logPath=str(log_path),
+            mip_rel_gap=0.0,
+            warmStart=initial_kept is not None,
+        )
+    elif backend == "cbc":
+        solver = pulp.PULP_CBC_CMD(
+            msg=True,
+            timeLimit=seconds,
+            logPath=str(log_path),
+            warmStart=initial_kept is not None,
+        )
+    else:
+        raise ValueError(backend)
     started = time.monotonic()
     status_code = model.solve(solver)
     elapsed = time.monotonic() - started
@@ -110,6 +133,18 @@ def solve_ilp(edges, k4s, triangles, mode, seconds, log_path, initial_kept=None)
         objective = sum(all(e in kept_set for e in tri) for tri in triangles)
     else:
         objective = len(kept)
+    if (
+        initial_kept is not None
+        and objective_floor is not None
+        and objective < objective_floor
+    ):
+        kept = sorted(initial_kept)
+        kept_set = set(kept)
+        objective = (
+            sum(all(e in kept_set for e in tri) for tri in triangles)
+            if mode == "triangles"
+            else len(kept)
+        )
     return {
         "mode": mode,
         "status": status,
