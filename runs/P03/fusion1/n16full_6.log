@@ -51,3 +51,5 @@ GRAPH 47 orientations=324246288 profiles=125024852 ss=79958826 tau_skip=0 safe=1
 GRAPH 48 orientations=330117504 profiles=127315872 ss=81159688 tau_skip=0 safe=11226910 checks=34929274 packed=34929274 cand=0 deferred=0
 GRAPH 49 orientations=337084224 profiles=130038576 ss=82687182 tau_skip=0 safe=11621210 checks=35730184 packed=35730184 cand=0 deferred=0
 GRAPH 50 orientations=344803896 profiles=132990424 ss=84800168 tau_skip=0 safe=11621946 checks=36568310 packed=36568310 cand=0 deferred=0
+GRAPH 51 orientations=351027684 profiles=135407936 ss=86147664 tau_skip=0 safe=11869138 checks=37391134 packed=37391134 cand=0 deferred=0
+GRAPH 52 orientations=357590532 profiles=137932552 ss=87760382 tau_skip=0 safe=12046202 checks=38125968 packed=38125968 cand=0 deferred=0
