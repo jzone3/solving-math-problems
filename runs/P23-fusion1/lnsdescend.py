@@ -37,6 +37,7 @@ TABU = int(os.environ.get('TABU', '150000'))
 NOISE = float(os.environ.get('NOISE', '0.02'))
 SEED = int(os.environ.get('SEED', '1'))
 RANDHOLE = int(os.environ.get('RANDHOLE', '0'))
+DROPK = int(os.environ.get('DROPK', '1'))   # refill must be this much smaller
 OUT = os.environ.get('OUT', f'descend_{SEED}.pkl')
 
 E, adj, PTS = coremin.E, coremin.adj, coremin.allpts
@@ -134,7 +135,7 @@ def neighbourhood(S, tag):
     if not cand:
         return None
     nbr = {v: sorted(adj[v] & (set(cand) | fixs)) for v in cand}
-    budget = H - 1
+    budget = H - DROPK
 
     pool = IDPool(start_from=1)
     svar = {v: pool.id(('s', v)) for v in cand}
@@ -185,7 +186,7 @@ def neighbourhood(S, tag):
 def main():
     S = sorted(pickle.load(open(START, 'rb')))
     assert kissat_color(S, f'ld{SEED}') is None, 'start is 4-colorable'
-    print(f'start {len(S)} vertices, hole {H}, budget {H-1}', flush=True)
+    print(f'start {len(S)} vertices, hole {H}, budget {H-DROPK}', flush=True)
     while True:
         new = neighbourhood(S, f'ld{SEED}')
         if new and len(new) < len(S):

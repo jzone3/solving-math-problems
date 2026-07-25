@@ -615,3 +615,17 @@ pointed at W₁₆, where the optimum is unknown.
 
 Meanwhile the hole-rigidity runs stand at 36+ scattered 20-holes and 1 contiguous
 25-ball certified UNSAT, no witness.
+
+## E26 — chained descent (`chain.sh`, `DROPK`)
+
+`DROPK` makes each accepted trade shrink the witness by K rather than 1 (H = 45,
+K = 3 is the working setting), and `chain.sh` restarts every worker from the
+smallest certified witness any worker has produced, so four workers share one
+descent instead of racing on separate copies.
+
+Descent from the padded 800-vertex witness (record + 290 random pool vertices):
+800 → 793 → 787 → 784 in ~1 h of wall clock on 4–5 workers, every intermediate
+re-checked non-4-colorable by kissat. This set *contains* the record, so the
+descent is not a calibration curiosity: if it ever passes below 509 the result
+is a new record, and if it stalls exactly at 509 that is another independent
+confirmation of the record's optimality within Parts' union.
