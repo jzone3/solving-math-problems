@@ -496,3 +496,30 @@ tiny selections.
 Status: ~25 s/iteration, candidates of 388–508 vertices, all 4-colorable so far;
 lifted hyperedges are weak (300–460 of 772 orbits) because a tabu hyperedge
 spreads over many orbits. Running.
+
+## E22 — stronger hyperedges: greedy conflict cover + Kempe repair (`hyperpar.py`)
+
+The hitting-set search is only as good as its clauses, and the clause a tabu
+colouring yields is *any* vertex set meeting every monochromatic edge, i.e. a
+vertex cover of the conflict graph. The original code scanned the edge list and
+took whichever endpoint was movable — a 2-approximate cover. Replacing that
+with a greedy max-degree peel (`cover()`) is sound (removing a cover of the
+conflicts leaves a proper 4-colouring, so pool∖D really is 4-colorable) and
+measurably tighter on the same colourings, seed 7, six samples on the full 5696
+W₄ pool:
+
+| colouring | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| edge-scan cover | 248 | 404 | 583 | 600 | 103 | 473 |
+| greedy cover    | 193 | 280 | 407 | 423 |  86 | 338 |
+
+i.e. 17–30 % smaller clauses for free. `kempe_repair()` adds Kempe-chain swaps
+on the two-coloured components after min-conflicts stalls (components touching a
+frozen vertex are skipped, so the frozen half stays fixed): mixed but sometimes
+large gains (407→77, 423→275) for ~40 % more time, hence `KEMPE=200` by default.
+
+Both are pure clause-strength improvements: previously banked hyperedges stay
+valid, so the runs restart from the existing 1900+ clause `bank135.jsonl`.
+Relaunched after the restart: 3× frozen-half bound-135 (avg hyperedge 258–290,
+selection stuck at 76–82) and 3× orbit-level ≤508 (candidates 436–470 vertices,
+all 4-colorable). Still no witness, and no outer UNSAT.
