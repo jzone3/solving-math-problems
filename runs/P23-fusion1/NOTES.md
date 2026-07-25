@@ -647,3 +647,22 @@ random padded start — the fourth independent route in this run that lands on
 (H ∈ {30,45,60,80}, scattered or contiguous, 1-hop refill pool, budget H−1), so
 every accepted trade would *be* a 508. No trade accepted so far; the completed
 neighbourhoods keep coming back UNSAT.
+
+## E28 — why exact LNS cannot (yet) be pointed at W₁₆
+
+The obvious next move was to run the greedy-then-exact-LNS pipeline on W₁₆ (the
+new working rotation from E12). `lnsdescend.py` now takes `OMT` so it can use
+ω₁₆ coordinates, and it runs — but a single non-4-colorability check of the
+1924-vertex W₁₆ witness (`greedy_g8_71.pkl`) takes **> 8 minutes** with kissat,
+versus 1–3 s at 509 vertices. Every accepted trade needs one such UNSAT proof
+and every rejected proposal needs a (cheap) SAT answer, so a neighbourhood that
+takes ~7 minutes at 509 would take days at 1924.
+
+That is a concrete statement of where the method's ceiling is: exact LNS is a
+tool for witnesses of a few hundred vertices, so W₁₆ first needs a *much*
+smaller witness by other means before it can be attacked this way — and the
+deletion machinery that would produce one is exactly what E13 showed to be ~3.5×
+off optimum. This is the current bottleneck of the whole approach.
+
+Meanwhile on W₄: 27 neighbourhoods of the 509 witness (H = 30…80, scattered and
+contiguous) have now run to their time limit without a single accepted trade.

@@ -41,7 +41,7 @@ DROPK = int(os.environ.get('DROPK', '1'))   # refill must be this much smaller
 OUT = os.environ.get('OUT', f'descend_{SEED}.pkl')
 
 E, adj, PTS = coremin.E, coremin.adj, coremin.allpts
-om = lattice.omega_t_complex(4)
+om = lattice.omega_t_complex(int(os.environ.get('OMT', '4')))
 Z = [lattice.to_complex(q) * (om if t == 'B' else 1) for t, q in PTS]
 rng = random.Random(SEED)
 
