@@ -33,6 +33,7 @@ HYBRID SUMMARY n=8 5/6: best over attacks = +0.000000
 K4FREE GLOBAL BEST n=30: -0.43464
 K4FREE GLOBAL BEST n=45: -0.58653
 NONTURAN GAP SUMMARY: largest = -9.38742774903023e-08
+PASS: no violations
 ROUND2 GLOBAL BEST n=24 w=4: -1.123399
 ROUND2 GLOBAL BEST n=26 w=4: -0.323085
 ROUND2 GLOBAL BEST n=28 w=4: -0.614783
@@ -80,3 +81,99 @@ SUMMARY n=11 part 4/7: total=130070200 candidates=0 worst_score=+0.000000
 SUMMARY n=11 part 5/7: total=158786153 candidates=0 worst_score=+0.000000
 SUMMARY n=11 part 6/7: total=134853964 candidates=0 worst_score=+0.000000
 WHEEL BEST: (np.float64(-0.9847844080391006), (2, (1, 1, 1, 1, 1)))
+SUMMARY n=12 total=1830665553 cliqued=39 cand=39 worst=2.486899575160e-14 worst_g6=K??????~Fv^[
+SUMMARY n=12 total=1620728348 cliqued=3 cand=3 worst=1.776356839400e-14 worst_g6=K????A?^v}^w
+SUMMARY n=12 total=1529369966 cliqued=2 cand=2 worst=3.552713678801e-15 worst_g6=K???Frw}Fk]o
+SUMMARY n=12 total=1578101735 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1634940766 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1658972199 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1730483659 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1918249540 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1670847921 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1662521651 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1585000358 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1680596797 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1591739818 cliqued=5 cand=5 worst=2.486899575160e-14 worst_g6=K????B?Np}^w
+SUMMARY n=12 total=1743996364 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1711025960 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1611293733 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1925263307 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1562648595 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1764352789 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1406159041 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1456532512 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1492226939 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1474071294 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1660170569 cliqued=8 cand=8 worst=4.263256414561e-14 worst_g6=K????B_~v}^w
+SUMMARY n=12 total=1500442296 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1622993513 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1635852253 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1638724559 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1506701805 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1763712410 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1807795537 cliqued=1 cand=1 worst=-2.842170943040e-14 worst_g6=KFzf~z{~~~^{
+SUMMARY n=12 total=1543837971 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1632002903 cliqued=1 cand=1 worst=2.486899575160e-14 worst_g6=K?BE@owMFo^?
+SUMMARY n=12 total=1588299901 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1532672158 cliqued=7 cand=7 worst=3.197442310920e-14 worst_g6=K????Bo{F}^w
+SUMMARY n=12 total=1518955494 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1488527837 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1364172939 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1763536437 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1851102138 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1619944261 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1553369145 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1720294699 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1469547275 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1452086676 cliqued=1 cand=1 worst=3.819167204711e-14 worst_g6=K]~v~z~~v~~}
+SUMMARY n=12 total=1568017170 cliqued=3 cand=3 worst=2.131628207280e-14 worst_g6=K????Bw}F}^w
+SUMMARY n=12 total=1810816487 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1547240560 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1933829632 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1671034076 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1426110733 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1978033627 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1709313404 cliqued=1 cand=1 worst=7.105427357601e-15 worst_g6=K??F?z_F?|Bs
+SUMMARY n=12 total=1956320615 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1807859552 cliqued=4 cand=4 worst=7.105427357601e-15 worst_g6=K???FB_F_{[B
+SUMMARY n=12 total=1927951570 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1551848338 cliqued=2 cand=2 worst=3.197442310920e-14 worst_g6=K????B{~v}^w
+SUMMARY n=12 total=2027189663 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=2371767456 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1896422310 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1859362587 cliqued=1 cand=1 worst=1.065814103640e-14 worst_g6=K??EE?{N@wWF
+SUMMARY n=12 total=2009605766 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1825156030 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1826127068 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1821583028 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1807108853 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1703498179 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1591132771 cliqued=3 cand=3 worst=4.263256414561e-14 worst_g6=K????B}~v}^w
+SUMMARY n=12 total=1656082307 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1682369118 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1594870990 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1800815194 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=2008570067 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1758986884 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1667145421 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1955673516 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1728566963 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1797300543 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1737491512 cliqued=1 cand=1 worst=5.684341886081e-14 worst_g6=K????B~~v}^w
+SUMMARY n=12 total=1822512474 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1686858472 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1742108001 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1773927471 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1705054136 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1764442681 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1681904759 cliqued=2 cand=2 worst=1.065814103640e-14 worst_g6=K???Fbo{?^`}
+SUMMARY n=12 total=1651123998 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1624341176 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1747922067 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1667771299 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1905594295 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1895821034 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1950436596 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=12 total=1855252077 cliqued=1 cand=1 worst=4.973799150321e-14 worst_g6=K?~vfb~~v}^w
+SUMMARY n=12 total=1765988898 cliqued=1 cand=1 worst=7.105427357601e-15 worst_g6=K??FFB_F?w[B
+SUMMARY n=12 total=1729037431 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=

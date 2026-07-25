@@ -163,6 +163,23 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
   or near-tight blowup direction found is a union of balanced Turán structures**;
   genuinely non-Turán interior directions stay strictly below 0.
 
+### Round 8 — exhaustive n = 12 certificate (coordinator push #4: "keep trying")
+
+- `sweep12.c` + `run12.sh`: optimized C engine (graph6 parse → Householder
+  tridiagonalization + QL eigensolve → greedy-clique lower-bound skip → exact
+  bitmask branch-and-bound clique for arithmetically-possible violators; any graph
+  scoring > −1e–7 logged). Validation: identical candidate sets to the earlier
+  Python pipeline on n = 9; n = 10 total = 11,716,571 (exact OEIS match).
+- Swept **ALL 164,059,830,476 connected graphs on 12 vertices** (exact match with
+  A001349(12)) in 96 geng res/mod parts, 8 workers, ~42 h wall at ~1.1M graphs/s.
+- Result: **zero violations**. Exactly 86 graphs came within 1e–7 of the bound;
+  `recheck12.py` re-verified all 86 independently with mpmath at 50-digit precision
+  and exact clique: every one is an equality graph (|score| < 5e–48) — 82 with
+  ω = 2 (unions of ≤ 2 complete bipartite graphs, where λ₁²+λ₂² = m always),
+  and 4 with ω ∈ {3,4,6} (unions of same-r balanced Turán graphs: includes
+  T(12,3)-, T(12,4)-, T(12,6)-type). PASS printed. Per-part summaries and all
+  candidates in `logs12/`.
+
 ## 4. Near-misses & dead ends
 
 - Best genuinely non-tight score found anywhere: ≈ **−0.105** (T(9,3)-blobs overlapping
@@ -179,16 +196,19 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
 ## 5. Conclusion
 
 No violation of Bollobás–Nikiforov (nor of the ELW generalization) found. New verified
-frontier: BN holds for **every graph on ≤ 11 vertices** (exhaustive, cross-checked) and
+frontier: BN holds for **every graph on ≤ 12 vertices** (exhaustive, cross-checked;
+164,059,830,476 connected graphs at n = 12 alone, plus the disjoint-case reduction) and
 for **every independent-set blowup of every pattern on ≤ 9 vertices at every size**
 (continuous-relaxation certificate, max f_H = 0 attained only at Turán-type optima).
 Heuristic search (exact ω) to n = 90 in the literature-mapped open region found nothing
-above −0.1 outside the equality plateau. Any counterexample must have n ≥ 12, is not a
+above −0.1 outside the equality plateau. Any counterexample must have n ≥ 13, is not a
 blowup of a small pattern, and is not a local perturbation of the extremal family.
 
 Late additions: fixed-ω anneals at n = 70–90 (19 restarts × 60k steps, ω ∈ {3..6}):
 all negative (best −3.78 at n=70 ω=6).
 
-STATUS: frontier-pushed (no counterexample; exhaustive certificate n ≤ 11 = 1.02e9
-graphs, blowup-family certificate for all patterns ≤ 9 vertices at all sizes, plus
-~2×10⁷ scored heuristic evaluations to n = 90 — all negative)
+STATUS: frontier-pushed (no counterexample; exhaustive certificate n ≤ 12 = 1.64e11
+connected graphs at n = 12 + 1.02e9 at n = 11 with all 86 near-bound graphs re-verified
+as known equality graphs at 50-digit precision; blowup-family certificate for all
+patterns ≤ 9 vertices at all sizes; ~2×10⁷ scored heuristic evaluations to n = 90 —
+all negative)
