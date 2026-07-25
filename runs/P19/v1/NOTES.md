@@ -138,7 +138,7 @@ was previously unchecked). Independent cross-check via `ltc_verify.py --frontier
 to n ≤ 20 with identical outcomes (`ltc_verify_log.txt`). Wall time 25,399 s
 (~7 h) on 8 cores (`ltc_log.txt`).
 
-## Fourth attack: ALL indecomposable wide partitions with ≤ 8 parts are Latin
+## Fourth attack: ALL indecomposable wide partitions with ≤ 9 parts are Latin
 
 CFGV Def. 5: a wide λ is *decomposable* if λ = μ + ν (partwise sum) with μ, ν wide;
 Prop. 5: for each fixed number of parts ℓ there are only finitely many indecomposable
@@ -186,10 +186,19 @@ Results (logs `indec5_log.txt`, `indec6_log.txt`):
   λ₁ ∈ [21, 34] verified decomposable, zero indecomposable** — so the B = 20
   cutoff misses none (empirical max λ₁ is 17, margin 17 → 34).
 
+- **ℓ = 9** (`indec9.py`, streamed enumeration + recycled pool; log
+  `indec9_log.txt`, list `indec9_list_0.txt`): 11,901,134 wide 9-part
+  partitions with λ₁ ≤ 22; **83,646 indecomposables (max λ₁ = 19,
+  max |λ| = 160), all Latin — zero UNSAT/UNKNOWN.** Wall ≈ 5.5 h.
+- ℓ = 9 completeness margin (`indec9_margin.py`, log `indec9_margin_log.txt`):
+  sweep of wide 9-part shapes with λ₁ ∈ [23, 32] (empirical max λ₁ is 19;
+  the max-λ₁ trend 3,5,8,10,12,15,17,19 for ℓ = 2..9 grows ≈ 2ℓ, so 32 is a
+  comfortable cushion) — see log for final count/status.
+
 Caveat recorded honestly: "sum of Latin partitions is Latin" is NOT a proved closure
 (CFGV prove wideness is closed under +, Prop. 4/Cor.), so this does not formally
 reduce the WPC to indecomposables; it is the same class-complete verification level
-CFGV themselves reported for ℓ ≤ 5, advanced three levels to ℓ = 8.
+CFGV themselves reported for ℓ ≤ 5, advanced four levels to ℓ = 9.
 
 ## Dead ends / notes
 
