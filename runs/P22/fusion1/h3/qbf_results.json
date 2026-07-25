@@ -45,7 +45,7 @@
     "status": "unavailable",
     "error_log": "qbf_bloqqer.err"
   },
-  "interpretation": "undecided; all four enhanced runs ended UNKNOWN due host out-of-memory termination before the 2400-second limit; no TRUE/FALSE verdict or QBF certificate",
+  "interpretation": "undecided; sequential 24-GiB-capped runs produced CAQE OOM and DepQBF TIMEOUT, with no TRUE/FALSE verdict or certificate",
   "runs": [
     {
       "name": "symbreak",
@@ -124,5 +124,75 @@
       "certificate": null
     }
   ],
-  "host_oom_evidence": "dmesg reports Out of memory: Killed process 5992 (caqe) at 05:28:46 and Killed process 7635 (caqe) at 06:02:05"
+  "host_oom_evidence": "dmesg reports Out of memory: Killed process 5992 (caqe) at 05:28:46 and Killed process 7635 (caqe) at 06:02:05",
+  "clean_sequential_runs": [
+    {
+      "name": "CAQE bloqqer-sym",
+      "solver": "CAQE 4.0.1",
+      "formula": "qbf_bloqqer_sym.qdimacs",
+      "command": "RLIMIT_AS=24GiB timeout=3000s caqe --qdo qbf_bloqqer_sym.qdimacs",
+      "verdict": "OOM",
+      "return_code": 255,
+      "wall_seconds": 1506.538,
+      "peak_rss_kb": 21172728,
+      "peak_memory_gib": 20.192,
+      "timed_out": false,
+      "stdout": "qbf_clean_caqe_bloqqer_sym.out",
+      "stderr": "qbf_clean_caqe_bloqqer_sym.err",
+      "wrapper": "qbf_clean_caqe_bloqqer_sym.wrapper.out",
+      "last_solver_stats": "CAQE emitted no decision/statistics; stderr: ERROR: exception thrown past FFI boundary",
+      "certificate": null
+    },
+    {
+      "name": "DepQBF bloqqer-sym",
+      "solver": "DepQBF 6.03",
+      "formula": "qbf_bloqqer_sym.qdimacs",
+      "command": "RLIMIT_AS=24GiB timeout=3000s depqbf -v qbf_bloqqer_sym.qdimacs",
+      "verdict": "TIMEOUT",
+      "return_code": -15,
+      "wall_seconds": 3000.017,
+      "peak_rss_kb": 473740,
+      "peak_memory_mib": 462.637,
+      "timed_out": true,
+      "stdout": "qbf_clean_depqbf_bloqqer_sym.out",
+      "stderr": "qbf_clean_depqbf_bloqqer_sym.err",
+      "wrapper": "qbf_clean_depqbf_bloqqer_sym.wrapper.out",
+      "last_solver_stats": "No stdout; final stderr line: SIG RECEIVED",
+      "certificate": null
+    },
+    {
+      "name": "CAQE bloqqer-non-sym",
+      "solver": "CAQE 4.0.1",
+      "formula": "qbf_bloqqer_nosym.qdimacs",
+      "command": "RLIMIT_AS=24GiB timeout=3000s caqe --qdo qbf_bloqqer_nosym.qdimacs",
+      "verdict": "OOM",
+      "return_code": -6,
+      "wall_seconds": 1124.769,
+      "peak_rss_kb": 24728216,
+      "peak_memory_gib": 23.61,
+      "timed_out": false,
+      "stdout": "qbf_clean_caqe_bloqqer_nosym.out",
+      "stderr": "qbf_clean_caqe_bloqqer_nosym.err",
+      "wrapper": "qbf_clean_caqe_bloqqer_nosym.wrapper.out",
+      "last_solver_stats": "CAQE emitted no decision/statistics; stderr: memory allocation of 4096 bytes failed",
+      "certificate": null
+    },
+    {
+      "name": "DepQBF bloqqer-non-sym",
+      "solver": "DepQBF 6.03",
+      "formula": "qbf_bloqqer_nosym.qdimacs",
+      "command": "RLIMIT_AS=24GiB timeout=3000s depqbf -v qbf_bloqqer_nosym.qdimacs",
+      "verdict": "TIMEOUT",
+      "return_code": -15,
+      "wall_seconds": 3000.017,
+      "peak_rss_kb": 405676,
+      "peak_memory_mib": 396.168,
+      "timed_out": true,
+      "stdout": "qbf_clean_depqbf_bloqqer_nosym.out",
+      "stderr": "qbf_clean_depqbf_bloqqer_nosym.err",
+      "wrapper": "qbf_clean_depqbf_bloqqer_nosym.wrapper.out",
+      "last_solver_stats": "Repeated: SAT solver result unknown due to decision limit 1000; final stderr line: SIG RECEIVED",
+      "certificate": null
+    }
+  ]
 }

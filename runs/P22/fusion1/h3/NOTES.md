@@ -229,6 +229,15 @@ exceeds this machine's memory/compute; the question stays open, and settling it
 would need a bigger machine or a stronger/parallel QBF solver on the (sound,
 regenerable) `h3_arrow_sym.qdimacs`.
 
+**Clean serial memory-capped confirmation.** Reran one solver at a time (24 GiB
+`ulimit`, 3000 s) on the bloqqer-preprocessed sym and non-sym instances to rule
+out self-inflicted OOM: CAQE 4.0.1 **OOMs at the 24 GiB cap** on both (peak
+~20–24 GiB), DepQBF 6.03 stays light (<0.5 GiB) but **times out at 3000 s** on
+both with no verdict. So the two failure modes are orthogonal — CAQE is
+memory-bound beyond this box, DepQBF is time-bound beyond feasible budgets — and
+neither reaches TRUE/FALSE. This is the definitive hardware ceiling for the exact
+decision procedure on a 31 GiB / 8-core machine.
+
 ## Certificate-backed negative decisions (SAT witnesses)
 
 `verify_witness.py` extracts a model from kissat for each of the three K₄-free
