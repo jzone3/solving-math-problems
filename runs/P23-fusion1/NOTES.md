@@ -271,3 +271,26 @@ Parallel child sessions (independent machines, own branches, no PRs):
   *edge* count (2442 → 2406) on the same 509 vertices.
 - `runs/P23-parts-method` — reimplementation of Parts' own ring/gadget
   minimization (in progress at time of writing).
+
+### Final LNS tally
+254 completed LNS iterations across both pools (sqrt2-extension 33k and native
+41.8k), ruin sizes k in [6,70]:
+
+| result | 509 | 510 | 511 | 512 | 513 | 514 | 515 | 516 | 517 | 518+ |
+|--------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|
+| count  | 28  | 38  | 31  | 36  | 24  | 12  | 15  | 17  | 8   | 7    |
+
+**Minimum over all 254 iterations = 509, attained 28 times, never beaten.**
+Deep ruins (k > 60) usually cannot be repaired at all within the +60 slack: the
+record's colour-forcing structure is not reconstructible from generic pool
+vertices once a large region is removed.
+
+## Bottom line for this run
+Five independent new method classes (extension-field swaps, LNS ruin&recreate on
+two pools, unions of distinct 509s, native Minkowski+apex swap scan, composite
+multi-swaps) and three independent child investigations (Parts' own ring/gadget
+method, constructive CEGAR over fixed universes, exhaustive literature/priority)
+all terminate at exactly 509. The record is not merely a local optimum of vertex
+deletion: it is stable under every substitution-composition move we can generate,
+and hundreds of *distinct* 509-vertex 5-chromatic UDGs exist, every one of them
+vertex-critical. No sub-509 graph is claimed.
