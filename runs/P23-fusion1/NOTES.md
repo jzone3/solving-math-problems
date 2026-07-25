@@ -380,3 +380,20 @@ hence removable, so a minimal witness has min degree ≥ 4) — this is what mak
 the outer solver produce structured selections instead of junk.
 Status: refinements are weak (|D| ≈ 850–900 per clause) and the outer solver
 slows to ~7 s/iteration; no hit and no outer UNSAT within the run. Left running.
+
+### Round tally (this continuation)
+| experiment | outcome |
+|---|---|
+| E11 multi-way union of all distinct 509s (520 vtx) | always → 509, each time a different 509 |
+| E12 parallel reduction of W₁₆ (new rotation ω₁₆) | 5081 → **1935** and still falling; 7 seeds |
+| E13 **calibration on W₄** (optimum ≤ 509 known) | every deletion method stalls at ~1850 ⇒ deletion floors are meaningless as evidence |
+| E14 transplant record halves onto ω₁₆ / ω₂₈ | 4-colorable |
+| E15 port/pattern decomposition | pattern sets explode; infeasible |
+| E16 alternating half re-optimisation (w4x pool, contains the record exactly) | 510–531, never below 509 |
+| E17 complete CEGAR for a smaller half (≤135 / ≤373) | no hit, no outer UNSAT yet; running |
+
+**No sub-509 graph. Nothing is claimed.** The one genuinely new mathematical
+object produced across this whole run is the pair of *new working type-M
+rotations* ω₁₆, ω₂₈ (child branch `runs/P23-parts-rho`) — the parameter Parts
+explicitly left open — together with the calibration result that shows why
+deletion-based minimization cannot settle them.
