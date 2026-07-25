@@ -97,6 +97,8 @@ def build_all():
         ("L79_12", 79, subgroup_connection_set(79, 12)),
         ("L421_7", 421, subgroup_connection_set(421, 7)),
         ("L631_24", 631, subgroup_connection_set(631, 24)),
+        ("L457_6", 457, subgroup_connection_set(457, 6)),
+        ("L761_3", 761, subgroup_connection_set(761, 3)),
     ]
     records = []
     for name, n, connection in exoo:

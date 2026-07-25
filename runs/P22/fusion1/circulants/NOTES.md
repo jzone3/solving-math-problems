@@ -47,6 +47,37 @@ L631_24:s SATISFIABLE
 The independently coded verifier reported `[PASS]` for all five witnesses.
 The raw solver logs and model files are retained beside the CNFs.
 
+## Additional Table 1 circulants
+
+The same construction and NAE encoding were applied to two further graphs:
+
+```text
+graph    vertices  degree  edges   triangles  K4-free
+L(457,6)     457     114   26049      173660     True
+L(761,3)     761     152   57836      347016     True
+```
+
+Kissat results:
+
+```text
+L(457,6): no solver verdict within the 1200-second budget
+           process-time in Kissat log: 1188.75 seconds
+L(761,3): s SATISFIABLE
+           process-time in Kissat log: 47.05 seconds
+```
+
+The `L(761,3)` model was independently reconstructed and checked:
+
+```text
+L761_3: independently verified SAT witness
+vertices=761 edges=57836 triangles=347016 [PASS]
+```
+
+Thus `L(761,3)` is certified non-arrowing.  `L(457,6)` remains undecided
+within the stated budget; it must not be interpreted as SAT or UNSAT.
+Neither additional instance produced an UNSAT result, so no DRAT proof was
+applicable and no improved Folkman bound is claimed.
+
 ## Structural record-family graphs
 
 `G941 = G(941,5)` uses the fifth-power residue connection set.  The

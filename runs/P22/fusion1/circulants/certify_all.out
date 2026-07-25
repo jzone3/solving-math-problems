@@ -1,0 +1,9 @@
+L17_2: vertices=17 degree_set=[8] edges=68 triangles=68 K4-free=True
+L61_8: vertices=61 degree_set=[20] edges=610 triangles=1220 K4-free=True
+L79_12: vertices=79 degree_set=[26] edges=1027 triangles=2054 K4-free=True
+L421_7: vertices=421 degree_set=[70] edges=14735 triangles=58940 K4-free=True
+L631_24: vertices=631 degree_set=[126] edges=39753 triangles=185514 K4-free=True
+L457_6: vertices=457 degree_set=[114] edges=26049 triangles=173660 K4-free=True
+L761_3: vertices=761 degree_set=[152] edges=57836 triangles=347016 K4-free=True
+G941: vertices=941 degree_set=[188] edges=88454 triangles=707632 K4-free=True
+G860: vertices=860 degree_set=[165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179] edges=73981 triangles=542514 K4-free=True

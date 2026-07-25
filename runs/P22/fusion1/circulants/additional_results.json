@@ -1,0 +1,25 @@
+{
+  "L457_6": {
+    "vertices": 457,
+    "degree": 114,
+    "edges": 26049,
+    "triangles": 173660,
+    "k4_free": true,
+    "kissat_status": "TIMEOUT",
+    "budget_seconds": 1200,
+    "kissat_process_seconds": 1188.75,
+    "witness_verified": false,
+    "drat_verified": false
+  },
+  "L761_3": {
+    "vertices": 761,
+    "degree": 152,
+    "edges": 57836,
+    "triangles": 347016,
+    "k4_free": true,
+    "kissat_status": "SAT",
+    "kissat_process_seconds": 47.05,
+    "witness_verified": true,
+    "drat_verified": false
+  }
+}

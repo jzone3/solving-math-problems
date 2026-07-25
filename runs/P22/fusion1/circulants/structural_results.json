@@ -30,6 +30,18 @@
     "triangles": 185514
   },
   {
+    "name": "L457_6",
+    "vertices": 457,
+    "edges": 26049,
+    "triangles": 173660
+  },
+  {
+    "name": "L761_3",
+    "vertices": 761,
+    "edges": 57836,
+    "triangles": 347016
+  },
+  {
     "name": "G941",
     "vertices": 941,
     "edges": 88454,
