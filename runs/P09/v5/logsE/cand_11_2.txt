@@ -1,0 +1,14 @@
+CAND J??EFz{~Fw?
+ score=3.552713678801e-15 w=2
+CAND J??Ffbo{FW?
+ score=3.552713678801e-15 w=2
+CAND J??FfbozFW?
+ score=3.552713678801e-15 w=2
+CAND J??Fvr{~Fw?
+ score=3.552713678801e-15 w=2
+CAND J?BE@owMFo?
+ score=3.552713678801e-15 w=2
+CAND J?BE@ow}Fo?
+ score=1.065814103640e-14 w=2
+CAND J?B@vrw}Fo?
+ score=1.065814103640e-14 w=2

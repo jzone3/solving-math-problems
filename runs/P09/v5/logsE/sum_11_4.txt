@@ -1,0 +1,2 @@
+SUMMARY n=11 total=150864156 cliqued=2200 cand=4 worst=1.065814103640e-14 worst_g6=J??Ffz{~Fw?
+

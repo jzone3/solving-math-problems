@@ -1,0 +1,6 @@
+CAND J???Fre}Fo?
+ score=0.000000000000e+00 w=2
+CAND J??E@w{NEB_
+ score=7.105427357601e-15 w=2
+CAND J?B@pow}Fo?
+ score=1.421085471520e-14 w=2

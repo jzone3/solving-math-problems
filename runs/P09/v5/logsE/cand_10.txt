@@ -1,0 +1,58 @@
+CAND I??????~w
+ score=3.552713678801e-15 w=2
+CAND I????B?~o
+ score=3.552713678801e-15 w=2
+CAND I????B_vo
+ score=1.776356839400e-15 w=2
+CAND I????B_~o
+ score=1.776356839400e-15 w=2
+CAND I????BoBw
+ score=1.776356839400e-15 w=2
+CAND I????Boro
+ score=1.776356839400e-15 w=2
+CAND I????Bo~o
+ score=5.329070518201e-15 w=2
+CAND I????Bwpo
+ score=1.776356839400e-15 w=2
+CAND I????Bw~o
+ score=5.329070518201e-15 w=2
+CAND I????B{~o
+ score=7.105427357601e-15 w=2
+CAND I????B}~o
+ score=8.881784197001e-15 w=2
+CAND I????B~~o
+ score=1.421085471520e-14 w=2
+CAND I???FB_v_
+ score=3.552713678801e-15 w=2
+CAND I???F?]Fo
+ score=1.776356839400e-15 w=2
+CAND I???FA]f_
+ score=1.776356839400e-15 w=2
+CAND I???FbMr_
+ score=5.329070518201e-15 w=2
+CAND I???Fre}?
+ score=1.776356839400e-15 w=2
+CAND I??EEA{n?
+ score=3.552713678801e-15 w=2
+CAND I??E@w}N_
+ score=3.552713678801e-15 w=2
+CAND I??F?z_wO
+ score=3.552713678801e-15 w=2
+CAND I??F?z_Fg
+ score=3.552713678801e-15 w=2
+CAND I??F?z{~?
+ score=3.552713678801e-15 w=2
+CAND I??Ffboz?
+ score=3.552713678801e-15 w=2
+CAND I??Ffz{~?
+ score=7.105427357601e-15 w=2
+CAND I?ABrpw}?
+ score=1.065814103640e-14 w=2
+CAND I?ABvrw}?
+ score=3.552713678801e-15 w=2
+CAND I?B@vrw}?
+ score=1.421085471520e-14 w=2
+CAND I?Bvfbw}?
+ score=1.421085471520e-14 w=2
+CAND I]~v~z~~o
+ score=2.486899575160e-14 w=5

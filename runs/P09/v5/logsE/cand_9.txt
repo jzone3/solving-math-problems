@@ -1,0 +1,52 @@
+CAND H????B~
+ score=3.552713678801e-15 w=2
+CAND H???E?~
+ score=1.776356839400e-15 w=2
+CAND H???F?^
+ score=3.552713678801e-15 w=2
+CAND H???FB}
+ score=3.552713678801e-15 w=2
+CAND H???FaM
+ score=1.776356839400e-15 w=2
+CAND H???Fre
+ score=1.776356839400e-15 w=2
+CAND H???Fr}
+ score=0.000000000000e+00 w=2
+CAND H??E@{}
+ score=3.552713678801e-15 w=2
+CAND H??EFz{
+ score=3.552713678801e-15 w=2
+CAND H??FFA[
+ score=7.105427357601e-15 w=2
+CAND H??FFB{
+ score=0.000000000000e+00 w=2
+CAND H??F?w]
+ score=1.776356839400e-15 w=2
+CAND H??FEz[
+ score=3.552713678801e-15 w=2
+CAND H??FfZk
+ score=3.552713678801e-15 w=2
+CAND H??Fvrs
+ score=7.105427357601e-15 w=2
+CAND H?ABrrw
+ score=8.881784197001e-15 w=2
+CAND H?AFvrw
+ score=3.552713678801e-15 w=2
+CAND H?BE@rw
+ score=5.329070518201e-15 w=2
+CAND H?B@po{
+ score=3.552713678801e-15 w=2
+CAND H?B@prB
+ score=3.552713678801e-15 w=2
+CAND H?B@vrw
+ score=1.776356839400e-15 w=2
+CAND H?BfFBw
+ score=1.776356839400e-15 w=2
+CAND H?`rbbo
+ score=1.776356839400e-15 w=2
+CAND H?`rfbo
+ score=7.105427357601e-15 w=2
+CAND H?r@`bo
+ score=1.776356839400e-15 w=2
+CAND HFzf~z{
+ score=-1.110223024625e-14 w=3
