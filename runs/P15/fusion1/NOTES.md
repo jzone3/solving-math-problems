@@ -412,3 +412,28 @@ frontier as reproducible witnesses under `solutions/P15/`:
   tail / integrality-gap wall isolated in Experiment C — greedy-over-divisors-
   of-a-smooth-N caps at **m=16**. m=17+ needs a structurally different
   (mixed-modulus / recursive-family) construction, i.e. the genuine open part.
+
+## 12. m=17 count-minimizing greedy (new objective) — NEGATIVE, sharpens the wall
+
+New engine `toolkit/fc_tree2_countmin.py`: same exact fragment representation
+and `apply()` transition as fc_tree2, but the selection objective is changed
+from "maximize covered *measure*" to "minimize the number of surviving
+residual fragment-classes" (exact integer delta per candidate modulus n hitting
+a fragment at modulus m: `q-2` where `q = n/gcd(m,n)`; ties broken by measure).
+Floats only in tie-break scoring; accept path stays exact.
+
+Finding (m=17, three N profiles incl. the m=16 winner N=27,243,216,000 and the
+richer N=463,134,672,000): count-minimization DOES keep the residual compact —
+tens of fragments (best 17, plateauing ~43-199) versus the *millions* that
+measure-greedy leaves. But it does so at **high residual measure** (~0.53-0.78).
+So the two objectives expose a hard tradeoff: you can get **few fragments OR
+low measure, never both** — and an exact cover needs both (measure→0 with a
+finite finisher-closable survivor set). Seeding engine_e's fresh-prime finisher
+on the smallest residual (43 classes, 13 of them mod 17) exploded on the very
+first survivor: `FAIL residue 4 ... finisher supply out 1777` (added 1,603
+classes closing one survivor, then ran out of distinct fresh primes).
+
+This is a new, independent confirmation of the integrality-gap wall from the
+opposite direction: the residual is either diffuse-many-fragments or
+few-fragments-large-measure, and the finisher cannot absorb even one
+large-measure survivor. No exact m=17 cover; frontier stays m=16.
