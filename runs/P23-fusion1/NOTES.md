@@ -809,3 +809,16 @@ That makes it the first search space in this run where a sub-509 answer is not
 already contradicted by a known 509 inside it. Four greedy 8-4-2-1 chains are
 descending it now (3378 / 2952 so far); the plan is greedy-to-floor and then the
 exact region-trade machinery from E25/E27, which is the pipeline that works.
+
+**Correction to E35.** `w4s.pkl` is *not* independent geometry: 0 lies in H^2, so
+(+)^3 H^2 is contained in (+)^4 H^2 and the 5677 vertices are a subset of the
+5696 of `w4d.pkl` (checked directly). It contains no known 509 — the record needs
+19 points outside it — but any witness inside it is a witness of W₄, so its
+minimum is bounded below by W₄'s. It is therefore a *pruned* search space, useful
+because it is a third of the universe and its cross-edge count drops 126 -> 96,
+not a new place where a sub-509 could hide that W₄ could not. Kept running for
+that pruning value only.
+
+Genuinely new geometry would need a base outside this lattice family altogether
+(a type-M analogue over a ring other than Q(sqrt33)), which is a construction
+problem, not a search problem.
