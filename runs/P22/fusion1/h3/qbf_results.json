@@ -1,0 +1,49 @@
+{
+  "formula": "h3_arrow.qdimacs",
+  "variables": 7392,
+  "clauses": 47209,
+  "blocks": {
+    "s": [
+      1,
+      1008
+    ],
+    "x": [
+      1009,
+      2016
+    ],
+    "t": [
+      2017,
+      7392
+    ]
+  },
+  "solvers": [
+    {
+      "name": "CAQE",
+      "version": "4.0.1",
+      "command": "timeout --signal=TERM 1200 caqe --qdo h3_arrow.qdimacs",
+      "status": "TIMEOUT",
+      "return_code": 124,
+      "wall_seconds": 1200.713,
+      "stdout": "qbf_caqe.out",
+      "stderr": "qbf_caqe.err",
+      "wrapper": "qbf_caqe.wrapper.out"
+    },
+    {
+      "name": "DepQBF",
+      "version": "6.03",
+      "command": "timeout --signal=TERM 1200 depqbf -v h3_arrow.qdimacs",
+      "status": "TIMEOUT",
+      "return_code": 124,
+      "wall_seconds": 1200.031,
+      "stdout": "qbf_depqbf.out",
+      "stderr": "qbf_depqbf.err",
+      "wrapper": "qbf_depqbf.wrapper.out"
+    }
+  ],
+  "preprocessor": {
+    "name": "bloqqer",
+    "status": "unavailable",
+    "error_log": "qbf_bloqqer.err"
+  },
+  "interpretation": "undecided; neither solver returned TRUE/FALSE within budget"
+}

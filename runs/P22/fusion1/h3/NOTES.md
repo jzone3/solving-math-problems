@@ -193,6 +193,29 @@ richest K₄-free subgraphs of H₃ we can produce (up to 863 triangles) fail to
 arrow — the strongest negative evidence yet on the paper's open conjecture, but
 still not a decision.
 
+## Exact decision as a 2-QBF (the principled version of CEGAR) — undecided
+
+The open question "does H₃ contain a K₄-free subgraph S with S → (3,3)ᵉ?" is
+*exactly* a 2-QBF, because arrowing is monotone under adding edges:
+
+    ∃ s_e (K₄-free selection) . ∀ x_e (2-colouring) . ∃ present monochromatic triangle.
+
+`qbf_arrow.py` emits this in QDIMACS with prefix `∃ s (1008) | ∀ x (1008) |
+∃ t (5376)`: K₄-free clauses on s (one 6-literal clause per K₄), Tseitin vars
+`t_T` forced false unless T is both present (`t_T→s_a,s_b,s_c`) and monochromatic
+(`t_T→ x_a=x_b=x_c`), and one global clause `∨_T t_T`. 7392 vars, 47209 clauses
+(9576 K₄ + 7·5376 triangle + 1 global); self-check confirms the empty/trivial
+subgraph correctly fails. A verdict here is **decisive either way**: TRUE ⇒ a
+K₄-free arrowing subgraph exists ⇒ f(2,3,4) ≤ 63 (then certify the witness S by
+the ordinary UNSAT+DRAT arrowing test); FALSE ⇒ **no** K₄-free subgraph of H₃
+arrows ⇒ the paper's q=3 conjecture is disproven.
+
+Ran CAQE 4.0.1 and DepQBF 6.03, 1200 s each: **both TIMEOUT**, no verdict, no
+certificate. This is the honest ceiling — a dedicated ∃∀ CEGAR solver (which is
+the principled form of our hand-rolled CEGAR above) also fails to decide the
+instance in available compute. Artifacts: `qbf_arrow.py`, `qbf_results.json`
+(the 47k-clause `.qdimacs` and solver logs are large/regenerable, git-ignored).
+
 ## Certificate-backed negative decisions (SAT witnesses)
 
 `verify_witness.py` extracts a model from kissat for each of the three K₄-free

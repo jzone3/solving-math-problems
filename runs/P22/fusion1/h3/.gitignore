@@ -10,3 +10,6 @@ h3_full.drat
 k4free_opt*.cnf
 cegar_*.cnf
 cegar_*.drat
+h3_arrow.qdimacs
+qbf_*.out
+qbf_*.err
