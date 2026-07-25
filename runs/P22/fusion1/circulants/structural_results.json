@@ -1,0 +1,46 @@
+[
+  {
+    "name": "L17_2",
+    "vertices": 17,
+    "edges": 68,
+    "triangles": 68
+  },
+  {
+    "name": "L61_8",
+    "vertices": 61,
+    "edges": 610,
+    "triangles": 1220
+  },
+  {
+    "name": "L79_12",
+    "vertices": 79,
+    "edges": 1027,
+    "triangles": 2054
+  },
+  {
+    "name": "L421_7",
+    "vertices": 421,
+    "edges": 14735,
+    "triangles": 58940
+  },
+  {
+    "name": "L631_24",
+    "vertices": 631,
+    "edges": 39753,
+    "triangles": 185514
+  },
+  {
+    "name": "G941",
+    "vertices": 941,
+    "edges": 88454,
+    "triangles": 707632,
+    "k4_free": true
+  },
+  {
+    "name": "G860",
+    "vertices": 860,
+    "edges": 73981,
+    "triangles": 542514,
+    "k4_free": true
+  }
+]
