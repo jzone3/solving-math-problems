@@ -193,6 +193,41 @@ n=52,60: all negative. Best per-run scores collected in `RESULTS-summary.txt`.
   with exact ω at every evaluation; structured scans of 6 parametric families;
   1.02×10⁹-graph exhaustive sweep; ~155k simplex optimizations for blowup patterns.
 
+### Round 9 — dense-corner complements, near-equality neighborhoods, rank-2 plateau (coordinator push #5)
+
+Literature re-check (2026-07-25, arXiv API): still no published counterexample; newest
+relevant items are arXiv:2607.16746 (Nosal supersaturation), arXiv:2603.26379 (complete
+multipartite + dense K₄-free), arXiv:2411.08184 (conic programming: BN with weaker
+constants; proves the WEA vector-chromatic conjecture). BN Conjecture 1 remains open.
+
+**New structural discovery (explains all 82 ω=2 near-bound graphs at n=12):** the ω = 2
+equality plateau is much larger than unions of complete bipartite graphs. Any bipartite
+graph whose biadjacency matrix has rank ≤ 2 satisfies λ₁²+λ₂² = m EXACTLY: rank-2
+biadjacency ⇒ only two nonzero singular values σ₁ ≥ σ₂, spectrum {±σ₁, ±σ₂, 0…}, and
+Σλᵢ² = 2m gives σ₁²+σ₂² = m. Concrete family: "double complete bipartite" B(a₁,a₂;b₁,b₂)
+(a₁ left vertices joined to all b₁+b₂ right vertices, a₂ left vertices joined to the b₁
+core only) — includes K_{a,b} minus any star. Verified to 60-digit precision on
+K_{7,6}−star (score < 1e-59). Since Lin–Ning–Wu proved ω=2, these are equality points of
+a THEOREM, but they form a new perturbation launchpad (below). The analogous tripartite
+construction K_{a,b,c} − star is strictly negative for every (a,b,c,k≥1) with a,b,c ≤ 6
+— the trick does not extend to ω ≥ 3, consistent with the ω≥3 equality set being exactly
+balanced-Turán unions.
+
+Searches this round (all machine-scored, exact ω):
+- `cmflip.py` n = 13,14,15,16: exhaustive 1- and 2-edge-edit neighborhoods of EVERY
+  complete multipartite graph and every union of two complete multipartite graphs
+  (5,615 centers, 32.4M scored graphs). Best = 0 exactly (edits landing back on the
+  plateau); nothing positive.
+- `rank2flip.py` n = 13,14,15,16: exhaustive 1-/2-edit neighborhoods of every
+  B(a₁,a₂;b₁,b₂) rank-2 equality graph (1,661 centers, 8.98M scored graphs). Best
+  ≈ +1.8e-13 = eigensolver noise on the plateau itself; no violation.
+- Joins K_t ∨ B(rank-2 graph) for t ≤ 3, a,b ≤ 9: all ≤ −0.19 — the plateau collapses
+  under joins.
+- `sweepC.c` (sweep12 generalized to n ≤ 31 + complement mode): exhaustive DENSE-corner
+  certificate — score the complement of every graph with ≤ 20 edges on n vertices,
+  i.e. every graph on n vertices missing ≤ 20 edges. Running for n = 13,14,15,16
+  (2 geng parts each); results recorded below when complete.
+
 ## 5. Conclusion
 
 No violation of Bollobás–Nikiforov (nor of the ELW generalization) found. New verified
