@@ -194,5 +194,96 @@
       "last_solver_stats": "Repeated: SAT solver result unknown due to decision limit 1000; final stderr line: SIG RECEIVED",
       "certificate": null
     }
+  ],
+  "solver_installations": [
+    {
+      "name": "Qute",
+      "version": "git cb09ab85b4b377ce60c0f4ac462f7d0932366a84 (2026-03-31)",
+      "binary": "/home/ubuntu/.local/bin/qute",
+      "build": "CMAKE_POLICY_VERSION_MINIMUM=3.5 cmake .. && cmake --build . -j2",
+      "source": "https://github.com/perebor/qute"
+    },
+    {
+      "name": "RAReQS",
+      "version": "1.1",
+      "binary": "/home/ubuntu/.local/bin/rareqs",
+      "build": "make CXX=g++ CFLAGS=\"-fpermissive ... -std=c++0x\"; patched bundled MiniSat includes for modern Linux",
+      "source": "http://sat.inesc-id.pt/~mikolas/sw/areqs/rareqs-1.1.src.tgz",
+      "input_format": "QDIMACS; tested on Bloqqer-preprocessed QDIMACS"
+    }
+  ],
+  "additional_runs": [
+    {
+      "name": "Qute bloqqer-sym",
+      "solver": "Qute",
+      "version": "git cb09ab85b4b377ce60c0f4ac462f7d0932366a84",
+      "formula": "qbf_bloqqer_sym.qdimacs",
+      "command": "ulimit -v 25165824; timeout --signal=TERM --kill-after=30 3000 /home/ubuntu/.local/bin/qute qbf_bloqqer_sym.qdimacs",
+      "verdict": "TIMEOUT",
+      "return_code": 124,
+      "wall_seconds": 3000.04,
+      "peak_rss_kb": 526736,
+      "peak_memory_gib": 0.502,
+      "timed_out": true,
+      "stdout": "qbf_qute_bloqqer_sym.out",
+      "stderr": "qbf_qute_bloqqer_sym.err",
+      "wrapper": "qbf_qute_bloqqer_sym.wrapper.out",
+      "last_solver_stats": "stdout ended with UNDEF; no solver statistics",
+      "certificate": null
+    },
+    {
+      "name": "Qute bloqqer-non-sym",
+      "solver": "Qute",
+      "version": "git cb09ab85b4b377ce60c0f4ac462f7d0932366a84",
+      "formula": "qbf_bloqqer_nosym.qdimacs",
+      "command": "ulimit -v 25165824; timeout --signal=TERM --kill-after=30 3000 /home/ubuntu/.local/bin/qute qbf_bloqqer_nosym.qdimacs",
+      "verdict": "TIMEOUT",
+      "return_code": 124,
+      "wall_seconds": 3000.03,
+      "peak_rss_kb": 508548,
+      "peak_memory_gib": 0.485,
+      "timed_out": true,
+      "stdout": "qbf_qute_bloqqer_nosym.out",
+      "stderr": "qbf_qute_bloqqer_nosym.err",
+      "wrapper": "qbf_qute_bloqqer_nosym.wrapper.out",
+      "last_solver_stats": "stdout ended with UNDEF; no solver statistics",
+      "certificate": null
+    },
+    {
+      "name": "RAReQS bloqqer-sym",
+      "solver": "RAReQS",
+      "version": "1.1",
+      "formula": "qbf_bloqqer_sym.qdimacs",
+      "command": "ulimit -v 25165824; timeout --signal=TERM --kill-after=30 3000 /home/ubuntu/.local/bin/rareqs qbf_bloqqer_sym.qdimacs",
+      "verdict": "TIMEOUT",
+      "return_code": 124,
+      "wall_seconds": 3000.424,
+      "peak_rss_kb": 14328508,
+      "peak_memory_gib": 13.664,
+      "timed_out": true,
+      "stdout": "qbf_rareqs_bloqqer_sym.out",
+      "stderr": "qbf_rareqs_bloqqer_sym.err",
+      "wrapper": "qbf_rareqs_bloqqer_sym.wrapper.out",
+      "last_solver_stats": "c hybrid 3; c pure 1; c blocking 1; c unit 2; c universal_reduction 0; stderr: # received external signal 15; Terminating ...",
+      "certificate": null
+    },
+    {
+      "name": "RAReQS bloqqer-non-sym",
+      "solver": "RAReQS",
+      "version": "1.1",
+      "formula": "qbf_bloqqer_nosym.qdimacs",
+      "command": "ulimit -v 25165824; timeout --signal=TERM --kill-after=30 3000 /home/ubuntu/.local/bin/rareqs qbf_bloqqer_nosym.qdimacs",
+      "verdict": "TIMEOUT",
+      "return_code": 124,
+      "wall_seconds": 3000.217,
+      "peak_rss_kb": 6495776,
+      "peak_memory_gib": 6.195,
+      "timed_out": true,
+      "stdout": "qbf_rareqs_bloqqer_nosym.out",
+      "stderr": "qbf_rareqs_bloqqer_nosym.err",
+      "wrapper": "qbf_rareqs_bloqqer_nosym.wrapper.out",
+      "last_solver_stats": "c hybrid 3; c pure 1; c blocking 1; c unit 2; c universal_reduction 0; stderr: # received external signal 15; Terminating ...",
+      "certificate": null
+    }
   ]
 }

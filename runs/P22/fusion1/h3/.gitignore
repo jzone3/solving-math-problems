@@ -21,3 +21,9 @@ qbf_bloqqer_nosym.qdimacs
 qbf_clean_*.out
 qbf_clean_*.err
 qbf_clean_*.wrapper.out
+qbf_qute_*.out
+qbf_qute_*.err
+qbf_qute_*.wrapper.out
+qbf_rareqs_*.out
+qbf_rareqs_*.err
+qbf_rareqs_*.wrapper.out

@@ -238,6 +238,16 @@ memory-bound beyond this box, DepQBF is time-bound beyond feasible budgets — a
 neither reaches TRUE/FALSE. This is the definitive hardware ceiling for the exact
 decision procedure on a 31 GiB / 8-core machine.
 
+**Four QBF paradigms, all undecided.** To be sure this isn't a single-solver
+artifact, also ran Qute (dependency-learning QCDCL, rev cb09ab8) and RAReQS 1.1
+(expansion-based ∃∀ CEGAR) serially, 24 GiB / 3000 s, on both preprocessed
+instances: Qute stays light (~0.5 GiB) and **times out**; RAReQS **times out**
+using 6–14 GiB. So all four leading QBF paradigms — plain QCDCL (CAQE, DepQBF),
+dependency-learning QCDCL (Qute), and expansion-CEGAR (RAReQS) — fail to decide
+`H₃ → Folkman?` here. The exact question is simply beyond current QBF technology
+at this scale/compute, which is itself a meaningful (negative) finding: the paper's
+q=3 conjecture is not reachable by off-the-shelf complete solvers.
+
 ## Certificate-backed negative decisions (SAT witnesses)
 
 `verify_witness.py` extracts a model from kissat for each of the three K₄-free
