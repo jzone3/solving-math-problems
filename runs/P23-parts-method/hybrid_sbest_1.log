@@ -1,0 +1,27 @@
+seed=1 core 558 -> 555 elapsed=27.1s
+seed=1 core 555 -> 555 elapsed=26.8s
+seed=1 pass=1 delete=43 n=554
+seed=1 pass=1 delete=166 n=553
+seed=1 pass=1 delete=101 n=552
+seed=1 pass=1 delete=10 n=550
+seed=1 pass=1 delete=18 n=549
+seed=1 pass=1 delete=54 n=548
+seed=1 pass=1 delete=72 n=546
+seed=1 pass=1 delete=41 n=545
+seed=1 pass=1 delete=15 n=543
+seed=1 pass=1 delete=98 n=542
+seed=1 pass=1 delete=153 n=540
+seed=1 pass=1 delete=19 n=538
+seed=1 pass=1 delete=164 n=537
+seed=1 pass=1 delete=8 n=536
+seed=1 pass=1 delete=116 n=535
+seed=1 pass=1 delete=79 n=534
+seed=1 pass=1 delete=163 n=533
+seed=1 pass=1 delete=32 n=531
+seed=1 pass=1 delete=183 n=530
+seed=1 pass=1 delete=161 n=529
+seed=1 pass=1 delete=182 n=529
+seed=1 pass=1 delete=165 n=527
+seed=1 pass=1 delete=121 n=526
+seed=1 pass=1 delete=69 n=525
+seed=1 pass=1 delete=1 n=525

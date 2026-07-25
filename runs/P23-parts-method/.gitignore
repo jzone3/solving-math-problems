@@ -1,0 +1,7 @@
+__pycache__/
+start_*.pkl
+fixed_*.pkl
+meta_*.pkl
+pool_*.pkl
+hybrid_*.pkl
+*.core
