@@ -365,3 +365,18 @@ This is a much deeper neighbourhood than any earlier move: previous scans always
 perturbed both halves together and only locally. Status: full-half rebuilds do
 not reconstruct (a half is a finely tuned 4-chromatic gadget, not something
 column generation stumbles into); partial half ruins rebuild to 510–511.
+
+### E17 — complete (CEGAR) search for a *smaller half* (`cegar_half.py`)
+Every other move class in this run is heuristic. This one is complete: freeze
+one half of the record and ask whether **any** subset of the other copy's whole
+pool, under a cardinality bound, makes the union non-4-colorable —
+`|S'| ≤ 135` (frozen L374) or `|L'| ≤ 373` (frozen S136); either hit is a 508.
+Selection variables + totalizer bound, refined by sound "blocked-vertex"
+clauses: given a proper 4-colouring of the selected graph, extend it greedily
+over the whole pool (5 random orders, keep the shortest refinement); the
+vertices that cannot be coloured form the clause. Plus a WLOG **min-degree-4**
+constraint on every selected vertex (a vertex of degree ≤ 3 is colourable last,
+hence removable, so a minimal witness has min degree ≥ 4) — this is what makes
+the outer solver produce structured selections instead of junk.
+Status: refinements are weak (|D| ≈ 850–900 per clause) and the outer solver
+slows to ~7 s/iteration; no hit and no outer UNSAT within the run. Left running.
