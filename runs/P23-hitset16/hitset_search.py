@@ -21,6 +21,9 @@ def main():
     ap.add_argument("--out", default="hitset_r3.jsonl")
     ap.add_argument("--max-iters", type=int, default=1000)
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--outer-seconds", type=int, default=300)
+    ap.add_argument("--no-degree", action="store_true",
+                    help="diagnostic fallback; omit critical-degree constraints")
     ap.add_argument("--sample-period", type=int, default=50)
     args = ap.parse_args()
 
@@ -55,16 +58,17 @@ def main():
             model.Add(sum(x[v] for v in d) >= 1)
         # A minimum critical witness may be assumed to have minimum induced
         # degree at least four: a vertex of degree <=3 is colourable last.
-        for v in support:
-            ns = [u for u in adj[v] if u in x]
-            if len(ns) < 4:
-                model.Add(x[v] == 0)
-            else:
-                model.Add(sum(x[u] for u in ns) >= 4 * x[v])
+        if not args.no_degree:
+            for v in support:
+                ns = [u for u in adj[v] if u in x]
+                if len(ns) < 4:
+                    model.Add(x[v] == 0)
+                else:
+                    model.Add(sum(x[u] for u in ns) >= 4 * x[v])
         model.Minimize(sum(x.values()))
         solver = cp_model.CpSolver()
         solver.parameters.num_search_workers = args.workers
-        solver.parameters.max_time_in_seconds = 300
+        solver.parameters.max_time_in_seconds = args.outer_seconds
         solver.parameters.random_seed = 712367
         status = solver.Solve(model)
         selected = [v for v in support if solver.Value(x[v])]
