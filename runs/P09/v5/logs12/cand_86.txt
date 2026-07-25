@@ -1,0 +1,4 @@
+CAND K???Fbo{F[\o
+ score=3.552713678801e-15 w=2
+CAND K???Fbo{?^`}
+ score=1.065814103640e-14 w=2
