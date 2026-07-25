@@ -227,3 +227,5 @@ GRAPH 221 orientations=1428877884 profiles=552436908 ss=337828574 tau_skip=0 saf
 GRAPH 222 orientations=1434952764 profiles=554812288 ss=339047096 tau_skip=0 safe=72299646 checks=143465546 packed=143465546 cand=0 deferred=0
 GRAPH 223 orientations=1440861780 profiles=557102176 ss=340378878 tau_skip=0 safe=72684714 checks=144038584 packed=144038584 cand=0 deferred=0
 GRAPH 224 orientations=1448495004 profiles=560022076 ss=342434094 tau_skip=0 safe=72685338 checks=144902644 packed=144902644 cand=0 deferred=0
+GRAPH 225 orientations=1455930420 profiles=562881480 ss=344352278 tau_skip=0 safe=72685882 checks=145843320 packed=145843320 cand=0 deferred=0
+GRAPH 226 orientations=1460778300 profiles=564806604 ss=345163000 tau_skip=0 safe=73512260 checks=146131344 packed=146131344 cand=0 deferred=0

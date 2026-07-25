@@ -232,3 +232,4 @@ GRAPH 228 orientations=1469609736 profiles=568981552 ss=343861048 tau_skip=0 saf
 GRAPH 229 orientations=1474447872 profiles=570915976 ss=344670988 tau_skip=0 safe=84142142 checks=142102846 packed=142102846 cand=0 deferred=0
 GRAPH 230 orientations=1479811320 profiles=573008728 ss=345723656 tau_skip=0 safe=84779294 checks=142505778 packed=142505778 cand=0 deferred=0
 GRAPH 231 orientations=1484606424 profiles=574880656 ss=346590906 tau_skip=0 safe=85498290 checks=142791460 packed=142791460 cand=0 deferred=0
+GRAPH 232 orientations=1491299544 profiles=577457648 ss=348266302 tau_skip=0 safe=85668330 checks=143523016 packed=143523016 cand=0 deferred=0

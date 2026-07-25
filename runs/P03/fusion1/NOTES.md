@@ -468,21 +468,21 @@ eight shards, below the one-day stop threshold, so the full run was launched.
 
 The run is checkpointed per graph in `n16full_0.log` through
 `n16full_7.log`, with reproducible input in `n16_full_engine.txt`. At the
-latest bounded checkpoint, 300 graph completions had been recorded across
+latest bounded checkpoint, 1871 graph completions had been recorded across
 the shards, with cumulative totals:
 
 ```text
-orientations=1,813,344,588
-profile orientations=700,428,432
-source-sink skips=439,906,306
-exact packing checks=194,624,970
-packed=194,624,970
+orientations=11,844,695,724
+profile orientations=4,583,536,460
+source-sink skips=2,781,980,508
+exact packing checks=1,165,287,056
+packed=1,165,287,056
 deferred=0
 candidates=0
 ```
 
 The eight processes are still running; this is therefore not a closure
-claim yet. Coverage is 300/2,595 graphs. Every completed check so far
+claim yet. Coverage is 1871/2,595 graphs. Every completed check so far
 packed, and no ideal enumeration deferred instance occurred. The committed
 per-graph logs and input file preserve the checkpoint; a future resume can
 partition `n16_full_engine.txt` by shard and skip the recorded completed
