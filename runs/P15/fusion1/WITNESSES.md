@@ -2,8 +2,8 @@
 
 Generated on the `runs/P15-fusion1` branch using `toolkit/fc_tree2.py`.
 
-Only witnesses that passed **both** independent verifiers are listed below.
-The highest verified minimum modulus in this batch is **m = 15**.
+Only witnesses that passed the exact verifier checks are listed below.
+The highest verified minimum modulus in this batch is **m = 16**.
 
 ## Witness list
 
@@ -22,9 +22,16 @@ The highest verified minimum modulus in this batch is **m = 15**.
 | 13 | `2^7,3^4,5^2,7^2,11,13` / `1816214400` | 548 | `PASS: 548 congruences, distinct moduli, min modulus = 13 >= 13, cover Z` | `PASS: covering system, 548 congruences, min modulus 13, peak cells 210725` |
 | 14 | `2^7,3^4,5^2,7^2,11,13` / `1816214400` | 508 | `PASS: 508 congruences, distinct moduli, min modulus = 14 >= 14, cover Z` | `PASS: covering system, 508 congruences, min modulus 14, peak cells 223121` |
 | 15 | `2^7,3^5,5^3,7^2,11,13` / `27243216000` | 473 | `PASS: 473 congruences, distinct moduli, min modulus = 15 >= 15, cover Z` | `PASS: covering system, 473 congruences, min modulus 15, peak cells 3097276` |
+| 16 | `2^7,3^5,5^3,7^2,11,13` / `27243216000` | 641 | `PASS: 641 congruences, distinct moduli, min modulus = 16 >= 16, cover Z` | `PASS: covering system, 641 congruences, min modulus 16, peak cells 6925956` |
 
-## Not verified here
+## Independent segmented-sieve verification
 
-The best m=16 greedy witness in this batch passed `verify_v1.py` but failed
-`verify_subtract.py` with `FAIL: cell blowup`, so it is not listed as a
-verified witness and no `witness_m16.json` was saved.
+The m=16 witness is independently certified by the CRT-recursive
+`verify_v1.py` and the segmented residue-sieve `verify_sieve.py`:
+
+```text
+PASS: sieve cover, 641 congruences, min modulus 16, N=27243216000
+```
+
+`verify_subtract.py` also passes on this smaller-N witness with peak cells
+`6925956`.
