@@ -106,6 +106,65 @@ Both were explicitly stopped after about 2h02m wall time and recorded as
 enumeration does not prove anything, so these runs are logged only as
 unfinished experiments.
 
+### Final deeper greedy/hybrid push
+
+The last exploratory push extended the corrected greedy screen beyond the
+three-orbit S and L expansions.  Each next orbit was chosen by maximum freed
+count, with exact SAT screens for every candidate.  The S curve was:
+
+| selected orbits | freed old S vertices |
+|---:|---:|
+| 1 | 7 |
+| 2 | 23 |
+| 3 | 51 |
+| 4 | 59 |
+| 5 | 59 |
+| 6 | 59 |
+
+The six-orbit S pool had 627 vertices, 3012 edges, 254 variable S vertices,
+and 373 fixed L vertices.  The score plateaued at 59, so the depth-7/8
+continuation was stopped rather than spending the remaining budget on
+zero-growth screens.
+
+The corresponding L curve was:
+
+| selected orbits | freed old L vertices |
+|---:|---:|
+| 1 | 9 |
+| 2 | 19 |
+| 3 | 29 |
+| 4 | 51 |
+| 5 | 55 |
+| 6 | 55 |
+
+The final six-orbit L pool had 625 vertices, 3212 edges, 490 variable L
+vertices, and 135 fixed companion vertices.  It likewise plateaued after
+five selected orbits.
+
+The corrected joint rerun reached one greedy step.  Its best tested addition
+was `(6,2,4,0)` on the L side, alongside the initial
+`(4,0,4,4)`/`(12,2,2,0)` expansion, freeing 18 old union vertices.  The
+joint continuation was stopped after this step when the S and L hybrid
+minimizers had priority.  Earlier joint rows showing negative freed counts
+are retained in the raw appendix as the output of the already-documented
+buggy accounting; they are not used as results.
+
+The hybrid minimizer was run with four independent seeds on each deeper
+pool.  All completed with drat-trim-certified core jumps; no floor was below
+the record:
+
+| pool | seed floors (pool total) | corresponding working-side floors |
+|---|---|---|
+| deeper L, 625 total, 135 fixed | 524, 534, 533, 529 | L = 389, 399, 398, 394 |
+| deeper S, 627 total, 373 fixed | 525, 518, 523, 521 | S = 152, 145, 150, 148 |
+| deeper joint, 566 total, 156 fixed | 516, 513 | union total = 516, 513 |
+
+Thus the deepest S expansion did not approach the 136-vertex target after
+hybrid minimization, and the deeper L expansion remained well above 374.
+The deeper joint pool also stayed above 509.
+No candidate reached a below-record threshold, so no new exact
+reconstruction/independent-verifier/`s VERIFIED` gate was triggered.
+
 ### Parallel branch: `runs/P23-parts-gadgets` (finished)
 
 This branch followed the gadget/devirtualization route and produced a separate,
@@ -196,9 +255,13 @@ KISSAT=/home/ubuntu/tools/kissat/build/kissat DRATTRIM=/home/ubuntu/tools/drat-t
 
 ## Compute spent
 
-The recorded wall time in the campaign rows sums to **4.57 hours**. The largest
-single chunks were the two deep phase-2 legs, each running for about **2h02m**
-before being stopped as truncated.
+The earlier campaign rows sum to **4.57 hours** of recorded wall time.  The
+final deeper greedy/hybrid push added approximately **2 hours of wall-clock
+work** across concurrent S, L, and joint screens and four-seed hybrid runs.
+The total campaign expenditure was therefore approximately **6.6 wall-clock
+hours** (with the screening and hybrid legs parallelized across the available
+cores).  The largest earlier single chunks were the two deep phase-2 legs,
+each running for about **2h02m** before being stopped as truncated.
 
 ## Appendix A: raw campaign log
 
@@ -285,3 +348,65 @@ The table rows below are preserved verbatim as the measurement appendix.
 | 2026-07-25T01:13:59 | L | deep-start [(6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0)] | 426 | 3 | untruncated | - | - | - | RUNNING |
 | 2026-07-25T03:16:24 | S | deep-stop [(6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6)] | 185 | 3 | phase-2 incomplete | - | 2h02m | - | TRUNCATED |
 | 2026-07-25T03:16:24 | L | deep-stop [(6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0)] | 426 | 3 | phase-2 incomplete | - | 2h02m | - | TRUNCATED |
+| 2026-07-25T04:11:10 | L | deep-greedy1 ((6, 2, 4, 0), (4, 0, 4, 4)) | 410 | indispensable=359;freed=15 | 359 | 374 | 46.3s | UNSAT |
+| 2026-07-25T04:11:29 | S | deep-greedy1 ((6, 2, 4, 0), (12, 2, 2, 0)) | 167 | indispensable=124;freed=12 | 124 | 136 | 65.6s | UNSAT |
+| 2026-07-25T04:12:01 | L | deep-greedy1 ((6, 2, 4, 0), (1, 1, 3, 5)) | 410 | indispensable=355;freed=19 | 355 | 374 | 50.4s | UNSAT |
+| 2026-07-25T04:12:14 | S | deep-greedy1 ((6, 2, 4, 0), (1, 1, 3, 5)) | 170 | indispensable=129;freed=7 | 129 | 136 | 45.0s | UNSAT |
+| 2026-07-25T04:12:23 | joint | joint-deep1 L((4, 0, 4, 4), (1, 1, 3, 5)) S((12, 2, 2, 0),) | 578 | indispensable=502;freed=-77 | 502 | 509 | 115.3s | UNSAT |
+| 2026-07-25T04:12:45 | L | deep-greedy1 ((6, 2, 4, 0), (2, 0, 2, 4)) | 402 | indispensable=363;freed=11 | 363 | 374 | 44.2s | UNSAT |
+| 2026-07-25T04:13:06 | S | deep-greedy1 ((6, 2, 4, 0), (4, 0, 2, 2)) | 170 | indispensable=129;freed=7 | 129 | 136 | 51.3s | UNSAT |
+| 2026-07-25T04:13:19 | L | deep-greedy1 ((6, 2, 4, 0), (10, 0, 8, 2)) | 410 | indispensable=365;freed=9 | 365 | 374 | 34.0s | UNSAT |
+| 2026-07-25T04:13:59 | L | deep-greedy1 ((6, 2, 4, 0), (6, 2, 8, 0)) | 402 | indispensable=359;freed=15 | 359 | 374 | 40.5s | UNSAT |
+| 2026-07-25T04:14:13 | S | deep-greedy1 ((6, 2, 4, 0), (6, 0, 4, 6)) | 161 | indispensable=113;freed=23 | 113 | 136 | 66.9s | UNSAT |
+| 2026-07-25T04:14:27 | joint | joint-deep1 L((4, 0, 4, 4), (2, 0, 2, 4)) S((12, 2, 2, 0),) | 570 | indispensable=502;freed=-77 | 502 | 509 | 119.2s | UNSAT |
+| 2026-07-25T04:15:01 | S | deep-greedy1 ((6, 2, 4, 0), (2, 0, 4, 2)) | 170 | indispensable=129;freed=7 | 129 | 136 | 48.0s | UNSAT |
+| 2026-07-25T04:15:02 | L | deep-greedy2 ((6, 2, 4, 0), (1, 1, 3, 5), (4, 0, 4, 4)) | 434 | indispensable=347;freed=27 | 347 | 374 | 63.0s | UNSAT |
+| 2026-07-25T04:15:55 | S | deep-greedy1 ((6, 2, 4, 0), (12, 0, 2, 6)) | 170 | indispensable=122;freed=14 | 122 | 136 | 54.2s | UNSAT |
+| 2026-07-25T04:16:04 | L | deep-greedy2 ((6, 2, 4, 0), (1, 1, 3, 5), (2, 0, 2, 4)) | 426 | indispensable=349;freed=25 | 349 | 374 | 62.1s | UNSAT |
+| 2026-07-25T04:16:22 | joint | joint-deep1 L((4, 0, 4, 4), (10, 0, 8, 2)) S((12, 2, 2, 0),) | 578 | indispensable=502;freed=-77 | 502 | 509 | 110.5s | UNSAT |
+| 2026-07-25T04:16:51 | S | deep-greedy1 ((6, 2, 4, 0), (0, 0, 6, 6)) | 158 | indispensable=124;freed=12 | 124 | 136 | 55.9s | UNSAT |
+| 2026-07-25T04:16:53 | L | deep-greedy2 ((6, 2, 4, 0), (1, 1, 3, 5), (10, 0, 8, 2)) | 434 | indispensable=355;freed=19 | 355 | 374 | 48.9s | UNSAT |
+| 2026-07-25T04:17:45 | joint | joint-deep1 L((4, 0, 4, 4), (6, 2, 4, 0)) S((12, 2, 2, 0),) | 566 | indispensable=491;freed=-66 | 491 | 509 | 80.7s | UNSAT |
+| 2026-07-25T04:17:47 | L | deep-greedy2 ((6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0)) | 426 | indispensable=345;freed=29 | 345 | 374 | 54.1s | UNSAT |
+| 2026-07-25T04:18:17 | S | deep-greedy2 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 2, 2, 0)) | 182 | indispensable=105;freed=31 | 105 | 136 | 86.5s | UNSAT |
+| 2026-07-25T04:18:58 | L | deep-greedy3 ((6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0), (4, 0, 4, 4)) | 450 | indispensable=329;freed=45 | 329 | 374 | 70.1s | UNSAT |
+| 2026-07-25T04:19:28 | S | deep-greedy2 ((6, 2, 4, 0), (6, 0, 4, 6), (1, 1, 3, 5)) | 185 | indispensable=113;freed=23 | 113 | 136 | 71.0s | UNSAT |
+| 2026-07-25T04:19:47 | joint | joint-deep1 L((4, 0, 4, 4), (6, 2, 8, 0)) S((12, 2, 2, 0),) | 570 | indispensable=493;freed=-68 | 493 | 509 | 117.6s | UNSAT |
+| 2026-07-25T04:20:18 | L | deep-greedy3 ((6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0), (2, 0, 2, 4)) | 442 | indispensable=323;freed=51 | 323 | 374 | 80.1s | UNSAT |
+| 2026-07-25T04:20:42 | S | deep-greedy2 ((6, 2, 4, 0), (6, 0, 4, 6), (4, 0, 2, 2)) | 185 | indispensable=113;freed=23 | 113 | 136 | 73.9s | UNSAT |
+| 2026-07-25T04:21:16 | L | deep-greedy3 ((6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0), (10, 0, 8, 2)) | 450 | indispensable=345;freed=29 | 345 | 374 | 58.5s | UNSAT |
+| 2026-07-25T04:21:47 | S | deep-greedy2 ((6, 2, 4, 0), (6, 0, 4, 6), (2, 0, 4, 2)) | 185 | indispensable=113;freed=23 | 113 | 136 | 64.3s | UNSAT |
+| 2026-07-25T04:21:54 | joint | joint-deep1 L((4, 0, 4, 4),) S((12, 2, 2, 0), (6, 2, 4, 0)) | 564 | indispensable=493;freed=-68 | 493 | 509 | 123.8s | UNSAT |
+| 2026-07-25T04:22:46 | L | deep-greedy4 ((6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0), (2, 0, 2, 4), (4, 0, 4, 4)) | 466 | indispensable=319;freed=55 | 319 | 374 | 89.7s | UNSAT |
+| 2026-07-25T04:23:17 | S | deep-greedy2 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6)) | 185 | indispensable=85;freed=51 | 85 | 136 | 90.0s | UNSAT |
+| 2026-07-25T04:23:42 | joint | joint-deep1 L((4, 0, 4, 4),) S((12, 2, 2, 0), (1, 1, 3, 5)) | 578 | indispensable=504;freed=-79 | 504 | 509 | 102.9s | UNSAT |
+| 2026-07-25T04:24:09 | L | deep-greedy4 ((6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0), (2, 0, 2, 4), (10, 0, 8, 2)) | 466 | indispensable=323;freed=51 | 323 | 374 | 83.6s | UNSAT |
+| 2026-07-25T04:24:53 | S | deep-greedy2 ((6, 2, 4, 0), (6, 0, 4, 6), (0, 0, 6, 6)) | 173 | indispensable=88;freed=48 | 88 | 136 | 96.4s | UNSAT |
+| 2026-07-25T04:25:27 | joint | joint-deep1 L((4, 0, 4, 4),) S((12, 2, 2, 0), (4, 0, 2, 2)) | 578 | indispensable=504;freed=-79 | 504 | 509 | 100.9s | UNSAT |
+| 2026-07-25T04:25:37 | L | deep-greedy5 ((6, 2, 4, 0), (1, 1, 3, 5), (6, 2, 8, 0), (2, 0, 2, 4), (4, 0, 4, 4), (10, 0, 8, 2)) | 490 | indispensable=319;freed=55 | 319 | 374 | 87.7s | UNSAT |
+| 2026-07-25T04:26:49 | S | deep-greedy3 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (12, 2, 2, 0)) | 206 | indispensable=77;freed=59 | 77 | 136 | 116.4s | UNSAT |
+| 2026-07-25T04:28:22 | S | deep-greedy3 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (1, 1, 3, 5)) | 209 | indispensable=85;freed=51 | 85 | 136 | 92.1s | UNSAT |
+| 2026-07-25T04:29:54 | S | deep-greedy3 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (4, 0, 2, 2)) | 209 | indispensable=85;freed=51 | 85 | 136 | 93.0s | UNSAT |
+| 2026-07-25T04:30:04 | joint | joint-deep1 L((4, 0, 4, 4), (1, 1, 3, 5)) S((12, 2, 2, 0),) | 578 | indispensable=502;freed=7 | 502 | 509 | 115.5s | UNSAT |
+| 2026-07-25T04:31:31 | S | deep-greedy3 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (2, 0, 4, 2)) | 209 | indispensable=85;freed=51 | 85 | 136 | 96.8s | UNSAT |
+| 2026-07-25T04:32:08 | joint | joint-deep1 L((4, 0, 4, 4), (2, 0, 2, 4)) S((12, 2, 2, 0),) | 570 | indispensable=502;freed=7 | 502 | 509 | 119.3s | UNSAT |
+| 2026-07-25T04:33:12 | S | deep-greedy3 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (0, 0, 6, 6)) | 197 | indispensable=85;freed=51 | 85 | 136 | 100.5s | UNSAT |
+| 2026-07-25T04:34:03 | joint | joint-deep1 L((4, 0, 4, 4), (10, 0, 8, 2)) S((12, 2, 2, 0),) | 578 | indispensable=502;freed=7 | 502 | 509 | 110.5s | UNSAT |
+| 2026-07-25T04:35:12 | S | deep-greedy4 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (12, 2, 2, 0), (1, 1, 3, 5)) | 230 | indispensable=77;freed=59 | 77 | 136 | 120.2s | UNSAT |
+| 2026-07-25T04:35:26 | joint | joint-deep1 L((4, 0, 4, 4), (6, 2, 4, 0)) S((12, 2, 2, 0),) | 566 | indispensable=491;freed=18 | 491 | 509 | 80.8s | UNSAT |
+| 2026-07-25T04:37:12 | S | deep-greedy4 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (12, 2, 2, 0), (4, 0, 2, 2)) | 230 | indispensable=77;freed=59 | 77 | 136 | 120.3s | UNSAT |
+| 2026-07-25T04:37:28 | joint | joint-deep1 L((4, 0, 4, 4), (6, 2, 8, 0)) S((12, 2, 2, 0),) | 570 | indispensable=493;freed=16 | 493 | 509 | 117.5s | UNSAT |
+| 2026-07-25T04:39:08 | S | deep-greedy4 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (12, 2, 2, 0), (2, 0, 4, 2)) | 230 | indispensable=77;freed=59 | 77 | 136 | 115.5s | UNSAT |
+| 2026-07-25T04:39:35 | joint | joint-deep1 L((4, 0, 4, 4),) S((12, 2, 2, 0), (6, 2, 4, 0)) | 564 | indispensable=493;freed=16 | 493 | 509 | 123.8s | UNSAT |
+| 2026-07-25T04:41:01 | S | deep-greedy4 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (12, 2, 2, 0), (0, 0, 6, 6)) | 218 | indispensable=77;freed=59 | 77 | 136 | 112.8s | UNSAT |
+| 2026-07-25T04:41:23 | joint | joint-deep1 L((4, 0, 4, 4),) S((12, 2, 2, 0), (1, 1, 3, 5)) | 578 | indispensable=504;freed=5 | 504 | 509 | 102.9s | UNSAT |
+| 2026-07-25T04:42:58 | S | deep-greedy5 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (12, 2, 2, 0), (4, 0, 2, 2), (1, 1, 3, 5)) | 254 | indispensable=77;freed=59 | 77 | 136 | 117.1s | UNSAT |
+| 2026-07-25T04:43:08 | joint | joint-deep1 L((4, 0, 4, 4),) S((12, 2, 2, 0), (4, 0, 2, 2)) | 578 | indispensable=504;freed=5 | 504 | 509 | 100.9s | UNSAT |
+| 2026-07-25T04:44:56 | S | deep-greedy5 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (12, 2, 2, 0), (4, 0, 2, 2), (2, 0, 4, 2)) | 254 | indispensable=77;freed=59 | 77 | 136 | 118.5s | UNSAT |
+| 2026-07-25T04:45:22 | joint | joint-deep1 L((4, 0, 4, 4),) S((12, 2, 2, 0), (6, 0, 4, 6)) | 569 | indispensable=493;freed=16 | 493 | 509 | 130.1s | UNSAT |
+| 2026-07-25T04:46:53 | S | deep-greedy5 ((6, 2, 4, 0), (6, 0, 4, 6), (12, 0, 2, 6), (12, 2, 2, 0), (4, 0, 2, 2), (0, 0, 6, 6)) | 242 | indispensable=77;freed=59 | 77 | 136 | 117.1s | UNSAT |
+| 2026-07-25T04:47:13 | joint | joint-deep1 L((4, 0, 4, 4),) S((12, 2, 2, 0), (2, 0, 4, 2)) | 578 | indispensable=504;freed=5 | 504 | 509 | 106.7s | UNSAT |
+| 2026-07-25T04:47:30 | S | deep-final six-orbit pool | 627 | indispensable=77;freed=59 | - | 136 | ~30m | UNSAT |
+| 2026-07-25T04:47:30 | L | deep-final six-orbit pool | 625 | indispensable=319;freed=55 | - | 374 | ~25m | UNSAT |
+| 2026-07-25T05:14:00 | L | hybrid deep-final, seeds 0/1/2/3 | 625 | core+greedy | - | - | ~32m concurrent | FINAL 524,534,533,529 |
+| 2026-07-25T05:19:00 | S | hybrid deep-final, seeds 0/1/2/3 | 627 | core+greedy | - | - | ~32m concurrent | FINAL 525,518,523,521 |

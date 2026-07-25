@@ -1,0 +1,56 @@
+seed=2 core 627 -> 580 elapsed=25.9s
+seed=2 core 580 -> 577 elapsed=30.0s
+seed=2 core 577 -> 574 elapsed=26.4s
+seed=2 core 574 -> 571 elapsed=26.3s
+seed=2 core 571 -> 571 elapsed=25.3s
+seed=2 pass=1 delete=34 n=570
+seed=2 pass=1 delete=5 n=568
+seed=2 pass=1 delete=252 n=567
+seed=2 pass=1 delete=99 n=566
+seed=2 pass=1 delete=25 n=566
+seed=2 pass=1 delete=40 n=565
+seed=2 pass=1 delete=27 n=563
+seed=2 pass=1 delete=231 n=562
+seed=2 pass=1 delete=225 n=561
+seed=2 pass=1 delete=128 n=559
+seed=2 pass=1 delete=232 n=558
+seed=2 pass=1 delete=54 n=557
+seed=2 pass=1 delete=12 n=556
+seed=2 pass=1 delete=71 n=555
+seed=2 pass=1 delete=204 n=554
+seed=2 pass=1 delete=18 n=553
+seed=2 pass=1 delete=227 n=550
+seed=2 pass=1 delete=93 n=549
+seed=2 pass=1 delete=41 n=548
+seed=2 pass=1 delete=196 n=547
+seed=2 pass=1 delete=0 n=546
+seed=2 pass=1 delete=8 n=545
+seed=2 pass=1 delete=86 n=544
+seed=2 pass=1 delete=10 n=543
+seed=2 pass=1 delete=22 n=542
+seed=2 pass=1 delete=219 n=541
+seed=2 pass=1 delete=102 n=541
+seed=2 pass=1 delete=229 n=540
+seed=2 pass=1 delete=175 n=539
+seed=2 pass=1 delete=241 n=538
+seed=2 pass=1 delete=24 n=537
+seed=2 pass=1 delete=218 n=535
+seed=2 pass=1 delete=159 n=534
+seed=2 pass=1 delete=77 n=532
+seed=2 pass=1 delete=240 n=532
+seed=2 pass=1 delete=246 n=532
+seed=2 pass=1 delete=166 n=531
+seed=2 pass=1 delete=87 n=530
+seed=2 pass=1 delete=158 n=530
+seed=2 pass=1 delete=79 n=529
+seed=2 pass=1 delete=151 n=528
+seed=2 pass=1 delete=234 n=527
+seed=2 pass=1 delete=139 n=526
+seed=2 pass=1 delete=245 n=525
+seed=2 pass=1 delete=228 n=525
+seed=2 pass=1 delete=6 n=525
+seed=2 pass=1 delete=7 n=524
+seed=2 pass=1 delete=94 n=523
+seed=2 pass=1 removed=48 n=523
+seed=2 pass=2 removed=0 n=523
+seed=2 FINAL 523
