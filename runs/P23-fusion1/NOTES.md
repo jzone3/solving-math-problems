@@ -458,3 +458,41 @@ where the outer solver just returns arbitrary 508-subsets and the loop degrades
 into sampling.
 
 Still no sub-509 graph, and nothing is claimed.
+
+## E20 — small multi-rotation unions (`scan3.py`, in `runs/P23-parts-rho` geometry)
+
+Parts' type M unions exactly two copies, P ∪ ρP. Nothing in the literature
+unions three or more copies at different rotations, and a union that is
+non-4-colorable while already having < 509 vertices would beat the record with
+no minimisation at all. Scanned: base = ⊕ⁿH² (n = 2, 3) inside a disk of radius
+r, copies rotated by ω_t and by conjugates ω̄_t (rotation by −angle), origin
+shared; floats as prefilter, sizes capped at 520 vertices.
+
+* 1088 unions over t ∈ {1..28}², r ∈ {0.6..1.2} — all 4-colorable.
+* 90 unions over t ∈ {±1, ±2, ±3}², r ∈ {1.0..2.0} — all 4-colorable.
+
+The scan also explains *why*, and this is worth recording as structural rather
+than empirical: ω_t creates cross edges only between points at radius ≈ √t
+(|1 − ω_t|² = 1/t), so a disk of radius r carries **zero** cross edges unless
+r ≳ √t. Measured on the r = 2.0 disk (451 points/copy): t = 1 → 3840 cross
+pairs, t = 3 → 1896, t = 4 → 126, t = 2 → 60. But a disk large enough for
+cross edges at t = 4 already has ~450 points per copy, so two copies exceed 509
+before anything else happens. Any sub-509 5-chromatic union must therefore be a
+*sparse subset* of the disk — which is exactly Parts' minimisation problem
+again, not something a union scan can stumble into.
+
+## E21 — orbit-level hitting set with a 508-vertex budget (`orbit_cegar.py`)
+
+The record is orbit-structured (L374 = 37 base orbits, S136 = 14), so the
+natural search space is the **772 orbits** of ⟨τ₃, τ₄, conj₃₃, −1⟩ on W₄
+(sizes 1–8), not the 5696 vertices. Selection variables per orbit; the vertex
+budget Σ|orbit| ≤ 508 is encoded by repeating each orbit literal (size) times
+inside a sequential counter (pypblib will not build here, so no native PB
+encoding); hyperedges are lifted to orbits. Every iteration therefore tests an
+orbit-closed candidate that would *be* a record if it were non-4-colorable, and
+a lower budget (≥ 380 vertices) keeps the solver away from trivially colourable
+tiny selections.
+
+Status: ~25 s/iteration, candidates of 388–508 vertices, all 4-colorable so far;
+lifted hyperedges are weak (300–460 of 772 orbits) because a tabu hyperedge
+spreads over many orbits. Running.
