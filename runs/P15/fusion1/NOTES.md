@@ -379,3 +379,36 @@ fabricated; every negative is backed by exact-verifier output. The only
 credible route to 43 remains an exact top-down construction with joint
 tower/x-slot allocation designed from the start — not any search, repair, or
 counting blueprint reachable by the methods exhausted across v1-v5 + fusion1.
+
+## 11. Positive artifacts + m=16 triple-verification + m=17 ladder (fusion1, later)
+
+Beyond the negatives above, this run committed the actual VERIFIED positive
+frontier as reproducible witnesses under `solutions/P15/`:
+
+- Explicit distinct-moduli covering systems for **m = 3 … 16**, each PASSing
+  the exact verifiers. m=3..15 pass both `verify_v1.py` (CRT recursion) and
+  `verify_subtract.py` (exact cell subtraction); see `WITNESSES.md` for the
+  per-m factorization / congruence-count / literal PASS lines.
+- **m=16 is triple-verified.** Key finding: verifier outcome depends on N, not
+  just on coverage. Oversized m=16 factorizations (e.g. 2^8·3^5·5^3·7^2·11·13·17)
+  cover Z (PASS `verify_v1.py`) but make `verify_subtract.py`'s working set peak
+  at ~66M cells, tripping its `>50_000_000` guard (capacity-limited, NOT a
+  coverage refutation). Reusing the *m=15-scale* N = 2^7·3^5·5^3·7^2·11·13 =
+  27,243,216,000 closes an exact m=16 cover in **641 congruences** with peak
+  cells only 6,925,956 — under the guard. All three verifiers PASS:
+    - `verify_v1.py`: PASS 641 congruences, min modulus 16, cover Z
+    - `verify_subtract.py`: PASS, peak cells 6925956
+    - `verify_sieve.py`: PASS, N=27243216000
+- Added `toolkit/verify_sieve.py` — a 4th INDEPENDENT exact verifier: direct
+  residue sieve over Z_N in bounded-memory numpy chunks (valid because every
+  modulus divides N, so covering Z ⟺ covering [0,N)). Validated: PASS on
+  m=3..15, and FAIL (`uncovered residue 9`) on a deliberately broken witness.
+
+- **m=17 ladder — NEGATIVE (structural, reconfirmed).** Swept smooth N from
+  5.4e10 up to 6.9e12 with generous budget. None closed exactly. The signature
+  is consistent: residual *mass* shrinks but residual *fragment count* grows or
+  plateaus (e.g. 2^7·3^6·5^3·7^2·11·13: frags ~2.7M→8.35M; the 4.6e11 profile:
+  greedy 3.25M frags, weighted repair 5.48M frags). This is the same diffuse-
+  tail / integrality-gap wall isolated in Experiment C — greedy-over-divisors-
+  of-a-smooth-N caps at **m=16**. m=17+ needs a structurally different
+  (mixed-modulus / recursive-family) construction, i.e. the genuine open part.
