@@ -770,3 +770,11 @@ Six shards are scanning all 5695 vertices in degree order. If the forced set F
 were itself non-4-colorable and smaller than 509 it would be a new record (and
 the unique minimal witness); the realistic outcome is a hard core that every
 future search can freeze for free.
+
+Status of the deduplicated-pool runs: the exact region-trade minimiser restarted
+from the record on `w4d.pkl` (holes of 50/70/90, budget H-1) has produced no
+accepted trade in 130+ iterations per hole, and the whole-pool bound-508 hitting
+set on `w4d.pkl` (2972 remapped clauses, including the origin unit clause) is
+running at ~14 min/iteration with hyperedges still ~300-400 wide. So the
+deduplication removes a genuine double-count in the pool but does not unlock a
+508; the forced-vertex scan is the only cheap invariant it produced.
