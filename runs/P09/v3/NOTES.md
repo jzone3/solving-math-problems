@@ -256,6 +256,23 @@ SRG(37,18,8,9), 180 SRG(36,14,4,6), 167 SRG(64,18,2,6), …): 43,718 SRGs —
 threshold prefilter). SRGs need NOT be vertex-transitive, so this is not
 subsumed by the VT census; script inline in NOTES history / srg/ dir.
 
+### 5th pass (in progress): exhaustive K₄-free n = 13 sweep (open ω=3 case)
+Re-checked literature 2026-07-24 (arXiv:2607.16746, 2601.04671, 2512.22482,
+2512.01409 all cite the general conjecture as open; the ω=3 sparse case is
+the frontier — Zhang 2026 proved only DENSE K₄-free). New attack: compile
+nauty 2.8.9 geng with a custom `-DPRUNE=k4prune` hook (k4free/prune.c) that
+rejects any partial graph where the newest vertex completes a K₄ — valid
+because geng fixes earlier vertices' mutual adjacencies, so checking
+triangles inside N(new vertex) suffices. Validated: prune counts match a
+networkx ω<4 filter of full geng output for n = 6,7,8 (120 / 685 / 6431).
+This enumerates ALL K₄-free graphs on 13 vertices (each exactly once, up to
+iso) and pipes them through the check2 threshold checker (16-way res/mod
+split). At n = 13 this covers ω ∈ {2,3} completely — ω=2 is proved
+(Lin–Ning–Wu), so any CANDIDATE would be an ω=3 violation. Progress
+checkpoint 2026-07-25 11:37 UTC: ~138 × 10⁹ graphs processed (rchar-based),
+~2.1M graphs/s aggregate, 0 candidates so far; total K₄-free(13) count
+unknown a priori (will be reported by the DONE lines).
+
 ## STATUS: negative — no counterexample found. Frontier pushed:
 conjecture exhaustively machine-verified for ALL graphs n ≤ 12
 (1.65 × 10¹¹ graphs), ALL vertex-transitive graphs n < 48 (100,720,344,
