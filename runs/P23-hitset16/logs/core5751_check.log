@@ -1,0 +1,23 @@
+core5751: vertices=5751 edges=46732 clauses=227185 vars=23004
+kissat_seconds=267.049
+s UNSATISFIABLE
+drat_trim_seconds=118.596
+
+c turning on binary mode checking
+
+c parsing input formula with 23004 variables and 227185 clauses
+
+c finished parsing, read 175839984 bytes from proof file
+
+c detected empty clause; start verification via backward checking
+
+c 165988 of 227185 clauses in core                            
+
+c 455791 of 1510061 lemmas in core using 57416047 resolution steps
+
+c 0 RAT lemmas in core; 763720 redundant literals in core lemmas
+
+s VERIFIED
+
+c verification time: 118.585 seconds
+drat=VERIFIED

@@ -1,0 +1,8 @@
+{"iteration": 1, "input_vertices": 6906, "status": "UNSAT", "seconds": 43.282, "core_vertices": 6748, "snapshot": "core_r3_reduced.pkl"}
+{"iteration": 2, "input_vertices": 6748, "status": "UNSAT", "seconds": 36.392, "core_vertices": 6696, "snapshot": "core_r3_reduced.pkl"}
+{"iteration": 3, "input_vertices": 6696, "status": "UNSAT", "seconds": 28.922, "core_vertices": 6530, "snapshot": "core_r3_reduced.pkl"}
+{"iteration": 4, "input_vertices": 6530, "status": "UNSAT", "seconds": 29.964, "core_vertices": 6426, "snapshot": "core_r3_reduced.pkl"}
+{"iteration": 5, "input_vertices": 6426, "status": "UNSAT", "seconds": 30.282, "core_vertices": 6344, "snapshot": "core_r3_reduced.pkl"}
+{"iteration": 6, "input_vertices": 6344, "status": "UNSAT", "seconds": 36.996, "core_vertices": 6295, "snapshot": "core_r3_reduced.pkl"}
+{"iteration": 7, "input_vertices": 6295, "status": "UNSAT", "seconds": 31.034, "core_vertices": 6105, "snapshot": "core_r3_reduced.pkl"}
+{"iteration": 8, "input_vertices": 6105, "status": "UNSAT", "seconds": 35.533, "core_vertices": 6035, "snapshot": "core_r3_reduced.pkl"}

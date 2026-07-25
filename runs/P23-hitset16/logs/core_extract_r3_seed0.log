@@ -1,0 +1,9 @@
+{"iteration": 1, "input_vertices": 27265, "status": "UNSAT", "seconds": 114.417, "core_vertices": 18049, "snapshot": "core_r3_seed0.pkl"}
+{"iteration": 2, "input_vertices": 18049, "status": "UNSAT", "seconds": 82.058, "core_vertices": 13965, "snapshot": "core_r3_seed0.pkl"}
+{"iteration": 3, "input_vertices": 13965, "status": "UNSAT", "seconds": 72.564, "core_vertices": 12032, "snapshot": "core_r3_seed0.pkl"}
+{"iteration": 4, "input_vertices": 12032, "status": "UNSAT", "seconds": 63.667, "core_vertices": 10918, "snapshot": "core_r3_seed0.pkl"}
+FINAL 10918 vertices -> core_r3_seed0.pkl
+
+real	5m33.020s
+user	5m30.829s
+sys	0m0.954s

@@ -1,0 +1,13 @@
+{"iteration": 1, "input_vertices": 6035, "status": "UNSAT", "seconds": 34.458, "core_vertices": 5989, "snapshot": "core_r3_reduced2.pkl"}
+{"iteration": 2, "input_vertices": 5989, "status": "UNSAT", "seconds": 29.808, "core_vertices": 5937, "snapshot": "core_r3_reduced2.pkl"}
+{"iteration": 3, "input_vertices": 5937, "status": "UNSAT", "seconds": 35.267, "core_vertices": 5919, "snapshot": "core_r3_reduced2.pkl"}
+{"iteration": 4, "input_vertices": 5919, "status": "UNSAT", "seconds": 27.269, "core_vertices": 5874, "snapshot": "core_r3_reduced2.pkl"}
+{"iteration": 5, "input_vertices": 5874, "status": "UNSAT", "seconds": 33.261, "core_vertices": 5823, "snapshot": "core_r3_reduced2.pkl"}
+{"iteration": 6, "input_vertices": 5823, "status": "UNSAT", "seconds": 32.265, "core_vertices": 5802, "snapshot": "core_r3_reduced2.pkl"}
+{"iteration": 7, "input_vertices": 5802, "status": "UNSAT", "seconds": 32.898, "core_vertices": 5775, "snapshot": "core_r3_reduced2.pkl"}
+{"iteration": 8, "input_vertices": 5775, "status": "UNSAT", "seconds": 31.002, "core_vertices": 5751, "snapshot": "core_r3_reduced2.pkl"}
+FINAL 5751 vertices -> core_r3_reduced2.pkl
+
+real	4m16.520s
+user	4m14.520s
+sys	0m0.555s

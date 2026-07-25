@@ -1,3 +1,23 @@
+## Phase 3 reduced-universe scope
+
+The phase-3 core search extracts an induced subgraph of `wt_r3.pkl` and
+certifies each iteration with Kissat plus drat-trim.  The current materialized
+universe is `wt_r3_core5751.pkl`: 5,751 vertices and 46,732 induced edges.
+Its independent check is recorded in `logs/core5751_check.log` and ends with
+`s VERIFIED`.
+
+**All phase-3 hitting-set, hyperedge, LP, and infeasibility conclusions are
+scoped only to this 5,751-vertex reduced universe.  They do not establish
+the corresponding claim for the full 27,265-vertex `wt_r3.pkl` universe or
+for the original 77,485-vertex construction.  Banks from different
+universes must never be mixed.**
+
+The old full-universe bank had 320 hyperedges of sizes 8,472--9,090
+(median 8,878), approximately 31% of the universe, and was rejected as
+search-quality input.  On `wt_r3_core5751.pkl`, the maximum-colourable
+subset optimizer is warm-started by the sound tabu colouring path and uses
+CP-SAT to improve the retained coloured subset.  A quality gate rejects
+`|D| > 5%|U|`; rejected attempts are logged but not banked.
 # P23 hitset16 phase 2 notes
 
 ## Soundness invariant

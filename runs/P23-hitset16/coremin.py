@@ -28,7 +28,7 @@ def solve_core(S, seed=0, timeout=3600, tag='cm'):
     remap = {x: i for i, x in enumerate(S)}
     E2 = [(remap[u], remap[v]) for u, v in E if u in remap and v in remap]
     tri = find_triangle(S)
-    tri2 = tuple(remap[x] for x in tri)
+    tri2 = tuple(remap[x] for x in tri) if tri else None
     nvars, cls = color_cnf(len(S), E2, 4, sym_clique=tri2)
     random.seed(seed)
     tmpdir = os.path.expanduser('~/p23/tmp')
