@@ -700,3 +700,22 @@ stalling near 1900 and with every disk up to radius 2 being 4-colorable. The
 ω₁₆/ω₂₈ rotations are new mathematics, but this census is evidence they are the
 wrong place to look for a *small* 5-chromatic graph — Parts' t = 4, the smallest
 working rotation, is also the most tightly coupled one.
+
+## E30 — how many cross edges does a witness need? (`crossmin.py`)
+
+Each half of Parts' union is 4-colorable on its own, so every witness is forced
+through the **cross edges**, and the whole W₄ pool has only 126 of them (the
+record uses 54, over 74 endpoints). That makes the cross-edge set a 126-element
+combinatorial object — three orders of magnitude smaller than the 5696-vertex
+search space — and deleting cross edges is sound in the useful direction: if the
+pool with only C left is 4-colorable, then no witness whose cross edges lie in C
+exists at all.
+
+`crossmin.py` therefore greedily deletes cross edges (with Parts' 8-4-2-1
+batching in the later seeds) while re-proving the pool non-4-colorable. First
+measurements: the full pool takes 165–258 s per UNSAT proof, and the first
+deletions succeed (126 → 123 so far), so the record's 54 is not a lower bound.
+
+Also measured and negative: cross-edge endpoints are *not* a useful locality
+handle — their 2-hop neighbourhood is already 5684 of the 5696 pool vertices, so
+"search near the cross edges" is no restriction at all.
