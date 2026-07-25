@@ -294,3 +294,22 @@ all terminate at exactly 509. The record is not merely a local optimum of vertex
 deletion: it is stable under every substitution-composition move we can generate,
 and hundreds of *distinct* 509-vertex 5-chromatic UDGs exist, every one of them
 vertex-critical. No sub-509 graph is claimed.
+
+### E11 — multi-way union of all known distinct 509s (`multiunion.py`) — NEGATIVE
+Union of the record with **all 11 swap vertices at once** = a 520-vertex
+non-4-colorable graph, attacked with independent **randomly ordered** greedy
+deletions (degree-ordered greedy is deterministic and always lands in the same
+place). Every run returns **509**, each time a *different* 509 (3–7 non-record
+vertices). More evidence that 509 is the size of every minimal non-4-colorable
+subgraph reachable in this geometry, not just of the published one.
+
+### E12 — compute on the new type-M rotation ω₁₆ (child branch `runs/P23-parts-rho`)
+The Parts-method child established something genuinely new: Parts wrote
+*"working constructions of type M with other rotations are not known yet"*, and
+the child's exact survey of ω_t = exp(i·arccos(1−1/2t)) found that
+**ω₁₆ and ω₂₈ also work** (W₁₆ = 77,485 v / 863,046 e is non-4-colorable;
+all other t ≤ 28 are 4-colorable, hence hopeless). This machine now contributes
+parallel reduction runs on W₁₆ (Parts' 8-4-2-1 batched greedy with independent
+seeds, plus `lns_gen.py`, a coordinate-free BFS-ball version of the LNS engine
+for arbitrary pools): 5081 → 4347 and falling at the time of writing. Results
+land on `runs/P23-parts-rho`.

@@ -1,0 +1,8 @@
+union base: 520 vertices (record + 11 swap points)
+  seed 1: -> 509 (5 non-record) 284s
+  seed 2: -> 509 (3 non-record) 294s
+  seed 0: -> 509 (3 non-record) 294s
+  seed 3: -> 509 (5 non-record) 545s
+  seed 5: -> 509 (4 non-record) 558s
+  seed 4: -> 509 (7 non-record) 586s
+DONE best=509
