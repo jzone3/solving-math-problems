@@ -79,11 +79,13 @@ See results.log (machine-written, one RESULT line per completed (n,L)). Checkpoi
   (949s, 95960 blocking clauses). No counterexample on <= 14 vertices.
 - n = 15, L = 4..9 (full feasible range): **UNSAT**. Hardest cell L=9 (20450s, 272760
   blocking clauses). No counterexample on <= 15 vertices.
-- n = 16: L = 5 (2316s), 6 (7797s), 7 (1207s), 8 (UNSAT at 54678s on a second attempt with
-  blocking-clause persistence, 343543 clauses; first attempt hit a 10h limit) all UNSAT;
-  L = 9 running (>15h, 585k clauses, no counterexample encountered).
-- n = 17: L = 7 UNSAT (3727s); L = 5, 6, 8, 9, 10 killed unfinished at session end (~11h wall
-  each, no counterexample encountered).
+- n = 16, L = 5..9 (full feasible range): **UNSAT** — L = 5 (2316s), 6 (7797s), 7 (1207s),
+  8 (54678s, 343543 blocking clauses), 9 (153848s ≈ 42.7h, 598411 blocking clauses; both big
+  cells needed a restart with blocking-clause persistence after 10h first attempts).
+  **No counterexample on <= 16 vertices.**
+- n = 17: L = 5 (127037s, all candidate rejections were connectivity cuts), 6 (58430s),
+  7 (3727s) UNSAT; L = 8, 9, 10 still running at final write-up (>24h each, 0.5-1.7M blocking
+  clauses each, no counterexample encountered).
 
 ## Dead ends / lessons
 
@@ -101,7 +103,8 @@ See results.log (machine-written, one RESULT line per completed (n,L)). Checkpoi
 
 ## Final status
 
-STATUS: negative / frontier-pushed — complete refutation of any counterexample on n <= 15
-vertices (all graphs, via minimality reductions R1/R2), plus n=16 for L in {5,6,7} and n=17
-for L = 7; no counterexample or near-miss found anywhere. Conjecture verified exhaustively
-three vertices beyond the literature frontier (n <= 12).
+STATUS: negative / frontier-pushed — complete refutation of any counterexample on n <= 16
+vertices (all graphs, via minimality reductions R1/R2), plus n=17 for L in {5,6,7}; no
+counterexample or near-miss found anywhere. Conjecture verified exhaustively four vertices
+beyond the literature frontier (n <= 12). Full n=17 closure needs only L in {8,9,10}
+(runs in progress; resumable via blocked_n17_L*.txt persistence files + sat_cegar.py).
