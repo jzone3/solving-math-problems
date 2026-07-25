@@ -19,4 +19,4 @@ Matrix of solve runs: problem x variant. Status: queued / running / negative / n
 | P13 | queued | queued | **(9,6,1)-PMD proven nonexistent — DRAT-verified, adversarially CONFIRMED (see solutions/P13)** | queued | queued |
 | P14 | queued | queued | queued | queued | queued |
 | P15 | queued | queued | queued | queued | queued |
-| P22 | queued | **negative on G₁₂₇ decision; NEW: symmetric-coloring exclusion theorem (any G₁₂₇ non-arrowing witness is fully asymmetric; DRAT-certified) — runs/P22/v2** | queued | queued | queued |
+| P22 | queued | **negative on G₁₂₇ decision; NEW: symmetric-coloring exclusion theorem (any G₁₂₇ non-arrowing witness is fully asymmetric; DRAT-certified) — runs/P22/v2**; **fusion1: H₃ (63-vtx Hermitian-unital) independently reconstructed + `H₃ → (K₃)_{T₃}` reproduced & DRAT/LRAT-certified (2 solvers, 2 checkers); f(2,3,4)≤63 stays open (block/ILP K₄-free subgraphs all SAT, witnesses verified) — runs/P22/fusion1/h3** | queued | queued | queued |
