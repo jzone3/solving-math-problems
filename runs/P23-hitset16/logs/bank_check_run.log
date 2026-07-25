@@ -1,0 +1,28 @@
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "/home/ubuntu/repos/solving-math-problems/runs/P23-hitset16/bank_check.py", line 14, in one
+    st, _ = h.kissat_color(sorted(set(range(h.NP)) - set(d)), f"bank_{idx}")
+ValueError: too many values to unpack (expected 2)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/repos/solving-math-problems/runs/P23-hitset16/bank_check.py", line 39, in <module>
+    main()
+  File "/home/ubuntu/repos/solving-math-problems/runs/P23-hitset16/bank_check.py", line 30, in main
+    results = p.map(one, jobs)
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 774, in get
+    raise self._value
+ValueError: too many values to unpack (expected 2)
+
+real	7m35.290s
+user	12m10.796s
+sys	0m1.968s
