@@ -18,6 +18,23 @@ search-quality input.  On `wt_r3_core5751.pkl`, the maximum-colourable
 subset optimizer is warm-started by the sound tabu colouring path and uses
 CP-SAT to improve the retained coloured subset.  A quality gate rejects
 `|D| > 5%|U|`; rejected attempts are logged but not banked.
+
+The initial reduced-universe optimizer bank accepted 14 diverse hyperedges:
+sizes 107--287, median 218 (8 attempts were rejected at sizes 289--437).
+The CEGAR run then added 13 sound fallback hyperedges, yielding a final bank
+of 27 with sizes 107--382, median 234.  Eight independent Kissat checks of
+the final bank all returned SAT for `U \ D`.
+
+The fractional LP bound of the final bank was 3.65 (26 clauses at the time
+of measurement; the final appended clause does not materially change the
+diagnosis), far below 509.  This confirms that the bank remains too small to
+support a meaningful near-509 lower bound.
+
+The reduced-universe outer trajectory reached a 9-vertex incumbent.  One
+iteration was `OPTIMAL` with CP-SAT bound 9; subsequent CEGAR iterations were
+time-limited (`FEASIBLE`) with bounds 6--8 and incumbents 9--12.  No 508, 450,
+or 400 infeasibility claim is made: those bounds are irrelevant to this
+5,751-vertex scoped run and were not proven by the partial bank.
 # P23 hitset16 phase 2 notes
 
 ## Soundness invariant

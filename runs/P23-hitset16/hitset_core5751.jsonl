@@ -1,0 +1,5 @@
+{"iteration": 1, "seconds": 60.053, "bank": 14, "support": 2165, "outer_status": "FEASIBLE", "outer_bound": 8.0, "selection": 9, "hyperedge": 272, "bank_min": 107, "bank_median": 222, "bank_max": 287}
+{"iteration": 2, "seconds": 236.61, "bank": 15, "support": 2305, "outer_status": "FEASIBLE", "outer_bound": 8.0, "selection": 9, "hyperedge": 328, "bank_min": 107, "bank_median": 234, "bank_max": 328}
+{"iteration": 3, "seconds": 411.577, "bank": 16, "support": 2462, "outer_status": "OPTIMAL", "outer_bound": 9.0, "selection": 9, "proven_infeasible_bounds": [], "hyperedge": 382, "bank_min": 107, "bank_median": 234, "bank_max": 382}
+{"iteration": 4, "seconds": 588.427, "bank": 17, "support": 2613, "outer_status": "FEASIBLE", "outer_bound": 6.0, "selection": 9, "hyperedge": 157, "bank_min": 107, "bank_median": 234, "bank_max": 382}
+{"iteration": 5, "seconds": 762.607, "bank": 18, "support": 2680, "outer_status": "FEASIBLE", "outer_bound": 6.0, "selection": 9, "hyperedge": 137, "bank_min": 107, "bank_median": 222, "bank_max": 382}

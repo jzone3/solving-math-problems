@@ -87,7 +87,7 @@ def main():
         if not bank:
             return
         for i, d in enumerate(rng.sample(bank, min(8, len(bank)))):
-            st, _ = H.kissat_color(sorted(universe - set(d)), f"ind_{i}")
+            st = H.kissat_color(sorted(universe - set(d)), f"ind_{i}")
             assert st, f"independent bank check failed for edge {i}"
 
     with open(args.out, "a", buffering=1) as log:

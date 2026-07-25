@@ -1,0 +1,8 @@
+{"seed": 20, "status": "FEASIBLE", "objective": 56616319.0, "bound": 60349675.0, "d_size": 355, "accepted": false}
+{"seed": 24, "status": "FEASIBLE", "objective": 57727478.0, "bound": 60438642.0, "d_size": 257, "accepted": true}
+{"seed": 22, "status": "FEASIBLE", "objective": 58930491.0, "bound": 60390592.0, "d_size": 138, "accepted": true}
+{"seed": 23, "status": "FEASIBLE", "objective": 56838392.0, "bound": 60368955.0, "d_size": 336, "accepted": false}
+{"seed": 21, "status": "FEASIBLE", "objective": 57379635.0, "bound": 60425466.0, "d_size": 289, "accepted": false}
+{"seed": 17, "status": "FEASIBLE", "objective": 57658183.0, "bound": 60427495.0, "d_size": 260, "accepted": true}
+{"seed": 18, "status": "FEASIBLE", "objective": 58049954.0, "bound": 60403876.0, "d_size": 222, "accepted": true}
+{"seed": 19, "status": "FEASIBLE", "objective": 56816914.0, "bound": 60373374.0, "d_size": 338, "accepted": false}
