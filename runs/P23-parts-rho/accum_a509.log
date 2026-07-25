@@ -1,0 +1,7 @@
+a509 it1: expand +400 -> 909
+a509 it1: reduced -> 661 (best 509)
+a509 it2: expand +400 -> 1061
+a509 it2: reduced -> 759 (best 509)
+a509 it3: expand +400 -> 1159
+a509 it3: reduced -> 765 (best 509)
+a509 it4: expand +400 -> 1165

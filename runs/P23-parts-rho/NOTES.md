@@ -200,6 +200,43 @@ aux kind and no ref, analogous to the failed t=10).
   `verify16_final.log`, `verify16_snapshot.log`.
 - `sat.py`, `greedy.py`, `emit.py` from runs/P23-fusion1.
 
+## Post-hoc corrections and constructive-pipeline calibration
+
+**Pool-size bug (fixed).** `build_pool_r.py` originally used n = max(2,⌈r⌉)
+Minkowski summands; Parts' base graph is B = ⊕⁴H². Pools for t ≤ 8 were
+therefore undersized (radius-2 pool: 2839 points instead of the correct 9259;
+the original W_4 did NOT contain all of L374). Fixed to n = max(4,⌈r⌉);
+the corrected builder reproduces the 9259-point disk that fully contains
+L374 ∪ S136. Consequences audited:
+- UNSAT positives (t = 4, 16, 28) are unaffected — the old pools are subsets
+  of the correct ones, and a superset of a non-4-colorable graph stays
+  non-4-colorable. (Corrected W_4 = 18517 vtx / 168630 edges, re-ran: UNSAT.)
+- Pools for t ≥ 9 come out IDENTICAL under the fix (⊕³ vs ⊕⁴ converge there),
+  so those SAT negatives stand as computed.
+- t = 1, 3, 5, 7 were re-run on the corrected pools (W sizes 5401 / 14653 /
+  21841 / 25261): all still SAT (`typem_*_v2.log`, `survey3.log`). All
+  negative conclusions in the table above survive the correction.
+
+**Deletion-based minimization is NOT the right engine (calibration).**
+Parent-session calibration plus our own experiment: `accum.py` implements a
+simplified Parts accumulation loop (expansion = re-adding members of
+partially-filled base orbits with degree ≥ 4, reduction = DRAT core jump +
+time-boxed 8-4-2-1 greedy). Calibration on the corrected W_4, where the
+optimum is KNOWN to be ≤ 509:
+- starting FROM the exact G509 vertex set, one expansion (+400) followed by
+  reduction lands at 661, and further iterations oscillate at 660–770 —
+  deletion cannot even re-find 509 from its own neighborhood;
+- starting from the full 18517-vertex W_4, the loop reached 2490 after 2
+  iterations (parent's long deletion runs floor near ~1850 on the small pool).
+
+So SAT-deletion floors ~3.5–4x above the constructive optimum, and our t=16
+sizes (2167 here, 1959 in the parent's longer runs) carry NO information about
+the true minimum at ω₁₆. Reaching Parts-level sizes requires his full
+reduction machinery (critical-hyperedge enumeration + minimal-graph search,
+his §5), which is beyond this run's budget. Orbit structure of the record for
+that future effort: L374 = 37 base orbits (18 full, 19 partial), S136 = 14
+orbits (9 full, 5 partial) — see `orbit_analysis.py` output in this directory.
+
 ## Conclusion
 
 - ω₁₆ and ω₂₈ are the first known working type-M rotations besides Parts'

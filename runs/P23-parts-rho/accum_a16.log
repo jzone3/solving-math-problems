@@ -1,0 +1,5 @@
+a16 it1: expand +400 -> 2567
+a16 it1: reduced -> 2371 (best 2167)
+a16 it2: expand +400 -> 2771
+a16 it2: reduced -> 2520 (best 2167)
+a16 it3: expand +400 -> 2920

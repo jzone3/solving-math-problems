@@ -1,0 +1,7 @@
+a4 it1: expand +0 -> 5677
+a4 it1: reduced -> 2213 (best 5677)
+a4 it1: NEW BEST 2213
+a4 it2: expand +400 -> 2613
+a4 it2: reduced -> 2155 (best 2213)
+a4 it2: NEW BEST 2155
+a4 it3: expand +400 -> 2555
