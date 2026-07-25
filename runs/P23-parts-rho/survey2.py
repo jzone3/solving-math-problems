@@ -19,8 +19,8 @@ import build_pool_r
 import lattice
 
 EPS = 1e-9
-TS = [int(x) for x in sys.argv[1:]] or list(range(1, 26))
-OUT = "survey2b.pkl" if sys.argv[1:] else "survey2.pkl"
+TS = [int(x) for x in sys.argv[2:]] or list(range(1, 26))
+OUT = sys.argv[1]
 
 
 def cross_pairs(pool, t):

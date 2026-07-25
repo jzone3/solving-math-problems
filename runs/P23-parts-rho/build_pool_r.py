@@ -10,7 +10,7 @@ import lattice
 
 def build(rmax):
     lim = 144.0 * rmax * rmax + 1e-6
-    n = max(2, math.ceil(rmax))
+    n = max(4, math.ceil(rmax))
     H2 = lattice.Hm(2)
     cur = {(0, 0, 0, 0)}
     for k in range(n):
