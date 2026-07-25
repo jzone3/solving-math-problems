@@ -1,0 +1,8 @@
+[1] parsed 2167 vertices exactly (field Q(3, 7, 11)) ... PASS
+[1b] all vertices distinct ... PASS
+[2/3] recomputed exact unit-distance edges: 11884 (claimed 11884)
+[3] claimed edge list matches exact recomputation ... PASS
+[4] SAT solver: 4-coloring UNSAT => chi>=5 ... PASS
+[4b] drat-trim VERIFIED UNSAT proof ... PASS
+
+OVERALL: PASS (5-chromatic unit-distance graph)

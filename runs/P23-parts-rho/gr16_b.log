@@ -1,0 +1,252 @@
+t16b pass1: -8 (batch8) -> 5249
+t16b pass1: -8 (batch8) -> 5201
+t16b pass1: -8 (batch8) -> 5179
+t16b pass1: -8 (batch8) -> 5111
+t16b pass1: -8 (batch8) -> 5084
+t16b pass1: -8 (batch8) -> 5035
+t16b pass1: -7 (batch8) -> 4925
+t16b pass1: -8 (batch8) -> 4887
+t16b pass1: -7 (batch8) -> 4778
+t16b pass1: -7 (batch8) -> 4706
+t16b pass1: -6 (batch8) -> 4659
+t16b pass1: -7 (batch8) -> 4612
+t16b pass1: -5 (batch8) -> 4585
+t16b pass1: -8 (batch8) -> 4562
+t16b pass1: -7 (batch8) -> 4545
+t16b pass1: -7 (batch8) -> 4532
+t16b pass1: -8 (batch8) -> 4513
+t16b pass1: -7 (batch8) -> 4491
+t16b pass1: -8 (batch8) -> 4478
+t16b pass1: -8 (batch8) -> 4407
+t16b pass1: -8 (batch8) -> 4373
+t16b pass1: -7 (batch8) -> 4358
+t16b pass1: -6 (batch8) -> 4336
+t16b pass1: -7 (batch8) -> 4321
+t16b pass1: -8 (batch8) -> 4183
+t16b pass1: -3 -> 4170
+t16b pass1: -1 -> 4152
+t16b pass1: -2 -> 4085
+t16b pass1: -8 (batch8) -> 4071
+t16b pass1: -8 (batch8) -> 4058
+t16b pass1: -6 (batch8) -> 4045
+t16b pass1: -4 (batch8) -> 4032
+t16b pass1: -6 (batch8) -> 4004
+t16b pass1: -6 (batch8) -> 3986
+t16b pass1: -7 (batch8) -> 3967
+t16b pass1: -4 (batch8) -> 3951
+t16b pass1: -8 (batch8) -> 3933
+t16b pass1: -5 (batch8) -> 3922
+t16b pass1: -7 (batch8) -> 3903
+t16b pass1: -5 (batch8) -> 3898
+t16b pass1: -6 (batch8) -> 3890
+t16b pass1: -8 (batch8) -> 3865
+t16b pass1: -7 (batch8) -> 3854
+t16b pass1: -2 -> 3848
+t16b pass1: -2 -> 3837
+t16b pass1: -1 -> 3833
+t16b pass1: -7 (batch8) -> 3804
+t16b pass1: -7 (batch8) -> 3790
+t16b pass1: -5 (batch8) -> 3755
+t16b pass1: -3 -> 3747
+t16b pass1: -2 -> 3736
+t16b pass1: -1 -> 3732
+t16b pass1: -7 (batch8) -> 3723
+t16b pass1: -8 (batch8) -> 3712
+t16b pass1: -1 -> 3700
+t16b pass1: -4 -> 3693
+t16b pass1: -5 (batch8) -> 3675
+t16b pass1: -5 (batch8) -> 3667
+t16b pass1: -4 (batch8) -> 3630
+t16b pass1: -7 (batch8) -> 3571
+t16b pass1: -6 (batch8) -> 3552
+t16b pass1: -7 (batch8) -> 3539
+t16b pass1: -8 (batch8) -> 3526
+t16b pass1: -7 (batch8) -> 3509
+t16b pass1: -2 -> 3489
+t16b pass1: -2 -> 3484
+t16b pass1: -1 -> 3479
+t16b pass1: -5 (batch8) -> 3472
+t16b pass1: -4 (batch8) -> 3467
+t16b pass1: -5 (batch8) -> 3456
+t16b pass1: -7 (batch8) -> 3447
+t16b pass1: -1 -> 3429
+t16b pass1: -4 -> 3422
+t16b pass1: -4 (batch8) -> 3406
+t16b pass1: -4 (batch8) -> 3369
+t16b pass1: -7 (batch8) -> 3325
+t16b pass1: -7 (batch8) -> 3313
+t16b pass1: -8 (batch8) -> 3305
+t16b pass1: -6 (batch8) -> 3298
+t16b pass1: -6 (batch8) -> 3288
+t16b pass1: -7 (batch8) -> 3278
+t16b pass1: -5 (batch8) -> 3267
+t16b pass1: -8 (batch8) -> 3251
+t16b pass1: -6 (batch8) -> 3243
+t16b pass1: -6 (batch8) -> 3235
+t16b pass1: -6 (batch8) -> 3228
+t16b pass1: -1 -> 3222
+t16b pass1: -2 -> 3220
+t16b pass1: -1 -> 3218
+t16b pass1: -6 (batch8) -> 3210
+t16b pass1: -6 (batch8) -> 3197
+t16b pass1: -5 (batch8) -> 3189
+t16b pass1: -7 (batch8) -> 3168
+t16b pass1: -5 (batch8) -> 3156
+t16b pass1: -5 (batch8) -> 3147
+t16b pass1: -8 (batch8) -> 3131
+t16b pass1: -6 (batch8) -> 3123
+t16b pass1: -6 (batch8) -> 3115
+t16b pass1: -6 (batch8) -> 3109
+t16b pass1: -5 (batch8) -> 3103
+t16b pass1: -6 (batch8) -> 3090
+t16b pass1: -2 -> 3086
+t16b pass1: -1 -> 3078
+t16b pass1: -6 (batch8) -> 3072
+t16b pass1: -4 (batch8) -> 3065
+t16b pass1: -1 -> 3060
+t16b pass1: -4 -> 3056
+t16b pass1: -6 (batch8) -> 3048
+t16b pass1: -4 (batch8) -> 3041
+t16b pass1: -6 (batch8) -> 3033
+t16b pass1: -5 (batch8) -> 3023
+t16b pass1: -4 (batch8) -> 3011
+t16b pass1: -5 (batch8) -> 3005
+t16b pass1: -6 (batch8) -> 2998
+t16b pass1: -1 -> 2996
+t16b pass1: -4 -> 2992
+t16b pass1: -5 (batch8) -> 2983
+t16b pass1: -7 (batch8) -> 2975
+t16b pass1: -6 (batch8) -> 2963
+t16b pass1: -1 -> 2945
+t16b pass1: -1 -> 2942
+t16b pass1: -2 -> 2894
+t16b pass1: -1 -> 2892
+t16b pass1: -1 -> 2891
+t16b pass1: -1 -> 2887
+t16b pass1: -2 -> 2878
+t16b pass1: -3 (batch8) -> 2857
+t16b pass1: -7 (batch8) -> 2794
+t16b pass1: -4 (batch8) -> 2783
+t16b pass1: -5 (batch8) -> 2777
+t16b pass1: -5 (batch8) -> 2757
+t16b pass1: -4 (batch8) -> 2742
+t16b pass1: -5 (batch8) -> 2735
+t16b pass1: -4 (batch8) -> 2716
+t16b pass1: -1 -> 2704
+t16b pass1: -1 -> 2687
+t16b pass1: -2 -> 2684
+t16b pass1: -1 -> 2680
+t16b pass1: -1 -> 2669
+t16b pass1: -2 -> 2666
+t16b pass1: -4 (batch8) -> 2661
+t16b pass1: -6 (batch8) -> 2647
+t16b pass1: -1 -> 2644
+t16b pass1: -1 -> 2639
+t16b pass1: -5 (batch8) -> 2634
+t16b pass1: -2 -> 2623
+t16b pass1: -1 -> 2621
+t16b pass1: -7 (batch8) -> 2609
+t16b pass1: -2 -> 2607
+t16b pass1: -1 -> 2600
+t16b pass1: -5 (batch8) -> 2594
+t16b pass1: -3 (batch8) -> 2591
+t16b pass1: -7 (batch8) -> 2578
+t16b pass1: -1 -> 2573
+t16b pass1: -2 -> 2568
+t16b pass1: -1 -> 2564
+t16b pass1: -4 (batch8) -> 2559
+t16b pass1: -2 -> 2554
+t16b pass1: -2 -> 2552
+t16b pass1: -1 -> 2550
+t16b pass1: -2 -> 2547
+t16b pass1: -1 -> 2544
+t16b pass1: -1 -> 2541
+t16b pass1: -2 -> 2539
+t16b pass1: -1 -> 2537
+t16b pass1: -1 -> 2536
+t16b pass1: -1 -> 2533
+t16b pass1: -2 -> 2530
+t16b pass1: -7 (batch8) -> 2521
+t16b pass1: -1 -> 2519
+t16b pass1: -2 -> 2516
+t16b pass1: -1 -> 2515
+t16b pass1: -5 (batch8) -> 2509
+t16b pass1: -5 (batch8) -> 2504
+t16b pass1: -4 (batch8) -> 2500
+t16b pass1: -5 (batch8) -> 2490
+t16b pass1: -6 (batch8) -> 2481
+t16b pass1: -1 -> 2479
+t16b pass1: -1 -> 2475
+t16b pass1: -2 -> 2472
+t16b pass1: -1 (batch8) -> 2467
+t16b pass1: -2 -> 2460
+t16b pass1: -1 -> 2459
+t16b pass1: -2 -> 2456
+t16b pass1: -4 -> 2452
+t16b pass1: -4 (batch8) -> 2448
+t16b pass1: -5 (batch8) -> 2437
+t16b pass1: -3 (batch8) -> 2434
+t16b pass1: -1 -> 2432
+t16b pass1: -2 -> 2430
+t16b pass1: -2 -> 2426
+t16b pass1: -1 -> 2424
+t16b pass1: -1 -> 2419
+t16b pass1: -1 -> 2418
+t16b pass1: -4 -> 2411
+t16b pass1: -6 (batch8) -> 2404
+t16b pass1: -5 (batch8) -> 2398
+t16b pass1: -1 -> 2396
+t16b pass1: -4 -> 2392
+t16b pass1: -1 -> 2391
+t16b pass1: -1 -> 2390
+t16b pass1: -1 -> 2387
+t16b pass1: -4 -> 2359
+t16b pass1: -1 -> 2342
+t16b pass1: -1 -> 2336
+t16b pass1: -4 -> 2328
+t16b pass1: -7 (batch8) -> 2320
+t16b pass1: -3 -> 2314
+t16b pass1: -2 -> 2312
+t16b pass1: -1 -> 2310
+t16b pass1: -4 (batch8) -> 2305
+t16b pass1: -1 (batch8) -> 2299
+t16b pass1: -3 -> 2295
+t16b pass1: -1 -> 2292
+t16b pass1: -2 -> 2289
+t16b pass1: -4 (batch8) -> 2282
+t16b pass1: -1 -> 2280
+t16b pass1: -4 -> 2274
+t16b pass1: -2 -> 2272
+t16b pass1: -2 -> 2269
+t16b pass1: -1 -> 2267
+t16b pass1: -1 -> 2265
+t16b pass1: -1 -> 2264
+t16b pass1: -1 -> 2262
+t16b pass1: -2 -> 2260
+t16b pass1: -1 -> 2257
+t16b pass1: -1 -> 2255
+t16b pass1: -1 -> 2254
+t16b pass1: -1 -> 2251
+t16b pass1: -1 -> 2250
+t16b pass1: -2 -> 2248
+t16b pass1: -2 -> 2245
+t16b pass1: -2 -> 2242
+t16b pass1: -1 -> 2239
+t16b pass1: -1 -> 2238
+t16b pass1: -1 -> 2237
+t16b pass1: -2 -> 2235
+t16b pass1: -5 (batch8) -> 2229
+t16b pass1: -1 (batch8) -> 2226
+t16b pass1: -1 -> 2225
+t16b pass1: -1 -> 2223
+t16b pass1: -1 -> 2222
+t16b pass1: -4 -> 2217
+t16b pass1: -5 (batch8) -> 2211
+t16b pass1: -1 -> 2210
+t16b pass1: -2 -> 2207
+t16b pass1: -1 -> 2206
+t16b pass1: -1 -> 2205
+t16b pass1: -2 -> 2202
+t16b pass1: -1 -> 2201
+t16b pass1: -1 -> 2199
+t16b pass1: -2 -> 2197

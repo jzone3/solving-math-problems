@@ -152,8 +152,30 @@ other rotations are not known yet"):**
 - **ω₂₈ = (55 + i√111)/56** = exp(i arccos(55/56)); union in ℚ(√3,√11,√37);
   60 reference + 24 + 12 auxiliary.
 
-Both unions are being SAT-core/greedy-minimized (`coremin.py`, `greedy.py`,
-every step drat-trim-core-checked); results below.
+## Minimization of the two new witnesses
+
+DRAT-core iteration (`coremin.py`, every core drat-trim `s VERIFIED`) followed
+by 8-4-2-1 batched greedy destructive deletion with core jumps (`greedy8.py`):
+
+- **t=16**: 77485 → cores 5081/5299/6056 (3 seeds) → greedy (3 chains, ~7 h)
+  → best **2167 vertices / 11884 edges** (chains: 2167, 2197, 2336; first
+  greedy pass not exhausted — rate had decayed to ~1-2 vertices per 10 min).
+- **t=28**: 175057 → core 9048 (138 coremin iterations) → greedy reached
+  **7295 vertices / 55831 edges** before the time box expired (still
+  descending; also independently verified — `verify28_final.log`).
+
+The minimized ω₁₆ witness (2167 vtx) was passed through the INDEPENDENT exact
+verifier `verify_m.py` (field ℚ(√3,√7,√11) multiquadratic arithmetic from
+fusion1's `mfield.py`, exact coordinates emitted by `emit_t.py` — a codepath
+disjoint from `lattice.py`'s integer conditions): all edges exactly unit,
+edge list complete, kissat UNSAT, drat-trim VERIFIED (`verify16_final.log`;
+the same pipeline also PASSed on an earlier 3756-vertex snapshot,
+`verify16_snapshot.log`).
+
+These sizes are far above 509 — greedy from a bulk disk union plateaus around
+2000+ here, consistent with v1's finding that Parts-level sizes need his full
+orbit-filling/customization machinery. The contribution of this run is the
+EXISTENCE of working type-M rotations other than ρ, not a record attempt size.
 
 Not tested (too large / no candidate structure): t=27, 31 (ref-only kind at
 radius √t — all six tested ref-only rotations came out SAT); t=2, 6, 8, 14,
@@ -168,5 +190,23 @@ aux kind and no ref, analogous to the failed t=10).
 - `build_pool.py` / `build_pool_r.py` — radius-r orbit-closed pools.
 - `survey.py` (fixed radius-2 pool) / `survey2.py` (radius-√t pools) →
   `survey.pkl`, `survey2.pkl`.
-- `typem.py` — W_t construction + SAT test; `sat.py`, `coremin.py`,
-  `greedy.py`, `emit.py`, `mfield.py`, `verify_m.py` from runs/P23-fusion1.
+- `typem.py` — W_t construction + SAT test → `wt_<t>.pkl`, `typem_<t>.log`;
+  `pool_alone.py` — single-copy controls.
+- `coremin.py` (patched: per-iteration snapshots + plateau stop), `greedy8.py`
+  — minimization; `greedy_t16a.pkl` = final 2167-vertex witness (ids into
+  `wt_16.pkl`), `greedy_t28a.pkl` = t=28 partial result.
+- `emit_t.py` → `v16_final.pkl` (exact ℚ(√3,√7,√11) coordinates);
+  `verify_m.py`/`mfield.py` (from fusion1) — independent verifier;
+  `verify16_final.log`, `verify16_snapshot.log`.
+- `sat.py`, `greedy.py`, `emit.py` from runs/P23-fusion1.
+
+## Conclusion
+
+- ω₁₆ and ω₂₈ are the first known working type-M rotations besides Parts'
+  ρ = ω₄, answering his open remark. New fields: ℚ(√3,√7,√11), ℚ(√3,√11,√37).
+- Smallest exactly-verified 5-chromatic UDG from this run: **2167 vertices**
+  (ω₁₆, independent exact verification + drat-trim VERIFIED UNSAT).
+- No sub-509 graph obtained; the record stands. Plausible follow-up: apply
+  Parts' full orbit-filling minimization (his §5-6 machinery, weeks of
+  compute in his account) to the ω₁₆ geometry, which now has MORE auxiliary
+  edge kinds (3) than ρ's single auxiliary kind.
