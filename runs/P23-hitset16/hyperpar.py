@@ -167,14 +167,16 @@ def worker(seed):
 
 def main():
     t0 = time.time()
+    old = pickle.load(open(OUT, 'rb')) if os.path.exists(OUT) else []
+    all_hyps = list(old)
     with Pool(NPROC) as p:
-        res = p.map(worker, list(range(1, NPROC + 1)))
-    hyps = [d for r in res for d in r]
-    old = []
-    if os.path.exists(OUT):
-        old = pickle.load(open(OUT, 'rb'))
-    merged = old + hyps
-    pickle.dump(merged, open(OUT, 'wb'))
+        for result in p.imap_unordered(worker, list(range(1, NPROC + 1))):
+            all_hyps.extend(result)
+            pickle.dump(all_hyps, open(OUT, 'wb'))
+            print(f'checkpointed {len(all_hyps)} hyperedges -> {OUT}',
+                  flush=True)
+    hyps = all_hyps[len(old):]
+    merged = all_hyps
     if CHECK_SAMPLE and merged:
         rng = random.Random(917263)
         sample = rng.sample(merged, min(CHECK_SAMPLE, len(merged)))
