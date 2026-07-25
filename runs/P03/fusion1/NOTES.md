@@ -466,27 +466,31 @@ seconds, and maximum 293 seconds; three hit the per-graph timeout under
 parallel CPU contention. The conservative projection was 9.49 hours over
 eight shards, below the one-day stop threshold, so the full run was launched.
 
-The run is checkpointed per graph in `n16full_0.log` through
-`n16full_7.log`, with reproducible input in `n16_full_engine.txt`. At the
-latest bounded checkpoint, 2469 graph completions had been recorded across
-the shards, with cumulative totals:
+The run was checkpointed per graph in `n16full_0.log` through
+`n16full_7.log`, with reproducible input in `n16_full_engine.txt`. The full
+run completed all 2,595 graph records across the eight shards. Aggregated
+totals from the final `DONE` lines are:
 
 ```text
-orientations=15,419,801,412
-profile orientations=5,971,524,012
-source-sink skips=3,581,644,864
-exact packing checks=1,483,227,370
-packed=1,483,227,370
+graphs=2595
+orientations=16,130,950,644
+profile orientations=6,248,404,896
+source-sink skips=3,733,903,490
+tau skips=0
+safe rejects=970,179,382
+exact packing checks=1,544,322,024
+packed=1,544,322,024
 deferred=0
 candidates=0
 ```
 
-The eight processes are still running; this is therefore not a closure
-claim yet. Coverage is 2469/2,595 graphs. Every completed check so far
-packed, and no ideal enumeration deferred instance occurred. The committed
-per-graph logs and input file preserve the checkpoint; a future resume can
-partition `n16_full_engine.txt` by shard and skip the recorded completed
-lines.
+**CLOSED: full n=16 reduced cubic tau=3 cell.** Every one of the 2,595
+connected, non-planar, 3-edge-connected cubic graphs in the prepared list
+completed, every profile-matching acyclic orientation was processed, and
+all 1,544,322,024 exact packing checks packed into three dijoins. No
+instance was deferred and no candidate was emitted. This extends the
+exhausted reduced cubic frontier beyond the prior v5 n=14 result; it does
+not claim unrestricted Woodall closure.
 
 For an independent orientation-level cross-check, two random topological
 orientations of the first two prepared graphs were passed through the C
