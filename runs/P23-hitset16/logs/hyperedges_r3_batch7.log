@@ -1,0 +1,53 @@
+[5] 0: |D|=8617
+[2] 0: |D|=8921
+[6] 0: |D|=8905
+[1] 0: |D|=8932
+[4] 0: |D|=8858
+[8] 0: |D|=8904
+[3] 0: |D|=8778
+[7] 0: |D|=8822
+[5] 1: |D|=9045
+[2] 1: |D|=8876
+[6] 1: |D|=8472
+[4] 1: |D|=8531
+[1] 1: |D|=8779
+[8] 1: |D|=8842
+[3] 1: |D|=8935
+[7] 1: |D|=8765
+[5] 2: |D|=8872
+[2] 2: |D|=8593
+[1] 2: |D|=8945
+[4] 2: |D|=8659
+[6] 2: |D|=9090
+[3] 2: |D|=8853
+[8] 2: |D|=8593
+[7] 2: |D|=8823
+[5] 3: |D|=8852
+[2] 3: |D|=8934
+[1] 3: |D|=8880
+[4] 3: |D|=8974
+[6] 3: |D|=9005
+[3] 3: |D|=8517
+[8] 3: |D|=8634
+[7] 3: |D|=9082
+[5] 4: |D|=8902
+checkpointed 245 hyperedges -> hyperedges_r3.pkl
+[2] 4: |D|=8920
+checkpointed 250 hyperedges -> hyperedges_r3.pkl
+[1] 4: |D|=8544
+checkpointed 255 hyperedges -> hyperedges_r3.pkl
+[4] 4: |D|=8924
+checkpointed 260 hyperedges -> hyperedges_r3.pkl
+[3] 4: |D|=9035
+checkpointed 265 hyperedges -> hyperedges_r3.pkl
+[6] 4: |D|=8923
+checkpointed 270 hyperedges -> hyperedges_r3.pkl
+[8] 4: |D|=9017
+checkpointed 275 hyperedges -> hyperedges_r3.pkl
+[7] 4: |D|=8910
+checkpointed 280 hyperedges -> hyperedges_r3.pkl
+40 hyperedges, min 8472 median 8880 max 9090, 652s -> hyperedges_r3.pkl (total 280)
+
+real	10m57.145s
+user	82m40.738s
+sys	0m1.369s
