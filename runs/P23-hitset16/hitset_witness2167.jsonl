@@ -1,0 +1,10 @@
+{"iteration": 1, "seconds": 5.223, "bank": 8, "support": 884, "outer_status": "OPTIMAL", "outer_bound": 9.0, "selection": 9, "proven_infeasible_bounds": [], "hyperedge": 62, "bank_min": 62, "bank_median": 156, "bank_max": 213}
+{"iteration": 2, "seconds": 44.058, "bank": 9, "support": 901, "outer_status": "OPTIMAL", "outer_bound": 9.0, "selection": 9, "proven_infeasible_bounds": [], "hyperedge": 53, "bank_min": 53, "bank_median": 156, "bank_max": 213}
+{"iteration": 3, "seconds": 85.69, "bank": 10, "support": 915, "outer_status": "OPTIMAL", "outer_bound": 9.0, "selection": 9, "proven_infeasible_bounds": [], "hyperedge": 21, "bank_min": 21, "bank_median": 156, "bank_max": 213}
+{"iteration": 4, "seconds": 169.912, "bank": 11, "support": 920, "outer_status": "OPTIMAL", "outer_bound": 9.0, "selection": 9, "proven_infeasible_bounds": [], "hyperedge": 27, "bank_min": 21, "bank_median": 156, "bank_max": 213}
+{"iteration": 5, "seconds": 235.432, "bank": 12, "support": 927, "outer_status": "FEASIBLE", "outer_bound": 13.0, "selection": 15, "hyperedge": 36, "bank_min": 21, "bank_median": 148, "bank_max": 213}
+{"iteration": 6, "seconds": 300.777, "bank": 13, "support": 940, "outer_status": "FEASIBLE", "outer_bound": 13.0, "selection": 16, "hyperedge": 49, "bank_min": 21, "bank_median": 148, "bank_max": 213}
+{"iteration": 7, "seconds": 377.95, "bank": 14, "support": 957, "outer_status": "FEASIBLE", "outer_bound": 12.0, "selection": 15, "hyperedge": 56, "bank_min": 21, "bank_median": 121, "bank_max": 213}
+{"iteration": 8, "seconds": 444.546, "bank": 15, "support": 976, "outer_status": "FEASIBLE", "outer_bound": 11.0, "selection": 16, "hyperedge": 45, "bank_min": 21, "bank_median": 121, "bank_max": 213}
+{"iteration": 9, "seconds": 508.274, "bank": 16, "support": 987, "outer_status": "FEASIBLE", "outer_bound": 12.0, "selection": 17, "hyperedge": 79, "bank_min": 21, "bank_median": 79, "bank_max": 213}
+{"iteration": 10, "seconds": 626.057, "bank": 17, "support": 1019, "outer_status": "FEASIBLE", "outer_bound": 13.0, "selection": 16, "hyperedge": 40, "bank_min": 21, "bank_median": 79, "bank_max": 213}

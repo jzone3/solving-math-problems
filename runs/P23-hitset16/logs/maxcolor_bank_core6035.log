@@ -1,0 +1,9 @@
+{"seed": 1, "status": "FEASIBLE", "objective": 60386801.0, "bound": 63383570.0, "d_size": 284, "accepted": true}
+{"seed": 4, "status": "FEASIBLE", "objective": 59896085.0, "bound": 63420527.0, "d_size": 332, "accepted": true}
+{"seed": 2, "status": "FEASIBLE", "objective": 59611263.0, "bound": 63405603.0, "d_size": 358, "accepted": true}
+{"seed": 3, "status": "FEASIBLE", "objective": 52344981.0, "bound": 63351746.0, "d_size": 1048, "accepted": true}
+accepted=4 min=284 median=345.0 max=1048
+
+real	1m6.549s
+user	4m13.087s
+sys	0m0.583s

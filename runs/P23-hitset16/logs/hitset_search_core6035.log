@@ -1,0 +1,8 @@
+{"iteration": 1, "seconds": 19.121, "bank": 4, "support": 1767, "outer_status": "OPTIMAL", "outer_bound": 9.0, "selection": 9, "proven_infeasible_bounds": [], "hyperedge": 186, "bank_min": 186, "bank_median": 332, "bank_max": 1048}
+{"iteration": 2, "seconds": 163.857, "bank": 5, "support": 1868, "outer_status": "FEASIBLE", "outer_bound": 8.0, "selection": 9, "hyperedge": 254, "bank_min": 186, "bank_median": 332, "bank_max": 1048}
+{"iteration": 3, "seconds": 303.954, "bank": 6, "support": 2018, "outer_status": "FEASIBLE", "outer_bound": 7.0, "selection": 9, "hyperedge": 196, "bank_min": 186, "bank_median": 284, "bank_max": 1048}
+{"iteration": 4, "seconds": 438.3, "bank": 7, "support": 2127, "outer_status": "FEASIBLE", "outer_bound": 6.0, "selection": 9, "hyperedge": 294, "bank_min": 186, "bank_median": 294, "bank_max": 1048}
+
+real	9m24.016s
+user	18m12.179s
+sys	0m0.568s
