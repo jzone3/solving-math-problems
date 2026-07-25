@@ -181,6 +181,18 @@ paper's conjecture is not reachable by this (or the earlier heuristic) approach
 within available compute. Artifacts: `cegar.py`, `cegar_results.json`,
 `colorings.json`.
 
+**Triangle-floor variant (serious candidates, still SAT).** To kill the
+degeneracy, `--triangle-floor N` adds `Σ y_T ≥ N` so every candidate is a
+triangle-rich near-frontier K₄-free subgraph. (Tradeoff: with a floor, ILP
+infeasibility no longer proves the conjecture FALSE — it only says "no K₄-free
+subgraph with ≥N triangles hits all accumulated colourings"; the decisive-FALSE
+branch survives only at floor 0.) Run `--triangle-floor 400 --ilp-time 150
+--kissat-time 180 --wall-time 1500`: 10 iterations, every candidate independently
+confirmed K₄-free with 401–863 triangles, **all SAT** (none arrows). So even the
+richest K₄-free subgraphs of H₃ we can produce (up to 863 triangles) fail to
+arrow — the strongest negative evidence yet on the paper's open conjecture, but
+still not a decision.
+
 ## Certificate-backed negative decisions (SAT witnesses)
 
 `verify_witness.py` extracts a model from kissat for each of the three K₄-free

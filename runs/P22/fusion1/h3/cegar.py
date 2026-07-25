@@ -55,7 +55,9 @@ def direct_stats(kept, all_triangles, k4s):
     return k4_count, actual
 
 
-def solve_cegar_ilp(edges, k4s, triangles, colorings, edge_index, seconds):
+def solve_cegar_ilp(
+    edges, k4s, triangles, colorings, edge_index, seconds, triangle_floor=0
+):
     model = pulp.LpProblem("H3_CEGAR", pulp.LpMaximize)
     x = {e: pulp.LpVariable(f"x_{i}", cat=pulp.LpBinary)
          for i, e in enumerate(edges)}
@@ -71,6 +73,10 @@ def solve_cegar_ilp(edges, k4s, triangles, colorings, edge_index, seconds):
         mono = all_mono_indices(coloring, edge_index, triangles)
         assert mono
         model += pulp.lpSum(y[i] for i in mono) >= 1, f"color_{ci}"
+    if triangle_floor > 0:
+        model += (
+            pulp.lpSum(y.values()) >= triangle_floor
+        ), "triangle_floor"
     model += pulp.lpSum(y.values())
     solver = pulp.HiGHS(
         msg=False,
@@ -145,6 +151,7 @@ def main():
     parser.add_argument("--kissat-time", type=int, default=120)
     parser.add_argument("--wall-time", type=int, default=2400)
     parser.add_argument("--max-iterations", type=int, default=300)
+    parser.add_argument("--triangle-floor", type=int, default=0)
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     started = time.monotonic()
@@ -175,20 +182,37 @@ def main():
         if time.monotonic() - started >= args.wall_time:
             break
         ilp_status, kept, ilp_seconds = solve_cegar_ilp(
-            edges, k4s, triangles, colorings, edge_index, args.ilp_time
+            edges,
+            k4s,
+            triangles,
+            colorings,
+            edge_index,
+            args.ilp_time,
+            args.triangle_floor,
         )
         if ilp_status == "Infeasible":
-            final_status = "FALSE"
+            final_status = (
+                "FALSE"
+                if args.triangle_floor == 0
+                else "no-large-hitter (not decisive)"
+            )
             rec = {
                 "iteration": iteration,
                 "colorings": len(colorings),
                 "ilp_backend": "highs",
                 "ilp_status": ilp_status,
                 "ilp_seconds": ilp_seconds,
+                "triangle_floor": args.triangle_floor,
             }
             records.append(rec)
-            print(f"{iteration} C={len(colorings)} ILP=INFEASIBLE decisive FALSE",
-                  flush=True)
+            if args.triangle_floor == 0:
+                message = "decisive FALSE"
+            else:
+                message = "no-large-hitter (not decisive)"
+            print(
+                f"{iteration} C={len(colorings)} ILP=INFEASIBLE {message}",
+                flush=True,
+            )
             break
         if kept is None:
             rec = {
@@ -196,6 +220,7 @@ def main():
                 "colorings": len(colorings),
                 "ilp_status": ilp_status,
                 "ilp_seconds": ilp_seconds,
+                "triangle_floor": args.triangle_floor,
                 "error": "no feasible incumbent extracted",
             }
             records.append(rec)
@@ -205,6 +230,28 @@ def main():
 
         k4_count, actual = direct_stats(kept, all_edge_triangles, k4s)
         assert k4_count == 0
+        if args.triangle_floor > 0 and len(actual) < args.triangle_floor:
+            rec = {
+                "iteration": iteration,
+                "colorings": len(colorings),
+                "ilp_backend": "highs",
+                "ilp_status": ilp_status,
+                "ilp_seconds": ilp_seconds,
+                "triangle_floor": args.triangle_floor,
+                "incumbent_edges": len(kept),
+                "incumbent_triangles": len(actual),
+                "k4_count": k4_count,
+                "usable": False,
+                "error": "extracted incumbent violated triangle floor",
+            }
+            records.append(rec)
+            print(
+                f"{iteration} C={len(colorings)} ILP={ilp_status} "
+                f"incumbent |E|={len(kept)} T={len(actual)} "
+                f"below-floor={args.triangle_floor}; stopping",
+                flush=True,
+            )
+            break
         cnf = ROOT / f"cegar_{iteration:03d}.cnf"
         proof = ROOT / f"cegar_{iteration:03d}.drat"
         write_cnf(cnf, kept, actual)
@@ -217,6 +264,7 @@ def main():
             "ilp_backend": "highs",
             "ilp_status": ilp_status,
             "ilp_seconds": ilp_seconds,
+            "triangle_floor": args.triangle_floor,
             "edges": len(kept),
             "triangles": len(actual),
             "k4_count": k4_count,
@@ -271,6 +319,7 @@ def main():
         "ilp_time_limit": args.ilp_time,
         "kissat_time_limit": args.kissat_time,
         "wall_time_limit": args.wall_time,
+        "triangle_floor": args.triangle_floor,
         "records": records,
         "last": latest,
     }
