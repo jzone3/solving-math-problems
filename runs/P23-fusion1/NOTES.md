@@ -313,3 +313,11 @@ parallel reduction runs on W₁₆ (Parts' 8-4-2-1 batched greedy with independe
 seeds, plus `lns_gen.py`, a coordinate-free BFS-ball version of the LNS engine
 for arbitrary pools): 5081 → 4347 and falling at the time of writing. Results
 land on `runs/P23-parts-rho`.
+
+**W₁₆ reduction status (this machine, 7 parallel seeds of Parts' 8-4-2-1 greedy
+with DRAT core jumps):** 5081 → **2242** and still falling inside pass 1.
+Every intermediate is a certified non-4-colorable subgraph of W₁₆, i.e. a
+5-chromatic UDG at the *new* rotation ω₁₆ — the first working type-M rotation
+other than Parts' ρ = ω₄. It is not yet below 509 and may well floor above it,
+but it is the only line in this whole run that explores geometry no one has
+published.
