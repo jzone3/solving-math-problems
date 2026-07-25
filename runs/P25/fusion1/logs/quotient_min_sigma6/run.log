@@ -1,0 +1,1 @@
+RESULT status=HighsModelStatus.kTimeLimit elapsed=10800.063 vars=243 constraints=243 objective=26.000000000000465 dual_bound=24.0

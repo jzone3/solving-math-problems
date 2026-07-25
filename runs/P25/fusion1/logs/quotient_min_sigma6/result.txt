@@ -1,0 +1,4 @@
+status=HighsModelStatus.kTimeLimit
+elapsed=10800.063
+objective=26.000000000000465
+dual_bound=24.0

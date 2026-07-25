@@ -1,0 +1,116 @@
+START classes=22 target=72
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma')
+SAT_START lam=[2, 2, 2] assign=('id', 'id', 'id')
+START classes=22 target=72
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma')
+SAT_START lam=[2, 2, 2] assign=('id', 'id', 'id')
+START classes=22 target=72
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma')
+SAT_START lam=[2, 2, 2] assign=('id', 'id', 'id')
+SAT_START lam=[2, 2, 1, 1] assign=('id', 'id', 'tau', 'tau')
+SAT_START lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'tau')
+RESULT UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') orbits=243 vars=5392 clauses=82157 seconds=7200.101
+SAT_DONE elapsed=7200.200
+RESULT UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma') orbits=243 vars=5392 clauses=82157 seconds=7200.100
+SAT_DONE elapsed=7200.200
+RESULT UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma') orbits=243 vars=5392 clauses=82157 seconds=7200.067
+SAT_DONE elapsed=7200.200
+RESULT UNDECIDED lam=[2, 2, 2] assign=('id', 'id', 'id') orbits=378 vars=5527 clauses=82157 seconds=7200.103
+SAT_DONE elapsed=7200.199
+RESULT UNDECIDED lam=[2, 2, 1, 1] assign=('id', 'id', 'tau', 'tau') orbits=369 vars=5518 clauses=82157 seconds=7200.012
+SAT_DONE elapsed=7200.199
+RESULT UNDECIDED lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'tau') orbits=378 vars=5527 clauses=82157 seconds=7200.101
+SAT_DONE elapsed=7200.198
+ILP_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+ILP_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+SAT_START lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'id')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'id')
+START classes=22 target=72
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+SAT_START lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma')
+SAT_START lam=[2, 2, 2] assign=('id', 'id', 'id')
+PB_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+PB_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+START classes=22 target=72
+SAT_STATE_SKIP count=6
+SAT_SKIP lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') prior_full_budget=1
+SAT_SKIP lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma') prior_full_budget=1
+SAT_SKIP lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma') prior_full_budget=1
+SAT_SKIP lam=[2, 2, 2] assign=('id', 'id', 'id') prior_full_budget=1
+SAT_SKIP lam=[2, 2, 1, 1] assign=('id', 'id', 'tau', 'tau') prior_full_budget=1
+SAT_SKIP lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'tau') prior_full_budget=1
+SAT_START lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'id')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'tau')
+PB_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+PB_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+START classes=22 target=72
+SAT_STATE_SKIP count=6
+SAT_SKIP lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') prior_full_budget=1
+SAT_SKIP lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma') prior_full_budget=1
+SAT_SKIP lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma') prior_full_budget=1
+SAT_SKIP lam=[2, 2, 2] assign=('id', 'id', 'id') prior_full_budget=1
+SAT_SKIP lam=[2, 2, 1, 1] assign=('id', 'id', 'tau', 'tau') prior_full_budget=1
+SAT_SKIP lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'tau') prior_full_budget=1
+SAT_START lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'id')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'tau')
+PB_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+PB_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+ILP_START lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+ILP_START lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+RESULT UNDECIDED lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'id') orbits=405 vars=5554 clauses=82157 seconds=7200.103
+SAT_DONE elapsed=7200.976
+RESULT UNDECIDED lam=[2, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'tau') orbits=366 vars=5515 clauses=82157 seconds=7200.105
+SAT_DONE elapsed=7200.976
+RESULT UNDECIDED lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'tau') orbits=369 vars=5518 clauses=82157 seconds=7200.109
+SAT_DONE elapsed=7200.975
+RESULT UNDECIDED lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'tau', 'tau') orbits=378 vars=5527 clauses=82157 seconds=7200.102
+SAT_DONE elapsed=7200.975
+RESULT UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') orbits=243 constraints=730 seconds=7200.130
+PB_DONE elapsed=7200.975
+RESULT UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma') orbits=243 constraints=730 seconds=7200.134
+PB_DONE elapsed=7200.974
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'tau')
+SAT_START lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'id')
+SAT_START lam=[1, 1, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'tau', 'tau', 'tau')
+SAT_START lam=[1, 1, 1, 1, 1, 1] assign=('sigma', 'sigma', 'sigma', 'sigma', 'sigma', 'sigma')
+PB_START lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma')
+PB_START lam=[2, 2, 2] assign=('id', 'id', 'id')
+UNDECIDED status=HighsModelStatus.kTimeLimit lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') orbits=243 seconds=14400.019
+ILP_DONE lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma')
+UNDECIDED status=HighsModelStatus.kTimeLimit lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma') orbits=243 seconds=14400.022
+ILP_DONE lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma')
+ILP_START lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma')
+ILP_START lam=[2, 2, 2] assign=('id', 'id', 'id')
+RESULT UNDECIDED lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'tau') orbits=405 vars=5554 clauses=82157 seconds=7200.105
+SAT_DONE elapsed=7201.010
+RESULT UNDECIDED lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'id') orbits=486 vars=5635 clauses=82157 seconds=7200.110
+SAT_DONE elapsed=7201.010
+RESULT UNDECIDED lam=[1, 1, 1, 1, 1, 1] assign=('tau', 'tau', 'tau', 'tau', 'tau', 'tau') orbits=365 vars=5514 clauses=82157 seconds=7200.110
+SAT_DONE elapsed=7201.010
+RESULT UNDECIDED lam=[1, 1, 1, 1, 1, 1] assign=('sigma', 'sigma', 'sigma', 'sigma', 'sigma', 'sigma') orbits=243 vars=5392 clauses=82157 seconds=7200.108
+SAT_DONE elapsed=7201.009
+RESULT UNDECIDED lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma') orbits=243 constraints=730 seconds=7200.120
+PB_DONE elapsed=7201.009
+RESULT UNDECIDED lam=[2, 2, 2] assign=('id', 'id', 'id') orbits=378 constraints=730 seconds=7200.127
+PB_DONE elapsed=7201.005
+SAT_START lam=[1, 1, 1, 1, 1, 1] assign=('id', 'tau', 'tau', 'tau', 'tau', 'tau')
+SAT_START lam=[1, 1, 1, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma', 'sigma', 'sigma')
+SAT_START lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'tau', 'tau', 'tau', 'tau')
+SAT_START lam=[1, 1, 1, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma', 'sigma', 'sigma')
+PB_START lam=[2, 2, 1, 1] assign=('id', 'id', 'tau', 'tau')
+PB_START lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'tau')

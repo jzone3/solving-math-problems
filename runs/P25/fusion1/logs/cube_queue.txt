@@ -1,0 +1,2 @@
+lam=[3, 1, 1, 1] assign=('id', 'sigma', 'sigma', 'sigma') reason=SAT+ILP_UNDECIDED
+lam=[3, 1, 1, 1] assign=('id', 'id', 'sigma', 'sigma') reason=SAT+ILP_UNDECIDED
