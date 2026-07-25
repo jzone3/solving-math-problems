@@ -25,10 +25,9 @@ The CEGAR run then added 13 sound fallback hyperedges, yielding a final bank
 of 27 with sizes 107--382, median 234.  Eight independent Kissat checks of
 the final bank all returned SAT for `U \ D`.
 
-The fractional LP bound of the final bank was 3.65 (26 clauses at the time
-of measurement; the final appended clause does not materially change the
-diagnosis), far below 509.  This confirms that the bank remains too small to
-support a meaningful near-509 lower bound.
+The fractional LP bound of the final 27-clause bank was 3.75, far below 509.
+This confirms that the bank remains too small to support a meaningful
+near-509 lower bound.
 
 The reduced-universe outer trajectory reached a 9-vertex incumbent.  One
 iteration was `OPTIMAL` with CP-SAT bound 9; subsequent CEGAR iterations were
