@@ -191,11 +191,64 @@ Conclusion from that branch: gadget assembly cannot beat 509 with the known
 menu; it would need a mono-pair gadget of at most 254 vertices or a new mono
 distance with unit-closing lattice chains.
 
-### Parallel branch: `runs/P23-parts-rho` (still running)
+### Parallel branch: `runs/P23-parts-rho` (finished; independently reproduced here)
 
-Placeholder for the type-M rotation scan over the other Loeschian `ω_t`
-values that Parts explicitly left unexplored. Numbers will be filled in when
-that branch reports.
+This branch originated the type-M claim that Parts left open: rotations
+`ω_t = exp(i arccos(1 - 1/(2t)))` other than `ρ = ω_4` can work.  The
+rotation-leg branch built its pools with exact lattice arithmetic and reported
+working unions at `t=16` and `t=28`.  I independently rebuilt the same pools
+with this branch's `mring.py`, constructed the physical points in the
+multiquadratic `mfield`, and repeated the edge and SAT checks.
+
+The independent results are:
+
+| rotation | field | base pool | union vertices | union edges | edge categories |
+|---|---|---:|---:|---:|---|
+| `t=4` control | `Q(√3,√5,√11)` | `L374/S136` | 509 | 2442 | 1860 + 552 + 30 |
+| `t=16` | `Q(√3,√7,√11)` | 38743 | 77485 | 863046 | 431490 + 431460 + 96 |
+| `t=28` | `Q(√3,√11,√37)` | 87529 | 175057 | 2069280 | 1034592 + 1034562 + 126 |
+
+The category order is base-copy edges, rotated-copy edges, and cross-copy
+edges.  The t=4 control exactly reconstructs the record decomposition and
+returned UNSAT with a drat-trim `s VERIFIED` result in 3.56 seconds.  Both
+single copies in the control were SAT.
+
+For `t=16`, the exact field construction took about 1025 seconds including
+pool construction and edge generation.  The base and rotated single copies
+were SAT in 1.01 and 0.57 seconds respectively; the returned models were
+checked against every exact edge.  The union was UNSAT in 149.21 seconds and
+drat-trim returned `s VERIFIED`.  Thus this is an independent positive
+reproduction of the new type-M rotation.
+
+For `t=28`, the dense all-pairs prefilter was replaced by an exact neighbor
+enumeration for the two lattice copies and exact field confirmation of every
+candidate cross edge.  The pool and complete edge construction took about
+20 seconds after pool generation.  Both single copies were SAT, with exact
+model checks passing (1.86 and 2.93 seconds).  The union was UNSAT in 515.00
+seconds and drat-trim returned `s VERIFIED`.  Comparing the complete tagged
+edge set against the rotation-leg artifact gave zero missing and zero extra
+edges.  The
+rotation is `(55 + i√111)/56`, not `(55 + i√37)/56`; the latter omits the
+factor `√3`.  The field is nevertheless `Q(√3,√11,√37)`, as claimed.
+
+As a cheap constructive calibration, I rejoined the record's own `L374` and
+`S136` lattice sets with `ω_16` in place of `ρ`.  The graph had 509 vertices
+and 2424 exact edges, but was SAT.  The same construction at `t=4` had
+exactly 2442 edges and was UNSAT with `s VERIFIED`.  Therefore the record's
+orbit selection does not transfer directly to `ω_16`; a successful t=16
+construction needs new orbit filling around its three auxiliary cross-edge
+kinds, not a simple replacement of the rotation constant.
+
+The direct constructive seed made from the reference endpoint orbit and all
+three auxiliary endpoint kinds had 157 vertices and 66 cross edges, but was
+SAT.  Adding the unit-neighbor orbit on both copies gave 217 vertices and
+186 edges, still SAT.  These are only pipeline probes, not claimed type-M
+witnesses.  The t=16 hybrid deletion attempt was stopped after certified core
+jumps had reduced 77485 vertices to 10590.  A calibration on the known t=4 bulk pool
+showed that this deletion route floors around 1850 even though the optimum is
+known to be at most 509.  Consequently no t=16 deletion floor is interpreted
+as geometric evidence, and the constructive orbit-filling route is the
+appropriate next experiment.
 
 ## Interpretation
 
@@ -215,10 +268,18 @@ The remaining plausible directions are therefore:
 1. a genuinely new expansion family that frees many more old vertices than the
    current reserve sweep
 2. a new gadget menu, or a mono-pair gadget with 254 or fewer vertices
-3. the still-running `runs/P23-parts-rho` rotation scan, which may uncover a
-   better type-M geometry
+3. the finished `runs/P23-parts-rho` rotation scan, which established `ω_16`
+   and `ω_28` as working rotations
 4. a future split-curve exploration with a larger frozen companion if that run
    turns out to be structurally more favorable
+
+The rotation result changes the priority: deletion-based minimization is a
+poor optimizer even on a pool known to contain the 509 witness (a separate
+calibration stalled around 1850).  Thus the earlier 509 and 513--534 hybrid
+floors, and the rotation branch's 2167 t=16 floor, are not negative evidence
+against their underlying geometries.  The next serious attempt should use
+the Parts orbit-filling/fine-search machinery directly on the t=16 reference
+orbit and its three auxiliary cross-edge kinds.
 
 ## Files and reproduction
 
@@ -235,6 +296,8 @@ Key files in `runs/P23-parts-method/`:
 - `deep_search.py` — untruncated phase-2 driver
 - `hybrid_core.py`, `hybrid_min.py`, `build_hybrid_pools.py` — corrected
   adapter around the legacy core/greedy minimizer
+- `rotation_repro.py` — independent exact t=4/t=16/t=28 pool, field, edge,
+  SAT, model, and DRAT reproduction
 
 Solver paths come from the environment:
 
@@ -251,16 +314,22 @@ KISSAT=/home/ubuntu/tools/kissat/build/kissat DRATTRIM=/home/ubuntu/tools/drat-t
 KISSAT=/home/ubuntu/tools/kissat/build/kissat DRATTRIM=/home/ubuntu/tools/drat-trim/drat-trim python3 screening.py --leg S --screen-only
 
 KISSAT=/home/ubuntu/tools/kissat/build/kissat DRATTRIM=/home/ubuntu/tools/drat-trim/drat-trim python3 hybrid_min.py --pool pool_sbest.pkl --start start_sbest.pkl   --fixed fixed_sbest.pkl --seed 0 --timeout 300   --output hybrid_sbest_0.pkl
+
+KISSAT=/home/ubuntu/tools/kissat/build/kissat DRATTRIM=/home/ubuntu/tools/drat-trim/drat-trim python3 rotation_repro.py 16 --out /tmp/repro16.pkl
 ```
 
 ## Compute spent
 
 The earlier campaign rows sum to **4.57 hours** of recorded wall time.  The
-final deeper greedy/hybrid push added approximately **2 hours of wall-clock
-work** across concurrent S, L, and joint screens and four-seed hybrid runs.
-The total campaign expenditure was therefore approximately **6.6 wall-clock
-hours** (with the screening and hybrid legs parallelized across the available
-cores).  The largest earlier single chunks were the two deep phase-2 legs,
+final deeper greedy/hybrid push added approximately **2 hours**.  The
+independent rotation reproduction added about **17 minutes** for t=16,
+**9 minutes** for the exact t=28 run, and about **40 minutes** for an
+abandoned dense t=28 prefilter before replacing it with exact neighbor
+enumeration.  The t=16 deletion attempt consumed about **15 minutes** before
+the known-pool calibration showed that this optimizer is not informative and
+it was stopped.  The combined recorded campaign total is therefore
+approximately **7.9 wall-clock hours**, excluding the parallel gadget-leg
+compute.  The largest earlier single chunks were the two deep phase-2 legs,
 each running for about **2h02m** before being stopped as truncated.
 
 ## Appendix A: raw campaign log
