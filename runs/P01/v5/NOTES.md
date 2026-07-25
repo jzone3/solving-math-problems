@@ -278,3 +278,20 @@ w=15 full-space exact minimum (window.c, complete enumeration of all 10,010,698,
 0-2 0-3 1-3 1-8 2-8 4-6 4-7 5-7 5-14 6-14 9-11 9-12 10-12 10-13 11-13
 (two pentagram-blocks + linking). This independently re-confirms no t=1 at w=15 and
 extends the exact-minimum table: w=6..15 minima 8,10,12,12,12,12,12,16,18,24.
+
+## 8. w=17 exhaustion COMPLETE (distributed over 5 parallel Devin sessions)
+
+All 15 fp-shards of w=17 exhausted with leaves=0 (no complete 2-factor survived the
+monotone prune): total nodes = 14,201,759,292 (~14.2e9), ~24 h wall across 5 machines
+(3 shards each). Per-shard final lines (verbatim):
+  fp=2  nodes=874320587   fp=3  nodes=978455265   fp=4  nodes=896302825
+  fp=5  nodes=935863549   fp=6  nodes=901332157   fp=7  nodes=899994205
+  fp=8  nodes=874235485   fp=9  nodes=851988613   fp=10 nodes=903169529
+  fp=11 nodes=863636485   fp=12 nodes=1014472453  fp=13 nodes=851370335
+  fp=14 nodes=1203263063  fp=15 nodes=712197497   fp=16 nodes=1441157244
+
+**Theorem (updated): no t=1 window gadget exists for w ≤ 17.** Hence every 4-regular
+uniquely hamiltonian simple graph has both sides of any 2-edge-cut ≥ 18 vertices, and any
+counterexample to Sheehan's conjecture on n ≤ 35 vertices is 4-edge-connected.
+
+STATUS: negative on the main question / frontier-pushed (theorem now w ≤ 17, n ≤ 35).
