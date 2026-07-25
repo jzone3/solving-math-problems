@@ -778,3 +778,34 @@ set on `w4d.pkl` (2972 remapped clauses, including the origin unit clause) is
 running at ~14 min/iteration with hyperedges still ~300-400 wide. So the
 deduplication removes a genuine double-count in the pool but does not unlock a
 508; the forced-vertex scan is the only cheap invariant it produced.
+
+## E34 — vary the Minkowski *base*, not just the rotation (`basescan.py`)
+
+Every type-M experiment so far (Parts' own, and the omega_t survey that found
+t = 16 and t = 28) fixes his base B = (+)^4 H^2 and moves only the rotation. The
+base is a free parameter too: (+)^n H^m clipped to radius r. m >= 3 leaves the
+lattice (`mul_eta` is non-integral there), so the family is m in {1, 2}, any n,
+any r. Harness validated on the known case — it re-derives
+`m=2 n=4 r=2.0, t=4: 18517 vtx -> NOT 4-colorable` in 314 s.
+
+Results (t over 2..28 in each cell):
+
+* **m = 1** (H^1 = 19 points): 165 (n, r, t) cells with n <= 10 and r <= 4, all
+  **4-colorable**. The thinner base never produces an obstruction.
+* **m = 2**: the number of summands matters much less than Parts' n = 4 suggests.
+  With n = 3 and r = 2 the union is **5677 vertices and already
+  non-4-colorable** — a third the size of his 18517-vertex universe.
+* The threshold is sharp in r: n = 3 gives 4-colorable at r = 1.25/1.5/1.75/1.8/
+  1.9/1.95 (up to 5617 vertices) and non-4-colorable at r = 2.0 (5677). Sixty
+  vertices flip it. n = 2 is 4-colorable at r = 2 (901 vertices).
+
+## E35 — a Parts-free universe (`build_w4s.py`)
+
+`w4s.pkl`: 5677 vertices, 42018 exact edges, **96 cross edges** (vs 126 in W₄),
+origin merged, edges float-prefiltered and confirmed exactly. It is *not* a
+universe containing the record — it misses 19 of Parts' 509 points — so its own
+minimal witness is a different graph, and its minimum is not known to be 509.
+That makes it the first search space in this run where a sub-509 answer is not
+already contradicted by a known 509 inside it. Four greedy 8-4-2-1 chains are
+descending it now (3378 / 2952 so far); the plan is greedy-to-floor and then the
+exact region-trade machinery from E25/E27, which is the pipeline that works.
