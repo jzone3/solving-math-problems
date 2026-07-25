@@ -96,7 +96,7 @@ gate are logged and rejected from the quality bank.
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | intermediate core | 6,035 | 49,567 | 4 attempts | 284 | 345 | 1,048 | 1.00 | incumbent 9; timed bounds 8,7,6 |
 | certified core | 5,751 | 46,732 | 14 quality edges | 107 | 218 | 287 | 3.75 final bank | optimum 9 once; later incumbents 9–12 |
-| known witness pool | 2,167 | 11,884 | 32 fast edges | 170 | 221.5 | 241 | 2.21 | incumbents 9–15; timed bounds 5–8 |
+| known witness pool | 2,167 | 11,884 | 297 optimizer edges; 301 after CEGAR | 10 | 213 | 278 | 4.91 | timed bounds 8,8,9,9; incumbents 18–24 |
 
 The 6,035-vertex intermediate core is an induced subset of the certified
 core-extraction chain and is therefore UNSAT by monotonicity. Its bank was
@@ -107,10 +107,12 @@ The CEGAR loop added fallback clauses, giving a final bank of 27 with sizes
 107–382 and median 234. Eight independent final-bank Kissat checks all
 returned SAT for `U \ D`.
 
-For the 2,167-vertex known-witness universe, 32 randomized optimizer attempts
-gave sizes 170–241 with median 221.5. Eight independent final optimizer-bank
-Kissat checks all returned SAT for `U \ D`. The outer run added further
-CEGAR clauses, but no selected graph was UNSAT.
+For the 2,167-vertex known-witness universe, 265 randomized optimizer
+attempts gave 10–278 with median 213; four CEGAR clauses brought the bank to
+301. Sixteen independent optimizer-bank Kissat checks all returned SAT for
+`U \ D`. The optimizer bank had support 2,125 and LP optimum 4.91. The outer
+run remained time-limited, with bounds 8, 8, 9, 9 and selected sets of sizes
+18, 21, 18, 24; no selected graph was UNSAT.
 
 ## The LP ceiling
 
@@ -133,8 +135,10 @@ Using the entire universe instead of the support gives the looser ceiling
 before support restriction; the actual final-bank support was 3,336, giving
 the tighter ceiling 31.18. The measured LP optimum was only 3.75.
 
-For the fast 2,167-witness bank, support was 1,725 and `d=170`, so the
-support ceiling was 10.15; the measured LP optimum was 2.21.
+For the 2,167-witness optimizer bank, support was 2,125 and `d=10`, so the
+support ceiling was 212.5; the measured LP optimum was 4.91. The later
+CEGAR clauses only strengthened the outer model further, and the entire
+trajectory remained far below 509.
 
 To make an LP-based certificate near 509 possible, a universe of size `n`
 would require hyperedges averaging roughly at most `n/509`. A bulk pool
@@ -163,16 +167,10 @@ FEASIBLE      6      12
 
 ```text
 status     bound  incumbent
-OPTIMAL       9       9
-OPTIMAL       9       9
-OPTIMAL       9       9
-OPTIMAL       9       9
-FEASIBLE     13      15
-FEASIBLE     13      16
-FEASIBLE     12      15
-FEASIBLE     11      16
-FEASIBLE     12      17
-FEASIBLE     13      16
+FEASIBLE      8      18
+FEASIBLE      8      21
+FEASIBLE      9      18
+FEASIBLE      9      24
 ```
 
 An `OPTIMAL` result is exact only for the current partial bank and

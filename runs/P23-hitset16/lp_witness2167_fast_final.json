@@ -1,0 +1,7 @@
+{
+  "bank": "maxcolor_bank_witness2167_fast.pkl",
+  "hyperedges": 297,
+  "support": 2125,
+  "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "lp_bound": 4.907147006426847
+}

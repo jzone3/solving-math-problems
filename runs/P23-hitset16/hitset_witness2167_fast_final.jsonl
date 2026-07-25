@@ -1,0 +1,4 @@
+{"iteration": 1, "seconds": 15.133, "bank": 297, "support": 2125, "outer_status": "FEASIBLE", "outer_bound": 8.0, "selection": 18, "hyperedge": 41, "bank_min": 10, "bank_median": 213, "bank_max": 278}
+{"iteration": 2, "seconds": 64.558, "bank": 298, "support": 2125, "outer_status": "FEASIBLE", "outer_bound": 8.0, "selection": 21, "hyperedge": 74, "bank_min": 10, "bank_median": 213, "bank_max": 278}
+{"iteration": 3, "seconds": 224.007, "bank": 299, "support": 2125, "outer_status": "FEASIBLE", "outer_bound": 9.0, "selection": 18, "hyperedge": 40, "bank_min": 10, "bank_median": 213, "bank_max": 278}
+{"iteration": 4, "seconds": 271.036, "bank": 300, "support": 2125, "outer_status": "FEASIBLE", "outer_bound": 9.0, "selection": 24, "hyperedge": 56, "bank_min": 10, "bank_median": 213, "bank_max": 278}

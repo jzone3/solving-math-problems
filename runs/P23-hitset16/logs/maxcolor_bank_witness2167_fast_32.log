@@ -1,0 +1,37 @@
+{"seed": 33, "status": "FEASIBLE", "objective": 21086819.0, "bound": 22775158.0, "d_size": 159, "accepted": true}
+{"seed": 35, "status": "FEASIBLE", "objective": 20484112.0, "bound": 22742618.0, "d_size": 215, "accepted": true}
+{"seed": 36, "status": "FEASIBLE", "objective": 20374760.0, "bound": 22770760.0, "d_size": 225, "accepted": true}
+{"seed": 40, "status": "FEASIBLE", "objective": 20471931.0, "bound": 22752354.0, "d_size": 216, "accepted": true}
+{"seed": 38, "status": "FEASIBLE", "objective": 20599340.0, "bound": 22776721.0, "d_size": 206, "accepted": true}
+{"seed": 34, "status": "FEASIBLE", "objective": 20365668.0, "bound": 22778276.0, "d_size": 229, "accepted": true}
+{"seed": 37, "status": "FEASIBLE", "objective": 20526026.0, "bound": 22756926.0, "d_size": 212, "accepted": true}
+{"seed": 39, "status": "FEASIBLE", "objective": 20290238.0, "bound": 22753811.0, "d_size": 234, "accepted": true}
+{"seed": 43, "status": "FEASIBLE", "objective": 21172449.0, "bound": 22744026.0, "d_size": 149, "accepted": true}
+{"seed": 44, "status": "FEASIBLE", "objective": 20963735.0, "bound": 22743231.0, "d_size": 169, "accepted": true}
+{"seed": 45, "status": "FEASIBLE", "objective": 20585859.0, "bound": 22787450.0, "d_size": 207, "accepted": true}
+{"seed": 41, "status": "FEASIBLE", "objective": 20549931.0, "bound": 22758603.0, "d_size": 209, "accepted": true}
+{"seed": 46, "status": "FEASIBLE", "objective": 20642085.0, "bound": 22754008.0, "d_size": 201, "accepted": true}
+{"seed": 42, "status": "FEASIBLE", "objective": 20202832.0, "bound": 22772641.0, "d_size": 244, "accepted": true}
+{"seed": 47, "status": "FEASIBLE", "objective": 20387010.0, "bound": 22784873.0, "d_size": 227, "accepted": true}
+{"seed": 48, "status": "FEASIBLE", "objective": 20304804.0, "bound": 22765354.0, "d_size": 234, "accepted": true}
+{"seed": 50, "status": "FEASIBLE", "objective": 20671272.0, "bound": 22773029.0, "d_size": 199, "accepted": true}
+{"seed": 49, "status": "FEASIBLE", "objective": 20689218.0, "bound": 22749558.0, "d_size": 195, "accepted": true}
+{"seed": 52, "status": "FEASIBLE", "objective": 20455743.0, "bound": 22759890.0, "d_size": 218, "accepted": true}
+{"seed": 51, "status": "FEASIBLE", "objective": 20329605.0, "bound": 22768743.0, "d_size": 232, "accepted": true}
+{"seed": 53, "status": "FEASIBLE", "objective": 20291995.0, "bound": 22771063.0, "d_size": 235, "accepted": true}
+{"seed": 54, "status": "FEASIBLE", "objective": 20618278.0, "bound": 22799394.0, "d_size": 205, "accepted": true}
+{"seed": 56, "status": "FEASIBLE", "objective": 20352760.0, "bound": 22765657.0, "d_size": 229, "accepted": true}
+{"seed": 55, "status": "FEASIBLE", "objective": 20567287.0, "bound": 22766730.0, "d_size": 208, "accepted": true}
+{"seed": 57, "status": "FEASIBLE", "objective": 20261689.0, "bound": 22763539.0, "d_size": 237, "accepted": true}
+{"seed": 58, "status": "FEASIBLE", "objective": 20497463.0, "bound": 22766862.0, "d_size": 215, "accepted": true}
+{"seed": 60, "status": "FEASIBLE", "objective": 20543681.0, "bound": 22782569.0, "d_size": 212, "accepted": true}
+{"seed": 59, "status": "FEASIBLE", "objective": 20576022.0, "bound": 22780610.0, "d_size": 209, "accepted": true}
+{"seed": 61, "status": "FEASIBLE", "objective": 20359116.0, "bound": 22756988.0, "d_size": 228, "accepted": true}
+{"seed": 62, "status": "FEASIBLE", "objective": 20644583.0, "bound": 22769806.0, "d_size": 201, "accepted": true}
+{"seed": 63, "status": "FEASIBLE", "objective": 20396026.0, "bound": 22753044.0, "d_size": 224, "accepted": true}
+{"seed": 64, "status": "FEASIBLE", "objective": 20631667.0, "bound": 22776009.0, "d_size": 203, "accepted": true}
+accepted=73 min=10 median=209 max=244
+
+real	1m29.703s
+user	11m46.584s
+sys	0m0.594s
