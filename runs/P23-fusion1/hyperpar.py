@@ -47,7 +47,20 @@ if LNSFIX:
     # statement about a neighbourhood of the record rather than a search floor.
     base = sorted(pickle.load(open(LNSFIX, 'rb')))
     r = random.Random(LNSSEED)
-    FIX = sorted(r.sample(base, min(LNSK, len(base))))
+    LNSBALL = int(os.environ.get('LNSBALL', '0'))
+    if LNSBALL:
+        # A hole scattered over the whole graph is the easiest case for local
+        # rigidity: each dropped vertex is pinned by its own untouched
+        # neighbourhood.  Dropping a geometric ball instead frees a contiguous
+        # region, which is what a genuinely different 508 would look like.
+        import lattice
+        om = lattice.omega_t_complex(4)   # the 'B' half lives rotated by omega_4
+        z = [lattice.to_complex(q) * (om if t == 'B' else 1) for t, q in PTS]
+        c = z[base[r.randrange(len(base))]]
+        order = sorted(base, key=lambda v: abs(z[v] - c))
+        FIX = sorted(order[LNSBALL:])
+    else:
+        FIX = sorted(r.sample(base, min(LNSK, len(base))))
     fixs = set(FIX)
     CAND = sorted(v for v in range(NP) if v not in fixs)
     # Restrict the free side to the pool around the hole we punched in the

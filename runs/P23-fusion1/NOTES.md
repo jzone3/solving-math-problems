@@ -565,3 +565,19 @@ any nearby pool vertex, not just record vertices. That is a much stronger
 statement than the earlier swap scans (which only tried −k+k moves), and it says
 a 508 (if one exists in this pool) must differ from the record in a large,
 non-local region.
+
+## E24 — contiguous ("ball") holes instead of scattered ones (`lnsball.sh`)
+
+A hole made of 20 *random* record vertices is the easiest possible case for
+local rigidity: each dropped vertex sits alone inside its own untouched
+neighbourhood, so its old position is essentially forced. That is very likely
+why all 31 scattered holes closed UNSAT. `LNSBALL=H` instead drops the H record
+vertices geometrically nearest a random record vertex (coordinates via
+`lattice.to_complex`, with the 'B' half rotated by ω₄ as in `build_w4x.py`), so
+a contiguous region of the graph is freed at once and the refill may reorganise
+it — which is what a genuinely different 508 would have to look like locally.
+
+H = 25 gives 485 frozen, 237 candidates in the 1-hop pool and a budget of 23,
+i.e. the refill must be strictly cheaper than what it replaced. ~1.4 s/iteration,
+hyperedges of width ~18. Running on 2 workers × 20 balls, alongside the
+scattered 20-holes (31 UNSAT) and the 30-holes (none closed yet). No witness.
