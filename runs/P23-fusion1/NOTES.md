@@ -581,3 +581,37 @@ H = 25 gives 485 frozen, 237 candidates in the 1-hop pool and a budget of 23,
 i.e. the refill must be strictly cheaper than what it replaced. ~1.4 s/iteration,
 hyperedges of width ~18. Running on 2 workers × 20 balls, alongside the
 scattered 20-holes (31 UNSAT) and the 30-holes (none closed yet). No witness.
+
+## E25 — exact LNS as a *minimiser*, not just a checker (`lnsdescend.py`)
+
+E13 showed the diagnosis: every deletion-style reducer stalls ~1850 on W₄ even
+though W₄ contains a 509, because deleting one vertex at a time can never trade
+a region for a cheaper region. `lnsdescend.py` performs exactly that trade and
+performs it completely: drop the H vertices of the current witness nearest a
+centre (or a random H, `RANDHOLE=1`), then run the hitting-set solver for a
+refill of ≤ H−1 vertices from the 1-hop pool around the hole. Each neighbourhood
+ends in a strictly smaller *certified* witness or in UNSAT — never in a floor.
+
+Getting it to actually descend took three fixes, all worth recording:
+
+1. **`/tmp` CNF collision.** Two runs with the same seed tag shared
+   `/tmp/ld_<tag>.cnf` and silently read each other's results — one run then
+   "proved" a non-4-colorable start was 4-colorable. Tags now include the pid.
+2. **Phase steering does not survive clause learning.** `set_phases` towards the
+   removed region, called once, had no effect; re-calling it每 iteration also
+   was not enough.
+3. **The outer solver is a bad *proposer*.** Over a few hundred candidates it
+   returns arbitrary budget-sized subsets, so it essentially never proposes "the
+   removed region minus its redundant vertices" — the cheapest trade. Every
+   other iteration now proposes that directly, and the solver is kept only for
+   completeness (its UNSAT is still a real proof for that neighbourhood).
+
+Calibration on a deliberately padded witness (record + 290 random pool vertices
+= 800): before fix 3, zero descents in ~150 iterations of a neighbourhood whose
+answer provably exists; after, `*** DESCENT to 799`. Two descent workers now run
+from 800 with H = 40, to measure whether exact LNS gets below the ~1850 deletion
+floor behaviour — i.e. whether it is a genuinely better minimiser before it is
+pointed at W₁₆, where the optimum is unknown.
+
+Meanwhile the hole-rigidity runs stand at 36+ scattered 20-holes and 1 contiguous
+25-ball certified UNSAT, no witness.
