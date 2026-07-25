@@ -13,3 +13,7 @@ cegar_*.drat
 h3_arrow.qdimacs
 qbf_*.out
 qbf_*.err
+h3_arrow_sym.qdimacs
+qbf_bloqqer_sym.qdimacs
+qbf_sym_*.out
+qbf_sym_*.err

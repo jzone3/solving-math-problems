@@ -45,5 +45,84 @@
     "status": "unavailable",
     "error_log": "qbf_bloqqer.err"
   },
-  "interpretation": "undecided; neither solver returned TRUE/FALSE within budget"
+  "interpretation": "undecided; all four enhanced runs ended UNKNOWN due host out-of-memory termination before the 2400-second limit; no TRUE/FALSE verdict or QBF certificate",
+  "runs": [
+    {
+      "name": "symbreak",
+      "qdimacs": "h3_arrow_sym.qdimacs",
+      "variables": 14511,
+      "clauses": 89552,
+      "automorphisms": 7
+    },
+    {
+      "name": "bloqqer_sym",
+      "qdimacs": "qbf_bloqqer_sym.qdimacs",
+      "variables": 14511,
+      "clauses": 80714,
+      "automorphisms": 7
+    }
+  ],
+  "enhanced_runs": [
+    {
+      "name": "DepQBF sym",
+      "solver": "DepQBF 6.03",
+      "formula": "h3_arrow_sym.qdimacs",
+      "command": "timeout --signal=TERM 2400 depqbf -v h3_arrow_sym.qdimacs",
+      "status": "UNKNOWN",
+      "wall_seconds": 1444.3,
+      "return_code": null,
+      "termination": "kernel OOM kill while competing QBF processes ran",
+      "stdout": "qbf_sym_depqbf_direct.out",
+      "stderr": "qbf_sym_depqbf_direct.err",
+      "wrapper": "qbf_sym_depqbf_direct.wrapper.out",
+      "last_solver_stats": "Restart 17, bt 120761, inc 10, next dist 270; SIG RECEIVED",
+      "certificate": null
+    },
+    {
+      "name": "DepQBF bloqqer-sym",
+      "solver": "DepQBF 6.03",
+      "formula": "qbf_bloqqer_sym.qdimacs",
+      "command": "timeout --signal=TERM 2400 depqbf -v qbf_bloqqer_sym.qdimacs",
+      "status": "UNKNOWN",
+      "wall_seconds": 1442.6,
+      "return_code": null,
+      "termination": "kernel OOM kill while competing QBF processes ran",
+      "stdout": "qbf_sym_bloqqer_depqbf.out",
+      "stderr": "qbf_sym_bloqqer_depqbf.err",
+      "wrapper": "qbf_sym_bloqqer_depqbf.wrapper.out",
+      "last_solver_stats": "Restart 48, bt 89731, inc 10, next dist 580; SIG RECEIVED",
+      "certificate": null
+    },
+    {
+      "name": "CAQE sym",
+      "solver": "CAQE 4.0.1",
+      "formula": "h3_arrow_sym.qdimacs",
+      "command": "timeout --signal=TERM 2400 caqe --qdo h3_arrow_sym.qdimacs",
+      "status": "UNKNOWN",
+      "wall_seconds": 1444.0,
+      "return_code": null,
+      "termination": "kernel OOM kill; no QBF verdict emitted",
+      "stdout": "qbf_sym_caqe_direct.out",
+      "stderr": "qbf_sym_caqe_direct.err",
+      "wrapper": "qbf_sym_caqe_direct.wrapper.out",
+      "last_solver_stats": "CAQE configuration banner only; no decision/statistics emitted",
+      "certificate": null
+    },
+    {
+      "name": "CAQE bloqqer-sym",
+      "solver": "CAQE 4.0.1",
+      "formula": "qbf_bloqqer_sym.qdimacs",
+      "command": "timeout --signal=TERM 2400 caqe --qdo qbf_bloqqer_sym.qdimacs",
+      "status": "UNKNOWN",
+      "wall_seconds": 1442.0,
+      "return_code": null,
+      "termination": "kernel OOM kill; no QBF verdict emitted",
+      "stdout": "qbf_sym_bloqqer_caqe.out",
+      "stderr": "qbf_sym_bloqqer_caqe.err",
+      "wrapper": "qbf_sym_bloqqer_caqe.wrapper.out",
+      "last_solver_stats": "CAQE configuration banner only; no decision/statistics emitted",
+      "certificate": null
+    }
+  ],
+  "host_oom_evidence": "dmesg reports Out of memory: Killed process 5992 (caqe) at 05:28:46 and Killed process 7635 (caqe) at 06:02:05"
 }

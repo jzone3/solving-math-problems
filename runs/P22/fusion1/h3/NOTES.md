@@ -216,6 +216,19 @@ the principled form of our hand-rolled CEGAR above) also fails to decide the
 instance in available compute. Artifacts: `qbf_arrow.py`, `qbf_results.json`
 (the 47k-clause `.qdimacs` and solver logs are large/regenerable, git-ignored).
 
+**Strengthened QBF (`--symbreak` + bloqqer) — still undecided (hardware ceiling).**
+`qbf_arrow.py --symbreak` adds *sound* lex-leader symmetry breaking on the ∃-s
+layer: pynauty automorphism generators (7 used), each **verified to be a genuine
+H₃ automorphism** before use (an unsound permutation could yield a false FALSE),
+lifted to the 1008-edge action, with comparator aux vars in the outer ∃ block.
+This yields 14511 vars / 89552 clauses (80714 after bloqqer 037 preprocessing).
+Reran DepQBF and CAQE (± bloqqer), longer budget: all four **UNKNOWN** — the box
+ran out of memory (`Out of memory: Killed process ... caqe`) before any verdict.
+So even with preprocessing + symmetry breaking the exact decision procedure
+exceeds this machine's memory/compute; the question stays open, and settling it
+would need a bigger machine or a stronger/parallel QBF solver on the (sound,
+regenerable) `h3_arrow_sym.qdimacs`.
+
 ## Certificate-backed negative decisions (SAT witnesses)
 
 `verify_witness.py` extracts a model from kissat for each of the three K₄-free
