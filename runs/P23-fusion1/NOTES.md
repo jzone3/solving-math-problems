@@ -321,3 +321,47 @@ Every intermediate is a certified non-4-colorable subgraph of W₁₆, i.e. a
 other than Parts' ρ = ω₄. It is not yet below 509 and may well floor above it,
 but it is the only line in this whole run that explores geometry no one has
 published.
+
+### E13 — CALIBRATION: deletion-based minimization is ~3.5× off the optimum
+Ran the same reducers on **W₄** — the type-M union that *provably contains
+Parts' 509* — starting from the full 5677-vertex pool:
+
+| method | floor reached |
+|---|---|
+| Parts' 8-4-2-1 batched greedy + DRAT core jumps (2 seeds) | ~1865 / ~1878, ~4 vtx per 100 s and decelerating |
+| iterated randomized DRAT core extraction (`corejump.py`) | 1864 → 1845 in 10 min, same rate |
+| orbit-batched greedy (`symgreedy.py`) | same regime |
+
+So on an instance whose optimum is known to be ≤ 509, *every* deletion-style
+method stalls around 1850. **Consequence:** the ~1950 floor my seven parallel
+runs reach on W₁₆ carries **no** negative information about the new rotation
+ω₁₆ — and no amount of extra greedy compute will decide it. Beating 509
+requires Parts' constructive side (reference-orbit selection + orbit filling +
+fine search), which is what the child run `runs/P23-parts-rho` is now doing;
+this calibration was sent to that session so it stops spending cores on
+deletion.
+
+### E14 — transplanting the record's halves onto the new rotations — NEGATIVE
+`transplant.py`: the record is L374 ∪ ω₄·S136. Re-joining the *same lattice
+sets* with ω₁₆ or ω₂₈ (only the rotation changes) gives 510 vtx / 2460 edges but
+is **4-colorable** — the cross-edge kinds differ (36 vs 54 cross edges), so the
+halves must be re-searched at each rotation, not transplanted.
+
+### E15 — port/pattern decomposition — INFEASIBLE AS STATED
+`ports.py`: L ∪ ωS is 5-chromatic iff the port-colouring pattern sets Π_A, Π_B
+(restrictions of proper 4-colourings to the cross-edge endpoints, mod colour
+permutation) conflict under every colour permutation. Attractive because it
+decomposes the problem, but projected ALL-SAT enumeration of Π_B for the
+record's own S136 blows past millions of patterns — the halves are far too
+loosely constrained for explicit pattern enumeration.
+
+### E16 — alternating half re-optimisation (`altmin.py`, `build_w4x.py`)
+New pool `w4x.pkl` = P₄ ∪ L374 in copy A, P₄ ∪ S136 in copy B, exact edges,
+which (unlike the radius-clipped `wt_4.pkl`, missing 19 record points) contains
+the record exactly — verified: DRAT core of the 510 stored points = **509**.
+On it, one half is frozen while the other is rebuilt from scratch over its whole
+candidate pool (up to all 374 / all 136 vertices at once) by column generation.
+This is a much deeper neighbourhood than any earlier move: previous scans always
+perturbed both halves together and only locally. Status: full-half rebuilds do
+not reconstruct (a half is a finely tuned 4-chromatic gadget, not something
+column generation stumbles into); partial half ruins rebuild to 510–511.
