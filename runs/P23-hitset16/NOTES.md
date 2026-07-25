@@ -96,7 +96,7 @@ gate are logged and rejected from the quality bank.
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | intermediate core | 6,035 | 49,567 | 4 attempts | 284 | 345 | 1,048 | 1.00 | incumbent 9; timed bounds 8,7,6 |
 | certified core | 5,751 | 46,732 | 14 quality edges | 107 | 218 | 287 | 3.75 final bank | optimum 9 once; later incumbents 9–12 |
-| known witness pool | 2,167 | 11,884 | 297 optimizer edges; 301 after CEGAR | 10 | 213 | 278 | 4.91 | timed bounds 8,8,9,9; incumbents 18–24 |
+| known witness pool | 2,167 | 11,884 | 256 optimizer edges; 264 after CEGAR | 24 | 214 | 267 | 4.69 | timed bounds 5,7,7,7,8,7,8,8; incumbents 16–19 |
 
 The 6,035-vertex intermediate core is an induced subset of the certified
 core-extraction chain and is therefore UNSAT by monotonicity. Its bank was
@@ -107,12 +107,35 @@ The CEGAR loop added fallback clauses, giving a final bank of 27 with sizes
 107–382 and median 234. Eight independent final-bank Kissat checks all
 returned SAT for `U \ D`.
 
-For the 2,167-vertex known-witness universe, 265 randomized optimizer
-attempts gave 10–278 with median 213; four CEGAR clauses brought the bank to
-301. Sixteen independent optimizer-bank Kissat checks all returned SAT for
-`U \ D`. The optimizer bank had support 2,125 and LP optimum 4.91. The outer
-run remained time-limited, with bounds 8, 8, 9, 9 and selected sets of sizes
-18, 21, 18, 24; no selected graph was UNSAT.
+For the 2,167-vertex known-witness universe, the bank-growth run was pushed
+hard in four 64-job batches. The accepted optimizer clauses accumulated as
+128 → 192 → 256, while the size distribution stayed nearly flat:
+
+| bank | min `|D|` | median `|D|` | max `|D|` | support |
+|---|---:|---:|---:|---:|
+| 128 | 135 | 217 | 267 | 2,092 |
+| 192 | 135 | 216 | 267 | 2,092 |
+| 256 | 135 | 215 | 267 | 2,110 |
+
+The final 256-clause optimizer bank had support 2,110 and LP optimum 3.4995.
+Sixteen independent final-bank Kissat checks all returned SAT for `U \ D`.
+The outer CEGAR run then added eight more sound clauses, producing a final
+264-clause bank with min `|D| = 24`, median 214, max 267, support 2,110, and
+LP optimum 4.6898. The outer lower-bound trajectory was:
+
+```text
+status     bound  incumbent
+FEASIBLE      5      19
+FEASIBLE      7      16
+FEASIBLE      7      17
+FEASIBLE      7      17
+FEASIBLE      8      18
+FEASIBLE      7      18
+FEASIBLE      8      18
+FEASIBLE      8      18
+```
+
+The run flattened well below 509.
 
 ## The LP ceiling
 
@@ -135,10 +158,10 @@ Using the entire universe instead of the support gives the looser ceiling
 before support restriction; the actual final-bank support was 3,336, giving
 the tighter ceiling 31.18. The measured LP optimum was only 3.75.
 
-For the 2,167-witness optimizer bank, support was 2,125 and `d=10`, so the
-support ceiling was 212.5; the measured LP optimum was 4.91. The later
-CEGAR clauses only strengthened the outer model further, and the entire
-trajectory remained far below 509.
+For the 2,167-witness optimizer bank, support was 2,110 and `d=135`, so the
+support ceiling was 15.63. The later CEGAR clauses dropped `d` to 24 but
+did not change the basic conclusion: the bank-driven LP remained tiny
+relative to 509, and the curve flattened far below the target.
 
 To make an LP-based certificate near 509 possible, a universe of size `n`
 would require hyperedges averaging roughly at most `n/509`. A bulk pool
@@ -167,10 +190,14 @@ FEASIBLE      6      12
 
 ```text
 status     bound  incumbent
+FEASIBLE      5      19
+FEASIBLE      7      16
+FEASIBLE      7      17
+FEASIBLE      7      17
 FEASIBLE      8      18
-FEASIBLE      8      21
-FEASIBLE      9      18
-FEASIBLE      9      24
+FEASIBLE      7      18
+FEASIBLE      8      18
+FEASIBLE      8      18
 ```
 
 An `OPTIMAL` result is exact only for the current partial bank and
@@ -179,9 +206,12 @@ reported CP-SAT lower bound but does not prove optimality. Adding a sound
 CEGAR hyperedge changes the outer model, so bounds are recorded per bank
 state.
 
-No outer UNSAT result was obtained for 508, 450, 400, or any comparable
-target. In particular, the run did not exhaust hyperedge generation for
-those target selections, so no complete negative statement is justified.
+The explicit feasibility queries at 508, 450, and 400 all returned
+`FEASIBLE` with colourable selections of sizes 19, 21, and 17,
+respectively. No outer UNSAT result was obtained for 508, 450, 400, or any
+comparable target. In particular, the run did not exhaust hyperedge
+generation for those target selections, so no complete negative statement is
+justified.
 
 ## Witness status
 

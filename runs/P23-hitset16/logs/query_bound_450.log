@@ -1,0 +1,10 @@
+{
+  "bank": 301,
+  "support": 2125,
+  "bound": 450,
+  "status": "FEASIBLE",
+  "objective": 20.0,
+  "best_bound": 9.0,
+  "selection": 20,
+  "colourable": true
+}

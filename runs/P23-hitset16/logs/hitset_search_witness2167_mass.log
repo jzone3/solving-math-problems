@@ -1,0 +1,12 @@
+{"iteration": 1, "seconds": 20.199, "bank": 256, "support": 2110, "outer_status": "FEASIBLE", "outer_bound": 5.0, "selection": 19, "hyperedge": 27, "bank_min": 27, "bank_median": 215, "bank_max": 267}
+{"iteration": 2, "seconds": 80.734, "bank": 257, "support": 2110, "outer_status": "FEASIBLE", "outer_bound": 7.0, "selection": 16, "hyperedge": 73, "bank_min": 27, "bank_median": 215, "bank_max": 267}
+{"iteration": 3, "seconds": 259.61, "bank": 258, "support": 2110, "outer_status": "FEASIBLE", "outer_bound": 7.0, "selection": 17, "hyperedge": 24, "bank_min": 24, "bank_median": 215, "bank_max": 267}
+{"iteration": 4, "seconds": 311.567, "bank": 259, "support": 2110, "outer_status": "FEASIBLE", "outer_bound": 7.0, "selection": 17, "hyperedge": 50, "bank_min": 24, "bank_median": 215, "bank_max": 267}
+{"iteration": 5, "seconds": 556.023, "bank": 260, "support": 2110, "outer_status": "FEASIBLE", "outer_bound": 8.0, "selection": 18, "hyperedge": 112, "bank_min": 24, "bank_median": 214, "bank_max": 267}
+{"iteration": 6, "seconds": 609.819, "bank": 261, "support": 2110, "outer_status": "FEASIBLE", "outer_bound": 7.0, "selection": 18, "hyperedge": 38, "bank_min": 24, "bank_median": 214, "bank_max": 267}
+{"iteration": 7, "seconds": 711.456, "bank": 262, "support": 2110, "outer_status": "FEASIBLE", "outer_bound": 8.0, "selection": 18, "hyperedge": 84, "bank_min": 24, "bank_median": 214, "bank_max": 267}
+{"iteration": 8, "seconds": 763.902, "bank": 263, "support": 2110, "outer_status": "FEASIBLE", "outer_bound": 8.0, "selection": 18, "hyperedge": 66, "bank_min": 24, "bank_median": 214, "bank_max": 267}
+
+real	14m4.870s
+user	28m55.461s
+sys	0m1.389s
