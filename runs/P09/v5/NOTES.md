@@ -224,9 +224,16 @@ Searches this round (all machine-scored, exact ω):
 - Joins K_t ∨ B(rank-2 graph) for t ≤ 3, a,b ≤ 9: all ≤ −0.19 — the plateau collapses
   under joins.
 - `sweepC.c` (sweep12 generalized to n ≤ 31 + complement mode): exhaustive DENSE-corner
-  certificate — score the complement of every graph with ≤ 20 edges on n vertices,
-  i.e. every graph on n vertices missing ≤ 20 edges. Running for n = 13,14,15,16
-  (2 geng parts each); results recorded below when complete.
+  certificate — scored the complement of every graph with ≤ 20 edges on n vertices,
+  i.e. **every graph on n vertices missing ≤ 20 edges**, for n = 13, 14, 15, 16:
+  n=13: 650,474,122 · n=14: 1,598,398,717 · n=15: 2,934,049,691 · n=16: 4,315,234,797
+  — 9,498,157,327 dense graphs in total. Zero violations; only 8 graphs within 1e-7 of
+  the bound, and all 8 recheck to exact equality at 50-digit precision (`recheckC.py`,
+  PASS): they are the Turán-type equality graphs reachable in this window (e.g.
+  T(16,8) = O????A?O@?A?A?@??O?A?-complement, K₁₃ minus a perfect matching-like
+  K_{1^11,2} cases, etc.). This is the first exhaustive certificate covering n = 13–16
+  in the dense regime where the known equality family lives — any counterexample on
+  13–16 vertices must be missing MORE than 20 edges.
 
 ## 5. Conclusion
 
@@ -242,8 +249,17 @@ blowup of a small pattern, and is not a local perturbation of the extremal famil
 Late additions: fixed-ω anneals at n = 70–90 (19 restarts × 60k steps, ω ∈ {3..6}):
 all negative (best −3.78 at n=70 ω=6).
 
+Round 9 additions: any counterexample must (a) have n ≥ 13, (b) if n ≤ 16, be missing
+more than 20 edges (dense-corner complement certificate, 9.5e9 graphs), (c) not be
+within 2 edge-edits of any complete multipartite graph, union of two complete
+multipartite graphs, or rank-2 bipartite equality graph on n ≤ 16 (41M scored
+neighborhoods). The ω = 2 near-bound zoo is now fully explained by the rank-2
+biadjacency plateau (λ₁²+λ₂² = m for every bipartite graph of biadjacency rank ≤ 2).
+
 STATUS: frontier-pushed (no counterexample; exhaustive certificate n ≤ 12 = 1.64e11
 connected graphs at n = 12 + 1.02e9 at n = 11 with all 86 near-bound graphs re-verified
-as known equality graphs at 50-digit precision; blowup-family certificate for all
-patterns ≤ 9 vertices at all sizes; ~2×10⁷ scored heuristic evaluations to n = 90 —
-all negative)
+as known equality graphs at 50-digit precision; dense-corner certificate: all graphs on
+13–16 vertices missing ≤ 20 edges (9.5e9 graphs, 8 near-bound = exact Turán equalities,
+50-digit PASS); blowup-family certificate for all patterns ≤ 9 vertices at all sizes;
+exhaustive 1-2-edit neighborhoods of every CM / CM-union / rank-2-bipartite equality
+graph n ≤ 16; ~2×10⁷ scored heuristic evaluations to n = 90 — all negative)

@@ -1,0 +1,1 @@
+SUMMARY n=13 total=331058556 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=

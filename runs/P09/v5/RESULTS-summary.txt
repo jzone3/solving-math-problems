@@ -177,3 +177,12 @@ SUMMARY n=12 total=1950436596 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g
 SUMMARY n=12 total=1855252077 cliqued=1 cand=1 worst=4.973799150321e-14 worst_g6=K?~vfb~~v}^w
 SUMMARY n=12 total=1765988898 cliqued=1 cand=1 worst=7.105427357601e-15 worst_g6=K??FFB_F?w[B
 SUMMARY n=12 total=1729037431 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=13 total=319415566 cliqued=2 cand=2 worst=1.185718190300e-13 worst_g6=L???????????~~
+SUMMARY n=13 total=331058556 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=14 total=761654978 cliqued=1 cand=1 worst=-9.325873406851e-14 worst_g6=M?????????????~~_
+SUMMARY n=14 total=836743739 cliqued=1 cand=1 worst=-1.811883976188e-13 worst_g6=M???C@?G?_@?@??_?
+SUMMARY n=15 total=1235713495 cliqued=2 cand=2 worst=-9.103828801926e-14 worst_g6=N???????????????^~w
+SUMMARY n=15 total=1698336196 cliqued=0 cand=0 worst=-1.000000000000e+18 worst_g6=
+SUMMARY n=16 total=1800443905 cliqued=1 cand=1 worst=-3.108624468950e-15 worst_g6=O?????????????????F~~
+SUMMARY n=16 total=2514790892 cliqued=1 cand=1 worst=-8.526512829121e-14 worst_g6=O????A?O@?A?A?@??O?A?
+RECHECKC PASS: no violations (8 dense-corner candidates, 50-digit)
