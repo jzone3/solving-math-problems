@@ -437,3 +437,27 @@ This is a new, independent confirmation of the integrality-gap wall from the
 opposite direction: the residual is either diffuse-many-fragments or
 few-fragments-large-measure, and the finisher cannot absorb even one
 large-measure survivor. No exact m=17 cover; frontier stays m=16.
+
+## 13. Top-down recursive tree builder (the "symbolic route") — implemented, NEGATIVE
+
+Prior notes repeatedly flagged a top-down p-ary-tree / arrow-family construction
+as "the untried next step." Now actually built and run: `toolkit/tree_cover.py`
+— starts from open cell (0 mod 1), splits an open AP (a mod M) into children mod
+p·M, closes p-1 of them with distinct congruences of modulus p·M (only if
+p·M >= minmod and unused), recurses on the last, with a fresh-prime CRT tail to
+close binary paths; DFS with rollback and depth/node/class bounds; exact integer
+coverage checks (no floats on accept path).
+
+Sanity: it closes a real cover at **minmod=2** (37 congruences) that PASSes all
+three verifiers (verify_v1, verify_sieve, verify_subtract) — so the machinery
+and distinct-modulus bookkeeping are correct.
+
+m=16 and m=17: does NOT close within bounded search (depth 100, 1e5 nodes) —
+the DFS descends through open branches and backtracks (hundreds of backtracks)
+without a surviving finite closing assignment. This is the same obstruction
+from the top-down side: distinct-modulus collisions force recursive alternatives
+and the open branch never reaches a free closure. So both the bottom-up
+(divisor greedy / count-min / repair) AND the top-down (recursive tree) routes
+now empirically cap below m=17 here. Confirms the missing piece is a specific
+*closure design* (the global alignment identity used by Owens/Nielsen), not more
+search — the genuine open-research part. Frontier stays m=16.
