@@ -5,3 +5,4 @@ __pycache__/
 *.proof
 *.out
 *.err
+wt_16_full.pkl

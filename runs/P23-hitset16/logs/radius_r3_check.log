@@ -1,0 +1,27 @@
+radius_r3: vertices=27265 edges=270924 clauses=1274551 vars=109060
+kissat_seconds=825.280
+s UNSATISFIABLE
+drat_trim_seconds=307.172
+
+c turning on binary mode checking
+
+c parsing input formula with 109060 variables and 1274551 clauses
+
+c finished parsing, read 320510873 bytes from proof file
+
+c detected empty clause; start verification via backward checking
+
+c 590948 of 1274551 clauses in core                            
+
+c 663532 of 2087097 lemmas in core using 86034738 resolution steps
+
+c 0 RAT lemmas in core; 1573516 redundant literals in core lemmas
+
+s VERIFIED
+
+c verification time: 307.150 seconds
+drat=VERIFIED
+
+real	18m53.435s
+user	18m51.765s
+sys	0m0.790s

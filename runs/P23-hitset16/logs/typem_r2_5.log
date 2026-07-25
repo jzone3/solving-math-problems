@@ -1,0 +1,6 @@
+t=16: W has 24229 vertices, 236292 edges
+t=16: 4-colorability -> SAT
+
+real	0m8.075s
+user	0m6.077s
+sys	0m2.285s
