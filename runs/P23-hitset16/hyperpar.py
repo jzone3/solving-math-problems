@@ -9,7 +9,8 @@ incremental min-conflicts/tabu on the free candidates and read off one endpoint
 per surviving conflicting edge.  Typical output |D| ~ 60-220 out of 2839, versus
 ~850 for greedy colour extension.
 
-Env: POOL, FROZEN, FREEHALF, NPROC, NHYP (per worker), TABU, NOISE, OUT.
+Env: POOL, FROZEN, FREEHALF, NPROC, NHYP (per worker), TABU, NOISE, OUT,
+WHOLE, CHECK_SAMPLE.
 """
 import os
 import pickle
@@ -29,16 +30,25 @@ NHYP = int(os.environ.get('NHYP', '20'))
 TABU = int(os.environ.get('TABU', '4000000'))
 NOISE = float(os.environ.get('NOISE', '0.02'))
 OUT = os.environ.get('OUT', 'hyp_w4x.pkl')
+WHOLE = os.environ.get('WHOLE', '0') == '1'
+CHECK_SAMPLE = int(os.environ.get('CHECK_SAMPLE', '8'))
 
 E, adj, PTS = coremin.E, coremin.adj, coremin.allpts
 NP = len(PTS)
 HALF = [0 if t == 'A' else 1 for t, _ in PTS]
+SIDE_VERTICES = ([i for i, h in enumerate(HALF) if h == 0],
+                 [i for i, h in enumerate(HALF) if h == 1])
 
 fro = set(pickle.load(open(FROZEN, 'rb'))) if FROZEN else set()
-FIX = sorted(v for v in fro if HALF[v] != FREEHALF)
-CAND = sorted(v for v in range(NP) if HALF[v] == FREEHALF)
+if WHOLE:
+    FIX = []
+    CAND = list(range(NP))
+else:
+    FIX = sorted(v for v in fro if HALF[v] != FREEHALF)
+    CAND = sorted(v for v in range(NP) if HALF[v] == FREEHALF)
 CANDS = set(CAND)
 NBR = {v: sorted(adj[v] & (CANDS | set(FIX))) for v in CAND}
+UNIVERSE = set(range(NP))
 
 
 def kissat_color(S, tag):
@@ -61,7 +71,18 @@ def kissat_color(S, tag):
             os.unlink(cnf)
 
 
-def tabu_hyperedge(fixed_col, movable, rng, tabu=TABU):
+def validate_hyperedge(D, col):
+    """Assert D is sound: col colors every vertex outside D conflict-free."""
+    assert set(col) == UNIVERSE, (
+        f'colouring coverage failure: {len(col)} != {len(UNIVERSE)}')
+    outside = UNIVERSE - set(D)
+    assert all(v in col for v in outside)
+    for u, v in E:
+        if u not in D and v not in D:
+            assert col[u] != col[v], f'conflict outside D: {(u, v)}'
+
+
+def tabu_hyperedge(fixed_col, movable, rng, tabu=TABU, return_col=False):
     col = dict(fixed_col)
     mv = set(movable)
     for v in movable:
@@ -97,27 +118,48 @@ def tabu_hyperedge(fixed_col, movable, rng, tabu=TABU):
     if best is None or cur < best[0]:
         best = (cur, dict(col))
     col = best[1]
+    bad_edges = [(u, v) for u, v in E
+                 if u in col and v in col and col[u] == col[v]]
+    if any(u not in mv and v not in mv for u, v in bad_edges):
+        return None
+    # Turn the residual conflict graph into a vertex cover.  Choosing the
+    # highest-conflict-degree endpoint first is much tighter than relying on
+    # the arbitrary lattice edge order, while preserving soundness.
+    conflict_adj = {}
+    for u, v in bad_edges:
+        conflict_adj.setdefault(u, set()).add(v)
+        conflict_adj.setdefault(v, set()).add(u)
     D = set()
-    for u, v in E:
-        if u in col and v in col and col[u] == col[v]:
-            if u in D or v in D:
-                continue
-            if u in mv:
-                D.add(u)
-            elif v in mv:
-                D.add(v)
-            else:
-                return None
-    return D
+    while conflict_adj:
+        v = max(conflict_adj, key=lambda x: len(conflict_adj[x]))
+        D.add(v)
+        for u in list(conflict_adj[v]):
+            conflict_adj[u].discard(v)
+            if not conflict_adj[u]:
+                del conflict_adj[u]
+        del conflict_adj[v]
+    validate_hyperedge(D, col)
+    return (D, col) if return_col else D
 
 
 def worker(seed):
     rng = random.Random(seed)
-    col0 = kissat_color(FIX, f'w{seed}') if FIX else {}
+    if WHOLE:
+        ca = kissat_color(SIDE_VERTICES[0], f'a{seed}')
+        cb = kissat_color(SIDE_VERTICES[1], f'b{seed}')
+        assert ca and cb, 'single-copy base graph unexpectedly non-4-colorable'
+        perm = list(range(4))
+        rng.shuffle(perm)
+        col0 = dict(ca)
+        col0.update({v: perm[c] for v, c in cb.items()})
+    else:
+        col0 = kissat_color(FIX, f'w{seed}') if FIX else {}
     out = []
     for i in range(NHYP):
-        D = tabu_hyperedge(col0, CAND, rng)
+        result = tabu_hyperedge(col0, CAND, rng, return_col=True)
+        D, col = result if result else (None, None)
         if D:
+            validate_hyperedge(D, col)
             out.append(sorted(D))
             print(f'[{seed}] {i}: |D|={len(D)}', flush=True)
     return out
@@ -131,7 +173,14 @@ def main():
     old = []
     if os.path.exists(OUT):
         old = pickle.load(open(OUT, 'rb'))
-    pickle.dump(old + hyps, open(OUT, 'wb'))
+    merged = old + hyps
+    pickle.dump(merged, open(OUT, 'wb'))
+    if CHECK_SAMPLE and merged:
+        rng = random.Random(917263)
+        sample = rng.sample(merged, min(CHECK_SAMPLE, len(merged)))
+        for i, D in enumerate(sample):
+            st, _ = kissat_color(sorted(UNIVERSE - set(D)), f'bankcheck_{i}')
+            assert st, f'banked hyperedge {i} failed SAT check'
     sz = sorted(len(d) for d in hyps)
     print(f'{len(hyps)} hyperedges, min {sz[0]} median {sz[len(sz)//2]} '
           f'max {sz[-1]}, {round(time.time()-t0)}s -> {OUT} '
