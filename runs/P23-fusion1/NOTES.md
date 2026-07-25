@@ -225,3 +225,49 @@ record vertex within radius 2.05, then all pairs of successful deletions (→508
 Swap-deletable candidates *are* found here (unlike in the √2 extension), i.e. the
 record has substitutable vertices — but no candidate so far admits **two**
 simultaneous deletions, which is what a 508 requires.
+
+**E9 result: 697 candidates scanned, 11 swap-deletable, 0 that admit two
+deletions ⇒ no 508** (12,899 s, 5 cores). The 11 swaps are new (most are apex
+points, which v1's pools did not contain), e.g.
+`w=41451→v415`, `w=41438→v413`, `w=2731→v220`, `w=1666→v301`, `w=620→v347`,
+`w=516→v353`, `w=41543→v375`, `w=2472→v217`, `w=3452→v356`, `w=1674→v300`,
+`w=1341→v350`.
+
+### E10 — composite multi-swap moves (`combo.py`) — NEGATIVE, novel
+With 11 known swaps one can finally *compose* them. For all 220 pairs and
+triples with disjoint deleted vertices: build `509 − {v_i} + {w_i}`, check it is
+still non-4-colorable, then attempt to delete **every** vertex of the result.
+
+- **200 / 220** composite substitutions are genuinely independent → 200 further
+  distinct 509-vertex 5-chromatic UDGs (20 combinations interfere and become
+  4-colorable);
+- **every one of the 200 is again vertex-critical** — not a single vertex can be
+  removed from any of them.
+
+This is the sharpest statement of the obstruction found in this run: the record's
+substitution structure is *rigid*. Swaps compose freely, generating hundreds of
+distinct 509s, yet no combination ever frees a vertex. A 508 therefore cannot be
+reached by any −k+k / −k+(k−1) move over these pools; it needs a different
+construction, not a different search.
+
+## Summary of session 2 (all negative for <509, all machine-checked)
+| # | experiment | scale | floor |
+|---|------------|-------|-------|
+| E6 | √2-extension swap scan vs record | 147 candidates | 0 swaps at all |
+| E7 | LNS ruin&recreate (√2 pool, 33k) | ~40 iterations | 509 |
+| E7b | LNS ruin&recreate (native pool, 41.8k) | ~40 iterations | 509 |
+| E8 | unions of distinct 509s | 10 pairs | 509 |
+| E9 | native swap scan (Minkowski+apex) | 697 candidates | 509 (11 swaps, 0 doubles) |
+| E10 | composite multi-swaps | 220 combos → 200 new 509s | all critical |
+
+Parallel child sessions (independent machines, own branches, no PRs):
+- `runs/P23-sms` — constructive CEGAR search over fixed exact universes:
+  rediscovered the Moser spindle as the smallest 4-chromatic UDG (certified),
+  proved Moser-ball universes up to 55,747 vertices are 4-colorable, and
+  independently re-proved by a *different method* that no 508-subset of the
+  record is non-4-colorable.
+- `runs/P23-priority2` — exhaustive priority sweep: nothing below 509 exists
+  publicly through 2026-06; de Grey–Parts arXiv:2303.14714 only improves the
+  *edge* count (2442 → 2406) on the same 509 vertices.
+- `runs/P23-parts-method` — reimplementation of Parts' own ring/gadget
+  minimization (in progress at time of writing).

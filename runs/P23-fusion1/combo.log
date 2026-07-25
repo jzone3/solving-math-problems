@@ -1,0 +1,203 @@
+11 swaps read from scan508n.log
+220 composite moves (k=2..3)
+  independent 509 (still critical): ((41451, 415), (41438, 413)) [1] 114s
+  independent 509 (still critical): ((41451, 415), (2731, 220)) [2] 115s
+  independent 509 (still critical): ((41451, 415), (3452, 356)) [3] 123s
+  independent 509 (still critical): ((41451, 415), (2472, 217)) [4] 230s
+  independent 509 (still critical): ((41451, 415), (1674, 300)) [5] 240s
+  independent 509 (still critical): ((41451, 415), (1666, 301)) [6] 241s
+  independent 509 (still critical): ((41451, 415), (1341, 350)) [7] 348s
+  independent 509 (still critical): ((41451, 415), (516, 353)) [8] 357s
+  independent 509 (still critical): ((41451, 415), (620, 347)) [9] 369s
+  independent 509 (still critical): ((41438, 413), (3452, 356)) [10] 476s
+  independent 509 (still critical): ((41451, 415), (41543, 375)) [11] 477s
+  independent 509 (still critical): ((41438, 413), (2731, 220)) [12] 482s
+  independent 509 (still critical): ((41438, 413), (1666, 301)) [13] 585s
+  independent 509 (still critical): ((41438, 413), (2472, 217)) [14] 586s
+  independent 509 (still critical): ((41438, 413), (1674, 300)) [15] 595s
+  independent 509 (still critical): ((41438, 413), (1341, 350)) [16] 691s
+  independent 509 (still critical): ((41438, 413), (516, 353)) [17] 701s
+  independent 509 (still critical): ((41438, 413), (620, 347)) [18] 706s
+  independent 509 (still critical): ((41438, 413), (41543, 375)) [19] 808s
+  independent 509 (still critical): ((3452, 356), (2731, 220)) [20] 813s
+  independent 509 (still critical): ((3452, 356), (2472, 217)) [21] 816s
+  independent 509 (still critical): ((3452, 356), (1674, 300)) [22] 916s
+  independent 509 (still critical): ((3452, 356), (1666, 301)) [23] 927s
+  independent 509 (still critical): ((3452, 356), (1341, 350)) [24] 931s
+  independent 509 (still critical): ((3452, 356), (620, 347)) [25] 1022s
+  independent 509 (still critical): ((3452, 356), (516, 353)) [26] 1045s
+  independent 509 (still critical): ((3452, 356), (41543, 375)) [27] 1055s
+  independent 509 (still critical): ((2731, 220), (2472, 217)) [28] 1128s
+  independent 509 (still critical): ((2731, 220), (1666, 301)) [29] 1150s
+  independent 509 (still critical): ((2731, 220), (1341, 350)) [30] 1153s
+  independent 509 (still critical): ((2731, 220), (620, 347)) [31] 1240s
+  independent 509 (still critical): ((2731, 220), (516, 353)) [32] 1262s
+  independent 509 (still critical): ((2731, 220), (41543, 375)) [33] 1275s
+  independent 509 (still critical): ((2472, 217), (1674, 300)) [34] 1350s
+  independent 509 (still critical): ((2472, 217), (1341, 350)) [35] 1373s
+  independent 509 (still critical): ((2472, 217), (620, 347)) [36] 1386s
+  independent 509 (still critical): ((2472, 217), (516, 353)) [37] 1460s
+  independent 509 (still critical): ((2472, 217), (41543, 375)) [38] 1490s
+  independent 509 (still critical): ((1674, 300), (1666, 301)) [39] 1496s
+  independent 509 (still critical): ((1674, 300), (1341, 350)) [40] 1573s
+  independent 509 (still critical): ((1674, 300), (516, 353)) [41] 1604s
+  independent 509 (still critical): ((1674, 300), (620, 347)) [42] 1606s
+  independent 509 (still critical): ((1674, 300), (41543, 375)) [43] 1685s
+  independent 509 (still critical): ((1666, 301), (1341, 350)) [44] 1708s
+  independent 509 (still critical): ((1666, 301), (620, 347)) [45] 1719s
+  independent 509 (still critical): ((1666, 301), (516, 353)) [46] 1810s
+  independent 509 (still critical): ((1666, 301), (41543, 375)) [47] 1814s
+  independent 509 (still critical): ((1341, 350), (620, 347)) [48] 1827s
+  independent 509 (still critical): ((1341, 350), (516, 353)) [49] 1928s
+  independent 509 (still critical): ((1341, 350), (41543, 375)) [50] 1933s
+  independent 509 (still critical): ((620, 347), (516, 353)) [51] 1951s
+  independent 509 (still critical): ((620, 347), (41543, 375)) [52] 2046s
+  independent 509 (still critical): ((516, 353), (41543, 375)) [53] 2051s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (3452, 356)) [54] 2070s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (2731, 220)) [55] 2154s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (2472, 217)) [56] 2170s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (1674, 300)) [57] 2194s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (1666, 301)) [58] 2265s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (1341, 350)) [59] 2284s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (620, 347)) [60] 2311s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (516, 353)) [61] 2376s
+  independent 509 (still critical): ((41451, 415), (41438, 413), (41543, 375)) [62] 2397s
+  independent 509 (still critical): ((41451, 415), (3452, 356), (2731, 220)) [63] 2429s
+  independent 509 (still critical): ((41451, 415), (3452, 356), (2472, 217)) [64] 2502s
+  independent 509 (still critical): ((41451, 415), (3452, 356), (1674, 300)) [65] 2524s
+  independent 509 (still critical): ((41451, 415), (3452, 356), (1666, 301)) [66] 2550s
+  independent 509 (still critical): ((41451, 415), (3452, 356), (1341, 350)) [67] 2630s
+  independent 509 (still critical): ((41451, 415), (3452, 356), (620, 347)) [68] 2647s
+  independent 509 (still critical): ((41451, 415), (3452, 356), (516, 353)) [69] 2663s
+  independent 509 (still critical): ((41451, 415), (3452, 356), (41543, 375)) [70] 2756s
+  independent 509 (still critical): ((41451, 415), (2731, 220), (2472, 217)) [71] 2759s
+  independent 509 (still critical): ((41451, 415), (2731, 220), (1666, 301)) [72] 2787s
+  independent 509 (still critical): ((41451, 415), (2731, 220), (1341, 350)) [73] 2881s
+  independent 509 (still critical): ((41451, 415), (2731, 220), (620, 347)) [74] 2883s
+  independent 509 (still critical): ((41451, 415), (2731, 220), (516, 353)) [75] 2908s
+  independent 509 (still critical): ((41451, 415), (2472, 217), (1674, 300)) [76] 2996s
+  independent 509 (still critical): ((41451, 415), (2731, 220), (41543, 375)) [77] 3001s
+  independent 509 (still critical): ((41451, 415), (2472, 217), (1341, 350)) [78] 3025s
+  independent 509 (still critical): ((41451, 415), (2472, 217), (620, 347)) [79] 3123s
+  independent 509 (still critical): ((41451, 415), (2472, 217), (516, 353)) [80] 3128s
+  independent 509 (still critical): ((41451, 415), (2472, 217), (41543, 375)) [81] 3140s
+  independent 509 (still critical): ((41451, 415), (1674, 300), (1666, 301)) [82] 3235s
+  independent 509 (still critical): ((41451, 415), (1674, 300), (1341, 350)) [83] 3244s
+  independent 509 (still critical): ((41451, 415), (1674, 300), (620, 347)) [84] 3266s
+  independent 509 (still critical): ((41451, 415), (1674, 300), (516, 353)) [85] 3358s
+  independent 509 (still critical): ((41451, 415), (1674, 300), (41543, 375)) [86] 3360s
+  independent 509 (still critical): ((41451, 415), (1666, 301), (1341, 350)) [87] 3386s
+  independent 509 (still critical): ((41451, 415), (1666, 301), (516, 353)) [88] 3478s
+  independent 509 (still critical): ((41451, 415), (1666, 301), (620, 347)) [89] 3480s
+  independent 509 (still critical): ((41451, 415), (1666, 301), (41543, 375)) [90] 3499s
+  independent 509 (still critical): ((41451, 415), (1341, 350), (516, 353)) [91] 3590s
+  independent 509 (still critical): ((41451, 415), (1341, 350), (620, 347)) [92] 3598s
+  independent 509 (still critical): ((41451, 415), (1341, 350), (41543, 375)) [93] 3624s
+  independent 509 (still critical): ((41451, 415), (620, 347), (516, 353)) [94] 3715s
+  independent 509 (still critical): ((41451, 415), (620, 347), (41543, 375)) [95] 3718s
+  independent 509 (still critical): ((41451, 415), (516, 353), (41543, 375)) [96] 3751s
+  independent 509 (still critical): ((41438, 413), (3452, 356), (2731, 220)) [97] 3825s
+  independent 509 (still critical): ((41438, 413), (3452, 356), (2472, 217)) [98] 3837s
+  independent 509 (still critical): ((41438, 413), (3452, 356), (1674, 300)) [99] 3863s
+  independent 509 (still critical): ((41438, 413), (3452, 356), (1666, 301)) [100] 3940s
+  independent 509 (still critical): ((41438, 413), (3452, 356), (1341, 350)) [101] 3941s
+  independent 509 (still critical): ((41438, 413), (3452, 356), (620, 347)) [102] 3988s
+  independent 509 (still critical): ((41438, 413), (3452, 356), (516, 353)) [103] 4047s
+  independent 509 (still critical): ((41438, 413), (3452, 356), (41543, 375)) [104] 4051s
+  independent 509 (still critical): ((41438, 413), (2731, 220), (2472, 217)) [105] 4093s
+  independent 509 (still critical): ((41438, 413), (2731, 220), (1341, 350)) [106] 4161s
+  independent 509 (still critical): ((41438, 413), (2731, 220), (1666, 301)) [107] 4166s
+  independent 509 (still critical): ((41438, 413), (2731, 220), (620, 347)) [108] 4207s
+  independent 509 (still critical): ((41438, 413), (2731, 220), (516, 353)) [109] 4275s
+  independent 509 (still critical): ((41438, 413), (2731, 220), (41543, 375)) [110] 4280s
+  independent 509 (still critical): ((41438, 413), (2472, 217), (1674, 300)) [111] 4320s
+  independent 509 (still critical): ((41438, 413), (2472, 217), (620, 347)) [112] 4392s
+  independent 509 (still critical): ((41438, 413), (2472, 217), (1341, 350)) [113] 4394s
+  independent 509 (still critical): ((41438, 413), (2472, 217), (516, 353)) [114] 4429s
+  independent 509 (still critical): ((41438, 413), (2472, 217), (41543, 375)) [115] 4500s
+  independent 509 (still critical): ((41438, 413), (1674, 300), (1666, 301)) [116] 4510s
+  independent 509 (still critical): ((41438, 413), (1674, 300), (1341, 350)) [117] 4540s
+  independent 509 (still critical): ((41438, 413), (1674, 300), (620, 347)) [118] 4612s
+  independent 509 (still critical): ((41438, 413), (1674, 300), (516, 353)) [119] 4627s
+  independent 509 (still critical): ((41438, 413), (1674, 300), (41543, 375)) [120] 4656s
+  independent 509 (still critical): ((41438, 413), (1666, 301), (1341, 350)) [121] 4726s
+  independent 509 (still critical): ((41438, 413), (1666, 301), (620, 347)) [122] 4739s
+  independent 509 (still critical): ((41438, 413), (1666, 301), (516, 353)) [123] 4771s
+  independent 509 (still critical): ((41438, 413), (1666, 301), (41543, 375)) [124] 4847s
+  independent 509 (still critical): ((41438, 413), (1341, 350), (620, 347)) [125] 4864s
+  independent 509 (still critical): ((41438, 413), (1341, 350), (516, 353)) [126] 4893s
+  independent 509 (still critical): ((41438, 413), (1341, 350), (41543, 375)) [127] 4961s
+  independent 509 (still critical): ((41438, 413), (620, 347), (516, 353)) [128] 4988s
+  independent 509 (still critical): ((41438, 413), (620, 347), (41543, 375)) [129] 5008s
+  independent 509 (still critical): ((41438, 413), (516, 353), (41543, 375)) [130] 5072s
+  independent 509 (still critical): ((3452, 356), (2731, 220), (2472, 217)) [131] 5094s
+  independent 509 (still critical): ((3452, 356), (2731, 220), (1666, 301)) [132] 5110s
+  independent 509 (still critical): ((3452, 356), (2731, 220), (1341, 350)) [133] 5180s
+  independent 509 (still critical): ((3452, 356), (2731, 220), (620, 347)) [134] 5204s
+  independent 509 (still critical): ((3452, 356), (2731, 220), (516, 353)) [135] 5216s
+  independent 509 (still critical): ((3452, 356), (2731, 220), (41543, 375)) [136] 5294s
+  independent 509 (still critical): ((3452, 356), (2472, 217), (1674, 300)) [137] 5312s
+  independent 509 (still critical): ((3452, 356), (2472, 217), (1341, 350)) [138] 5330s
+  independent 509 (still critical): ((3452, 356), (2472, 217), (620, 347)) [139] 5397s
+  independent 509 (still critical): ((3452, 356), (2472, 217), (516, 353)) [140] 5430s
+  independent 509 (still critical): ((3452, 356), (2472, 217), (41543, 375)) [141] 5448s
+  independent 509 (still critical): ((3452, 356), (1674, 300), (1666, 301)) [142] 5506s
+  independent 509 (still critical): ((3452, 356), (1674, 300), (1341, 350)) [143] 5545s
+  independent 509 (still critical): ((3452, 356), (1674, 300), (620, 347)) [144] 5557s
+  independent 509 (still critical): ((3452, 356), (1674, 300), (516, 353)) [145] 5625s
+  independent 509 (still critical): ((3452, 356), (1674, 300), (41543, 375)) [146] 5660s
+  independent 509 (still critical): ((3452, 356), (1666, 301), (1341, 350)) [147] 5666s
+  independent 509 (still critical): ((3452, 356), (1666, 301), (620, 347)) [148] 5727s
+  independent 509 (still critical): ((3452, 356), (1666, 301), (516, 353)) [149] 5776s
+  independent 509 (still critical): ((3452, 356), (1666, 301), (41543, 375)) [150] 5779s
+  independent 509 (still critical): ((3452, 356), (1341, 350), (620, 347)) [151] 5843s
+  independent 509 (still critical): ((3452, 356), (1341, 350), (516, 353)) [152] 5882s
+  independent 509 (still critical): ((3452, 356), (1341, 350), (41543, 375)) [153] 5890s
+  independent 509 (still critical): ((3452, 356), (620, 347), (516, 353)) [154] 5960s
+  independent 509 (still critical): ((3452, 356), (620, 347), (41543, 375)) [155] 6000s
+  independent 509 (still critical): ((3452, 356), (516, 353), (41543, 375)) [156] 6003s
+  independent 509 (still critical): ((2731, 220), (2472, 217), (1341, 350)) [157] 6063s
+  independent 509 (still critical): ((2731, 220), (2472, 217), (620, 347)) [158] 6109s
+  independent 509 (still critical): ((2731, 220), (2472, 217), (516, 353)) [159] 6118s
+  independent 509 (still critical): ((2731, 220), (2472, 217), (41543, 375)) [160] 6178s
+  independent 509 (still critical): ((2731, 220), (1666, 301), (1341, 350)) [161] 6215s
+  independent 509 (still critical): ((2731, 220), (1666, 301), (620, 347)) [162] 6225s
+  independent 509 (still critical): ((2731, 220), (1666, 301), (516, 353)) [163] 6292s
+  independent 509 (still critical): ((2731, 220), (1666, 301), (41543, 375)) [164] 6324s
+  independent 509 (still critical): ((2731, 220), (1341, 350), (620, 347)) [165] 6333s
+  independent 509 (still critical): ((2731, 220), (1341, 350), (516, 353)) [166] 6398s
+  independent 509 (still critical): ((2731, 220), (1341, 350), (41543, 375)) [167] 6434s
+  independent 509 (still critical): ((2731, 220), (620, 347), (516, 353)) [168] 6451s
+  independent 509 (still critical): ((2731, 220), (620, 347), (41543, 375)) [169] 6508s
+  independent 509 (still critical): ((2731, 220), (516, 353), (41543, 375)) [170] 6554s
+  independent 509 (still critical): ((2472, 217), (1674, 300), (1341, 350)) [171] 6570s
+  independent 509 (still critical): ((2472, 217), (1674, 300), (620, 347)) [172] 6623s
+  independent 509 (still critical): ((2472, 217), (1674, 300), (516, 353)) [173] 6658s
+  independent 509 (still critical): ((2472, 217), (1674, 300), (41543, 375)) [174] 6684s
+  independent 509 (still critical): ((2472, 217), (1341, 350), (620, 347)) [175] 6753s
+  independent 509 (still critical): ((2472, 217), (1341, 350), (516, 353)) [176] 6767s
+  independent 509 (still critical): ((2472, 217), (1341, 350), (41543, 375)) [177] 6794s
+  independent 509 (still critical): ((2472, 217), (620, 347), (516, 353)) [178] 6872s
+  independent 509 (still critical): ((2472, 217), (620, 347), (41543, 375)) [179] 6882s
+  independent 509 (still critical): ((2472, 217), (516, 353), (41543, 375)) [180] 6907s
+  independent 509 (still critical): ((1674, 300), (1666, 301), (1341, 350)) [181] 6986s
+  independent 509 (still critical): ((1674, 300), (1666, 301), (620, 347)) [182] 6993s
+  independent 509 (still critical): ((1674, 300), (1666, 301), (516, 353)) [183] 7019s
+  independent 509 (still critical): ((1674, 300), (1666, 301), (41543, 375)) [184] 7099s
+  independent 509 (still critical): ((1674, 300), (1341, 350), (620, 347)) [185] 7101s
+  independent 509 (still critical): ((1674, 300), (1341, 350), (516, 353)) [186] 7130s
+  independent 509 (still critical): ((1674, 300), (620, 347), (516, 353)) [187] 7206s
+  independent 509 (still critical): ((1674, 300), (1341, 350), (41543, 375)) [188] 7218s
+  independent 509 (still critical): ((1674, 300), (620, 347), (41543, 375)) [189] 7245s
+  independent 509 (still critical): ((1674, 300), (516, 353), (41543, 375)) [190] 7317s
+  independent 509 (still critical): ((1666, 301), (1341, 350), (620, 347)) [191] 7333s
+  independent 509 (still critical): ((1666, 301), (1341, 350), (516, 353)) [192] 7348s
+  independent 509 (still critical): ((1666, 301), (1341, 350), (41543, 375)) [193] 7430s
+  independent 509 (still critical): ((1666, 301), (620, 347), (516, 353)) [194] 7435s
+  independent 509 (still critical): ((1666, 301), (620, 347), (41543, 375)) [195] 7462s
+  independent 509 (still critical): ((1666, 301), (516, 353), (41543, 375)) [196] 7543s
+  independent 509 (still critical): ((1341, 350), (620, 347), (516, 353)) [197] 7545s
+  independent 509 (still critical): ((1341, 350), (620, 347), (41543, 375)) [198] 7580s
+  independent 509 (still critical): ((620, 347), (516, 353), (41543, 375)) [199] 7659s
+  independent 509 (still critical): ((1341, 350), (516, 353), (41543, 375)) [200] 7661s
+DONE 200 independent composite 509s, none reducible
