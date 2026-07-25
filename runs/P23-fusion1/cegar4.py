@@ -50,6 +50,9 @@ def main():
             for line in f:
                 bank.append(json.loads(line))
                 seen += 1
+    fixs = set(FIX)
+    bank = [D for D in bank if not (set(D) & fixs)]   # banks from another
+    bank = [D for D in bank if all(v in svar for v in D)]  # FIX/CAND split
     for D in bank:
         outer.add_clause([svar[v] for v in D])
     print(f'frozen {len(FIX)}, candidates {len(CAND)}, bound {MAXSEL}, '

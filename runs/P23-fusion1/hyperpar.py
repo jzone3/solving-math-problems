@@ -35,8 +35,44 @@ E, adj, PTS = coremin.E, coremin.adj, coremin.allpts
 NP = len(PTS)
 HALF = [0 if t == 'A' else 1 for t, _ in PTS]
 
-fro = set(pickle.load(open(FROZEN, 'rb'))) if FROZEN else set()
-if FROZEN:
+LNSFIX = os.environ.get('LNSFIX', '')        # exact large-neighbourhood search
+LNSK = int(os.environ.get('LNSK', '450'))    # how many of them to freeze
+LNSSEED = int(os.environ.get('LNSSEED', '1'))
+
+fro = set(pickle.load(open(FROZEN, 'rb'))) if FROZEN and not LNSFIX else set()
+if LNSFIX:
+    # Freeze a random K-subset of a known witness and let the hitting set pick
+    # the rest from the *whole* pool: outer UNSAT then proves no <= 508-vertex
+    # non-4-colorable set of the pool contains that core, which is a complete
+    # statement about a neighbourhood of the record rather than a search floor.
+    base = sorted(pickle.load(open(LNSFIX, 'rb')))
+    r = random.Random(LNSSEED)
+    FIX = sorted(r.sample(base, min(LNSK, len(base))))
+    fixs = set(FIX)
+    CAND = sorted(v for v in range(NP) if v not in fixs)
+    # Restrict the free side to the pool around the hole we punched in the
+    # witness: with the whole 5.2k pool free the outer solver can never be
+    # driven to UNSAT, whereas a few hundred candidates make each neighbourhood
+    # decidable, which is what makes this LNS *exact* rather than heuristic.
+    LNSHOPS = int(os.environ.get('LNSHOPS', '0'))
+    if LNSHOPS:
+        near = set(base) - fixs
+        for _ in range(LNSHOPS):
+            near |= {u for v in near for u in adj[v]}
+        CAND = sorted(near - fixs)
+    # A minimum witness is vertex-critical, hence of min degree >= 4, so any
+    # candidate that cannot reach degree 4 inside FIX u CAND is useless; the
+    # prune is a fixpoint because dropping one candidate can starve another.
+    LNSDEG = int(os.environ.get('LNSDEG', '4'))
+    if LNSDEG:
+        live = set(CAND)
+        while True:
+            drop = {v for v in live if len(adj[v] & (live | fixs)) < LNSDEG}
+            if not drop:
+                break
+            live -= drop
+        CAND = sorted(live)
+elif FROZEN:
     FIX = sorted(v for v in fro if HALF[v] != FREEHALF)
     CAND = sorted(v for v in range(NP) if HALF[v] == FREEHALF)
 else:

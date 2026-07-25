@@ -523,3 +523,30 @@ valid, so the runs restart from the existing 1900+ clause `bank135.jsonl`.
 Relaunched after the restart: 3× frozen-half bound-135 (avg hyperedge 258–290,
 selection stuck at 76–82) and 3× orbit-level ≤508 (candidates 436–470 vertices,
 all 4-colorable). Still no witness, and no outer UNSAT.
+
+## E23 — *exact* large-neighbourhood search (`hyperpar.py` LNS mode + `lnsloop.sh`)
+
+E7's LNS was heuristic: ruin a region, greedily recreate, keep if it works. The
+hitting-set machinery makes the same move **complete**: freeze K vertices of the
+record's W₄ embedding, and ask the outer SAT solver for ≤ 508 − K further pool
+vertices hitting every known hyperedge. Then each neighbourhood terminates in
+one of two definite ways — a 508-vertex witness, or outer UNSAT, i.e. *no*
+refill of that hole exists at all.
+
+Making it terminate needed the candidate restriction (`LNSHOPS`): with all 5246
+free pool vertices the hyperedges are ~500 wide and the outer solver never runs
+out of room (measured: |D| ≈ 300–800, ~55 s/iteration, no progress). Restricting
+the free side to the 1-hop pool neighbourhood of the punched hole gives 207
+candidates, hyperedges of ~10, and ~2 s/iteration. `LNSDEG=4` additionally
+prunes candidates that cannot reach degree 4 (WLOG: a minimum witness is
+vertex-critical) — no effect at hop 1, the pool is too dense.
+
+Configuration in flight: K = 490 (hole of 20), budget 18 free, 5 workers × 12
+random holes each. First completed neighbourhood (seed 2) returned
+
+    OUTER UNSAT after 323 hyperedges: no witness with <= 18 free vertices
+    exists over this pool (545s)
+
+so that hole *provably* cannot be refilled below 509 within its 1-hop pool. This
+is the first complete "no 508 here" statement in the run that is not a search
+floor. Remaining holes are running; no witness so far.
