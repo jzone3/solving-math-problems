@@ -29,14 +29,19 @@ NHYP = int(os.environ.get('NHYP', '20'))
 TABU = int(os.environ.get('TABU', '4000000'))
 NOISE = float(os.environ.get('NOISE', '0.02'))
 OUT = os.environ.get('OUT', 'hyp_w4x.pkl')
+SHRINK = int(os.environ.get('SHRINK', '0'))
 
 E, adj, PTS = coremin.E, coremin.adj, coremin.allpts
 NP = len(PTS)
 HALF = [0 if t == 'A' else 1 for t, _ in PTS]
 
 fro = set(pickle.load(open(FROZEN, 'rb'))) if FROZEN else set()
-FIX = sorted(v for v in fro if HALF[v] != FREEHALF)
-CAND = sorted(v for v in range(NP) if HALF[v] == FREEHALF)
+if FROZEN:
+    FIX = sorted(v for v in fro if HALF[v] != FREEHALF)
+    CAND = sorted(v for v in range(NP) if HALF[v] == FREEHALF)
+else:
+    FIX = []
+    CAND = list(range(NP))
 CANDS = set(CAND)
 NBR = {v: sorted(adj[v] & (CANDS | set(FIX))) for v in CAND}
 
@@ -111,15 +116,38 @@ def tabu_hyperedge(fixed_col, movable, rng, tabu=TABU):
     return D
 
 
+def shrink(D, rng, tag):
+    """Remove vertices from D while pool \\ D stays 4-colorable (exact, kissat).
+
+    Tabu only certifies that pool \\ D is colorable; it says nothing about
+    minimality, and minimal hyperedges are the strong constraints.  Each test is
+    a satisfiable colouring instance, so kissat answers quickly.
+    """
+    D = list(D)
+    rng.shuffle(D)
+    keep = set(D)
+    for v in D:
+        trial = keep - {v}
+        rest = [u for u in CAND if u not in trial]
+        if kissat_color(FIX + rest, tag) is not None:
+            keep = trial
+    return keep
+
+
 def worker(seed):
     rng = random.Random(seed)
     col0 = kissat_color(FIX, f'w{seed}') if FIX else {}
     out = []
     for i in range(NHYP):
         D = tabu_hyperedge(col0, CAND, rng)
-        if D:
-            out.append(sorted(D))
-            print(f'[{seed}] {i}: |D|={len(D)}', flush=True)
+        if not D:
+            continue
+        n0 = len(D)
+        if SHRINK:
+            D = shrink(D, rng, f's{seed}')
+        out.append(sorted(D))
+        print(f'[{seed}] {i}: |D|={n0}' +
+              (f' -> {len(D)} after shrink' if SHRINK else ''), flush=True)
     return out
 
 

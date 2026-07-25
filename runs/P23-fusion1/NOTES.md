@@ -397,3 +397,46 @@ object produced across this whole run is the pair of *new working type-M
 rotations* ω₁₆, ω₂₈ (child branch `runs/P23-parts-rho`) — the parameter Parts
 explicitly left open — together with the calibration result that shows why
 deletion-based minimization cannot settle them.
+
+## E18 — hitting-set search with tabu-generated hyperedges (`hyperpar.py`, `cegar4.py`)
+
+The reason E17's complete search made no progress was clause quality, not the
+formulation. Restating it properly:
+
+> D ⊆ pool is a **hyperedge** iff pool \ D is 4-colorable. Any non-4-colorable
+> subset (a witness) must intersect every hyperedge, so the smallest witness is
+> a **minimum hitting set** of the hyperedge system — this is Parts' §5
+> minimal-graph search in modern form.
+
+E17 built its hyperedges by greedy colour extension: |D| ≈ 850 of 2839 free
+candidates, i.e. almost vacuous constraints. Replacing that with an incremental
+**min-conflicts / tabu 4-colouring** of the pool (endpoints of the surviving
+conflicting edges give D) changes the picture:
+
+| generator | |D| (of 2839) |
+|---|---|
+| greedy colour extension (E17) | ~850 |
+| tabu, 1–4 M moves (`hyperpar.py`) | **32 – 234**, median ~90 |
+
+Whole-pool hyperedges (no frozen half, 5696 candidates): |D| ≈ 190–460.
+
+`cegar4.py` runs the exact loop with those clauses: outer SAT picks ≤ MAXSEL
+candidates hitting every known hyperedge (sequential-counter cardinality — the
+totalizer used in E17 costs 4 M clauses and was the other bottleneck), kissat
+tests the union with the frozen half, and a new tabu hyperedge disjoint from the
+current selection cuts it off. Outer UNSAT would be a *complete* negative
+result for that bound; a non-4-colorable selection would be a 508.
+
+Measured behaviour (frozen L374, bound 135, three seeds): ~12 s/iteration,
+outer solve 0.1–0.2 s (vs ~7 s in E17), hitting sets grow 23 → 43 over the first
+40 refinements and keep growing. No hit, no outer UNSAT yet; running.
+
+Attempted refinement — exact **shrinking** of a hyperedge (drop v from D while
+kissat still colours pool \ D) — is sound and would give near-minimal clauses,
+but each test is a colouring instance on ~3.1 k vertices and the pass did not
+complete a single hyperedge in 25 min. Not usable at pool scale; noted as a
+negative.
+
+Also this round: the ω₁₆ hitting-set search was handed to a child session
+(branch `runs/P23-hitset16`), and the calibrated-useless W₁₆ deletion runs were
+stopped to free cores.
