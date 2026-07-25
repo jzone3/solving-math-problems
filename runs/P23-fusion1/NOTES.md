@@ -719,3 +719,54 @@ deletions succeed (126 → 123 so far), so the record's 54 is not a lower bound.
 Also measured and negative: cross-edge endpoints are *not* a useful locality
 handle — their 2-hop neighbourhood is already 5684 of the 5696 pool vertices, so
 "search near the cross edges" is no restriction at all.
+
+Continued: with 8-4-2-1 batching the cross-edge set comes down fast — three
+independent seeds reached 102, 94 and 86 cross edges with the pool still
+non-4-colorable (each deletion certified by an UNSAT proof of the whole
+5696-vertex pool). So the record's 54 cross edges are far from forced, and the
+relaxed cross-edge count is a weak invariant.
+
+## E31 — cross-edge restrictions are illegal, and what that exposed
+
+Deleting a cross edge is not a legal move in a unit-distance graph: if both
+endpoints are present the edge exists. The legal version of "witness avoids
+cross edge e" is to drop one of its endpoints, so a kept set C corresponds to a
+sub-pool obtained by removing a *vertex cover* of the discarded cross edges
+(`crossrestrict.py`). Result, over many random covers: every such sub-pool is
+4-colorable, and it takes only ~20 removed vertices. The relaxation used by
+`crossmin.py` is therefore much weaker than the legal restriction — cross-edge
+counting cannot by itself produce a smaller witness.
+
+What it did produce is the strongest clause in the run. A cover whose removal
+makes the pool 4-colorable is a hyperedge in the E19 hitting-set sense (every
+witness must contain one of its vertices), and these are cheap to shrink because
+only the SAT answers are needed. Every seed shrank its cover to the *same*
+two-vertex hyperedge {1428, 4276}, verified independently:
+
+    pool - {1428, 4276}  (5694 vtx) -> SAT   in 1.5 s
+    pool - {4276}        (5695 vtx) -> UNSAT in 167 s
+
+## E32 — the pool was carrying a duplicated point (`build_w4d.py`)
+
+Those two vertices are both the origin: half A contains 0 and half B contains
+rho*0 = 0, so `w4x.pkl` held one plane point twice, with identical neighbourhoods
+and (correctly) no edge between them. An exact sweep finds exactly one such
+coincidence. Deduplicating gives **w4d.pkl: 5695 vertices, 42306 edges**, and the
+record's 510 pool indices collapse to its true 509 points — reassuring rather
+than a record, but it means every earlier search over `w4x.pkl` was free to pay
+twice for the origin.
+
+Read on the deduplicated pool, the two-vertex clause is a *unit* clause: removing
+the single origin vertex makes the entire pool 4-colorable, i.e. **every
+non-4-colorable subset of Parts' union contains the origin**.
+
+## E33 — forced vertices (`forcescan.py`)
+
+That suggests a cheap and principled probe: v is *forced* if pool - {v} is
+4-colorable, and then v belongs to every witness in the pool, including any
+hypothetical sub-509 one. SAT answers cost ~2 s while UNSAT costs minutes, so the
+scan uses a 25 s cap — a hit is conclusive, a timeout is merely uninformative.
+Six shards are scanning all 5695 vertices in degree order. If the forced set F
+were itself non-4-colorable and smaller than 509 it would be a new record (and
+the unique minimal witness); the realistic outcome is a hard core that every
+future search can freeze for free.
