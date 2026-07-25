@@ -440,3 +440,21 @@ negative.
 Also this round: the ω₁₆ hitting-set search was handed to a child session
 (branch `runs/P23-hitset16`), and the calibrated-useless W₁₆ deletion runs were
 stopped to free cores.
+
+### E19 — shared clause bank, and complete whole-pool searches
+
+`cegar4.py` now appends every hyperedge it discovers to an append-only
+`bank.jsonl` and re-reads the file each iteration, so several seeds (and any
+restart) accumulate one shared constraint system instead of throwing their work
+away. Four seeds at bound 135 (frozen L374) share `bank135.jsonl`; hitting sets
+grow 23 → ~43 and the bank grows ~9 hyperedges/minute.
+
+Two further runs drop the frozen half entirely and search the *whole* W₄ pool
+(5696 candidates, hyperedges |D| ≈ 150–600, `hyp_all.pkl`) under a cardinality
+bound. Outer UNSAT at bound N there is a complete statement — "no 5-chromatic
+unit-distance graph with ≤ N vertices exists inside Parts' W₄ union" — so the
+bound is being pushed from below (150, 300) rather than jumping straight to 508,
+where the outer solver just returns arbitrary 508-subsets and the loop degrades
+into sampling.
+
+Still no sub-509 graph, and nothing is claimed.

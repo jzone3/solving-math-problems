@@ -16,6 +16,7 @@ Env: POOL, FROZEN, FREEHALF, MAXSEL, SEED, HYP, TABU, NOISE.
 import os
 import pickle
 import random
+import json
 import time
 
 from pysat.card import CardEnc, EncType
@@ -27,6 +28,8 @@ import hyperpar as H
 MAXSEL = int(os.environ.get('MAXSEL', '135'))
 SEED = int(os.environ.get('SEED', '1'))
 HYP = os.environ.get('HYP', 'hyp_w4x.pkl')
+BANK = os.environ.get('BANK', 'bank.jsonl')   # shared, append-only
+PERIT = int(os.environ.get('PERIT', '3'))     # hyperedges per refinement
 
 CAND, FIX = H.CAND, H.FIX
 rng = random.Random(SEED)
@@ -41,6 +44,12 @@ def main():
                              vpool=pool, encoding=EncType.seqcounter).clauses:
         outer.add_clause(cl)
     bank = pickle.load(open(HYP, 'rb')) if os.path.exists(HYP) else []
+    seen = 0
+    if os.path.exists(BANK):
+        with open(BANK) as f:
+            for line in f:
+                bank.append(json.loads(line))
+                seen += 1
     for D in bank:
         outer.add_clause([svar[v] for v in D])
     print(f'frozen {len(FIX)}, candidates {len(CAND)}, bound {MAXSEL}, '
@@ -68,11 +77,22 @@ def main():
             return
         selset = set(sel)
         movable = [v for v in CAND if v not in selset]
-        D = H.tabu_hyperedge(col, movable, rng)
-        if not D:
+        news = []
+        for _ in range(PERIT):
+            D = H.tabu_hyperedge(col, movable, rng)
+            if D:
+                news.append(sorted(D))
+        if not news:
             continue
-        outer.add_clause([svar[v] for v in D])
-        tot += len(D)
+        with open(BANK, 'a') as f:      # share progress across seeds/restarts
+            for D in news:
+                f.write(json.dumps(D) + '\n')
+        with open(BANK) as f:           # own clauses + any from sibling seeds
+            fresh = [json.loads(line) for line in f][seen:]
+        for D in fresh:
+            outer.add_clause([svar[v] for v in D])
+        seen += len(fresh)
+        tot += sum(len(D) for D in news) // len(news)
         if it % 5 == 0 or it < 5:
             print(f'  it{it}: |sel|={len(sel)} hyperedge={len(D)} '
                   f'(avg {tot//it}) solve={tsolve:.1f}s '
