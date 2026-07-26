@@ -342,3 +342,117 @@ certified:
 Thus B-side core reduction and batch deletion materially improve both
 calibrations, but T=0 is still not near 509.  The remaining one-at-a-time
 greedy repair and more aggressive pattern-core extraction are unresolved.
+
+## Stage 6: B-first, small-interface search
+
+Stage 6 reverses the search direction.  A B candidate is selected first,
+either as the exact rotated Parts `S` set or by a physical-radius cutoff
+on the cached translated half.  The interface is then the A endpoint set
+of cross edges into that B candidate.  Starting from this small interface,
+the lazy CEGAR loop grows A: a SAT coloring either yields a new minimal
+forbidden interface pattern, or supplies the frontier used for the next A
+growth step.  If the full A pool remains extendible, the B candidate is
+marked infeasible for this constructive search; if A becomes UNSAT, an
+A-side DRAT core is taken and the resulting graph is independently
+certified.
+
+This records the important distinction between an *interface* and the
+whole B half.  A small-radius B can have many points but no cross edges
+into A; those points cannot create a pattern and are not evidence of a
+successful forcing candidate.
+
+### T=0 Parts-S calibration
+
+The exact reconstructed `S` candidate contains 135 B vertices after
+placing the shared origin on A.  It touches 25 A interface vertices and
+has 36 cross edges in this reconstruction (the published record reports
+19/30; the pool discrepancy is documented in Stage 1).  Grown from the
+interface, CEGAR found 208 minimal patterns:
+
+| order | count |
+|---:|---:|
+| 8 | 8 |
+| 9 | 27 |
+| 10 | 15 |
+| 11 | 2 |
+| 12 | 12 |
+| 13 | 48 |
+| 14 | 24 |
+| 15 | 24 |
+| 16 | 48 |
+
+The grown A side reached 2022 before becoming UNSAT under the accumulated
+patterns; A-side DRAT-core reduction left **1080** vertices.  This gives
+the Stage-6 candidate `(A,B)=(1080,135)`, total **1215**.  It is the
+smallest certified graph in this stage, but the grown-A gap versus Parts'
+374 remains substantial and is the primary negative result.
+
+Certification:
+
+- 1215 exact distinct coordinates,
+- 7550 exact recomputed unit edges,
+- kissat UNSAT,
+- drat-trim `s VERIFIED`,
+- `verify.py`: `OVERALL: PASS`.
+
+### B-size frontiers
+
+The radius frontiers below use the same cached universe and start A from
+the cross interface.  `EXTENDS_FULL_A` means that no forcing set was
+found even after the entire available A pool was grown; it is not a
+non-4-colourability claim.
+
+T=0 (`rA=1.6` cache with the record-L augmentation):
+
+| B radius | B | interface | cross | A result | total | time |
+|---:|---:|---:|---:|---|---:|---:|
+| 0.7 | 234 | 0 | 0 | `EXTENDS_FULL_A` | 2256 | 218.61 s |
+| 0.9 | 492 | 0 | 0 | `EXTENDS_FULL_A` | 2514 | 218.79 s |
+| 1.1 | 756 | 1 | 30 | `EXTENDS_FULL_A` | 2778 | 251.34 s |
+| Parts S | 135 | 25 | 36 | UNSAT, A-core 1080 | **1215** | 441.12 s |
+
+T65 (`rA=1.6`, `rB=1.3` universe):
+
+| B radius | B | interface | cross | result | total | time |
+|---:|---:|---:|---:|---|---:|---:|
+| 0.7 | 235 | 3 | 16 | `EXTENDS_FULL_A` | 1770 | 96.18 s |
+| 0.9 | 493 | 5 | 22 | `EXTENDS_FULL_A` | 2028 | 105.79 s |
+| 1.1 | 756 | 10 | 31 | `EXTENDS_FULL_A` | 2291 | 350.43 s |
+
+T63 (`rA=1.6`, `rB=1.3` universe):
+
+| B radius | B | interface | cross | result | total | time |
+|---:|---:|---:|---:|---|---:|---:|
+| 0.7 | 234 | 1 | 7 | `EXTENDS_FULL_A` | 1769 | 88.76 s |
+| 0.9 | 492 | 4 | 13 | `EXTENDS_FULL_A` | 2027 | 102.59 s |
+| 1.1 | 756 | 5 | 18 | `EXTENDS_FULL_A` | 2291 | 148.64 s |
+
+The translated small-radius candidates therefore do not yet produce a
+forcing pattern at all; the B-size frontier is negative through radius
+1.1.  In particular, the earlier T65 1763 witness remains the best
+translated certified graph, while Stage 6's best overall certified total
+is the T=0 1215 candidate.
+
+### Reproduction commands
+
+From this directory, the Stage-6 search and certification can be rerun
+with:
+
+```bash
+python3 stage6.py /tmp/tparts_t0_record_cache.pkl \
+  --b record --out /tmp/stage6_t0_record_correct.pkl
+python3 stage6.py /tmp/tparts_t0_record_cache.pkl \
+  --b 0.7 0.9 1.1 --out /tmp/stage6_t0_frontier.pkl
+python3 stage6.py /tmp/tparts_65_16_13.pkl \
+  --b 0.7 0.9 1.1 --out /tmp/stage6_t65_frontier.pkl
+python3 stage6.py /tmp/tparts_63_16_13.pkl \
+  --b 0.7 0.9 1.1 --out /tmp/stage6_t63_frontier.pkl
+python3 - <<'PY'
+import pickle
+r = pickle.load(open("/tmp/stage6_t0_record_correct.pkl", "rb"))[0]
+ids = sorted(set(r["L"]) | set(r["S"]))
+pickle.dump(ids, open("/tmp/stage6_t0_record_ids.pkl", "wb"))
+PY
+python3 verify.py /tmp/tparts_t0_record_cache.pkl \
+  --vertices /tmp/stage6_t0_record_ids.pkl --drat
+```
