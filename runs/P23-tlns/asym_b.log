@@ -1,0 +1,5 @@
+rA=1.6 rB=1.35: 2557 vtx, 14388 exact edges -> UNSAT
+rA=1.7 rB=1.2: 2503 vtx, 14088 exact edges -> SAT
+rA=1.7 rB=1.1: 2317 vtx, 12741 exact edges -> SAT
+rA=1.65 rB=1.25: 2473 vtx, 13871 exact edges -> SAT
+rA=1.6 rB=1.15: 2275 vtx, 12320 exact edges -> SAT
