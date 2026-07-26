@@ -1139,3 +1139,26 @@ and the natural place for a smaller witness to live. Four DRAT-core greedy
 chains are minimising the 2917-vertex universe (already at ~1864) and a
 four-shard sweep (`tsweep.py`) is pushing other translations down through radii
 1.6 / 1.5 / 1.4 / 1.3 to find the smallest obstructing placement.
+
+## E45 — asymmetric halves
+
+Both halves have always been built at the same radius, in this run and in
+Parts'. With the score-65 translation they need not be (`tasym.py`; all edges
+exact):
+
+```
+rA=1.6 rB=1.6  2917 vtx  UNSAT      rA=1.6 rB=1.4  2635 vtx  UNSAT
+rA=1.6 rB=1.35 2593 vtx  UNSAT      rA=1.6 rB=1.3  2581 vtx  UNSAT  <-- smallest
+rA=1.6 rB=1.25 2461 vtx  SAT        rA=1.55 rB=1.4 2551 vtx  SAT
+rA=1.4 rB=1.6  2635 vtx  SAT        rA=1.5 rB=1.5  2629 vtx  SAT
+```
+
+Note the asymmetry is real, not a size effect: 1.6/1.4 obstructs while the
+equally-large 1.4/1.6 does not, and 1.5/1.5 (fewer vertices than 1.6/1.4) does
+not. The A half must reach 1.6; the rotated half can stop at 1.3.
+
+Smallest exactly-verified non-4-colorable universe now **2581 vertices / 14796
+exact edges**, against the 4033-vertex (radius 2) universe Parts' placement
+needs and the 3997-vertex E37 universe every recent exact search has used. Five
+DRAT-core greedy chains are minimising it; a further scan (rA up to 1.8 with rB
+down to 1.0) is running.
