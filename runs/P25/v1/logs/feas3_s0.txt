@@ -1,0 +1,4 @@
+6 classes to re-check at target 72 (shard 0/4)
+INFEASIBLE lam=[3, 1, 1, 1] assign=('id', 'id', 'id', 'sigma') orbits=243
+UNDECIDED lam=[2, 2, 1, 1] assign=('id', 'id', 'id', 'id') orbits=405 status=HighsModelStatus.kTimeLimit
+UNDECIDED lam=[2, 1, 1, 1, 1] assign=('id', 'id', 'id', 'id', 'tau') orbits=405 status=HighsModelStatus.kTimeLimit

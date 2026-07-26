@@ -100,9 +100,16 @@ classes have invariant minimum ≥ 77. The remaining 42 classes (37 ILP timeouts
 5 skipped with > 400 orbits; all near-identity — single coordinate transpositions/symbol
 swaps and similar) were re-run as pure ≤72-feasibility ILPs (`orbit_feas.py`): **20 more
 proved INFEASIBLE** (logs `logs/feas*.txt`), so 198 of the 219 nontrivial cyclic classes
-are now rigorously eliminated. 22 classes remain undecided (the extreme near-identity
-ones, 243–486 orbits, e.g. a single symbol swap τ or rotation σ on one or two
-coordinates); a 4 h/class feasibility re-run is in progress.
+are now rigorously eliminated. The remaining 22 extreme near-identity classes
+(243–486 orbits, e.g. a single symbol swap τ or rotation σ on one or two coordinates)
+got a 4 h/class feasibility re-run (logs `logs/feas3_s*.txt`): 2 more proved INFEASIBLE
+(λ=[3,1,1,1] with one/two σ, 243 orbits), the run was paused by coordinator request with
+10 classes UNDECIDED after 4 h each and 10 not yet re-attempted at the long limit.
+
+Final tally: **200 of 219 nontrivial cyclic monomial symmetry classes rigorously
+eliminated for size 72** (178 exact optima + 22 feasibility-infeasible); 20 near-identity
+classes remain open (10 undecided at 4 h, 10 paused before the long re-attempt). Any putative 72-code therefore has automorphism group (within
+S₃≀S₆) that is trivial or generated only by these near-identity involutions/rotations.
 
 Consequence (conditional on the feasibility re-checks finishing): if a 72-word code
 exists, its automorphism group within S₃≀S₆ is trivial or intersects only the handful of
