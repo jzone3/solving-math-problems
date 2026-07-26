@@ -1089,3 +1089,33 @@ it is a genuinely different non-4-colorable universe in the same field, and the
 first one in this run whose minimum is not already known to be 509. Three
 DRAT-core greedy chains are minimising it (4033 -> ~2830 so far) and a wider
 12000-translation scan is running to look for still better-coupled placements.
+
+### E43 (cont.) — how new is it, exactly?
+
+Both working translations decompose **exactly** over the lattice:
+
+```
+T(score 63) = a + omega*b  with 12a = (-5, 1, 7, -1),  12b = (2, 0, 0, -2)
+T(score 65) = a + omega*b  with 12a = (0, 0, 4, 0),    12b = (6, 0, -6, 0)
+```
+
+so T lies in L + omega*L, and after translating by -a the universe reads
+(A - a) u omega*(A + b). The honest reading, and it matters (E35 was exactly
+this trap):
+
+* it is **not** a new rotation, and not a new lattice: the two-copy lattice
+  structure is Parts';
+* it is **not** a subset of Parts' pool either -- A is his Minkowski set
+  (+)^4 H^2, and A - a / A + b are *translates* of it, which no radius of his
+  pool contains, so witnesses found here are new graphs on new point sets;
+* what varies is which finite chunk of each copy is used, i.e. where each half
+  is centred relative to the other -- a parameter Parts fixed at 0 and this run
+  had never touched.
+
+The interesting measurement is that it works *better* per cross edge: the
+score-63 universe is non-4-colorable with only **47** A-B cross edges at radius
+2 and score-65 with 56, against Parts' 96. A sparser obstruction is exactly what
+a smaller witness would need, which is why these are being minimised.
+Transplanting Parts' own halves into the new placements is 4-colorable (509 vtx,
+2412/2414 edges, SAT), so each placement needs its own minimisation rather than
+inheriting his.
