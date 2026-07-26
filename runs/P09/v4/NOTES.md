@@ -414,3 +414,27 @@ every terminal point back to binary graphs (flow.c).
 
 Artifacts: flow.c, flow_out_*/flow_sum_*, flow_weighted_witness.txt,
 verify_weighted.py.
+
+## Round 12 (coordinator push #11): abelian Cayley graphs of order 48–64 — PAUSED (partial)
+
+Twelfth attack: abelian Cayley graphs of orders 48..64, strictly beyond the
+vertex-transitive census (< 48) and the circulant (≤ 50) / dihedral scans.
+`abelian.c`: for G = Z_{d1}×…×Z_{dk}, eigenvalues are exact character
+cosine sums; λ₁ = deg, λ₂ = max over nontrivial characters; exact ω via
+bitmask B&B; 2M random inverse-closed connection sets per group type; the
+early-out s ≤ m − 1e-6 is valid since rhs ≥ m for ω ≥ 2.
+
+Coordinator ordered a PAUSE mid-run.  State at pause:
+- 15 of 39 abelian group types complete (all types of orders 48–54 except
+  3×3×3×2 which was mid-run; orders 55–64 incl. all eleven Z-types of
+  order 64 not yet run).  ~30M connection sets tested, ~16.4M evaluated
+  past the spectral early-out with exact ω.
+- ZERO violations; best gaps ≈ +1.3e-13 (float noise at exact equality,
+  complete-multipartite-type Cayley graphs), all others strictly below.
+- Group list in abelian_groups.txt; per-group summaries in abelian_out/.
+- TO RESUME: run remaining 24 group lines of abelian_groups.txt through
+  ./abelian <dims> -- 2000000 <seed>.
+
+STATUS (unchanged): negative / frontier-pushed — twelve attack families,
+zero violations; plus the round-11 verified fractional witness showing the
+naive weighted analogue is false (discreteness is essential).
