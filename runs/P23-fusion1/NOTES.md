@@ -959,3 +959,19 @@ Results:
 * **Greedy 8-4-2-1 on the 553-vertex union**: floors at 517, 517, 518 — again
   above the record, consistent with the E13 calibration that deletion-style
   minimisation is unreliable, so these floors carry no lower-bound information.
+
+## E41 — implicit hitting set with an optimal outer solver
+
+The CDCL outer solver in `corecomplete.py` spent over an hour inside one solve
+without answering: asking a SAT solver for *some* model under a cardinality
+bound gives no progress signal and no lower bound. `corehs.py` replaces it with
+the textbook implicit-hitting-set loop: each iteration solves the collected
+clauses to optimality with RC2 MaxSAT, so it reports the **true minimum number
+of candidates any completion needs**, which only ever increases. The run ends
+the moment that bound passes BUD -- no enumeration needed -- and meanwhile the
+bound is an honest progress meter.
+
+Running: candidates = the two records' own 87 completion vertices, BUD = 42
+(any witness is a 508). Lower bound 12 after 150 iterations and rising; it has
+to reach 43 to close the case. A second run uses the wider 714-candidate 'near'
+set.
