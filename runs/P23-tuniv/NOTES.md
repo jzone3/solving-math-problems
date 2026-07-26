@@ -124,6 +124,13 @@ middle of the range (its top-scoring candidate is SAT) — worth knowing, becaus
 it means ranking by cross-pair count cannot be trusted to find the best
 placement, only to enrich the candidate list.
 
+All 34 were then descended to the champion's radius pair (`rA = 1.46`,
+`rB = 1.2420`) with triangle symmetry breaking: **32 SAT, 2 UNSAT, 0 timeouts**
+(`translation_descent.tsv`). By monotonicity the 32 cannot recover at any smaller
+radius, so the search over screened translations is closed, and the two survivors
+(`w_15_e201c77f6560`, `w_15_3e07397d03c4`) give the identical 2269 / 12044
+universe — presumably the same placement up to a lattice symmetry.
+
 The other rotations were re-tested *with* their top translations at radii 2.0 and
 2.2 (`w[3]`, `w[11]`, `t = 16`, `t = 28`): all **SAT**. Translation does not
 rescue a rotation that does not obstruct at the origin.
@@ -173,6 +180,11 @@ than decimal steps, so each step peels exactly one shell:
 | 1.46 | 1.2420 | **2269** | **12044** | **UNSAT** |
 | 1.46 | 1.2146 | 2233 | 11714 | SAT |
 
+There is **no attained shell strictly between `rB = 1.2420` and `rB = 1.2146`**,
+so in the attained-shell ordering this boundary is exact, not merely bracketed:
+2269 vertices is the smallest universe of this shape that is non-4-colorable, and
+the next shell down is 4-colorable.
+
 The last four UNSAT rows were timeouts at a 300–600 s cap and were only decided
 after adding **triangle symmetry breaking** — fixing a triangle of the graph to
 colours 0,1,2, which is sound because any proper 4-colouring can be permuted to
@@ -220,10 +232,11 @@ Artifacts in this directory:
 * `record_2569.pkl`, `record_2539.pkl`, `record_2491.pkl`, `record_2443.pkl`,
   `record_2425.pkl`, `record_2389.pkl`, `record_2353.pkl`, `record_2329.pkl`,
   `record_2281.pkl` — every record-setting UNSAT universe on the way down
-* `long_solver_notes.tsv`, `asymmetry_probe.tsv` — the symmetry-breaking runs and
-  the `rA`-vs-`rB` probe
+* `long_solver_notes.tsv`, `asymmetry_probe.tsv`, `translation_descent.tsv` — the
+  symmetry-breaking runs, the `rA`-vs-`rB` probe, and all 34 obstructing
+  translations descended to the champion's radius pair
 * `tuniv_w_15_*.pkl` — the 16 UNSAT universes from the translation screen
-* `results.tsv` — all 557 exact decisions (rotation, translation id and exact
+* `results.tsv` — all 567 exact decisions (rotation, translation id and exact
   field coordinates, `L`, `rA`, `rB`, vertices, edges, status, seconds).
   Caveat: the `cross_edges` column carries the numeric KD-tree proxy for
   screening rows and 0 for `T = 0` rows; the exact cross count appears in
@@ -250,10 +263,9 @@ DRAT certificate in ~2.
 
 Open, in decreasing order of interest:
 
-1. the remaining shells between `rB = 1.2420` (UNSAT) and `rB = 1.2146` (SAT),
-   and descending the other 30-odd translations that are UNSAT at 1.9 but were
-   never pushed down — with triangle symmetry breaking that is now cheap, and
-   there is no reason the two placements descended here are the best ones;
+1. more translations — only 56 were screened exactly, and 34 of those obstruct at
+   1.9, so the placement space is far from exhausted even though every screened
+   placement bottoms out at 2269;
 2. minimising *inside* the 2389-vertex universe, which is the only route from
    this to an actual graph;
 3. two-parameter placements (both halves translated, or three copies as in E42)
