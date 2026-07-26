@@ -688,3 +688,26 @@ projection
 across eight shards.  Thus n=18 remains infeasible and was not launched.
 The n=14 profile-B cell is closed; this does not close n=18 or unrestricted
 Woodall's conjecture.
+
+### n=18 high-girth tau=3 subfamily: infeasible under role-first gate
+
+The prepared high-girth list `higirth18.g6` contains exactly 455 connected
+cubic graphs on 18 vertices; the preparation log records zero planar and
+zero non-3-edge-connected graphs after the girth filter.
+
+A corrected single-graph role-first timing gate ran the first retained graph
+with the compiled engine for 1,800 seconds. It produced no `GRAPH` record
+before timeout. Therefore the conservative eight-shard lower-bound
+projection is:
+
+```text
+> 1,800 seconds * 455 / 8 = >102,375 seconds = >28.4 hours
+```
+
+This exceeds the approximately 18-hour gate, so the high-girth n=18
+subfamily was not launched. The initial eight-way sample attempt after a
+box restart was discarded because its temporary binary was absent and all
+processes failed before processing input. The corrected single-graph
+measurement above is the only projection used. No exact graph completed in
+the gate, so no deferred instance, candidate, or new harness cross-check
+result exists.

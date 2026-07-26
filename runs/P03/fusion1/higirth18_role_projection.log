@@ -1,0 +1,29 @@
+Role-first n=18 high-girth tau=3 projection
+
+Input:
+  higirth18.g6
+  higirth18.kept.jsonl
+  retained graphs: 455
+
+Preparation:
+  nauty-geng -ctfd3D3 n=18
+  generated: 455
+  planar: 0
+  not 3-edge-connected: 0
+
+The first eight-way 25-graph attempt was invalid because the temporary
+engine binary had disappeared after the box restart; all eight processes
+failed before processing a graph.  It was discarded as a measurement.
+
+Corrected single-graph gate:
+  gcc -O3 -std=c11 -Wall -Wextra -o /tmp/engine_role_final engine.c
+  timeout 1800 /tmp/engine_role_final 3 tau3 0 1 < /tmp/hg18_one.txt
+  result: timeout after 1800 seconds, no GRAPH record
+
+Conservative eight-shard projection:
+  > 1800 * 455 / 8 = >102375 seconds = >28.4 hours
+
+The high-girth n=18 production closure was not launched because it exceeds
+the approximately 18-hour gate.  No graph reached an exact packing check in
+the corrected projection, so no harness cross-check was available from this
+bounded gate.
