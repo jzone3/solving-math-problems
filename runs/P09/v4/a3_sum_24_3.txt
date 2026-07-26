@@ -1,0 +1,13 @@
+restart n=24 cap=3 r=0 dens=0.85 best_gap=-3.308126e-01
+restart n=24 cap=3 r=1 dens=0.42 best_gap=-5.928488e-01
+restart n=24 cap=3 r=2 dens=0.36 best_gap=-4.218972e-01
+restart n=24 cap=3 r=3 dens=0.50 best_gap=-1.272884e+00
+restart n=24 cap=3 r=4 dens=0.83 best_gap=-7.061024e-01
+restart n=24 cap=3 r=5 dens=0.71 best_gap=-5.342503e-01
+restart n=24 cap=3 r=6 dens=0.59 best_gap=-2.518046e-01
+restart n=24 cap=3 r=7 dens=0.36 best_gap=-3.604503e-01
+restart n=24 cap=3 r=8 dens=0.65 best_gap=-2.968967e-01
+restart n=24 cap=3 r=9 dens=0.57 best_gap=-3.604503e-01
+restart n=24 cap=3 r=10 dens=0.33 best_gap=4.819167e-11
+restart n=24 cap=3 r=11 dens=0.51 best_gap=-7.781228e-01
+ANNEAL3-SUMMARY n=24 cap=3 restarts=12 steps=400000 best_gap=4.819167e-11

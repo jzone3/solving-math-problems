@@ -303,3 +303,29 @@ the known n=12 equality case).
 
 This settles the conjecture computationally for ALL vertex-transitive graphs
 with < 48 vertices.
+
+## Round 8 (coordinator push #7): fixed-ω constrained annealing (ω ≤ 3,4,5) + Paley analytics
+
+Eighth attack: restrict the search to the smallest structurally open strata
+beyond triangle-free — graphs with clique number exactly bounded by
+CAP ∈ {3,4,5} — and anneal inside the stratum. New code `anneal3.c`:
+edge-flip simulated annealing where any flip that would create a
+(CAP+1)-clique is rejected (checked exactly via B&B on the common
+neighborhood), so the walk never leaves ω ≤ CAP; initial states are random
+CAP-partite graphs. Exact ω per step, Sturm-bisection eigenvalues (1e-11).
+
+- Grid: n ∈ {24,36,48,64} × CAP ∈ {3,4,5}; 8–12 restarts × 250k–400k steps
+  each (≈ 4×10⁷ exact evaluations). Sanity: (n=12, CAP=3) converges to the
+  Turán equality gap ≈ +1e-11 as expected.
+- Result: ZERO candidates. Best gap overall +4.8e-11 at (n=24, CAP=3) — the
+  Turán graph T(24,3) equality point. All other cells strictly negative
+  (best gaps −0.16 to −8.3): within each fixed-ω stratum the supremum of
+  λ₁²+λ₂²−2m(1−1/ω) is attained exactly at the Turán/complete-multipartite
+  boundary and nowhere else.
+- Analytic side note (Paley graphs, considered and discarded): for Paley
+  graphs λ₁=(q−1)/2, λ₂=(√q−1)/2 exactly, so λ₁²+λ₂² ≈ q²/4 while
+  2m = q(q−1)/2, giving LHS/2m ≈ 1/2 < 2/3 ≤ 1−1/ω (since ω(Paley) ≥ 3 for
+  q ≥ 13). Paley graphs satisfy the conjecture with a large margin for every
+  q — no compute needed.
+
+Artifacts: anneal3.c, a3_out_*/a3_sum_* summaries.
