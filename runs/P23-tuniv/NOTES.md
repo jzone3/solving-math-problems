@@ -15,9 +15,9 @@ non-4-colorability can be verified *exactly*.
 **Result.** The smallest exactly-verified non-4-colorable two-copy universe found
 is
 
-> **2389 vertices, 12909 exact unit edges** — `omega = omega[15] = (7 + i*sqrt15)/8`,
-> `T = (7/8 - sqrt33/6) + i*(sqrt15/8 - sqrt3/6)`, base layers `L = 3`,
-> `rA = 1.46`, `rB = 1.30`; kissat **UNSAT**, drat-trim **VERIFIED**, edge list
+> **2269 vertices, 12044 exact unit edges** — `omega = omega[15] = (7 + i*sqrt15)/8`,
+> `T = (7/8 - sqrt33/6) + i*(sqrt3/6 + sqrt15/8)`, base layers `L = 3`,
+> `rA = 1.46`, `rB = 1.2420…`; kissat **UNSAT**, drat-trim **VERIFIED**, edge list
 > independently recomputed in exact arithmetic from the pickle.
 
 Everything below is exact: floats are used only as a prefilter, and every
@@ -66,7 +66,7 @@ it is not a first-principles object. Attempts and their counts:
 
 **Consequence, stated plainly:** the vertex counts in this run are *not*
 comparable one-for-one with fusion1's 2917 / 2581. Those were measured in a
-denser, differently-assembled pool. The 2389 below is the smallest universe *in
+denser, differently-assembled pool. The 2269 below is the smallest universe *in
 the clean `A_L(r)` family*, measured against this run's own `T = 0` control
 (3997). It is a smaller absolute number than 2581, but the honest comparison is
 the *effect*, not the raw count: in both pools, moving the rotation centre buys
@@ -166,47 +166,62 @@ than decimal steps, so each step peels exactly one shell:
 | 1.46 | 1.4242 | 2491 | 13821 | UNSAT |
 | 1.46 | 1.3696 | 2443 | 13389 | UNSAT |
 | 1.46 | 1.3592 | 2425 | 13185 | UNSAT |
-| 1.46 | 1.30 (= 1.2910 shell) | **2389** | **12909** | **UNSAT** |
-| 1.46 | 1.2869 | 2353 | 12584 | open (timeout 300 s) |
-| 1.46 | 1.2758 | 2329 | 12464 | open (timeout 300 s) |
-| 1.46 | 1.2585 | 2281 | 12116 | open (timeout 600 s) |
-| 1.46 | 1.2420 | 2269 | 12044 | open (timeout 300 s) |
-| 1.46 | 1.2146 | 2233 | — | SAT |
+| 1.46 | 1.30 (= 1.2910 shell) | 2389 | 12909 | UNSAT |
+| 1.46 | 1.2869 | 2353 | 12584 | UNSAT |
+| 1.46 | 1.2758 | 2329 | 12464 | UNSAT |
+| 1.46 | 1.2585 | 2281 | 12116 | UNSAT |
+| 1.46 | 1.2420 | **2269** | **12044** | **UNSAT** |
+| 1.46 | 1.2146 | 2233 | 11714 | SAT |
 
-The asymmetry is real and in the same direction as fusion1's E45: the base half
-must stay large while the rotated half can be cut by more than a tenth of a
-radius. The four rows marked *open* are recorded as timeouts, **not** as UNSAT —
-they lie between the verified 2389 and the SAT 2233, and are the only remaining
-question in this parameter box. Note also that the *symmetric* universe at 2413
-vertices is SAT while the asymmetric 2389 is UNSAT, so the asymmetry is not a
-size effect.
+The last four UNSAT rows were timeouts at a 300–600 s cap and were only decided
+after adding **triangle symmetry breaking** — fixing a triangle of the graph to
+colours 0,1,2, which is sound because any proper 4-colouring can be permuted to
+agree with it (no 4-clique exists in these graphs, so a full clique assumption
+was not available). With it, decisions land in ~110–170 s instead of stalling.
+Nothing here is a proof-by-timeout: the boundary is `rB = 1.2420` UNSAT versus
+`rB = 1.2146` SAT.
+
+The asymmetry is real, in the same direction as fusion1's E45, and *not* a size
+effect. Two independent measurements:
+
+* the **symmetric** universe at 2413 vertices is SAT while the asymmetric 2389
+  and 2269 are UNSAT — fewer vertices, still non-4-colorable;
+* pinning `rB` and lowering `rA` instead kills the obstruction immediately
+  (`rA = 1.4530` at 2551 vtx SAT with `rB = 1.46`; `rA = 1.4530` at 2371 vtx SAT
+  with `rB = 1.30`). The base half must keep its 1.46 shell; all the slack is in
+  the rotated half (`asymmetry_probe.tsv`).
 
 ## T6 — the champion, and how to re-check it
 
 ```
 rotation      omega[15] = (7 + i*sqrt15)/8            (Parts' rotation)
-translation   T = (7/8 - sqrt33/6) + i*(sqrt15/8 - sqrt3/6)
+translation   T = (7/8 - sqrt33/6) + i*(sqrt3/6 + sqrt15/8)   id w_15_e201c77f6560
 base          A_3(r) = sums of <= 3 of the 30 unit vectors, clipped to disk(r)
-radii         rA = 1.46 (base half), rB = 1.30 (rotated half)
-universe      A_3(1.46)  u  ( T + omega[15] * A_3(1.30) )
-size          2389 vertices, 12909 exact unit edges, 44 exact cross edges
-decision      kissat: s UNSATISFIABLE (182 s)
-certificate   drat-trim: s VERIFIED (129 s)
-independent   verify_universe.py: 2389 vertices, 12909 exact edges: PASS
-mirror check  conjugate rotation + conjugated T: 2389 vtx / 12909 e, UNSAT
+radii         rA = 1.46 (base half), rB = 1.2420035798030784 (rotated half)
+universe      A_3(1.46)  u  ( T + omega[15] * A_3(1.2420...) )
+size          2269 vertices, 12044 exact unit edges, 43 exact cross edges
+decision      kissat + triangle symmetry breaking: s UNSATISFIABLE (137 s)
+certificate   drat-trim: s VERIFIED (142 s; 36335/64062 clauses, 1266464 lemmas
+              in core, 89582116 resolution steps)
+independent   verify_universe.py: 2269 vertices, 12044 exact edges: PASS
+mirror check  conjugate rotation + conjugated T reproduces the geometry exactly
+              (checked at rA = rB = 1.46: 2389 vtx / 12909 e, UNSAT)
 ```
 
 `T` involves `sqrt15`, so it lies in neither the base lattice nor `omega*`lattice
 — as in E43 this is a translated placement of Parts' two-copy structure, not a
-new lattice and not a new rotation. Only **44** of the 12909 edges cross between
+new lattice and not a new rotation. Only **43** of the 12044 edges cross between
 the halves, against 96 in Parts' origin-centred universe at radius 2: the
 obstruction survives on less than half the coupling.
 
 Artifacts in this directory:
 
-* `champion.pkl` / `record_2389.pkl` — the champion (exact field points + edges)
+* `champion.pkl` / `record_2269.pkl` — the champion (exact field points + edges)
 * `record_2569.pkl`, `record_2539.pkl`, `record_2491.pkl`, `record_2443.pkl`,
-  `record_2425.pkl` — every record-setting UNSAT universe on the way down
+  `record_2425.pkl`, `record_2389.pkl`, `record_2353.pkl`, `record_2329.pkl`,
+  `record_2281.pkl` — every record-setting UNSAT universe on the way down
+* `long_solver_notes.tsv`, `asymmetry_probe.tsv` — the symmetry-breaking runs and
+  the `rA`-vs-`rB` probe
 * `tuniv_w_15_*.pkl` — the 16 UNSAT universes from the translation screen
 * `results.tsv` — all 557 exact decisions (rotation, translation id and exact
   field coordinates, `L`, `rA`, `rB`, vertices, edges, status, seconds).
@@ -228,16 +243,17 @@ is not 4-colorable — not a small 5-chromatic graph. No 5-chromatic witness is
 claimed: the 509-vertex record stands, and extracting a witness from this
 universe still needs the minimisation machinery (greedy/DRAT-core descent,
 hitting-set bounds) that fusion1 runs. What the universe buys is where that
-machinery has to run: 2389 vertices with 12909 edges instead of 3997/27846
+machinery has to run: 2269 vertices with 12044 edges instead of 3997/27846
 (this run's own origin-centred control) or the 4033-vertex pool every recent
 exact search has used, with a non-4-colorability proof in ~3 minutes and a
 DRAT certificate in ~2.
 
 Open, in decreasing order of interest:
 
-1. the four timeout rows between 2353 and 2269 vertices — the SAT boundary is
-   somewhere between the verified 2389 and the SAT 2233 and is worth pinning with
-   a longer budget and clique-based symmetry breaking;
+1. the remaining shells between `rB = 1.2420` (UNSAT) and `rB = 1.2146` (SAT),
+   and descending the other 30-odd translations that are UNSAT at 1.9 but were
+   never pushed down — with triangle symmetry breaking that is now cheap, and
+   there is no reason the two placements descended here are the best ones;
 2. minimising *inside* the 2389-vertex universe, which is the only route from
    this to an actual graph;
 3. two-parameter placements (both halves translated, or three copies as in E42)
