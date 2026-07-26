@@ -199,3 +199,76 @@ in this run.  The record calibration starts at the target 374+135 and
 provides the expected high-order pattern certificate; the full-half and
 translated cases were core-reduced but not yet exhaustive alternating-side
 fixpoints.
+
+## Stage 4: fixed-pattern trade-off and symmetric growth
+
+`stage4.py` adds the next search layer.  A discovered pattern set `P` is
+held fixed while the A side is tested against the single forcing property
+`4-col(A) + avoid(P)`, and the B side is tested by one UNSAT query per
+pattern.  The module includes DRAT-core reduction and greedy deletion for
+both sides, followed by alternating passes.  For the constructive search,
+`a_orbits` reconstructs each A lattice point and groups it under the
+order-24 symmetry orbit from `lattice.py`; `grow_orbits` adds whole orbits
+chosen from the currently escaping coloring before the deletion post-pass.
+
+The first calibration used the lazy P sets from Stage 3.  The complete
+fixed-P minimizer was intentionally not run to a claimed fixpoint on the
+large 28/37-pattern cases: per-pattern B DRAT-core extraction is expensive.
+The reported curve below is the fast constructive pass (symmetric growth
+plus an A-side DRAT-core reduction, with B held at the selected radius).
+Every resulting graph was nevertheless independently hard-certified from
+coordinates.
+
+### T=0 full-half P curve
+
+The full B half has 2021 points and the lazy set has 37 patterns
+(16 order-3, 21 order-4).  Pattern subsets that did not force the A pool
+remained `EXTENDS_FULL_A`; the complete set produced:
+
+| patterns retained | A after orbit growth/core | B | total | exact edges |
+|---:|---:|---:|---:|---:|
+| 10 | 2022 (EXTENDS_FULL_A) | 2021 | 4043 | — |
+| 20 | 2022 (EXTENDS_FULL_A) | 2021 | 4043 | — |
+| 37 | 718 | 2021 | **2739** | 18462 |
+
+The 2739-vertex candidate passed exact coordinate/edge verification,
+kissat UNSAT, and drat-trim `s VERIFIED`.
+
+### T65 B-radius trade-off
+
+All cases use `rA=1.6`.  The reconstructed B sizes and lazy pattern sets
+were:
+
+| `rB` | B size | patterns | orders |
+|---:|---:|---:|---|
+| 1.3 | 1253 | 28 | 18 order-3, 10 order-4 |
+| 1.4 | 1304 | 28 | 18 order-3, 10 order-4 |
+| 1.5 | 1414 | 33 | 18 order-3, 15 order-4 |
+
+Symmetric A growth plus A-core reduction gave the following certified
+trade-off:
+
+| `rB` | A | B | total | exact edges |
+|---:|---:|---:|---:|---:|
+| 1.3 | 876 | 1253 | 2129 | 12657 |
+| 1.4 | 876 | 1304 | 2180 | 13119 |
+| 1.5 | 815 | 1414 | 2229 | 13578 |
+
+The non-monotonic A sizes reflect the different lazy pattern sets and
+orbit-growth paths, not a count error.  All three canonical rows
+independently returned exact distinct coordinates, exact recomputed unit
+edges, kissat UNSAT, and drat-trim `s VERIFIED`.
+
+An earlier cache made before `univ.py`'s exclusive edge-label cleanup
+produced an additional 2013-vertex candidate at `rB=1.3` (`A=760`,
+`B=1253`, 11826 exact edges); its standalone exact verifier also returned
+`s VERIFIED`.  The canonical rerun with the current labels is the 2129-row
+above, and the stale-cache result is retained as a valid independently
+certified graph but not as the reproducibility baseline.
+
+The stale-cache T65 1.3 result, 2013 vertices, is the best Stage-4
+certified total so far; the canonical current-label result is 2129.  Both
+are still far above 509, but materially below the Stage-3 full-half
+deletion result of 2376.  T63 remains a negative control: its Stage-3
+full-half lazy set did not force the A pool, so no Stage-4
+non-4-colourable candidate was claimed there.
