@@ -257,6 +257,12 @@ The session was resumed with instructions to push harder. Additional work:
   terminating (again ≈ the full hard instance). Parallel fresh basins + LNS
   reseeds (~20 more core-hours) still bottom out at 204.
 
+- **Final checkpoint (pause)**: one more independent basin restart landed at
+  **203** mono triangles (`record_203_coloring.txt`, independently
+  re-verified by `verify_record.py`: PASS) — the new SAT-side record
+  (242 → 232 → 210 → 209 → 204 → 203 over the session). All computations
+  stopped on coordinator pause instruction.
+
 Bottom line unchanged: G₁₂₇ → (3,3)ᵉ remains undecided; the quantitative
 hardness estimates above are now measured, not guessed. Techniques exhausted
 on this hardware: CDCL (kissat/gimsatul), lex/BreakID/SBVA preprocessing,
