@@ -383,3 +383,34 @@ This closes the entire strongly-regular universe to 10⁴ vertices and three
 classical infinite association-scheme families analytically.
 
 Artifacts: srgscan.py, srgscan_out.txt, famscan.py, famscan_out.txt.
+
+## Round 11 (coordinator push #10): free-form weighted-graph gradient ascent (Motzkin–Straus clique term)
+
+Eleventh attack: continuous ascent in the FULL cube of edge-weighted graphs
+W ∈ [0,1]^{n(n−1)/2} (n = 16, 24, 32, 40), objective
+F(W) = λ₁²+λ₂² − 2m(W)·t(W) with t(W) = max_{x∈Δ} xᵀWx (Motzkin–Straus:
+t = 1−1/ω exactly at binary points, so F = the true B–N gap on graphs).
+Projected adaptive-step gradient (Jacobi eigenvectors + replicator dynamics
+for t), 60 restarts × 3000 iterations per n, plus threshold-rounding of
+every terminal point back to binary graphs (flow.c).
+
+- All BINARY roundings: gap ≤ +2.4e-11 (equality noise only). No discrete
+  candidate — consistent with all previous rounds.
+- FINDING (new mathematical fact, machine-verified): the naive WEIGHTED
+  analogue of Bollobás–Nikiforov is FALSE.  A fractional 16-vertex witness
+  (flow_weighted_witness.txt, values in [0,1], 101 fractional entries)
+  has λ₁²+λ₂² − 2m·t(W) = +0.00834 > 0, with t(W) computed EXACTLY by
+  KKT support enumeration over all 2¹⁶ faces of the simplex
+  (verify_weighted.py, numpy-only, prints PASS; +200k Dirichlet samples as
+  a safety net).  λ₁=12.414, λ₂=−0.092, 2m=198.63, t=0.7759 (ω-surrogate
+  ≈ 4.46).
+- Interpretation: this does NOT touch the graph conjecture — graphs
+  converging to a fractional W have ω → ∞ (rhs → 2m ≥ λ₁²+λ₂²), and only
+  0/1 templates arise as blowup limits (cf. round 2, sup = 0 over 0/1
+  templates).  But it shows the conjecture, if true, is sharply a
+  DISCRETE phenomenon: any proof must use integrality of the adjacency
+  matrix, not just the Motzkin–Straus/quadratic-form structure.  This
+  kills the most natural "prove the weighted relaxation" strategy.
+
+Artifacts: flow.c, flow_out_*/flow_sum_*, flow_weighted_witness.txt,
+verify_weighted.py.
