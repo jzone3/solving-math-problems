@@ -3,10 +3,10 @@
 # repair_mc endgame trims, always continuing from the best state seen so far.
 # usage: squeeze.sh N m state_in workdir threads [mc_secs] [rep_secs]
 set -u
-N=$1; M=$2; ST=$3; WD=$4; THR=$5; MCS=${6:-1500}; RPS=${7:-300}
+N=$1; M=$2; ST=$3; WD=$4; THR=$5; MCS=${6:-1500}; RPS=${7:-300}; SEED0=${8:-1000}
 mkdir -p "$WD"
 cp "$ST" "$WD/cur.state"
-seed=1000
+seed=$SEED0
 while true; do
   seed=$((seed+1))
   OMP_NUM_THREADS=$THR /tmp/cover_mc3w "$N" "$M" "$MCS" "$seed" "$WD/mc.json" 16384 300 "$WD/cur.state" >> "$WD/mc.log" 2>&1

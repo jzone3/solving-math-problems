@@ -96,8 +96,25 @@ repair_mc trims, always continuing from the best state so far.
 
 ## Run log
 - mc3 m=13 N=183783600 seed 91 et al.: staircase 480k -> ~8-10k, plateaus.
-- squeeze chains at N=183783600 (from 5768) and N=367567200 (slack 2.038,
-  ~10 GB RAM, greedy ~2.3e5 holes, staircase to ~53k): [in progress]
+- squeeze chains at N=183783600: 7784 -> 6447 -> 5768 -> 5635 -> 4501 ->
+  4040 -> 3853/3846 -> 3649 (chainA2) and 3495 (chainC2, last observed)
+  over ~6 h of two parallel 3-4 thread chains.
+- N=367567200 (slack 2.038, ~10 GB RAM): greedy ~2.3e5 holes, staircase to
+  ~53k in ~65 min, then reallocated compute to the N=183783600 chains.
 
 ## Outcome
-[pending]
+- NO m=13 witness: best explicit state reached 3495 holes out of
+  N=183783600 (99.998% covered) when the coordinator paused the effort.
+  No witness JSON was produced, so nothing was run through
+  solutions/P15/verify.py at m=13 (verifier PASSes were obtained only for
+  the m=5 and m=7 smoke tests).
+- The best checkpoint .state files lived in /tmp and were lost in a VM
+  restart at pause time; resume must re-descend from scratch (~2-3 h to
+  ~4k holes with squeeze.sh on 8 cores).
+- Throughput: 60.6 it/s (baseline) -> 1050-1340 it/s (cover_mc3, 7
+  threads), ~20x per-iteration, far more in hole-closing progress
+  (baseline stalled at 253k holes; cover_mc3 staircases through it).
+- Suggested next steps: longer squeeze chains (progress was still steady,
+  ~150-500 holes/h at 3.5-6k), portfolio of chains with cross-seeding,
+  and/or a coordinated two-modulus move in the endgame; also consider a
+  state-dump-based SAT/MaxSAT finish once holes < ~500.
