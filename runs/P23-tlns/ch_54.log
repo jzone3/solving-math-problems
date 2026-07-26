@@ -1,0 +1,7 @@
+=== restart from /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/best_1121.pkl (1121 vertices) at 21:34:03
+start 1121 vertices, pool 2545, hole 20, budget 19, hops 1, ball 0
+*** DESCENT to 1120 vertices
+  hole 20: timeout after 361 its / 722 hyperedges
+  hole 20: timeout after 242 its / 484 hyperedges
+  hole 20: timeout after 270 its / 540 hyperedges
+  hole 20: timeout after 300 its / 600 hyperedges

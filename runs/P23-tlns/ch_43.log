@@ -1,0 +1,3 @@
+=== restart from /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c24.pkl (1233 vertices) at 16:46:22
+start 1233 vertices, pool 2545, hole 60, budget 57, hops 1, ball 1
+  hole 60: timeout after 620 its / 1240 hyperedges

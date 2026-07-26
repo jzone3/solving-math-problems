@@ -70,12 +70,25 @@ for u, v in E:
 rng = random.Random(SEED)
 
 
+def triangle(rm):
+    """A triangle of the induced subgraph, in local indices, for symmetry
+    breaking: colour classes are interchangeable, so fixing one clique's colours
+    is WLOG, and it is worth two orders of magnitude on the UNSAT proofs."""
+    for u in rm:
+        for v in ADJ[u]:
+            if v in rm:
+                for w in ADJ[u] & ADJ[v]:
+                    if w in rm:
+                        return [rm[u], rm[v], rm[w]]
+    return None
+
+
 def colorable(vs, tag):
     """None on timeout, else True/False.  Temp files are pid-specific."""
     vs = sorted(vs)
     rm = {x: i for i, x in enumerate(vs)}
     E2 = [(rm[u], rm[v]) for u, v in E if u in rm and v in rm]
-    nvars, cls = color_cnf(len(vs), E2, 4)
+    nvars, cls = color_cnf(len(vs), E2, 4, sym_clique=triangle(rm))
     cnf = f'/tmp/tl_{tag}_{os.getpid()}.cnf'
     write_cnf(cnf, nvars, cls)
     try:
@@ -96,7 +109,7 @@ def coloring(vs, tag):
     vs = sorted(vs)
     rm = {x: i for i, x in enumerate(vs)}
     E2 = [(rm[u], rm[v]) for u, v in E if u in rm and v in rm]
-    nvars, cls = color_cnf(len(vs), E2, 4)
+    nvars, cls = color_cnf(len(vs), E2, 4, sym_clique=triangle(rm))
     cnf = f'/tmp/tc_{tag}_{os.getpid()}.cnf'
     write_cnf(cnf, nvars, cls)
     try:

@@ -1,0 +1,5 @@
+=== restart from /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c23.pkl (1368 vertices) at 12:46:29
+start 1368 vertices, pool 2545, hole 30, budget 29, hops 1, ball 0
+*** DESCENT to 1366 vertices (core jump)
+*** DESCENT to 1364 vertices (core jump)
+Terminated

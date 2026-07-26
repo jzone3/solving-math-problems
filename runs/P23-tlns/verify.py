@@ -18,7 +18,12 @@ Checks, in order:
    are used only to skip pairs that are far apart, and the skip radius is
    generous, so no exact unit pair can be missed);
 3. the graph is not 4-colorable: kissat is run on the direct colouring
-   encoding, and its DRAT proof is checked by drat-trim (s VERIFIED);
+   encoding, and its DRAT proof is checked by drat-trim (s VERIFIED).  The
+   encoding fixes the colours of one triangle (a 3-clique found in, and checked
+   against, the exact edge set): since the colour classes of a proper colouring
+   can be permuted freely, the graph is k-colorable iff it is k-colorable with
+   any one clique's colours fixed, so this is sound and it shrinks the proofs
+   from gigabytes to megabytes;
 4. the graph *is* 5-colorable (so the chromatic number is exactly 5) -- this is
    informational and skipped with SKIP5=1.
 
@@ -98,8 +103,24 @@ def exact_edges(field, points):
     return edges
 
 
-def color_cnf(n, edges, k):
+def find_triangle(n, edges):
+    adj = [set() for _ in range(n)]
+    for u, v in edges:
+        adj[u].add(v)
+        adj[v].add(u)
+    for u, v in edges:
+        for w in adj[u] & adj[v]:
+            assert (min(u, v), max(u, v)) in edges, 'not an edge'
+            assert (min(u, w), max(u, w)) in edges, 'not an edge'
+            assert (min(v, w), max(v, w)) in edges, 'not an edge'
+            return u, v, w
+    return None
+
+
+def color_cnf(n, edges, k, clique=()):
     cls = []
+    for c, v in enumerate(clique):        # WLOG: colours are interchangeable
+        cls.append([v * k + c + 1])
     for v in range(n):
         cls.append([v * k + c + 1 for c in range(k)])
         for c1 in range(k):
@@ -118,8 +139,8 @@ def write_cnf(path, nvars, cls):
             f.write(' '.join(map(str, c)) + ' 0\n')
 
 
-def not_k_colorable(n, edges, k, proof=True):
-    nvars, cls = color_cnf(n, edges, k)
+def not_k_colorable(n, edges, k, proof=True, clique=()):
+    nvars, cls = color_cnf(n, edges, k, clique)
     cnf = f'/tmp/vfy_{os.getpid()}_{k}.cnf'
     drat = f'/tmp/vfy_{os.getpid()}_{k}.drat'
     write_cnf(cnf, nvars, cls)
@@ -160,13 +181,15 @@ def main(path):
     print(f'{len(exact)} unit edges, each with dx^2 + dy^2 = 1 exactly, and no '
           f'unit pair missing')
 
-    un4, ok = not_k_colorable(n, sorted(exact), 4)
+    tri = find_triangle(n, exact)
+    assert tri is not None, 'no triangle to break symmetry on'
+    un4, ok = not_k_colorable(n, sorted(exact), 4, clique=tri)
     assert un4, 'the graph IS 4-colorable'
     assert ok, 'drat-trim did not verify the UNSAT proof'
     print('not 4-colorable: kissat UNSAT, drat-trim s VERIFIED')
 
     if os.environ.get('SKIP5') != '1':
-        un5, _ = not_k_colorable(n, sorted(exact), 5, proof=False)
+        un5, _ = not_k_colorable(n, sorted(exact), 5, proof=False, clique=tri)
         assert not un5, 'the graph is not 5-colorable either'
         print('5-colorable: chromatic number is exactly 5')
 

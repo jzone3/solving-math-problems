@@ -1,282 +1,10 @@
-== 10:34:59 load=6.08 6.23 5.56
-  1564  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1625  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g2.pkl
-  1657  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-   gr_1.log: g1 pass1: -4 -> 1657
-   gr_2.log: g2 pass1: -1 -> 1625
-   gr_3.log: g3 pass1: -1 -> 1564
-   gr_4.log: g4 pass1: -4 -> 1665
-   gr_5.log: g5 pass1: -4 -> 1750
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 it8: n=1876 -> core 1860 39.2s
-== 10:39:59 load=6.03 6.10 5.70
-  1559  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1619  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g2.pkl
-  1630  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-   gr_1.log: g1 pass1: -8 (batch8) -> 1630
-   gr_2.log: g2 pass1: -1 -> 1619
-   gr_3.log: g3 pass1: -1 -> 1559
-   gr_4.log: g4 pass1: -1 -> 1655
-   gr_5.log: g5 pass1: -2 -> 1708
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 it16: n=1791 -> core 1788 34.2s
-== 10:44:59 load=6.05 6.06 5.82
-  1554  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1604  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1606  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g2.pkl
-   gr_1.log: g1 pass1: -4 -> 1604
-   gr_2.log: g2 pass1: -2 -> 1606
-   gr_3.log: g3 pass1: -1 -> 1554
-   gr_4.log: g4 pass1: -1 -> 1651
-   gr_5.log: g5 pass1: -8 (batch8) -> 1680
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 it25: n=1736 -> core 1732 36.0s
-== 10:49:59 load=5.09 5.53 5.66
-  1544  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1590  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1602  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g2.pkl
-   gr_1.log: g1 pass1: -2 -> 1590
-   gr_2.log: g2 pass1: -1 -> 1602
-   gr_3.log: g3 pass1: -1 -> 1544
-   gr_4.log: g4 pass1: -4 -> 1645
-   gr_5.log: g5 pass1: -1 -> 1669
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 10:54:59 load=5.00 5.18 5.47
-  1539  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1573  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1593  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g2.pkl
-   gr_1.log: g1 pass1: -2 -> 1573
-   gr_2.log: g2 pass1: -1 -> 1593
-   gr_3.log: g3 pass1: -2 -> 1539
-   gr_4.log: g4 pass1: -8 (batch8) -> 1629
-   gr_5.log: g5 pass1: -1 -> 1646
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 10:59:59 load=5.44 5.19 5.38
-  1527  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1557  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1589  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g2.pkl
-   gr_1.log: g1 pass1: -4 -> 1557
-   gr_2.log: g2 pass1: -1 -> 1589
-   gr_3.log: g3 pass1: -1 -> 1527
-   gr_4.log: g4 pass1: -2 -> 1610
-   gr_5.log: g5 pass1: -2 -> 1639
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:04:59 load=6.07 5.73 5.57
-  1522  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-  1522  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1549  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-   gr_1.log: g1 pass1: -1 -> 1549
-   gr_2.log: g2 pass1: -1 -> 1584
-   gr_3.log: g3 pass1: -2 -> 1522
-   gr_4.log: g4 pass1: -4 -> 1603
-   gr_5.log: g5 pass1: -1 -> 1629
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:09:59 load=6.02 5.94 5.71
-  1514  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1516  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-  1538  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-   gr_1.log: g1 pass1: -2 -> 1538
-   gr_2.log: g2 pass1: -1 -> 1580
-   gr_3.log: g3 pass1: -1 -> 1514
-   gr_4.log: g4 pass1: -1 -> 1597
-   gr_5.log: g5 pass1: -4 -> 1613
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:14:59 load=6.00 5.99 5.81
-  1503  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1504  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1512  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -1 -> 1503
-   gr_2.log: g2 pass1: -4 -> 1564
-   gr_3.log: g3 pass1: -1 -> 1504
-   gr_4.log: g4 pass1: -4 -> 1590
-   gr_5.log: g5 pass1: -7 (batch8) -> 1600
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:19:59 load=6.00 6.00 5.87
-  1489  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1500  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1510  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -1 -> 1489
-   gr_2.log: g2 pass1: -4 -> 1554
-   gr_3.log: g3 pass1: -1 -> 1500
-   gr_4.log: g4 pass1: -1 -> 1588
-   gr_5.log: g5 pass1: -1 -> 1596
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:24:59 load=6.02 6.03 5.93
-  1470  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1495  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1504  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -1 -> 1470
-   gr_2.log: g2 pass1: -4 -> 1545
-   gr_3.log: g3 pass1: -1 -> 1495
-   gr_4.log: g4 pass1: -1 -> 1585
-   gr_5.log: g5 pass1: -1 -> 1593
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:29:59 load=6.01 6.03 5.98
-  1463  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1491  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1502  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -1 -> 1463
-   gr_2.log: g2 pass1: -3 -> 1539
-   gr_3.log: g3 pass1: -1 -> 1491
-   gr_4.log: g4 pass1: -1 -> 1583
-   gr_5.log: g5 pass1: -2 -> 1589
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:34:59 load=6.00 6.02 6.00
-  1456  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1485  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1499  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -2 -> 1456
-   gr_2.log: g2 pass1: -1 -> 1535
-   gr_3.log: g3 pass1: -1 -> 1485
-   gr_4.log: g4 pass1: -2 -> 1575
-   gr_5.log: g5 pass1: -1 -> 1587
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:39:59 load=6.05 6.03 6.00
-  1450  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1481  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1489  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -2 -> 1450
-   gr_2.log: g2 pass1: -1 -> 1532
-   gr_3.log: g3 pass1: -1 -> 1481
-   gr_4.log: g4 pass1: -2 -> 1570
-   gr_5.log: g5 pass1: -2 -> 1582
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:44:59 load=6.01 6.02 6.00
-  1442  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1476  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1481  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -2 -> 1442
-   gr_2.log: g2 pass1: -1 -> 1527
-   gr_3.log: g3 pass1: -1 -> 1476
-   gr_4.log: g4 pass1: -1 -> 1566
-   gr_5.log: g5 pass1: -2 -> 1580
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:49:59 load=6.08 6.09 6.03
-  1428  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1474  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-  1479  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -2 -> 1428
-   gr_2.log: g2 pass1: -1 -> 1520
-   gr_3.log: g3 pass1: -1 -> 1474
-   gr_4.log: g4 pass1: -1 -> 1562
-   gr_5.log: g5 pass1: -2 -> 1567
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:54:59 load=6.03 6.04 6.01
-  1422  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1470  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-  1470  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g3.pkl
-   gr_1.log: g1 pass1: -1 -> 1422
-   gr_2.log: g2 pass1: -1 -> 1517
-   gr_3.log: g3 pass1: -2 -> 1470
-   gr_4.log: g4 pass1: -1 -> 1553
-   gr_5.log: g5 pass1: -1 -> 1565
-   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
-   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
-   cm_1.log: seed1 FINAL 1772
-   cm_2.log: seed2 FINAL 1784
-   cm_3.log: seed3 FINAL 1814
-   cm_4.log: seed4 FINAL 1757
-   cm_6.log: seed6 FINAL 1725
-== 11:59:59 load=6.05 6.05 6.01
-  1419  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c23.pkl
-  1420  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1465  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c21.pkl
-   gr_1.log: g1 pass1: -1 -> 1420
-   gr_2.log: g2 pass1: -1 -> 1514
-   gr_3.log: g3 pass1: -1 -> 1467
+== 21:33:47 load=0.49 0.91 2.61
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/best_1121.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c24.pkl
+  1144  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c25.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
    gr_4.log: g4 pass1: -1 -> 1553
    gr_5.log: g5 pass1: -1 -> 1564
    tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
@@ -286,13 +14,13 @@
    cm_3.log: seed3 FINAL 1814
    cm_4.log: seed4 FINAL 1757
    cm_6.log: seed6 FINAL 1725
-== 12:04:59 load=6.02 6.03 6.00
-  1413  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1414  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c23.pkl
-  1418  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c22.pkl
-   gr_1.log: g1 pass1: -1 -> 1413
-   gr_2.log: g2 pass1: -1 -> 1507
-   gr_3.log: g3 pass1: -1 -> 1460
+== 21:38:47 load=7.00 4.71 3.78
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/best_1121.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c24.pkl
+  1144  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c25.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
    gr_4.log: g4 pass1: -1 -> 1553
    gr_5.log: g5 pass1: -1 -> 1564
    tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
@@ -302,13 +30,13 @@
    cm_3.log: seed3 FINAL 1814
    cm_4.log: seed4 FINAL 1757
    cm_6.log: seed6 FINAL 1725
-== 12:09:59 load=6.00 6.02 6.00
-  1407  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1409  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c23.pkl
-  1413  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c22.pkl
-   gr_1.log: g1 pass1: -1 -> 1407
-   gr_2.log: g2 pass1: -1 -> 1504
-   gr_3.log: g3 pass1: -1 -> 1454
+== 21:43:47 load=7.11 6.25 4.72
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/tlns_54.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/best_1121.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c24.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
    gr_4.log: g4 pass1: -1 -> 1553
    gr_5.log: g5 pass1: -1 -> 1564
    tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
@@ -318,13 +46,253 @@
    cm_3.log: seed3 FINAL 1814
    cm_4.log: seed4 FINAL 1757
    cm_6.log: seed6 FINAL 1725
-== 12:14:59 load=6.05 6.01 6.00
-  1400  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c23.pkl
-  1403  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_g1.pkl
-  1410  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c22.pkl
-   gr_1.log: g1 pass1: -1 -> 1403
-   gr_2.log: g2 pass1: -1 -> 1500
-   gr_3.log: g3 pass1: -1 -> 1452
+== 21:48:47 load=7.05 6.78 5.38
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/tlns_54.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/best_1121.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c24.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 21:53:48 load=7.09 7.00 5.87
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/tlns_54.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/best_1121.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c24.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 21:58:48 load=7.12 7.09 6.24
+  1119  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/tlns_54.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/best_1121.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:03:48 load=7.13 7.13 6.51
+  1118  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/tlns_54.pkl
+  1121  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/best_1121.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:08:48 load=7.08 7.08 6.67
+  1117  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/tlns_54.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:13:48 load=7.10 7.11 6.82
+  1116  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:18:48 load=7.06 7.14 6.93
+  1116  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:23:48 load=7.08 7.12 7.00
+  1114  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:28:48 load=7.10 7.15 7.04
+  1114  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:33:48 load=7.07 7.12 7.05
+  1114  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:38:48 load=7.26 7.12 7.06
+  1114  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1119  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:43:48 load=7.08 7.11 7.08
+  1114  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1119  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:48:48 load=7.20 7.16 7.10
+  1113  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1118  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:53:48 load=7.10 7.16 7.11
+  1113  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1117  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 22:58:48 load=7.11 7.13 7.10
+  1113  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1117  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+  1120  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
+   gr_4.log: g4 pass1: -1 -> 1553
+   gr_5.log: g5 pass1: -1 -> 1564
+   tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1
+   tl_12.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 0
+   cm_1.log: seed1 FINAL 1772
+   cm_2.log: seed2 FINAL 1784
+   cm_3.log: seed3 FINAL 1814
+   cm_4.log: seed4 FINAL 1757
+   cm_6.log: seed6 FINAL 1725
+== 23:03:48 load=7.15 7.13 7.10
+  1112  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c53.pkl
+  1116  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c52.pkl
+  1119  /home/ubuntu/repos/solving-math-problems/runs/P23-tlns/greedy_c51.pkl
+   gr_1.log: g1 pass1: -2 -> 1254
+   gr_2.log: g2 pass1: -1 -> 1302
+   gr_3.log: g3 pass1: -3 -> 1330
    gr_4.log: g4 pass1: -1 -> 1553
    gr_5.log: g5 pass1: -1 -> 1564
    tl_11.log: start 1609 vertices, pool 2545, hole 40, budget 38, hops 1, ball 1

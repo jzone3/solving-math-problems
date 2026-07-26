@@ -1,0 +1,5 @@
+1112 vertices with exact coordinates in Q(sqrt3, sqrt5, sqrt11)
+5474 unit edges, each with dx^2 + dy^2 = 1 exactly, and no unit pair missing
+not 4-colorable: kissat UNSAT, drat-trim s VERIFIED
+5-colorable: chromatic number is exactly 5
+PASS: 1112-vertex 5-chromatic unit-distance graph
