@@ -1,3 +1,4 @@
+rotation	id	translation	layers	rA	rB	vertices	edges	cross_edges	status	seconds
 w[3]	w_3_25b1c470a651	((Fraction(-1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(1, 6), Fraction(0, 1), Fraction(0, 1)))	3	1.6	1.6	2112	14623	15082	SAT	0.681
 w[3]~	w_3~_25b1c470a651	((Fraction(-1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(1, 6), Fraction(0, 1), Fraction(0, 1)))	3	1.6	1.6	2112	14623	15082	SAT	0.696
 w[3]^2	w_3^2_b92782c79b7b	((Fraction(-1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(-1, 6), Fraction(0, 1), Fraction(0, 1)))	3	1.6	1.6	2112	14623	15082	SAT	0.686
