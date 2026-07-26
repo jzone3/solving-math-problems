@@ -777,3 +777,20 @@ This exceeds the new approximately 24-hour gate, so the high-girth n=18
 closure was not launched. No exact graph completed in this timing gate; no
 deferred instance or candidate occurred, and no new harness cross-check was
 available.
+
+## High-girth n=18 tau=3: attempted, stopped as measured-infeasible (partial 3/455)
+
+A best-effort background run of the girth>=5 n=18 tau=3 subfamily (455 graphs)
+was launched despite the >24h projection. It completed only 3/455 graphs in
+~2h of wall time (0 candidates, 0 deferred) and was then stopped cleanly.
+
+Root cause of the intractability: high-girth (girth>=5) cubic graphs are the
+WORST case for closed-set dicut enumeration. Sparse, few-short-cycle graphs
+have a reachability poset with many antichains, so the number of order ideals
+(closed sets) per orientation approaches 2^18, and each graph takes up to
+hours even with the role-first + reorder engine. The run was also fragile
+across box restarts (the /tmp engine binary is wiped and the watchdog has a
+30-min relaunch latency). Realistically this cell will not close on a single
+box; it is recorded as measured-infeasible with partial coverage 3/455, NOT a
+closure. Would need many more cores / much longer wall time (a cluster) or a
+non-ideal-enumeration dicut method that does not blow up on sparse graphs.
