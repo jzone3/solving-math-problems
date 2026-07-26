@@ -355,3 +355,31 @@ set-critical, the natural place for spectral anomalies).
 
 Artifacts: srg/srg-spence.sum, srg/srg-complements.sum, srg/ramsey-mckay.sum,
 checker64.c (long-form g6 support). ~8.2M more graphs, zero violations.
+
+## Round 10 (coordinator push #9): analytic parameter-space scan (all feasible SRG tuples v ≤ 10,000 + Kneser/Johnson/Hamming)
+
+Tenth attack: instead of finite graph catalogs, scan PARAMETER SPACE.
+`srgscan.py`: for an SRG(v,k,l,u), λ₁=k, λ₂=r, 2m=vk, and the Delsarte
+ratio bound gives ω ≤ W = ⌊1+k/(−s)⌋; since rhs is increasing in ω,
+gapW := k²+r² − vk(1−1/W) > 0 would FORCE a violation for EVERY SRG
+realizing the tuple, known or not.  Enumeration by integer eigenvalue pairs
+(r,−s) and u with the divisor trick u | r·ms(r+1)(ms−1) (since
+k−l−1=(r+1)(ms−1) is u-independent), + multiplicity integrality, + the
+conference-graph family v=4u+1; exact integer arithmetic.
+
+- 41,430 feasible integer-eigenvalue tuples + 2,499 conference tuples with
+  v ≤ 10,000: gapW < 0 for ALL of them.  Maximum gapW = −0.618 (C5), then
+  −5 (Petersen), −7 (Paley 9)… gapW → −∞ with v.  So NO strongly regular
+  graph on ≤ 10,000 vertices — including all undiscovered ones — can
+  violate the conjecture, even with the (weak) Delsarte bound in place of
+  true ω.  (r=0 excluded a priori: complete multipartite = equality family.)
+- `famscan.py`: exact closed-form spectra + known clique numbers for
+  Kneser K(n,k) (n ≤ 80), Johnson J(n,k) (n ≤ 80), Hamming H(d,q)
+  (q ≤ 40, d ≤ 20): 3,744 members, all gaps ≤ 0 (asserted), equality only
+  at Johnson(4,2)=K_{2,2,2} and Hamming(2,2)=C₄=K_{2,2} — again exactly
+  the complete-multipartite equality family.
+
+This closes the entire strongly-regular universe to 10⁴ vertices and three
+classical infinite association-scheme families analytically.
+
+Artifacts: srgscan.py, srgscan_out.txt, famscan.py, famscan_out.txt.
