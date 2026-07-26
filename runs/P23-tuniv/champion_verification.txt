@@ -1,3 +1,4 @@
 kissat: s UNSATISFIABLE
 drat-trim: s VERIFIED
 verify_universe.py: 2389 vertices, 12909 exact edges: PASS
+w[15]~ mirrored translation spot-check: 2389 vertices, 12909 exact edges, UNSAT
