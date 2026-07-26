@@ -42,8 +42,6 @@ for shard, path in enumerate(shards):
 PY
 
 for shard in $(seq 0 7); do
-    stdbuf -oL -eL "$ENGINE" 3 tau3 0 1 \
-        < "higirth18_resume_${shard}.txt" \
-        >> "higirth18_${shard}.log" 2>&1 &
+    ./launch_higirth18_shard.sh "$shard" >/dev/null
 done
 echo "launched 8 higirth18 shards"

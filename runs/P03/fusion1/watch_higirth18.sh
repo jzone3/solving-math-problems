@@ -2,14 +2,20 @@
 set -eu
 
 while :; do
-    count=$(pgrep -fc '/tmp/p03_engine_higirth18 3 tau3' || true)
-    if [ "$count" -ne 8 ]; then
-        if [ "$count" -gt 0 ]; then
-            pkill -f '/tmp/p03_engine_higirth18 3 tau3' || true
-            sleep 2
+    for shard in $(seq 0 7); do
+        found=0
+        for pid in $(pgrep -f '/tmp/p03_engine_higirth18 3 tau3' || true); do
+            if [ -r "/proc/$pid/fd/0" ] &&
+               [ "$(readlink "/proc/$pid/fd/0")" = \
+                 "$PWD/higirth18_resume_${shard}.txt" ]; then
+                found=1
+                break
+            fi
+        done
+        if [ "$found" -eq 0 ]; then
+            ./launch_higirth18_shard.sh "$shard" >> higirth18_watch.log 2>&1 || true
         fi
-        ./resume_higirth18.sh >> higirth18_watch.log 2>&1 || true
-    fi
+    done
 
     if git diff --quiet -- higirth18_?.log; then
         :
