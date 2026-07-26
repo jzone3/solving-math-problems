@@ -257,6 +257,18 @@ hole list + OpenMP) reached ~20x it/s and descended to ~7.7k holes in under
 1h, plus an exact hole-driven endgame repairer (repair_mc.c). Their results
 land on branches runs/P15-v3-childA / runs/P15-v3-childB and are merged here.
 
+Local cover_mc3 sweep (childB engine, this box, m=13 N=183783600, 2-4
+threads/run): seeds 301/303/304 staircased 480k -> 27k/17k in ~3-5h; seed 301
+reached 4,521 holes at t=17447s and was still descending steadily when the
+coordinator paused the session (12h budget unexhausted; the old binary kept
+no state file, so this trajectory is not resumable — rerun with the
+state-dumping cover_mc3 from runs/P15-v3-childB to reproduce). The remaining
+work at pause time: childB's squeeze chain (mc3 warm restarts + repair_mc
+trims) was at ~5.8k holes and descending; childA was redoing its sweep with
+cover_mc3. m=13 looks closable with a few more node-hours of this pipeline.
+
+PAUSED by coordinator 2026-07-23 before completion of the m=13 push.
+
 STATUS: frontier-pushed (verified covering systems for every m ≤ 12 via
 explicit engines, plus a new symbolic-coset engine with unbounded lcm verified
 at m ≤ 9 in seconds-minutes; no m≥43 witness — greedy variants documented
