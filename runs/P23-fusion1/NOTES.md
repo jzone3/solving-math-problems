@@ -855,3 +855,18 @@ obstruction switches on exactly between r = 1.95 and r = 2.0) this says Parts'
 choice of ring, base and rotation is close to isolated in the whole type-M
 family, which is a much better explanation of why 509 has stood since 2020 than
 any of this run's search floors.
+
+## E37 — smallest known universe, built exactly (`build_w4t.py`)
+
+`w4t.pkl`: three Minkowski layers of the 30 unit vectors of Parts' ring clipped
+at radius 2, unioned with its omega_4 copy. **3997 vertices, 27846 exact edges,
+96 cross edges**, non-4-colorable, UNSAT in **61 s** (vs 167-260 s for the
+5695-vertex W₄ pool and 313 s for the full 18517-vertex one).
+
+This matters mainly as machinery: every exact method in this run is bottlenecked
+by the cost of one non-4-colorability proof, so a universe that is a quarter the
+size and three times faster makes the complete searches affordable. The
+whole-universe hitting set at bound 508 now produces hyperedges of ~86-153
+vertices (vs 300-410 on W₄) at ~100 s/iteration, and greedy chains descend it
+from 3997 (2990 after two minutes). Like `w4s.pkl` it is a subset of the W₄
+universe, so it prunes rather than opens new geometry.
