@@ -615,4 +615,15 @@ done in the 4.13-4.25 transcription step.
 
 Next: transcribe 4.5 (prime 11) .. 4.12, then the per-prime closure.
 
+Checkpoint (paused by coordinator, 2026-07-22): 4.5 transcription in
+progress. Paper's 4.5 fills 11^ on branch 1 mod 4, covering the m6 and
+m18 holes simultaneously; the hole components on that branch are
+(1 mod 12), (57 mod 108), (93 mod 108) [both inside 3 mod 9 = 21 mod 36],
+plus the per-level 27^/81^ half-holes (c27a/c27b/m18rem). The 10 input
+sets of 11^ are listed verbatim in papers/nielsen-layout.txt lines
+630-648. _uncov45.py computes the exact residual of these cells against
+the depth-materialized system (was running when paused; subtraction cost
+grows quickly — restrict regions to those meeting the target cell before
+subtracting when resuming).
+
 STATUS: negative for >= 43.
