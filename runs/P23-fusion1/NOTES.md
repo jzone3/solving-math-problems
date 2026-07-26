@@ -1119,3 +1119,23 @@ a smaller witness would need, which is why these are being minimised.
 Transplanting Parts' own halves into the new placements is 4-colorable (509 vtx,
 2412/2414 edges, SAT), so each placement needs its own minimisation rather than
 inheriting his.
+
+## E44 — translated placements obstruct in a much smaller universe
+
+E34 measured that in Parts' placement the obstruction switches on sharply
+between radius 1.95 and 2.0. Doing the same measurement for the translated
+placements (`tradius.py`) is the first quantitative sign that they are *better*,
+not merely different:
+
+```
+T = 0 (Parts):  r=1.5 .. 1.95 all SAT, UNSAT only at 2.0   (4033 vtx)
+score-63 T:     SAT to 1.7,  UNSAT at 1.8                  (3433 vtx)
+score-65 T:     SAT at 1.5,  UNSAT at 1.6                  (2917 vtx, 17740 e)
+```
+
+So moving the rotation centre buys the obstruction at radius 1.6 instead of 2.0
+-- a universe 28% smaller than the one every exact search in this run has used,
+and the natural place for a smaller witness to live. Four DRAT-core greedy
+chains are minimising the 2917-vertex universe (already at ~1864) and a
+four-shard sweep (`tsweep.py`) is pushing other translations down through radii
+1.6 / 1.5 / 1.4 / 1.3 to find the smallest obstructing placement.
