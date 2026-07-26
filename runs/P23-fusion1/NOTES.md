@@ -1162,3 +1162,28 @@ exact edges**, against the 4033-vertex (radius 2) universe Parts' placement
 needs and the 3997-vertex E37 universe every recent exact search has used. Five
 DRAT-core greedy chains are minimising it; a further scan (rA up to 1.8 with rB
 down to 1.0) is running.
+
+## E46 — hitting set over the small universe, with small hyperedges
+
+The 2581-vertex universe is small enough to run the *complete* formulation over
+the whole thing rather than over a frozen-core completion: `hsfull.py` solves
+the minimum hitting set of the clause bank to optimality every iteration, so its
+value is a monotone lower bound on any witness in that universe, and its
+proposal is always a minimum-size candidate (unlike deletion, which E13 measured
+at ~3.5x off optimum).
+
+Clause width decides whether that bound moves. Complements of greedy maximal
+colour extensions are ~660 literals wide and the bound crawled at 2. Colouring
+the *whole* universe with min-conflicts/tabu and deleting a vertex cover of the
+surviving conflicts (`hypgen.py`, sound: the rest is properly 4-coloured) gives
+hyperedges of **30-70** instead:
+
+```
+tabu 300k steps: |D| = 160-237      tabu 2M steps: |D| = 30-70
+bank 468 distinct clauses over 2581 candidates, minimum hitting set = 15
+```
+
+Four generators and two IHS workers share the bank. Greedy calibration in the
+same universes meanwhile: 2581-universe -> 1763, 2917-universe -> 1536, both
+still descending, and both meaningless as bounds (E13) -- only the IHS value is
+a bound, and it is 15.
