@@ -151,7 +151,14 @@ int main(void) {
         size_t len = strlen(g6);
         while (len && (g6[len - 1] == '\n' || g6[len - 1] == '\r')) g6[--len] = 0;
         if (!len) continue;
-        int n = g6[0] - 63;
+        int n, hdr;
+        if (g6[0] == '~' && len >= 4) {
+            n = ((g6[1] - 63) << 12) | ((g6[2] - 63) << 6) | (g6[3] - 63);
+            hdr = 4;
+        } else {
+            n = g6[0] - 63;
+            hdr = 1;
+        }
         if (n < 1 || n > MAXN) { fprintf(stderr, "bad n in %s\n", g6); continue; }
         memset(adj, 0, sizeof adj);
         for (int i = 0; i < n; i++)
@@ -161,7 +168,7 @@ int main(void) {
             int k = 0;
             for (int j = 1; j < n; j++)
                 for (int i = 0; i < j; i++) {
-                    int byte = 1 + k / 6, bit = 5 - (k % 6);
+                    int byte = hdr + k / 6, bit = 5 - (k % 6);
                     k++;
                     if ((g6[byte] - 63) & (1 << bit)) {
                         A[i][j] = A[j][i] = 1.0;

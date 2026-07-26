@@ -329,3 +329,29 @@ CAP-partite graphs. Exact ω per step, Sturm-bisection eigenvalues (1e-11).
   q — no compute needed.
 
 Artifacts: anneal3.c, a3_out_*/a3_sum_* summaries.
+
+## Round 9 (coordinator push #8): exceptional-structure catalogs (Spence SRGs + McKay Ramsey graphs)
+
+Ninth attack: complete published catalogs of "exceptional" graphs beyond all
+exhausted ranges — strongly regular graphs (mostly NOT vertex-transitive, so
+not covered by round 7) and Ramsey-extremal graphs (locally clique/independent-
+set-critical, the natural place for spectral anomalies).
+
+- Spence's complete SRG lists (maths.gla.ac.uk/~es/srgraphs.php): all 26
+  parameter sets, orders 5..64, 43,718 graphs — incl. all 32,548
+  SRG(36,15,6,6), 6,760 SRG(37,18,8,9), 3,854 SRG(35,18,9,9), 167
+  SRG(64,18,2,6). Checker64 extended to long-form graph6 headers (n >= 63).
+  ZERO violations; best gap +2.0e-13 (equality noise).
+- All 43,718 COMPLEMENTS of those SRGs (also SRGs, with parameter sets mostly
+  absent from the lists, e.g. SRG(64,45,32,30)): ZERO violations; all gaps
+  strictly negative (best -1.5).
+- McKay's Ramsey graph archive (users.cecs.anu.edu.au/~bdm/data/ramsey.html):
+  all 8,164,458 graphs — complete R(3,4), R(3,5), R(3,6), R(3,7), R(3,8),
+  R(3,9), R(4,4), R(4,5) extremal/critical files plus the known R(4,6),
+  R(5,5) 42-vertex graphs and K4-free process regular subgraphs. ZERO
+  violations; best gap +3.3e-12 (equality noise).
+- Note: the early-out `s <= m - 1e-6` in checker64 is valid for ALL graphs
+  (not just triangle-free) since rhs = 2m(1-1/w) >= m whenever w >= 2.
+
+Artifacts: srg/srg-spence.sum, srg/srg-complements.sum, srg/ramsey-mckay.sum,
+checker64.c (long-form g6 support). ~8.2M more graphs, zero violations.
