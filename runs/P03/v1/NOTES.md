@@ -279,7 +279,18 @@ New exhaustive results (zero UNSAT, zero hard deferrals):
   q=11 (10,150.6M multisets / 3,650.2M tau=3, 8 shards, ~7 core-hours)
   - all pack.
 - p=8: q=8 (3,872.9M / 703k), q=9 (27,540.6M / 231.7M) - all pack.
-- p=8 q=10 (~179B multisets) sharded 5 ways: in progress.
+- p=8 q=10 (~179B multisets): PAUSED by coordinator at checkpoint
+  ~17.2B multisets enumerated / ~570M tau=3 checked across 6 shards
+  (x8_10b_*.log), zero UNSAT, zero hard. Restartable via
+  ./bipexhaust 8 10 6 <shard>.
+
+## Phase 8 — SAT-conflict-count annealing (paused)
+
+conflictanneal.py maximizes CaDiCaL conflict count of the 3-partition
+encoding over degree-preserving swaps at p=12/q=16 (hunting the UNSAT
+boundary directly). Two 6h workers PAUSED at ~106k steps each; best
+conflict counts found only 52 and 62 (packing stays extremely slack:
+random instances give ~10-30 conflicts). Zero UNSAT.
 
 By the ACZ reduction this proves Woodall for every digraph whose reduced
 sink-regular form has <= 7 sources and <= 11 sinks, or <= 8 sources and
