@@ -220,6 +220,8 @@ zero violations; equality only at disjoint unions of complete bipartite graphs
 (max gap ≈ 6e-12 float noise).
 Round 6: extended to ALL 581,460,254,001 triangle-free graphs on 16 vertices
 (112 slices, 12 child sessions; total = A006785(16) exactly) — zero violations.
+Round 7: the complete Holt–Royle vertex-transitive census, all 100,720,344
+vertex-transitive graphs on ≤ 47 vertices — zero violations.
 Round 5: ~8×10⁷ dihedral Cayley graphs up to order 64 (exhaustive through
 order 34, sampled beyond) — zero violations, equality families only.
 
