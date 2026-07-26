@@ -1,4 +1,9 @@
-kissat: s UNSATISFIABLE
+kissat (triangle symmetry [0,238,715]): s UNSATISFIABLE
+drat-trim: c detected empty clause; start verification via backward checking
+drat-trim: c 36335 of 64062 clauses in core
+drat-trim: c 1266464 of 2293235 lemmas in core using 89582116 resolution steps
+drat-trim: c 9 RAT lemmas in core; 1348630 redundant literals in core lemmas
 drat-trim: s VERIFIED
-verify_universe.py: 2389 vertices, 12909 exact edges: PASS
-w[15]~ mirrored translation spot-check: 2389 vertices, 12909 exact edges, UNSAT
+drat-trim: c verification time: 141.833 seconds
+verify_universe.py: 2269 vertices, 12044 exact edges: PASS
+previous 2389-vertex w[15]~ mirrored translation spot-check: 2389 vertices, 12909 exact edges, UNSAT
