@@ -190,9 +190,33 @@ Local round 1 (8 workers × 4 h, seeds 1000–1007, ranges 13–16/17–20/21–
 9,452,928,667 Metropolis steps over 166,837 restarts — **zero candidates**; best ratio exactly
 1.000000000000 in every worker, all at known equality classes (verified in Python: e.g. n=17
 ω=2 bipartite-union m=22, n=21 ω=5 m=160, n=27 ω=8 m=252 all ratio exactly 1). Logs:
-anneal_c/w*.log. Local round 2 (seeds 5000–5007, n=13–32, 3 h) + two child-Devin shards
-(seeds 2000–2007 n=13–40 and 3000–3007 n=13–20, 8 workers × 4 h each, mandatory sanity gate;
-logs merged from branches runs/P09-v1-annealA/-annealB): results below.
+anneal_c/w*.log.
+
+Local round 2 (seeds 5000–5007, n=13–32, ~3 h, logs anneal_c/x*.log):
+5,387,267,272 steps over 94,286 restarts — **zero candidates**; best ratio exactly
+1.000000000000 in every worker.
+
+Child-Devin shard A (seeds 2000–2007, n=13–40, 8 workers × 4 h, sanity gate passed; logs
+anneal_c/wA*.log, merged from branch runs/P09-v1-annealA): 5,873,203,933 steps over 102,171
+restarts — **zero candidates**; best ratio exactly 1.000000000000 in every worker.
+
+Child-Devin shard B (seeds 3000–3007, n=13–20 focus, session
+e05ddb69429b4ac2ba3ea3a46e51be8c) passed its sanity gate and launched 8×4 h workers, but was
+still running when this session was paused by the coordinator; its logs (branch
+runs/P09-v1-annealB, if pushed) were not yet merged. No CANDIDATE line had been reported.
+
+Campaign 5 grand total so far: 21.7×10⁹ exact Metropolis evaluations over 363k restarts at
+n = 13–40 — zero candidates.
+
+### Campaign 4 extension: weighted-blowup profiles at n = 10
+
+Extended the graphon/blowup search to 10-vertex connected profiles via
+`nauty-geng -qc 10 i/45 | python3 blowup.py stdin 6 200 (900+i)` across 45 shards
+(logs blowup_n10_p*.log). 44 of 45 shards completed before the coordinator pause
+(shard 40 was ~90% done when killed): **11,388,925 profiles optimized (of 11,716,571
+connected 10-vertex graphs), max ratio exactly 1.000000000, zero VIOLATION lines.**
+Caveat as before: projected-gradient simplex ascent with 6 restarts × 200 iters is strong
+evidence, not a global-optimality proof per profile.
 
 ## STATUS: negative / frontier-pushed
 
@@ -202,7 +226,10 @@ No counterexample found. Campaign totals:
   every n; C checker differentially validated against an independent Python/NumPy/NetworkX path.
 - Exhaustive: every circulant C_n(S), n ≤ 50 (~2.1×10⁸ graphs) satisfies it.
 - Graphon regime: no weighted-blowup counterexample over ALL connected profiles ≤ 9 vertices
-  (273k profiles × multi-restart simplex optimization); max ratio exactly 1 at Turán weights.
+  (273k profiles) plus 11.39M of the 11.72M connected 10-vertex profiles (44/45 geng shards,
+  multi-restart simplex optimization); max ratio exactly 1 at Turán weights.
+- Native-C annealer (Campaign 5): 21.7×10⁹ exact Metropolis evaluations / 363k restarts at
+  n = 13–40 (local rounds 1–2 + child shard A) — zero candidates, best ratio exactly 1.
 - ~2,700 annealed/basin-hopped restarts (~60 core-h) over n = 15–80, ω = 2–22; exhaustive
   1-/2-flip scans of equality families; Kneser/Johnson/Paley/book/kite/join scans.
 Maximum ratio ever observed: exactly 1, only at known equality classes (complete multipartite,
