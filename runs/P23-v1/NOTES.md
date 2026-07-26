@@ -174,6 +174,9 @@ Following the problem file's "Minkowski sums" lever, we generated genuinely new 
   the top 400 pairs ran full greedy core-jump deletion from the 511-vertex superset
   G509 ∪ {w1,w2}. **All 400 runs bottomed at exactly 509** (tens of thousands of SAT
   instances, ~4.5 h × 8 cores). No −3+2 reduction exists in this geometry either.
+  Continuation (`addcore2b.py`) processed 805 of the remaining 1,197 pairs before the run
+  was paused (1,205/1,597 total): **every completed pair bottomed at 509** (6 greedy runs
+  stalled at 510; none below 509). Checkpoint state: `cand_pairs.pkl` + worker logs.
 
 The striking outcome: the record's size is invariant under substitution of new Minkowski
 geometry — every reachable 509-vertex variant is again vertex-critical. This strongly
