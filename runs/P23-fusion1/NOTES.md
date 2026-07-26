@@ -994,3 +994,21 @@ Three measurements, each of which changed the design:
 State: lower bound **17** and rising over 275 clauses, ~14 s/iteration; it must
 reach 43 to prove that no 508 completes the shared core from the two records'
 own completion vertices. The wider 714-candidate run is behind it.
+
+### E41 (cont.) — parallel clause generation and the bound so far
+
+Workers now share one append-only clause bank and re-read it every iteration
+(deduplicated by clause content), so four workers on the 87-candidate set and
+two on the 714-candidate set all contribute to the same lower bound.
+`hsbound.py` reports that bound offline from the bank alone:
+
+```
+hsbank_union.jsonl: 351 distinct clauses over 87 candidates, minimum hitting set = 19
+hsbank_near.jsonl:   91 distinct clauses over 707 candidates, minimum hitting set = 7
+```
+
+19 of the 43 needed. The bound is monotone and every clause is sound (each
+records a maximal 4-colorable set), so this run either closes the completion
+question or keeps a real, quotable partial result: *any* completion of the
+shared 466-vertex core from the two records' own completion vertices needs at
+least 19 of them.

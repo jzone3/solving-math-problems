@@ -107,11 +107,21 @@ def main():
             if cl:
                 clauses.append(cl)
         print(f'{len(clauses)} clauses preloaded from {BANK}', flush=True)
+    seen = {frozenset(c) for c in clauses}
     bank = open(BANK, 'a')
+    reader = open(BANK, 'r')
+    reader.seek(0, 2)
     t0 = time.time()
     it = 0
     while True:
         it += 1
+        # pick up clauses written by sibling workers sharing this bank
+        for line in reader:
+            other = json.loads(line)
+            key = frozenset(other)
+            if other and key not in seen:
+                seen.add(key)
+                clauses.append(other)
         # minimum hitting set as a set-cover ILP: HiGHS solves these in
         # milliseconds where RC2 MaxSAT was already taking 37 s at 200 clauses
         nc = len(cand)
@@ -150,6 +160,7 @@ def main():
             print('pool 4-colorable under this extension', flush=True)
             return
         clauses.append(cl)
+        seen.add(frozenset(cl))
         bank.write(json.dumps(cl) + '\n')
         bank.flush()
         if it % 25 == 0:
