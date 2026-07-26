@@ -234,6 +234,19 @@ Results:
   Cross-validated: 400/400 vs exact_pack on n=14 candidates + 60/60 vs the
   PySAT harness on random tau>=3 DAGs (test_cegar.py).
 
+n=16 checkpoint (PAUSED by coordinator, 2026-07-24): 1303/2595 kept graphs done
+(~50%), 7.62B DAG orientations enumerated, 2.75B packing-tested by CEGAR:
+ALL pack, zero candidates, zero cegar/exact disagreements. Per-shard progress
+at pause (graph index of 325-graph shard / cumulative stats) is in
+enum16_*.log; to RESUME, rerun the 8 shard commands (see below) with start
+indices advanced by the per-shard [done/total] counts, e.g.
+`pypy3 enum_pypy.py 16 <start+done> <end> < kept16.jsonl >> cand16_....jsonl
+2>> enum16_....log` (stats counters restart at 0 for the remainder; add the
+totals across runs when tallying).
+Original shard commands: for r in "0 325" "325 650" "650 975" "975 1300"
+"1300 1625" "1625 1950" "1950 2273" "2273 2595" — 8 parallel PyPy shards.
+
 STATUS: negative / frontier-pushed (phase 2 exhausted the n=12 and n=14 minimal
 cells completely — the two smallest possible sizes for a minimal tau=3
-counterexample — with zero non-packing instances; n=16 cell running).
+counterexample — with zero non-packing instances; n=16 cell ~50% done and
+PAUSED on coordinator request, zero candidates so far).
