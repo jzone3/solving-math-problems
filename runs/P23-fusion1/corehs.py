@@ -18,8 +18,8 @@ import random
 import subprocess
 import time
 
-from pysat.examples.rc2 import RC2
-from pysat.formula import WCNF
+import numpy as np
+from scipy.optimize import LinearConstraint, milp
 
 import mfield
 from sat import color_cnf, write_cnf, KISSAT
@@ -112,15 +112,26 @@ def main():
     it = 0
     while True:
         it += 1
-        wc = WCNF()
-        for cl in clauses:
-            wc.append([idx[v] + 1 for v in cl])
-        for i in range(len(cand)):
-            wc.append([-(i + 1)], weight=1)
-        with RC2(wc) as rc2:
-            model = rc2.compute()
-            lb = sum(1 for lit in model if lit > 0)
-        X = [cand[i] for i in range(len(cand)) if model[i] > 0]
+        # minimum hitting set as a set-cover ILP: HiGHS solves these in
+        # milliseconds where RC2 MaxSAT was already taking 37 s at 200 clauses
+        nc = len(cand)
+        if clauses:
+            A = np.zeros((len(clauses), nc))
+            for r, cl in enumerate(clauses):
+                for v in cl:
+                    A[r, idx[v]] = 1.0
+            cons = [LinearConstraint(A, lb=1, ub=np.inf)]
+        else:
+            cons = []
+        # tiny random tie-break so successive iterations propose different
+        # optimal hitting sets (perturbation < 1/nc keeps the optimum exact)
+        obj = 1.0 + np.array([rng.random() for _ in range(nc)]) / (10.0 * nc)
+        res = milp(c=obj, constraints=cons,
+                   integrality=np.ones(nc),
+                   bounds=(0, 1))
+        sol = np.round(res.x).astype(int)
+        lb = int(sol.sum())
+        X = [cand[i] for i in range(nc) if sol[i]]
         if lb > BUD:
             print(f'OUTER UNSAT: minimum completion needs >= {lb} candidates '
                   f'> {BUD} ({it} its, {round(time.time()-t0)}s)', flush=True)
@@ -131,7 +142,9 @@ def main():
             print(f'*** WITNESS core+{len(X)} = {len(core)+len(X)} -> {OUT}',
                   flush=True)
             return
-        T = extend(col)
+        # several randomised extensions; the largest maximal colorable set
+        # gives the shortest -- hence strongest -- clause
+        T = max((extend(col) for _ in range(8)), key=len)
         cl = [v for v in cand if v not in T]
         if not cl:
             print('pool 4-colorable under this extension', flush=True)

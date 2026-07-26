@@ -975,3 +975,22 @@ Running: candidates = the two records' own 87 completion vertices, BUD = 42
 (any witness is a 508). Lower bound 12 after 150 iterations and rising; it has
 to reach 43 to close the case. A second run uses the wider 714-candidate 'near'
 set.
+
+### E41 (cont.) — what actually made the outer loop fast
+
+Three measurements, each of which changed the design:
+
+* **RC2 MaxSAT is the wrong outer solver here.** At 200 clauses over 87
+  candidates a single optimal hitting set took 37 s and was growing. The same
+  problem as a set-cover ILP solved by HiGHS (`scipy.optimize.milp`) takes
+  ~2.5 s, so `corehs.py` now uses the ILP, with a tiny random objective
+  perturbation (< 1/n, so the optimum is unchanged) to make successive
+  iterations propose *different* optimal hitting sets.
+* **A min-conflicts pre-colourer is a pessimisation** at this size: 15 s to fail
+  on a ~500-vertex candidate that kissat colours in 0.6 s. Removed.
+* Clauses are strengthened by taking the largest of 8 randomised maximal
+  extensions of the found colouring.
+
+State: lower bound **17** and rising over 275 clauses, ~14 s/iteration; it must
+reach 43 to prove that no 508 completes the shared core from the two records'
+own completion vertices. The wider 714-candidate run is behind it.
