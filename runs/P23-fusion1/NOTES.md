@@ -870,3 +870,35 @@ whole-universe hitting set at bound 508 now produces hyperedges of ~86-153
 vertices (vs 300-410 on W₄) at ~100 s/iteration, and greedy chains descend it
 from 3997 (2990 after two minutes). Like `w4s.pkl` it is a subset of the W₄
 universe, so it prunes rather than opens new geometry.
+
+## E38 — a second basin: Heule's 510-vertex graph
+
+Everything in this run so far lives in Parts' basin. Marijn Heule's public
+CNP-SAT repository contains the graphs from the 2018-2019 descent
+(874, 826, 803, 633, 610, 553, 529, 517) and a **510-vertex** one, with exact
+Mathematica coordinates over the same field Q(sqrt3, sqrt5, sqrt11) as the
+record. That is a *different* 5-chromatic unit-distance graph one vertex above
+Parts', and no part of this run had touched it.
+
+Verified here from the coordinates alone (`verify_h.py`, exact multiquadratic
+arithmetic, floats only as a prefilter):
+
+* 510 distinct points, **2504 exact unit edges, identical to the published
+  edge list**;
+* non-4-colorable (kissat, 80 s);
+* **vertex-critical**: all 510 single-vertex deletions are 4-colorable
+  (`critscan.py`, four shards, ~1 s each).
+
+`hpool.py` builds the candidate universe around it the same way as for Parts:
+field-exact translates p + (q - r) over the 5008 edge vectors, prefiltered by
+radius and by degree >= 3 into the graph, every surviving edge confirmed
+exactly — **1619 vertices, 10734 exact edges**.
+
+`hlns.py` then runs the E25/E27 exact region-trade scheme in this basin: freeze
+all but H vertices, search completely for a <= H-1 refill from the hole's
+neighbourhood, so each hole ends in a smaller certified witness or an UNSAT
+proof. Two accepted trades here would reach 508. (A first version reported
+instant "OUTER UNSAT" everywhere: when the outer solver returned the empty
+selection the blocking clause was empty. The correct block, since colorability
+is monotone under subsets, is "select at least one candidate outside sub".)
+Runs at ~1500 complete iterations per 240 s hole; no trade accepted yet.
