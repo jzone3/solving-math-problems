@@ -135,3 +135,67 @@ graph edges still come from `univ.py`; no floating-point edge is admitted
 without the field check.  Stage-2 pattern analysis timings were 7.70 seconds
 for T=0 at 1.6, 236.02 seconds for the 66-interface T=0 radius-2 triple
 sweep, and 1.48 seconds for T65 at 1.6 (pairs plus uncovered triples).
+
+## Stage 3: lazy CEGAR interface oracle
+
+Bounded pattern enumeration was replaced by `cegar.py`.  Given a coloring of
+the current A set, it asks a persistent SAT instance for B plus all selected
+cross edges to extend the complete interface assignment.  If extension is
+impossible, deletion-based MUS reduction removes interface literals until the
+remaining partial assignment is inclusion-minimal, and its blocking clause is
+added to the A-side solver.  If extension succeeds, the A side grows by
+model-conflicting or high-constraint frontier pool vertices.  The loop stops
+when A is UNSAT under the accumulated lazy pattern clauses.  Pattern orders
+are therefore discovered rather than bounded in advance.
+
+`cegar.py` also contains alternating-side minimisation: cached A tests are
+used for candidate L deletions, while B deletions first check that all cached
+patterns remain forbidden and otherwise re-enter CEGAR.  A DRAT-core pass is
+run before greedy deletion.  `verify.py` independently rebuilds the exact
+edge set from cached field coordinates and can run kissat plus drat-trim.
+
+### Calibration results
+
+1. **T=0, Parts S135.**  The exact record split is L=374, S=135, with the
+   shared origin placed on A.  The corrected CEGAR cross set has 96 edges
+   because origin--B edges are correctly treated as cross edges.  Starting
+   from L374, CEGAR reaches UNSAT with 227 minimal lazy patterns.  Their
+   order distribution is:
+
+   ```
+   order 8: 8, 9: 16, 10: 11, 12: 24, 13: 24,
+   14: 48, 15: 48, 16: 48
+   ```
+
+   Runtime was 175.03 seconds.  This directly confirms the high-order
+   interface obstruction: the earlier size-3 enumeration missed all of these
+   patterns.  The resulting 509-vertex graph was independently verified:
+   509 exact vertices, 2442 recomputed exact edges, kissat UNSAT, and
+   drat-trim `s VERIFIED`.
+
+2. **T=0, full rotated half.**  The full reconstructed universe has
+   A=2022 and B=2021 unique points.  Lazy CEGAR reached UNSAT with 37
+   patterns, distributed as 16 order-3 and 21 order-4 patterns, in
+   121.06 seconds.  A DRAT-core reduction of the A side produced
+   `|L|=1529`, for a certified total of 3550 vertices.  Independent
+   verification recomputed 25052 exact edges and returned kissat UNSAT plus
+   drat-trim `s VERIFIED`.
+
+3. **T65, rA=1.6, rB=1.3.**  The full reconstructed universe has
+   A=1535 and B=1253 points.  CEGAR reached UNSAT with 28 patterns (18 of
+   order 3 and 10 of order 4) in 89.13 seconds.  DRAT-core reduction gave
+   `|L|=1123`, hence a certified total of 2376 vertices.  Independent
+   verification recomputed 14362 exact edges and returned kissat UNSAT plus
+   drat-trim `s VERIFIED`.
+
+4. **T63, rA=1.6, rB=1.3.**  The full reconstructed universe (A=1535,
+   B=1253) remained extendible after two discovered order-3 patterns:
+   CEGAR reached the full A side and reported `EXTENDS_FULL_A` in 9.50
+   seconds.  No non-4-colourable claim or certificate was made for this
+   placement.
+
+The T0 full-half and T65 totals above are the best certified totals reached
+in this run.  The record calibration starts at the target 374+135 and
+provides the expected high-order pattern certificate; the full-half and
+translated cases were core-reduced but not yet exhaustive alternating-side
+fixpoints.
