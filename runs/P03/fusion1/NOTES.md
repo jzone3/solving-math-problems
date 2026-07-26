@@ -732,6 +732,15 @@ deferred: 0
 This is an in-progress exact run, not a closure claim. No result has yet
 reached the τ or packing decision stage.
 
+At the subsequent checkpoint, shards 0 and 2 had completed one graph each;
+the other six shards remained on their first graph:
+
+```text
+graphs completed: 2 / 455
+candidates: 0
+deferred: 0
+```
+
 ### rho-filter reorder and high-girth retry
 
 The engine leaf path now applies the cheap `rho_ok()` and
