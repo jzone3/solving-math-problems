@@ -1286,3 +1286,32 @@ attacking exactly that gap:
 * Parts-style *constructive* search (SAT-forced monochromatic pairs) in the
   translated placement:
   https://app.devin.ai/sessions/005923574b9148d99ad0d02de2063815
+
+## Pause checkpoint (coordinator PAUSE)
+
+State at pause -- **no sub-509 graph found, nothing claimed**.
+
+Checkpointed here: `tscan.pkl` / `tscan2.pkl` (the score-63 / score-65
+translations of the rotated copy, exact field elements), `tuniv_score65_1.6.pkl`
+(2917 vtx / 17740 exact edges, UNSAT) and `tasym_1.6_1.3.pkl` (2581 vtx / 14796
+exact edges, UNSAT) -- the smallest exactly-verified obstructing universes found
+here. All background workers (IHS `hsfull.py`, hyperedge generators `hypgen.py`,
+alternating-half `halfhs.py`, greedy chains `greedy8.py`, region trades
+`hlns.py`) were stopped; their clause banks (`*.jsonl`) and witness pickles are
+on disk and resume in place.
+
+Last measurements before the pause:
+
+```
+IHS bank (2581 universe)     : exact minimum hitting set 25 (local lower bound)
+halfhs, record side 1        : fix 374, 1094 candidates, bound 7 of the 135 needed
+halfhs, translated universe  : bound 6
+greedy, Parts' r=2 universe  : 2168 and falling (calibration, optimum there is 509)
+greedy, translated universes : ~1560
+region trades in tradepool   : ~2400-2800 complete iterations per hole, none accepted
+```
+
+Open threads (children, own branches, no PRs):
+runs/P23-tuniv (2569-vtx DRAT-verified universe), runs/P23-tlns (exact LNS
+descent in the translated basin), runs/P23-tparts (constructive Parts-style
+search there).
