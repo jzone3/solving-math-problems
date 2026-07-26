@@ -1012,3 +1012,44 @@ records a maximal 4-colorable set), so this run either closes the completion
 question or keeps a real, quotable partial result: *any* completion of the
 shared 466-vertex core from the two records' own completion vertices needs at
 least 19 of them.
+
+## E42 — a second rotation, and the first pool in this run that is not Parts' universe
+
+Checking *where* Heule's published graphs live turned up something the whole run
+had missed. Exact membership tests (`findrot.py`) against Parts' base lattice
+A = (a + b*sqrt33 + i(c*sqrt3 + d*sqrt11))/12 and its omega[15] = (7+i*sqrt15)/8
+copy give:
+
+| graph | in A | in omega[15]B | in neither |
+|-------|------|---------------|------------|
+| 510   | 375  | 135           | 0          |
+| 553   | 374  | 134           | 46         |
+| 610   | 311  | 175           | 125        |
+| 633   | 418  | 190           | 26         |
+| 803   | 382  | 0             | 421        |
+| 826   | 411  | 0             | 415        |
+| 874   | 427  | 0             | 447        |
+
+So 510/517/529 are inside Parts' universe (E40), but the earlier graphs are not:
+553/610/633 additionally use **omega[11] = (5 + i*sqrt11)/6** and its square, and
+803/826/874 use a rotation that is none of the seven omega values expressible in
+Q(sqrt3,sqrt5,sqrt11) (probably rotations about a non-origin centre -- open).
+
+Rotations omega = (2t-1 + i*sqrt(4t-1))/(2t) stay in the field only for
+4t-1 in {3,5,11,15,33,55,165}, so the family is small and now fully enumerated.
+
+**New universe** (`build_r3pool.py`): A u omega[15]B u omega[11]C over Parts' own
+half-A point set. At radius 2.6 that is **7027 vertices / 53220 exact edges**,
+and it contains all 509 record vertices exactly. Structure at radius 2.0:
+
+```
+copies A 2023, B 2016, C 1644
+edges  AA 14214  BB 14148  CC 10452   AB 96   AC 1824
+A u C: SAT (4-colorable)     B u C: SAT     A u B u C: UNSAT
+```
+
+The C copy is coupled to A **19x more strongly than Parts' own B copy** (1824
+cross edges vs 96) yet is 4-colorable against it -- so it adds a large supply of
+richly-connected vertices that no search in this run could previously use.
+Exact region trades from the 509 are now running in this universe (holes
+20/30/45/60, budget H-1, so any accepted trade is a 508).
