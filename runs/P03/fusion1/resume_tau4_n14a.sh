@@ -9,9 +9,21 @@ fi
 gcc -O3 -std=c11 -Wall -Wextra -o engine engine.c
 
 python3 - <<'PY'
+import gzip
 from pathlib import Path
+import networkx as nx
 
-full = Path("tau4_n14a_engine.txt").read_text().splitlines()
+engine_input = Path("tau4_n14a_engine.txt")
+if not engine_input.exists():
+    with gzip.open("tau4_n14a.kept.g6.gz", "rt") as source, engine_input.open("w") as target:
+        for raw in source:
+            graph = nx.from_graph6_bytes(raw.strip().encode())
+            edges = " ".join(
+                f"{min(u, v)} {max(u, v)}" for u, v in sorted(graph.edges())
+            )
+            target.write(f"14 {graph.number_of_edges()} {edges}\n")
+
+full = engine_input.read_text().splitlines()
 for shard in range(8):
     log = Path(f"tau4n14a_{shard}.log")
     lines = log.read_text().splitlines() if log.exists() else []

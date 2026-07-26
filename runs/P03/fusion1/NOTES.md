@@ -576,3 +576,41 @@ PASS independent harness crosscheck: 40/40
 Two deterministic orientations from the prepared n=14 lists were also
 checked through the C `check4` mode and Python harness; both agreed at
 `tau=3` (and therefore were correctly outside the tau=4 packing check).
+
+### n=14 tau=4 profile (2,2,5,5): CLOSED
+
+The profile-A subcell was feasible under the gate and was run to completion
+using the fast closed-set C engine in eight resumable shards over
+`tau4_n14a.kept.g6.gz`. The input contains exactly 905,732 retained
+connected, non-planar, 3-edge-connected graphs. All eight shards finished
+with `DONE` records; no shard restart was needed after launch.
+
+Final exact totals:
+
+```text
+graphs:             905,732 / 905,732
+orientations:   1,553,444,970,038
+profile orientations: 75,324,584
+source-sink skips:   74,570,072
+tau skips:              427,208
+safe rejects:           270,574
+exact packing checks:    56,730
+packed:                 56,730
+deferred:                    0
+candidates:                  0
+```
+
+Every exact tau=4 packing check packed into four dijoins. No ideal-cap
+deferred instance occurred, so no CEGAR/PySAT follow-up was required. No
+tau=4 non-packing candidate occurred.
+
+The C `check4` output and independent Python harness checks agreed on two
+deterministic orientations from completed input graphs (`tau=3`,
+`has_k_disjoint_dijoins(...,4)=False` for both; these orientations are
+outside the tau=4 profile check). The full closure is scoped to the
+encoded profile-A reduced cell and does not close profile B, n=18, or
+unrestricted Woodall's conjecture.
+
+The companion n=14 profile `(3,3,4,4)` remains infeasible at approximately
+110.8 hours across eight shards, and the n=18 cubic target remains
+infeasible at more than approximately 386 hours; neither was launched.
