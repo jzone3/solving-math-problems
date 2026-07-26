@@ -930,3 +930,32 @@ so a negative at BUD=42 over that pool would mean nothing. Restricting the
 candidates to the two records' own completion vertices (87 of them, RESTRICT=
 union) collapses the learned clauses from ~180 literals to 2-8, and those runs
 (BUD=42 and the BUD=43 calibration) are the ones that can actually terminate.
+
+## E40 — results of the completion search, and a correction
+
+**Correction to E38.** Heule's 510 is not a second basin: mapping its points into
+Parts' lattice shows **all 510 of them lie in the W_4 pool** already searched
+here (as with E35, a smaller-looking construction turns out to be a subset).
+What is new is the *framing* — core + completion — not the geometry.
+
+Results:
+
+* **Calibration passes.** With candidates restricted to the two records' own 87
+  completion vertices, BUD=43 finds a witness: core + 43 = **509 vertices, 2450
+  exact edges, kissat UNSAT** (`mixed509.vtx`). It is neither Parts' graph nor
+  Heule's — it differs from Parts' in 10 vertices (5 out, 5 in) — so mixing the
+  two completions gives yet another distinct 509, and the completion search
+  demonstrably finds solutions when they exist.
+* **BUD=42 (i.e. 508) over those 87 candidates** is the decisive run: after 1200
+  refuted completions its outer solve has been grinding for over an hour, which
+  is the shape of an impending UNSAT rather than of a search that is wandering.
+  Still running.
+* **RESTRICT=near** (the 87 completions plus everything adjacent, ~400
+  candidates), BUD=42: ~10k complete iterations, every proposed 508-vertex
+  completion 4-colorable.
+* **Exact region trades from Parts' 509 inside the union pool** (holes 20/30/45/
+  60, budget H-1, candidates from the 1764-vertex pool that now includes all of
+  Heule's points): ~23k complete iterations, **no trade accepted**.
+* **Greedy 8-4-2-1 on the 553-vertex union**: floors at 517, 517, 518 — again
+  above the record, consistent with the E13 calibration that deletion-style
+  minimisation is unreliable, so these floors carry no lower-bound information.

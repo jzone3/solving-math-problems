@@ -47,6 +47,19 @@ if RESTRICT == 'union':
     keep = set(pickle.load(open('uparts.pkl', 'rb')))
     keep |= set(pickle.load(open('uheule.pkl', 'rb')))
     cand = [v for v in cand if v in keep]
+elif RESTRICT == 'near':
+    # middle ground: the two completions plus everything adjacent to them
+    keep = set(pickle.load(open('uparts.pkl', 'rb')))
+    keep |= set(pickle.load(open('uheule.pkl', 'rb')))
+    keep -= coreset
+    nb = {v: set() for v in range(N)}
+    for a, b in E:
+        nb[a].add(b)
+        nb[b].add(a)
+    grow = set(keep)
+    for v in keep:
+        grow |= nb[v]
+    cand = [v for v in cand if v in grow]
 NBR = {v: set() for v in range(N)}
 for u, v in E:
     NBR[u].add(v)
