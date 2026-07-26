@@ -184,7 +184,21 @@ every graph on at most 11 vertices**, verified exhaustively with exact clique
 numbers and boundary cases certified in high-precision/exact arithmetic. Any
 counterexample has n ≥ 12.
 
-## STATUS: negative / frontier-pushed — no counterexample after three waves,
+## Frontier push (fourth wave): n = 12 dense slices + circulant sweep
+
+- **n = 12, 42 ≤ m ≤ 66 exhaustive** (geng_check, 8-way geng res/mod;
+  logs geng_n12_dense_*.log, geng_n12_e45_*.log, geng_n12_e42_*.log):
+  9,144 (55–66) + 403,885,563 (45–54) + 2,719,734,846 (42–44)
+  ≈ 3.12 × 10⁹ graphs — the entire dense tail of n = 12, where every known
+  equality graph lives (all n ≤ 11 equality graphs have m ≥ ~0.55·C(n,2)).
+  ZERO violations; 7 boundary graphs, all rescored at 50 dps → exact equality.
+- **Circulant sweep** (`search_circulant.py`, circulant.log): all connection
+  sets exhaustively for n ≤ 22 plus hill-climbed random circulants n ≤ 80
+  (closed-form spectra, exact ω) — 6,119 circulants, best score exactly 0
+  (only known equality circulants: complete bipartite / complete multipartite
+  C_n(S)); no violation, no new boundary family.
+
+## STATUS: negative / frontier-pushed — no counterexample after four waves,
 and NEW citable frontier: conjecture verified exhaustively for ALL graphs on
 n ≤ 11 vertices (1.03 × 10⁹ graphs, exact ω, boundary cases certified at 50
 digits) ⇒ any counterexample needs n ≥ 12. Structured (V2) two-eigenvalue

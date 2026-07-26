@@ -1,0 +1,54 @@
+BOUNDARY n=4 S=[1] score=0 w=2 m=4
+BOUNDARY n=4 S=[2] score=0 w=2 m=2
+BOUNDARY n=6 S=[2] score=0 w=3 m=6
+BOUNDARY n=6 S=[1, 2] score=0 w=3 m=12
+BOUNDARY n=6 S=[1, 3] score=0 w=2 m=9
+BOUNDARY n=8 S=[2] score=0 w=2 m=8
+BOUNDARY n=8 S=[1, 3] score=0 w=2 m=16
+BOUNDARY n=8 S=[2, 4] score=0 w=4 m=12
+BOUNDARY n=8 S=[1, 2, 3] score=0 w=4 m=24
+BOUNDARY n=9 S=[1, 2, 4] score=-7.10543e-15 w=3 m=27
+BOUNDARY n=10 S=[2, 4] score=0 w=5 m=20
+BOUNDARY n=10 S=[1, 3, 5] score=0 w=2 m=25
+BOUNDARY n=10 S=[1, 2, 3, 4] score=0 w=5 m=40
+BOUNDARY n=12 S=[2, 4] score=0 w=3 m=24
+BOUNDARY n=12 S=[2, 6] score=0 w=2 m=18
+BOUNDARY n=12 S=[1, 3, 5] score=0 w=2 m=36
+BOUNDARY n=12 S=[2, 4, 6] score=0 w=6 m=30
+BOUNDARY n=12 S=[1, 2, 4, 5] score=0 w=3 m=48
+BOUNDARY n=12 S=[1, 2, 3, 4, 5] score=0 w=6 m=60
+BOUNDARY n=12 S=[1, 2, 3, 5, 6] score=0 w=4 m=54
+BOUNDARY n=14 S=[2, 4, 6] score=0 w=7 m=42
+BOUNDARY n=14 S=[1, 3, 5, 7] score=0 w=2 m=49
+BOUNDARY n=14 S=[1, 2, 3, 4, 5, 6] score=0 w=7 m=84
+BOUNDARY n=15 S=[1, 2, 4, 5, 7] score=-1.42109e-14 w=3 m=75
+BOUNDARY n=15 S=[1, 2, 3, 4, 6, 7] score=0 w=5 m=90
+BOUNDARY n=16 S=[2, 6] score=0 w=2 m=32
+BOUNDARY n=16 S=[2, 4, 6] score=0 w=4 m=48
+BOUNDARY n=16 S=[1, 3, 5, 7] score=0 w=2 m=64
+BOUNDARY n=16 S=[2, 4, 6, 8] score=0 w=8 m=56
+BOUNDARY n=16 S=[1, 2, 3, 5, 6, 7] score=0 w=4 m=96
+BOUNDARY n=16 S=[1, 2, 3, 4, 5, 6, 7] score=0 w=8 m=112
+BOUNDARY n=18 S=[2, 4, 8] score=-1.42109e-14 w=3 m=54
+BOUNDARY n=18 S=[2, 4, 6, 8] score=0 w=9 m=72
+BOUNDARY n=18 S=[1, 3, 5, 7, 9] score=0 w=2 m=81
+BOUNDARY n=18 S=[1, 2, 4, 5, 7, 8] score=-2.84217e-14 w=3 m=108
+BOUNDARY n=18 S=[1, 2, 3, 4, 5, 6, 7, 8] score=0 w=9 m=144
+BOUNDARY n=18 S=[1, 2, 3, 4, 5, 7, 8, 9] score=0 w=6 m=135
+BOUNDARY n=20 S=[2, 6, 10] score=0 w=2 m=50
+BOUNDARY n=20 S=[2, 4, 6, 8] score=0 w=5 m=80
+BOUNDARY n=20 S=[1, 3, 5, 7, 9] score=0 w=2 m=100
+BOUNDARY n=20 S=[2, 4, 6, 8, 10] score=0 w=10 m=90
+BOUNDARY n=20 S=[1, 2, 3, 4, 6, 7, 8, 9] score=0 w=5 m=160
+BOUNDARY n=20 S=[1, 2, 3, 5, 6, 7, 9, 10] score=0 w=4 m=150
+BOUNDARY n=20 S=[1, 2, 3, 4, 5, 6, 7, 8, 9] score=0 w=10 m=180
+BOUNDARY n=21 S=[1, 2, 4, 5, 7, 8, 10] score=-2.84217e-14 w=3 m=147
+BOUNDARY n=21 S=[1, 2, 3, 4, 5, 6, 8, 9, 10] score=0 w=7 m=189
+BOUNDARY n=22 S=[2, 4, 6, 8, 10] score=0 w=11 m=110
+BOUNDARY n=22 S=[1, 3, 5, 7, 9, 11] score=0 w=2 m=121
+BOUNDARY n=22 S=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] score=0 w=11 m=220
+exhaustive n<=22 done: 6098 circulants, best=(np.float64(0.0), 4, (1,))
+BOUNDARY n=28 S=[1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13] score=0 w=7 m=336
+BOUNDARY n=24 S=[1, 3, 5, 7, 9, 11] score=0 w=2 m=144
+BOUNDARY n=36 S=[1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17] score=0 w=9 m=576
+TOTAL 6119 circulants scored, best score=0 at n=4 S=(1,)
