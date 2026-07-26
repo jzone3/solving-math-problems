@@ -1208,3 +1208,25 @@ workers on the whole universe (bank 1003 clauses, exact bound 18), five greedy
 chains (1661), and a child session sweeping the full (rotation, translation,
 rA, rB) space for an even smaller obstructing universe:
 https://app.devin.ai/sessions/e39dc8b6b47e448394064f2a416f8c7f
+
+## E48 — hyperedge kernels are not witnesses (negative)
+
+Hyperedges in the 2581-vertex universe get as small as |D| = 12: deleting 12
+specific vertices 4-colours the whole universe. That suggested the obstruction
+might be concentrated on a small vertex kernel, so the union of the k smallest
+hyperedges was tested directly (exact edges, kissat):
+
+```
+50 smallest clauses  ->  519 vertices  -> SAT
+150 smallest         -> 1072 vertices  -> SAT
+400 smallest         -> 1723 vertices  -> SAT   (greedy witness is 1661)
+```
+
+So hyperedge vertices concentrate spatially but their union is not itself an
+obstruction -- a witness needs the surrounding colour-forcing structure too, and
+"where the fragile vertices are" is not "where the witness is".
+
+Status of the searches in this universe: exact IHS lower bound 25 (2372 clauses),
+greedy witnesses 1536 (2917-vertex universe) and 1577 (2581-vertex universe),
+alternating exact half optimisation at per-side bounds 6-7. Nothing below 509,
+nothing claimed.
