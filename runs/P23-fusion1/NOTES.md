@@ -1053,3 +1053,39 @@ cross edges vs 96) yet is 4-colorable against it -- so it adds a large supply of
 richly-connected vertices that no search in this run could previously use.
 Exact region trades from the 509 are now running in this universe (holes
 20/30/45/60, budget H-1, so any accepted trade is a 508).
+
+## E43 — the rotation centre is a free parameter, and moving it still works
+
+Following E42 further: in de Grey's earlier graphs (803/826/874) *all* pairwise
+differences of the non-Parts points lie in omega[15]*lattice, and all of those
+points share a single fractional offset. So that part is not a new rotation at
+all -- it is a **translated** rotated copy, T + omega[15]*A, with (`tshift.py`)
+
+```
+803: T = (-19 + 11 i sqrt15)/96      826, 874: T = (19 - 11 i sqrt15)/96
+```
+
+Parts pins the rotation centre at the origin (T = 0). Nothing forces that, and
+coupling between the halves is exactly what forces 5-chromaticity, so T is a
+free parameter worth scanning. The translations that can matter are precisely
+`T = p - q - u` for p in A, q in omega A and u a unit vector, and cross pairs
+can be counted with a KD-tree (`tscan.py`; floats prefilter, winners rebuilt
+exactly).
+
+At radius 1.6, Parts' T = 0 gives 60 cross pairs and the sampled translations
+run from 2 to **63** -- i.e. the origin is *not* the most strongly coupled
+placement. Rebuilding the top candidates exactly at radius 2.0 and deciding
+4-colorability (`ttest.py`):
+
+```
+T = 0 (Parts):  4033 vtx, 28422 exact edges -> UNSAT   (control)
+score 63:       4033 vtx, 28373 exact edges -> UNSAT   <-- new universe
+score 62, 62, 60, 60:                        -> SAT
+```
+
+The winning T lies in neither the base lattice nor omega*lattice, so
+A u (T + omega A) is **not** Parts' universe and not a symmetry image of it:
+it is a genuinely different non-4-colorable universe in the same field, and the
+first one in this run whose minimum is not already known to be 509. Three
+DRAT-core greedy chains are minimising it (4033 -> ~2830 so far) and a wider
+12000-translation scan is running to look for still better-coupled placements.
