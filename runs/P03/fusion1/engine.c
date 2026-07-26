@@ -19,10 +19,12 @@ static int ou[MAXM], ov[MAXM], arc_m;
 static uint64_t reachv[MAXN];
 static int cuts[MAXCUT], clen[MAXCUT], ncuts, mincut[MAXCUT], minlen[MAXCUT], nmin, tauv;
 static int enum_deferred, ideal_count, cut_mode_fast=1, orient_mode_fast=1;
+static int lazy_mode=0;
 static int topo[MAXN], predmask[MAXN], topo_n;
 static int color[MAXM], used[MAXCUT], leftc[MAXCUT], arc_cuts[MAXM][MAXCUT], narc[MAXM];
 static int target_od[MAXN], role_code[MAXN], role_profile;
 static int rem_inc[MAXN];
+static uint64_t lazy_boundary, lazy_bad_boundary;
 static long long graphs, orientations, profiles, ss_skip, tau_skip, safe_skip;
 static long long packed, candidates, checks, deferred;
 static int role[32][4], nroles;
@@ -104,6 +106,168 @@ static void enumerate_cuts(void){
     topo_n=0;
     if(cut_mode_fast)enumerate_cuts_fast();
     else enumerate_cuts_old();
+}
+static uint64_t implication_closure(uint64_t boundary, int start){
+    uint64_t reach[MAXN];
+    uint64_t full=(1ULL<<n)-1;
+    for(int v=0;v<n;v++)reach[v]=1ULL<<v;
+    for(int i=0;i<arc_m;i++){
+        reach[ov[i]]|=1ULL<<ou[i];
+        if(!bit(boundary,i))reach[ou[i]]|=1ULL<<ov[i];
+    }
+    for(int z=0;z<n;z++)
+        for(int v=0;v<n;v++)
+            if(reach[v]&(1ULL<<z))reach[v]|=reach[z];
+    return reach[start]&full;
+}
+static uint64_t color_implication_closure(int c, int start){
+    uint64_t reach[MAXN],full=(1ULL<<n)-1;
+    for(int v=0;v<n;v++)reach[v]=1ULL<<v;
+    for(int i=0;i<arc_m;i++){
+        reach[ov[i]]|=1ULL<<ou[i];
+        if(color[i]!=c)reach[ou[i]]|=1ULL<<ov[i];
+    }
+    for(int z=0;z<n;z++)
+        for(int v=0;v<n;v++)
+            if(reach[v]&(1ULL<<z))reach[v]|=reach[z];
+    return reach[start]&full;
+}
+static int lazy_find_boundary(uint64_t boundary, int exact){
+    uint64_t full=(1ULL<<n)-1;
+    for(int v=0;v<n;v++){
+        uint64_t set=implication_closure(boundary,v);
+        if(set==full)continue;
+        uint64_t cm=(uint64_t)cut_for(set);
+        if((exact && cm!=boundary) || (!exact && !cm))continue;
+        if(exact ? cm==boundary : ((cm&~boundary)==0)){
+            lazy_boundary=cm;
+            return 1;
+        }
+    }
+    return 0;
+}
+static int flow_cap[MAXN+2][MAXN+2], flow_n;
+static int flow_max(int s, int t){
+    int ans=0, parent[MAXN+2], aug[MAXN+2];
+    for(;;){
+        for(int i=0;i<flow_n;i++)parent[i]=-1;
+        int q[MAXN+2],qh=0,qt=0;
+        q[qt++]=s; parent[s]=s; aug[s]=1000000;
+        while(qh<qt && parent[t]<0){
+            int u=q[qh++];
+            for(int v=0;v<flow_n;v++)
+                if(parent[v]<0 && flow_cap[u][v]>0){
+                    parent[v]=u; aug[v]=aug[u]<flow_cap[u][v]?aug[u]:flow_cap[u][v];
+                    q[qt++]=v;
+                    if(v==t)break;
+                }
+        }
+        if(parent[t]<0)break;
+        int d=aug[t]; ans+=d;
+        for(int v=t;v!=s;v=parent[v]){
+            int u=parent[v];flow_cap[u][v]-=d;flow_cap[v][u]+=d;
+        }
+    }
+    return ans;
+}
+static int tau_lazy(void){
+    int src[MAXN],snk[MAXN],ns=0,nt=0;
+    for(int v=0;v<n;v++){if(!idg[v])src[ns++]=v;if(!od[v])snk[nt++]=v;}
+    int best=k;
+    for(int si=0;si<ns;si++)for(int ti=0;ti<nt;ti++){
+        int S=n,T=n+1; flow_n=n+2;
+        memset(flow_cap,0,sizeof(flow_cap));
+        for(int i=0;i<arc_m;i++){
+            flow_cap[ou[i]][ov[i]]++;
+            flow_cap[ov[i]][ou[i]]+=1000;
+        }
+        flow_cap[S][src[si]]+=1000;
+        flow_cap[snk[ti]][T]+=1000;
+        int z=flow_max(S,T);
+        if(z<best)best=z;
+    }
+    return best;
+}
+static int is_star_cut(uint64_t cm){
+    int tails=-1,heads=-1,nt=0,nh=0;
+    for(int i=0;i<arc_m;i++)if(bit(cm,i)){
+        if(tails!=ou[i]){tails=ou[i];nt++;}
+        if(heads!=ov[i]){heads=ov[i];nh++;}
+    }
+    return (nt==1 && idg[tails]==0 && od[tails]==k) ||
+           (nh==1 && od[heads]==0 && idg[heads]==k);
+}
+static int reduced_boundary_rec(int start, int left, uint64_t boundary){
+    if(!left){
+        if(!lazy_find_boundary(boundary,1))return 0;
+        if(!is_star_cut(lazy_boundary)){
+            lazy_bad_boundary=lazy_boundary;
+            return 1;
+        }
+        return 0;
+    }
+    for(int i=start;i<=arc_m-left;i++)
+        if(reduced_boundary_rec(i+1,left-1,boundary|(1ULL<<i)))return 1;
+    return 0;
+}
+static int reduced_cuts_ok_lazy(void){
+    /*
+     * The lazy path does not need the explicit reduced-dicut optimization:
+     * the CEGAR packer remains an exact decision procedure.  Keep this
+     * hook separate so the explicit path retains the original filter.
+     */
+    return 1;
+}
+static int lazy_color_dfs(int p){
+    if(p==arc_m)return 1;
+    for(int c=0;c<k;c++){
+        int ok=1,touched[MAXCUT],oldused[MAXCUT],oldleft[MAXCUT],nt=0;
+        for(int z=0;z<narc[p];z++){
+            int q=arc_cuts[p][z],next=used[q]|(1<<c),miss=0;
+            for(int cc=0;cc<k;cc++)if(!(next&(1<<cc)))miss++;
+            if(miss>leftc[q]-1){ok=0;break;}
+            touched[nt]=q;oldused[nt]=used[q];oldleft[nt]=leftc[q];nt++;
+        }
+        if(!ok)continue;
+        color[p]=c;
+        for(int z=0;z<narc[p];z++){int q=arc_cuts[p][z];used[q]|=1<<c;leftc[q]--;}
+        if(lazy_color_dfs(p+1))return 1;
+        for(int z=0;z<nt;z++){used[touched[z]]=oldused[z];leftc[touched[z]]=oldleft[z];}
+        color[p]=-1;
+    }
+    return 0;
+}
+static uint64_t violated_color_cut(int c){
+    uint64_t full=(1ULL<<n)-1;
+    for(int v=0;v<n;v++){
+        uint64_t set=color_implication_closure(c,v);
+        if(set!=full)return (uint64_t)cut_for(set);
+    }
+    return 0;
+}
+static int packs_lazy(void){
+    ncuts=0;
+    for(int iter=0;iter<MAXCUT*2;iter++){
+        for(int i=0;i<arc_m;i++){narc[i]=0;color[i]=-1;}
+        for(int q=0;q<ncuts;q++){
+            used[q]=0;leftc[q]=clen[q];
+            for(int i=0;i<arc_m;i++)if(bit((uint64_t)cuts[q],i))arc_cuts[i][narc[i]++]=q;
+        }
+        if(!lazy_color_dfs(0))return 0;
+        int added=0;
+        for(int c=0;c<k;c++){
+            uint64_t cm=violated_color_cut(c);
+            if(!cm)continue;
+            int known=0;
+            for(int q=0;q<ncuts;q++)if((uint64_t)cuts[q]==cm)known=1;
+            if(!known){
+                if(ncuts>=MAXCUT)return 0;
+                cuts[ncuts]=(int)cm;clen[ncuts++]=pop(cm);added=1;
+            }
+        }
+        if(!added)return 1;
+    }
+    return 0;
 }
 static int reaches(int s,int t){
     uint64_t seen=1ULL<<s, todo=seen;
@@ -198,6 +362,15 @@ static void leaf(void){
     if(source_sink_ok()){ss_skip++;return;}
     if(!rho_ok()){safe_skip++;return;}
     if(!rho_reverse_ok()){safe_skip++;return;}
+    if(lazy_mode){
+        tauv=tau_lazy();
+        if(tauv!=k){tau_skip++;return;}
+        if(!reduced_cuts_ok_lazy()){safe_skip++;return;}
+        checks++;
+        if(packs_lazy())packed++;
+        else {candidates++;printf("CAND n=%d m=%d",n,arc_m);for(int i=0;i<arc_m;i++)printf(" %d %d",ou[i],ov[i]);printf("\n");fflush(stdout);}
+        return;
+    }
     enumerate_cuts();
     if(enum_deferred){
         deferred++;
@@ -316,6 +489,7 @@ int main(int ac,char**av){
            (strcmp(av[2],"check3")==0 ? 3 :
            (strcmp(av[2],"check4")==0 ? 4 : 3)));
     if(ac>=6 && !strcmp(av[5],"old")){cut_mode_fast=0;orient_mode_fast=0;}
+    if(ac>=6 && !strcmp(av[5],"lazy"))lazy_mode=1;
     shard=atoi(av[3]);nshards=atoi(av[4]);
     char line[4096];long long idx=0;
     while(fgets(line,sizeof(line),stdin)){
