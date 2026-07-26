@@ -1,0 +1,1 @@
+FINAL status=FEASIBLE elapsed=43202.673 best=26.000000 bound=20.000000

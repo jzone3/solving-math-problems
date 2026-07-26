@@ -1,0 +1,1 @@
+status=OPTIMAL elapsed=25.642 budget=26 second=None

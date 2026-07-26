@@ -1,0 +1,100 @@
+             'core':   22'645             0          7    21'089'392     184'451            122    562'120       4'606          874     79'177        0           0  127'442'071    364'572'942    149'657'159
+       'default_lp':        0             0          0    80'823'830  59'805'777         19'776  2'547'858         273            0          6        0           0  942'624'846  2'298'859'552  1'085'834'359
+  'fs_random_no_lp':        0             0          0             0           0              0          0           0            0          0        0           0            0              0              0
+       'max_lp_sym':        0             0          0    14'201'641  10'787'110          4'082    598'169         275            0          4        0           0  203'800'933    508'354'290    229'408'993
+            'no_lp':        0             0          0    75'612'941  55'779'116         19'447  2'374'785         276            0          0        0           0  874'356'368  2'135'128'389  1'008'159'524
+    'quick_restart':        0             0          0    32'749'832   6'439'666        925'597  1'794'204         259            0         20        0           0  335'882'702    726'226'874    377'808'414
+    'reduced_costs':        0             0          0       439'503      18'325         47'934     38'930         160            0  1'232'986        0           0    2'071'956      8'472'910      3'857'597
+
+Lp stats            Component   Iterations  AddedCuts      OPTIMAL    DUAL_F.  DUAL_U.
+     'max_lp_sym':          1   66'804'566     65'892  168'541'443        753        7
+  'reduced_costs':          1  501'946'215      6'876    2'482'794  6'923'676        0
+
+Lp dimension          Final dimension of first component
+     'max_lp_sym':       29 rows, 6 columns, 161 entries
+  'reduced_costs':  441 rows, 242 columns, 51016 entries
+
+Lp debug            CutPropag  CutEqPropag      Adjust  Overflow         Bad  BadScaling
+     'max_lp_sym':          0            4  26'487'373         0   3'510'258           0
+  'reduced_costs':          0            0   9'406'469         0  12'420'050           0
+
+Lp pool             Constraints  Updates  Simplif  Merged  Shortened  Split  Strengthened         Cuts/Call
+     'max_lp_sym':        8'972       25        1     925          0      0             1  65'892/1'589'087
+  'reduced_costs':        7'106        0        0       0          0      0             0       6'876/6'922
+
+Lp Cut           max_lp_sym  reduced_costs
+         CG_FF:         422              -
+          CG_K:         322              -
+          CG_R:      43'256              -
+         CG_RB:      10'350              -
+            IB:          14              -
+      MIR_1_FF:          47              -
+       MIR_1_K:          63              -
+       MIR_1_R:       1'686              -
+      MIR_1_RB:         225              -
+  ZERO_HALF_FF:          18              -
+   ZERO_HALF_K:          17              -
+   ZERO_HALF_R:       9'116          6'876
+  ZERO_HALF_RB:         356              -
+
+LNS stats           Improv/Calls  Closed  Difficulty  TimeLimit
+  'graph_arc_lns':     960/11112     50%    3.94e-01       7.35
+  'graph_cst_lns':     915/11006     50%    4.19e-01       7.06
+  'graph_dec_lns':     919/11170     50%    4.04e-01       7.65
+  'graph_var_lns':    1059/10721     50%    4.51e-01       6.40
+      'rins/rens':   26333/66535     50%    2.93e-01       0.46
+    'rnd_cst_lns':     800/10969     50%    4.13e-01       7.06
+    'rnd_var_lns':    1072/11154     50%    4.16e-01       7.50
+
+LS stats                                Batches  Restarts/Perturbs     LinMoves     GenMoves  CompoundMoves   Bactracks  WeightUpdates  ScoreComputed
+                         'ls_restart':   13'225              2'148  175'195'198            0              0           0    109'770'871      3'200'287
+                'ls_restart_compound':   16'001              2'265            0  173'794'268      3'826'177  84'978'470      2'359'046  3'302'548'288
+        'ls_restart_compound_perturb':   14'400              2'194            0  158'001'297      4'020'351  76'984'588      1'889'350  2'931'150'454
+                   'ls_restart_decay':   13'229              2'187  294'361'011            0              0           0     34'961'484     21'717'367
+          'ls_restart_decay_compound':   10'502              2'158            0  166'750'736     20'320'776  73'205'864        315'379  1'857'659'301
+  'ls_restart_decay_compound_perturb':   12'606              2'105            0  200'407'718     24'398'485  87'995'416        374'713  2'225'977'142
+           'ls_restart_decay_perturb':   16'296              2'217  362'643'460            0              0           0     43'059'746     26'823'583
+                 'ls_restart_perturb':   11'653              2'099  154'348'191            0              0           0     96'966'725      2'820'012
+
+Solutions (1)       Num   Rank
+  'complete_hint':    2  [0,1]
+
+Objective bounds     Num
+  'initial_domain':    1
+      'max_lp_sym':    1
+
+Solution repositories        Added  Queried  Synchro
+    'alternative_path':     13'269  107'545   13'266
+      'best_solutions':     90'927  108'033   46'493
+   'fj solution hints':          0        0        0
+        'lp solutions':  5'056'608   75'530  508'603
+                'pump':          0        0
+
+Clauses shared      #Exported  #Imported  #BinaryRead  #BinaryTotal
+           'core':          0        412            0             0
+     'default_lp':          0        412            0             0
+     'max_lp_sym':          0        412            0             0
+          'no_lp':          1        411            0             0
+  'quick_restart':          0        412            0             0
+  'reduced_costs':        412          0            0             0
+
+LRAT_status: NA
+CpSolverResponse summary:
+status: FEASIBLE
+objective: 26
+best_bound: 20
+integers: 0
+booleans: 0
+conflicts: 0
+branches: 0
+propagations: 0
+integer_propagations: 0
+restarts: 0
+lp_iterations: 0
+walltime: 43202.7
+usertime: 43202.7
+deterministic_time: 350375
+gap_integral: 627788
+solution_fingerprint: 0xa1afbddc38c10efb
+
+FINAL status=FEASIBLE elapsed=43202.673 best=26.000000 bound=20.000000

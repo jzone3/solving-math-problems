@@ -258,3 +258,36 @@ two-element orbits.  Since an invariant code containing the fixed word has
 odd cardinality, any even code of size at most 72 excludes that fixed word
 and uses at most 36 pair-orbits.  The prepared CP-SAT model and metadata are
 under `logs/tau6_cp_model/`.
+
+The detached CP-SAT minimization subsequently completed its full 12-hour
+budget with eight workers and the complete 26-orbit hint.  CP-SAT reported:
+
+```text
+FINAL status=FEASIBLE elapsed=43202.673 best=26.000000 bound=20.000000
+```
+
+Symmetry detection found six orbits on the 242 nonzero quotient variables,
+of sizes 120, 30, 30, 30, 20, and 12.  The incumbent and bound therefore
+remained frozen at [20, 26] quotient orbits, equivalently [60, 78] words.
+This did not decide the 72-word question.
+
+Overall, the 22 near-identity classes—and even the most structured single
+case, sigma^6, reduced to a 243-point group covering problem with a
+1440-element stabilizer and a valid zero-coset fixing—resisted Kissat
+(2-hour runs), RoundingSat (2-hour runs), HiGHS (3–8-hour runs), CP-SAT
+(12 hours with symmetry), quotient LNS (best 237/243), and both negative
+and positive cube decompositions on this hardware.  Deciding any of these
+classes likely requires cluster-scale compute or new theory.  The earlier
+HiGHS dual bound of exactly 24.0 remains the closest approach to eliminating
+72 for sigma^6, but is not sufficient.
+
+The positive artifact from this round is the verified 78-word invariant
+code with a fixed-point-free order-3 automorphism:
+
+```text
+logs/cp_sat_26/code.txt
+```
+
+Its independent verification passes, as does the callback-saved copy
+`logs/cp_sat_min_sigma6/incumbent_code.txt`.  No global upper or lower bound
+changed, and no class was decided at 72.
