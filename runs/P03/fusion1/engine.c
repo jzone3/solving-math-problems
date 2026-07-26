@@ -18,9 +18,11 @@ static int eu[MAXM],ev[MAXM],deg[MAXN],od[MAXN],idg[MAXN];
 static int ou[MAXM], ov[MAXM], arc_m;
 static uint64_t reachv[MAXN];
 static int cuts[MAXCUT], clen[MAXCUT], ncuts, mincut[MAXCUT], minlen[MAXCUT], nmin, tauv;
-static int enum_deferred, ideal_count, cut_mode_fast=1;
+static int enum_deferred, ideal_count, cut_mode_fast=1, orient_mode_fast=1;
 static int topo[MAXN], predmask[MAXN], topo_n;
 static int color[MAXM], used[MAXCUT], leftc[MAXCUT], arc_cuts[MAXM][MAXCUT], narc[MAXM];
+static int target_od[MAXN], role_code[MAXN], role_profile;
+static int rem_inc[MAXN];
 static long long graphs, orientations, profiles, ss_skip, tau_skip, safe_skip;
 static long long packed, candidates, checks, deferred;
 static int role[32][4], nroles;
@@ -210,7 +212,7 @@ static void leaf(void){
     if(packs())packed++;
     else {candidates++;printf("CAND n=%d m=%d",n,arc_m);for(int i=0;i<arc_m;i++)printf(" %d %d",ou[i],ov[i]);printf("\n");fflush(stdout);}
 }
-static void orient(int e){
+static void orient_old(int e){
     if(e==m){leaf();return;}
     int x=eu[e],y=ev[e];
     for(int z=0;z<2;z++){
@@ -221,9 +223,60 @@ static void orient(int e){
         od[u]++;idg[v]++;ou[e]=u;ov[e]=v;
         uint64_t add=reachv[v]|(1ULL<<v);
         for(int q=0;q<n;q++)if(q==u||(reachv[q]&(1ULL<<u)))reachv[q]|=add;
-        orient(e+1);
+        orient_old(e+1);
         memcpy(reachv,save,sizeof(save));od[u]--;idg[v]--;
     }
+}
+static int degree_bounds_ok(void){
+    for(int v=0;v<n;v++){
+        int need=target_od[v]-od[v];
+        if(need<0 || need>rem_inc[v])return 0;
+    }
+    return 1;
+}
+static void orient_fixed(int e){
+    if(e==m){leaf();return;}
+    int x=eu[e],y=ev[e];
+    rem_inc[x]--; rem_inc[y]--;
+    for(int z=0;z<2;z++){
+        int u=z?y:x,v=z?x:y;
+        if(target_od[u]<=od[u])continue;
+        if(reachv[v]&(1ULL<<u))continue;
+        uint64_t save[MAXN];memcpy(save,reachv,sizeof(save));
+        od[u]++;idg[v]++;ou[e]=u;ov[e]=v;
+        uint64_t add=reachv[v]|(1ULL<<v);
+        for(int q=0;q<n;q++)if(q==u||(reachv[q]&(1ULL<<u)))reachv[q]|=add;
+        if(degree_bounds_ok())orient_fixed(e+1);
+        memcpy(reachv,save,sizeof(save));od[u]--;idg[v]--;
+    }
+    rem_inc[x]++; rem_inc[y]++;
+}
+static void role_rec(int v, int ns, int nt, int na, int nb){
+    if(v==n){
+        if(ns!=role[role_profile][0] || nt!=role[role_profile][1] ||
+           na!=role[role_profile][2] || nb!=role[role_profile][3])return;
+        for(int u=0;u<n;u++){od[u]=idg[u]=0;reachv[u]=1ULL<<u;rem_inc[u]=deg[u];}
+        for(int u=0;u<n;u++)target_od[u]=role_code[u];
+        if(degree_bounds_ok())orient_fixed(0);
+        return;
+    }
+    int d=deg[v];
+    if(d==(k==3?3:4) && ns<role[role_profile][0]){
+        role_code[v]=d; role_rec(v+1,ns+1,nt,na,nb);
+    }
+    if(d==(k==3?3:4) && nt<role[role_profile][1]){
+        role_code[v]=0; role_rec(v+1,ns,nt+1,na,nb);
+    }
+    if(d==3 && na<role[role_profile][2]){
+        role_code[v]=2; role_rec(v+1,ns,nt,na+1,nb);
+    }
+    if(d==3 && nb<role[role_profile][3]){
+        role_code[v]=1; role_rec(v+1,ns,nt,na,nb+1);
+    }
+}
+static void orient_profiled(void){
+    for(role_profile=0;role_profile<nroles;role_profile++)
+        role_rec(0,0,0,0,0);
 }
 static void setup_roles(void){
     nroles=0;
@@ -258,7 +311,7 @@ int main(int ac,char**av){
            (strcmp(av[2],"tau4a")==0 ? 41 :
            (strcmp(av[2],"check3")==0 ? 3 :
            (strcmp(av[2],"check4")==0 ? 4 : 3)));
-    if(ac>=6 && !strcmp(av[5],"old"))cut_mode_fast=0;
+    if(ac>=6 && !strcmp(av[5],"old")){cut_mode_fast=0;orient_mode_fast=0;}
     shard=atoi(av[3]);nshards=atoi(av[4]);
     char line[4096];long long idx=0;
     while(fgets(line,sizeof(line),stdin)){
@@ -277,7 +330,9 @@ int main(int ac,char**av){
             memset(deg,0,sizeof(deg)); continue;
         }
         for(int v=0;v<n;v++){od[v]=idg[v]=0;reachv[v]=1ULL<<v;}
-        graphs++;orient(0);
+        graphs++;
+        if(orient_mode_fast && nroles)orient_profiled();
+        else orient_old(0);
         fprintf(stderr,"GRAPH %lld orientations=%lld profiles=%lld ss=%lld tau_skip=%lld safe=%lld checks=%lld packed=%lld cand=%lld deferred=%lld\n",idx,orientations,profiles,ss_skip,tau_skip,safe_skip,checks,packed,candidates,deferred);fflush(stderr);
         memset(deg,0,sizeof(deg));
     }
