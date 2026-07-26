@@ -353,6 +353,18 @@ unsharded run). Then scanned shards of the intractable gap cases (p,f) ∈
 {(1,10),(1,13),(1,16),(0,10),(0,13)} with NSHARDS=1000 (documented uniform 1/1000
 slices; multiple shards for the biggest cases), 8 workers, 5 h budget:
 
-GAP_RESULTS_PLACEHOLDER
+Results (session paused by coordinator during the run):
 
-## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under ANY automorphism of order 3 or 4 acting freely on sources — 194.8M candidates decided (676,378 SAT + 194.1M certified colorings), 0 UNSAT; NEW (wave 5): 81.4M certified packing decisions via C annealed sampling of the FULL asymmetric ACZ region (shapes (12,0),(12,3),(12,4),(15,0); ρ=4–5, n=28–36), 0 UNSAT — ~276M total decided instances in the ACZ-complete class, all pack; NEW (wave 6): non-free order-3 closure — all 15 tractable (p,f) cases exhausted (17.6M candidates, 12.7M certified packings, 0 UNSAT), upgrading the exhaustive statement to: no minimal-shape τ=3 counterexample admits an order-4 automorphism free on sources, or ANY order-3 automorphism with ≥2 source orbits or ≤7 fixed sinks; plus 87.4M more certified sampling decisions (wave 5 batch 2; shapes (12,0),(12,1),(12,2),(15,1)) — cumulative ~381M decided ACZ-class instances, every one packs.
+- **(1,10)**: 49 complete shards of 1000 (s0–s45 + 3 more), i.e. an exhaustive uniform
+  ~4.9% slice: **957,190,973 candidates — 925.9M τ<3 rejected, 31,313,387 certified
+  packings, 0 dumped, 0 UNSAT**. Extrapolated case size ≈ 1.95×10¹⁰ candidates
+  (~19.5M/shard), consistent with the ≳10¹⁰ count-mode estimate.
+- **(1,13), (1,16), (0,10), (0,13)**: even a single 1/1000 shard did not complete
+  within a 5 h core-budget each — these subcases are ≳10¹¹–10¹² candidates; they remain
+  open (mitigated structurally by the §12 twin-sink corollary, which forces every
+  twin-deletion in these highly-twinned configurations to create a ≤2-dicut).
+
+Wave-7 slice adds 0.96B candidates decided (31.3M via certified colorings after τ
+filter), still 0 unpackable.
+
+## STATUS: negative / frontier-pushed — no τ=3 counterexample: n≤6 CLOSED incl. parallel arcs (mult≤2 reduction; viable class empty); n≤7 simple + n=8 oriented exhausted (1.4B digraphs); ~1.04M filtered multigraph candidates; ~11.3k annealing SAT decisions inside the ACZ-complete sink-regular (3,4)-bipartite class (ρ≥4, n=28–44) — 0 UNSAT; NEW: EXHAUSTIVE closure of the minimal ACZ shape (12×16, 48 arcs) under ANY automorphism of order 3 or 4 acting freely on sources — 194.8M candidates decided (676,378 SAT + 194.1M certified colorings), 0 UNSAT; NEW (wave 5): 81.4M certified packing decisions via C annealed sampling of the FULL asymmetric ACZ region (shapes (12,0),(12,3),(12,4),(15,0); ρ=4–5, n=28–36), 0 UNSAT — ~276M total decided instances in the ACZ-complete class, all pack; NEW (wave 6): non-free order-3 closure — all 15 tractable (p,f) cases exhausted (17.6M candidates, 12.7M certified packings, 0 UNSAT), upgrading the exhaustive statement to: no minimal-shape τ=3 counterexample admits an order-4 automorphism free on sources, or ANY order-3 automorphism with ≥2 source orbits or ≤7 fixed sinks; plus 87.4M more certified sampling decisions (wave 5 batch 2; shapes (12,0),(12,1),(12,2),(15,1)) — cumulative ~381M decided ACZ-class instances, every one packs; NEW (wave 7): twin-sink reduction lemma (+ACZ ρ=3 corollary: every twin-deletion in a minimal-shape counterexample must create a ≤2-dicut; machine-checked on 4k instances) and an exhaustive uniform 4.9% slice of gap case (1,10) — 957M candidates, 31.3M certified packings, 0 UNSAT — cumulative ~1.34B decided ACZ-class candidates, all pack. Remaining open: order-3 with ≥9 fixed sources AND ≥13 fixed sinks (or (0,10)); Z2 symmetry; general asymmetric class.
