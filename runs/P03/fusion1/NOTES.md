@@ -712,6 +712,26 @@ measurement above is the only projection used. No exact graph completed in
 the gate, so no deferred instance, candidate, or new harness cross-check
 result exists.
 
+### High-girth n=18 tau=3 long-run attempt
+
+The 455-graph high-girth subfamily was launched with the current optimized
+engine in eight resumable shards using `resume_higirth18.sh`. Each shard has
+57 assigned graphs except shard 7, which has 56. Per-graph checkpoints are
+flushed to `higirth18_0.log` through `higirth18_7.log`; the helper skips
+completed `GRAPH` records after restart.
+
+At the first approximately 30-minute checkpoint, all eight shards remained
+CPU-active on their first graph and had produced no `GRAPH` record:
+
+```text
+graphs completed: 0 / 455
+candidates: 0
+deferred: 0
+```
+
+This is an in-progress exact run, not a closure claim. No result has yet
+reached the τ or packing decision stage.
+
 ### rho-filter reorder and high-girth retry
 
 The engine leaf path now applies the cheap `rho_ok()` and
