@@ -575,3 +575,43 @@ python3 stage7.py /tmp/tparts_65_16_13.pkl \
 
 The `--max-queries` option makes long runs reproducible and records
 explicitly when a result is intermediate rather than a deletion fixpoint.
+
+## Stage 8: uncapped alternating descent
+
+Stage 8 spends the compute budget on the best certified witnesses and
+alternates A/B descent without a hard query cap.  The code is in
+`stage8.py`, and the intended loop is:
+
+1. prune the current B patterns against the B-side valid-pattern oracle;
+2. minimize A against the fixed current pattern set, using the DRAT-core
+   plus greedy deletion machinery from Stage 7;
+3. prune the A-side pattern set from the resulting proof core;
+4. core-reduce B against the pruned set;
+5. batch-greedy B against the same fixed set;
+6. refresh patterns and repeat while `|A|+|B|` drops.
+
+The uncapped runs were launched for both placements and multiple seeds,
+but they did not produce a new certified improvement before the handoff
+window closed, so the certified bests remain the Stage-7 witnesses.
+That is the honest stopping point for this handoff: no new total below
+1067 at T=0 or 1595 at T65 was established here, and nothing approached
+509.
+
+Repository copies of the certified witnesses now live under
+`runs/P23-tparts/witnesses/`:
+
+- `witnesses/t0_cache.pkl`
+- `witnesses/t0_1067_ids.pkl`
+- `witnesses/t65_cache.pkl`
+- `witnesses/t65_1595_ids.pkl`
+
+Reverification from a clean checkout:
+
+```bash
+python3 verify.py witnesses/t0_cache.pkl \
+  --vertices witnesses/t0_1067_ids.pkl --drat
+python3 verify.py witnesses/t65_cache.pkl \
+  --vertices witnesses/t65_1595_ids.pkl --drat
+```
+
+Both commands print `OVERALL: PASS`.
