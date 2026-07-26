@@ -1187,3 +1187,24 @@ Four generators and two IHS workers share the bank. Greedy calibration in the
 same universes meanwhile: 2581-universe -> 1763, 2917-universe -> 1536, both
 still descending, and both meaningless as bounds (E13) -- only the IHS value is
 a bound, and it is 15.
+
+## E47 — alternating half optimisation, done exactly
+
+Parts alternates between his two halves, greedily. `halfhs.py` does the same
+alternation with an *exact* inner solve: freeze one half of the current witness,
+and solve the other half by implicit hitting set (D is a hyperedge iff
+FIX u (CAND \ D) is 4-colorable), so each inner run ends either in a strictly
+smaller witness or in a proof that the frozen half admits no smaller partner.
+
+Two details were needed to make it move: the frozen half is 4-coloured exactly
+by kissat first and those colours are pinned, so tabu only moves candidate
+vertices and every surviving conflict has a candidate endpoint (otherwise nearly
+every colouring is unusable and no clause is produced); and the cover is
+restricted to candidates. Iterations then cost ~3-4 s with |D| = 60-190.
+
+Running on the 2581-vertex universe from the greedy witness (1668 = 825 + 843);
+lower bounds so far 4-5 per side. Also running: 4 hyperedge generators + 2 IHS
+workers on the whole universe (bank 1003 clauses, exact bound 18), five greedy
+chains (1661), and a child session sweeping the full (rotation, translation,
+rA, rB) space for an even smaller obstructing universe:
+https://app.devin.ai/sessions/e39dc8b6b47e448394064f2a416f8c7f
