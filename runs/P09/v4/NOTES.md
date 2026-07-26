@@ -281,3 +281,23 @@ triangle-free graphs on 16 vertices, via 112 geng slices (`-tq 16 R/112` into
 
 The triangle-free case of Bollobás–Nikiforov is now machine-verified for all
 graphs on ≤ 16 vertices (≈ 6×10¹¹ graphs).
+
+## Round 7 (coordinator push #6): full Holt–Royle vertex-transitive census (n ≤ 47)
+
+Seventh attack: the COMPLETE census of vertex-transitive graphs on up to 47
+vertices (Holt & Royle, "Vertex-transitive graphs on fewer than 48 vertices",
+Zenodo record 4010122) — the full version of the original V4 remit
+"vertex-transitive to n ≈ 50", strictly containing the earlier circulant and
+dihedral-Cayley scans. Checker: `checker64.c` (= checker2 widened to MAXN 64 /
+64-bit clique bitmasks; cross-checked against checker2 on all n=8 graphs and
+the known n=12 equality case).
+
+- All 100,720,344 vertex-transitive graphs of order 10..47 checked
+  (per-order .sum files in `vt/`; orders ≤ 9 are inside the n ≤ 12 exhaustion).
+- Violations: 0. Best gap ≈ +2.6e-11 — float noise at exact equality, again
+  only complete-multipartite-type graphs touch the bound.
+- Notable: many strongly regular / Cayley / primitive graphs in this census
+  are far from complete multipartite; none comes anywhere near violating.
+
+This settles the conjecture computationally for ALL vertex-transitive graphs
+with < 48 vertices.
