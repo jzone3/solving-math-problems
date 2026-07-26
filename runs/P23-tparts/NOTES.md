@@ -272,3 +272,73 @@ are still far above 509, but materially below the Stage-3 full-half
 deletion result of 2376.  T63 remains a negative control: its Stage-3
 full-half lazy set did not force the A pool, so no Stage-4
 non-4-colourable candidate was claimed there.
+
+## Stage 5: proof-guided B minimisation
+
+Stage 5 adds the missing B-side reduction machinery.  `stage5.py` uses
+three devices:
+
+1. It parses the A-side drat-trim core and retains only pattern clauses
+   appearing in that proof.
+2. It takes the union of per-pattern B-side DRAT cores before deletion.
+3. It provides a gated incremental B SAT instance for destroy-and-repair
+   deletion batches, so a batch is tested in one persistent solver rather
+   than rebuilding a solver for every pattern.
+
+The full one-at-a-time repair pass remains available, but was not used for
+the headline runs: even after the core reduction, thousands of incremental
+queries over 28 patterns were too expensive on this box.  Batch-only
+destroy-and-repair was used for the reported additional reductions, and
+the lazy CEGAR refresh was rerun after each resulting B shrink.
+
+### T65, `rA=1.6`, `rB=1.3`
+
+Starting from the certified Stage-4 witness `(A,B)=(760,1253)`, one
+proof-guided round gave:
+
+| step | A | B | total | patterns | orders | time |
+|---|---:|---:|---:|---:|---|---:|
+| Stage-4 start | 760 | 1253 | 2013 | 28 | 18×3, 10×4 | — |
+| A proof prune + B core union | 760 | 1067 | **1827** | 28 | 18×3, 10×4 | 730.73 s |
+| batch-only B destroy/repair | 760 | 1003 | **1763** | 28 | 18×3, 10×4 | 237.42 s |
+
+Refreshing the lazy CEGAR oracle after the B shrink returned `UNSAT` with
+the same 28-pattern order distribution in 68.06 s.  The 1763-vertex
+candidate was independently certified:
+
+- 1763 exact distinct coordinates,
+- 10230 exact recomputed unit edges,
+- kissat UNSAT,
+- drat-trim `s VERIFIED`,
+- standalone `verify.py`: `OVERALL: PASS`.
+
+No further batch deletion was possible in a second batch-only pass
+(1003 B vertices remained).  The individual repair-enabled greedy pass
+was attempted with batch size 64 but was stopped after approximately
+20 minutes without producing a result; this is now the next optimization
+target rather than an unverified claim.
+
+### T=0 calibration
+
+Starting from the Stage-4 full-half witness `(A,B)=(718,2021)` and its
+37 lazy patterns (16 order-3, 21 order-4):
+
+| step | A | B | total | patterns | orders | time |
+|---|---:|---:|---:|---:|---|---:|
+| Stage-4 start | 718 | 2021 | 2739 | 37 | 16×3, 21×4 | — |
+| A proof prune + B core union | 718 | 1836 | **2554** | 37 | 16×3, 21×4 | 839.79 s |
+| batch-only B destroy/repair | 718 | 1452 | **2170** | 37 | 16×3, 21×4 | 968.03 s |
+
+Refreshing CEGAR after the B shrink returned `UNSAT` with all 37 patterns
+still valid in 127.95 s.  The 2170-vertex candidate was independently
+certified:
+
+- 2170 exact distinct coordinates,
+- 12357 exact recomputed unit edges,
+- kissat UNSAT,
+- drat-trim `s VERIFIED`,
+- standalone `verify.py`: `OVERALL: PASS`.
+
+Thus B-side core reduction and batch deletion materially improve both
+calibrations, but T=0 is still not near 509.  The remaining one-at-a-time
+greedy repair and more aggressive pattern-core extraction are unresolved.
