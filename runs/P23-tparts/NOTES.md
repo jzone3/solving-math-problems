@@ -1,9 +1,37 @@
-# P23 translated-Parts universes — stage 1
+# P23 translated-Parts constructive search report
 
-Branch: `runs/P23-tparts`.  This stage reconstructs the finite two-half
-universes only; it does not perform a constructive SAT search or minimisation.
+This run investigates whether the Hadwiger–Nelson 5-chromatic
+unit-distance record can be beaten constructively.  The target is Parts'
+509-vertex graph, split as `L374 ∪ ωS135`.  The search deliberately grows
+forcing halves and discovers interface patterns by lazy CEGAR rather than
+starting from a large graph and relying only on deletion minimisation.
 
-## What was built
+## Headline result
+
+Nothing below 509 was found.  The best independently certified witnesses
+are:
+
+| placement | A | B | total | exact edges | IHS lower bound |
+|---|---:|---:|---:|---:|---:|
+| T=0 with Parts S135 | 932 | 135 | **1067** | 5832 | 24 |
+| T65, `rA=1.6`, `rB=1.3` | 592 | 1003 | **1595** | 8682 | 11 |
+
+Both satisfy the full exact certification bar: exact field coordinates,
+edges recomputed from those coordinates, kissat UNSAT, drat-trim
+`s VERIFIED`, and standalone `verify.py` PASS.  The committed witness
+data and exact re-verification commands are:
+
+```bash
+python3 verify.py witnesses/t0_cache.pkl \
+  --vertices witnesses/t0_1067_ids.pkl --drat
+python3 verify.py witnesses/t65_cache.pkl \
+  --vertices witnesses/t65_1595_ids.pkl --drat
+```
+
+The rest of this report gives the reconstruction, pattern/interface
+measurements, search trajectories, negative controls, and compute spent.
+
+## Stage 1: universe reconstruction
 
 `univ.py` rebuilds
 
@@ -50,13 +78,36 @@ The reconstructed legacy-pool counts were:
 | translation | radii | vertices | exact edges | AA / BB / cross | build |
 |---|---:|---:|---:|---:|---:|
 | T=0 | 2.0 / 2.0 | 4043 | 28506 | 14220 / 14220 / 66 | 19.7 s |
-| T63 | 2.0 / 2.0 | 4043 | 28457 | 14220 / 14220 / 77 | 20.5 s |
-| T65 | 2.0 / 2.0 | 4043 | 28506 | 14220 / 14220 / 66 | 19.7 s |
-| T63 | 1.6 / 1.6 | 3069 | 19319 | 9654 / 9654 / 65 | 12.4 s |
-| T65 | 1.6 / 1.6 | 3069 | 19326 | 9654 / 9654 / 71 | 12.7 s |
-| T65 | 1.5 / 1.5 | 2829 | 17160 | 8572 / 8572 / 66 | 10.5 s |
-| T65 | 1.6 / 1.3 | 2788 | 16837 | 9654 / 7168 / 64 | 10.2 s |
-| T65 | 1.3 / 1.3 | 2507 | 14346 | 7168 / 7168 / 53 | 8.3 s |
+| T63 | 2.0 / 2.0 | 4043 | 28457 | 14220 / 14220 / 17 | 20.5 s |
+| T65 | 2.0 / 2.0 | 4043 | 28466 | 14220 / 14220 / 26 | 19.7 s |
+| T63 | 1.6 / 1.6 | 3069 | 19319 | 9654 / 9654 / 11 | 12.4 s |
+| T65 | 1.6 / 1.6 | 3069 | 19326 | 9654 / 9654 / 18 | 12.7 s |
+| T65 | 1.5 / 1.5 | 2829 | 17160 | 8572 / 8572 / 16 | 10.5 s |
+| T65 | 1.6 / 1.3 | 2788 | 16837 | 9654 / 7168 / 15 | 10.2 s |
+| T65 | 1.3 / 1.3 | 2507 | 14346 | 7168 / 7168 / 10 | 8.3 s |
+
+### T65 radius-2 count clarification
+
+The original Stage-1 table incorrectly repeated the T=0 radius-2 edge and
+cross counts for T65.  This was a stale result/label artifact, not a
+translation bug.  A fresh exact rebuild applies the T65 translation and
+gives 4043 vertices, 28466 exact edges, and 26 exclusive cross edges.
+
+More directly, comparing the actual exact point sets settles the issue:
+after translating every T65 point by `-a`, where `12a=(0,0,4,0)`, the
+T65 and T=0 point sets still have a symmetric difference of 1925 points
+on each side.  They are not the same set up to that global translation.
+The cross-edge pair sets also differ: T=0 has 66 pairs while T65 has 26;
+after the same coordinate translation, 40 T=0 cross pairs are absent from
+T65.  Thus the coincidence in the old table was not a genuine geometric
+coincidence.
+
+The downstream T65 `1.6/1.3` point set and exact edge set are unchanged by
+the label cleanup.  The old cache had overlapping labels (`cross=64`);
+the fresh exclusive classification has `cross=15`, but both contain the
+same 2788 exact points and 16837 exact unit edges.  The 1595 witness was
+reverified against a freshly rebuilt current-label cache and still passes
+all certification checks, so no downstream witness correction was needed.
 
 The expected E43–E45 published counts were 4033/28422 for T=0,
 2917/17740 for T65 at 1.6/1.6, and 2581/14796 for T65 at 1.6/1.3.
