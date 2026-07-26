@@ -17,7 +17,9 @@ from sat import color_cnf, write_cnf, KISSAT
 
 ROT = os.environ.get("ROT", "w[15]")
 LAYERS = int(os.environ.get("LAYERS", "3"))
-RAD = float(os.environ.get("RAD", "1.6"))
+SCAN_RAD = float(os.environ.get("SCAN_RAD", os.environ.get("RAD", "1.6")))
+TEST_RADII = [float(x) for x in os.environ.get(
+    "TEST_RADII", os.environ.get("RAD", "1.6")).split(",")]
 NSHIFT = int(os.environ.get("NSHIFT", "10000"))
 TOP = int(os.environ.get("TOP", "15"))
 TIME = int(os.environ.get("TIME", "300"))
@@ -48,7 +50,7 @@ def translation_id(field, t):
 
 def main():
     field, omega = in_field_rotations()[ROT]
-    A0 = lattice.build_base(LAYERS, RAD)
+    A0 = lattice.build_base(LAYERS, SCAN_RAD)
     A = [to_generic_field(p, field) for p in A0]
     B = [cmul(field, omega, p) for p in A]
     za = np.array([[field.to_float(x), field.to_float(y)] for x, y in A])
@@ -79,10 +81,14 @@ def main():
         seen.add(key)
         candidates.append((count(t), t))
     candidates.sort(key=lambda x: -x[0])
-    for score, translation in candidates[:TOP + 1]:
+    selected = candidates[:TOP + 1]
+    if len(candidates) > TOP + 2:
+        selected += [candidates[len(candidates) // 2], candidates[-1]]
+    for score, translation in selected:
+      for radius in TEST_RADII:
         start = time.time()
         pts, edges = build_universe_generic(
-            (field, omega), translation, RAD, RAD, LAYERS)
+            (field, omega), translation, radius, radius, LAYERS)
         nv, clauses = color_cnf(len(pts), edges, 4)
         cnf = f"/tmp/p23_{os.getpid()}.cnf"
         write_cnf(cnf, nv, clauses)
@@ -96,15 +102,16 @@ def main():
         elapsed = time.time() - start
         ident = f"{ROT.replace('[','_').replace(']','')}_{translation_id(field, translation)}"
         with open(OUT, "a") as f:
-            f.write(f"{ROT}\t{ident}\t{translation}\t{LAYERS}\t{RAD}\t{RAD}\t"
+            f.write(f"{ROT}\t{ident}\t{translation}\t{LAYERS}\t{radius}\t{radius}\t"
                     f"{len(pts)}\t{len(edges)}\t{score}\t{status}\t{elapsed:.3f}\n")
-        print(f"{ROT} {ident}: {len(pts)} vtx {len(edges)} e "
+        print(f"{ROT} {ident} r={radius}: {len(pts)} vtx {len(edges)} e "
               f"cross~{score} -> {status} ({elapsed:.1f}s)", flush=True)
         if status == "UNSAT":
             with open(os.path.join(os.path.dirname(OUT),
                                    f"tuniv_{ident}.pkl"), "wb") as f:
                 pickle.dump({"primes": field.primes, "points": pts,
                              "edges": edges}, f)
+      # Keep indentation obvious: one result per candidate/radius.
 
 
 if __name__ == "__main__":
