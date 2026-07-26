@@ -1,0 +1,2 @@
+rotation	translation_id	translation_field_form	layers	rA	rB	vertices	exact_edges	exact_cross_edges	scan_proxy	status	kissat_seconds
+w[15]	w_15_3e07397d03c4	((Fraction(7, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(-1, 6), Fraction(0, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(-1, 6), Fraction(0, 1), Fraction(1, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)))	3	1.46	1.3	2389	12909	44	86	UNSAT	182.322

@@ -55,13 +55,12 @@ def main():
     B = [cmul(field, omega, p) for p in A]
     za = np.array([[field.to_float(x), field.to_float(y)] for x, y in A])
     zb = np.array([[field.to_float(x), field.to_float(y)] for x, y in B])
-    ta, tb = cKDTree(za), cKDTree(zb)
+    ta = cKDTree(za)
     units = [to_generic_field(p, field) for p in lattice.UNIT]
     rng = random.Random(SEED)
 
     def count(t):
         shift = np.array([field.to_float(t[0]), field.to_float(t[1])])
-        near = tb.query_ball_tree(ta, 1.0 + 1e-7)
         # Recompute with shifted coordinates; the KD tree is only a prefilter.
         shifted = zb + shift
         tree = cKDTree(shifted)
@@ -85,33 +84,36 @@ def main():
     if len(candidates) > TOP + 2:
         selected += [candidates[len(candidates) // 2], candidates[-1]]
     for score, translation in selected:
-      for radius in TEST_RADII:
-        start = time.time()
-        pts, edges = build_universe_generic(
-            (field, omega), translation, radius, radius, LAYERS)
-        nv, clauses = color_cnf(len(pts), edges, 4)
-        cnf = f"/tmp/p23_{os.getpid()}.cnf"
-        write_cnf(cnf, nv, clauses)
-        try:
-            proc = subprocess.run([KISSAT, f"--time={TIME}", cnf],
-                                  capture_output=True, text=True)
-        finally:
-            os.unlink(cnf)
-        status = ("UNSAT" if "s UNSATISFIABLE" in proc.stdout else
-                  "SAT" if "s SATISFIABLE" in proc.stdout else "timeout")
-        elapsed = time.time() - start
-        ident = f"{ROT.replace('[','_').replace(']','')}_{translation_id(field, translation)}"
-        with open(OUT, "a") as f:
-            f.write(f"{ROT}\t{ident}\t{translation}\t{LAYERS}\t{radius}\t{radius}\t"
-                    f"{len(pts)}\t{len(edges)}\t{score}\t{status}\t{elapsed:.3f}\n")
-        print(f"{ROT} {ident} r={radius}: {len(pts)} vtx {len(edges)} e "
-              f"cross~{score} -> {status} ({elapsed:.1f}s)", flush=True)
-        if status == "UNSAT":
-            with open(os.path.join(os.path.dirname(OUT),
-                                   f"tuniv_{ident}.pkl"), "wb") as f:
-                pickle.dump({"primes": field.primes, "points": pts,
-                             "edges": edges}, f)
-      # Keep indentation obvious: one result per candidate/radius.
+        for radius in TEST_RADII:
+            start = time.time()
+            pts, edges = build_universe_generic(
+                (field, omega), translation, radius, radius, LAYERS)
+            nv, clauses = color_cnf(len(pts), edges, 4)
+            cnf = f"/tmp/p23_{os.getpid()}.cnf"
+            write_cnf(cnf, nv, clauses)
+            try:
+                proc = subprocess.run([KISSAT, f"--time={TIME}", cnf],
+                                      capture_output=True, text=True)
+            finally:
+                os.unlink(cnf)
+            status = ("UNSAT" if "s UNSATISFIABLE" in proc.stdout else
+                      "SAT" if "s SATISFIABLE" in proc.stdout else "timeout")
+            elapsed = time.time() - start
+            ident = (f"{ROT.replace('[','_').replace(']','')}_"
+                     f"{translation_id(field, translation)}")
+            with open(OUT, "a") as f:
+                f.write(
+                    f"{ROT}\t{ident}\t{translation}\t{LAYERS}\t{radius}\t"
+                    f"{radius}\t{len(pts)}\t{len(edges)}\t{score}\t"
+                    f"{status}\t{elapsed:.3f}\n")
+            print(f"{ROT} {ident} r={radius}: {len(pts)} vtx "
+                  f"{len(edges)} e cross~{score} -> {status} "
+                  f"({elapsed:.1f}s)", flush=True)
+            if status == "UNSAT":
+                with open(os.path.join(
+                        os.path.dirname(OUT), f"tuniv_{ident}.pkl"), "wb") as f:
+                    pickle.dump({"primes": field.primes, "points": pts,
+                                 "edges": edges}, f)
 
 
 if __name__ == "__main__":
