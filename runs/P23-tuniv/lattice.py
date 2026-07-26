@@ -1,6 +1,6 @@
 """Exact Parts lattice and Minkowski pool construction."""
-from fractions import Fraction as Fr
 import math
+import os
 
 P, Q, M = 3, 11, 12
 
@@ -84,23 +84,27 @@ def orbit24(p):
     return out
 
 
-def build_base(layers=4, radius=2.0):
-    """Return (+)^layers H^2 clipped to the radius disk."""
-    h2 = Hm(2)
+_CACHE = {}
+
+
+def build_base(layers=3, radius=2.0):
+    """Return sums of at most ``layers`` unit vectors in the physical disk."""
+    key = (layers, round(radius, 10))
+    if key in _CACHE:
+        return _CACHE[key]
     cur = {(0, 0, 0, 0)}
     for k in range(layers):
-        nxt = set(cur)
-        slack = layers - k - 1
-        lim = 144.0 * (radius + slack + 1e-9) ** 2
+        nxt = set()
         for x in cur:
-            for u in h2:
+            for u in UNIT:
                 y = add(x, u)
-                if radius2_float(y) <= lim / 144.0:
+                if radius2_float(y) <= (radius + layers - k - 1 + 1e-9) ** 2:
                     nxt.add(y)
         cur = nxt
-    lim = 144.0 * (radius + 1e-9) ** 2
-    cur = {q for p in cur for q in orbit24(p)}
-    return sorted(p for p in cur if radius2_float(p) * 144.0 <= lim)
+    out = sorted(p for p in cur if (s := radius2_144(p))[0] +
+                 s[1] * math.sqrt(33) <= 144.0 * (radius + 1e-9) ** 2)
+    _CACHE[key] = out
+    return out
 
 
 def to_complex(v):
