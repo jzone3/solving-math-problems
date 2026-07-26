@@ -2,6 +2,10 @@
 set -eu
 
 ENGINE=/tmp/p03_engine_role
+if pgrep -f "$ENGINE 4 tau4b" >/dev/null; then
+    echo "n14 tau4b shards already running" >&2
+    exit 1
+fi
 gcc -O3 -std=c11 -Wall -Wextra -o "$ENGINE" engine.c
 
 python3 - <<'PY'
