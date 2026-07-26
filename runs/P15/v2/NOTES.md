@@ -340,6 +340,16 @@ SCIP+symbreak 12 h timelimit, CP-SAT UNKNOWN, HiGHS cubes (4 shards x 2 h/cube: 
 Either direction (SAT witness or UNSAT) would settle whether minimal T=5 lcm is 1680.
 T=7 @ 5040: HiGHS+symbreak 12 h INDETERMINATE; SCIP 12 h run in flight.
 
-STATUS (session 3, interim): frontier-pushed — T=6 minimal-lcm lower bound raised past
-1260/1848 via SCIP; T5@1680 certified hard for a 4-solver portfolio incl. MIP-level
-cube-and-conquer.
+Ladder harvest before coordinator-ordered pause (SCIP, 4 h/N, symbreak):
+- T=6 UNSAT additionally at N = 1980 (2^2·3^2·5·11) and N = 2100 (2^2·3·5^2·7).
+- T=6 INDETERMINATE at 4 h: N = 1800 (2^3·3^2·5^2).
+- Unfinished (killed mid-run at pause): N = 1890, 2016, 2520, 2772; remaining
+  candidates 2160..4752 not yet attempted. Resume point: t6ladder2.sh list minus
+  {1848, 1980, 2100} done and {1800} indeterminate.
+- T=7 @ 5040 SCIP run killed at ~9 h with root LP still unresolved (unknown).
+
+STATUS (session 3): frontier-pushed — T=6 minimal-lcm candidates 1260, 1848, 1980,
+2100 all refuted via SCIP (1260 was the long-open cell); T=6 minimal lcm now in
+{1800?, 1890?, 2016?, ...} ∩ (1512, 5040]. T5@1680 certified hard for a 4-solver
+portfolio (HiGHS, SCIP, CP-SAT, MIP-level cube-and-conquer; ~60 CPU-h). Paused on
+coordinator instruction.

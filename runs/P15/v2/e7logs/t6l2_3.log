@@ -1,1 +1,4 @@
 === N=2100 (2^2,3,5^2,7)
+status: infeasible
+UNSAT: no covering of Z_2100 with distinct divisor moduli >= 6
+=== N=2772 (2^2,3^2,7,11)
