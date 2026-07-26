@@ -85,3 +85,53 @@ Pool regeneration is sub-second.  Exact edge reconstruction takes roughly
 8–21 seconds per case on this machine, depending on the clipped half sizes.
 The three sanity UNSAT checks above consumed approximately 195 CPU seconds
 in total.  No branch changes, PR, or external deployment was made.
+
+## Stage 2: interface patterns and constructive forcing
+
+The stage-2 definitions used by `patterns.py` and `force.py` are:
+
+* For a placement and chosen B-side set `S`, the interface `I` is the set of
+  A-side vertices incident to an exact cross edge into `S`.
+* A pattern is a partial coloring of a few vertices of `I`.
+  `S + cross + pattern` forbids it when that SAT instance is UNSAT.
+* Patterns are represented only by their equality type, using canonical
+  color labels (`00`, `01` for pairs and the five canonical types for
+  triples).  This is sound because the S-side theory has full color
+  permutation symmetry.
+* Pair patterns are tested first.  A triple is tested only when none of its
+  two-vertex restrictions is already a forbidden pair, so the result reports
+  minimal patterns through size three.
+* A candidate A-side set `L` has the forcing property when
+  `4-col(L)` together with one avoidance clause for every forbidden pattern is
+  UNSAT.  `force.py` has a growth/CEGAR engine and a DRAT-core plus greedy
+  shrink engine.  Interface endpoints of surviving patterns are preserved.
+
+Calibration on the reconstructed full rotated half:
+
+| placement/radius | A-interface | B-interface | cross edges | forbidden pairs | forbidden triples |
+|---|---:|---:|---:|---:|---:|
+| T=0, 1.6/1.6 | 18 | 18 | 18 | 0 | 0 |
+| T=0, 2.0/2.0 | 66 | 66 | 66 | 0 | 0 |
+| T65, 1.6/1.6 | 34 | 57 | 71 | 15 | 0 |
+
+Thus, at T=0 in this self-certified reconstruction, mono-pairs do not
+suffice; in fact no interface pattern of size at most three was found.  The
+forcing engine therefore correctly reports `NO_PATTERNS` and no forcing-L
+size at both T=0 radii.  This is consistent with the measurement that the
+minimised Parts split does not expose a mono-pair obstruction on its
+19-vertex lattice interface.
+
+As a secondary engine calibration, T65 at 1.6/1.6 has 15 forbidden patterns
+(all mono-pairs, no triples).  Interface-seeded growth added model-conflicting
+or frontier vertices until the full 1535-vertex A half was reached; the
+result remained SAT after 53.52 seconds.  The full-half shrink engine also
+returned SAT in 0.10 seconds, so no forcing L was claimed.  This is an
+important negative result: the pair pattern set at this placement is too weak
+to force a subgraph under the current universe.
+
+The pattern analyzer uses PySAT/CaDiCaL for repeated assumptions, including
+the usual exactly-one color clauses for every B/interface variable.  Exact
+graph edges still come from `univ.py`; no floating-point edge is admitted
+without the field check.  Stage-2 pattern analysis timings were 7.70 seconds
+for T=0 at 1.6, 236.02 seconds for the 66-interface T=0 radius-2 triple
+sweep, and 1.48 seconds for T65 at 1.6 (pairs plus uncovered triples).
