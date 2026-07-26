@@ -1230,3 +1230,29 @@ Status of the searches in this universe: exact IHS lower bound 25 (2372 clauses)
 greedy witnesses 1536 (2917-vertex universe) and 1577 (2581-vertex universe),
 alternating exact half optimisation at per-side bounds 6-7. Nothing below 509,
 nothing claimed.
+
+## E49 — do the translated copies couple to Parts' own half? (negative)
+
+If a translated copy could serve as a partner for Parts' lattice half L374, a
+smaller partner than his 135 points would immediately be a sub-509 graph. Built
+the joint pool (`build_tradepool.py`: record u A u omega A u (T63+omega A) u
+(T65+omega A) at radius 1.9 -- 7605 vertices, 51602 exact edges, the record
+embedded exactly) and asked directly (`partner.py`):
+
+```
+copy wA  (origin-centred): L374 u copy(1922 pts) -> NON-4-colorable  (control)
+copy T63 (translated):     L374 u copy(1884 pts) -> 4-colorable
+copy T65 (translated):     L374 u copy(1884 pts) -> 4-colorable
+```
+
+So the translated placements are a genuinely separate geometry: they obstruct
+with *their own* lattice half (E43-E45) but do not couple to Parts' half at all.
+That also explains why transplanting his halves into them was 4-colorable, and
+it means the two families cannot be mixed vertex-for-vertex -- a sub-509 has to
+come from one basin or the other, not from a hybrid.
+
+Exact region trades from the record inside this 7605-vertex pool (holes
+20/30/45/60, budget H-1, so any accepted trade *is* a 508) accept nothing so far;
+`halfhs.py` gained a HOPS restriction (candidates limited to a neighbourhood of
+the half being optimised, the trick that made E23 terminate) and is running on
+both halves of the record: side 1 = fix 374, 1094 candidates, target 135.

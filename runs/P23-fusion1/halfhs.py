@@ -32,6 +32,7 @@ SIDE = int(os.environ.get('SIDE', '1'))
 STEPS = int(os.environ.get('STEPS', '1500000'))
 ITERS = int(os.environ.get('ITERS', '10000'))
 SEED = int(os.environ.get('SEED', '1'))
+HOPS = int(os.environ.get('HOPS', '0'))
 OUT = os.environ.get('OUT', f'halfhs_{SEED}.pkl')
 
 pts, E = pickle.load(open(POOL, 'rb'))
@@ -153,6 +154,13 @@ def tabu_cover(fix, cand, fixcol):
 def optimise(cur, side):
     fix = [v for v in cur if half[v] != side]
     cand = [v for v in range(N) if half[v] == side]
+    if HOPS:
+        # restricting candidates to a neighbourhood of the current half keeps
+        # hyperedges narrow, which is what made the exact LNS terminate (E23)
+        reach = {v for v in cur if half[v] == side}
+        for _ in range(HOPS):
+            reach |= {u for v in reach for u in adj[v]}
+        cand = [v for v in cand if v in reach]
     ci = {v: i for i, v in enumerate(cand)}
     target = len([v for v in cur if half[v] == side])
     print(f'  side {side}: fix {len(fix)}, candidates {len(cand)}, '
