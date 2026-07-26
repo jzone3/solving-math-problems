@@ -42,6 +42,7 @@ from pysat.card import CardEnc, EncType
 from pysat.formula import IDPool
 from pysat.solvers import Cadical153
 
+import coremin
 import mfield
 from sat import color_cnf, write_cnf, KISSAT
 
@@ -172,8 +173,11 @@ def neighbourhood(S, tag):
         hole = set(rng.sample(S, H))
     fix = sorted(Sset - hole)
     fixs = set(fix)
-    if colorable(fix, f'{tag}f') is False:
-        return fix                        # the hole was pure surplus
+    # One solve, two answers: UNSAT means the hole was pure surplus (descend by
+    # H at once), SAT gives the frozen colouring the hyperedge generator needs.
+    col = coloring(fix, f'{tag}c')
+    if col is None:
+        return fix
     near = set(hole)
     for _ in range(HOPS):
         near |= {u for v in near for u in ADJ[v]}
@@ -181,9 +185,6 @@ def neighbourhood(S, tag):
     budget = H - DROPK
     if not cand or budget <= 0:
         return None
-    col = coloring(fix, f'{tag}c')
-    if col is None:
-        return fix
 
     pool = IDPool(start_from=1)
     svar = {v: pool.id(('s', v)) for v in cand}
@@ -231,16 +232,22 @@ def neighbourhood(S, tag):
 def main():
     S = sorted(pickle.load(open(START, 'rb'))) if START else list(range(N))
     tag = f'{SEED}'
-    assert colorable(S, tag) is False, 'start is 4-colorable'
     print(f'start {len(S)} vertices, pool {N}, hole {H}, budget {H-DROPK}, '
           f'hops {HOPS}, ball {BALL}', flush=True)
     while True:
         new = neighbourhood(S, tag)
         if new and len(new) < len(S):
-            assert colorable(new, tag) is False, 'descent broke the witness'
-            S = sorted(new)
+            # Independent re-check of every accepted trade, done through the
+            # DRAT-core path: kissat must say UNSAT *and* drat-trim must verify
+            # the proof, and the core it extracts is itself a (possibly
+            # strictly smaller) certified witness, so the recheck is not wasted.
+            st, core = coremin.solve_core(new, seed=SEED, tag=f'tl{SEED}')
+            assert st == 'UNSAT', f'descent broke the witness ({st})'
+            S = sorted(core if len(core) < len(new) else new)
             pickle.dump(S, open(OUT, 'wb'))
-            print(f'*** DESCENT to {len(S)} vertices', flush=True)
+            print(f'*** DESCENT to {len(S)} vertices'
+                  f'{" (core jump)" if len(core) < len(new) else ""}',
+                  flush=True)
 
 
 if __name__ == '__main__':
