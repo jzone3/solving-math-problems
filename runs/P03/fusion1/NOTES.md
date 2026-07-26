@@ -614,3 +614,77 @@ unrestricted Woodall's conjecture.
 The companion n=14 profile `(3,3,4,4)` remains infeasible at approximately
 110.8 hours across eight shards, and the n=18 cubic target remains
 infeasible at more than approximately 386 hours; neither was launched.
+
+### Role-first prescribed-outdegree enumeration
+
+The orientation bottleneck was addressed by assigning each valid role
+assignment first and then enumerating only acyclic orientations realizing the
+resulting prescribed outdegree at every vertex.  Remaining-incident-edge
+degree bounds are checked at every recursion node.  The previous
+edge-by-edge acyclic orientation recursion remains available with the
+`old` argument; `old` also selects the historical dicut mode.
+
+Validation compared the new and old engines graph-by-graph.  On 100 n=12
+tau=4 profile-A graphs, and on connected cubic samples of 5, 19, and 20
+graphs at n=8, 10, and 12 respectively for tau=3, the profile-orientation
+counts and every downstream counter (source-sink skips, tau skips, safe
+rejects, exact checks, packed, candidates, and deferred) agreed exactly.
+The n=12 tau=4 sample had 100/100 exact profile/downstream matches.  The
+small tau=3 samples had 5/5, 19/19, and 20/20 matches.  Independent C
+`check3`/`check4` and Python harness checks remain passing on representative
+orientations.
+
+The new engine intentionally reports profile-feasible leaves in its
+`orientations` counter; the old engine's `orientations` counter includes all
+acyclic leaves before profile filtering.  The invariant used for equivalence
+is the profile count and the complete downstream decision path, not the
+pre-filter total.
+
+Timing measurements:
+
+```text
+n=14 profile-A representative graph: old 0.253 s, new 0.008 s, 31.6x
+n=16 tau=3 representative batch: new 7m07s / 3 graphs = 142.4 s/graph;
+  old exceeded 300 s on the first corresponding graph (>2.1x lower bound)
+```
+
+### n=14 tau=4 profile (3,3,4,4): CLOSED
+
+The role-first engine made the previously infeasible profile-B cell feasible.
+The prepared input contains exactly 6,064,184 connected, non-planar,
+3-edge-connected reduced graphs.  Eight resumable shards completed all input
+graphs; the run was restarted from per-graph logs after a box interruption.
+Observed engine wall time from shard launch to the final `DONE` records was
+approximately 3h15m.
+
+Final exact totals:
+
+```text
+graphs:             6,064,184 / 6,064,184
+orientations:          34,542,410
+profile orientations:  34,542,410
+source-sink skips:     23,938,692
+tau skips:                690,898
+safe rejects:           4,463,434
+exact packing checks:   5,449,386
+packed:                 5,449,386
+deferred:                       0
+candidates:                     0
+```
+
+Every exact tau=4 check packed into four dijoins. No ideal-cap instance was
+deferred, so no CEGAR/PySAT follow-up was required. No counterexample
+occurred.
+
+The role-first n=18 tau=3 re-projection was run as eight bounded sample
+shards over 25 evenly spaced retained graphs.  No shard completed even one
+graph within a 900-second bound, giving the conservative lower-bound
+projection
+
+```text
+> 900 s * 29,219 / 8 = >913 hours
+```
+
+across eight shards.  Thus n=18 remains infeasible and was not launched.
+The n=14 profile-B cell is closed; this does not close n=18 or unrestricted
+Woodall's conjecture.

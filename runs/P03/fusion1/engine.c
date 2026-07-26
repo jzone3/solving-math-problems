@@ -291,6 +291,10 @@ static void setup_roles(void){
         }
         int which = mode == 42 ? 1 : 0;
         memcpy(role[nroles++],x[which],sizeof(x[which]));
+    } else if(k==3&&(n==8||n==10||n==12)){
+        int x[4];
+        x[0]=2; x[1]=2; x[2]=(n-4)/2; x[3]=(n-4)/2;
+        memcpy(role[nroles++],x,sizeof(x));
     } else if(k==3&&n==18){
         int x[][4]={{2,2,7,7},{3,3,6,6},{4,4,5,5},{5,5,4,4},
         {2,3,8,5},{3,2,5,8},{2,4,9,3},{4,2,3,9},{3,4,7,4},
