@@ -128,3 +128,13 @@ DONE 836750 {'tau3gap0': 232905, 'dupe': 277228, 'tau_out_of_range': 463196, 'ta
 DONE 77754 {'tau3gap0': 31533, 'tau_out_of_range': 46221, 'dupe': 17747}
 -- big_s606_ring5.log
 DONE 85615 {'tau4gap0': 13580, 'tau_out_of_range': 42389, 'tau3gap0': 29646, 'dupe': 15593}
+
+=== phase 3 (interrupted by PAUSE) ===
+--- k7m13.log
+[  63703s] {'instances': 270000000, 'tau3+': 826665, 'gap>0': 0}
+--- k8m11.log
+[  64111s] {'instances': 425000000, 'tau3+': 2313, 'gap>0': 0}
+--- big_s707_tau3.log
+DONE 155071 {'tau_out_of_range': 92393, 'dupe': 37608, 'tau3gap0': 62678}
+--- big_s808_schrijver.log
+DONE 174776 {'tau3gap0': 57664, 'tau_out_of_range': 87405, 'dupe': 33617, 'tau4gap0': 29707}

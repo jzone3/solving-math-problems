@@ -233,6 +233,26 @@ Phase-2 compute: ~30 h wall across 2-6 concurrent workers; ~4.7M exhaustive
 tau>=3 classes ILP-checked (k=6 m<=14, k=7 m<=12) + ~370M raw instances
 enumerated + ~1.2M annealer ILP checks + the ring-family batch.
 
+## 10. Phase 3 (coordinator push, then PAUSE order)
+
+Literature re-checked (Exa, July 2026): still no published disproof — latest
+results remain positive/partial (Combinatorica 2025 approximate packing;
+Cornuéjols–Liu–Ravi, J. Graph Theory 2026, weighted chordal digraphs). The
+coordinator's "it's been done before" is not supported by any source found;
+no construction exists to replicate.
+
+Phase-3 runs (all zero gaps; the two exhaustive scans were INTERRUPTED by a
+coordinator PAUSE order, partial counts below are machine-checked):
+- 12h annealer seed 707 (tau=3 only, n<=20, m<=44): COMPLETE, 155,071 evals,
+  62,678 tau=3 ILP-checked, 0 gaps.
+- 12h annealer seed 808 (tau 3-4, n<=24, m<=50, Schrijver-seeded): COMPLETE,
+  174,776 evals, 87,371 ILP-checked, 0 gaps.
+- k=7, m <= 13: PARTIAL — 826,665 tau>=3 classes checked (270M raw
+  instances, 17.7h), 0 gaps at interruption.
+- k=8, m <= 11: PARTIAL — 2,313 tau>=3 classes checked (425M raw instances,
+  17.8h), 0 gaps at interruption. (k=8 with m<=11 is extremely sparse in
+  tau>=3 instances, as expected.)
+
 ## STATUS: negative / frontier-pushed — no counterexample; Woodall now
 exhaustively verified (tau 3-6) for: all simple digraphs on <= 6 vertices,
 all multi-DAG condensations with <= 5 components / <= 16 arcs, <= 6
