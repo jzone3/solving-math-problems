@@ -196,6 +196,8 @@ static void leaf(void){
     for(int v=0;v<n;v++){uint64_t r=1ULL<<v;for(int i=0;i<arc_m;i++)if(ou[i]==v)r|=1ULL<<ov[i];reachv[v]=r;}
     for(int z=0;z<n;z++)for(int v=0;v<n;v++)if(reachv[v]&(1ULL<<z))reachv[v]|=reachv[z];
     if(source_sink_ok()){ss_skip++;return;}
+    if(!rho_ok()){safe_skip++;return;}
+    if(!rho_reverse_ok()){safe_skip++;return;}
     enumerate_cuts();
     if(enum_deferred){
         deferred++;
@@ -205,8 +207,6 @@ static void leaf(void){
         return;
     }
     if(tauv!=k){tau_skip++;return;}
-    if(!rho_ok()){safe_skip++;return;}
-    if(!rho_reverse_ok()){safe_skip++;return;}
     if(!reduced_cuts_ok()){safe_skip++;return;}
     checks++;
     if(packs())packed++;

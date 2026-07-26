@@ -1,0 +1,35 @@
+rho-filter reorder validation
+
+Change:
+  rho_ok() and rho_reverse_ok() moved before enumerate_cuts() in leaf().
+  reduced_cuts_ok() remains after enumerate_cuts().
+
+Comparison:
+  baseline: engine.c at HEAD before this reorder
+  reordered: current engine.c
+
+Downstream counters compared graph-by-graph:
+  profile orientations, exact checks, packed, candidates, deferred
+
+Results:
+  tau=3 cubic n=8: 5/5 graphs PASS
+  tau=3 cubic n=10: 19/19 graphs PASS
+  tau=3 cubic n=12: 20/20 graphs PASS
+  tau=4 n=12 profile-A: 100/100 graphs PASS
+
+Compiler:
+  gcc -O3 -std=c11 -Wall -Wextra
+  PASS
+
+Harness:
+  python3 test_harness.py
+  ALL PASS
+  python3 test_k4.py
+  PASS k=4 SAT vs brute force: 300/300 agree
+  test_dicut_filter.py was not runnable because its historical fixture
+  /tmp/cand_test.jsonl is absent.
+
+High-girth timing:
+  first retained higirth18 graph, reordered engine, single shard:
+  timeout 1800 seconds, no GRAPH record.
+  Therefore eight-shard projection is >28.4 hours.

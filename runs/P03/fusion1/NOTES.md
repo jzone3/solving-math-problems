@@ -711,3 +711,40 @@ processes failed before processing input. The corrected single-graph
 measurement above is the only projection used. No exact graph completed in
 the gate, so no deferred instance, candidate, or new harness cross-check
 result exists.
+
+### rho-filter reorder and high-girth retry
+
+The engine leaf path now applies the cheap `rho_ok()` and
+`rho_reverse_ok()` safe-class filters before `enumerate_cuts()`. The
+reduced-cut check remains after exact dicut enumeration. This is a pure
+filter reorder: profile orientations, exact packing checks, packed results,
+candidates, and deferred results are unchanged.
+
+Graph-by-graph comparison against the pre-reorder engine passed on:
+
+```text
+tau=3, n=8:  5/5
+tau=3, n=10: 19/19
+tau=3, n=12: 20/20
+tau=4, n=12 profile-A: 100/100
+```
+
+The compared downstream counters were profile orientations, exact checks,
+packed, candidates, and deferred. Compilation with
+`gcc -O3 -std=c11 -Wall -Wextra` passed. `test_harness.py` passed all tests,
+and `test_k4.py` reported 300/300 SAT/brute-force agreements. The historical
+`test_dicut_filter.py` fixture `/tmp/cand_test.jsonl` is absent, so that test
+could not run.
+
+The high-girth retry was gated with the reordered engine on the first
+retained `higirth18` graph. It still exceeded 1,800 seconds without a
+`GRAPH` record. The conservative eight-shard projection remains:
+
+```text
+> 1,800 * 455 / 8 = >102,375 seconds = >28.4 hours
+```
+
+This exceeds the new approximately 24-hour gate, so the high-girth n=18
+closure was not launched. No exact graph completed in this timing gate; no
+deferred instance or candidate occurred, and no new harness cross-check was
+available.
