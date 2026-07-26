@@ -456,3 +456,122 @@ PY
 python3 verify.py /tmp/tparts_t0_record_cache.pkl \
   --vertices /tmp/stage6_t0_record_ids.pkl --drat
 ```
+
+## Stage 7: fixed-pattern A minimisation
+
+Stage 7 treats the T=0 Parts-S135 pattern set as fixed.  The A-side
+oracle is the exact property
+
+```text
+[4-colouring of induced A] AND [avoid every fixed pattern in P]
+```
+
+being UNSAT.  The minimiser alternates DRAT-core reduction with greedy
+deletion using a persistent gated SAT instance: deleting an A vertex
+disables all incident edge gates, so each candidate deletion is tested
+without rebuilding the entire formula.  Complete lattice-orbit deletion
+is also attempted after each pass.  The implementation supports multiple
+random seeds and an exact implicit-hitting-set calculation over the
+pattern endpoint requirements.
+
+The IHS value is intentionally conservative.  Since every retained
+fixed-P pattern must retain its endpoints, singleton endpoint constraints
+give a sound minimum hitting-set lower bound.  It is not claimed to be a
+close lower bound on the graph-minimisation optimum.
+
+### T=0/S135 benchmark
+
+The Parts `L374` seed stayed exactly at 374 for three tested seeds.  No
+sub-509 result was found from the known feasible benchmark.  The IHS
+endpoint lower bound is 24 vertices (24 distinct interface endpoints in
+the 208-pattern set).
+
+Starting from the Stage-6 A=1080 core, one fixed-P greedy pass accepted
+200 deletion queries and reached A=932.  The run was query-capped before
+fixpoint; every accepted deletion preserved the fixed-P UNSAT property.
+The resulting graph with B=S135 was independently certified:
+
+- A=932, B=135, total **1067**,
+- 5832 exact recomputed unit edges,
+- kissat UNSAT,
+- drat-trim `s VERIFIED`,
+- standalone `verify.py`: `OVERALL: PASS`.
+
+This is a certified improvement over the Stage-6 1215 graph.  The
+reported A=932 is an intermediate greedy result, not a claimed local
+minimum; the full fixed-point pass was too expensive on this machine.
+
+Reverification:
+
+```bash
+python3 verify.py /tmp/tparts_t0_record_cache.pkl \
+  --vertices /tmp/stage7_t0_1067_ids.pkl --drat
+```
+
+### T65 known-good small-B seed
+
+The Stage-5 B=1003 set was used as a B-first seed with its refreshed
+28-pattern set (18 order-3 and 10 order-4 patterns).  The IHS endpoint
+lower bound is 11.  Fixed-P greedy deletion produced the following
+query-capped trajectory:
+
+| start A | pass | accepted-query cap | A |
+|---:|---:|---:|---:|
+| 760 | 1 | 200 | 641 |
+| 641 | 2 | 200 | 592 |
+
+The second pass first reduced the DRAT core from 641 to 637, then reached
+A=592.  The resulting graph is independently certified:
+
+- A=592, B=1003, total **1595**,
+- 8682 exact recomputed unit edges,
+- kissat UNSAT,
+- drat-trim `s VERIFIED`,
+- standalone `verify.py`: `OVERALL: PASS`.
+
+Reverification:
+
+```bash
+python3 verify.py /tmp/tparts_65_16_13.pkl \
+  --vertices /tmp/stage7_t65_1595_ids.pkl --drat
+```
+
+Thus the best translated certified total improved from 1763 to **1595**.
+The A=592 result is also query-capped rather than a fixed-point minimum.
+
+### T65/T63 crossover status
+
+The radius-1.1 ball candidates remain negative:
+
+- T65: B=756, interface 10, cross edges 31,
+  `EXTENDS_FULL_A`;
+- T63: B=756, interface 5, cross edges 18,
+  `EXTENDS_FULL_A`.
+
+The T63 radius-1.2 ball was also negative at B=942, interface 6, and 21
+cross edges (`EXTENDS_FULL_A`).  A T65 radius-1.2 run was attempted with
+both the full and query-limited CEGAR budgets, but did not complete in
+the available run window, so no T65 radius-1.2 feasibility claim is
+made.  The established T65 crossover remains between the negative
+radius-1.1 ball and the known-good non-ball B=1003 Stage-5 seed.
+
+Stage-7 reproduction commands (the temporary pickle paths below are the
+run artifacts used for the reported witnesses):
+
+```bash
+python3 stage7.py /tmp/tparts_t0_record_cache.pkl \
+  /tmp/stage6_t0_record_correct.pkl \
+  --grown-ids /tmp/stage6_t0_grown_ids.pkl \
+  --starts-pkl /tmp/stage6_t0_start1080.pkl \
+  --seeds 1 --max-queries 200 \
+  --out /tmp/stage7_t0_from1080.pkl
+python3 stage7.py /tmp/tparts_65_16_13.pkl \
+  /tmp/stage5_t65_refreshed.pkl \
+  --grown-ids /tmp/stage5_t65_refreshed.pkl \
+  --starts-pkl /tmp/stage5_t65_refreshed.pkl \
+  --seeds 1 --max-queries 200 \
+  --out /tmp/stage7_t65_from760.pkl
+```
+
+The `--max-queries` option makes long runs reproducible and records
+explicitly when a result is intermediate rather than a deletion fixpoint.
