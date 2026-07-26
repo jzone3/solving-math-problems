@@ -902,3 +902,31 @@ instant "OUTER UNSAT" everywhere: when the outer solver returned the empty
 selection the blocking clause was empty. The correct block, since colorability
 is monotone under subsets, is "select at least one candidate outside sub".)
 Runs at ~1500 complete iterations per 240 s hole; no trade accepted yet.
+
+## E39 — the two records share a 466-vertex core
+
+Parts' 509 and Heule's 510 are not just both in Q(sqrt3,sqrt5,sqrt11): they
+**share 466 vertices** (`build_upool.py`). Their union is only 553 points with
+2776 exact unit edges, and the two records are two different completions of one
+common core — Parts adds 43 points, Heule adds 44.
+
+That reframes the record as a *completion* problem, which nobody in this run had
+posed: is there X with |X| <= 42 such that core u X is non-4-colorable? Any such
+X is a 508-vertex 5-chromatic unit-distance graph.
+
+* `build_upool.py`: union + field-exact translates, degree >= 3 filter ->
+  **1764 vertices, 12072 exact edges**; saves the core and both completions.
+* `corecomplete.py`: CEGAR on the completion only (core frozen, |X| <= BUD).
+  Each 4-colouring is extended greedily to a *maximal* 4-colorable set T and
+  blocked with "select a candidate outside T", which is sound by monotonicity.
+* `unionsearch.py`: the same CEGAR over the whole 553-vertex union with bound
+  508 -- complete in principle, but the outer solver proposes tiny sets and the
+  clauses are ~120 wide, so it crawls (15k iterations, |S| <= 21).
+* `umin.py`: batched 8-4-2-1 greedy on the union (553 -> 532 so far).
+
+Calibration matters here: with the *full* 1298-candidate pool, even BUD=43 --
+where Parts' own completion is a solution -- is not found in 1100+ iterations,
+so a negative at BUD=42 over that pool would mean nothing. Restricting the
+candidates to the two records' own completion vertices (87 of them, RESTRICT=
+union) collapses the learned clauses from ~180 literals to 2-8, and those runs
+(BUD=42 and the BUD=43 calibration) are the ones that can actually terminate.
