@@ -197,6 +197,16 @@ Results (logs `logs/quasi7.log`, `logs/quasi8.log`):
   **{9,10,11}**, improving on the paper's "≤ 11, minimum unknown".
 - Lex-leader soundness sanity check: the n=8 instance is UNSAT both with and without
   the symmetry-breaking clauses (`logs/quasi8.log` = without).
+- **Cube-and-conquer checkpoint on n=9** (`out/quasi9.cnf` split on triple-vars 1,2
+  = triples (0,1,2), (0,1,3)): cubes (t₁=1,t₂=1) and (t₁=1,t₂=0) are **UNSAT**
+  (kissat, <10 min each; `logs/q9cube_1_2.log`, `logs/q9cube_1_m2.log`). The two
+  t₁=0 cubes (the bulk of the lex-min space, since lex-min prefers 0s early) were
+  still running at pause, as were their var-3 sub-splits (`out/q9c_*.cnf`).
+  **If all t₁=0 (sub-)cubes come back UNSAT, n=9 is decided NO** (masks are necessary
+  constraints; lex is sound) and the quasi-Folkman minimum order becomes {10, 11}.
+  Continuation: `cd ~/work && ./kissat/build/kissat -q out/q9c_<cube>.cnf` for the
+  four var-3 sub-cubes (or the two parent cubes `out/quasi9_cubem1_2.cnf`,
+  `out/quasi9_cubem1_m2.cnf`).
 
 This is (per §5-style priority check: no artifact deciding small quasi-Folkman orders was
 found) a small but genuinely new exact result directly answering a question left open in
