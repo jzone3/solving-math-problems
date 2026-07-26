@@ -28,7 +28,7 @@ def dominates(a, b):
     return True
 
 
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=1_000_000)
 def self_dom(mu):
     return dominates(mu, conjugate(mu))
 

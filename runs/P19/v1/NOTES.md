@@ -190,10 +190,18 @@ Results (logs `indec5_log.txt`, `indec6_log.txt`):
   `indec9_log.txt`, list `indec9_list_0.txt`): 11,901,134 wide 9-part
   partitions with λ₁ ≤ 22; **83,646 indecomposables (max λ₁ = 19,
   max |λ| = 160), all Latin — zero UNSAT/UNKNOWN.** Wall ≈ 5.5 h.
-- ℓ = 9 completeness margin (`indec9_margin.py`, log `indec9_margin_log.txt`):
-  sweep of wide 9-part shapes with λ₁ ∈ [23, 32] (empirical max λ₁ is 19;
-  the max-λ₁ trend 3,5,8,10,12,15,17,19 for ℓ = 2..9 grows ≈ 2ℓ, so 32 is a
-  comfortable cushion) — see log for final count/status.
+- ℓ = 9 completeness margin (`indec9_margin.py`, logs `indec9_margin_log.txt`,
+  `indec9_margin_b_log.txt`): sweep of wide 9-part shapes with λ₁ ∈ [23, 32]
+  (empirical max λ₁ is 19; the max-λ₁ trend 3,5,8,10,12,15,17,19 for ℓ = 2..9
+  grows ≈ 2ℓ, so 32 is a comfortable cushion). **PAUSED by coordinator, not yet
+  complete**: verified decomposable through the first ~30.0M of the wide 8-part
+  tails (≥ 56.3M wide 9-part shapes checked, zero indecomposable found in
+  [23,32]); resume with `python3 indec9_margin.py 23 32 30000000`. Two OOM
+  incidents (parent-side unbounded `self_dom` cache) fixed by bounding the
+  cache to 1M entries and periodic clears; deterministic enumeration makes
+  resumes exact. Until the sweep finishes, the ℓ = 9 result formally stands
+  for indecomposables with λ₁ ≤ 22 (which includes every one found, since the
+  ℓ ≤ 8 pattern and 56M-shape evidence indicate none exist with λ₁ > 22).
 
 Caveat recorded honestly: "sum of Latin partitions is Latin" is NOT a proved closure
 (CFGV prove wideness is closed under +, Prop. 4/Cor.), so this does not formally

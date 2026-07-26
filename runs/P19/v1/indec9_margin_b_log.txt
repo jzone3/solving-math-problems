@@ -1,0 +1,1 @@
+  30000000 tails, 1708782 wides checked, bad=[] (10789.2s)

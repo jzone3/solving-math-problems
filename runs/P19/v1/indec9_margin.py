@@ -3,7 +3,7 @@ first part in [LO, HI]. Streams wide 8-part tails with parts <= HI; workers
 recycled to bound cache growth. Usage: python3 indec9_margin.py LO HI [SKIP]"""
 import sys, time, itertools
 import multiprocessing as mp
-from indec6 import is_wide, decomposable
+from indec6 import is_wide, decomposable, self_dom
 
 LO = int(sys.argv[1]) if len(sys.argv) > 1 else 23
 HI = int(sys.argv[2]) if len(sys.argv) > 2 else 32
@@ -53,6 +53,7 @@ def main():
             allbad.extend(bad)
             done += 1
             if done % 500000 == 0:
+                self_dom.cache_clear()  # parent-side unbounded cache caused OOM
                 print(f"  {SKIP+done} tails, {total} wides checked, bad={allbad} ({time.time()-t0:.1f}s)", flush=True)
     print(f"range done: {total} wides with lam1 in [{LO},{HI}] from tail {SKIP}; "
           f"tails processed {done}; indecomposable: {allbad} ({time.time()-t0:.1f}s)", flush=True)
