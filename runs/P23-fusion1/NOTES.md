@@ -822,3 +822,36 @@ that pruning value only.
 Genuinely new geometry would need a base outside this lattice family altogether
 (a type-M analogue over a ring other than Q(sqrt33)), which is a construction
 problem, not a search problem.
+
+## E36 — type-M over other rings (`genscan.py`)
+
+The one axis the run had never touched. Parts' lattice is
+z = (a + b*sqrt33 + i(c*sqrt3 + d*sqrt11))/12, and the algebra behind it is not
+special to (3, 11, 12): for any squarefree p < q and any m,
+
+    |z|^2 = [ (a^2 + pq b^2 + p c^2 + q d^2) + 2(ab + cd) sqrt(pq) ] / m^2,
+
+so the unit vectors are the integer solutions of a^2 + pq b^2 + p c^2 + q d^2 =
+m^2 with ab + cd = 0, the points they generate form a lattice, and unit distance
+is the exact integer test "difference is a solution". E34 varied the base inside
+Parts' ring and the omega_t survey varied the rotation; this varies the *ring*.
+
+Harness anchored on the known case: (3, 11, 12) has **30 unit vectors** and its
+3-layer disk of radius 2 gives 3997 vertices that are already **non-4-colorable**
+(67 s) — i.e. a third variant of Parts' universe, smaller again than E35's 5677.
+
+Scan over **243 rings** (p < q <= 15 squarefree, m <= 16, at least 8 unit
+vectors) x 12 rotations, 6 Minkowski layers, radius 2:
+
+* **no ring other than (3, 11, 12) produces a non-4-colorable union.**
+* Most rings are simply too thin — after six layers their radius-2 disks hold
+  only ~100-450 points, so they cannot carry an obstruction at all.
+* 53 rings are *richer* than Parts' (base > 12000 points at 6 layers) and were
+  size-skipped in that pass; they are being re-run with BMAX = 30000 / NMAX =
+  60000 and a 900 s cap.
+
+Read together with E34 (m = 1 never works, and inside Parts' ring the
+obstruction switches on exactly between r = 1.95 and r = 2.0) this says Parts'
+choice of ring, base and rotation is close to isolated in the whole type-M
+family, which is a much better explanation of why 509 has stood since 2020 than
+any of this run's search floors.
