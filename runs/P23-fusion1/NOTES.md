@@ -1256,3 +1256,33 @@ Exact region trades from the record inside this 7605-vertex pool (holes
 `halfhs.py` gained a HOPS restriction (candidates limited to a neighbourhood of
 the half being optimised, the trick that made E23 terminate) and is running on
 both halves of the record: side 1 = fix 374, 1094 candidates, target 135.
+
+## E50 — more copies do not help (negative), and a calibration that matters
+
+Since two translated copies of the same rotation are strongly coupled to each
+other (the tpool census found 1022 unit pairs between T + omega A and
+-T + omega A, against 96 between A and omega A), three- and four-copy universes
+should obstruct at a smaller radius. They do not (`multicopy.py`, exact edges):
+
+```
+id + w + wT63 + wT65 : r = 1.0 .. 1.5 all SAT (2449 .. 5257 vertices)
+id + wT65 + wN65     : r = 1.0 .. 1.5 all SAT (1837 .. 3943 vertices)
+```
+
+Extra copies add vertices faster than they add obstruction; the two-copy
+placements remain the best.
+
+**Calibration.** Greedy floors are meaningless in absolute terms but useful as a
+ratio. On Parts' own radius-2 universe (4033 vertices, provably contains a 509)
+the same batched-greedy-with-DRAT-cores machinery floors around 2000-2200; on
+the translated 2581-vertex universe it floors at ~1560. Both are ~3.5-4x above
+what the geometry actually supports in the one case where the optimum is known,
+so the translated basin's true minimum is unknown and is not excluded from being
+below 509 -- it just cannot be reached by deletion. Two child sessions are
+attacking exactly that gap:
+
+* exact LNS descent in the translated universe:
+  https://app.devin.ai/sessions/f543e997a3964e3ca2928d2292f61baf
+* Parts-style *constructive* search (SAT-forced monochromatic pairs) in the
+  translated placement:
+  https://app.devin.ai/sessions/005923574b9148d99ad0d02de2063815
