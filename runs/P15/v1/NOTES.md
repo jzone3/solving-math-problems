@@ -234,11 +234,21 @@ Results (all PASS by solutions/P15/verify.py):
   per 5c's Krukenberg lesson): 896 congruences, ~10 min single core.
   Witness: witnesses_small/tree_cover_M16.json. FRONTIER 15 -> 16,
   and the LCM (3.2e12) is 6000x beyond any array-based N we could touch.
-* M=17 (same fact minus nothing, mods >= 17): greedy grinds to mass
-  ~2.6e-4 then enters a slow tail (~14 s/step, each step covering
-  ~1e-6 mass); still running at 10 h budget.
-* M=18/M=20 (facts with 19, 2^8): early fragmentation hits 350-400M
-  fragments (~3 GB arrays); progress steady but tails equally slow.
+* M=17 run A (fact 2^7 3^5 5^3 7^2 11 13 17, recip 2.008): greedy
+  grinds to mass ~2.1e-4 then STALLS — frags grow (2.7M -> 4.4M) while
+  mass stays flat over ~3 h; killed. Diagnosis: too little slack; the
+  remaining unused mods split more than they cover.
+* M=17 run B (fact with 19 added, N=8.80e12, recip 2.292): descends
+  steadily through the tail — mass 1.7e-4 at t=8.1 ks, 1.45e-4 at
+  9.3 ks, 1.16e-4 at 10.4 ks (~13%/20 min decay, frags 12.8M and
+  falling, 7.6k unused mods). Trending to complete but interrupted by a
+  coordinator PAUSE at ~3 h in (run logs in /tmp lost to a VM restart;
+  numbers above from live monitoring). Rerun is deterministic.
+* M=20 (2^8 3^5 5^3 7^2 11 13 17 19, N=1.76e13, recip 2.136): reached
+  mass 3.5e-4 at t=16 ks, still descending slowly when paused.
+* Slack lesson repeats at the tail: recip ~2.0 stalls, recip ~2.3
+  keeps moving — the tail needs spare mods that ALIGN with residual
+  fragments, which extra prime directions provide.
 
 Engineering notes: (a) per-(m,g) bincount cache gives ~4x endgame
 speedup but MUST be bounded (g <= 8192, <= 30k entries) — the unbounded
@@ -280,3 +290,8 @@ fc_tree (blind at M=10, 5c). M=17/18/20 runs are in slow greedy tails
 ends; best path to the real >=43 target remains the Owens-42-class
 surgery with fresh primes 97/101 (Section 5), which needs a faithful
 Owens Ch.3 transcription as its remaining step.
+
+PAUSED (coordinator instruction): all computations stopped; M=17 run B
+(recip 2.292) was descending steadily and is the first thing to resume
+(deterministic rerun: `python3 fc_tree2.py 17 "2^7,3^5,5^3,7^2,11,13,17,19" 36000`),
+followed by M=18/M=20 at recip >= 2.3 facts.
