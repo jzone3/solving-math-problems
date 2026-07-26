@@ -235,6 +235,26 @@ Searches this round (all machine-scored, exact ω):
   in the dense regime where the known equality family lives — any counterexample on
   13–16 vertices must be missing MORE than 20 edges.
 
+### Round 10 — ELW exhaustive certificate + dense-corner extension to n = 20 (coordinator push #6)
+
+- **ELW strengthening exhaustively verified for all connected graphs on ≤ 11 vertices**
+  (`sweepE.c`: same engine with L = sum of squares of the min(ω, #positive) largest
+  eigenvalues; s⁺-based sound rejection filter). n=9: 261,080 · n=10: 11,716,571 ·
+  n=11: 1,006,700,565 (matches A001349 exactly). Zero violations; 114 near-bound
+  graphs, all exact equalities at 50-digit precision (`recheckE.py`, PASS). The
+  stronger conjecture (Liu–Ning problem list #4) survives its first exhaustive sweep.
+  Engine cross-checked against elw.py on all 853 connected n=7 graphs (candidate sets
+  agree on all graphs with L > RHS-tolerance; the C filter provably cannot miss a
+  strict violation since LHS ≤ s⁺ and RHS is increasing in ω).
+- **Dense-corner certificate extended to n = 17, 18, 19, 20** (complements of all
+  graphs with ≤ 20 edges): n=17: 5,411,909,085 · n=18: 6,107,389,583 ·
+  n=19: 6,472,650,039 · n=20: 6,637,246,978 — 24.6e9 more graphs, 34.1e9 total for
+  n = 13–20. Zero violations; all 15 near-bound graphs (n=13–20) recheck to exact
+  equality at 50 digits (recheckC.py with eigsy, PASS): they are exactly the
+  Turán-type equality graphs in the window (T(2k,k) for n=14,16,18,20; K_n minus a
+  maximal matching-complement cases with ω=n−1, etc.). **Any counterexample on
+  n ≤ 20 vertices must be missing more than 20 edges** (and have n ≥ 13).
+
 ## 5. Conclusion
 
 No violation of Bollobás–Nikiforov (nor of the ELW generalization) found. New verified
@@ -259,7 +279,9 @@ biadjacency plateau (λ₁²+λ₂² = m for every bipartite graph of biadjacenc
 STATUS: frontier-pushed (no counterexample; exhaustive certificate n ≤ 12 = 1.64e11
 connected graphs at n = 12 + 1.02e9 at n = 11 with all 86 near-bound graphs re-verified
 as known equality graphs at 50-digit precision; dense-corner certificate: all graphs on
-13–16 vertices missing ≤ 20 edges (9.5e9 graphs, 8 near-bound = exact Turán equalities,
-50-digit PASS); blowup-family certificate for all patterns ≤ 9 vertices at all sizes;
-exhaustive 1-2-edit neighborhoods of every CM / CM-union / rank-2-bipartite equality
-graph n ≤ 16; ~2×10⁷ scored heuristic evaluations to n = 90 — all negative)
+13–20 vertices missing ≤ 20 edges (34.1e9 graphs, 15 near-bound = exact Turán equalities,
+50-digit PASS); ELW strengthening exhaustively verified for all connected graphs n ≤ 11
+(1.02e9, 114 near-bounds = equalities, PASS); blowup-family certificate for all
+patterns ≤ 9 vertices at all sizes; exhaustive 1-2-edit neighborhoods of every CM /
+CM-union / rank-2-bipartite equality graph n ≤ 16; ~2×10⁷ scored heuristic evaluations
+to n = 90 — all negative)

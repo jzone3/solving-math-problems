@@ -6,7 +6,7 @@ mpmath at 50 digits. Prints PASS iff no positive score.
 """
 import glob
 import numpy as np
-from mpmath import mp, mpf, matrix, eig
+from mpmath import mp, mpf, matrix, eigsy
 from core import max_clique
 
 mp.dps = 50
@@ -42,7 +42,7 @@ def main():
         for i in range(n):
             for j in range(n):
                 M[i, j] = mpf(int(C[i, j]))
-        ev = sorted([x.real for x in eig(M, left=False, right=False)])
+        ev = sorted(eigsy(M, eigvals_only=True))
         s = ev[-1] ** 2 + ev[-2] ** 2 - 2 * m * (1 - mpf(1) / w)
         print(g6, "n=%d m=%d w=%d score=%s" % (n, m, w, mp.nstr(s, 3)))
         if s > mpf("1e-30"):
