@@ -255,6 +255,18 @@ Searches this round (all machine-scored, exact ω):
   maximal matching-complement cases with ω=n−1, etc.). **Any counterexample on
   n ≤ 20 vertices must be missing more than 20 edges** (and have n ≥ 13).
 
+### Round 11 — PARTIAL (paused by coordinator)
+
+- `cmflip3.py` n = 13: exhaustive 3-edge-edit neighborhoods of every complete
+  multipartite graph and CM-union (619 centers, 47.1M scored graphs, exact ω):
+  best +1.2e-13 = plateau noise, no violation. n = 14 was launched but killed at pause.
+- n = 13 sparse slice (`sweep12`, connected, m ≤ 26, 8 geng parts): ran ~2 h,
+  ~10e9 graphs scanned with zero candidates before coordinator pause; INCOMPLETE —
+  no per-part summaries, not a certificate. Restartable via
+  `nauty-geng -cq 13 0:26 r/8 | ./sweep12 13`.
+
+Paused on coordinator instruction 2026-07-26; no new work until resume.
+
 ## 5. Conclusion
 
 No violation of Bollobás–Nikiforov (nor of the ELW generalization) found. New verified

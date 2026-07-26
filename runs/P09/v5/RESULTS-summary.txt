@@ -204,3 +204,7 @@ SUMMARY n=11 total=168972506 cliqued=907 cand=3 worst=1.421085471520e-14 worst_g
 SUMMARY n=9 total=261080 cliqued=290 cand=26 worst=8.881784197001e-15 worst_g6=H?ABrrw
 RECHECKC PASS (15 dense-corner candidates n=13-20, 50-digit)
 RECHECKE PASS (114 ELW candidates n<=11, 50-digit)
+CMFLIP3 SUMMARY n=13 shard=0/4: centers=155 evals=11791780 best=+8.527e-14
+CMFLIP3 SUMMARY n=13 shard=1/4: centers=155 evals=11791780 best=+6.750e-14
+CMFLIP3 SUMMARY n=13 shard=2/4: centers=155 evals=11791780 best=+1.208e-13
+CMFLIP3 SUMMARY n=13 shard=3/4: centers=154 evals=11715704 best=+7.816e-14
