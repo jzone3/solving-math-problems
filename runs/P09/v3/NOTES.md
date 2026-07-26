@@ -273,6 +273,14 @@ checkpoint 2026-07-25 11:37 UTC: ~138 × 10⁹ graphs processed (rchar-based),
 ~2.1M graphs/s aggregate, 0 candidates so far; total K₄-free(13) count
 unknown a priori (will be reported by the DONE lines).
 
+PAUSED by coordinator 2026-07-26 09:38 UTC after ~39.4 h: 305,632,104,908
+K₄-free n=13 graphs processed (rchar-based estimate), 0 candidates, 0
+violations; no part of the 16-way res/mod split had finished, so total
+count still unknown. All geng_k4f/check2 processes stopped. To resume:
+relaunch `nauty2_8_9/geng_k4f -q 13 $i/16 | ../check2 > out13/part$i.out`
+for i∈0..15 (no resume-from-checkpoint support; a fresh run or a finer
+res/mod split re-covering only unfinished residues would be needed).
+
 ## STATUS: negative — no counterexample found. Frontier pushed:
 conjecture exhaustively machine-verified for ALL graphs n ≤ 12
 (1.65 × 10¹¹ graphs), ALL vertex-transitive graphs n < 48 (100,720,344,
