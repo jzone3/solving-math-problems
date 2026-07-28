@@ -36,3 +36,5 @@ RESULT n=17 L=6 status=UNSAT iters=3354 blockclauses=88247 time=58429.8s
 RESULT n=17 L=5 status=UNSAT iters=463 blockclauses=0 time=127036.7s
 RESULT n=16 L=9 status=UNSAT iters=1037 blockclauses=598411 time=153848.3s
 RESULT n=17 L=8 status=UNSAT iters=3163 blockclauses=564962 time=246672.2s
+RESULT n=17 L=9 status=TIMEOUT iters=2729 blockclauses=1124002 time=400189.3s
+RESULT n=17 L=10 status=TIMEOUT iters=1348 blockclauses=1703425 time=406136.7s

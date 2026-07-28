@@ -1,0 +1,2 @@
+RESULT n=17 L=10 status=TIMEOUT iters=1348 blockclauses=1703425 time=406136.7s
+resumed with 1703425 persisted blocking clauses
